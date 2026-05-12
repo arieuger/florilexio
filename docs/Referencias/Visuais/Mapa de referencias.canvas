@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"2eb6c5f66617a852","type":"file","file":"Referencias/Visuais/Entorno/4.png","x":480,"y":-295,"width":301,"height":400},
+		{"id":"8ab5b1b1168005a7","type":"text","text":"Suelo, vexetación, árbores","x":80,"y":-540,"width":280,"height":50},
+		{"id":"dc493a20a091c706","type":"file","file":"Referencias/Visuais/Entorno/2.png","x":-100,"y":-380,"width":220,"height":400},
+		{"id":"c0ba994a76985825","type":"file","file":"Referencias/Visuais/Entorno/1.png","x":-360,"y":-320,"width":220,"height":400},
+		{"id":"ee6185d9bb4e4da4","type":"file","file":"Referencias/Visuais/Entorno/3.png","x":140,"y":-380,"width":301,"height":400},
+		{"id":"1bdca657d9b034dd","type":"file","file":"Referencias/Visuais/Entorno/photo_5769311616489950793_y.jpg","x":-368,"y":-860,"width":228,"height":519},
+		{"id":"a98a75468a62105d","type":"file","file":"Referencias/Visuais/Entorno/photo_5769311616489950794_y.jpg","x":-100,"y":-1220,"width":255,"height":581},
+		{"id":"544b0fc056d3a977","type":"file","file":"Referencias/Visuais/Entorno/photo_5769311616489950795_y.jpg","x":180,"y":-1220,"width":262,"height":597},
+		{"id":"d027eba860b57a02","type":"file","file":"Referencias/Visuais/Entorno/photo_5769311616489950797_y.jpg","x":840,"y":-510,"width":220,"height":501},
+		{"id":"d5da4617a55e00fc","type":"file","file":"Referencias/Visuais/Entorno/photo_5769311616489950796_y.jpg","x":480,"y":-1373,"width":301,"height":686},
+		{"id":"5d7ca9892ac187c0","type":"file","file":"Referencias/Visuais/Entorno/Pasted image 20260511201643.jpg","x":1120,"y":105,"width":1304,"height":815},
+		{"id":"50276a6475b8367d","type":"text","text":"edificios/cidade","x":590,"y":720,"width":250,"height":60},
+		{"id":"64df2d6e3c2aada8","type":"file","file":"Referencias/Visuais/Referencias propias/Pasted image 20260511201924.png","x":2960,"y":-1780,"width":992,"height":747},
+		{"id":"f68a5fb8d8251361","type":"file","file":"Referencias/Visuais/Entorno/Arco.png","x":1520,"y":-980,"width":1230,"height":692},
+		{"id":"8a3642ccfb3907f7","type":"file","file":"Referencias/Visuais/Entorno/Pasted image 20260512194637.png","x":631,"y":1000,"width":743,"height":979}
+	],
+	"edges":[
+		{"id":"210b5e39b3d70c6a","fromNode":"c0ba994a76985825","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"bottom"},
+		{"id":"9f174bcccba4cf2d","fromNode":"dc493a20a091c706","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"bottom"},
+		{"id":"501d80fdeaaafc6e","fromNode":"ee6185d9bb4e4da4","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"bottom"},
+		{"id":"4cc8afb2e8fd436e","fromNode":"2eb6c5f66617a852","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"bottom"},
+		{"id":"2403697495a6e3f0","fromNode":"1bdca657d9b034dd","fromSide":"right","toNode":"8ab5b1b1168005a7","toSide":"left"},
+		{"id":"ca6c311a7c90ac2c","fromNode":"a98a75468a62105d","fromSide":"bottom","toNode":"8ab5b1b1168005a7","toSide":"top","label":"pedras"},
+		{"id":"99839f52b22c2b83","fromNode":"544b0fc056d3a977","fromSide":"bottom","toNode":"8ab5b1b1168005a7","toSide":"top"},
+		{"id":"a66f1752f4fca8a6","fromNode":"d5da4617a55e00fc","fromSide":"bottom","toNode":"8ab5b1b1168005a7","toSide":"right","label":"flores"},
+		{"id":"57db330c932933f5","fromNode":"d027eba860b57a02","fromSide":"left","toNode":"8ab5b1b1168005a7","toSide":"right"},
+		{"id":"ea75d87b22103ed4","fromNode":"f68a5fb8d8251361","fromSide":"left","toNode":"8ab5b1b1168005a7","toSide":"right","label":"profundidade, paredes"},
+		{"id":"437088c00d770b23","fromNode":"5d7ca9892ac187c0","fromSide":"left","toNode":"50276a6475b8367d","toSide":"right"},
+		{"id":"f68d742d4f7e677e","fromNode":"5d7ca9892ac187c0","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"right","label":"textura  suelo"},
+		{"id":"9c264ab60b0be906","fromNode":"8a3642ccfb3907f7","fromSide":"top","toNode":"50276a6475b8367d","toSide":"bottom"}
+	]
+}

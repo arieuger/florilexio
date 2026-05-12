@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://yvwq5oofjvkq"]
+
+[ext_resource type="Script" uid="uid://ckykwngjyscv4" path="res://scripts/interactables/plant_interactable.gd" id="1_0vc4c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vc4c"]
+
+[node name="PlantInteractable" type="Area2D" unique_id=495881651]
+script = ExtResource("1_0vc4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1882122512]
+scale = Vector2(0.125, 0.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1606005387]
+shape = SubResource("CircleShape2D_0vc4c")
+
+[node name="Label" type="Label" parent="." unique_id=824770436]
+visible = false
+offset_right = 64.0
+offset_bottom = 23.0
+text = "Preme e"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"0744302b993882d5","type":"text","text":"Niveis de coñecemento","x":-112,"y":-180,"width":220,"height":60},
+		{"id":"fb9f5bef378c6217","type":"text","text":"**Rexistrada**: non se pode recoller. Pode haber eventos que engadan información","x":-127,"y":51,"width":250,"height":129},
+		{"id":"800ac227c24d38e9","type":"text","text":"**Descoñecida**: non se pode recoller, pero sí \"rexistrar\" no florilexio","x":-397,"y":51,"width":250,"height":91},
+		{"id":"2ff5cc27b19cc648","type":"text","text":"**Coñecida:** Pódese recoller e usar no cacho","x":148,"y":51,"width":250,"height":60},
+		{"id":"f6613bc9489e101c","x":-141,"y":240,"width":279,"height":91,"type":"text","text":"postits/follas de dúbidas? -> coñecemento temporal mentres non completes a ficha"}
+	],
+	"edges":[
+		{"id":"d5119a10b66e05c8","fromNode":"0744302b993882d5","fromSide":"bottom","toNode":"800ac227c24d38e9","toSide":"top"},
+		{"id":"e0cbe9f07b7fea8d","fromNode":"0744302b993882d5","fromSide":"bottom","toNode":"fb9f5bef378c6217","toSide":"top"},
+		{"id":"4ccebb9ae2404afe","fromNode":"0744302b993882d5","fromSide":"bottom","toNode":"2ff5cc27b19cc648","toSide":"top"},
+		{"id":"aac1c6990e6bed07","fromNode":"fb9f5bef378c6217","fromSide":"bottom","toNode":"f6613bc9489e101c","toSide":"top"},
+		{"id":"8a53e743d8f4ec85","fromNode":"f6613bc9489e101c","fromSide":"top","toNode":"fb9f5bef378c6217","toSide":"bottom"}
+	]
+}

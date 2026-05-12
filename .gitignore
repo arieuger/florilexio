@@ -1,0 +1,83 @@
+# Godot 4+ generated/editor data
+.godot/
+.mono/
+
+# Godot export credentials and local build artifacts
+export_credentials.cfg
+*.translation
+
+# Export/build output
+/build/
+/builds/
+/dist/
+/exports/
+/bin/
+/android/
+*.apk
+*.aab
+*.ipa
+*.app
+*.exe
+*.dmg
+*.zip
+
+# Logs and crash dumps
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.pid
+*.seed
+*.pid.lock
+*.stackdump
+crash_*.txt
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Editor/IDE local state
+.idea/
+*.swp
+*.swo
+*~
+
+# VS Code user-specific files
+.vscode/*.code-workspace
+.vscode/.ropeproject/
+.history/
+
+# Obsidian shared vault: keep notes, canvases, and vault settings tracked.
+# Ignore only machine-specific workspace/cache state.
+docs/.obsidian/workspace.json
+docs/.obsidian/workspace-mobile.json
+docs/.obsidian/cache/
+
+# Local environment/secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Tooling caches
+.cache/
+.tmp/
+tmp/
+temp/
+.sass-cache/
+.eslintcache
+
+# Codex/agent local session state
+.agents/
+.codex/
