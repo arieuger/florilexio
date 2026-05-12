@@ -14,7 +14,8 @@
 		{"id":"50276a6475b8367d","type":"text","text":"edificios/cidade","x":590,"y":720,"width":250,"height":60},
 		{"id":"64df2d6e3c2aada8","type":"file","file":"Referencias/Visuais/Referencias propias/Pasted image 20260511201924.png","x":2960,"y":-1780,"width":992,"height":747},
 		{"id":"f68a5fb8d8251361","type":"file","file":"Referencias/Visuais/Entorno/Arco.png","x":1520,"y":-980,"width":1230,"height":692},
-		{"id":"8a3642ccfb3907f7","type":"file","file":"Referencias/Visuais/Entorno/Pasted image 20260512194637.png","x":631,"y":1000,"width":743,"height":979}
+		{"id":"8a3642ccfb3907f7","type":"file","file":"Referencias/Visuais/Entorno/Pasted image 20260512194637.png","x":631,"y":1000,"width":743,"height":979},
+		{"id":"ea62e2df629cc8f8","x":-719,"y":1000,"width":1238,"height":774,"type":"file","file":"Referencias/Visuais/Entorno/Pasted image 20260512233757.png"}
 	],
 	"edges":[
 		{"id":"210b5e39b3d70c6a","fromNode":"c0ba994a76985825","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"bottom"},
@@ -29,6 +30,7 @@
 		{"id":"ea75d87b22103ed4","fromNode":"f68a5fb8d8251361","fromSide":"left","toNode":"8ab5b1b1168005a7","toSide":"right","label":"profundidade, paredes"},
 		{"id":"437088c00d770b23","fromNode":"5d7ca9892ac187c0","fromSide":"left","toNode":"50276a6475b8367d","toSide":"right"},
 		{"id":"f68d742d4f7e677e","fromNode":"5d7ca9892ac187c0","fromSide":"top","toNode":"8ab5b1b1168005a7","toSide":"right","label":"textura  suelo"},
-		{"id":"9c264ab60b0be906","fromNode":"8a3642ccfb3907f7","fromSide":"top","toNode":"50276a6475b8367d","toSide":"bottom"}
+		{"id":"9c264ab60b0be906","fromNode":"8a3642ccfb3907f7","fromSide":"top","toNode":"50276a6475b8367d","toSide":"bottom"},
+		{"id":"bfcad82483f83447","fromNode":"ea62e2df629cc8f8","fromSide":"top","toNode":"50276a6475b8367d","toSide":"bottom"}
 	]
 }
