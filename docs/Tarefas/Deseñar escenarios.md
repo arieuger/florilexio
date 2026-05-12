@@ -1,0 +1,15 @@
+---
+tipo: arte
+responsable: Roig
+---
+É importante manter coherencia coa proposta de Bita e tamén construír o deseño de forma que sexa útil ao *gameplay*.
+![[Pasted image 20260511201924.png]]
+## Subtarefas
+
+- [ ] Cidade
+	- [ ] Casa
+	- [ ] Parque
+	- [ ] Colexio
+	- [ ] Aforas/polígono industrial
+- [ ] Aldea dos avós
+- [ ] Porto/praia

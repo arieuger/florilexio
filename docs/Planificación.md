@@ -19,6 +19,7 @@ kanban-plugin: board
 ## Desenvolvendo
 
 - [ ] [[Deseñar son ambiente]]
+- [ ] [[Deseñar escenarios]]
 
 
 ## Revisando
