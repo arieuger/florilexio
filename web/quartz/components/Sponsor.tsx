@@ -24,10 +24,13 @@ const Sponsor: QuartzComponent = ({ displayClass, cfg, fileData }: QuartzCompone
 }
 
 Sponsor.css = `
+.sponsor {
+  margin-top: 0;
+}
 .sponsor-link {
-    font-weight: normal;
-    color: var(--darkgray);
-    text-decoration: underline;
+  font-weight: normal;
+  color: var(--darkgray);
+  text-decoration: underline;
 }
 .sponsor-logo {
   max-width: 100px;
