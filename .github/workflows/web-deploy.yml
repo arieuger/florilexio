@@ -41,7 +41,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/download-artifact@v3
+            - uses: actions/download-artifact@v4
               with:
                   name: github-pages
                   path: public
@@ -53,3 +53,6 @@ jobs:
                   password: ${{ secrets.FTP_PASSWORD }}
                   local-dir: public/
                   server-dir: /www/
+                  exclude: |
+                      **/cgi-bin
+                      **/.well-known
