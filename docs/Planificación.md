@@ -12,12 +12,12 @@ kanban-plugin: board
 - [ ] [[Deseñar sons do minixogo]]
 - [ ] [[Deseñar sons de interacción co inventario]]
 - [ ] [[Deseñar sons de interacción co cacho]]
-- [ ] [[Compoñer melodía principal do xogo]]
 - [ ] [[Compoñer melodía do minixogo]]
 
 
 ## Desenvolvendo
 
+- [ ] [[Compoñer melodía principal do xogo]]
 - [ ] [[Deseñar son ambiente]]
 - [ ] [[Deseñar escenarios]]
 
