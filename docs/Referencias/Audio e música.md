@@ -26,7 +26,18 @@ Mediana idade:
 Vellez:
 ![[Florilexio - Vellez.mp3]]
 
-O asubío podería usarse tamén para facer os sons de éxito e fracaso de accións no xogo, como se o personaxe celebrase ou lamentase o resultado. Tamén poderiamos usar o asubío para emular a fala dos personaxes, como se comunicasen desa forma. 
+O asubío podería usarse tamén para facer os sons de éxito e fracaso de accións no xogo, como se o personaxe celebrase ou lamentase o resultado. 
+
+Tamén poderiamos usar o asubío para emular a fala dos personaxes, como se comunicasen desa forma. 
+
+Voz aguda:
+![[Florilexio - Voz aguda.mp3]]
+
+Voz media:
+![[Florilexio - Voz media.mp3]]
+
+Voz grave:
+![[Florilexio - Voz grave.mp3]]
 
 Tamén usaremos os VSTs [Carmucha](https://lijasvirtualsampler.com/carmucha) e [Breogán](https://lijasvirtualsampler.com/breogan-vsti), emuladores de pandeireta e gaita respectivamente, desenvolvidos por Lijas, como forma de apoiar o software feito en Galiza.
 
