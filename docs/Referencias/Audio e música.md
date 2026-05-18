@@ -45,7 +45,9 @@ Este asubío podería usarse tamén para facer os sons de éxito e fracaso de op
 
 Tamén usaremos os VSTs [Carmucha](https://lijasvirtualsampler.com/carmucha) e [Breogán](https://lijasvirtualsampler.com/breogan-vsti), emuladores de pandeireta e gaita respectivamente, desenvolvidos por Lijas, como forma de apoiar o software feito en Galiza.
 
-Na música, usaremos tamén a librería de samples de pandeiretas de [Lindisfarne](https://lindisfarne.site/en/samplepack), co que poderemos crear un contraste interesante entre gravacións reais de instrumentos tradicionais con sons completamente sintetizados
+Na música, usaremos tamén a librería de samples de pandeiretas de [Lindisfarne](https://lindisfarne.site/en/samplepack), co que poderemos crear un contraste interesante entre gravacións reais de instrumentos tradicionais con sons completamente sintetizados.
+
+Podería estar ben usar unha melodía que represente ao personaxe principal pero que vaia evolucionando, tanto melódica como armonicamente así como a nivel de produción, coas etapas da súa vida. As primeiras etapas poderían ser máis de descubrimento e aventura; as últimas, de descanso e sabedoría.
 ## Pipeline de assets
 
 Para a composición da música usaremos [Ableton Live](https://www.ableton.com/es/live/) por ser unha ferramenta potente e moi completa. E, sobre todo, por ser o DAW ao que máis acostumadas estamos.
