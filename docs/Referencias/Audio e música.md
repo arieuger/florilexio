@@ -7,7 +7,7 @@ https://www.youtube.com/watch?v=Rm8bH4zthGo
 Como inspiración da tradición galega podemos usar as seguintes webs que recompilan obras, partituras e arquivos midi nesta liña:
 
 - [https://folkotecagalega.gal](https://folkotecagalega.gal)
-## Guía de audio e música
+## Guía do deseño sonoro
 Para o deseño sonoro de accións reais utilizaremos sons realistas, principalmente a partir de gravacións 
 
 Como este é un proxecto de código aberto, todas as gravacións que usemos feitas por outras persoas alleas ao equipo deberán ter unha licencia aberta compatible con que sexa un proxecto comercial (de dominio público ou creative commons comercial).
