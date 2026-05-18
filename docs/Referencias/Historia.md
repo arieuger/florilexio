@@ -1,4 +1,4 @@
-COUSAS DE HOBBITS
+## **COUSAS DE HOBBITS**
 
 Me siento junto al fuego y pienso  
 en todo lo que he visto,  
@@ -34,7 +34,8 @@ y voces en la puerta.
 \-descrición do agocho de faramir e as súas plantas, xunta Mordor.  
 \-Elanor, nome de flor doutro territorio con propiedades
 
-NOMES A USAR  
+## **NOMES A USAR**
+
 \*mirto  
 \*urraca, veciña castelá  
 \*floria  
@@ -53,27 +54,30 @@ Landra pequena, ou outros apelativos
 vento solano  
 eu chorar, chorente
 
-FLORES E PLANTAS QUE FAN COUSAS
+## **FLORES E PLANTAS QUE FAN COUSAS**
 
 flores mellizas/xemelgas. dopleganger de flores  
 flores de auga, pingas nas puntas das polas pequenas despois ds chuvia
 
-ÁRBORES QUE FAN COUSAS:
+## **ÁRBORES QUE FAN COUSAS:**
 
 \-Árbol que che fala (ojos llenos de aárboles). un carballo  
 \-bosque que cambia de lugar (un souto)  
 \- sauce: fai quedar durmida á peña
 
-OUTRAS COUSAS QUE FAN COUSAS  
+## **OUTRAS COUSAS QUE FAN COUSAS**
+
 \-Río, cando o cruzas perdes a memoria  
 \-animais aínda falan un pouco
 
-REFERENCIAS LITERARIAS  
+## **REFERENCIAS LITERARIAS**
+
 Vento lento  
 Paxarín pinpín  
 \-a aldea ao pé da montaña
 
-REFERENCIAS A LUGARES  
+## **REFERENCIAS A LUGARES**
+
 \-a aldea ao pé da montaña  
 \-as eiras (nones de sitios q signifiquen cousas)  
 a eira de abaixo  
@@ -83,32 +87,36 @@ a pasaxe, o montiño, curramontes, pedra furada, arrabiada, berbiriana.
 \--souto vello  
 adaptar altojardín: altapena, altomonte
 
-OUTRAS REFERENCIAS  
+## **OUTRAS REFERENCIAS**
+
 \-una sociedad secreta de interpretacion de las flores  
 \-guiño a augardentía
 
 \-De Mutazione: a forma de facer os xardíns, que haxa opcións non óptimas segundo o lugar. darlle tempo a optomizar o cultivo ( a orde ou o bonitosmo do cacho de herbas, aínda que non sexa crucial)
 
-FONTES  
+## **FONTES**
+
 Fonte de Bendrade
 
-PERSONAXES  
+## **PERSONAXES**
+
 persoa que dá de comer aos gatos
 
-BRUXAS  
+## **BRUXAS**
+
 corros de brujas de setas: senderuelas  
 [https://docs.google.com/document/d/1exOeZ8ILkGWRjjwbAyNu2zA0Kr1PpVnfj2ekPfY0NWk/edit?usp=sharing](https://docs.google.com/document/d/1exOeZ8ILkGWRjjwbAyNu2zA0Kr1PpVnfj2ekPfY0NWk/edit?usp=sharing)
 
-ANIMAIS
+## **ANIMAIS**
 
 [https://orgullogalego.gal/crenzas-e-lendas-asociadas-con-animais/](https://orgullogalego.gal/crenzas-e-lendas-asociadas-con-animais/)
 
-DITOS  
-Salto por enriba/ do lume de San Xoan/ para que non me trabe/nin cobra nen can./ Pasades os lumes de San Xoan/ para que non vos morda cadela nin can/ nen cantos males han./ Cachela de San Xoan/ que nin morda cadela/ nen can/nen cousa que ande polo chan.
+## **DITOS** **Salto por enriba/ do lume de San Xoan/ para que non me trabe/nin cobra nen can./ Pasades os lumes de San Xoan/ para que non vos morda cadela nin can/ nen cantos males han./ Cachela de San Xoan/ que nin morda cadela/ nen can/nen cousa que ande polo chan.**
 
 Por ser noite de San Xoan/ noite de encantos e bruxas/ por ser noite de San Xoan/ teñoche medo, Maruxa.
 
-IDEAS SOLTAS  
+## **IDEAS SOLTAS**
+
 \-monte queimado  
 \-un cruceiro  
 \-unha hermida  
