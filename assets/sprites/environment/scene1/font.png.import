@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjrtnil3fjsty"
-path="res://.godot/imported/2.png-c0a0c8a21c5b5208d52253cadb49a80a.ctex"
+uid="uid://hdd38jtpqw0h"
+path="res://.godot/imported/font.png-9c5fdc2f0243757f56deeb58a11ee7bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/Referencias/Visuais/Entorno/2.png"
-dest_files=["res://.godot/imported/2.png-c0a0c8a21c5b5208d52253cadb49a80a.ctex"]
+source_file="res://assets/sprites/environment/scene1/font.png"
+dest_files=["res://.godot/imported/font.png-9c5fdc2f0243757f56deeb58a11ee7bd.ctex"]
 
 [params]
 

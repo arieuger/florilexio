@@ -1,8 +1,101 @@
 [gd_scene format=3 uid="uid://b1vthypiuh6je"]
 
-[ext_resource type="PackedScene" uid="uid://d3n5ug62vtoam" path="res://scenes/player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dmai4h4yupt1u" path="res://assets/sprites/environment/scene1/base.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d3n5ug62vtoam" path="res://scenes/player/player.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(8, 3)
 
 [node name="Main" type="Node2D" unique_id=66873482]
 
-[node name="Player" parent="." unique_id=1506201651 instance=ExtResource("1_ig7tw")]
-position = Vector2(380, 293)
+[node name="Scene1Base" type="Sprite2D" parent="." unique_id=2135171562]
+texture = ExtResource("1_ig7tw")
+centered = false
+
+[node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1956318489]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
+position = Vector2(46, 114)
+polygon = PackedVector2Array(0, 14, 0, 10, -10, 10, -10, -12, 16, -12, 16, -33, 56, -33, 56, -53, 117, -62, 117, -14, 62, -14, 59, 22, 17, 22)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WorldCollision" unique_id=1854061891]
+position = Vector2(268, 121)
+polygon = PackedVector2Array(1, 2, 1, -23, 30, -23, 31, -79, -107, -71, -105, -22, -95, -22, -95, 14, -90, 14, -90, -21, -80, -21, -80, 2)
+
+[node name="YSortables" type="Node2D" parent="." unique_id=1360060003]
+y_sort_enabled = true
+
+[node name="Player" parent="YSortables" unique_id=1506201651 instance=ExtResource("2_0xm2m")]
+position = Vector2(89, 139)
+speed = 70.0
+
+[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244]
+position = Vector2(125, 116)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchLeft" unique_id=708923007]
+texture = ExtResource("3_1bvp3")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchLeft" unique_id=1737124471]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchLeft/StaticBody2D" unique_id=1241186467]
+position = Vector2(11, -1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=1537834856]
+position = Vector2(144, 116)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchRight" unique_id=214264978]
+texture = ExtResource("3_h2yge")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchRight" unique_id=709605717]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchRight/StaticBody2D" unique_id=1098663457]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
+position = Vector2(107, 107)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Trees" unique_id=298352965]
+texture = ExtResource("2_7mycd")
+centered = false
+offset = Vector2(0, -21)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Trees" unique_id=635567625]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Trees/StaticBody2D" unique_id=1097637154]
+position = Vector2(8, -8)
+polygon = PackedVector2Array(-2, 5, -2, 11, 4, 11, 4, 6)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/Trees/StaticBody2D" unique_id=801002830]
+position = Vector2(58, -10)
+polygon = PackedVector2Array(-2, 6, -2, 11, 4, 11, 3, 6)
+
+[node name="Font" type="Node2D" parent="YSortables" unique_id=886898638]
+position = Vector2(138, 114)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Font" unique_id=1907486465]
+texture = ExtResource("5_lquwl")
+centered = false
+offset = Vector2(0, -5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Font" unique_id=764475417]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Font/StaticBody2D" unique_id=57337450]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_lquwl")

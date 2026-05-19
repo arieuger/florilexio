@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://d3n5ug62vtoam"]
 
-[ext_resource type="Texture2D" uid="uid://dxe2vfn78uanq" path="res://icon.svg" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c41x67y5snpsk" path="res://scripts/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://c5bri7skvb3t7" path="res://assets/sprites/player/player.png" id="2_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
-size = Vector2(126, 126)
+size = Vector2(4, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1506201651]
 script = ExtResource("1_dovo2")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=773473598]
-texture = ExtResource("1_8afob")
+position = Vector2(0, -1)
+texture = ExtResource("2_dovo2")
+centered = false
+offset = Vector2(-3, -7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1767272530]
+[node name="CollisionChecker" type="CollisionShape2D" parent="." unique_id=1767272530]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_8afob")

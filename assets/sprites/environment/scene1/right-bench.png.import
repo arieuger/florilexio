@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmv4cxxtb3mqf"
-path="res://.godot/imported/photo_5769311616489950797_y.jpg-4e2b80be9f5beedc68e89d1ef104a191.ctex"
+uid="uid://dvf3gxb0guqyk"
+path="res://.godot/imported/right-bench.png-9b6ce50ab116f852fccbcc7da5f35cfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/Referencias/Visuais/Entorno/photo_5769311616489950797_y.jpg"
-dest_files=["res://.godot/imported/photo_5769311616489950797_y.jpg-4e2b80be9f5beedc68e89d1ef104a191.ctex"]
+source_file="res://assets/sprites/environment/scene1/right-bench.png"
+dest_files=["res://.godot/imported/right-bench.png-9b6ce50ab116f852fccbcc7da5f35cfa.ctex"]
 
 [params]
 
