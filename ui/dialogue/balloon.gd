@@ -23,6 +23,8 @@ extends CanvasLayer
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+@onready var panel_container: PanelContainer = $Balloon/MarginContainer/PanelContainer
+
 ## Temporary game states
 var temporary_game_states: Array = []
 
@@ -96,6 +98,14 @@ func _process(delta: float) -> void:
 			and dialogue_line.responses.size() == 0 \
 			and not dialogue_line.has_tag("voice") \
 			and has_next_line
+
+
+func _input(event: InputEvent) -> void:
+	if not balloon.visible:
+		return
+
+	if _handle_dialogue_advance_input(event):
+		get_viewport().set_input_as_handled()
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -199,25 +209,36 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	# See if we need to skip typing of the dialogue
+	if _handle_dialogue_advance_input(event):
+		get_viewport().set_input_as_handled()
+
+
+func _handle_dialogue_advance_input(event: InputEvent) -> bool:
+	if not is_instance_valid(dialogue_line):
+		return false
+
+	var mouse_was_clicked: bool = event is InputEventMouseButton \
+		and event.button_index == MOUSE_BUTTON_LEFT \
+		and event.is_pressed()
+	var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+	var next_button_was_pressed: bool = event.is_action_pressed(next_action)
+
 	if dialogue_label.is_typing:
-		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
 		if mouse_was_clicked or skip_button_was_pressed:
-			get_viewport().set_input_as_handled()
 			dialogue_label.skip_typing()
-			return
+			return true
+		return false
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+	if not is_waiting_for_input:
+		return false
+	if dialogue_line.responses.size() > 0:
+		return false
 
-	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
-
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+	if mouse_was_clicked or next_button_was_pressed:
 		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
-		next(dialogue_line.next_id)
+		return true
+
+	return false
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
@@ -226,6 +247,13 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 func set_balloon_world_position(world_position: Vector2) -> void:
 	var screen_position := get_viewport().get_canvas_transform() * world_position
 	$Balloon/MarginContainer.position = screen_position
+
+func set_balloon_color(color: Color) -> void:
+	var stylebox := panel_container.get_theme_stylebox("panel")
+	if stylebox is StyleBoxTexture:
+		var unique_stylebox := stylebox.duplicate()
+		unique_stylebox.modulate_color = color
+		panel_container.add_theme_stylebox_override("panel", unique_stylebox)
 
 
 #endregion

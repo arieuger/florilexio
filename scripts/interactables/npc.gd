@@ -4,6 +4,7 @@ extends Node2D
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var balloon_scene: PackedScene
+@export var balloon_color: Color = Color.WHITE
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
@@ -46,6 +47,7 @@ func _interact():
 
 	var balloon = DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource)
 	await get_tree().process_frame
+	balloon.set_balloon_color(balloon_color)
 	balloon.set_balloon_world_position(balloon_marker.global_position)
 
 	_is_interacting = false
