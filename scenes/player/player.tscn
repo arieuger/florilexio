@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_8afob")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1822447936]
 sprite_frames = SubResource("SpriteFrames_dovo2")
 animation = &"walk_down"
-speed_scale = 1.2
+speed_scale = 1.4
 centered = false
 offset = Vector2(-3, -9)
 
@@ -121,3 +121,5 @@ drag_left_margin = 0.15
 drag_top_margin = 0.15
 drag_right_margin = 0.15
 drag_bottom_margin = 0.15
+editor_draw_limits = true
+editor_draw_drag_margin = true
