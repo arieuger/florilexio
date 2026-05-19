@@ -113,10 +113,11 @@ polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
 [node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
 dialogue_resource = ExtResource("6_efxa6")
-hover_color = null
-hover_fade_duration = null
 
-[node name="HoverSprite" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1049314272]
+[node name="InteractionPoint" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=222721431]
+position = Vector2(2, 6)
+
+[node name="HoverSprite" parent="YSortables/BenchRight/OldWoman" index="1" unique_id=1049314272]
 modulate = Color(1, 1, 1, 1)
 texture = ExtResource("7_dg77c")
 

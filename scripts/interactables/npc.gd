@@ -6,8 +6,10 @@ extends Node2D
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
+@onready var interaction_point: Node2D = $InteractionPoint
 
 var _hover_tween: Tween
+var _is_interacting := false
 
 func _ready():
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
@@ -23,7 +25,25 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		DialogueManager.show_dialogue_balloon(dialogue_resource)
+		viewport.set_input_as_handled()
+		_interact()
+
+func _interact():
+	if _is_interacting:
+		return
+
+	_is_interacting = true
+
+	if interaction_point:
+		var player = get_tree().get_first_node_in_group("player")
+		if player and player.has_method("move_to_point"):
+			var reached: bool = await player.move_to_point(interaction_point.global_position)
+			if not reached:
+				_is_interacting = false
+				return
+
+	DialogueManager.show_dialogue_balloon(dialogue_resource)
+	_is_interacting = false
 
 func _fade_hover_to(target_alpha: float):
 	if _hover_tween:

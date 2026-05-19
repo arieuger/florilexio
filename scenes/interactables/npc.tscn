@@ -8,6 +8,9 @@ size = Vector2(6, 10)
 [node name="NPC" type="Node2D" unique_id=2036821595]
 script = ExtResource("1_dngen")
 
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=222721431]
+position = Vector2(4, 9)
+
 [node name="HoverSprite" type="Sprite2D" parent="." unique_id=1049314272]
 modulate = Color(1, 1, 1, 0)
 centered = false
