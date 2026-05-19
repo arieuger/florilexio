@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*uid://by2ku53r40rl2"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -50,10 +55,17 @@ down={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogues/test.dialogue")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
-common/physics_interpolation=true
+common/stretch/mode="viewport"
+common/size/viewport_height=135
+common/size/viewport_width=160
+common/stretch/scale_mode="integer"
 
 [rendering]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c41x67y5snpsk" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://c5bri7skvb3t7" path="res://assets/sprites/player/player.png" id="2_dovo2"]
+[ext_resource type="Resource" uid="uid://btp6opbxh844d" path="res://dialogues/test.dialogue" id="2_p47bc"]
 [ext_resource type="Texture2D" uid="uid://blkqtiih8xwla" path="res://assets/sprites/player/back-player.png" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://chqmfj8a84wqj" path="res://assets/sprites/player/walking-player.png" id="4_lvxji"]
 
@@ -95,6 +96,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1506201651]
 script = ExtResource("1_dovo2")
+test_dialogue = ExtResource("2_p47bc")
 metadata/_edit_group_ = true
 
 [node name="CollisionChecker" type="CollisionShape2D" parent="." unique_id=1767272530]

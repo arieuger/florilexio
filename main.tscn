@@ -5,8 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
 [ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
+[ext_resource type="Resource" uid="uid://btp6opbxh844d" path="res://dialogues/test.dialogue" id="6_efxa6"]
 [ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 
@@ -108,6 +111,18 @@ position = Vector2(0, -1)
 position = Vector2(0, -1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
+[node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
+dialogue_resource = ExtResource("6_efxa6")
+hover_color = null
+hover_fade_duration = null
+
+[node name="HoverSprite" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1049314272]
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("7_dg77c")
+
+[node name="CollisionShape2D" parent="YSortables/BenchRight/OldWoman/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
+position = Vector2(6, -3)
+
 [node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
 position = Vector2(107, 107)
 metadata/_edit_group_ = true
@@ -125,7 +140,7 @@ polygon = PackedVector2Array(-2, 5, -2, 11, 4, 11, 4, 6)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/Trees/StaticBody2D" unique_id=801002830]
 position = Vector2(58, -10)
-polygon = PackedVector2Array(-2, 6, -2, 11, 4, 11, 3, 6)
+polygon = PackedVector2Array(-2, 6, -2, 11, 3, 11, 3, 6)
 
 [node name="Font" type="Node2D" parent="YSortables" unique_id=886898638]
 position = Vector2(138, 114)
@@ -191,3 +206,5 @@ offset = Vector2(-3, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Dog/StaticBody2D" unique_id=162068650]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_kek77")
+
+[editable path="YSortables/BenchRight/OldWoman"]
