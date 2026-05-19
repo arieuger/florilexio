@@ -106,4 +106,18 @@ sprite_frames = SubResource("SpriteFrames_dovo2")
 animation = &"walk_down"
 speed_scale = 1.2
 centered = false
-offset = Vector2(-3, -8)
+offset = Vector2(-3, -9)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1552439398]
+zoom = Vector2(1.33, 1.33)
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 180
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.15
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
