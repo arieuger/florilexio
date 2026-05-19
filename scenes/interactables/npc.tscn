@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://oqpilop87x70"]
 
 [ext_resource type="Script" uid="uid://doffkk6u6ewot" path="res://scripts/interactables/npc.gd" id="1_dngen"]
+[ext_resource type="PackedScene" uid="uid://7unc1h5mgvlx" path="res://ui/dialogue/npc_balloon.tscn" id="2_2wjnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkvbc"]
 size = Vector2(6, 10)
 
 [node name="NPC" type="Node2D" unique_id=2036821595]
 script = ExtResource("1_dngen")
+balloon_scene = ExtResource("2_2wjnd")
+
+[node name="BalloonPosition" type="Marker2D" parent="." unique_id=1949997476]
+position = Vector2(-2, -8)
 
 [node name="InteractionPoint" type="Marker2D" parent="." unique_id=222721431]
 position = Vector2(4, 9)

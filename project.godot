@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameState="*uid://by2ku53r40rl2"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://ui/dialogue/npc_balloon.tscn"
+
 [display]
 
 window/size/viewport_width=320
