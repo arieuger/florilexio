@@ -8,9 +8,49 @@
 [ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(8, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("9_kek77")
+region = Rect2(0, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("9_kek77")
+region = Rect2(7, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("9_kek77")
+region = Rect2(14, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("9_kek77")
+region = Rect2(21, 0, 7, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(6, 2)
 
 [node name="Main" type="Node2D" unique_id=66873482]
 
@@ -116,20 +156,38 @@ offset = Vector2(0, -4)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Wood/StaticBody2D" unique_id=634575923]
 polygon = PackedVector2Array(0, -2, -1, 8, 3, 8, 5, 6, 10, 7, 10, 5, 9, 2, 10, -1)
 
-[node name="SchoolGate" type="Sprite2D" parent="YSortables" unique_id=193358986]
+[node name="SchoolGate" type="Node2D" parent="YSortables" unique_id=1252643301]
 position = Vector2(177, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/SchoolGate" unique_id=193358986]
 texture = ExtResource("8_5vw27")
 centered = false
 offset = Vector2(0, -15)
 metadata/_edit_group_ = true
 
-[node name="Node2D" type="Node2D" parent="YSortables/SchoolGate" unique_id=1252643301]
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/SchoolGate/Sprite2D" unique_id=1667777689]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/SchoolGate" unique_id=1667777689]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/SchoolGate/StaticBody2D" unique_id=33389700]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/SchoolGate/Sprite2D/StaticBody2D" unique_id=33389700]
 polygon = PackedVector2Array(0, 2, 11, 2, 11, 1, 43, 1, 43.000004, 0.1053524, 52, 0, 52, -2, 43, -2, 43, -3, 0, -3)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/SchoolGate/StaticBody2D" unique_id=1610972094]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/SchoolGate/Sprite2D/StaticBody2D" unique_id=1610972094]
 position = Vector2(62, 1)
 polygon = PackedVector2Array(0, 0, 6, 0, 6, 1, 55, 1, 55, -2, 6, -2, 6, -3, 0, -3)
+
+[node name="Dog" type="Node2D" parent="YSortables" unique_id=417475737]
+position = Vector2(156, 122)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Dog" unique_id=87938730]
+sprite_frames = SubResource("SpriteFrames_5vw27")
+animation = &"idle"
+autoplay = "idle"
+speed_scale = 1.7
+centered = false
+offset = Vector2(-3, -4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Dog" unique_id=1051015078]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Dog/StaticBody2D" unique_id=162068650]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kek77")
