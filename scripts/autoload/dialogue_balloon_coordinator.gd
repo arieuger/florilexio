@@ -4,6 +4,7 @@ const DEFAULT_NPC_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/npc_ba
 const DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/player_response_balloon.tscn")
 const STEP_NPC := "npc"
 const STEP_PLAYER := "player"
+const STEP_SPEAKER := "speaker"
 
 var is_running := false
 var _requested_dialogue_steps: Array[Dictionary] = []
@@ -15,6 +16,10 @@ func request_npc_dialogue(title: String) -> void:
 
 func request_player_dialogue(title: String) -> void:
 	_request_dialogue_step(STEP_PLAYER, title)
+
+
+func request_speaker_dialogue(speaker_id: String, title: String) -> void:
+	_request_dialogue_step(STEP_SPEAKER, title, speaker_id)
 
 
 func run_world_sequence(
@@ -85,12 +90,13 @@ func run_player_response(
 	return true
 
 
-func _request_dialogue_step(speaker: String, title: String) -> void:
+func _request_dialogue_step(speaker: String, title: String, speaker_id: String = "") -> void:
 	if title.is_empty():
 		return
 	_requested_dialogue_steps.append({
 		speaker = speaker,
 		title = title,
+		speaker_id = speaker_id,
 	})
 
 
@@ -116,13 +122,48 @@ func _run_requested_dialogues(
 		var step: Dictionary = _requested_dialogue_steps.pop_front()
 		var speaker: String = step.get("speaker", STEP_NPC)
 		var title: String = step.get("title", "")
-		var balloon_scene := npc_balloon_scene if speaker == STEP_NPC else player_response_balloon_scene
+		var balloon_scene := _get_step_balloon_scene(speaker, step, npc_balloon_scene, player_response_balloon_scene)
 		var balloon := DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource, title, dialogue_states)
 
 		if speaker == STEP_NPC:
 			await _prepare_world_balloon(balloon, world_position, balloon_color)
+		elif speaker == STEP_SPEAKER:
+			await _prepare_speaker_balloon(balloon, step, world_position, balloon_color)
 
 		await _wait_for_dialogue_to_end(dialogue_resource)
+
+
+func _get_step_balloon_scene(
+	speaker: String,
+	step: Dictionary,
+	npc_balloon_scene: PackedScene,
+	player_response_balloon_scene: PackedScene
+) -> PackedScene:
+	if speaker == STEP_PLAYER:
+		return player_response_balloon_scene
+	if speaker == STEP_SPEAKER:
+		var dialogue_speaker := _get_dialogue_speaker(str(step.get("speaker_id", "")))
+		if is_instance_valid(dialogue_speaker) and is_instance_valid(dialogue_speaker.get("balloon_scene")):
+			return dialogue_speaker.get("balloon_scene") as PackedScene
+	return npc_balloon_scene
+
+
+func _prepare_speaker_balloon(balloon: Node, step: Dictionary, fallback_world_position: Vector2, fallback_balloon_color: Color) -> void:
+	var dialogue_speaker := _get_dialogue_speaker(str(step.get("speaker_id", "")))
+	if is_instance_valid(dialogue_speaker):
+		var speaker_color: Color = dialogue_speaker.get("balloon_color")
+		await _prepare_world_balloon(balloon, dialogue_speaker.global_position, speaker_color)
+	else:
+		await _prepare_world_balloon(balloon, fallback_world_position, fallback_balloon_color)
+
+
+func _get_dialogue_speaker(speaker_id: String) -> Node2D:
+	if speaker_id.is_empty():
+		return null
+	for speaker in get_tree().get_nodes_in_group("dialogue_speaker"):
+		if str(speaker.get("speaker_id")) == speaker_id:
+			return speaker as Node2D
+	return null
 
 
 func _wait_for_dialogue_to_end(dialogue_resource: DialogueResource) -> void:

@@ -4,13 +4,11 @@ extends Node2D
 @export var dialogue_title := "start"
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
-@export var balloon_scene: PackedScene
-@export var balloon_color: Color = Color.WHITE
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
 @onready var interaction_point: Node2D = $InteractionPoint
-@onready var balloon_marker: Marker2D = $BalloonPosition
+@onready var balloon_marker: Marker2D = $BalloonConfig
 
 var _hover_tween: Tween
 var _is_interacting := false
@@ -50,12 +48,23 @@ func _interact():
 		dialogue_resource,
 		dialogue_title,
 		balloon_marker.global_position,
-		balloon_color,
+		_get_balloon_color(),
 		[self],
-		balloon_scene
+		_get_balloon_scene()
 	)
 
 	_is_interacting = false
+
+func _get_balloon_color() -> Color:
+	if "balloon_color" in balloon_marker:
+		var marker_color: Color = balloon_marker.get("balloon_color")
+		return marker_color
+	return Color.WHITE
+
+func _get_balloon_scene() -> PackedScene:
+	if "balloon_scene" in balloon_marker:
+		return balloon_marker.get("balloon_scene") as PackedScene
+	return null
 
 func _fade_hover_to(target_alpha: float):
 	if _hover_tween:

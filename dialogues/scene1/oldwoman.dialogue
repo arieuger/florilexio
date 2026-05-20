@@ -11,7 +11,7 @@ else
 
 ~ player_response_all_flowers_question
 - si
-	do request_npc_dialogue("old_woman_all_flowers")
+	do request_speaker_dialogue("old_woman", "old_woman_all_flowers")
 	=> END
 - non
 	do request_player_dialogue("player_understands")
@@ -26,6 +26,7 @@ follas de nogueira con tres noces, fento rizado (peineta),
 herba do Carme, silveira, folla de figueira, folla de olmo, 
 folla de laranxeira, malva-rosa, hortensia, 
 folla de viña branca e outras
+do request_speaker_dialogue("dog", "dog_comment")
 do request_player_dialogue("player_understands")
 do GameState.add_consumed_time(2)
 set GameState.old_woman_already_spoke = true
@@ -33,8 +34,11 @@ set GameState.old_woman_already_spoke = true
 
 ~ player_understands
 A ver se as lembro. 
-do request_npc_dialogue("old_woman_finish")
+do request_speaker_dialogue("old_woman", "old_woman_finish")
 => END
+
+~ dog_comment
+Arf!!. => END
 
 ~ old_woman_finish
 Eso espero, non teño todo o día. => END
