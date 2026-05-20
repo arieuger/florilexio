@@ -1,8 +1,0 @@
-~ start
-Queres que che diga todas as opcions? 
-Vai levar [shake rate=20 level=10]tempo[/shake]... => END
-
-~ player_response_test
-- si
-- non
-	Que peñazo
