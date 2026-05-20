@@ -22,7 +22,6 @@ func run_world_sequence(
 	dialogue_title: String = "",
 	world_position: Vector2 = Vector2.ZERO,
 	balloon_color: Color = Color.WHITE,
-	player_response_title: String = "",
 	extra_game_states: Array = [],
 	npc_balloon_scene: PackedScene = DEFAULT_NPC_BALLOON_SCENE,
 	player_response_balloon_scene: PackedScene = DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE
@@ -47,23 +46,14 @@ func run_world_sequence(
 	)
 	await _prepare_world_balloon(npc_balloon, world_position, balloon_color)
 	await _wait_for_dialogue_to_end(dialogue_resource)
-
-	if not player_response_title.is_empty():
-		DialogueManager.show_dialogue_balloon_scene(
-			resolved_player_response_balloon_scene,
-			dialogue_resource,
-			player_response_title,
-			dialogue_states
-		)
-		await _wait_for_dialogue_to_end(dialogue_resource)
-		await _run_requested_dialogues(
-			dialogue_resource,
-			world_position,
-			balloon_color,
-			dialogue_states,
-			resolved_npc_balloon_scene,
-			resolved_player_response_balloon_scene
-		)
+	await _run_requested_dialogues(
+		dialogue_resource,
+		world_position,
+		balloon_color,
+		dialogue_states,
+		resolved_npc_balloon_scene,
+		resolved_player_response_balloon_scene
+	)
 
 	is_running = false
 	return true

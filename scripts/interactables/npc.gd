@@ -5,7 +5,6 @@ extends Node2D
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var balloon_scene: PackedScene
-@export var player_response_dialogue_title := ""
 @export var balloon_color: Color = Color.WHITE
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
@@ -52,7 +51,6 @@ func _interact():
 		dialogue_title,
 		balloon_marker.global_position,
 		balloon_color,
-		player_response_dialogue_title,
 		[self],
 		balloon_scene
 	)

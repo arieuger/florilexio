@@ -1,6 +1,8 @@
 ~ start
 Queres que che diga todas as opcións? 
-Vai levar [shake rate=20 level=10]tempo[/shake]... => END
+Vai levar [shake rate=20 level=10]tempo[/shake]...
+do request_player_dialogue("player_response_test")
+=> END
 
 ~ player_response_test
 - si

@@ -1,0 +1,40 @@
+~ start
+if not GameState.old_woman_already_spoke
+	Ola! Esta é a liña de introducción que che vai decir a vella
+	a primeira vez que fales con ela. Nas seguintes xa non.
+	Vouche contar todas as flores => old_woman_all_flowers
+else
+	Queres que che repita outra vez todas as flores?
+	Vai levar [shake rate=20 level=10]tempo[/shake]...
+	do request_player_dialogue("player_response_all_flowers_question")
+	=> END
+
+~ player_response_all_flowers_question
+- si
+	do request_npc_dialogue("old_woman_all_flowers")
+	=> END
+- non
+	do request_player_dialogue("player_understands")
+	=> END
+
+~ old_woman_all_flowers
+Tromentelo, folla de cana, choupo (ollo de prata),
+ruda, herba luísa, macela (camomila), hortelá, mildrastes, 
+fiúnchos (anises), herba de san Xoán, espadaina, puenso, 
+herba lemona, lirio, romeo, ourego, loureiro, allo, rosas, 
+follas de nogueira con tres noces, fento rizado (peineta), 
+herba do Carme, silveira, folla de figueira, folla de olmo, 
+folla de laranxeira, malva-rosa, hortensia, 
+folla de viña branca e outras
+do request_player_dialogue("player_understands")
+do GameState.add_consumed_time(2)
+set GameState.old_woman_already_spoke = true
+=> END
+
+~ player_understands
+A ver se as lembro. 
+do request_npc_dialogue("old_woman_finish")
+=> END
+
+~ old_woman_finish
+Eso espero, non teño todo o día. => END

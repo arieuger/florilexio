@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
 [ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
-[ext_resource type="Resource" uid="uid://cgsu863ba71kc" path="res://dialogues/example.dialogue" id="6_ycdy4"]
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="6_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
@@ -117,7 +117,6 @@ polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
 [node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
 dialogue_resource = ExtResource("6_ycdy4")
-player_response_dialogue_title = "player_response_test"
 balloon_color = Color(0.9529412, 0.5686275, 0.58431375, 1)
 
 [node name="BalloonPosition" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1949997476]
