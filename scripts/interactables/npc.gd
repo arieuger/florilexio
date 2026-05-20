@@ -1,9 +1,11 @@
 extends Node2D
 
 @export var dialogue_resource: DialogueResource
+@export var dialogue_title := "start"
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var balloon_scene: PackedScene
+@export var player_response_dialogue_title := ""
 @export var balloon_color: Color = Color.WHITE
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
@@ -45,10 +47,15 @@ func _interact():
 				_is_interacting = false
 				return
 
-	var balloon = DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource)
-	await get_tree().process_frame
-	balloon.set_balloon_color(balloon_color)
-	balloon.set_balloon_world_position(balloon_marker.global_position)
+	await DialogueBalloonCoordinator.run_world_sequence(
+		dialogue_resource,
+		dialogue_title,
+		balloon_marker.global_position,
+		balloon_color,
+		player_response_dialogue_title,
+		[self],
+		balloon_scene
+	)
 
 	_is_interacting = false
 

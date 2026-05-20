@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameState="*uid://by2ku53r40rl2"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+DialogueBalloonCoordinator="*res://ui/dialogue/dialogue_balloon_coordinator.gd"
 
 [dialogue_manager]
 

@@ -20,10 +20,16 @@ extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
-## A sound player for voice lines (if they exist).
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+## Visual mode settings for reusable balloon scenes.
+@export var show_character_label := false
+@export var show_dialogue_label := true
+@export var show_progress_indicator := true
+@export var auto_hide_dialogue_label_when_empty := true
 
-@onready var panel_container: PanelContainer = $Balloon/MarginContainer/PanelContainer
+## A sound player for voice lines (if they exist).
+@onready var audio_stream_player: AudioStreamPlayer = get_node_or_null("%AudioStreamPlayer") as AudioStreamPlayer
+
+@onready var panel_container: PanelContainer = get_node_or_null("Balloon/MarginContainer/PanelContainer") as PanelContainer
 
 ## Temporary game states
 var temporary_game_states: Array = []
@@ -42,7 +48,7 @@ var locals: Dictionary = {}
 var _locale: String = TranslationServer.get_locale()
 
 var _balloon_world_position: Vector2
-var _has_world_position := false
+var _follows_world_position := false
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -63,19 +69,19 @@ var dialogue_line: DialogueLine:
 var mutation_cooldown: Timer = Timer.new()
 
 ## The base balloon anchor
-@onready var balloon: Control = %Balloon
+@onready var balloon: Control = get_node_or_null("%Balloon") as Control
 
 ## The label showing the name of the currently speaking character
-@onready var character_label: RichTextLabel = %CharacterLabel
+@onready var character_label: RichTextLabel = get_node_or_null("%CharacterLabel") as RichTextLabel
 
 ## The label showing the currently spoken dialogue
-@onready var dialogue_label: DialogueLabel = %DialogueLabel
+@onready var dialogue_label: DialogueLabel = get_node_or_null("%DialogueLabel") as DialogueLabel
 
 ## The menu of responses
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var responses_menu: DialogueResponsesMenu = get_node_or_null("%ResponsesMenu") as DialogueResponsesMenu
 
 ## Indicator to show that player can progress dialogue.
-@onready var progress: TextureRect = %Progress
+@onready var progress: TextureRect = get_node_or_null("%Progress") as TextureRect
 
 
 func _ready() -> void:
@@ -83,7 +89,7 @@ func _ready() -> void:
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one
-	if responses_menu.next_action.is_empty():
+	if is_instance_valid(responses_menu) and responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
@@ -95,19 +101,22 @@ func _ready() -> void:
 		start()
 
 
-func _process(delta: float) -> void:
-	if is_instance_valid(dialogue_line):
-		progress.visible = not dialogue_label.is_typing \
+func _process(_delta: float) -> void:
+	if is_instance_valid(progress):
+		progress.visible = show_progress_indicator \
+			and is_instance_valid(dialogue_line) \
+			and is_instance_valid(dialogue_label) \
+			and not dialogue_label.is_typing \
 			and dialogue_line.responses.size() == 0 \
 			and not dialogue_line.has_tag("voice") \
 			and has_next_line
 
-	if _has_world_position:
+	if _follows_world_position:
 		_update_balloon_position()
 
 
 func _input(event: InputEvent) -> void:
-	if not balloon.visible:
+	if not is_instance_valid(balloon) or not balloon.visible:
 		return
 
 	if _handle_dialogue_advance_input(event):
@@ -146,19 +155,27 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
 
-	progress.hide()
+	if is_instance_valid(progress):
+		progress.hide()
 	is_waiting_for_input = false
-	balloon.focus_mode = Control.FOCUS_ALL
-	balloon.grab_focus()
+	if is_instance_valid(balloon):
+		balloon.focus_mode = Control.FOCUS_ALL
+		balloon.grab_focus()
 
-	character_label.visible = not dialogue_line.character.is_empty()
-	character_label.text = tr(dialogue_line.character, "dialogue")
+	if is_instance_valid(character_label):
+		character_label.visible = show_character_label and not dialogue_line.character.is_empty()
+		character_label.text = tr(dialogue_line.character, "dialogue")
 
-	dialogue_label.hide()
-	dialogue_label.dialogue_line = dialogue_line
+	if is_instance_valid(dialogue_label):
+		dialogue_label.hide()
+		if show_dialogue_label and (not dialogue_line.text.is_empty() or not auto_hide_dialogue_label_when_empty):
+			dialogue_label.dialogue_line = dialogue_line
 
-	responses_menu.hide()
-	responses_menu.responses = dialogue_line.responses
+	if is_instance_valid(responses_menu):
+		responses_menu.hide()
+		responses_menu.responses = dialogue_line.responses
+		if dialogue_line.responses.size() > 0:
+			_preallocate_responses_menu()
 
 	has_next_line = false
 	if not dialogue_line.next_id.is_empty():
@@ -166,31 +183,38 @@ func apply_dialogue_line() -> void:
 		has_next_line = next_line != null
 
 	# Show our balloon
-	balloon.show()
+	if is_instance_valid(balloon):
+		balloon.show()
 	will_hide_balloon = false
 
-	dialogue_label.show()
-	if not dialogue_line.text.is_empty():
+	if is_instance_valid(dialogue_label) and show_dialogue_label and (not dialogue_line.text.is_empty() or not auto_hide_dialogue_label_when_empty):
+		dialogue_label.show()
+
+	if is_instance_valid(dialogue_label) and show_dialogue_label and not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 
 	# Wait for next line
 	if dialogue_line.has_tag("voice"):
-		audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
-		audio_stream_player.play()
-		await audio_stream_player.finished
+		if is_instance_valid(audio_stream_player):
+			audio_stream_player.stream = load(dialogue_line.get_tag_value("voice"))
+			audio_stream_player.play()
+			await audio_stream_player.finished
 		next(dialogue_line.next_id)
 	elif dialogue_line.responses.size() > 0:
-		balloon.focus_mode = Control.FOCUS_NONE
-		responses_menu.show()
+		if is_instance_valid(balloon):
+			balloon.focus_mode = Control.FOCUS_NONE
+		if is_instance_valid(responses_menu):
+			_show_responses_menu()
 	elif dialogue_line.time != "":
 		var time: float = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout
 		next(dialogue_line.next_id)
 	else:
 		is_waiting_for_input = true
-		balloon.focus_mode = Control.FOCUS_ALL
-		balloon.grab_focus()
+		if is_instance_valid(balloon):
+			balloon.focus_mode = Control.FOCUS_ALL
+			balloon.grab_focus()
 
 
 ## Go to the next line
@@ -204,7 +228,8 @@ func next(next_id: String) -> void:
 func _on_mutation_cooldown_timeout() -> void:
 	if will_hide_balloon:
 		will_hide_balloon = false
-		balloon.hide()
+		if is_instance_valid(balloon):
+			balloon.hide()
 
 
 func _on_mutated(mutation: Dictionary) -> void:
@@ -229,7 +254,7 @@ func _handle_dialogue_advance_input(event: InputEvent) -> bool:
 	var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
 	var next_button_was_pressed: bool = event.is_action_pressed(next_action)
 
-	if dialogue_label.is_typing:
+	if is_instance_valid(dialogue_label) and dialogue_label.is_typing:
 		if mouse_was_clicked or skip_button_was_pressed:
 			dialogue_label.skip_typing()
 			return true
@@ -250,16 +275,48 @@ func _handle_dialogue_advance_input(event: InputEvent) -> bool:
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
+func _preallocate_responses_menu() -> void:
+	responses_menu.show()
+	responses_menu.modulate.a = 0.0
+	responses_menu.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_set_response_items_disabled(true)
+	if is_instance_valid(balloon):
+		balloon.grab_focus()
+
+func _show_responses_menu() -> void:
+	responses_menu.show()
+	responses_menu.modulate.a = 1.0
+	responses_menu.mouse_filter = Control.MOUSE_FILTER_STOP
+	_set_response_items_disabled(false)
+	_focus_first_response()
+
+func _set_response_items_disabled(disabled: bool) -> void:
+	for item: Control in responses_menu.get_menu_items():
+		if "disabled" in item:
+			item.disabled = disabled
+		item.mouse_filter = Control.MOUSE_FILTER_IGNORE if disabled else Control.MOUSE_FILTER_STOP
+
+func _focus_first_response() -> void:
+	var items := responses_menu.get_menu_items()
+	if items.size() > 0:
+		items[0].grab_focus()
+
 func set_balloon_world_position(world_position: Vector2) -> void:
 	_balloon_world_position = world_position
-	_has_world_position = true
+	_follows_world_position = true
 	_update_balloon_position()
 
-func  _update_balloon_position() -> void:
+func _update_balloon_position() -> void:
+	if not is_instance_valid(balloon):
+		return
 	var screen_position := get_viewport().get_canvas_transform() * _balloon_world_position
-	$Balloon/MarginContainer.position = screen_position
+	var margin_container := balloon.get_node_or_null("MarginContainer") as MarginContainer
+	if is_instance_valid(margin_container):
+		margin_container.position = screen_position
 
 func set_balloon_color(color: Color) -> void:
+	if not is_instance_valid(panel_container):
+		return
 	var stylebox := panel_container.get_theme_stylebox("panel")
 	if stylebox is StyleBoxTexture:
 		var unique_stylebox := stylebox.duplicate()

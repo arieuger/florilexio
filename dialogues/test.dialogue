@@ -1,3 +1,8 @@
 ~ start
-Este texto e de proba (e as tildes non funcionan)
-Pero [shake rate=20 level=10]vibra[/shake]...
+Queres que che diga todas as opcions? 
+Vai levar [shake rate=20 level=10]tempo[/shake]... => END
+
+~ player_response_test
+- si
+- non
+	Que peñazo
