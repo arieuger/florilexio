@@ -41,6 +41,9 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+var _balloon_world_position: Vector2
+var _has_world_position := false
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -98,6 +101,9 @@ func _process(delta: float) -> void:
 			and dialogue_line.responses.size() == 0 \
 			and not dialogue_line.has_tag("voice") \
 			and has_next_line
+
+	if _has_world_position:
+		_update_balloon_position()
 
 
 func _input(event: InputEvent) -> void:
@@ -245,7 +251,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
 func set_balloon_world_position(world_position: Vector2) -> void:
-	var screen_position := get_viewport().get_canvas_transform() * world_position
+	_balloon_world_position = world_position
+	_has_world_position = true
+	_update_balloon_position()
+
+func  _update_balloon_position() -> void:
+	var screen_position := get_viewport().get_canvas_transform() * _balloon_world_position
 	$Balloon/MarginContainer.position = screen_position
 
 func set_balloon_color(color: Color) -> void:
