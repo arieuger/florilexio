@@ -14,6 +14,7 @@ var _hover_tween: Tween
 var _is_interacting := false
 
 func _ready():
+	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
@@ -74,3 +75,7 @@ func _fade_hover_to(target_alpha: float):
 	_hover_tween.tween_property(hover_sprite, "modulate:a", target_alpha, hover_fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 	
+func _make_hover_ignore_world_tint() -> void:
+	var hover_material := CanvasItemMaterial.new()
+	hover_material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
+	hover_sprite.material = hover_material
