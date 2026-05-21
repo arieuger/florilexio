@@ -273,6 +273,48 @@ position = Vector2(5.5, -2.5)
 [node name="InteractionPoint" parent="YSortables/CPSilveira1" index="3" unique_id=2011579778]
 position = Vector2(5, 3)
 
+[node name="CPSilveira2" parent="YSortables" unique_id=1542834651 instance=ExtResource("15_plant")]
+position = Vector2(303, 107)
+plant_id = &"silveira"
+plant_display_name = "Silveira"
+hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
+
+[node name="Sprite2D" parent="YSortables/CPSilveira2" index="0" unique_id=2017130019]
+texture = ExtResource("16_yaehf")
+offset = Vector2(0, -8)
+
+[node name="HoverSprite" parent="YSortables/CPSilveira2" index="1" unique_id=995138453]
+position = Vector2(-1, -1)
+texture = ExtResource("17_074og")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="YSortables/CPSilveira2/ClickArea" parent_id_path=PackedInt32Array(1542834651, 1884021542) index="0" unique_id=1684374644]
+position = Vector2(5.5, -2.5)
+
+[node name="InteractionPoint" parent="YSortables/CPSilveira2" index="3" unique_id=2011579778]
+position = Vector2(5, 3)
+
+[node name="CPSilveira3" parent="YSortables" unique_id=1796067675 instance=ExtResource("15_plant")]
+position = Vector2(302, 102)
+plant_id = &"silveira"
+plant_display_name = "Silveira"
+hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
+
+[node name="Sprite2D" parent="YSortables/CPSilveira3" index="0" unique_id=2017130019]
+texture = ExtResource("16_yaehf")
+offset = Vector2(0, -8)
+
+[node name="HoverSprite" parent="YSortables/CPSilveira3" index="1" unique_id=995138453]
+position = Vector2(-1, -1)
+texture = ExtResource("17_074og")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="YSortables/CPSilveira3/ClickArea" parent_id_path=PackedInt32Array(1796067675, 1884021542) index="0" unique_id=1684374644]
+position = Vector2(5.5, -2.5)
+
+[node name="InteractionPoint" parent="YSortables/CPSilveira3" index="3" unique_id=2011579778]
+position = Vector2(5, 3)
+
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
 metadata/_edit_group_ = true
@@ -290,3 +332,5 @@ shape = SubResource("RectangleShape2D_ycdy4")
 
 [editable path="YSortables/BenchRight/OldWoman"]
 [editable path="YSortables/CPSilveira1"]
+[editable path="YSortables/CPSilveira2"]
+[editable path="YSortables/CPSilveira3"]
