@@ -5,7 +5,7 @@ if not GameState.old_woman_already_spoke
 	Vouche contar todas as flores => old_woman_all_flowers
 else
 	Queres que che repita outra vez todas as flores?
-	Vai levar [shake rate=20 level=10]tempo[/shake]...
+	Vai levar [shake rate=20 level=5]tempo[/shake]...
 	do request_player_dialogue("player_response_all_flowers_question")
 	=> END
 
@@ -28,7 +28,7 @@ folla de laranxeira, malva-rosa, hortensia,
 folla de viña branca e outras
 do request_speaker_dialogue("dog", "dog_comment")
 do request_player_dialogue("player_understands")
-do GameState.add_consumed_time(2)
+do GameState.add_consumed_time(1)
 set GameState.old_woman_already_spoke = true
 => END
 

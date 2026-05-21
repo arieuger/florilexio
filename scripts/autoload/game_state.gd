@@ -1,10 +1,12 @@
 extends Node
 
+signal consumed_time_added(total_consumed_time: int)
+
 var discovered_plants: Dictionary = {}
 var collected_plants: Dictionary = {}
 var old_woman_already_spoke: bool = false
 
-var _consumed_time: int = 0
+var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 
 var consumed_time: int:
     get:
@@ -12,7 +14,9 @@ var consumed_time: int:
 
 func add_consumed_time(time: int) -> void:
     _consumed_time += time
-    # TODO: Actualizar UI e o nivel de luz según o tempo consumido
+
+    consumed_time_added.emit(_consumed_time)
+    # TODO: Actualizar UI según o tempo consumido
     print("Consumed time: " + str(_consumed_time) + " seconds")
 
 func discover_plant(plant_id: String) -> void:
