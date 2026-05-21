@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/collectable_plant.tscn" id="15_plant"]
+[ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="16_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="17_074og"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -249,6 +252,27 @@ script = ExtResource("14_kek77")
 speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 
+[node name="CPSilveira1" parent="YSortables" unique_id=478139230 instance=ExtResource("15_plant")]
+position = Vector2(23, 127)
+plant_id = &"silveira"
+plant_display_name = "Silveira"
+hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
+
+[node name="Sprite2D" parent="YSortables/CPSilveira1" index="0" unique_id=2017130019]
+texture = ExtResource("16_yaehf")
+offset = Vector2(0, -8)
+
+[node name="HoverSprite" parent="YSortables/CPSilveira1" index="1" unique_id=995138453]
+position = Vector2(-1, -1)
+texture = ExtResource("17_074og")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="YSortables/CPSilveira1/ClickArea" parent_id_path=PackedInt32Array(478139230, 1884021542) index="0" unique_id=1684374644]
+position = Vector2(5.5, -2.5)
+
+[node name="InteractionPoint" parent="YSortables/CPSilveira1" index="3" unique_id=2011579778]
+position = Vector2(5, 3)
+
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
 metadata/_edit_group_ = true
@@ -265,3 +289,4 @@ position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_ycdy4")
 
 [editable path="YSortables/BenchRight/OldWoman"]
+[editable path="YSortables/CPSilveira1"]
