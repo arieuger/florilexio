@@ -65,6 +65,10 @@ func start_cutting_minigame() -> void:
 	print("Cutting minigame requested for: ", plant_id)
 
 
+func _on_cutting_minigame_completed(completed_plant_id: StringName) -> void:
+	InventoryManager.add_item(completed_plant_id, 1)
+
+
 func _fade_hover_to(target_alpha: float) -> void:
 	if _hover_tween:
 		_hover_tween.kill()

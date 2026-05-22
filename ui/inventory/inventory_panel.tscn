@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://brtqy2e6vixtb"]
+
+[ext_resource type="Script" uid="uid://da6ng36e8oomy" path="res://scripts/ui/inventory_panel.gd" id="1_panel"]
+[ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_p6mik"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_obcwt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obcwt"]
+texture = ExtResource("2_p6mik")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+
+[node name="InventoryPanel" type="Control" unique_id=272040109]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_panel")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1202921505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_obcwt")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1138332602]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1339094871]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1398051978]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=903310322]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.0002908594, 0.017125925, 0.03321679, 1)
+theme_override_fonts/font = ExtResource("3_obcwt")
+theme_override_font_sizes/font_size = 8
+text = "Herbas"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1475278883]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+tooltip_text = "Cerrar"
+theme_override_font_sizes/font_size = 6
+text = "X"
+
+[node name="ItemsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1356718528]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="EmptyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=176918035]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sen herbas recollidas"
+horizontal_alignment = 1
+vertical_alignment = 1

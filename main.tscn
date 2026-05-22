@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/collectable_plant.tscn" id="15_plant"]
 [ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="17_074og"]
+[ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
+[ext_resource type="Texture2D" uid="uid://dxe2vfn78uanq" path="res://icon.svg" id="19_icon"]
+[ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -329,6 +332,26 @@ offset = Vector2(0, -17)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Basket/StaticBody2D" unique_id=1115786775]
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="GameHUD" type="CanvasLayer" parent="." unique_id=14669944]
+script = ExtResource("18_hud")
+
+[node name="InventoryButton" type="TextureButton" parent="GameHUD" unique_id=373314881]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 30.0
+grow_horizontal = 0
+tooltip_text = "Inventario"
+texture_normal = ExtResource("19_icon")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="InventoryPanel" parent="GameHUD" unique_id=527297118 instance=ExtResource("20_inventory")]
+visible = false
 
 [editable path="YSortables/BenchRight/OldWoman"]
 [editable path="YSortables/CPSilveira1"]

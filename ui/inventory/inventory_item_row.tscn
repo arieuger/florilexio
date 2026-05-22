@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dw2xjxugum3ku"]
+
+[ext_resource type="Script" uid="uid://dekpif70ca531" path="res://scripts/ui/inventory_item_row.gd" id="1_row"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_pr0fb"]
+
+[node name="InventoryItemRow" type="HBoxContainer" unique_id=324749099]
+custom_minimum_size = Vector2(0, 16)
+theme_override_constants/separation = 8
+script = ExtResource("1_row")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1725768851]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_pr0fb")
+theme_override_font_sizes/font_size = 6
+text = "Fiuncho"
+
+[node name="AmountLabel" type="Label" parent="." unique_id=222522802]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_pr0fb")
+theme_override_font_sizes/font_size = 6
+text = "x1"
+horizontal_alignment = 2
