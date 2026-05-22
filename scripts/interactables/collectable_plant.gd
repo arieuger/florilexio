@@ -10,6 +10,21 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var time_cost_blocks: int = 1
+@export var cutting_minigame_scene: PackedScene = preload("res://scenes/minigames/cutting_minigame.tscn")
+@export_group("Cutting Minigame")
+@export var cutting_required_hits: int = 3
+@export var cutting_max_misses: int = 3
+@export var cutting_rotation_speed_degrees: float = 120.0
+@export var cutting_cursor_radius: float = 22.0
+@export var cutting_use_success_zone_texture_mask := true
+@export_range(0.0, 1.0, 0.01) var cutting_success_alpha_threshold := 0.1
+@export_group("Cutting Angle Fallback")
+@export var cutting_success_windows: Array[Vector2] = [
+	Vector2(20, 70),
+	Vector2(145, 190),
+	Vector2(260, 310)
+]
+@export_group("")
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
@@ -56,17 +71,36 @@ func _interact() -> void:
 				return
 
 	start_cutting_minigame()
-	_is_interacting = false
 
 
 func start_cutting_minigame() -> void:
 	plant_selected.emit(self)
 	cutting_minigame_requested.emit(plant_id, self)
-	print("Cutting minigame requested for: ", plant_id)
+
+	if not cutting_minigame_scene:
+		_on_cutting_minigame_closed()
+		return
+
+	var minigame := cutting_minigame_scene.instantiate() as CuttingMinigame
+	if not minigame:
+		_on_cutting_minigame_closed()
+		return
+
+	minigame.plant_id = plant_id
+	minigame.time_cost_blocks = time_cost_blocks
+	minigame.required_hits = cutting_required_hits
+	minigame.max_misses = cutting_max_misses
+	minigame.rotation_speed_degrees = cutting_rotation_speed_degrees
+	minigame.cursor_radius = cutting_cursor_radius
+	minigame.use_success_zone_texture_mask = cutting_use_success_zone_texture_mask
+	minigame.success_alpha_threshold = cutting_success_alpha_threshold
+	minigame.success_windows = cutting_success_windows.duplicate()
+	minigame.tree_exited.connect(_on_cutting_minigame_closed)
+	get_tree().current_scene.add_child(minigame)
 
 
-func _on_cutting_minigame_completed(completed_plant_id: StringName) -> void:
-	InventoryManager.add_item(completed_plant_id, 1)
+func _on_cutting_minigame_closed() -> void:
+	_is_interacting = false
 
 
 func _fade_hover_to(target_alpha: float) -> void:

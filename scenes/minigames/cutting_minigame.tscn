@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bgxnnxw0sfyea"]
+
+[ext_resource type="Script" uid="uid://2wogmip4bxb2" path="res://scripts/minigames/cutting_minigame.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bq0x3087r84fg" path="res://assets/sprites/minigame/ring_base.png" id="2_ring"]
+[ext_resource type="Texture2D" uid="uid://d6oqcytddcyq" path="res://assets/sprites/minigame/success_zones.png" id="3_zones"]
+[ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
+
+[node name="CuttingMinigame" type="CanvasLayer" unique_id=537483352]
+script = ExtResource("1_script")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=2021175132]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="GameRoot" type="Node2D" parent="." unique_id=88281831]
+
+[node name="RingBase" type="Sprite2D" parent="GameRoot" unique_id=1641345150]
+texture = ExtResource("2_ring")
+
+[node name="SuccessZones" type="Sprite2D" parent="GameRoot" unique_id=2038276158]
+position = Vector2(0, -2)
+texture = ExtResource("3_zones")
+
+[node name="CursorPivot" type="Node2D" parent="GameRoot" unique_id=1501865159]
+
+[node name="Cursor" type="Sprite2D" parent="GameRoot/CursorPivot" unique_id=1058741785]
+texture = ExtResource("4_cursor")
+
+[node name="FeedbackLabel" type="Label" parent="." unique_id=129392038]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 122.0
+offset_right = 48.0
+offset_bottom = 138.0
+grow_horizontal = 2
+text = "Ben!"
+horizontal_alignment = 1
