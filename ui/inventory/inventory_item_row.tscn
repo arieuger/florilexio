@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_pr0fb"]
 
 [node name="InventoryItemRow" type="HBoxContainer" unique_id=324749099]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 8)
 theme_override_constants/separation = 8
 script = ExtResource("1_row")
 

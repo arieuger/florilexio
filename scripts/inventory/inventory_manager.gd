@@ -9,11 +9,12 @@ var items: Dictionary = {}
 
 func _ready():
 	# Testing
-	items = {
-		&"fiuncho": 3,
-		&"herba_luisa": 5,
-		&"silveira": 2
-	}
+	# items = {
+	# 	&"fiuncho": 3,
+	# 	&"herba_luisa": 5,
+	# 	&"silveira": 2
+	# }
+	pass
 
 # TODO: Esto debería cargarse como recurso
 var plant_definitions := {
@@ -35,6 +36,7 @@ var selected_bouquet: Array[StringName] = []
 
 
 func add_item(plant_id: StringName, amount: int = 1) -> void:
+	# TODO: Ver que pasa se hai máis herbas que espazo en UI
 	if amount <= 0:
 		return
 

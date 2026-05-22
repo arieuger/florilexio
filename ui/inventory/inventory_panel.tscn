@@ -10,6 +10,7 @@ texture_margin_left = 2.0
 texture_margin_top = 3.0
 texture_margin_right = 2.0
 texture_margin_bottom = 3.0
+modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
 [node name="InventoryPanel" type="Control" unique_id=272040109]
 layout_mode = 3
@@ -51,7 +52,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.0002908594, 0.017125925, 0.03321679, 1)
 theme_override_fonts/font = ExtResource("3_obcwt")
 theme_override_font_sizes/font_size = 8
-text = "Herbas"
+text = "Herbas recollidas"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1475278883]
@@ -66,11 +67,14 @@ text = "X"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 3
+theme_override_constants/separation = 0
 
-[node name="EmptyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=176918035]
+[node name="EmptyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2024052405]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Sen herbas recollidas"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("3_obcwt")
+theme_override_font_sizes/font_size = 6
+text = "Inda non recolliches ningunha herba!"
 horizontal_alignment = 1
-vertical_alignment = 1
