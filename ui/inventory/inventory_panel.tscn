@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://da6ng36e8oomy" path="res://scripts/ui/inventory_panel.gd" id="1_panel"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_p6mik"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_obcwt"]
+[ext_resource type="Texture2D" uid="uid://fngi8sqynsvy" path="res://assets/sprites/ui/buttons/close_unpressed.png" id="4_8xo3y"]
+[ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="5_vofq8"]
+[ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="6_pxfjl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obcwt"]
 texture = ExtResource("2_p6mik")
@@ -35,7 +38,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_obcwt")
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1138332602]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
@@ -55,13 +58,12 @@ theme_override_font_sizes/font_size = 8
 text = "Herbas recollidas"
 horizontal_alignment = 1
 
-[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1475278883]
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1912476622]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-tooltip_text = "Cerrar"
-theme_override_font_sizes/font_size = 6
-text = "X"
+texture_normal = ExtResource("4_8xo3y")
+texture_pressed = ExtResource("5_vofq8")
+texture_hover = ExtResource("6_pxfjl")
 
 [node name="ItemsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1356718528]
 unique_name_in_owner = true

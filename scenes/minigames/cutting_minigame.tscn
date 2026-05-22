@@ -7,6 +7,7 @@
 
 [node name="CuttingMinigame" type="CanvasLayer" unique_id=537483352]
 script = ExtResource("1_script")
+cursor_radius = 20.0
 
 [node name="BackgroundDim" type="ColorRect" parent="." unique_id=2021175132]
 anchors_preset = 15
@@ -22,8 +23,9 @@ color = Color(0, 0, 0, 0.45)
 texture = ExtResource("2_ring")
 
 [node name="SuccessZones" type="Sprite2D" parent="GameRoot" unique_id=2038276158]
-position = Vector2(0, -2)
+position = Vector2(-24, -23)
 texture = ExtResource("3_zones")
+centered = false
 
 [node name="CursorPivot" type="Node2D" parent="GameRoot" unique_id=1501865159]
 

@@ -15,15 +15,7 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 @export var cutting_required_hits: int = 3
 @export var cutting_max_misses: int = 3
 @export var cutting_rotation_speed_degrees: float = 120.0
-@export var cutting_cursor_radius: float = 22.0
-@export var cutting_use_success_zone_texture_mask := true
 @export_range(0.0, 1.0, 0.01) var cutting_success_alpha_threshold := 0.1
-@export_group("Cutting Angle Fallback")
-@export var cutting_success_windows: Array[Vector2] = [
-	Vector2(20, 70),
-	Vector2(145, 190),
-	Vector2(260, 310)
-]
 @export_group("")
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
@@ -32,6 +24,7 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
 var _hover_tween: Tween
 var _is_interacting := false
+var _is_collected := false
 
 
 func _ready() -> void:
@@ -43,6 +36,9 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
+	if _is_collected:
+		return
+
 	_fade_hover_to(hover_color.a)
 
 
@@ -57,7 +53,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> 
 
 
 func _interact() -> void:
-	if _is_interacting:
+	if _is_interacting or _is_collected:
 		return
 
 	_is_interacting = true
@@ -91,12 +87,16 @@ func start_cutting_minigame() -> void:
 	minigame.required_hits = cutting_required_hits
 	minigame.max_misses = cutting_max_misses
 	minigame.rotation_speed_degrees = cutting_rotation_speed_degrees
-	minigame.cursor_radius = cutting_cursor_radius
-	minigame.use_success_zone_texture_mask = cutting_use_success_zone_texture_mask
 	minigame.success_alpha_threshold = cutting_success_alpha_threshold
-	minigame.success_windows = cutting_success_windows.duplicate()
+	minigame.completed.connect(_on_cutting_minigame_completed)
 	minigame.tree_exited.connect(_on_cutting_minigame_closed)
 	get_tree().current_scene.add_child(minigame)
+
+
+func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
+	_is_collected = true
+	click_area.input_pickable = false
+	_fade_hover_to(0.0)
 
 
 func _on_cutting_minigame_closed() -> void:

@@ -6,7 +6,7 @@ signal close_requested
 
 @onready var items_container: VBoxContainer = %ItemsContainer
 @onready var empty_label: Label = %EmptyLabel
-@onready var close_button: Button = %CloseButton
+@onready var close_button: TextureButton = %CloseButton
 
 
 func _ready() -> void:

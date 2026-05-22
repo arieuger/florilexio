@@ -8,15 +8,9 @@ var plant_id: StringName
 var required_hits: int = 3
 var max_misses: int = 3
 var rotation_speed_degrees: float = 120.0
-var cursor_radius: float = 22.0
+@export var cursor_radius: float = 21.0
 var time_cost_blocks: int = 1
-var use_success_zone_texture_mask := true
 var success_alpha_threshold := 0.1
-var success_windows: Array[Vector2] = [
-	Vector2(20, 70),
-	Vector2(145, 190),
-	Vector2(260, 310)
-]
 
 @onready var game_root: Node2D = $GameRoot
 @onready var cursor_pivot: Node2D = $GameRoot/CursorPivot
@@ -80,15 +74,12 @@ func _try_cut() -> void:
 
 
 func _is_successful_cut() -> bool:
-	if use_success_zone_texture_mask:
-		return _is_cursor_on_success_zone()
-
-	return _is_angle_in_success_window(_current_angle)
+	return _is_cursor_on_success_zone()
 
 
 func _is_cursor_on_success_zone() -> bool:
 	if not _success_zones_image:
-		return _is_angle_in_success_window(_current_angle)
+		return false
 
 	var pixel_position := _get_success_zone_pixel_at_cursor()
 	var image_size := _success_zones_image.get_size()
@@ -127,22 +118,6 @@ func _finish(was_successful: bool) -> void:
 
 	await get_tree().create_timer(0.35).timeout
 	queue_free()
-
-
-func _is_angle_in_success_window(angle: float) -> bool:
-	var normalized_angle := fposmod(angle, 360.0)
-
-	for window in success_windows:
-		var start_angle := fposmod(window.x, 360.0)
-		var end_angle := fposmod(window.y, 360.0)
-
-		if start_angle <= end_angle:
-			if normalized_angle >= start_angle and normalized_angle <= end_angle:
-				return true
-		elif normalized_angle >= start_angle or normalized_angle <= end_angle:
-			return true
-
-	return false
 
 
 func _show_feedback(text: String, color: Color) -> void:

@@ -19,8 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="17_074og"]
 [ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
-[ext_resource type="Texture2D" uid="uid://dxe2vfn78uanq" path="res://icon.svg" id="19_icon"]
+[ext_resource type="Texture2D" uid="uid://c01jrh6tsv8rs" path="res://assets/sprites/ui/buttons/inventory_unpressed.png" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
+[ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="21_ryguw"]
+[ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="22_d13ii"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -261,7 +263,6 @@ plant_id = &"silveira"
 plant_display_name = "Silveira"
 hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
 cutting_rotation_speed_degrees = 200.0
-cutting_cursor_radius = 22.0
 
 [node name="Sprite2D" parent="YSortables/CPSilveira1" index="0" unique_id=2017130019]
 texture = ExtResource("16_yaehf")
@@ -277,6 +278,9 @@ position = Vector2(5.5, -2.5)
 
 [node name="InteractionPoint" parent="YSortables/CPSilveira1" index="3" unique_id=2011579778]
 position = Vector2(5, 3)
+
+[node name="CollisionShape2D" parent="YSortables/CPSilveira1/StaticBody2D" parent_id_path=PackedInt32Array(478139230, 751808552) index="0" unique_id=1205980454]
+position = Vector2(5, -1.5)
 
 [node name="CPSilveira2" parent="YSortables" unique_id=1542834651 instance=ExtResource("15_plant")]
 position = Vector2(303, 107)
@@ -344,13 +348,12 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -30.0
 offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 30.0
+offset_right = -17.0
+offset_bottom = 23.0
 grow_horizontal = 0
-tooltip_text = "Inventario"
-texture_normal = ExtResource("19_icon")
-ignore_texture_size = true
-stretch_mode = 4
+texture_normal = ExtResource("20_getpj")
+texture_pressed = ExtResource("21_ryguw")
+texture_hover = ExtResource("22_d13ii")
 
 [node name="InventoryPanel" parent="GameHUD" unique_id=527297118 instance=ExtResource("20_inventory")]
 visible = false
