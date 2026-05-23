@@ -11,6 +11,7 @@ size = Vector2(8, 3)
 [node name="CollectablePlant" type="Node2D" unique_id=1542834651]
 script = ExtResource("1_plant")
 hover_color = Color(0.70980394, 0, 0.2627451, 0.6862745)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2017130019]
 centered = false

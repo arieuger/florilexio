@@ -15,9 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
-[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/collectable_plant.tscn" id="15_plant"]
-[ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="16_yaehf"]
-[ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="17_074og"]
+[ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
 [ext_resource type="Texture2D" uid="uid://c01jrh6tsv8rs" path="res://assets/sprites/ui/buttons/inventory_unpressed.png" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
@@ -257,72 +255,14 @@ script = ExtResource("14_kek77")
 speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 
-[node name="CPSilveira1" parent="YSortables" unique_id=478139230 instance=ExtResource("15_plant")]
-position = Vector2(23, 127)
-plant_id = &"silveira"
-plant_display_name = "Silveira"
-hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
-cutting_rotation_speed_degrees = 200.0
+[node name="Silveira" parent="YSortables" unique_id=1542834651 instance=ExtResource("18_1u8w0")]
+position = Vector2(22, 126)
 
-[node name="Sprite2D" parent="YSortables/CPSilveira1" index="0" unique_id=2017130019]
-texture = ExtResource("16_yaehf")
-offset = Vector2(0, -8)
-
-[node name="HoverSprite" parent="YSortables/CPSilveira1" index="1" unique_id=995138453]
-position = Vector2(-1, -1)
-texture = ExtResource("17_074og")
-offset = Vector2(0, -8)
-
-[node name="CollisionShape2D" parent="YSortables/CPSilveira1/ClickArea" parent_id_path=PackedInt32Array(478139230, 1884021542) index="0" unique_id=1684374644]
-position = Vector2(5.5, -2.5)
-
-[node name="InteractionPoint" parent="YSortables/CPSilveira1" index="3" unique_id=2011579778]
-position = Vector2(5, 3)
-
-[node name="CollisionShape2D" parent="YSortables/CPSilveira1/StaticBody2D" parent_id_path=PackedInt32Array(478139230, 751808552) index="0" unique_id=1205980454]
-position = Vector2(5, -1.5)
-
-[node name="CPSilveira2" parent="YSortables" unique_id=1542834651 instance=ExtResource("15_plant")]
+[node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
 position = Vector2(303, 107)
-plant_id = &"silveira"
-plant_display_name = "Silveira"
-hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
 
-[node name="Sprite2D" parent="YSortables/CPSilveira2" index="0" unique_id=2017130019]
-texture = ExtResource("16_yaehf")
-offset = Vector2(0, -8)
-
-[node name="HoverSprite" parent="YSortables/CPSilveira2" index="1" unique_id=995138453]
-position = Vector2(-1, -1)
-texture = ExtResource("17_074og")
-offset = Vector2(0, -8)
-
-[node name="CollisionShape2D" parent="YSortables/CPSilveira2/ClickArea" parent_id_path=PackedInt32Array(1542834651, 1884021542) index="0" unique_id=1684374644]
-position = Vector2(5.5, -2.5)
-
-[node name="InteractionPoint" parent="YSortables/CPSilveira2" index="3" unique_id=2011579778]
-position = Vector2(5, 3)
-
-[node name="CPSilveira3" parent="YSortables" unique_id=1796067675 instance=ExtResource("15_plant")]
+[node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
 position = Vector2(302, 102)
-plant_id = &"silveira"
-plant_display_name = "Silveira"
-hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
-
-[node name="Sprite2D" parent="YSortables/CPSilveira3" index="0" unique_id=2017130019]
-texture = ExtResource("16_yaehf")
-offset = Vector2(0, -8)
-
-[node name="HoverSprite" parent="YSortables/CPSilveira3" index="1" unique_id=995138453]
-position = Vector2(-1, -1)
-texture = ExtResource("17_074og")
-offset = Vector2(0, -8)
-
-[node name="CollisionShape2D" parent="YSortables/CPSilveira3/ClickArea" parent_id_path=PackedInt32Array(1796067675, 1884021542) index="0" unique_id=1684374644]
-position = Vector2(5.5, -2.5)
-
-[node name="InteractionPoint" parent="YSortables/CPSilveira3" index="3" unique_id=2011579778]
-position = Vector2(5, 3)
 
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
@@ -359,6 +299,3 @@ texture_hover = ExtResource("22_d13ii")
 visible = false
 
 [editable path="YSortables/BenchRight/OldWoman"]
-[editable path="YSortables/CPSilveira1"]
-[editable path="YSortables/CPSilveira2"]
-[editable path="YSortables/CPSilveira3"]

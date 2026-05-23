@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ba13ut8ovxeoy"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_x5c1h"]
+[ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="2_w2lu3"]
+[ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="3_kjb8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idvi5"]
+size = Vector2(9, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuf2i"]
+size = Vector2(8, 3)
+
+[node name="Silveira" unique_id=1542834651 instance=ExtResource("1_x5c1h")]
+plant_id = &"silveira"
+plant_display_name = "Silveira"
+hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
+cutting_rotation_speed_degrees = 200.0
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_w2lu3")
+offset = Vector2(0, -8)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-1, -1)
+texture = ExtResource("3_kjb8c")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(5.5, -2.5)
+shape = SubResource("RectangleShape2D_idvi5")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(5, 3)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(5, -1.5)
+shape = SubResource("RectangleShape2D_xuf2i")

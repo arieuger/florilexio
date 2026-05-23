@@ -7,7 +7,7 @@
 
 [node name="CuttingMinigame" type="CanvasLayer" unique_id=537483352]
 script = ExtResource("1_script")
-cursor_radius = 20.0
+cursor_radius = 19.5
 
 [node name="BackgroundDim" type="ColorRect" parent="." unique_id=2021175132]
 anchors_preset = 15
