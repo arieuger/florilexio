@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ccjn73fieo4cu"]
+
+[ext_resource type="Script" uid="uid://6daibv2p85bc" path="res://scripts/ui/generic_info_balloon.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_balloon"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_font"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_balloon"]
+texture = ExtResource("2_balloon")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+
+[node name="GenericInfoBalloon" type="CanvasLayer" unique_id=662153023]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Balloon" type="Control" parent="." unique_id=1709877821]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -34.0
+offset_right = 80.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Balloon" unique_id=1880954894]
+self_modulate = Color(0.06648334, 0.07049229, 0.06289603, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_balloon")
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/PanelContainer" unique_id=1006668247]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 3
+
+[node name="MessageLabel" type="Label" parent="Balloon/PanelContainer/MarginContainer" unique_id=634612149]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 5)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72464263, 0.7246426, 0.7246426, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 5
+text = "Conseguiches unha silveira!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

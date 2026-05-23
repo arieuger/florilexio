@@ -2,12 +2,15 @@ extends Node
 
 const DEFAULT_NPC_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/npc_balloon.tscn")
 const DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/player_response_balloon.tscn")
+const DEFAULT_INFO_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/generic_info_balloon.tscn")
+const GENERAL_INFO_DIALOGUE : DialogueResource = preload("res://dialogues/info.dialogue")
 const STEP_NPC := "npc"
 const STEP_PLAYER := "player"
 const STEP_SPEAKER := "speaker"
 
 var is_running := false
 var _requested_dialogue_steps: Array[Dictionary] = []
+var _current_info_balloon: GenericInfoBalloon
 
 
 func request_npc_dialogue(title: String) -> void:
@@ -89,6 +92,42 @@ func run_player_response(
 	is_running = false
 	return true
 
+
+func show_info_dialogue(
+	dialogue_title: String,
+	replacements: Dictionary = {},
+	duration: float = -1.0,
+	extra_game_states: Array = []
+) -> bool:
+	if not is_instance_valid(GENERAL_INFO_DIALOGUE):
+		push_warning("DialogueBalloonCoordinator: missing info dialogue_resource.")
+		return false
+
+	var dialogue_states := [self] + extra_game_states
+	var line: DialogueLine = await GENERAL_INFO_DIALOGUE.get_next_dialogue_line(dialogue_title, dialogue_states)
+	if not is_instance_valid(line):
+		return false
+
+	var message := _apply_info_replacements(line.text, replacements)
+	if is_instance_valid(_current_info_balloon):
+		_current_info_balloon.queue_free()
+
+	var balloon := DEFAULT_INFO_BALLOON_SCENE.instantiate() as GenericInfoBalloon
+	if not balloon:
+		push_warning("DialogueBalloonCoordinator: DEFAULT_INFO_BALLOON_SCENE must instantiate a GenericInfoBalloon.")
+		return false
+
+	_current_info_balloon = balloon
+	get_tree().current_scene.add_child(balloon)
+	balloon.show_message(message, duration)
+	return true
+
+
+func _apply_info_replacements(message: String, replacements: Dictionary) -> String:
+	var resolved_message := message
+	for key in replacements.keys():
+		resolved_message = resolved_message.replace("{" + str(key) + "}", str(replacements[key]))
+	return resolved_message
 
 func _request_dialogue_step(speaker: String, title: String, speaker_id: String = "") -> void:
 	if title.is_empty():

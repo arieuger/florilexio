@@ -97,7 +97,13 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 	_is_collected = true
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
-
+	var plant_name := InventoryManager.get_display_name(_completed_plant_id)
+	
+	DialogueBalloonCoordinator.show_info_dialogue(
+		"plant_collected",
+		{"plant_name": plant_name},
+		1.5
+	)
 
 func _on_cutting_minigame_closed() -> void:
 	_is_interacting = false
