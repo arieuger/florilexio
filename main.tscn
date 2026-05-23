@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
+[ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
 [ext_resource type="Texture2D" uid="uid://c01jrh6tsv8rs" path="res://assets/sprites/ui/buttons/inventory_unpressed.png" id="20_getpj"]
@@ -111,7 +112,7 @@ shape = SubResource("SegmentShape2D_vivmo")
 y_sort_enabled = true
 
 [node name="Player" parent="YSortables" unique_id=1506201651 instance=ExtResource("2_0xm2m")]
-position = Vector2(82, 142)
+position = Vector2(59, 142)
 max_speed = 65.0
 
 [node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244]
@@ -259,10 +260,10 @@ balloon_color = Color(0.72, 0.49, 0.28, 1)
 position = Vector2(22, 126)
 
 [node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
-position = Vector2(303, 107)
+position = Vector2(303, 110)
 
 [node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
-position = Vector2(302, 102)
+position = Vector2(301, 102)
 
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
@@ -278,6 +279,9 @@ offset = Vector2(0, -17)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Basket/StaticBody2D" unique_id=1115786775]
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
+position = Vector2(83, 138)
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=14669944]
 script = ExtResource("18_hud")

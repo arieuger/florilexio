@@ -16,7 +16,7 @@ func add_consumed_time(time: int) -> void:
     _consumed_time += time
 
     consumed_time_added.emit(_consumed_time)
-    # TODO: Actualizar UI según o tempo consumido
+    # TODO: Actualizar UI según o tempo consumido e reacción ao cambio
     print("Consumed time: " + str(_consumed_time) + " seconds")
 
 func discover_plant(plant_id: String) -> void:

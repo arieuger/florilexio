@@ -14,7 +14,7 @@ size = Vector2(8, 3)
 plant_id = &"silveira"
 plant_display_name = "Silveira"
 hover_color = Color(0.8235294, 0.5176471, 0.654902, 0.8627451)
-cutting_rotation_speed_degrees = 200.0
+cutting_rotation_speed_degrees = 230.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_w2lu3")
