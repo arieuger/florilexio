@@ -23,3 +23,9 @@ position = Vector2(1.5, -5)
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(1.5, -1.75)
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -5.0
+offset_top = -17.0
+offset_right = 9.0
+offset_bottom = -11.0

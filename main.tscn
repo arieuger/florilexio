@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3n5ug62vtoam" path="res://scenes/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="3_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
 [ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
@@ -93,7 +94,7 @@ centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
 position = Vector2(31, 114)
-polygon = PackedVector2Array(0, 14, 0, 11, -10, 11, -10, -5, -21, -5, -21, -13, -31, -13, -31, -38, 56, -53, 117, -62, 117, -14, 62, -14, 60, 22, 17, 22, 13, 16)
+polygon = PackedVector2Array(2, 13, 0, 11, -10, 11, -10, -5, -21, -5, -21, -13, -31, -13, -31, -38, 56, -53, 117, -62, 117, -14, 62, -14, 60, 22, 17, 22, 14, 14)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WorldCollision" unique_id=1854061891]
 position = Vector2(255, 121)
@@ -107,6 +108,9 @@ shape = SubResource("SegmentShape2D_w48qg")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldCollision" unique_id=2002941614]
 shape = SubResource("SegmentShape2D_vivmo")
+
+[node name="Menta" parent="WorldCollision" unique_id=1542834651 instance=ExtResource("3_d13ii")]
+position = Vector2(40, 131)
 
 [node name="YSortables" type="Node2D" parent="." unique_id=1360060003]
 y_sort_enabled = true
@@ -256,7 +260,7 @@ script = ExtResource("14_kek77")
 speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 
-[node name="Silveira" parent="YSortables" unique_id=1542834651 instance=ExtResource("18_1u8w0")]
+[node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
 position = Vector2(22, 126)
 
 [node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]

@@ -4,10 +4,10 @@
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_51xpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plant"]
-size = Vector2(9, 5)
+size = Vector2(8, 7.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2o46r"]
-size = Vector2(8, 3)
+size = Vector2(8, 3.5)
 
 [node name="CollectablePlant" type="Node2D" unique_id=1542834651]
 script = ExtResource("1_plant")

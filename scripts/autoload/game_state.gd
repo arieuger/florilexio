@@ -8,7 +8,7 @@ var old_woman_already_spoke: bool = false
 
 var acknowledged_invasive_plants: bool = false
 var acknowledged_on_danger_plants: bool = false
-var acknowledged_poisonous_plants: bool = false
+var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
 

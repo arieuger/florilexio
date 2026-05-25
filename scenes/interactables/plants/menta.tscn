@@ -1,5 +1,28 @@
 [gd_scene format=3 uid="uid://bchhh1h1kbahf"]
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_nn8x7"]
+[ext_resource type="Texture2D" uid="uid://sar0waynl2fn" path="res://assets/sprites/environment/plants/menta.png" id="2_g0w0b"]
+[ext_resource type="Texture2D" uid="uid://ca1xx5y28djlt" path="res://assets/sprites/environment/plants/menta_hover.png" id="3_l57ee"]
 
 [node name="Menta" unique_id=1542834651 instance=ExtResource("1_nn8x7")]
+plant_id = &"menta"
+plant_display_name = "Menta"
+hover_color = Color(0.4588933, 0.9999997, 0.80019796, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_g0w0b")
+offset = Vector2(-5, -11)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-2, 0)
+texture = ExtResource("3_l57ee")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(1, -4.75)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(1, -1.75)
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_top = -17.0
+offset_bottom = -11.0
