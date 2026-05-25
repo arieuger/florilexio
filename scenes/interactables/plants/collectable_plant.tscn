@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvx4fi2l3atv8"]
 
 [ext_resource type="Script" uid="uid://conyhh4proiip" path="res://scripts/interactables/collectable_plant.gd" id="1_plant"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_51xpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plant"]
 size = Vector2(9, 5)
@@ -36,3 +37,22 @@ position = Vector2(0, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1205980454]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_2o46r")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1783969518]
+visible = false
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -7.0
+offset_top = -15.0
+offset_right = 7.0
+offset_bottom = -9.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_51xpx")
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -10,8 +10,16 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var time_cost_blocks: int = 1
-@export var cutting_minigame_scene: PackedScene = preload("res://scenes/minigames/cutting_minigame.tscn")
+
+@export_group("Plant features")
+@export var is_poisonous := false
+@export var is_mortal := false
+@export var is_on_danger := false
+@export var is_magic := false
+@export var is_invasive := false
+
 @export_group("Cutting Minigame")
+@export var cutting_minigame_scene: PackedScene = preload("res://scenes/minigames/cutting_minigame.tscn")
 @export var cutting_required_hits: int = 3
 @export var cutting_max_misses: int = 3
 @export var cutting_rotation_speed_degrees: float = 120.0
@@ -19,6 +27,7 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 @export_group("")
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
+@onready var name_label: Label = $NameLabel
 @onready var click_area: Area2D = $ClickArea
 @onready var interaction_point: Marker2D = get_node_or_null("InteractionPoint")
 
@@ -30,6 +39,8 @@ var _is_collected := false
 func _ready() -> void:
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
+	name_label.text = plant_display_name
+	name_label.visible = false
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
@@ -40,10 +51,12 @@ func _on_mouse_entered() -> void:
 		return
 
 	_fade_hover_to(hover_color.a)
+	_set_name_label_visible(true)
 
 
 func _on_mouse_exited() -> void:
 	_fade_hover_to(0.0)
+	_set_name_label_visible(false)
 
 
 func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
@@ -97,6 +110,7 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 	_is_collected = true
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
+	_set_name_label_visible(false)
 	var plant_name := InventoryManager.get_display_name(_completed_plant_id)
 	
 	DialogueBalloonCoordinator.show_info_dialogue(
@@ -117,8 +131,13 @@ func _fade_hover_to(target_alpha: float) -> void:
 	_hover_tween.tween_property(hover_sprite, "modulate:a", target_alpha, hover_fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
+func _set_name_label_visible(should_show: bool) -> void:
+	name_label.visible = should_show and not plant_display_name.is_empty()
+
+
 func _make_hover_ignore_world_tint() -> void:
 	# TODO: Unificar funcións aquí e en  npc.gd
 	var hover_material := CanvasItemMaterial.new()
 	hover_material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	hover_sprite.material = hover_material
+	name_label.material = hover_material
