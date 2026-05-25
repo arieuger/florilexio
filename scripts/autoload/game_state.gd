@@ -4,7 +4,9 @@ signal consumed_time_added(total_consumed_time: int)
 
 var discovered_plants: Dictionary = {}
 var collected_plants: Dictionary = {}
+
 var old_woman_already_spoke: bool = false
+var tutorial_already_launched: bool = false
 
 var acknowledged_invasive_plants: bool = false
 var acknowledged_on_danger_plants: bool = false

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bs62l2fmkkb1q" path="res://assets/sprites/environment/plants/dedaleira_hover.png" id="3_2var2"]
 
 [node name="Dedaleira" unique_id=1542834651 instance=ExtResource("1_l4gmu")]
+plant_launches_tutorial = true
 plant_id = &"dedaleira"
 plant_display_name = "Dedaleira"
 hover_color = Color(0.8591121, 0.4394232, 0.8452123, 0.6862745)

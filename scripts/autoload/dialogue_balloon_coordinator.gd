@@ -93,6 +93,49 @@ func run_player_response(
 	return true
 
 
+func run_speaker_sequence(
+	dialogue_resource: DialogueResource,
+	dialogue_title: String,
+	speaker_id: String,
+	fallback_world_position: Vector2 = Vector2.ZERO,
+	fallback_balloon_color: Color = Color.WHITE,
+	extra_game_states: Array = [],
+	npc_balloon_scene: PackedScene = DEFAULT_NPC_BALLOON_SCENE,
+	player_response_balloon_scene: PackedScene = DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE
+) -> bool:
+	if is_running:
+		return false
+	if not is_instance_valid(dialogue_resource) or dialogue_title.is_empty() or speaker_id.is_empty():
+		return false
+
+	is_running = true
+	var resolved_npc_balloon_scene := npc_balloon_scene if is_instance_valid(npc_balloon_scene) else DEFAULT_NPC_BALLOON_SCENE
+	var resolved_player_response_balloon_scene := player_response_balloon_scene if is_instance_valid(player_response_balloon_scene) else DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE
+	var dialogue_states := [self] + extra_game_states
+	var speaker_step := {
+		speaker = STEP_SPEAKER,
+		title = dialogue_title,
+		speaker_id = speaker_id,
+	}
+	_requested_dialogue_steps.clear()
+
+	var balloon_scene := _get_step_balloon_scene(STEP_SPEAKER, speaker_step, resolved_npc_balloon_scene, resolved_player_response_balloon_scene)
+	var balloon := DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource, dialogue_title, dialogue_states)
+	await _prepare_speaker_balloon(balloon, speaker_step, fallback_world_position, fallback_balloon_color)
+	await _wait_for_dialogue_to_end(dialogue_resource)
+	await _run_requested_dialogues(
+		dialogue_resource,
+		fallback_world_position,
+		fallback_balloon_color,
+		dialogue_states,
+		resolved_npc_balloon_scene,
+		resolved_player_response_balloon_scene
+	)
+
+	is_running = false
+	return true
+
+
 func show_info_dialogue(
 	dialogue_title: String,
 	replacements: Dictionary = {},

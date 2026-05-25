@@ -4,6 +4,11 @@ class_name CollectablePlant
 signal plant_selected(plant: CollectablePlant)
 signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
+@export var plant_launches_tutorial := false
+@export var tutorial_dialogue: DialogueResource = preload("res://dialogues/scene1/tutorial.dialogue")
+@export var tutorial_dialogue_title := "start"
+@export var tutorial_speaker_id := "dog"
+
 ## Identifies the plant type/species. Multiple CollectablePlant instances can share it.
 @export var plant_id: StringName
 @export var plant_display_name: String
@@ -47,7 +52,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	if _is_collected:
+	if _is_collected or (!GameState.tutorial_already_launched and !plant_launches_tutorial):
 		return
 
 	_fade_hover_to(hover_color.a)
@@ -78,6 +83,12 @@ func _interact() -> void:
 			if not reached:
 				_is_interacting = false
 				return
+
+	if _should_launch_tutorial():
+		var tutorial_was_run := await _run_tutorial()
+		if not tutorial_was_run:
+			_is_interacting = false
+			return
 
 	start_cutting_minigame()
 
@@ -121,6 +132,24 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 
 func _on_cutting_minigame_closed() -> void:
 	_is_interacting = false
+
+
+func _should_launch_tutorial() -> bool:
+	return plant_launches_tutorial and not GameState.tutorial_already_launched
+
+
+func _run_tutorial() -> bool:
+	var tutorial_was_run: bool = await DialogueBalloonCoordinator.run_speaker_sequence(
+		tutorial_dialogue,
+		tutorial_dialogue_title,
+		tutorial_speaker_id,
+		global_position,
+		hover_color,
+		[self]
+	)
+	if tutorial_was_run:
+		GameState.tutorial_already_launched = true
+	return tutorial_was_run
 
 
 func _fade_hover_to(target_alpha: float) -> void:
