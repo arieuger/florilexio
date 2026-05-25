@@ -1,44 +1,32 @@
 ~ start
 if not GameState.old_woman_already_spoke
-	Ola! Esta é a liña de introducción que che vai decir a vella
-	a primeira vez que fales con ela. Nas seguintes xa non.
-	Vouche contar todas as flores => old_woman_all_flowers
-else
-	Queres que che repita outra vez todas as flores?
-	Vai levar [shake rate=20 level=5]tempo[/shake]...
+	=> old_woman_all_flowers
+else 
+	Esqueciches as herbiñas ou é que che sobra o tempo?
 	do request_player_dialogue("player_response_all_flowers_question")
 	=> END
 
+~ dog_more_flowers
+Esta Mundo xa non rexe. Faltoulle o tomiño,
+a menta, a ruda, e mais a macela.
+E tamén o sabugueiro e a herba da Nosa Señora… 
+E mira de levar silveira, pero ollo con prender nela! 
+=> END
+
 ~ player_response_all_flowers_question
-- si
+- Esquecín, si
 	do request_speaker_dialogue("old_woman", "old_woman_all_flowers")
 	=> END
-- non
-	do request_player_dialogue("player_understands")
+- Non
 	=> END
 
 ~ old_woman_all_flowers
-Tromentelo, folla de cana, choupo (ollo de prata),
-ruda, herba luísa, macela (camomila), hortelá, mildrastes, 
-fiúnchos (anises), herba de san Xoán, espadaina, puenso, 
-herba lemona, lirio, romeo, ourego, loureiro, allo, rosas, 
-follas de nogueira con tres noces, fento rizado (peineta), 
-herba do Carme, silveira, folla de figueira, folla de olmo, 
-folla de laranxeira, malva-rosa, hortensia, 
-folla de viña branca e outras
-do request_speaker_dialogue("dog", "dog_comment")
-do request_player_dialogue("player_understands")
+Fiúncho, fento macho, herba luísa, xesta, romeu,
+malva, herba de San Xoán… 
+Se queres collelas todas, bule, paxarín, 
+que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”. 
+do request_speaker_dialogue("dog", "dog_more_flowers") 
 do GameState.add_consumed_time(1)
 set GameState.old_woman_already_spoke = true
 => END
 
-~ player_understands
-A ver se as lembro. 
-do request_speaker_dialogue("old_woman", "old_woman_finish")
-=> END
-
-~ dog_comment
-Arf!!. => END
-
-~ old_woman_finish
-Eso espero, non teño todo o día. => END
