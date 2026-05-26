@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://assets/sound/FMOD/sounds/Build/Desktop"
+
 [application]
 
 config/name="Florilexio"
@@ -21,6 +25,7 @@ GameState="*uid://by2ku53r40rl2"
 InventoryManager="*res://scripts/inventory/inventory_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueBalloonCoordinator="*uid://cpfd6edlan4so"
+FmodManager="*uid://cds10pm7hwn3p"
 
 [dialogue_manager]
 
@@ -36,7 +41,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg")
 
 [global_group]
 

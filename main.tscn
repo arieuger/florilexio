@@ -87,6 +87,9 @@ size = Vector2(3, 3)
 
 [node name="Main" type="Node2D" unique_id=66873482]
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=514383158]
+bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank"]
+
 [node name="WorldTimeController" type="CanvasModulate" parent="." unique_id=236796019]
 script = ExtResource("1_vivmo")
 
@@ -339,5 +342,10 @@ text = "10:00"
 
 [node name="InventoryPanel" parent="GameHUD" unique_id=527297118 instance=ExtResource("20_inventory")]
 visible = false
+
+[node name="Music" type="FmodEventEmitter2D" parent="." unique_id=125043508]
+event_name = "event:/Music"
+event_guid = "{f63cd916-4f04-4c51-b3fb-9593389337f1}"
+autoplay = true
 
 [editable path="YSortables/BenchRight/OldWoman"]
