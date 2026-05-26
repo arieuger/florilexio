@@ -2,6 +2,11 @@ extends Node
 
 signal consumed_time_added(total_consumed_time: int)
 
+const START_HOUR := 10
+const END_HOUR := 22
+const BLOCK_MINUTES := 15
+const TOTAL_BLOCKS := ((END_HOUR - START_HOUR) * 60) / BLOCK_MINUTES
+
 var discovered_plants: Dictionary = {}
 var collected_plants: Dictionary = {}
 
@@ -21,6 +26,16 @@ var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var consumed_time: int:
     get:
         return _consumed_time
+
+func get_current_time_minutes() -> int:
+    var clamped_blocks = clampi(_consumed_time, 0, TOTAL_BLOCKS)
+    return (START_HOUR * 60) + (clamped_blocks * BLOCK_MINUTES)
+
+func get_current_time_text() -> String:
+    var current_minutes := get_current_time_minutes()
+    var hour := int(current_minutes / 60)
+    var minute := current_minutes % 60
+    return "%02d:%02d" % [hour, minute]
 
 func add_consumed_time(time: int) -> void:
     _consumed_time += time

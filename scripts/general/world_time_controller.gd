@@ -5,11 +5,6 @@ extends CanvasModulate
 @export var sunset_color:= Color("#ffd1a6") # Desde bloque 29
 @export var night_color:= Color("#5c6b99") # Desde bloque 41
 
-const START_HOUR := 10
-const END_HOUR := 22
-const BLOCK_MINUTES := 15
-const TOTAL_BLOCKS := ((END_HOUR - START_HOUR) * 60) / BLOCK_MINUTES
-
 var _color_tween: Tween
 var _current_world_color: Color
 
@@ -26,8 +21,8 @@ func _on_consumed_time_added(total_consumed_time: int) -> void:
     _tween_world_color(target_color)
 
 func _get_world_color(consumed_time: int) -> Color:
-    var clamped_blocks = clamp(consumed_time, 0, TOTAL_BLOCKS)
-    var progress = float(clamped_blocks) / float(TOTAL_BLOCKS)
+    var clamped_blocks = clamp(consumed_time, 0, GameState.TOTAL_BLOCKS)
+    var progress = float(clamped_blocks) / float(GameState.TOTAL_BLOCKS)
     if progress < 0.3:
         return morning_color
     elif progress < 0.6:

@@ -11,6 +11,7 @@ Esta Mundo xa non rexe. Faltoulle o tomiño,
 a menta, a ruda, e mais a macela.
 E tamén o sabugueiro e a herba da Nosa Señora… 
 E mira de levar silveira, pero ollo con prender nela! 
+do GameState.add_consumed_time(1)
 => END
 
 ~ player_response_all_flowers_question
@@ -26,7 +27,6 @@ malva, herba de San Xoán…
 Se queres collelas todas, bule, paxarín, 
 que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”. 
 do request_speaker_dialogue("dog", "dog_more_flowers") 
-do GameState.add_consumed_time(1)
 set GameState.old_woman_already_spoke = true
 => END
 
