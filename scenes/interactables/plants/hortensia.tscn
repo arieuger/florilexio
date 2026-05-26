@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://gvx6pv8r4ioq"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_dh12d"]
+[ext_resource type="Texture2D" uid="uid://ceun6tcw7k0y1" path="res://assets/sprites/environment/plants/hortensia.png" id="2_aysac"]
+[ext_resource type="Texture2D" uid="uid://0o3t8a6g8tub" path="res://assets/sprites/environment/plants/hortensia_hover.png" id="3_wyk1s"]
+
+[node name="Hortensia" unique_id=1542834651 instance=ExtResource("1_dh12d")]
+plant_id = &"hortensia"
+plant_display_name = "Hortensia"
+hover_color = Color(0.5039554, 0.8427262, 1, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_aysac")
+offset = Vector2(-8, -10)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-5, 1)
+texture = ExtResource("3_wyk1s")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(-0.5, -4)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(1, -1)

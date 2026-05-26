@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
+[ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://c01jrh6tsv8rs" path="res://assets/sprites/ui/buttons/inventory_unpressed.png" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
 [ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="21_ryguw"]
@@ -286,6 +287,12 @@ shape = SubResource("RectangleShape2D_ycdy4")
 
 [node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
 position = Vector2(83, 138)
+
+[node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
+position = Vector2(194, 136)
+
+[node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
+position = Vector2(183, 137)
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=14669944]
 script = ExtResource("18_hud")

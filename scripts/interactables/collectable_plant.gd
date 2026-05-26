@@ -71,7 +71,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> 
 
 
 func _interact() -> void:
-	if _is_interacting or _is_collected:
+	if _is_interacting or _is_collected or not _should_launch_tutorial():
 		return
 
 	_is_interacting = true
