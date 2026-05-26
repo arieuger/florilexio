@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
 [ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="21_ryguw"]
 [ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="22_d13ii"]
+[ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -263,10 +264,10 @@ balloon_color = Color(0.72, 0.49, 0.28, 1)
 position = Vector2(31, 131)
 
 [node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
-position = Vector2(303, 110)
+position = Vector2(290, 103)
 
 [node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
-position = Vector2(301, 102)
+position = Vector2(302, 104)
 
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
@@ -301,6 +302,12 @@ position = Vector2(25, 127)
 [node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
 position = Vector2(205, 137)
 plant_launches_tutorial = false
+
+[node name="Macela" parent="YSortables" unique_id=567619104 instance=ExtResource("26_lswn8")]
+position = Vector2(292, 113)
+
+[node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
+position = Vector2(271, 108)
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=14669944]
 script = ExtResource("18_hud")

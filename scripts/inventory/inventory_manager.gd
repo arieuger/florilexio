@@ -6,6 +6,7 @@ signal item_removed(plant_id: StringName, amount: int, new_total: int)
 signal bouquet_changed
 
 var items: Dictionary = {}
+var plant_display_names: Dictionary = {}
 
 func _ready():
 	# Testing
@@ -16,29 +17,16 @@ func _ready():
 	# }
 	pass
 
-# TODO: Esto debería cargarse como recurso
-var plant_definitions := {
-	&"fiuncho": {
-		"display_name": "Fiúncho",
-		"description": "Unha das herbas tradicionais de San Xoán."
-	},
-	&"herba_luisa": {
-		"display_name": "Herba luísa",
-		"description": "Cheira a limón e úsase en infusións."
-	},
-	&"silveira": {
-		"display_name": "Silveira",
-		"description": "Unha planta brava que pode formar parte do ramo."
-	}
-}
-
 var selected_bouquet: Array[StringName] = []
 
 
-func add_item(plant_id: StringName, amount: int = 1) -> void:
+func add_item(plant_id: StringName, amount: int = 1, display_name: String = "") -> void:
 	# TODO: Ver que pasa se hai máis herbas que espazo en UI
 	if amount <= 0:
 		return
+
+	if not display_name.is_empty():
+		plant_display_names[plant_id] = display_name
 
 	var new_total := get_amount(plant_id) + amount
 	items[plant_id] = new_total
@@ -81,19 +69,21 @@ func clear() -> void:
 		return
 
 	items.clear()
+	plant_display_names.clear()
 	selected_bouquet.clear()
 	inventory_changed.emit()
 	bouquet_changed.emit()
 
 
 func get_display_name(plant_id: StringName) -> String:
-	var definition: Dictionary = plant_definitions.get(plant_id, {})
-	return definition.get("display_name", _format_plant_id(plant_id))
+	if plant_display_names.has(plant_id):
+		return plant_display_names[plant_id]
+
+	return _format_plant_id(plant_id)
 
 
 func get_description(plant_id: StringName) -> String:
-	var definition: Dictionary = plant_definitions.get(plant_id, {})
-	return definition.get("description", "")
+	return ""
 
 
 func add_to_bouquet(plant_id: StringName) -> bool:

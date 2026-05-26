@@ -1,9 +1,9 @@
 extends CanvasModulate
 
-@export var morning_color:= Color("#dff9ff")
-@export var afternoon_color:= Color("#fff2d9")
-@export var sunset_color:= Color("#ffd1a6")
-@export var night_color:= Color("#5c6b99")
+@export var morning_color:= Color("#dff9ff") 
+@export var afternoon_color:= Color("#fff2d9") # Desde bloque 15
+@export var sunset_color:= Color("#ffd1a6") # Desde bloque 29
+@export var night_color:= Color("#5c6b99") # Desde bloque 41
 
 const START_HOUR := 10
 const END_HOUR := 22

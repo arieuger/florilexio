@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_worod"]
 [ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/macela.png" id="2_b52fh"]
+[ext_resource type="Texture2D" uid="uid://cto7yqspdwthh" path="res://assets/sprites/environment/plants/macela_hover.png" id="3_wro8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b52fh"]
 resource_local_to_scene = true
@@ -14,10 +15,15 @@ size = Vector2(10, 2)
 [node name="Macela" unique_id=1542834651 instance=ExtResource("1_worod")]
 plant_id = &"macela"
 plant_display_name = "Macela"
+hover_color = Color(1, 0.87983257, 0.7148997, 0.6862745)
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_b52fh")
 offset = Vector2(-5, -2)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(0, 9)
+texture = ExtResource("3_wro8n")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, 0.5)
@@ -27,3 +33,8 @@ shape = SubResource("RectangleShape2D_b52fh")
 position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_wro8n")
 disabled = true
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+visible = true
+offset_top = -9.0
+offset_bottom = -3.0

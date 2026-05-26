@@ -110,6 +110,7 @@ func start_cutting_minigame() -> void:
 		return
 
 	minigame.plant_id = plant_id
+	minigame.plant_display_name = plant_display_name
 	minigame.time_cost_blocks = time_cost_blocks
 	minigame.required_hits = cutting_required_hits
 	minigame.max_misses = cutting_max_misses
@@ -125,11 +126,10 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
 	_set_name_label_visible(false)
-	var plant_name := InventoryManager.get_display_name(_completed_plant_id)
-	
+
 	DialogueBalloonCoordinator.show_info_dialogue(
 		"plant_collected",
-		{"plant_name": plant_name},
+		{"plant_name": plant_display_name},
 		1.5
 	)
 
