@@ -28,3 +28,14 @@ responsable: poch
 	- [ ] Area
 	      https://freesound.org/people/thesynesthiser/sounds/852214/
 - [ ] Encontrar herba
+
+func \_ready():
+	stepsSoundEvent = FmodServer.create_event_instance("event:/Player/Steps")
+	stepsSoundEvent.paused = true
+	stepsSoundEvent.start()
+
+func start_auto_move()
+	stepsSoundEvent.paused = false
+	
+func \_finish_auto_move()
+	stepsSoundEvent.paused = true

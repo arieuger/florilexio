@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{718445e4-84f3-4a51-afcd-cc7d0f1db631}">
+		<property name="assetPath">
+			<value>Shoe-008.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.077414965986394552</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8127f774-6dec-4d31-9780-1428a7c23505}</destination>
+		</relationship>
+	</object>
+</objects>

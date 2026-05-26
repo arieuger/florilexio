@@ -1,0 +1,821 @@
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779814120 0
+  <NOTES 0 2
+  >
+  RIPPLE 0 0
+  GROUPOVERRIDE 0 0 0 0
+  AUTOXFADE 129
+  ENVATTACH 2
+  POOLEDENVATTACH 0
+  TCPUIFLAGS 0
+  MIXERUIFLAGS 11 48
+  ENVFADESZ10 40
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 0
+  GRID 3199 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1 0
+  VIDEO_CONFIG 0 0 65792
+  PANMODE 3
+  PANLAWFLAGS 3
+  CURSOR 0
+  ZOOM 100.00000000000026 0 0
+  VZOOMEX 3.05853987 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "Media" ""
+  <RECORD_CFG
+    ZXZhdxgAAQ==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE /home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/FMOD/sounds/Assets/
+  RENDER_PATTERN $track
+  RENDER_FMT 0 2 44100
+  RENDER_1X 0
+  RENDER_RANGE 4 0 0 0 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 32
+  RENDER_DITHER 0
+  RENDER_TRIM 0.000001 0.000001 0 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 1
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    ZXZhdxgAAQ==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    BEATLEN 4
+    FREQ 1760 880 1
+    SAMPLES "" "" "" ""
+    SPLIGNORE 0 0
+    SPLDEF 2 660 "" 0 ""
+    SPLDEF 3 440 "" 0 ""
+    PATTERN 0 169
+    PATTERNSTR ABBB
+    MULT 1
+  >
+  GLOBAL_AUTO -1
+  TEMPO 300 4 4 0
+  PLAYRATE 1 0 0.25 4
+  SELECTION 3.6 0
+  SELECTION2 3.6 0
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 -1 0 0 0 0 -1 -1 0 0 0
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_PANMODE 3
+  MASTER_PANLAWFLAGS 3
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {92A249F1-7E8A-E879-A39B-8D2110233CF9}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {65114AF3-A47C-85A5-A313-28392EB4A666}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  RULERHEIGHT 122 86
+  RULERLANE 1 4 "" 0 -1 0
+  RULERLANE 2 8 "" 0 -1 0
+  <PROJBAY
+  >
+  <TRACK {C1C8AFC2-E2EE-DC03-5229-ACF418D70F40}
+    NAME Steps
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {C1C8AFC2-E2EE-DC03-5229-ACF418D70F40}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {40CC86BB-3615-970B-9D2D-8A1523DC9717}
+    NAME Shoe
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {40CC86BB-3615-970B-9D2D-8A1523DC9717}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 2244 389 912 483
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaEQ (Cockos)" reaeq.vst.so 0 "" 1919247729<56535472656571726561657100000000> ""
+        cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAzQAAAAEAAAAAABAA
+        IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
+        8D8AAAAAAAAAQAEDAAAAAQAAALWnQerD/5xAAAAAAAAA8D+PwvUoXI/4PwEEAAAAAQAAALFUkqoEm05AAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
+        AIQCAACWAQAAAgABAA==
+        AAAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {2579FDE2-1CDE-502C-4617-460425ED7800}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.09975833333333
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {5D42E3D9-7C19-AECF-5606-E79F754850CA}
+      IID 14
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 0.41027083333333
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {2CE63576-DA83-5F2C-5562-C402BCC01818}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 0.4
+      SNAPOFFS 0
+      LENGTH 0.09799166666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {27B010EE-D8D5-39AD-1FD3-591C2266BE0A}
+      IID 16
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 0.93485416666667
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {297C39DF-B4E1-4747-7C53-11D328BCD119}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 0.8
+      SNAPOFFS 0
+      LENGTH 0.075925
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {7E70685F-31EF-74C2-38C2-EE606C10648B}
+      IID 18
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 1.42452083333333
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {84EED699-5FB8-8E1E-2602-BF11306305A8}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 1.2
+      SNAPOFFS 0
+      LENGTH 0.07961666666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {F852BB42-5DF1-6D74-BAA0-A1A2ED1BBECA}
+      IID 20
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 1.95160416666667
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {36E16CE3-16EA-123F-101F-6FBEDBA569E7}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 1.6
+      SNAPOFFS 0
+      LENGTH 0.10091666666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {3A7689EA-681C-2188-FB7D-4336E5CBEF76}
+      IID 22
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 2.4495
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {75105A76-E226-4B89-08CE-26EA5A00F611}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 2
+      SNAPOFFS 0
+      LENGTH 0.10084166666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {0D2FE2CF-42D1-CF52-F044-924D72244BA2}
+      IID 24
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 2.974375
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {14A42E97-93A7-7055-D6EF-A08797E22D09}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 2.4
+      SNAPOFFS 0
+      LENGTH 0.07718333333333
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {DAA3279F-4AE1-B1C8-E622-B07EDD026220}
+      IID 26
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 3.47847916666667
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E9536A52-D5A4-B859-F628-4C42875D0077}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 2.8
+      SNAPOFFS 0
+      LENGTH 0.10323460546876
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {DA302E8A-7501-A0E8-0E05-09679EF079C5}
+      IID 28
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 4.51185416666667
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F351E678-14F9-72E3-79D7-C756DD317384}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+    <ITEM
+      POSITION 3.2
+      SNAPOFFS 0
+      LENGTH 0.11982661446283
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {BA65F32C-3183-B507-361F-EBCC5483CD47}
+      IID 30
+      NAME 637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac
+      VOLPAN 1 0 1 -1
+      SOFFS 5.04697916666667
+      PLAYRATE 2.5 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A8100CF8-D297-8DAA-7493-E9138E3C478C}
+      <SOURCE FLAC
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/637555__kyles__footsteps-shoes-walk-hard-floor-stone-patio-nice.flac"
+      >
+    >
+  >
+  <TRACK {EE8B6EE9-18D7-2F16-AEEA-00E2FFBBF73E}
+    NAME Gravel
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.08056885319319 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {EE8B6EE9-18D7-2F16-AEEA-00E2FFBBF73E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1712 112 912 483
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaEQ (Cockos)" reaeq.vst.so 0 "" 1919247729<56535472656571726561657100000000> ""
+        cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAzQAAAAEAAAAAABAA
+        IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAJhu2YoQKbJAtLFH4suR
+        8D8AAAAAAAAAQAEDAAAAAQAAANoTrfB1icdAAAAAAAAA8D9Ei2zn+6n3PwEEAAAAAQAAAF+v5RjJDVNAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
+        AIQCAACWAQAAAgABAA==
+        AAAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {168432CF-6B32-76A6-E54C-5AFBA4F3E3E1}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.24550264550264
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {4BF50CAD-373D-5D8E-2973-5DCFBFCA2C93}
+      IID 353
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0.26419501133787
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CD77B210-EC5E-A580-929B-2433E837305A}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 0.4
+      SNAPOFFS 0
+      LENGTH 0.32535147392291
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {A873683D-CFE7-7B5A-E7A4-3A632A5DA603}
+      IID 355
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0.82702947845805
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5D79F79D-15A7-69A4-96A0-CDCAF7C77419}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 0.8
+      SNAPOFFS 0
+      LENGTH 0.35755102040816
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {0C01B657-6921-99E8-08C9-B128A6888EF6}
+      IID 357
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 1.48253968253968
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F3F7EDB1-EBDB-13DB-BAA3-0D2B6595B66C}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 1.2
+      SNAPOFFS 0
+      LENGTH 0.27138321995465
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {3600CAFD-7662-353A-CA4F-06D293594EEA}
+      IID 363
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2.72238095238095
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4BAD95A5-F565-F5B5-7DB2-97CD4E22BFD9}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 1.6
+      SNAPOFFS 0
+      LENGTH 0.34092214663643
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {1324689E-8CD8-C92B-2F72-20CD661DEA32}
+      IID 365
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 3.34746031746032
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BC4AEE81-EC6C-CC14-0427-C5AC2C987BEF}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 2
+      SNAPOFFS 0
+      LENGTH 0.33173876139324
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {A596EDCB-6E4D-880F-4C23-EC4259A9972D}
+      IID 367
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 3.90072562358277
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {37C05CBB-AE45-7E23-9AC0-98A8A54378BC}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 2.4
+      SNAPOFFS 0
+      LENGTH 0.35283446712019
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {C6902BCB-A9CE-A81C-469F-53DF4B9F9545}
+      IID 369
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 4.6152380952381
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5FE6A52B-473F-8324-7DCF-128DF73C93B0}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 2.8
+      SNAPOFFS 0
+      LENGTH 0.31108749132775
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {E714947F-33D6-DE9D-24B9-BA29126C8DB6}
+      IID 371
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 5.17253968253968
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D3C924A4-AEF8-56D0-CB99-9F1AF5339A09}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 3.2
+      SNAPOFFS 0
+      LENGTH 0.25375661375661
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {A0D0366B-0DA8-65C0-0617-6224C5DF7D3D}
+      IID 373
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 5.88585034013606
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7610FFE9-8537-6C93-2595-0D6429B9426A}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 3.6
+      SNAPOFFS 0
+      LENGTH 0.29999878236573
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {6A0BB436-7CEF-76D4-1932-07AC87C586E8}
+      IID 375
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 6.37453514739229
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6484EF1F-53FC-6557-36AC-1BC3C1B7A9AD}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 4
+      SNAPOFFS 0
+      LENGTH 0.22848072562359
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {BBB68D05-240F-39D4-12E8-094D045B7A1B}
+      IID 381
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 8.55995464852608
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {2CF9199F-2D3F-C421-588B-1B18ABA6812A}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 4.4
+      SNAPOFFS 0
+      LENGTH 0.26956916099773
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {FD2A3AA9-5251-0D15-6E31-DEFB9699279B}
+      IID 385
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 9.17546485260771
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {62D0EB86-7AE6-DA77-4D83-9E11AD36384D}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 4.8
+      SNAPOFFS 0
+      LENGTH 0.34160557796103
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {8A62A7CD-E6AF-F5C2-AB56-D6201EA73275}
+      IID 387
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 9.73739229024943
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8466B02F-F5E7-DBFE-AB79-5EEE80C52398}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 5.2
+      SNAPOFFS 0
+      LENGTH 0.34246409674982
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {D33ED099-1136-B6F9-CB21-19DCF2EBD755}
+      IID 389
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 10.42571428571429
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {583B6490-CF41-1BE9-6585-AE82ED454150}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 5.6
+      SNAPOFFS 0
+      LENGTH 0.39044595616024
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {7F5F5CB7-39B4-6F30-CA8C-C08F9E7FD20B}
+      IID 391
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 11.08206349206349
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6AB257DD-5D34-E4E4-27E7-13EAB8C0F5EA}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 6
+      SNAPOFFS 0
+      LENGTH 0.29389419093168
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {37940C51-8ABA-8CC4-8D9E-F073715DD051}
+      IID 393
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 11.70215419501134
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FFE878E4-F6DB-4317-E74F-45203440686D}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+    <ITEM
+      POSITION 6.4
+      SNAPOFFS 0
+      LENGTH 0.53814058956916
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {BC10258B-DFEF-61BD-0636-AA0CA7575A55}
+      IID 395
+      NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 12.36825396825397
+      PLAYRATE 0.75 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A63D8166-6451-97F7-628D-55AC3ABB60CC}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+  >
+  <EXTENSIONS
+  >
+>

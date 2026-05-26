@@ -88,7 +88,7 @@ size = Vector2(3, 3)
 [node name="Main" type="Node2D" unique_id=66873482]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=514383158]
-bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank"]
+bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank"]
 
 [node name="WorldTimeController" type="CanvasModulate" parent="." unique_id=236796019]
 script = ExtResource("1_vivmo")

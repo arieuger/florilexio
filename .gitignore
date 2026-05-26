@@ -81,3 +81,7 @@ temp/
 # Codex/agent local session state
 .agents/
 .codex/
+
+# Sound
+assets/sound/FMOD/sounds/.unsaved/
+assets/sound/Reaper/sounds/Backups/
