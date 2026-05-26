@@ -3,15 +3,24 @@ extends Control
 signal close_requested
 
 @export var item_row_scene: PackedScene = preload("res://ui/inventory/inventory_item_row.tscn")
+@export_range(1, 20, 1) var items_per_page := 10
 
 @onready var items_container: VBoxContainer = %ItemsContainer
 @onready var empty_label: Label = %EmptyLabel
 @onready var close_button: TextureButton = %CloseButton
+@onready var paginator: HBoxContainer = %Paginator
+@onready var previous_page_button: TextureButton = %PreviousPageButton
+@onready var page_label: Label = %PageLabel
+@onready var next_page_button: TextureButton = %NextPageButton
+
+var _current_page := 0
 
 
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(_refresh)
 	close_button.pressed.connect(_on_close_button_pressed)
+	previous_page_button.pressed.connect(_on_previous_page_pressed)
+	next_page_button.pressed.connect(_on_next_page_pressed)
 	_refresh()
 
 
@@ -26,12 +35,43 @@ func _refresh() -> void:
 
 	var plant_ids := inventory_items.keys()
 	plant_ids.sort()
+	var page_count := _get_page_count(plant_ids.size())
+	paginator.visible = page_count > 1
+	_current_page = clampi(_current_page, 0, page_count - 1)
+	var start_index := _current_page * items_per_page
+	var end_index = mini(start_index + items_per_page, plant_ids.size())
 
-	for plant_id in plant_ids:
+	for index in range(start_index, end_index):
+		var plant_id = plant_ids[index]
 		var row := item_row_scene.instantiate()
 		items_container.add_child(row)
 		row.setup(InventoryManager.get_display_name(plant_id), int(inventory_items[plant_id]))
 
+	_update_paginator(page_count)
+
 
 func _on_close_button_pressed() -> void:
 	close_requested.emit()
+
+
+func _on_previous_page_pressed() -> void:
+	_current_page = maxi(_current_page - 1, 0)
+	_refresh()
+
+
+func _on_next_page_pressed() -> void:
+	_current_page += 1
+	_refresh()
+
+
+func _get_page_count(item_count: int) -> int:
+	if item_count <= 0:
+		return 1
+
+	return ceili(float(item_count) / float(items_per_page))
+
+
+func _update_paginator(page_count: int) -> void:
+	page_label.text = str(_current_page + 1) + "/" + str(page_count)
+	previous_page_button.disabled = _current_page <= 0
+	next_page_button.disabled = _current_page >= page_count - 1

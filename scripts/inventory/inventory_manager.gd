@@ -13,7 +13,22 @@ func _ready():
 	# items = {
 	# 	&"fiuncho": 3,
 	# 	&"herba_luisa": 5,
-	# 	&"silveira": 2
+	# 	&"silveira": 2,
+	# 	&"dsd": 1,
+	# 	&"sdf": 1,
+	# 	&"gfd": 1,
+	# 	&"bvc": 1,
+	# 	&"bewd": 1,
+	# 	&"werg": 1,
+	# 	&"sfgd": 1,
+	# 	&"sfgs": 1,
+	# 	&"sffsfg": 1,
+	# 	&"sdfgs": 1,
+	# 	&"sdfsd": 1,
+	# 	&"rrrr": 1,
+	# 	&"gggg": 1,
+	# 	&"hhhh": 1,
+	# 	&"dfeer": 1,
 	# }
 	pass
 
@@ -21,7 +36,6 @@ var selected_bouquet: Array[StringName] = []
 
 
 func add_item(plant_id: StringName, amount: int = 1, display_name: String = "") -> void:
-	# TODO: Ver que pasa se hai máis herbas que espazo en UI
 	if amount <= 0:
 		return
 

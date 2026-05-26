@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://fngi8sqynsvy" path="res://assets/sprites/ui/buttons/close_unpressed.png" id="4_8xo3y"]
 [ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="5_vofq8"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="6_pxfjl"]
+[ext_resource type="Texture2D" uid="uid://lmdmq4krfq5p" path="res://assets/sprites/ui/buttons/next_unpressed.png" id="7_sayf0"]
+[ext_resource type="Texture2D" uid="uid://ban5tvj8xnu56" path="res://assets/sprites/ui/buttons/next_pressed.png" id="8_ewot5"]
+[ext_resource type="Texture2D" uid="uid://qxi1qn66iya0" path="res://assets/sprites/ui/buttons/next_hovered.png" id="9_xbfal"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obcwt"]
 texture = ExtResource("2_p6mik")
@@ -70,6 +73,38 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+
+[node name="Paginator" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1577976457]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="PreviousPageButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/Paginator" unique_id=212549631]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_sayf0")
+texture_pressed = ExtResource("8_ewot5")
+texture_hover = ExtResource("9_xbfal")
+flip_h = true
+
+[node name="PageLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Paginator" unique_id=1810404316]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("3_obcwt")
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPageButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/Paginator" unique_id=1088369220]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("7_sayf0")
+texture_pressed = ExtResource("8_ewot5")
+texture_hover = ExtResource("9_xbfal")
 
 [node name="EmptyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2024052405]
 unique_name_in_owner = true
