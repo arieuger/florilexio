@@ -52,7 +52,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	if _is_collected or (!GameState.tutorial_already_launched and !plant_launches_tutorial):
+	if not _can_interact():
 		return
 
 	_fade_hover_to(hover_color.a)
@@ -66,12 +66,15 @@ func _on_mouse_exited() -> void:
 
 func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if not _can_interact():
+			return
+
 		viewport.set_input_as_handled()
 		_interact()
 
 
 func _interact() -> void:
-	if _is_interacting or _is_collected or not _should_launch_tutorial():
+	if not _can_interact():
 		return
 
 	_is_interacting = true
@@ -136,6 +139,14 @@ func _on_cutting_minigame_closed() -> void:
 
 func _should_launch_tutorial() -> bool:
 	return plant_launches_tutorial and not GameState.tutorial_already_launched
+
+
+func _can_interact() -> bool:
+	return not _is_interacting and not _is_collected and not _is_blocked_by_tutorial()
+
+
+func _is_blocked_by_tutorial() -> bool:
+	return not GameState.tutorial_already_launched and not plant_launches_tutorial
 
 
 func _run_tutorial() -> bool:
