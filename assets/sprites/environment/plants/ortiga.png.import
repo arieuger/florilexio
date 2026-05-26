@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbp2ho0gptc4x"
-path="res://.godot/imported/silveira_hover.png-fee043a61a70ef53f909f8c390e79a00.ctex"
+uid="uid://bgnku3ke34jly"
+path="res://.godot/imported/ortiga.png-67403d9d311706b9bdaa62d420313902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/interactables/plants/silveira_hover.png"
-dest_files=["res://.godot/imported/silveira_hover.png-fee043a61a70ef53f909f8c390e79a00.ctex"]
+source_file="res://assets/sprites/environment/plants/ortiga.png"
+dest_files=["res://.godot/imported/ortiga.png-67403d9d311706b9bdaa62d420313902.ctex"]
 
 [params]
 

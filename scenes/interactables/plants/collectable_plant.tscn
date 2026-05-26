@@ -4,9 +4,11 @@
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_51xpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plant"]
-size = Vector2(13, 8)
+resource_local_to_scene = true
+size = Vector2(9, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2o46r"]
+resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="CollectablePlant" type="Node2D" unique_id=1542834651]

@@ -4,6 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ceun6tcw7k0y1" path="res://assets/sprites/environment/plants/hortensia.png" id="2_aysac"]
 [ext_resource type="Texture2D" uid="uid://0o3t8a6g8tub" path="res://assets/sprites/environment/plants/hortensia_hover.png" id="3_wyk1s"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyk1s"]
+resource_local_to_scene = true
+size = Vector2(13, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_two0v"]
+resource_local_to_scene = true
+size = Vector2(13, 2)
+
 [node name="Hortensia" unique_id=1542834651 instance=ExtResource("1_dh12d")]
 plant_id = &"hortensia"
 plant_display_name = "Hortensia"
@@ -18,7 +26,9 @@ position = Vector2(-5, 1)
 texture = ExtResource("3_wyk1s")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
-position = Vector2(-0.5, -4)
+position = Vector2(0.5, -4.5)
+shape = SubResource("RectangleShape2D_wyk1s")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
-position = Vector2(1, -1)
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_two0v")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bemqll6ehos1h"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_worod"]
+[ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/macela.png" id="2_b52fh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b52fh"]
+resource_local_to_scene = true
+size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wro8n"]
+resource_local_to_scene = true
+size = Vector2(10, 2)
+
+[node name="Macela" unique_id=1542834651 instance=ExtResource("1_worod")]
+plant_id = &"macela"
+plant_display_name = "Macela"
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_b52fh")
+offset = Vector2(-5, -2)
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_b52fh")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_wro8n")
+disabled = true

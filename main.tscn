@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://cdadonc1c2g77" path="res://scripts/ui/game_hud.gd" id="18_hud"]
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://c01jrh6tsv8rs" path="res://assets/sprites/ui/buttons/inventory_unpressed.png" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="20_inventory"]
 [ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="21_ryguw"]
@@ -109,9 +110,6 @@ shape = SubResource("SegmentShape2D_w48qg")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldCollision" unique_id=2002941614]
 shape = SubResource("SegmentShape2D_vivmo")
-
-[node name="Menta" parent="WorldCollision" unique_id=1542834651 instance=ExtResource("3_d13ii")]
-position = Vector2(40, 131)
 
 [node name="YSortables" type="Node2D" parent="." unique_id=1360060003]
 y_sort_enabled = true
@@ -262,7 +260,7 @@ speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 
 [node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
-position = Vector2(22, 126)
+position = Vector2(31, 131)
 
 [node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
 position = Vector2(303, 110)
@@ -293,6 +291,16 @@ position = Vector2(194, 136)
 
 [node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
 position = Vector2(183, 137)
+
+[node name="Menta" parent="YSortables" unique_id=1542834651 instance=ExtResource("3_d13ii")]
+position = Vector2(42, 134)
+
+[node name="Ortiga" parent="YSortables" unique_id=503916748 instance=ExtResource("20_0odxb")]
+position = Vector2(25, 127)
+
+[node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
+position = Vector2(205, 137)
+plant_launches_tutorial = false
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=14669944]
 script = ExtResource("18_hud")
