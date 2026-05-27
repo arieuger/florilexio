@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{3797377d-b73f-42ec-a5dd-e4934941cd31}">
+	<object class="AudioFile" id="{8ff45eb3-ef91-4b02-a403-fa0e11db6c6e}">
 		<property name="assetPath">
-			<value>Hover.wav</value>
+			<value>Florilexio - Hover.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
