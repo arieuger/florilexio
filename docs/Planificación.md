@@ -6,20 +6,20 @@ kanban-plugin: board
 
 ## Definindo
 
-- [ ] [[Deseñar sons de interacción global]]
-- [ ] [[Deseñar sons de interacción coa contorna]]
-- [ ] [[Deseñar sons de interacción cos NPCs]]
-- [ ] [[Deseñar sons do minixogo]]
-- [ ] [[Deseñar sons de interacción co inventario]]
-- [ ] [[Deseñar sons de interacción co cacho]]
-- [ ] [[Compoñer melodía do minixogo]]
+- [ ] [[Deseñar sons de interacción global do prototipo]]
+- [ ] [[Deseñar sons de interacción coa contorna do prototipo]]
+- [ ] [[Deseñar sons de interacción cos NPCs do prototipo]]
+- [ ] [[Deseñar sons do minixogo do prototipo]]
+- [ ] [[Deseñar sons de interacción co inventario do prototipo]]
+- [ ] [[Deseñar sons de interacción co cacho do prototipo]]
+- [ ] [[Compoñer melodía do minixogo do prototipo]]
 
 
 ## Desenvolvendo
 
-- [ ] [[Compoñer melodía principal do xogo]]
-- [ ] [[Deseñar son ambiente]]
 - [ ] [[Deseñar escenarios]]
+- [ ] [[Compoñer melodía principal do prototipo]]
+- [ ] [[Deseñar son ambiente do prototipo]]
 
 
 ## Revisando

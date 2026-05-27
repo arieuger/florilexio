@@ -9,8 +9,11 @@
 		</relationship>
 	</object>
 	<object class="ProjectSettings" id="{957ab050-3d9a-4834-892e-4a0ed81eb971}">
+		<property name="openWindows">
+			<value>Event Editor 1</value>
+		</property>
 		<property name="windowLayout">
-			<value>AAAAAQAAACgAUABhAHIAYQBtAGUAdABlAHIAcwAgAEIAcgBvAHcAcwBlAHIAIAAxAAAAQgHZ0MsAAwAAAAACOAAAAPoAAAPHAAAD6wAAAjgAAAEcAAADxwAAA+sAAAABAAAAAAYAAAACOAAAARwAAAPHAAAD6w==</value>
+			<value>AAAAAgAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAGkAAAACAAAA1qAAAD2wAAAAAAAAAAAAAEGwAAAaMAAAAAAgAAAAbbAAAGkAAAAEIAAA1qAAAD2wAAACgAUABhAHIAYQBtAGUAdABlAHIAcwAgAEIAcgBvAHcAcwBlAHIAIAAxAAAAQgHZ0MsAAwAAAAACOAAAAPoAAAPHAAAD6wAAAjgAAAEcAAADxwAAA+sAAAABAAAAAAYAAAACOAAAARwAAAPHAAAD6w==</value>
 		</property>
 		<relationship name="activePlatform">
 			<destination>{0d3c26eb-ce57-481e-b5f1-a7d4b8c00ba7}</destination>
