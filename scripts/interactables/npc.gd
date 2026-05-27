@@ -21,6 +21,7 @@ func _ready():
 	click_area.input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
+	SoundManager.play_simple_sound("Actions/Hover")
 	_fade_hover_to(hover_color.a)
 
 func _on_mouse_exited():
@@ -34,9 +35,11 @@ func _on_input_event(viewport, event, shape_idx):
 func _interact():
 	if _is_interacting:
 		return
-
+	
 	_is_interacting = true
 
+	SoundManager.play_simple_sound("Actions/Click")
+	
 	if interaction_point:
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.has_method("move_to_point"):

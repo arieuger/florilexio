@@ -139,6 +139,4 @@ func play_footstep_sound():
 	last_step_time = now
 
 	FmodServer.set_global_parameter_by_name("GroundType", 0.0)
-	var instance = FmodServer.create_event_instance("event:/Player/Steps")
-	instance.start()
-	instance.release()
+	SoundManager.play_simple_sound("Player/Steps")
