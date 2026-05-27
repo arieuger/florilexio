@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779822280 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779882243 0
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 20
-  ZOOM 12.85911208940573 0 0
-  VZOOMEX 3.8499999 102
+  CURSOR 235.2
+  ZOOM 12.85911208940573 2094 0
+  VZOOMEX 3.8499999 0
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -114,7 +114,7 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 1 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
     LANEREC -1 -1 -1 0
@@ -148,7 +148,7 @@
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -399,7 +399,7 @@
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -830,10 +830,11 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -852,7 +853,7 @@
         IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
         8D8AAAAAAAAAQAEDAAAAAQAAAGXrRlibArdAAAAAAAAA8D/P91PjpZv6PwEEAAAAAQAAAEBj71VrQlRAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
         AIQCAACWAQAAAgABAA==
-        AAAQAAAA
+        AFByb2dyYW0gMQAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {C12CC20B-CEE3-35BB-8EE1-9849B734C2C9}
@@ -1002,9 +1003,10 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 1 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1031,10 +1033,11 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    LANEREC -1 -1 -1 0
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -1051,7 +1054,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {C7BA9D47-FF61-73AB-44FA-AB9AB245AC6E}
       IID 463
       NAME 17_04.mp3
@@ -1062,6 +1065,125 @@
       GUID {22A9A922-C39D-3B12-D96E-8416B37D3EC1}
       <SOURCE MP3
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/17_04.mp3" 1
+      >
+    >
+  >
+  <TRACK {1E35DD53-7C8C-0CEA-1B2F-E0F704D56B8E}
+    NAME Minigame
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {1E35DD53-7C8C-0CEA-1B2F-E0F704D56B8E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {AA0B379E-9454-E7A6-9CF2-677937B5FF1C}
+    NAME "Moving grass"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {AA0B379E-9454-E7A6-9CF2-677937B5FF1C}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 226.4
+      SNAPOFFS 0
+      LENGTH 9.6
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7B35E17D-BC30-125B-C1BB-1EB70EC04343}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 6.3999999999767
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7C39C0FB-A10E-DC84-6E4A-A47B27F789F8}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
+      >
+    >
+    <ITEM
+      POSITION 236
+      SNAPOFFS 0
+      LENGTH 14.4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {7F71EFFF-FD59-D6B6-4719-660275A08FD5}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 17.59998999997671
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FF44C218-7602-2194-A747-2EF1ADC32C43}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
+      >
+    >
+    <ITEM
+      POSITION 236
+      SNAPOFFS 0
+      LENGTH 0.00001
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F8E70640-6177-A4F4-BD1A-2B9E1FDC5DA1}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 15.99999999997669
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E5A89F8A-CE46-44C9-AEA4-AA45E73BDF2E}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
       >
     >
   >

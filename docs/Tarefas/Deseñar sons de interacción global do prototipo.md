@@ -4,8 +4,8 @@ responsable: poch
 ---
 ## Subtarefas
 
-- [ ] Click
-- [ ] Hover
+- [x] Click
+- [x] Hover
 - [ ] Éxito
-- [ ] Fracaso
+- [x] Fracaso
 - [ ] Abrir configuración

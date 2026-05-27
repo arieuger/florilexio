@@ -25,7 +25,7 @@ var _misses := 0
 var _is_finished := false
 var _feedback_tween: Tween
 var _success_zones_image: Image
-
+var movingGrassSound : FmodEvent
 
 func _ready() -> void:
 	get_viewport().size_changed.connect(_center_game)
@@ -33,6 +33,7 @@ func _ready() -> void:
 	cursor.position = Vector2(cursor_radius, 0.0)
 	feedback_label.text = ""
 	_cache_success_zones_image()
+	movingGrassSound = SoundManager.play_looped_sound('Minigame/Moving Grass')
 
 
 func _process(delta: float) -> void:
@@ -45,6 +46,7 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	
 	if _is_finished:
 		return
 
@@ -110,6 +112,7 @@ func _cache_success_zones_image() -> void:
 
 func _finish(was_successful: bool) -> void:
 	_is_finished = true
+	SoundManager.stop_looped_sound(movingGrassSound)
 	GameState.add_consumed_time(time_cost_blocks)
 
 	if was_successful:
