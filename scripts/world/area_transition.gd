@@ -38,4 +38,9 @@ func _transition(move_player_first: bool) -> void:
 	var root := get_tree().current_scene
 	if root and root.has_method("load_area"):
 		var target_area := load(target_area_path) as PackedScene
-		root.load_area(target_area, target_spawn_id)
+		if not target_area:
+			_is_transitioning = false
+			return
+		root.call_deferred("load_area", target_area, target_spawn_id)
+	else:
+		_is_transitioning = false

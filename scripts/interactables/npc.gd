@@ -27,7 +27,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	_fade_hover_to(0.0)
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		viewport.set_input_as_handled()
 		_interact()
