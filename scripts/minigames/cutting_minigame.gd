@@ -70,6 +70,7 @@ func _try_cut() -> void:
 		_misses += 1
 		_show_feedback("Fallaches " + str(_misses) + "/" + str(max_misses), Color(1.0, 0.45, 0.45, 1.0))
 		_shake_ring()
+		SoundManager.play_simple_sound('Actions/Error')
 		if _misses >= max_misses:
 			_finish(false)
 
