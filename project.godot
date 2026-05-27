@@ -26,6 +26,7 @@ InventoryManager="*res://scripts/inventory/inventory_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueBalloonCoordinator="*uid://cpfd6edlan4so"
 FmodManager="*uid://cds10pm7hwn3p"
+SoundManager="*uid://cvtendwncqa75"
 
 [dialogue_manager]
 

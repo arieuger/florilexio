@@ -55,6 +55,8 @@ func _on_mouse_entered() -> void:
 	if not _can_interact():
 		return
 
+	SoundManager.play_simple_sound('Actions/Hover')
+	
 	_fade_hover_to(hover_color.a)
 	_set_name_label_visible(true)
 
@@ -76,8 +78,10 @@ func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> 
 func _interact() -> void:
 	if not _can_interact():
 		return
-
+		
 	_is_interacting = true
+
+	SoundManager.play_simple_sound('Actions/Click')
 
 	if interaction_point:
 		var player := get_tree().get_first_node_in_group("player")

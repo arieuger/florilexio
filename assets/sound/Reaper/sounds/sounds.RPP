@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779822280 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779900629 0
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 20
-  ZOOM 12.85911208940573 0 0
-  VZOOMEX 3.8499999 102
+  CURSOR 254.2
+  ZOOM 71.04526911253255 17319 0
+  VZOOMEX 1.25 130
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -37,10 +37,10 @@
   RENDER_PATTERN $track
   RENDER_FMT 0 2 44100
   RENDER_1X 0
-  RENDER_RANGE 4 0 0 0 1000
+  RENDER_RANGE 5 0 0 0 1000
   RENDER_RESAMPLE 3 0 1
   RENDER_ADDTOPROJ 0
-  RENDER_STEMS 32
+  RENDER_STEMS 3
   RENDER_DITHER 0
   RENDER_TRIM 0.000001 0.000001 0 0
   TIMELOCKMODE 1
@@ -68,8 +68,8 @@
   GLOBAL_AUTO -1
   TEMPO 300 4 4 0
   PLAYRATE 1 0 0.25 4
-  SELECTION 3.6 0
-  SELECTION2 3.6 0
+  SELECTION 256 257
+  SELECTION2 256 257
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -101,6 +101,10 @@
   RULERHEIGHT 122 86
   RULERLANE 1 4 "" 0 -1 0
   RULERLANE 2 8 "" 0 -1 0
+  MARKER 1 254.4 "Cutting grass 1" 9 0 1 B {55476E52-298F-7763-AE8D-F8C34FF46EF6} 0 1
+  MARKER 1 255.4 "" 9
+  MARKER 2 256 "Cutting grass 2" 9 0 1 B {87029922-0B1F-0207-5E6C-6B126E0C733A} 0 1
+  MARKER 2 257 "" 9
   <PROJBAY
   >
   <TRACK {C1C8AFC2-E2EE-DC03-5229-ACF418D70F40}
@@ -114,7 +118,7 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 1 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
     LANEREC -1 -1 -1 0
@@ -830,6 +834,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -852,7 +857,7 @@
         IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
         8D8AAAAAAAAAQAEDAAAAAQAAAGXrRlibArdAAAAAAAAA8D/P91PjpZv6PwEEAAAAAQAAAEBj71VrQlRAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
         AIQCAACWAQAAAgABAA==
-        AAAQAAAA
+        AFByb2dyYW0gMQAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {C12CC20B-CEE3-35BB-8EE1-9849B734C2C9}
@@ -1002,9 +1007,10 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 1 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1031,7 +1037,8 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    LANEREC -1 -1 -1 0
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -1051,7 +1058,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {C7BA9D47-FF61-73AB-44FA-AB9AB245AC6E}
       IID 463
       NAME 17_04.mp3
@@ -1062,6 +1069,368 @@
       GUID {22A9A922-C39D-3B12-D96E-8416B37D3EC1}
       <SOURCE MP3
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/17_04.mp3" 1
+      >
+    >
+  >
+  <TRACK {1E35DD53-7C8C-0CEA-1B2F-E0F704D56B8E}
+    NAME Minigame
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {1E35DD53-7C8C-0CEA-1B2F-E0F704D56B8E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {AA0B379E-9454-E7A6-9CF2-677937B5FF1C}
+    NAME "Moving grass"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {AA0B379E-9454-E7A6-9CF2-677937B5FF1C}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {6D68354D-17FE-6EA2-551E-32E6C8F9B057}
+    NAME "Grass 1"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 2.27000333651713 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6D68354D-17FE-6EA2-551E-32E6C8F9B057}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 226.4
+      SNAPOFFS 0
+      LENGTH 9.6
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7B35E17D-BC30-125B-C1BB-1EB70EC04343}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 6.3999999999767
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7C39C0FB-A10E-DC84-6E4A-A47B27F789F8}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
+      >
+    >
+    <ITEM
+      POSITION 236
+      SNAPOFFS 0
+      LENGTH 14.4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7F71EFFF-FD59-D6B6-4719-660275A08FD5}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 17.59998999997671
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FF44C218-7602-2194-A747-2EF1ADC32C43}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
+      >
+    >
+    <ITEM
+      POSITION 236
+      SNAPOFFS 0
+      LENGTH 0.00001
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.00001 0 1 0 0 0
+      FADEOUT 1 0.00001 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F8E70640-6177-A4F4-BD1A-2B9E1FDC5DA1}
+      IID 464
+      NAME 542254__jerryberumen__tall-grass-rustling-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 15.99999999997669
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E5A89F8A-CE46-44C9-AEA4-AA45E73BDF2E}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/542254__jerryberumen__tall-grass-rustling-2.wav"
+      >
+    >
+  >
+  <TRACK {9E5092DF-69DD-A1E5-0F41-5B0113E79EEF}
+    NAME "Grass 2"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.11143633310993 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {9E5092DF-69DD-A1E5-0F41-5B0113E79EEF}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 226.39242949326308
+      SNAPOFFS 0
+      LENGTH 23.99240676611024
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {DB2D81C0-4960-ACDE-5D83-F66054FD1214}
+      IID 478
+      NAME 406100__funwithsound__rustling-leaves.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.19055011063128
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C9FA861E-002B-3783-2141-1DBC7D548A04}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/406100__funwithsound__rustling-leaves.mp3" 1
+      >
+    >
+  >
+  <TRACK {6B16AFEB-1D33-3AFF-2996-44986ECE196B}
+    NAME "Cutting grass"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6B16AFEB-1D33-3AFF-2996-44986ECE196B}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {66B55DF4-0131-5C17-A5FF-EFE6BF909394}
+    NAME Knife
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.51365752360357 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {66B55DF4-0131-5C17-A5FF-EFE6BF909394}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 254.4
+      SNAPOFFS 0
+      LENGTH 0.5533909563168
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {2BC84821-E305-C1DA-40DD-A14DFC6E38EE}
+      IID 467
+      NAME 704955__metrostock99__knife-or-sword-slings-final-edit.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0.0762915833657
+      PLAYRATE 1 1 -10 -1 0 0.0025
+      CHANMODE 0
+      GUID {F50A07DE-3142-EA30-0F7C-D01418AA9761}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/704955__metrostock99__knife-or-sword-slings-final-edit.wav"
+      >
+    >
+    <ITEM
+      POSITION 256
+      SNAPOFFS 0
+      LENGTH 0.56496598639455
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 0
+      IGUID {59A97BCC-7A1D-E53D-DDBA-D7A5932CDA58}
+      IID 470
+      NAME 704955__metrostock99__knife-or-sword-slings-final-edit.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2.61560090702943
+      PLAYRATE 1 1 -10 -1 0 0.0025
+      CHANMODE 0
+      GUID {5F907FA9-B9B8-96B2-6C0F-3F5057701A7F}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/704955__metrostock99__knife-or-sword-slings-final-edit.wav"
+      >
+    >
+  >
+  <TRACK {D6E0FFEE-D9BE-3C6D-FACC-F17EE18BBC89}
+    NAME Bush
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.57736712470457 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -2
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {D6E0FFEE-D9BE-3C6D-FACC-F17EE18BBC89}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 254.4
+      SNAPOFFS 0
+      LENGTH 0.96177776533565
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {AA4D65AD-6B77-C28A-B041-2CC5B602A97B}
+      IID 476
+      NAME 825424__sinny__dry-bush-03.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.11162359520856
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {420BB4A4-449E-58F2-23AD-8627B086EE62}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/825424__sinny__dry-bush-03.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 256
+      SNAPOFFS 0
+      LENGTH 0.96177776533568
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CE2FFCDB-E699-3D35-C712-793406B088F3}
+      IID 476
+      NAME 825424__sinny__dry-bush-03.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.11162359520856
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E16BDB00-3AC3-850C-2186-3FE5FA2274CC}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/825424__sinny__dry-bush-03.mp3" 1
       >
     >
   >

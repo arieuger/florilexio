@@ -21,6 +21,7 @@ func _ready():
 	click_area.input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
+	SoundManager.play_simple_sound("Actions/Hover")
 	_fade_hover_to(hover_color.a)
 
 func _on_mouse_exited():
@@ -34,9 +35,11 @@ func _on_input_event(viewport, event, shape_idx):
 func _interact():
 	if _is_interacting:
 		return
-
+	
 	_is_interacting = true
 
+	SoundManager.play_simple_sound("Actions/Click")
+	
 	if interaction_point:
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.has_method("move_to_point"):
@@ -50,6 +53,7 @@ func _interact():
 		dialogue_title,
 		balloon_marker.global_position,
 		_get_balloon_color(),
+		_get_voice_type(),
 		[self],
 		_get_balloon_scene()
 	)
@@ -61,6 +65,12 @@ func _get_balloon_color() -> Color:
 		var marker_color: Color = balloon_marker.get("balloon_color")
 		return marker_color
 	return Color.WHITE
+	
+func _get_voice_type() -> float:
+	if "voice_type" in balloon_marker:
+		var voice_type: float = balloon_marker.get("voice_type")
+		return voice_type
+	return 0.0
 
 func _get_balloon_scene() -> PackedScene:
 	if "balloon_scene" in balloon_marker:
