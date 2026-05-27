@@ -138,5 +138,5 @@ func play_footstep_sound():
 		return
 	last_step_time = now
 
-	FmodServer.set_global_parameter_by_name("GroundType", 0.0)
+	SoundManager.set_global_parameter("GroundType", 0.0)
 	SoundManager.play_simple_sound("Player/Steps")

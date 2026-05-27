@@ -15,3 +15,9 @@ func stop_looped_sound(instance: FmodEvent) -> void:
 	if instance != null:
 		instance.paused = true
 		instance.release()
+
+func set_global_parameter(name: StringName, value) -> void:
+	if value is float:
+		FmodServer.set_global_parameter_by_name(name, value)
+	elif value is StringName:
+		FmodServer.set_global_parameter_by_name_with_label(name, value)	

@@ -30,6 +30,7 @@ func run_world_sequence(
 	dialogue_title: String = "",
 	world_position: Vector2 = Vector2.ZERO,
 	balloon_color: Color = Color.WHITE,
+	voice_type: float = 0.0,
 	extra_game_states: Array = [],
 	npc_balloon_scene: PackedScene = DEFAULT_NPC_BALLOON_SCENE,
 	player_response_balloon_scene: PackedScene = DEFAULT_PLAYER_RESPONSE_BALLOON_SCENE
@@ -52,6 +53,7 @@ func run_world_sequence(
 		dialogue_title,
 		dialogue_states
 	)
+	SoundManager.set_global_parameter("VoiceType", voice_type)
 	await _prepare_world_balloon(npc_balloon, world_position, balloon_color)
 	await _wait_for_dialogue_to_end(dialogue_resource)
 	await _run_requested_dialogues(
@@ -120,6 +122,7 @@ func run_speaker_sequence(
 	_requested_dialogue_steps.clear()
 
 	var balloon_scene := _get_step_balloon_scene(STEP_SPEAKER, speaker_step, resolved_npc_balloon_scene, resolved_player_response_balloon_scene)
+	_set_voice_type_for_speaker_step(speaker_step)
 	var balloon := DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource, dialogue_title, dialogue_states)
 	await _prepare_speaker_balloon(balloon, speaker_step, fallback_world_position, fallback_balloon_color)
 	await _wait_for_dialogue_to_end(dialogue_resource)
@@ -205,6 +208,8 @@ func _run_requested_dialogues(
 		var speaker: String = step.get("speaker", STEP_NPC)
 		var title: String = step.get("title", "")
 		var balloon_scene := _get_step_balloon_scene(speaker, step, npc_balloon_scene, player_response_balloon_scene)
+		if speaker == STEP_SPEAKER:
+			_set_voice_type_for_speaker_step(step)
 		var balloon := DialogueManager.show_dialogue_balloon_scene(balloon_scene, dialogue_resource, title, dialogue_states)
 
 		if speaker == STEP_NPC:
@@ -237,6 +242,16 @@ func _prepare_speaker_balloon(balloon: Node, step: Dictionary, fallback_world_po
 		await _prepare_world_balloon(balloon, dialogue_speaker.global_position, speaker_color)
 	else:
 		await _prepare_world_balloon(balloon, fallback_world_position, fallback_balloon_color)
+
+
+func _set_voice_type_for_speaker_step(step: Dictionary) -> void:
+	var dialogue_speaker := _get_dialogue_speaker(str(step.get("speaker_id", "")))
+	if not is_instance_valid(dialogue_speaker):
+		return
+
+	var voice_type_value = dialogue_speaker.get("voice_type")
+	if voice_type_value is float:
+		SoundManager.set_global_parameter("VoiceType", voice_type_value)
 
 
 func _get_dialogue_speaker(speaker_id: String) -> Node2D:

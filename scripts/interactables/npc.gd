@@ -53,6 +53,7 @@ func _interact():
 		dialogue_title,
 		balloon_marker.global_position,
 		_get_balloon_color(),
+		_get_voice_type(),
 		[self],
 		_get_balloon_scene()
 	)
@@ -64,6 +65,12 @@ func _get_balloon_color() -> Color:
 		var marker_color: Color = balloon_marker.get("balloon_color")
 		return marker_color
 	return Color.WHITE
+	
+func _get_voice_type() -> float:
+	if "voice_type" in balloon_marker:
+		var voice_type: float = balloon_marker.get("voice_type")
+		return voice_type
+	return 0.0
 
 func _get_balloon_scene() -> PackedScene:
 	if "balloon_scene" in balloon_marker:

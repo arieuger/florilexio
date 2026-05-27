@@ -50,6 +50,8 @@ var _locale: String = TranslationServer.get_locale()
 var _balloon_world_position: Vector2
 var _follows_world_position := false
 
+var _letter_count := 0
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -91,6 +93,9 @@ func _ready() -> void:
 	# If the responses menu doesn't have a next action set, use this one
 	if is_instance_valid(responses_menu) and responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
+
+	if is_instance_valid(dialogue_label):
+		dialogue_label.spoke.connect(_on_dialogue_label_spoke)
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
@@ -244,6 +249,19 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if _handle_dialogue_advance_input(event):
 		get_viewport().set_input_as_handled()
 
+
+func _on_dialogue_label_spoke(_letter: String, _letter_index: int, _speed: float) -> void:
+	_letter_count = _letter_count + 1
+	
+	if _letter_index <= 0:
+		SoundManager.play_simple_sound("NPCs/Voice")
+		return
+
+	if _letter.strip_edges().is_empty():
+		if (_letter_count > 1):
+			SoundManager.play_simple_sound("NPCs/Voice")
+		_letter_count = 0
+		return
 
 func _handle_dialogue_advance_input(event: InputEvent) -> bool:
 	if not is_instance_valid(dialogue_line):
