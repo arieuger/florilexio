@@ -66,6 +66,7 @@ func _try_cut() -> void:
 		_hits += 1
 		_show_feedback("Ben! " + str(_hits) + "/" + str(required_hits), Color(0.6, 1.0, 0.6, 1.0))
 		_pulse_success_zones()
+		SoundManager.play_simple_sound("Minigame/Cutting Grass")
 		if _hits >= required_hits:
 			_finish(true)
 	else:
