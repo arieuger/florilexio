@@ -6,11 +6,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2var2"]
 resource_local_to_scene = true
-size = Vector2(7, 8.5)
+size = Vector2(7, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ipta"]
 resource_local_to_scene = true
-size = Vector2(7, 2)
+size = Vector2(7, 1.75)
 
 [node name="Dedaleira" unique_id=1542834651 instance=ExtResource("1_l4gmu")]
 plant_launches_tutorial = true
@@ -28,11 +28,11 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_2var2")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
-position = Vector2(1.5, -6.75)
+position = Vector2(1.5, -6)
 shape = SubResource("RectangleShape2D_2var2")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
-position = Vector2(1.5, -1.75)
+position = Vector2(1.5, -1.875)
 shape = SubResource("RectangleShape2D_7ipta")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]

@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://bc6t8q7kgm0r2"]
+
+[ext_resource type="Script" path="res://scripts/world/area_spawn.gd" id="1_spawn"]
+[ext_resource type="Script" path="res://scripts/world/area_transition.gd" id="2_transition"]
+[ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="4_trees"]
+[ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="5_gate"]
+[ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="6_font"]
+[ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="7_menta"]
+[ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="8_macela"]
+[ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="9_silveira"]
+[ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="10_hortensia"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
+a = Vector2(0, 0)
+b = Vector2(0, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bottom"]
+a = Vector2(0, 180)
+b = Vector2(320, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_right"]
+a = Vector2(320, 180)
+b = Vector2(320, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_top"]
+a = Vector2(0, 72)
+b = Vector2(320, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(28, 22)
+
+[node name="Park" type="Node2D"]
+
+[node name="GrassBase" type="Polygon2D" parent="."]
+color = Color(0.30588236, 0.54509807, 0.32156864, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 180, 0, 180)
+
+[node name="Path" type="Polygon2D" parent="."]
+color = Color(0.6627451, 0.5529412, 0.40784314, 1)
+polygon = PackedVector2Array(135, 72, 185, 72, 203, 180, 112, 180)
+
+[node name="DefaultSpawn" type="Marker2D" parent="."]
+position = Vector2(160, 145)
+script = ExtResource("1_spawn")
+
+[node name="TownGateSpawn" type="Marker2D" parent="."]
+position = Vector2(160, 145)
+script = ExtResource("1_spawn")
+spawn_id = &"town_gate"
+
+[node name="WorldCollision" type="StaticBody2D" parent="."]
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="WorldCollision"]
+shape = SubResource("SegmentShape2D_left")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="WorldCollision"]
+shape = SubResource("SegmentShape2D_bottom")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="WorldCollision"]
+shape = SubResource("SegmentShape2D_right")
+
+[node name="TopBoundary" type="CollisionShape2D" parent="WorldCollision"]
+shape = SubResource("SegmentShape2D_top")
+
+[node name="YSortables" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TreeClusterLeft" type="Node2D" parent="YSortables"]
+position = Vector2(22, 102)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/TreeClusterLeft"]
+texture = ExtResource("4_trees")
+centered = false
+offset = Vector2(0, -21)
+
+[node name="TreeClusterRight" type="Node2D" parent="YSortables"]
+position = Vector2(205, 98)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/TreeClusterRight"]
+texture = ExtResource("4_trees")
+centered = false
+offset = Vector2(0, -21)
+
+[node name="ParkGate" type="Node2D" parent="YSortables"]
+position = Vector2(115, 82)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/ParkGate"]
+texture = ExtResource("5_gate")
+centered = false
+offset = Vector2(0, -15)
+
+[node name="Fountain" type="Node2D" parent="YSortables"]
+position = Vector2(153, 114)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Fountain"]
+texture = ExtResource("6_font")
+centered = false
+offset = Vector2(0, -5)
+
+[node name="TownPortal" type="Area2D" parent="YSortables"]
+position = Vector2(160, 84)
+script = ExtResource("2_transition")
+target_area_path = "res://scenes/world/town_square.tscn"
+target_spawn_id = &"park_gate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/TownPortal"]
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="Menta" parent="YSortables" instance=ExtResource("7_menta")]
+position = Vector2(76, 137)
+plant_launches_tutorial = false
+
+[node name="Macela" parent="YSortables" instance=ExtResource("8_macela")]
+position = Vector2(244, 133)
+
+[node name="Silveira" parent="YSortables" instance=ExtResource("9_silveira")]
+position = Vector2(52, 126)
+
+[node name="Hortensia" parent="YSortables" instance=ExtResource("10_hortensia")]
+position = Vector2(254, 121)

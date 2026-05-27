@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://dsm7uwl8e3sqr"]
+
+[ext_resource type="Texture2D" uid="uid://j88nu0ctiyif" path="res://assets/sprites/environment/scene1/town_base.png" id="1_dg77c"]
+[ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="3_d13ii"]
+[ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
+[ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="6_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
+[ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
+[ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
+[ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
+[ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
+[ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
+[ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
+[ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
+a = Vector2(0, 76)
+b = Vector2(0, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w48qg"]
+a = Vector2(320, 180)
+b = Vector2(0, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vivmo"]
+a = Vector2(320, 180)
+b = Vector2(320, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(8, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("9_kek77")
+region = Rect2(0, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("9_kek77")
+region = Rect2(7, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("9_kek77")
+region = Rect2(14, 0, 7, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("9_kek77")
+region = Rect2(21, 0, 7, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(6, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_park_portal"]
+size = Vector2(5, 40)
+
+[node name="TownSquare" type="Node2D" unique_id=66873482]
+
+[node name="Scene1Base" type="Sprite2D" parent="." unique_id=2135171562]
+texture = ExtResource("1_dg77c")
+centered = false
+
+[node name="DefaultSpawn" type="Marker2D" parent="." unique_id=901001001]
+position = Vector2(59, 142)
+script = ExtResource("29_spawn")
+
+[node name="ParkGateSpawn" type="Marker2D" parent="." unique_id=901001002]
+position = Vector2(166, 145)
+script = ExtResource("29_spawn")
+spawn_id = &"park_gate"
+
+[node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1956318489]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
+position = Vector2(31, 114)
+polygon = PackedVector2Array(2, 13, 0, 11, -10, 11, -10, -5, -21, -5, -21, -13, -31, -13, -31, -38, 56, -53, 117, -62, 117, -14, 62, -14, 60, 22, 17, 22, 14, 14)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WorldCollision" unique_id=1854061891]
+position = Vector2(255, 121)
+polygon = PackedVector2Array(-9, 1, -9, -20, 58, -20, 58, -22, 65, -22, 65, -72, -107, -71, -107, -22, -96, -22, -95, 14, -90, 14, -92, -21, -81, -21, -81, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollision" unique_id=609625496]
+shape = SubResource("SegmentShape2D_ycdy4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldCollision" unique_id=1995330937]
+shape = SubResource("SegmentShape2D_w48qg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldCollision" unique_id=2002941614]
+shape = SubResource("SegmentShape2D_vivmo")
+
+[node name="YSortables" type="Node2D" parent="." unique_id=1360060003]
+y_sort_enabled = true
+
+[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244]
+position = Vector2(111, 116)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchLeft" unique_id=708923007]
+texture = ExtResource("3_1bvp3")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchLeft" unique_id=1737124471]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchLeft/StaticBody2D" unique_id=1241186467]
+position = Vector2(11, -1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=1537834856]
+position = Vector2(130, 116)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchRight" unique_id=214264978]
+texture = ExtResource("3_h2yge")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchRight" unique_id=709605717]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchRight/StaticBody2D" unique_id=1098663457]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
+dialogue_resource = ExtResource("6_ycdy4")
+
+[node name="BalloonConfig" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1949997476]
+position = Vector2(-2, -27)
+speaker_id = &"old_woman"
+balloon_color = Color(0.9529412, 0.5686275, 0.58431375, 1)
+
+[node name="InteractionPoint" parent="YSortables/BenchRight/OldWoman" index="1" unique_id=222721431]
+position = Vector2(2, 6)
+
+[node name="HoverSprite" parent="YSortables/BenchRight/OldWoman" index="2" unique_id=1049314272]
+modulate = Color(1, 1, 1, 1)
+texture = ExtResource("7_dg77c")
+
+[node name="CollisionShape2D" parent="YSortables/BenchRight/OldWoman/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
+position = Vector2(6, -3)
+
+[node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
+position = Vector2(93, 107)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Trees" unique_id=298352965]
+texture = ExtResource("2_7mycd")
+centered = false
+offset = Vector2(0, -21)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Trees" unique_id=635567625]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Trees/StaticBody2D" unique_id=1097637154]
+position = Vector2(8, -8)
+polygon = PackedVector2Array(-2, 5, -2, 11, 4, 11, 4, 6)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/Trees/StaticBody2D" unique_id=801002830]
+position = Vector2(58, -10)
+polygon = PackedVector2Array(-2, 6, -2, 11, 3, 11, 3, 6)
+
+[node name="Font" type="Node2D" parent="YSortables" unique_id=886898638]
+position = Vector2(124, 114)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Font" unique_id=1907486465]
+texture = ExtResource("5_lquwl")
+centered = false
+offset = Vector2(0, -5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Font" unique_id=764475417]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Font/StaticBody2D" unique_id=57337450]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Wood" type="Node2D" parent="YSortables" unique_id=1103164443]
+position = Vector2(92, 122)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Wood" unique_id=1532364142]
+texture = ExtResource("7_272bh")
+centered = false
+offset = Vector2(0, -4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Wood" unique_id=1319856237]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Wood/StaticBody2D" unique_id=634575923]
+polygon = PackedVector2Array(0, -2, -1, 8, 3, 8, 5, 6, 10, 7, 10, 5, 9, 2, 10, -1)
+
+[node name="SchoolGate" type="Node2D" parent="YSortables" unique_id=1252643301]
+position = Vector2(163, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/SchoolGate" unique_id=193358986]
+texture = ExtResource("8_5vw27")
+centered = false
+offset = Vector2(0, -15)
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/SchoolGate" unique_id=1667777689]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/SchoolGate/StaticBody2D" unique_id=33389700]
+polygon = PackedVector2Array(0, 2, 11, 2, 11, 1, 43, 1, 43.000004, 0.1053524, 52, 0, 52, -2, 43, -2, 43, -3, 0, -3)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/SchoolGate/StaticBody2D" unique_id=1610972094]
+position = Vector2(62, 1)
+polygon = PackedVector2Array(0, 0, 6, 0, 6, 1, 64, 1, 64, 0.18919182, 90, 0, 90, -18, 91, -18, 91, -35, 87, -35, 87, -26, 86, -26, 86, -4, 64, -4, 64, -2, 6, -2, 6, -3, 0, -3)
+
+[node name="Dog" type="Node2D" parent="YSortables" unique_id=417475737]
+position = Vector2(142, 122)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Dog" unique_id=87938730]
+sprite_frames = SubResource("SpriteFrames_5vw27")
+animation = &"idle"
+autoplay = "idle"
+speed_scale = 1.7
+centered = false
+offset = Vector2(-3, -4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Dog" unique_id=1051015078]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Dog/StaticBody2D" unique_id=162068650]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="DogBalloonConfig" type="Marker2D" parent="YSortables/Dog" unique_id=715053318]
+position = Vector2(0, -10)
+script = ExtResource("14_kek77")
+speaker_id = &"dog"
+balloon_color = Color(0.72, 0.49, 0.28, 1)
+
+[node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
+position = Vector2(31, 131)
+
+[node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
+position = Vector2(290, 103)
+
+[node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
+position = Vector2(302, 104)
+
+[node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
+position = Vector2(254, 114)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Basket" unique_id=513308089]
+texture = ExtResource("13_ycdy4")
+centered = false
+offset = Vector2(0, -17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Basket" unique_id=1143920608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Basket/StaticBody2D" unique_id=1115786775]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
+position = Vector2(83, 138)
+
+[node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
+position = Vector2(194, 136)
+
+[node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
+position = Vector2(183, 137)
+
+[node name="Menta" parent="YSortables" unique_id=1542834651 instance=ExtResource("3_d13ii")]
+position = Vector2(42, 134)
+
+[node name="Ortiga" parent="YSortables" unique_id=503916748 instance=ExtResource("20_0odxb")]
+position = Vector2(25, 127)
+
+[node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
+position = Vector2(205, 137)
+plant_launches_tutorial = false
+
+[node name="Macela" parent="YSortables" unique_id=567619104 instance=ExtResource("26_lswn8")]
+position = Vector2(292, 113)
+
+[node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
+position = Vector2(271, 108)
+
+[node name="ParkPortal" type="Area2D" parent="YSortables" unique_id=901001003]
+position = Vector2(312, 153)
+script = ExtResource("30_transition")
+target_area_path = "res://scenes/world/park.tscn"
+target_spawn_id = &"town_gate"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/ParkPortal" unique_id=901001004]
+position = Vector2(6.5, 0)
+shape = SubResource("RectangleShape2D_park_portal")
+
+[editable path="YSortables/BenchRight/OldWoman"]
