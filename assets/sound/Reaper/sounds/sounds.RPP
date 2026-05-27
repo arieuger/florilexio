@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779814120 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779822280 0
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 0
-  ZOOM 100.00000000000026 0 0
-  VZOOMEX 3.05853987 0
+  CURSOR 20
+  ZOOM 12.85911208940573 0 0
+  VZOOMEX 3.8499999 102
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -136,7 +136,7 @@
     BEAT -1
     AUTOMODE 0
     PANLAWFLAGS 3
-    VOLPAN 1 0 -1 -1 1
+    VOLPAN 0.3838732234301 0 -1 -1 1
     MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
@@ -167,7 +167,7 @@
         IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
         8D8AAAAAAAAAQAEDAAAAAQAAALWnQerD/5xAAAAAAAAA8D+PwvUoXI/4PwEEAAAAAQAAALFUkqoEm05AAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
         AIQCAACWAQAAAgABAA==
-        AAAQAAAA
+        AFByb2dyYW0gMQAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {2579FDE2-1CDE-502C-4617-460425ED7800}
@@ -197,7 +197,7 @@
       >
     >
     <ITEM
-      POSITION 0.4
+      POSITION 0.8
       SNAPOFFS 0
       LENGTH 0.09799166666667
       LOOP 1
@@ -220,7 +220,7 @@
       >
     >
     <ITEM
-      POSITION 0.8
+      POSITION 1.6
       SNAPOFFS 0
       LENGTH 0.075925
       LOOP 1
@@ -243,7 +243,7 @@
       >
     >
     <ITEM
-      POSITION 1.2
+      POSITION 2.4
       SNAPOFFS 0
       LENGTH 0.07961666666667
       LOOP 1
@@ -266,7 +266,7 @@
       >
     >
     <ITEM
-      POSITION 1.6
+      POSITION 3.2
       SNAPOFFS 0
       LENGTH 0.10091666666667
       LOOP 1
@@ -289,7 +289,7 @@
       >
     >
     <ITEM
-      POSITION 2
+      POSITION 4
       SNAPOFFS 0
       LENGTH 0.10084166666667
       LOOP 1
@@ -312,7 +312,7 @@
       >
     >
     <ITEM
-      POSITION 2.4
+      POSITION 4.8
       SNAPOFFS 0
       LENGTH 0.07718333333333
       LOOP 1
@@ -335,7 +335,7 @@
       >
     >
     <ITEM
-      POSITION 2.8
+      POSITION 5.6
       SNAPOFFS 0
       LENGTH 0.10323460546876
       LOOP 1
@@ -358,7 +358,7 @@
       >
     >
     <ITEM
-      POSITION 3.2
+      POSITION 6.4
       SNAPOFFS 0
       LENGTH 0.11982661446283
       LOOP 1
@@ -391,12 +391,12 @@
     MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
-    ISBUS 2 -1
+    ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
     LANEREC -1 -1 -1 0
-    SEL 1
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -418,7 +418,7 @@
         IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAJhu2YoQKbJAtLFH4suR
         8D8AAAAAAAAAQAEDAAAAAQAAANoTrfB1icdAAAAAAAAA8D9Ei2zn+6n3PwEEAAAAAQAAAF+v5RjJDVNAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
         AIQCAACWAQAAAgABAA==
-        AAAQAAAA
+        AFByb2dyYW0gMQAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {168432CF-6B32-76A6-E54C-5AFBA4F3E3E1}
@@ -434,7 +434,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {4BF50CAD-373D-5D8E-2973-5DCFBFCA2C93}
       IID 353
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -448,7 +448,7 @@
       >
     >
     <ITEM
-      POSITION 0.4
+      POSITION 0.8
       SNAPOFFS 0
       LENGTH 0.32535147392291
       LOOP 1
@@ -457,7 +457,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {A873683D-CFE7-7B5A-E7A4-3A632A5DA603}
       IID 355
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -471,7 +471,7 @@
       >
     >
     <ITEM
-      POSITION 0.8
+      POSITION 1.6
       SNAPOFFS 0
       LENGTH 0.35755102040816
       LOOP 1
@@ -480,7 +480,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {0C01B657-6921-99E8-08C9-B128A6888EF6}
       IID 357
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -494,7 +494,7 @@
       >
     >
     <ITEM
-      POSITION 1.2
+      POSITION 2.4
       SNAPOFFS 0
       LENGTH 0.27138321995465
       LOOP 1
@@ -503,7 +503,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {3600CAFD-7662-353A-CA4F-06D293594EEA}
       IID 363
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -517,7 +517,7 @@
       >
     >
     <ITEM
-      POSITION 1.6
+      POSITION 3.2
       SNAPOFFS 0
       LENGTH 0.34092214663643
       LOOP 1
@@ -526,7 +526,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {1324689E-8CD8-C92B-2F72-20CD661DEA32}
       IID 365
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -540,7 +540,7 @@
       >
     >
     <ITEM
-      POSITION 2
+      POSITION 4
       SNAPOFFS 0
       LENGTH 0.33173876139324
       LOOP 1
@@ -549,7 +549,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {A596EDCB-6E4D-880F-4C23-EC4259A9972D}
       IID 367
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -563,7 +563,7 @@
       >
     >
     <ITEM
-      POSITION 2.4
+      POSITION 4.8
       SNAPOFFS 0
       LENGTH 0.35283446712019
       LOOP 1
@@ -572,7 +572,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {C6902BCB-A9CE-A81C-469F-53DF4B9F9545}
       IID 369
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -586,7 +586,7 @@
       >
     >
     <ITEM
-      POSITION 2.8
+      POSITION 5.6
       SNAPOFFS 0
       LENGTH 0.31108749132775
       LOOP 1
@@ -595,7 +595,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {E714947F-33D6-DE9D-24B9-BA29126C8DB6}
       IID 371
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -609,7 +609,7 @@
       >
     >
     <ITEM
-      POSITION 3.2
+      POSITION 6.4
       SNAPOFFS 0
       LENGTH 0.25375661375661
       LOOP 1
@@ -618,7 +618,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {A0D0366B-0DA8-65C0-0617-6224C5DF7D3D}
       IID 373
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -632,7 +632,7 @@
       >
     >
     <ITEM
-      POSITION 3.6
+      POSITION 7.2
       SNAPOFFS 0
       LENGTH 0.29999878236573
       LOOP 1
@@ -641,7 +641,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {6A0BB436-7CEF-76D4-1932-07AC87C586E8}
       IID 375
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -655,7 +655,7 @@
       >
     >
     <ITEM
-      POSITION 4
+      POSITION 8
       SNAPOFFS 0
       LENGTH 0.22848072562359
       LOOP 1
@@ -664,7 +664,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {BBB68D05-240F-39D4-12E8-094D045B7A1B}
       IID 381
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -678,7 +678,7 @@
       >
     >
     <ITEM
-      POSITION 4.4
+      POSITION 8.8
       SNAPOFFS 0
       LENGTH 0.26956916099773
       LOOP 1
@@ -687,7 +687,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {FD2A3AA9-5251-0D15-6E31-DEFB9699279B}
       IID 385
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -701,7 +701,7 @@
       >
     >
     <ITEM
-      POSITION 4.8
+      POSITION 9.6
       SNAPOFFS 0
       LENGTH 0.34160557796103
       LOOP 1
@@ -710,7 +710,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {8A62A7CD-E6AF-F5C2-AB56-D6201EA73275}
       IID 387
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -724,7 +724,7 @@
       >
     >
     <ITEM
-      POSITION 5.2
+      POSITION 10.4
       SNAPOFFS 0
       LENGTH 0.34246409674982
       LOOP 1
@@ -733,7 +733,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {D33ED099-1136-B6F9-CB21-19DCF2EBD755}
       IID 389
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -747,7 +747,7 @@
       >
     >
     <ITEM
-      POSITION 5.6
+      POSITION 11.2
       SNAPOFFS 0
       LENGTH 0.39044595616024
       LOOP 1
@@ -756,7 +756,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {7F5F5CB7-39B4-6F30-CA8C-C08F9E7FD20B}
       IID 391
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -770,7 +770,7 @@
       >
     >
     <ITEM
-      POSITION 6
+      POSITION 12
       SNAPOFFS 0
       LENGTH 0.29389419093168
       LOOP 1
@@ -779,7 +779,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {37940C51-8ABA-8CC4-8D9E-F073715DD051}
       IID 393
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -793,7 +793,7 @@
       >
     >
     <ITEM
-      POSITION 6.4
+      POSITION 12.8
       SNAPOFFS 0
       LENGTH 0.53814058956916
       LOOP 1
@@ -802,7 +802,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {BC10258B-DFEF-61BD-0636-AA0CA7575A55}
       IID 395
       NAME 854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav
@@ -813,6 +813,255 @@
       GUID {A63D8166-6451-97F7-628D-55AC3ABB60CC}
       <SOURCE WAVE
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/854495__serutonin-deprivd__isolated-footstep-sounds-on-gravel-walking-on-rough-gravel-road-18-takes.wav"
+      >
+    >
+  >
+  <TRACK {6B20DA54-C92B-5FA9-A23B-92FF6F370941}
+    NAME Grass
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 3.98107170553497 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6B20DA54-C92B-5FA9-A23B-92FF6F370941}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1712 112 912 483
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaEQ (Cockos)" reaeq.vst.so 0 "" 1919247729<56535472656571726561657100000000> ""
+        cWVlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAzQAAAAEAAAAAABAA
+        IQAAAAUAAAAAAAAAAQAAAAAAAAAAAFlAAAAAAAAA8D+amZmZmZnpPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
+        8D8AAAAAAAAAQAEDAAAAAQAAAGXrRlibArdAAAAAAAAA8D/P91PjpZv6PwEEAAAAAQAAAEBj71VrQlRAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
+        AIQCAACWAQAAAgABAA==
+        AAAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {C12CC20B-CEE3-35BB-8EE1-9849B734C2C9}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.71
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D54C612A-ED29-FEB7-8333-9FD9BB38F8BA}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 17.253324
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AA8DA742-DFE9-4486-9B08-60A0BEF4D899}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+    <ITEM
+      POSITION 0.8
+      SNAPOFFS 0
+      LENGTH 0.75460852108781
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {810A235F-6586-3A75-27B2-EDDA29E9E333}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 18.884844
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BD13CFB8-6121-162D-D081-0187880C7A76}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+    <ITEM
+      POSITION 1.6
+      SNAPOFFS 0
+      LENGTH 0.71677049084189
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {DB8D68F7-F281-26B7-5320-4008A5456A7A}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 20.230848
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {33F4CD54-5DCC-D19D-4581-C508D79B3EB7}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+    <ITEM
+      POSITION 2.4
+      SNAPOFFS 0
+      LENGTH 0.71931190270216
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CC3A6F9D-D90D-D9D4-32BA-ABAAB492D6D7}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 21.56908092720368
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3FC2D6A6-DD1D-1F6A-F7F0-5B39E4A57A20}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+    <ITEM
+      POSITION 3.2
+      SNAPOFFS 0
+      LENGTH 0.67642644219297
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.20189721053088 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {05D6BD47-F903-9DB0-022B-1E4A366E55B7}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 22.90390667178666
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CBFDC95B-2160-6065-56DB-7E0F9512EB27}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+    <ITEM
+      POSITION 4
+      SNAPOFFS 0
+      LENGTH 0.71429986589614
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.16151776842471 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {26C225C0-1962-7F87-7C6E-23C881704FDE}
+      IID 453
+      NAME 846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 23.93006490083558
+      PLAYRATE 1.3596 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6B03932F-F56E-084E-EB9E-05F4AA6EDC94}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/846017__outoftheboxcm__foley-walk-through-grass-using-tascam-70d-by-filmnic.wav"
+      >
+    >
+  >
+  <TRACK {36B1B577-6FF3-F570-3894-87F0B033643A}
+    NAME Environment
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {36B1B577-6FF3-F570-3894-87F0B033643A}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {A7E0F01E-655E-0D45-B894-685069EF8331}
+    NAME Day
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {A7E0F01E-655E-0D45-B894-685069EF8331}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 16.80000000004657
+      SNAPOFFS 0
+      LENGTH 204.768
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {C7BA9D47-FF61-73AB-44FA-AB9AB245AC6E}
+      IID 463
+      NAME 17_04.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {22A9A922-C39D-3B12-D96E-8416B37D3EC1}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/17_04.mp3" 1
       >
     >
   >

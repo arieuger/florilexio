@@ -29,13 +29,29 @@ responsable: poch
 	      https://freesound.org/people/thesynesthiser/sounds/852214/
 - [ ] Encontrar herba
 
-func \_ready():
-	stepsSoundEvent = FmodServer.create_event_instance("event:/Player/Steps")
-	stepsSoundEvent.paused = true
-	stepsSoundEvent.start()
 
-func start_auto_move()
-	stepsSoundEvent.paused = false
-	
-func \_finish_auto_move()
-	stepsSoundEvent.paused = true
+> # Sounds
+> const MIN_STEP_GAP := 0.25  # segundos mínimos entre pasos
+> const STEP_INTERVAL := 1.5
+> var last_step_time := 0.0
+> var step_distance := 0.0
+> 
+> func play_footstep(delta):
+> 	if velocity.length() > 10.0:
+> 		step_distance += velocity.length() * delta
+> 		if step_distance >= STEP_INTERVAL:
+> 			step_distance = fmod(step_distance, STEP_INTERVAL)
+> 			play_footstep_sound()
+> 	else:
+> 		step_distance = 0.0  # reset ao parar
+> 
+> func play_footstep_sound():
+> 	var now = Time.get_ticks_msec() / 1000.0
+> 	if now - last_step_time < MIN_STEP_GAP:
+> 		return
+> 	last_step_time = now
+> 	
+> 	FmodServer.set_global_parameter_by_name("GroundType", 0.0)
+> 	var instance = FmodServer.create_event_instance("event:/Player/Steps")
+> 	instance.start()
+> 	instance.release()
