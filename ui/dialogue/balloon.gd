@@ -154,7 +154,7 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
-
+	
 	if is_instance_valid(progress):
 		progress.hide()
 	is_waiting_for_input = false
@@ -219,6 +219,7 @@ func apply_dialogue_line() -> void:
 
 ## Go to the next line
 func next(next_id: String) -> void:
+	SoundManager.play_simple_sound("Actions/Next Dialogue")
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 
