@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
+[ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="31_camera"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -321,5 +322,8 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/ParkPortal" unique_id=901001004]
 position = Vector2(6.5, 0)
 shape = SubResource("RectangleShape2D_park_portal")
+
+[node name="CameraConfig" type="Node2D" parent="." unique_id=901001005]
+script = ExtResource("31_camera")
 
 [editable path="YSortables/BenchRight/OldWoman"]

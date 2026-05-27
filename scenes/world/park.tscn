@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bn36pkne54guh" path="res://assets/sprites/environment/scene2/swing.png" id="6_e0xia"]
 [ext_resource type="Texture2D" uid="uid://cu53s7jtcf4p6" path="res://assets/sprites/environment/scene2/slide.png" id="7_q318h"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="8_m0yas"]
+[ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="9_camera"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -191,3 +192,11 @@ position = Vector2(0, -1)
 position = Vector2(11, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="CameraConfig" type="Node2D" parent="." unique_id=901002001]
+position = Vector2(0, -25)
+script = ExtResource("9_camera")
+bounds_size = Vector2(245, 205)
+drag_horizontal_enabled = false
+drag_top_margin = 0.24
+drag_bottom_margin = 0.18
