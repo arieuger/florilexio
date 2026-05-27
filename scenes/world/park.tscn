@@ -1,120 +1,193 @@
 [gd_scene format=3 uid="uid://bc6t8q7kgm0r2"]
 
-[ext_resource type="Script" path="res://scripts/world/area_spawn.gd" id="1_spawn"]
-[ext_resource type="Script" path="res://scripts/world/area_transition.gd" id="2_transition"]
-[ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="4_trees"]
-[ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="5_gate"]
-[ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="6_font"]
-[ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="7_menta"]
-[ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="8_macela"]
-[ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="9_silveira"]
-[ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="10_hortensia"]
+[ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="1_spawn"]
+[ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="2_transition"]
+[ext_resource type="Texture2D" uid="uid://dexd6cje4p4g2" path="res://assets/sprites/environment/scene2/park_base.png" id="3_g5rbj"]
+[ext_resource type="Texture2D" uid="uid://dkudoxjjkdui1" path="res://assets/sprites/environment/scene2/font.png" id="4_xtwjg"]
+[ext_resource type="Texture2D" uid="uid://dj2r0a3n8358u" path="res://assets/sprites/environment/scene2/terrace.png" id="5_ixevq"]
+[ext_resource type="Texture2D" uid="uid://bn36pkne54guh" path="res://assets/sprites/environment/scene2/swing.png" id="6_e0xia"]
+[ext_resource type="Texture2D" uid="uid://cu53s7jtcf4p6" path="res://assets/sprites/environment/scene2/slide.png" id="7_q318h"]
+[ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="8_m0yas"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
-a = Vector2(0, 0)
+a = Vector2(0, 104)
 b = Vector2(0, 180)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bottom"]
-a = Vector2(0, 180)
-b = Vector2(320, 180)
+a = Vector2(-1, 205)
+b = Vector2(245, 204)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_right"]
-a = Vector2(320, 180)
-b = Vector2(320, 0)
+a = Vector2(244, 205)
+b = Vector2(245, 110)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_top"]
-a = Vector2(0, 72)
-b = Vector2(320, 72)
+a = Vector2(-2, 111)
+b = Vector2(115, 98)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g5rbj"]
+a = Vector2(246, 110)
+b = Vector2(112, 98)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
-size = Vector2(28, 22)
+size = Vector2(10, 41)
 
-[node name="Park" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixevq"]
+size = Vector2(37, 6)
 
-[node name="GrassBase" type="Polygon2D" parent="."]
-color = Color(0.30588236, 0.54509807, 0.32156864, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 180, 0, 180)
+[node name="Park" type="Node2D" unique_id=643443187]
 
-[node name="Path" type="Polygon2D" parent="."]
-color = Color(0.6627451, 0.5529412, 0.40784314, 1)
-polygon = PackedVector2Array(135, 72, 185, 72, 203, 180, 112, 180)
+[node name="ParkBase" type="Sprite2D" parent="." unique_id=2086734687]
+position = Vector2(0, -25)
+texture = ExtResource("3_g5rbj")
+centered = false
 
-[node name="DefaultSpawn" type="Marker2D" parent="."]
-position = Vector2(160, 145)
+[node name="DefaultSpawn" type="Marker2D" parent="." unique_id=1061516145]
+position = Vector2(160, 120)
 script = ExtResource("1_spawn")
 
-[node name="TownGateSpawn" type="Marker2D" parent="."]
-position = Vector2(160, 145)
+[node name="TownGateSpawn" type="Marker2D" parent="." unique_id=786465570]
+position = Vector2(14, 159)
 script = ExtResource("1_spawn")
 spawn_id = &"town_gate"
 
-[node name="WorldCollision" type="StaticBody2D" parent="."]
+[node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1169935711]
+position = Vector2(0, -25)
 
-[node name="LeftBoundary" type="CollisionShape2D" parent="WorldCollision"]
+[node name="LeftBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=1472640769]
 shape = SubResource("SegmentShape2D_left")
 
-[node name="BottomBoundary" type="CollisionShape2D" parent="WorldCollision"]
+[node name="BottomBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=1259081256]
 shape = SubResource("SegmentShape2D_bottom")
 
-[node name="RightBoundary" type="CollisionShape2D" parent="WorldCollision"]
+[node name="RightBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=1601031076]
 shape = SubResource("SegmentShape2D_right")
 
-[node name="TopBoundary" type="CollisionShape2D" parent="WorldCollision"]
+[node name="TopLeftBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=322951256]
 shape = SubResource("SegmentShape2D_top")
 
-[node name="YSortables" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollision" unique_id=607417452]
+shape = SubResource("SegmentShape2D_g5rbj")
+
+[node name="YSortables" type="Node2D" parent="." unique_id=330749495]
 y_sort_enabled = true
+position = Vector2(0, -25)
 
-[node name="TreeClusterLeft" type="Node2D" parent="YSortables"]
-position = Vector2(22, 102)
-
-[node name="Sprite2D" type="Sprite2D" parent="YSortables/TreeClusterLeft"]
-texture = ExtResource("4_trees")
-centered = false
-offset = Vector2(0, -21)
-
-[node name="TreeClusterRight" type="Node2D" parent="YSortables"]
-position = Vector2(205, 98)
-
-[node name="Sprite2D" type="Sprite2D" parent="YSortables/TreeClusterRight"]
-texture = ExtResource("4_trees")
-centered = false
-offset = Vector2(0, -21)
-
-[node name="ParkGate" type="Node2D" parent="YSortables"]
-position = Vector2(115, 82)
-
-[node name="Sprite2D" type="Sprite2D" parent="YSortables/ParkGate"]
-texture = ExtResource("5_gate")
-centered = false
-offset = Vector2(0, -15)
-
-[node name="Fountain" type="Node2D" parent="YSortables"]
-position = Vector2(153, 114)
-
-[node name="Sprite2D" type="Sprite2D" parent="YSortables/Fountain"]
-texture = ExtResource("6_font")
-centered = false
-offset = Vector2(0, -5)
-
-[node name="TownPortal" type="Area2D" parent="YSortables"]
-position = Vector2(160, 84)
+[node name="TownPortal" type="Area2D" parent="YSortables" unique_id=473107869]
+position = Vector2(11, 165)
 script = ExtResource("2_transition")
 target_area_path = "res://scenes/world/town_square.tscn"
 target_spawn_id = &"park_gate"
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/TownPortal"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/TownPortal" unique_id=311776618]
+position = Vector2(-9, 20.5)
 shape = SubResource("RectangleShape2D_portal")
 
-[node name="Menta" parent="YSortables" instance=ExtResource("7_menta")]
-position = Vector2(76, 137)
-plant_launches_tutorial = false
+[node name="Font" type="Node2D" parent="YSortables" unique_id=2095221352]
+position = Vector2(122, 118)
+metadata/_edit_group_ = true
 
-[node name="Macela" parent="YSortables" instance=ExtResource("8_macela")]
-position = Vector2(244, 133)
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Font" unique_id=892652811]
+texture = ExtResource("4_xtwjg")
+centered = false
+offset = Vector2(-14, -8)
 
-[node name="Silveira" parent="YSortables" instance=ExtResource("9_silveira")]
-position = Vector2(52, 126)
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Font" unique_id=84387812]
 
-[node name="Hortensia" parent="YSortables" instance=ExtResource("10_hortensia")]
-position = Vector2(254, 121)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Font/StaticBody2D" unique_id=1250069322]
+polygon = PackedVector2Array(-5, -3, -12, 0, -14, 3, -4, 8, 8, 8, 16, 3, 15, 0, 8, -3)
+
+[node name="Terrace" type="Node2D" parent="YSortables" unique_id=490790186]
+position = Vector2(213, 149)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Terrace" unique_id=334847749]
+texture = ExtResource("5_ixevq")
+centered = false
+offset = Vector2(-18, -5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Terrace" unique_id=1295402715]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Terrace/StaticBody2D" unique_id=2107826874]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_ixevq")
+
+[node name="Terrace2" type="Node2D" parent="YSortables" unique_id=909735744]
+position = Vector2(205, 134)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Terrace2" unique_id=956243342]
+texture = ExtResource("5_ixevq")
+centered = false
+offset = Vector2(-18, -5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Terrace2" unique_id=901024654]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Terrace2/StaticBody2D" unique_id=344019272]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_ixevq")
+
+[node name="Swing" type="Node2D" parent="YSortables" unique_id=1652042088]
+position = Vector2(20, 137)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Swing" unique_id=653155831]
+texture = ExtResource("6_e0xia")
+centered = false
+offset = Vector2(-7, -12)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Swing" unique_id=1238347269]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Swing/StaticBody2D" unique_id=911603722]
+polygon = PackedVector2Array(9, -1, -2, 6, -7, 1, 3, -5)
+
+[node name="Slide" type="Node2D" parent="YSortables" unique_id=2103923007]
+position = Vector2(45, 141)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/Slide" unique_id=1424081069]
+texture = ExtResource("7_q318h")
+centered = false
+offset = Vector2(-6, -12)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Slide" unique_id=1476376599]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Slide/StaticBody2D" unique_id=743907671]
+position = Vector2(-5, 1)
+polygon = PackedVector2Array(-1, 0, 5, 5, 7, 3, 10, 5, 12, 4, 11, 0, 9, -3, 6, -4)
+
+[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1185726926]
+position = Vector2(8, 125)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchLeft" unique_id=1945111600]
+texture = ExtResource("8_m0yas")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchLeft" unique_id=390403706]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchLeft/StaticBody2D" unique_id=2072282670]
+position = Vector2(11, -1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
+
+[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=326821555]
+position = Vector2(48, 125)
+scale = Vector2(-1, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchRight" unique_id=609084210]
+texture = ExtResource("8_m0yas")
+centered = false
+offset = Vector2(0, -8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/BenchRight" unique_id=1369716454]
+position = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/BenchRight/StaticBody2D" unique_id=705758594]
+position = Vector2(11, -1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)

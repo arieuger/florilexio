@@ -93,7 +93,7 @@ position = Vector2(59, 142)
 script = ExtResource("29_spawn")
 
 [node name="ParkGateSpawn" type="Marker2D" parent="." unique_id=901001002]
-position = Vector2(166, 145)
+position = Vector2(304, 153)
 script = ExtResource("29_spawn")
 spawn_id = &"park_gate"
 
