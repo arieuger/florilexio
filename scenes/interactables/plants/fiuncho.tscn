@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ct0s801fs50xx"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_0bo22"]
+[ext_resource type="Texture2D" uid="uid://libc66c2v16l" path="res://assets/sprites/environment/plants/fiuncho.png" id="2_f3lqu"]
+[ext_resource type="Texture2D" uid="uid://tqtfl8t0xkwh" path="res://assets/sprites/environment/plants/fiuncho_hover.png" id="3_f3lqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3lqu"]
+resource_local_to_scene = true
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47y8q"]
+resource_local_to_scene = true
+size = Vector2(8, 2)
+
+[node name="Fiuncho" unique_id=1542834651 instance=ExtResource("1_0bo22")]
+plant_id = &"fiuncho"
+plant_display_name = "Fiúncho"
+hover_color = Color(0.99999946, 0.98197144, 0.6196342, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_f3lqu")
+offset = Vector2(-5, -11)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-2, 0)
+texture = ExtResource("3_f3lqu")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_f3lqu")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_47y8q")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -6.675
+offset_top = -17.0
+offset_right = 7.325
+offset_bottom = -11.0

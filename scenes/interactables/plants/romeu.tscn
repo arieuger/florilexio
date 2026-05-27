@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ba6f154tcth64"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_2tpvn"]
+[ext_resource type="Texture2D" uid="uid://d3abskhnoc8gh" path="res://assets/sprites/environment/plants/romeu.png" id="2_kfstu"]
+[ext_resource type="Texture2D" uid="uid://b2y2cjrq15olx" path="res://assets/sprites/environment/plants/romeu_hover.png" id="3_nujs4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcj3c"]
+resource_local_to_scene = true
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iu0e"]
+resource_local_to_scene = true
+size = Vector2(10, 2)
+
+[node name="Romeu" unique_id=1542834651 instance=ExtResource("1_2tpvn")]
+plant_id = &"romeu"
+plant_display_name = "Romeu"
+hover_color = Color(5.1018596e-06, 0.9922119, 0.5624248, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_kfstu")
+offset = Vector2(-5, -13)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-2, -2)
+texture = ExtResource("3_nujs4")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_lcj3c")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_8iu0e")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -6.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -12.0
