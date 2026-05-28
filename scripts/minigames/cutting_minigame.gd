@@ -119,6 +119,7 @@ func _finish(was_successful: bool) -> void:
 	if was_successful:
 		InventoryManager.add_item(plant_id, 1, plant_display_name)
 		completed.emit(plant_id)
+		SoundManager.play_simple_sound('Actions/Success')
 	else:
 		failed.emit(plant_id)
 

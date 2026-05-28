@@ -10,7 +10,7 @@ responsable: poch
 - [ ] Sons de noite
       https://xscxxtxr.org/soundscape/carlos-suarez-dende-o-carballino-717/ + https://xscxxtxr.org/soundscape/o-son-dos-grilos-2009/
       https://xscxxtxr.org/soundscape/chiu-longina-dende-viana-374/ (non puxeron licencia)
-- [ ] Pobo
+- [x] Pobo
       https://xscxxtxr.org/soundscape/toques-aldeina-1660/
       https://xscxxtxr.org/soundscape/igrexia-de-san-lourenzo-meis-toma-03-1650/
       https://xscxxtxr.org/soundscape/oza-dos-rios-cruce-de-caminos-1659/
