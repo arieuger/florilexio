@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://8ns53t1skih2" path="res://scenes/interactables/plants/herba_luisa.tscn" id="12_hebut"]
 [ext_resource type="PackedScene" uid="uid://ba6f154tcth64" path="res://scenes/interactables/plants/romeu.tscn" id="12_ynua0"]
 [ext_resource type="PackedScene" uid="uid://dkr62j07qkejh" path="res://scenes/interactables/plants/xesta.tscn" id="13_wlbh6"]
+[ext_resource type="PackedScene" uid="uid://chx2eugcgoybj" path="res://scenes/interactables/plants/fento.tscn" id="14_0lm4f"]
+[ext_resource type="PackedScene" uid="uid://dgxrwtiolf3ai" path="res://scenes/interactables/plants/hiperico.tscn" id="15_rs8wy"]
+[ext_resource type="PackedScene" uid="uid://d0mv5rpj0jdct" path="res://scenes/interactables/plants/tominho.tscn" id="16_kuagl"]
+[ext_resource type="PackedScene" uid="uid://jlqlolglmkc4" path="res://scenes/interactables/plants/ruda.tscn" id="17_bkeyp"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -210,6 +214,10 @@ collection_id = &"malva1"
 position = Vector2(193, 134)
 collection_id = &"romeu1"
 
+[node name="Romeu2" parent="YSortables" unique_id=1827974212 instance=ExtResource("12_ynua0")]
+position = Vector2(217, 134)
+collection_id = &"romeu2"
+
 [node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
 position = Vector2(205, 134)
 collection_id = &"herba_luisa1"
@@ -221,6 +229,41 @@ collection_id = &"xesta1"
 [node name="Xesta2" parent="YSortables" unique_id=1274703653 instance=ExtResource("13_wlbh6")]
 position = Vector2(164, 105)
 collection_id = &"xesta2"
+
+[node name="Fento" parent="YSortables" unique_id=837198377 instance=ExtResource("14_0lm4f")]
+position = Vector2(56, 108)
+collection_id = &"fento1"
+
+[node name="Fento2" parent="YSortables" unique_id=228511052 instance=ExtResource("14_0lm4f")]
+position = Vector2(69, 105)
+collection_id = &"fento2"
+
+[node name="Fento3" parent="YSortables" unique_id=1609453310 instance=ExtResource("14_0lm4f")]
+position = Vector2(88, 105)
+collection_id = &"fento3"
+
+[node name="Hiperico" parent="YSortables" unique_id=1109796564 instance=ExtResource("15_rs8wy")]
+position = Vector2(102, 134)
+collection_id = &"hiperico1"
+
+[node name="Fento4" parent="YSortables" unique_id=136460072 instance=ExtResource("14_0lm4f")]
+position = Vector2(175, 105)
+collection_id = &"fento4"
+
+[node name="Malva2" parent="YSortables" unique_id=586790926 instance=ExtResource("10_ynua0")]
+position = Vector2(96, 136)
+collection_id = &"malva2"
+
+[node name="Tominho" parent="YSortables" unique_id=727921110 instance=ExtResource("16_kuagl")]
+position = Vector2(225, 150)
+collection_id = &"tominho1"
+
+[node name="Tominho2" parent="YSortables" unique_id=2072385559 instance=ExtResource("16_kuagl")]
+position = Vector2(201, 150)
+collection_id = &"tominho2"
+
+[node name="Ruda" parent="YSortables" unique_id=1464132476 instance=ExtResource("17_bkeyp")]
+position = Vector2(213, 149)
 
 [node name="CameraConfig" type="Node2D" parent="." unique_id=901002001]
 visible = false

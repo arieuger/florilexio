@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d0mv5rpj0jdct"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_230o7"]
+[ext_resource type="Texture2D" uid="uid://cg8g5puxdw8x2" path="res://assets/sprites/environment/plants/tominho.png" id="2_wdpxp"]
+[ext_resource type="Texture2D" uid="uid://dox73qhh8rkbp" path="res://assets/sprites/environment/plants/tominho_hover.png" id="3_4h568"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdpxp"]
+resource_local_to_scene = true
+size = Vector2(6, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h568"]
+resource_local_to_scene = true
+size = Vector2(10, 2)
+
+[node name="Tominho" unique_id=1542834651 instance=ExtResource("1_230o7")]
+plant_id = &"tominho"
+plant_display_name = "Tomiño"
+hover_color = Color(0.52667737, 0.9694161, 0.77080345, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_wdpxp")
+offset = Vector2(-3, -13)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(0, -2)
+texture = ExtResource("3_4h568")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_wdpxp")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_4h568")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -6.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -12.0

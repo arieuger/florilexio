@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://d3abskhnoc8gh" path="res://assets/sprites/environment/plants/romeu.png" id="2_kfstu"]
 [ext_resource type="Texture2D" uid="uid://b2y2cjrq15olx" path="res://assets/sprites/environment/plants/romeu_hover.png" id="3_nujs4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcj3c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tpvn"]
 resource_local_to_scene = true
 size = Vector2(8, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iu0e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfstu"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -27,11 +27,11 @@ texture = ExtResource("3_nujs4")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_lcj3c")
+shape = SubResource("RectangleShape2D_2tpvn")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_8iu0e")
+shape = SubResource("RectangleShape2D_kfstu")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

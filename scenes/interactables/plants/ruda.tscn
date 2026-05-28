@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://jlqlolglmkc4"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mwfwv"]
+[ext_resource type="Texture2D" uid="uid://heyfl8t4opny" path="res://assets/sprites/environment/plants/ruda.png" id="2_dj0id"]
+[ext_resource type="Texture2D" uid="uid://c5y66pu5oekb5" path="res://assets/sprites/environment/plants/ruda_hover.png" id="3_8q15t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj0id"]
+resource_local_to_scene = true
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q15t"]
+resource_local_to_scene = true
+size = Vector2(12, 1)
+
+[node name="Ruda" unique_id=1542834651 instance=ExtResource("1_mwfwv")]
+plant_id = &"ruda"
+plant_display_name = "Ruda"
+hover_color = Color(0.62139684, 0.99999994, 0.7382242, 0.6862745)
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_dj0id")
+offset = Vector2(-6, -11)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-3, 0)
+texture = ExtResource("3_8q15t")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_dj0id")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(0, 6)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_8q15t")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -6.0
+offset_top = -17.0
+offset_right = 8.0
+offset_bottom = -11.0
