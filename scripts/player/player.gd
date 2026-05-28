@@ -9,6 +9,7 @@ signal auto_move_finished(reached: bool)
 @export var auto_move_timeout := 5.0
 @export var auto_move_stuck_distance := 0.1
 @export var auto_move_stuck_time := 0.25
+@export var movement_enabled := true
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_listener: Node2D = $SoundListener
@@ -27,10 +28,20 @@ func _ready():
 	resync_sound_listener()
 
 func _unhandled_input(event):
+	if not movement_enabled:
+		return
+
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		start_auto_move(get_global_mouse_position())
 
 func _physics_process(delta: float):
+	if not movement_enabled:
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		_update_animation(Vector2.ZERO)
+		move_and_slide()
+		_sync_sound_listener_to_fmod()
+		return
+
 	var input_direction := Input.get_vector("left", "right", "up", "down")
 
 	if _is_auto_moving and input_direction != Vector2.ZERO:
@@ -48,6 +59,9 @@ func _physics_process(delta: float):
 		_check_auto_move_stuck(delta)
 
 func move_to_point(global_target: Vector2) -> bool:
+	if not movement_enabled:
+		return false
+
 	if global_position.distance_to(global_target) <= auto_move_stop_distance:
 		return true
 
@@ -55,6 +69,9 @@ func move_to_point(global_target: Vector2) -> bool:
 	return await auto_move_finished
 
 func start_auto_move(global_target: Vector2):
+	if not movement_enabled:
+		return
+
 	if _is_auto_moving:
 		_finish_auto_move(false)		
 
@@ -63,6 +80,11 @@ func start_auto_move(global_target: Vector2):
 	_auto_move_stuck_elapsed = 0.0
 	_auto_move_previous_distance = global_position.distance_to(_auto_move_target)
 	_is_auto_moving = true
+
+func set_movement_enabled(enabled: bool) -> void:
+	movement_enabled = enabled
+	if not movement_enabled and _is_auto_moving:
+		_finish_auto_move(false)
 
 func _process_player_input(delta: float, input_direction: Vector2):
 	var target_velocity := input_direction * max_speed

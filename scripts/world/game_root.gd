@@ -3,6 +3,10 @@ extends Node2D
 @export var initial_area: PackedScene
 @export var initial_spawn_id: StringName = &"default"
 @export var transition_color := Color(0, 0, 0, 1)
+@export var play_intro_on_start := true
+@export var intro_dialogue: DialogueResource = preload("res://dialogues/intro.dialogue")
+@export var intro_dialogue_title := "start"
+@export var intro_info_balloon_scene: PackedScene = preload("res://ui/dialogue/generic_info_balloon.tscn")
 
 @onready var current_area_container: Node2D = $CurrentArea
 @onready var player: CharacterBody2D = $Player
@@ -12,8 +16,13 @@ var _area_transition_tween: Tween
 
 
 func _ready() -> void:
+	_set_player_movement_enabled(false)
 	if initial_area:
 		load_area(initial_area, initial_spawn_id)
+	if play_intro_on_start:
+		_run_intro_sequence.call_deferred()
+	else:
+		_set_player_movement_enabled(true)
 
 
 func load_area(area_scene: PackedScene, spawn_id: StringName = &"default") -> void:
@@ -61,6 +70,40 @@ func transition_to_area(area_scene: PackedScene, spawn_id: StringName = &"defaul
 	_area_transition_tween.tween_property(fade_rect, "color:a", 0.0, fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	_area_transition_tween.tween_callback(fade_layer.queue_free)
 	await _area_transition_tween.finished
+
+
+func _run_intro_sequence() -> void:
+	await get_tree().process_frame
+
+	if not is_instance_valid(intro_dialogue) or not is_instance_valid(intro_info_balloon_scene):
+		_set_player_movement_enabled(true)
+		return
+
+	DialogueManager.show_dialogue_balloon_scene(
+		intro_info_balloon_scene,
+		intro_dialogue,
+		intro_dialogue_title,
+		[self]
+	)
+	await _wait_for_dialogue_to_end(intro_dialogue)
+	_set_player_movement_enabled(true)
+
+
+func _wait_for_dialogue_to_end(dialogue_resource: DialogueResource) -> void:
+	while true:
+		var ended_resource: DialogueResource = await DialogueManager.dialogue_ended
+		if ended_resource == dialogue_resource:
+			return
+
+
+func _set_player_movement_enabled(enabled: bool) -> void:
+	if not is_instance_valid(player):
+		return
+
+	if player.has_method("set_movement_enabled"):
+		player.set_movement_enabled(enabled)
+	else:
+		player.set("movement_enabled", enabled)
 
 
 func _detach_player() -> void:
