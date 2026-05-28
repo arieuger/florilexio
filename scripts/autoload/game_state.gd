@@ -1,11 +1,13 @@
 extends Node
 
 signal consumed_time_added(total_consumed_time: int)
+signal reached_night()
 
 const START_HOUR := 10
 const END_HOUR := 22
 const BLOCK_MINUTES := 15
 const TOTAL_BLOCKS := ((END_HOUR - START_HOUR) * 60) / BLOCK_MINUTES
+const NIGHT_START_BLOCK := 41
 
 var discovered_plants: Dictionary = {}
 var collected_plants: Dictionary = {}
@@ -19,7 +21,7 @@ var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
 
-var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
+var _consumed_time: int = 40 # Bloques de 15 minutos: en 12 horas, 48 bloques
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras
 
@@ -41,8 +43,9 @@ func add_consumed_time(time: int) -> void:
 	_consumed_time += time
 
 	consumed_time_added.emit(_consumed_time)
-	# TODO: Actualizar UI según o tempo consumido e reacción ao cambio
-	print("Consumed time: " + str(_consumed_time) + " seconds")
+	print("Consumed time: " + str(_consumed_time) + " blocks")
+	if (_consumed_time == NIGHT_START_BLOCK):
+		reached_night.emit()
 
 func discover_plant(plant_id: String) -> void:
 	if not discovered_plants.has(plant_id):

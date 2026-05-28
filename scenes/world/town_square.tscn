@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://j88nu0ctiyif" path="res://assets/sprites/environment/scene1/town_base.png" id="1_dg77c"]
 [ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://bnpwgod0ba31n" path="res://scripts/interactables/night_changer.gd" id="3_5rejm"]
 [ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="3_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
+[ext_resource type="Texture2D" uid="uid://dh7xeoajge8u7" path="res://assets/sprites/environment/scene1/fire.png" id="22_vhepp"]
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
@@ -80,6 +82,74 @@ size = Vector2(6, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
 size = Vector2(3, 3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jujta"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt8g2"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k67m"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icm3m"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4hhf"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7al0"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3e3a"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm2rq"]
+atlas = ExtResource("22_vhepp")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rejm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jujta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt8g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k67m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icm3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4hhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7al0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3e3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm2rq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vhepp"]
+radius = 7.0
+height = 28.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_park_portal"]
 size = Vector2(5, 40)
 
@@ -122,6 +192,8 @@ y_sort_enabled = true
 
 [node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244]
 position = Vector2(111, 116)
+script = ExtResource("3_5rejm")
+visible_at_night = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="YSortables/BenchLeft" unique_id=708923007]
@@ -208,6 +280,8 @@ shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="Wood" type="Node2D" parent="YSortables" unique_id=1103164443]
 position = Vector2(92, 122)
+script = ExtResource("3_5rejm")
+visible_at_night = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="YSortables/Wood" unique_id=1532364142]
@@ -312,6 +386,26 @@ position = Vector2(292, 113)
 [node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
 position = Vector2(271, 108)
 
+[node name="Fire" type="Node2D" parent="YSortables" unique_id=1584284445]
+visible = false
+position = Vector2(115, 130)
+script = ExtResource("3_5rejm")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Fire" unique_id=1704969301]
+sprite_frames = SubResource("SpriteFrames_5rejm")
+autoplay = "default"
+frame_progress = 0.21613881
+centered = false
+offset = Vector2(-24, -59)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Fire" unique_id=1310840813]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Fire/StaticBody2D" unique_id=618280100]
+position = Vector2(0, -2)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_vhepp")
+
 [node name="ParkPortal" type="Area2D" parent="YSortables" unique_id=901001003]
 position = Vector2(312, 153)
 script = ExtResource("30_transition")
@@ -324,6 +418,7 @@ position = Vector2(6.5, 0)
 shape = SubResource("RectangleShape2D_park_portal")
 
 [node name="CameraConfig" type="Node2D" parent="." unique_id=901001005]
+visible = false
 script = ExtResource("31_camera")
 
 [editable path="YSortables/BenchRight/OldWoman"]
