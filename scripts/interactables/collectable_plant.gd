@@ -4,19 +4,19 @@ class_name CollectablePlant
 signal plant_selected(plant: CollectablePlant)
 signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
-enum CuttingDifficulty { EASY, MEDIUM, HARD }
+enum CuttingDifficulty { EASY, MEDIUM, HARD, TUTORIAL }
 
 const CUTTING_DIFFICULTY_SETTINGS := {
 	CuttingDifficulty.EASY: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 450.0,
+		"base_rotation_speed_degrees": 300.0,
 		"direction_change_chance": 0.6,
 	},
 	CuttingDifficulty.MEDIUM: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 475.0,
+		"base_rotation_speed_degrees": 400.0,
 		"direction_change_chance": 0.8,
 	},
 	CuttingDifficulty.HARD: {
@@ -25,6 +25,12 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 		"base_rotation_speed_degrees": 500.0,
 		"direction_change_chance": 0.9,
 	},
+	CuttingDifficulty.TUTORIAL: {
+		"time_cost_blocks": 1.0,
+		"miss_time_cost_blocks": 1,
+		"base_rotation_speed_degrees": 300.0,
+		"direction_change_chance": 0,
+	}
 }
 
 @export var plant_launches_tutorial := false
@@ -49,7 +55,7 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 
 @export_group("Cutting Minigame")
 @export var cutting_minigame_scene: PackedScene = preload("res://scenes/minigames/cutting_minigame.tscn")
-@export_enum("Fácil", "Medio", "Difícil") var cutting_difficulty: int = CuttingDifficulty.MEDIUM
+@export_enum("Fácil", "Medio", "Difícil", "Tutorial") var cutting_difficulty: int = CuttingDifficulty.MEDIUM
 ## Negative values use the selected difficulty time cost.
 @export var cutting_time_cost_blocks: float = -1.0
 ## Negative values use the selected difficulty miss time cost.
