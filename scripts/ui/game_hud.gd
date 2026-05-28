@@ -4,6 +4,9 @@ const TIME_LABEL_DEFAULT_COLOR := Color('#d3ffce')
 const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 
 @export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
+@export_file("*.tscn") var final_area_path := "res://scenes/world/town_square.tscn"
+@export var final_spawn_id: StringName = &"default"
+@export var final_area_transition_duration := 0.45
 
 @onready var inventory_button: TextureButton = $InventoryButton
 @onready var time_label: Label = $TimeLabel
@@ -92,12 +95,46 @@ func _launch_final_sequence() -> void:
 	_set_inventory_open(false)
 	inventory_button.visible = false
 
+	await _close_cutting_minigames()
+	await _go_to_final_area()
 	await get_tree().create_timer(0.45).timeout
 	while DialogueBalloonCoordinator.is_running:
 		await get_tree().process_frame
 
 	await DialogueBalloonCoordinator.show_info_dialogue_and_wait("final_game_intro")
 	_show_final_composition()
+
+
+func _close_cutting_minigames() -> void:
+	var minigames := get_tree().get_nodes_in_group("cutting_minigame")
+	for minigame in minigames:
+		if minigame.has_method("cancel"):
+			minigame.cancel()
+		else:
+			minigame.queue_free()
+
+	for minigame in minigames:
+		if is_instance_valid(minigame):
+			await minigame.tree_exited
+
+
+func _go_to_final_area() -> void:
+	if final_area_path.is_empty():
+		return
+
+	var root := get_tree().current_scene
+	if not root:
+		return
+
+	var final_area := load(final_area_path) as PackedScene
+	if not final_area:
+		push_warning("GameHUD: could not load final area: %s" % final_area_path)
+		return
+
+	if root.has_method("transition_to_area"):
+		await root.transition_to_area(final_area, final_spawn_id, final_area_transition_duration)
+	elif root.has_method("load_area"):
+		root.load_area(final_area, final_spawn_id)
 
 
 func _show_final_composition() -> void:

@@ -2,11 +2,13 @@ extends Node2D
 
 @export var initial_area: PackedScene
 @export var initial_spawn_id: StringName = &"default"
+@export var transition_color := Color(0, 0, 0, 1)
 
 @onready var current_area_container: Node2D = $CurrentArea
 @onready var player: CharacterBody2D = $Player
 
 var _current_area: Node
+var _area_transition_tween: Tween
 
 
 func _ready() -> void:
@@ -29,6 +31,36 @@ func load_area(area_scene: PackedScene, spawn_id: StringName = &"default") -> vo
 	_current_area = next_area
 
 	_attach_player_to_area(next_area, spawn_id)
+
+
+func transition_to_area(area_scene: PackedScene, spawn_id: StringName = &"default", fade_duration: float = 0.45) -> void:
+	if not area_scene:
+		return
+
+	if _area_transition_tween:
+		_area_transition_tween.kill()
+
+	var fade_layer := CanvasLayer.new()
+	fade_layer.layer = 100
+	add_child(fade_layer)
+
+	var fade_rect := ColorRect.new()
+	fade_rect.color = Color(transition_color.r, transition_color.g, transition_color.b, 0.0)
+	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade_layer.add_child(fade_rect)
+
+	_area_transition_tween = create_tween()
+	_area_transition_tween.tween_property(fade_rect, "color:a", transition_color.a, fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await _area_transition_tween.finished
+
+	load_area(area_scene, spawn_id)
+	await get_tree().process_frame
+
+	_area_transition_tween = create_tween()
+	_area_transition_tween.tween_property(fade_rect, "color:a", 0.0, fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_area_transition_tween.tween_callback(fade_layer.queue_free)
+	await _area_transition_tween.finished
 
 
 func _detach_player() -> void:

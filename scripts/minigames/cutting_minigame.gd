@@ -34,6 +34,7 @@ var _success_zones_image: Image
 var movingGrassSound : FmodEvent
 
 func _ready() -> void:
+	add_to_group("cutting_minigame")
 	get_viewport().size_changed.connect(_center_game)
 	_center_game()
 	cursor.position = Vector2(cursor_radius, 0.0)
@@ -84,6 +85,15 @@ func _try_cut() -> void:
 		SoundManager.play_simple_sound('Actions/Error')
 		if _misses >= max_misses:
 			_finish(false)
+
+
+func cancel() -> void:
+	if _is_finished:
+		return
+
+	_is_finished = true
+	SoundManager.stop_looped_sound(movingGrassSound)
+	queue_free()
 
 
 func _is_successful_cut() -> bool:
