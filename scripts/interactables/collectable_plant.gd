@@ -10,7 +10,7 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 	CuttingDifficulty.EASY: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 300.0,
+		"base_rotation_speed_degrees": 340.0,
 		"direction_change_chance": 0.6,
 	},
 	CuttingDifficulty.MEDIUM: {

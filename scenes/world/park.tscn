@@ -221,6 +221,7 @@ collection_id = &"romeu2"
 [node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
 position = Vector2(205, 134)
 collection_id = &"herba_luisa1"
+cutting_difficulty = 1
 
 [node name="Xesta" parent="YSortables" unique_id=97273433 instance=ExtResource("13_wlbh6")]
 position = Vector2(186, 108)
