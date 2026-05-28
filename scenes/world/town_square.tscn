@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/Ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Resource" uid="uid://0uakb4p3pgua" path="res://dialogues/scene1/school_board.dialogue" id="13_5k67m"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
@@ -255,6 +256,9 @@ texture = ExtResource("7_dg77c")
 position = Vector2(6, -3)
 shape = SubResource("RectangleShape2D_old_woman_click")
 
+[node name="Ipomea" parent="YSortables/BenchRight/OldWoman/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="1" unique_id=1542834651 instance=ExtResource("9_s4hhf")]
+position = Vector2(143, -15)
+
 [node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
 position = Vector2(93, 107)
 metadata/_edit_group_ = true
@@ -436,7 +440,7 @@ collection_id = &"hortensia1"
 position = Vector2(183, 137)
 collection_id = &"hortensia2"
 
-[node name="Menta" parent="YSortables" unique_id=1542834651 instance=ExtResource("3_d13ii")]
+[node name="Menta" parent="YSortables" unique_id=1760898384 instance=ExtResource("3_d13ii")]
 position = Vector2(42, 134)
 collection_id = &"menta1"
 

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://80rsdbh4iowk"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_g2e3d"]
+[ext_resource type="Texture2D" uid="uid://d4appjpaibl5l" path="res://assets/sprites/environment/plants/ipomea.png" id="2_cok0f"]
+[ext_resource type="Texture2D" uid="uid://chaal4br1lpdp" path="res://assets/sprites/environment/plants/ipomea_hover.png" id="3_cok0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmno0"]
+resource_local_to_scene = true
+size = Vector2(14, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxy3x"]
+resource_local_to_scene = true
+size = Vector2(12, 1)
+
+[node name="Ipomea" unique_id=1542834651 instance=ExtResource("1_g2e3d")]
+plant_id = &"ipomea"
+plant_display_name = "Ipomea azul"
+hover_color = Color(0.70655483, 0.62303036, 1, 0.6862745)
+is_invasive = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_cok0f")
+offset = Vector2(-6, -6)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-3, 5)
+texture = ExtResource("3_cok0f")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_wmno0")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_yxy3x")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -11.0
+offset_top = -12.0
+offset_right = 13.0
+offset_bottom = -6.0
