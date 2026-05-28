@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bn1k52c15hrs"]
+
+[ext_resource type="Script" uid="uid://dfo6c8xhf73fe" path="res://scripts/ui/final_composition_selected_row.gd" id="1_row"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+
+[node name="FinalCompositionSelectedRow" type="HBoxContainer" unique_id=224116135]
+custom_minimum_size = Vector2(0, 10)
+theme_override_constants/separation = 5
+script = ExtResource("1_row")
+
+[node name="NameLabel" type="Label" parent="." unique_id=479058422]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "Fiuncho"
+
+[node name="RemoveButton" type="Label" parent="." unique_id=215372733]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "x"
+horizontal_alignment = 1

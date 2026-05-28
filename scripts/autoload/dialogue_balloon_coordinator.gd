@@ -169,11 +169,38 @@ func show_info_dialogue(
 	return true
 
 
+func show_info_dialogue_and_wait(
+	dialogue_title: String,
+	replacements: Dictionary = {},
+	extra_game_states: Array = []
+) -> bool:
+	if not is_instance_valid(GENERAL_INFO_DIALOGUE):
+		push_warning("DialogueBalloonCoordinator: missing info dialogue_resource.")
+		return false
+
+	if is_instance_valid(_current_info_balloon):
+		_current_info_balloon.queue_free()
+
+	var balloon := DialogueManager.show_dialogue_balloon_scene(
+		DEFAULT_INFO_BALLOON_SCENE,
+		GENERAL_INFO_DIALOGUE,
+		dialogue_title,
+		[self] + extra_game_states
+	) as GenericInfoBalloon
+	if is_instance_valid(balloon):
+		_current_info_balloon = balloon
+		balloon.replacements = replacements
+
+	await _wait_for_dialogue_to_end(GENERAL_INFO_DIALOGUE)
+	return true
+
+
 func _apply_info_replacements(message: String, replacements: Dictionary) -> String:
 	var resolved_message := message
 	for key in replacements.keys():
 		resolved_message = resolved_message.replace("{" + str(key) + "}", str(replacements[key]))
 	return resolved_message
+
 
 func _request_dialogue_step(speaker: String, title: String, speaker_id: String = "") -> void:
 	if title.is_empty():

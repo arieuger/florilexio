@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/final_composition_item_row.gd" id="1_row"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+
+[node name="FinalCompositionItemRow" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+mouse_filter = 0
+theme_override_constants/separation = 6
+script = ExtResource("1_row")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "Fiuncho"
+
+[node name="AmountLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "x1"
+horizontal_alignment = 2

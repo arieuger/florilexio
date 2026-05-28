@@ -3,6 +3,8 @@ extends CanvasLayer
 const TIME_LABEL_DEFAULT_COLOR := Color('#d3ffce')
 const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 
+@export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
+
 @onready var inventory_button: TextureButton = $InventoryButton
 @onready var time_label: Label = $TimeLabel
 @onready var inventory_panel: Control = $InventoryPanel
@@ -10,6 +12,8 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 var _time_shake_tween: Tween
 var _time_blink_tween: Tween
 var _time_label_base_position: Vector2
+var _final_sequence_started := false
+var _final_composition_panel: FinalCompositionPanel
 
 
 func _ready() -> void:
@@ -42,6 +46,9 @@ func _update_time_label(_total_consumed_time: int) -> void:
 func _on_consumed_time_added(total_consumed_time: int) -> void:
 	_update_time_label(total_consumed_time)
 	_play_time_feedback()
+	if total_consumed_time >= GameState.TOTAL_BLOCKS and not _final_sequence_started:
+		_final_sequence_started = true
+		_launch_final_sequence.call_deferred()
 
 
 func _play_time_feedback() -> void:
@@ -69,3 +76,32 @@ func _play_time_feedback() -> void:
 
 func _set_time_label_color(color: Color) -> void:
 	time_label.add_theme_color_override("font_color", color)
+
+
+func _launch_final_sequence() -> void:
+	_set_inventory_open(false)
+	inventory_button.visible = false
+
+	await get_tree().create_timer(0.45).timeout
+	while DialogueBalloonCoordinator.is_running:
+		await get_tree().process_frame
+
+	await DialogueBalloonCoordinator.show_info_dialogue_and_wait("final_game_intro")
+	_show_final_composition()
+
+
+func _show_final_composition() -> void:
+	if is_instance_valid(_final_composition_panel) or not is_instance_valid(final_composition_scene):
+		return
+
+	InventoryManager.clear_bouquet()
+	_final_composition_panel = final_composition_scene.instantiate() as FinalCompositionPanel
+	if not _final_composition_panel:
+		return
+
+	_final_composition_panel.composition_requested.connect(_on_final_composition_requested)
+	add_child(_final_composition_panel)
+
+
+func _on_final_composition_requested() -> void:
+	print("TODO: desencadear cálculo final de puntuacións.")
