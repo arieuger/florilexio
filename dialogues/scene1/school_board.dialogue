@@ -1,0 +1,16 @@
+~ start
+Materia\: Ciencias da Terra e Botánica.
+Contidos\: 
+\- Endemismos e plantas en perigo de extinción no
+barrio de Duasaugas\: detección e coidados in situ.
+\- Especies invasoras\: como recoñecelas, cortalas e desbotalas.
+
+Prácticum\: Herbario de San Xoán. As herbas "máxicas" de Duasaugas.
+
+Exame\: 7 de setembro, aula 7G. 
+Data límite de entrega\: 7 de setembro
+
+if not GameState.acknowledged_invasive_plants:
+	do GameState.add_consumed_time(1)
+	do GameState.acknowledged_invasive_plants = true
+=> END

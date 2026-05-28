@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
+[ext_resource type="Resource" uid="uid://0uakb4p3pgua" path="res://dialogues/scene1/school_board.dialogue" id="13_5k67m"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
 [ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
@@ -39,8 +41,14 @@ b = Vector2(0, 180)
 a = Vector2(320, 180)
 b = Vector2(320, 98)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_old_woman_click"]
+size = Vector2(6, 10)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(8, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_school_board_click"]
+size = Vector2(9, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
 atlas = ExtResource("9_kek77")
@@ -245,6 +253,7 @@ texture = ExtResource("7_dg77c")
 
 [node name="CollisionShape2D" parent="YSortables/BenchRight/OldWoman/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(6, -3)
+shape = SubResource("RectangleShape2D_old_woman_click")
 
 [node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
 position = Vector2(93, 107)
@@ -313,6 +322,26 @@ polygon = PackedVector2Array(0, 2, 11, 2, 11, 1, 43, 1, 43.000004, 0.1053524, 52
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="YSortables/SchoolGate/StaticBody2D" unique_id=1610972094]
 position = Vector2(62, 1)
 polygon = PackedVector2Array(0, 0, 6, 0, 6, 1, 64, 1, 64, 0.18919182, 90, 0, 90, -18, 91, -18, 91, -35, 87, -35, 87, -26, 86, -26, 86, -4, 64, -4, 64, -2, 6, -2, 6, -3, 0, -3)
+
+[node name="SchoolBoard" parent="YSortables" unique_id=122154945 instance=ExtResource("5_4c57u")]
+position = Vector2(194, 117)
+dialogue_resource = ExtResource("13_5k67m")
+hover_color = Color(0.9999997, 0.9671461, 0.7799386, 0.7490196)
+
+[node name="BalloonConfig" parent="YSortables/SchoolBoard" index="0" unique_id=1949997476]
+speaker_id = &"school_board"
+balloon_color = Color(0.95284206, 0.90680516, 0.6511758, 1)
+
+[node name="InteractionPoint" parent="YSortables/SchoolBoard" index="1" unique_id=222721431]
+position = Vector2(0, 8)
+
+[node name="HoverSprite" parent="YSortables/SchoolBoard" index="2" unique_id=1049314272]
+position = Vector2(-8, 4)
+texture = ExtResource("14_icm3m")
+
+[node name="CollisionShape2D" parent="YSortables/SchoolBoard/ClickArea" parent_id_path=PackedInt32Array(122154945, 474706418) index="0" unique_id=654827359]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_school_board_click")
 
 [node name="Dog" type="Node2D" parent="YSortables" unique_id=417475737]
 position = Vector2(142, 122)
@@ -448,3 +477,4 @@ visible = false
 script = ExtResource("31_camera")
 
 [editable path="YSortables/BenchRight/OldWoman"]
+[editable path="YSortables/SchoolBoard"]

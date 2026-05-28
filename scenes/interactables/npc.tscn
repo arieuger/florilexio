@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="3_jkvbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkvbc"]
-size = Vector2(6, 10)
+resource_local_to_scene = true
+size = Vector2(5.5, 8.5)
 
 [node name="NPC" type="Node2D" unique_id=2036821595]
 script = ExtResource("1_dngen")
