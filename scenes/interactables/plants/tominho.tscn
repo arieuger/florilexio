@@ -16,6 +16,7 @@ size = Vector2(10, 2)
 plant_id = &"tominho"
 plant_display_name = "Tomiño"
 hover_color = Color(0.52667737, 0.9694161, 0.77080345, 0.6862745)
+is_magic = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_wdpxp")

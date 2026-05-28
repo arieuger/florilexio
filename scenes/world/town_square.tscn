@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/Ipomea.tscn" id="9_s4hhf"]
+[ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Resource" uid="uid://0uakb4p3pgua" path="res://dialogues/scene1/school_board.dialogue" id="13_5k67m"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dh7xeoajge8u7" path="res://assets/sprites/environment/scene1/fire.png" id="22_vhepp"]
 [ext_resource type="Texture2D" uid="uid://td1wxx23bp73" path="res://assets/sprites/environment/scene1/fire_light.png" id="23_jujta"]
-[ext_resource type="Script" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
+[ext_resource type="Script" uid="uid://bflryiti23qla" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
@@ -454,7 +454,6 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_vhepp")
 
 [node name="NightSound" type="FmodEventEmitter2D" parent="YSortables/Fire" unique_id=1714815642]
-event_name = "event:/Environment/Campfire"
 event_guid = "{1472490c-d952-4a52-a464-cd5054073c09}"
 
 [node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]

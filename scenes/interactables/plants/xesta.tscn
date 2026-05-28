@@ -16,6 +16,7 @@ size = Vector2(10, 2)
 plant_id = &"xesta"
 plant_display_name = "Xesta"
 hover_color = Color(0.935544, 1, 0.6177633, 0.6862745)
+is_magic = true
 cutting_difficulty = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]

@@ -16,6 +16,7 @@ size = Vector2(13, 3)
 plant_id = &"fento"
 plant_display_name = "Fento"
 hover_color = Color(0.21253657, 0.99999994, 0.49995482, 0.6862745)
+is_magic = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_xe6yg")
