@@ -363,7 +363,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Fire" unique_id=1704969301]
 sprite_frames = SubResource("SpriteFrames_5rejm")
 autoplay = "default"
-frame_progress = 0.5887007
+frame_progress = 0.15982646
 centered = false
 offset = Vector2(-24, -59)
 

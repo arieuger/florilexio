@@ -22,6 +22,7 @@ var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
 
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
+var _pending_consumed_time: float = 0.0
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras
 
@@ -39,12 +40,22 @@ func get_current_time_text() -> String:
 	var minute := current_minutes % 60
 	return "%02d:%02d" % [hour, minute]
 
-func add_consumed_time(time: int) -> void:
-	_consumed_time += time
+func add_consumed_time(time: float) -> void:
+	if time <= 0.0:
+		return
+
+	_pending_consumed_time += time
+	var completed_blocks := floori(_pending_consumed_time)
+	if completed_blocks <= 0:
+		return
+
+	var previous_consumed_time := _consumed_time
+	_pending_consumed_time -= completed_blocks
+	_consumed_time += completed_blocks
 
 	consumed_time_added.emit(_consumed_time)
 	print("Consumed time: " + str(_consumed_time) + " blocks")
-	if (_consumed_time == NIGHT_START_BLOCK):
+	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
 		reached_night.emit()
 
 func discover_plant(plant_id: String) -> void:

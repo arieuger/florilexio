@@ -10,7 +10,8 @@ var required_hits: int = 3
 var max_misses: int = 3
 var rotation_speed_degrees: float = 120.0
 @export var cursor_radius: float = 21.0
-var time_cost_blocks: int = 1
+var time_cost_blocks: float = 1.0
+var miss_time_cost_blocks: float = 0.0
 var success_alpha_threshold := 0.1
 
 @onready var game_root: Node2D = $GameRoot
@@ -71,6 +72,7 @@ func _try_cut() -> void:
 			_finish(true)
 	else:
 		_misses += 1
+		GameState.add_consumed_time(miss_time_cost_blocks)
 		_show_feedback("Fallaches " + str(_misses) + "/" + str(max_misses), Color(1.0, 0.45, 0.45, 1.0))
 		_shake_ring()
 		SoundManager.play_simple_sound('Actions/Error')

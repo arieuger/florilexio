@@ -4,6 +4,26 @@ class_name CollectablePlant
 signal plant_selected(plant: CollectablePlant)
 signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
+enum CuttingDifficulty { EASY, MEDIUM, HARD }
+
+const CUTTING_DIFFICULTY_SETTINGS := {
+	CuttingDifficulty.EASY: {
+		"time_cost_blocks": 1.0,
+		"miss_time_cost_blocks": 0.5,
+		"base_rotation_speed_degrees": 90.0,
+	},
+	CuttingDifficulty.MEDIUM: {
+		"time_cost_blocks": 1.0,
+		"miss_time_cost_blocks": 0.5,
+		"base_rotation_speed_degrees": 120.0,
+	},
+	CuttingDifficulty.HARD: {
+		"time_cost_blocks": 2.0,
+		"miss_time_cost_blocks": 1.0,
+		"base_rotation_speed_degrees": 160.0,
+	},
+}
+
 @export var plant_launches_tutorial := false
 @export var tutorial_dialogue: DialogueResource = preload("res://dialogues/scene1/tutorial.dialogue")
 @export var tutorial_dialogue_title := "start"
@@ -16,7 +36,6 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 @export var plant_display_name: String
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
-@export var time_cost_blocks: int = 1
 
 @export_group("Plant features")
 @export var is_poisonous := false
@@ -27,9 +46,15 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
 @export_group("Cutting Minigame")
 @export var cutting_minigame_scene: PackedScene = preload("res://scenes/minigames/cutting_minigame.tscn")
+@export_enum("Fácil", "Medio", "Difícil") var cutting_difficulty: int = CuttingDifficulty.MEDIUM
+## Negative values use the selected difficulty time cost.
+@export var cutting_time_cost_blocks: float = -1.0
+## Negative values use the selected difficulty miss time cost.
+@export var cutting_miss_time_cost_blocks: float = -1.0
 @export var cutting_required_hits: int = 3
 @export var cutting_max_misses: int = 3
-@export var cutting_rotation_speed_degrees: float = 120.0
+## 0 uses the selected difficulty base speed.
+@export var cutting_rotation_speed_degrees: float = 0.0
 @export_range(0.0, 1.0, 0.01) var cutting_success_alpha_threshold := 0.1
 @export_group("")
 
@@ -117,12 +142,14 @@ func start_cutting_minigame() -> void:
 		_on_cutting_minigame_closed()
 		return
 
+	var difficulty_settings := _get_cutting_difficulty_settings()
 	minigame.plant_id = plant_id
 	minigame.plant_display_name = plant_display_name
-	minigame.time_cost_blocks = time_cost_blocks
+	minigame.time_cost_blocks = _get_cutting_time_cost(difficulty_settings)
+	minigame.miss_time_cost_blocks = _get_cutting_miss_time_cost(difficulty_settings)
 	minigame.required_hits = cutting_required_hits
 	minigame.max_misses = cutting_max_misses
-	minigame.rotation_speed_degrees = cutting_rotation_speed_degrees
+	minigame.rotation_speed_degrees = _get_cutting_rotation_speed(difficulty_settings)
 	minigame.success_alpha_threshold = cutting_success_alpha_threshold
 	minigame.completed.connect(_on_cutting_minigame_completed)
 	minigame.tree_exited.connect(_on_cutting_minigame_closed)
@@ -173,6 +200,31 @@ func _run_tutorial() -> bool:
 	if tutorial_was_run:
 		GameState.tutorial_already_launched = true
 	return tutorial_was_run
+
+
+func _get_cutting_difficulty_settings() -> Dictionary:
+	return CUTTING_DIFFICULTY_SETTINGS.get(cutting_difficulty, CUTTING_DIFFICULTY_SETTINGS[CuttingDifficulty.MEDIUM])
+
+
+func _get_cutting_time_cost(difficulty_settings: Dictionary) -> float:
+	if cutting_time_cost_blocks >= 0.0:
+		return cutting_time_cost_blocks
+
+	return difficulty_settings["time_cost_blocks"]
+
+
+func _get_cutting_miss_time_cost(difficulty_settings: Dictionary) -> float:
+	if cutting_miss_time_cost_blocks >= 0.0:
+		return cutting_miss_time_cost_blocks
+
+	return difficulty_settings["miss_time_cost_blocks"]
+
+
+func _get_cutting_rotation_speed(difficulty_settings: Dictionary) -> float:
+	if cutting_rotation_speed_degrees > 0.0:
+		return cutting_rotation_speed_degrees
+
+	return difficulty_settings["base_rotation_speed_degrees"]
 
 
 func _fade_hover_to(target_alpha: float) -> void:
