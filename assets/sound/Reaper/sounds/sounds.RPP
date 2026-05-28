@@ -1,7 +1,7 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779900629 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779959728 0
   <NOTES 0 2
   >
-  RIPPLE 0 0
+  RIPPLE 1 0
   GROUPOVERRIDE 0 0 0 0
   AUTOXFADE 129
   ENVATTACH 2
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 254.2
-  ZOOM 71.04526911253255 17319 0
-  VZOOMEX 1.25 130
+  CURSOR 257.6
+  ZOOM 50.47430263272146 12328 0
+  VZOOMEX 2.54999995 370
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -37,10 +37,10 @@
   RENDER_PATTERN $track
   RENDER_FMT 0 2 44100
   RENDER_1X 0
-  RENDER_RANGE 5 0 0 0 1000
+  RENDER_RANGE 4 0 0 0 1000
   RENDER_RESAMPLE 3 0 1
   RENDER_ADDTOPROJ 0
-  RENDER_STEMS 3
+  RENDER_STEMS 32
   RENDER_DITHER 0
   RENDER_TRIM 0.000001 0.000001 0 0
   TIMELOCKMODE 1
@@ -1140,6 +1140,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1232,6 +1233,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1280,6 +1282,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1306,7 +1309,8 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    LANEREC -1 -1 -1 0
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -1378,6 +1382,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1431,6 +1436,150 @@
       GUID {E16BDB00-3AC3-850C-2186-3FE5FA2274CC}
       <SOURCE MP3
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/825424__sinny__dry-bush-03.mp3" 1
+      >
+    >
+  >
+  <TRACK {F6627961-8555-2457-E54C-8BD1CAAD037F}
+    NAME Inventory
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {F6627961-8555-2457-E54C-8BD1CAAD037F}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {20FF3488-2ACE-DCD6-7667-984661587FE6}
+    NAME "Open Inventory"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {20FF3488-2ACE-DCD6-7667-984661587FE6}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 257.6
+      SNAPOFFS 0
+      LENGTH 1.23195011337862
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {98D184DB-1F59-A00C-3850-2AEBF636635C}
+      IID 489
+      NAME 511847__luke100000__turning-pages.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2.73267573696143
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {466A768C-293C-C73E-1782-912F48EA350F}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/511847__luke100000__turning-pages.wav"
+      >
+    >
+    <ITEM
+      POSITION 259.6
+      SNAPOFFS 0
+      LENGTH 1.02845804988664
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {B56A9D54-7652-61BA-A9F6-C2BD4778B01A}
+      IID 495
+      NAME 511847__luke100000__turning-pages.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 8.12331065759639
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EA87655D-FC49-BF2D-4690-7197223A3A8C}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/511847__luke100000__turning-pages.wav"
+      >
+    >
+    <ITEM
+      POSITION 261.6
+      SNAPOFFS 0
+      LENGTH 1.26321995467185
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {78F7F4EB-E70C-8206-5DD9-63215A5140FB}
+      IID 497
+      NAME 511847__luke100000__turning-pages.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 10.53678004535146
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {45A5E396-D44E-3CCB-E793-9887BA8EDFC4}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/511847__luke100000__turning-pages.wav"
+      >
+    >
+    <ITEM
+      POSITION 263.6
+      SNAPOFFS 0
+      LENGTH 1.41616780045348
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      MIXFLAG 1
+      SEL 1
+      IGUID {87614587-BAB7-CEE9-7793-1E13BE2CF168}
+      IID 499
+      NAME 511847__luke100000__turning-pages.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 12.7798866213152
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {93197DBE-DDE5-D462-2D42-FA8DE6C491D4}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/511847__luke100000__turning-pages.wav"
       >
     >
   >

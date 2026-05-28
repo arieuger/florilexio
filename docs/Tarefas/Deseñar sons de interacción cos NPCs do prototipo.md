@@ -4,5 +4,5 @@ responsable: poch
 ---
 ## Subtarefas
 
-- [ ] Voz grave
-- [ ] Voz aguda
+- [x] Voz grave
+- [x] Voz aguda
