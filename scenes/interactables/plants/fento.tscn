@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://d3lkf52xg6d6i" path="res://assets/sprites/environment/plants/fento.png" id="2_xe6yg"]
 [ext_resource type="Texture2D" uid="uid://b1pv3ed7swgyx" path="res://assets/sprites/environment/plants/fento_hover.png" id="3_d7qrg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe6yg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qrg"]
 resource_local_to_scene = true
 size = Vector2(14, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qrg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qocsl"]
 resource_local_to_scene = true
 size = Vector2(13, 3)
 
@@ -16,6 +16,7 @@ size = Vector2(13, 3)
 plant_id = &"fento"
 plant_display_name = "Fento"
 hover_color = Color(0.21253657, 0.99999994, 0.49995482, 0.6862745)
+cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_xe6yg")
@@ -27,14 +28,14 @@ texture = ExtResource("3_d7qrg")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(1, -4.5)
-shape = SubResource("RectangleShape2D_xe6yg")
+shape = SubResource("RectangleShape2D_d7qrg")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, 5)
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0.5, -1.5)
-shape = SubResource("RectangleShape2D_d7qrg")
+shape = SubResource("RectangleShape2D_qocsl")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cg8g5puxdw8x2" path="res://assets/sprites/environment/plants/tominho.png" id="2_wdpxp"]
 [ext_resource type="Texture2D" uid="uid://dox73qhh8rkbp" path="res://assets/sprites/environment/plants/tominho_hover.png" id="3_4h568"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdpxp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h568"]
 resource_local_to_scene = true
 size = Vector2(6, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h568"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bie7r"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -27,11 +27,11 @@ texture = ExtResource("3_4h568")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_wdpxp")
+shape = SubResource("RectangleShape2D_4h568")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_4h568")
+shape = SubResource("RectangleShape2D_bie7r")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

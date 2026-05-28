@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://ba1e5tmw0q0g2" path="res://assets/sprites/environment/plants/malva.png" id="2_24dq6"]
 [ext_resource type="Texture2D" uid="uid://bovooip1mvcjw" path="res://assets/sprites/environment/plants/malva_hover.png" id="3_t3ovb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_24dq6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ovb"]
 resource_local_to_scene = true
 size = Vector2(8, 8.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ovb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq5v8"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -16,6 +16,7 @@ size = Vector2(10, 2)
 plant_id = &"malva"
 plant_display_name = "Malva"
 hover_color = Color(0.8595422, 0.64244825, 1, 0.6862745)
+cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_24dq6")
@@ -27,14 +28,14 @@ texture = ExtResource("3_t3ovb")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -4.25)
-shape = SubResource("RectangleShape2D_24dq6")
+shape = SubResource("RectangleShape2D_t3ovb")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, 4)
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_t3ovb")
+shape = SubResource("RectangleShape2D_tq5v8")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 visible = true

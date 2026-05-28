@@ -412,8 +412,12 @@ position = Vector2(42, 134)
 collection_id = &"menta1"
 
 [node name="Ortiga" parent="YSortables" unique_id=503916748 instance=ExtResource("20_0odxb")]
-position = Vector2(25, 127)
+position = Vector2(22, 127)
 collection_id = &"ortiga1"
+
+[node name="Ortiga2" parent="YSortables" unique_id=1600940236 instance=ExtResource("20_0odxb")]
+position = Vector2(28, 128)
+collection_id = &"ortiga2"
 
 [node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
 position = Vector2(205, 137)

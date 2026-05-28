@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://be6y6rc48atg8" path="res://assets/sprites/environment/plants/hiperico.png" id="2_rcsgu"]
 [ext_resource type="Texture2D" uid="uid://kv7n6k2sqowp" path="res://assets/sprites/environment/plants/hiperico_hover.png" id="3_rcsgu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc7fv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcsgu"]
 resource_local_to_scene = true
 size = Vector2(8, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_03sbp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kc7fv"]
 resource_local_to_scene = true
 size = Vector2(9, 2)
 
@@ -16,6 +16,7 @@ size = Vector2(9, 2)
 plant_id = &"hiperico"
 plant_display_name = "Hipérico"
 hover_color = Color(0.7809868, 1, 0.53371567, 0.6862745)
+cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_rcsgu")
@@ -27,11 +28,11 @@ texture = ExtResource("3_rcsgu")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(1, -5)
-shape = SubResource("RectangleShape2D_kc7fv")
+shape = SubResource("RectangleShape2D_rcsgu")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_03sbp")
+shape = SubResource("RectangleShape2D_kc7fv")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_top = -17.0
