@@ -21,7 +21,7 @@ var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
 
-var _consumed_time: int = 40 # Bloques de 15 minutos: en 12 horas, 48 bloques
+var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras
 

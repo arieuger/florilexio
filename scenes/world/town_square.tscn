@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dh7xeoajge8u7" path="res://assets/sprites/environment/scene1/fire.png" id="22_vhepp"]
+[ext_resource type="Texture2D" uid="uid://td1wxx23bp73" path="res://assets/sprites/environment/scene1/fire_light.png" id="23_jujta"]
+[ext_resource type="Script" uid="uid://bflryiti23qla" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
@@ -395,9 +397,18 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Fire" unique_id=1704969301]
 sprite_frames = SubResource("SpriteFrames_5rejm")
 autoplay = "default"
-frame_progress = 0.21613881
+frame_progress = 0.9256385
 centered = false
 offset = Vector2(-24, -59)
+
+[node name="PointLight2D" type="PointLight2D" parent="YSortables/Fire" unique_id=1757805909]
+texture_filter = 1
+position = Vector2(0, -11)
+color = Color(0.9239885, 0.54399693, 0.30584052, 1)
+energy = 0.7
+texture = ExtResource("23_jujta")
+script = ExtResource("24_bt8g2")
+flicker_speed = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Fire" unique_id=1310840813]
 
