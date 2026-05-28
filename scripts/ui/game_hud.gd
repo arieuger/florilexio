@@ -37,7 +37,7 @@ func _hide_inventory() -> void:
 
 
 func _on_inventory_button_pressed() -> void:
-	SoundManager.play_simple_sound("Actions/Click")
+	SoundManager.play_simple_sound("Inventory/Open Inventory")
 
 
 func _on_inventory_button_mouse_entered() -> void:

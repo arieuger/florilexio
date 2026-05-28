@@ -52,7 +52,7 @@ func _refresh() -> void:
 
 
 func _on_close_button_pressed() -> void:
-	SoundManager.play_simple_sound("Actions/Click")
+	SoundManager.play_simple_sound("Inventory/Open Inventory")
 	close_requested.emit()
 
 

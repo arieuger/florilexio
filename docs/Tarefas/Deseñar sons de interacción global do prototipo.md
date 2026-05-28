@@ -6,6 +6,6 @@ responsable: poch
 
 - [x] Click
 - [x] Hover
-- [ ] Éxito
+- [x] Éxito
 - [x] Fracaso
 - [ ] Abrir configuración
