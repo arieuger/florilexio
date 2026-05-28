@@ -4,7 +4,7 @@ class_name CuttingMinigame
 signal completed(plant_id: StringName)
 signal failed(plant_id: StringName)
 
-const DIRECTION_CHANGE_INTERVAL := 4.0
+const DIRECTION_CHANGE_INTERVAL := 3.0
 
 var plant_id: StringName
 var plant_display_name: String

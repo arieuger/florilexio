@@ -9,21 +9,21 @@ enum CuttingDifficulty { EASY, MEDIUM, HARD }
 const CUTTING_DIFFICULTY_SETTINGS := {
 	CuttingDifficulty.EASY: {
 		"time_cost_blocks": 1.0,
-		"miss_time_cost_blocks": 0.5,
-		"base_rotation_speed_degrees": 240.0,
-		"direction_change_chance": 0.2,
+		"miss_time_cost_blocks": 1,
+		"base_rotation_speed_degrees": 500.0,
+		"direction_change_chance": 0.6,
 	},
 	CuttingDifficulty.MEDIUM: {
 		"time_cost_blocks": 1.0,
-		"miss_time_cost_blocks": 0.5,
-		"base_rotation_speed_degrees": 280.0,
-		"direction_change_chance": 0.45,
+		"miss_time_cost_blocks": 2,
+		"base_rotation_speed_degrees": 520.0,
+		"direction_change_chance": 0.8,
 	},
 	CuttingDifficulty.HARD: {
 		"time_cost_blocks": 2.0,
-		"miss_time_cost_blocks": 1.0,
-		"base_rotation_speed_degrees": 320.0,
-		"direction_change_chance": 0.8,
+		"miss_time_cost_blocks": 2.5,
+		"base_rotation_speed_degrees": 550.0,
+		"direction_change_chance": 0.9,
 	},
 }
 
