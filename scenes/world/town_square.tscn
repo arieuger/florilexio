@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dh7xeoajge8u7" path="res://assets/sprites/environment/scene1/fire.png" id="22_vhepp"]
 [ext_resource type="Texture2D" uid="uid://td1wxx23bp73" path="res://assets/sprites/environment/scene1/fire_light.png" id="23_jujta"]
-[ext_resource type="Script" uid="uid://bflryiti23qla" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
+[ext_resource type="Script" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
@@ -452,6 +452,10 @@ flicker_speed = 5.0
 position = Vector2(0, -2)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_vhepp")
+
+[node name="NightSound" type="FmodEventEmitter2D" parent="YSortables/Fire" unique_id=1714815642]
+event_name = "event:/Environment/Campfire"
+event_guid = "{1472490c-d952-4a52-a464-cd5054073c09}"
 
 [node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
 position = Vector2(31, 131)

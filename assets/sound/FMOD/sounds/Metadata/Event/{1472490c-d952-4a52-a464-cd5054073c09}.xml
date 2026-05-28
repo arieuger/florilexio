@@ -5,7 +5,7 @@
 			<value>Campfire</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{083873f6-474b-423f-a98c-9f578ac28298}</destination>
@@ -59,7 +59,11 @@
 			<destination>{c15706d6-9c30-42fb-bec9-10c092e621cb}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{9a45fb32-d52e-42ce-a939-08244e077ea7}" />
+	<object class="EventAutomatableProperties" id="{9a45fb32-d52e-42ce-a939-08244e077ea7}">
+		<property name="maximumDistance">
+			<value>200</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{1b4f4247-7a45-41f0-b91c-9dd8540ea611}" />
 	<object class="GroupTrack" id="{ad9ca71a-f483-4dcd-9b4a-eaa6528384fa}">
 		<relationship name="modules">
@@ -321,9 +325,14 @@
 	<object class="MixerBusEffectChain" id="{f1b1f2bf-0f7a-4371-910e-f7940e04210d}">
 		<relationship name="effects">
 			<destination>{c0dafc08-e553-493f-a797-31696e416839}</destination>
+			<destination>{644711b7-98f4-4e77-8164-f093fe741028}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{54588a9b-c2dd-4d64-b314-59f1d3cf11d2}" />
+	<object class="MixerBusPanner" id="{54588a9b-c2dd-4d64-b314-59f1d3cf11d2}">
+		<property name="surroundPanExtent">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{9fa1676b-56ed-4551-9551-b20efe865865}" />
 	<object class="MixerBusEffectChain" id="{adc3daec-1d1c-4228-8d43-ebaf36fbd9d4}">
 		<relationship name="effects">
@@ -460,6 +469,20 @@
 	</object>
 	<object class="MixerBusPanner" id="{84edc518-f7ab-4cb8-af5c-cf1556e7c6af}" />
 	<object class="MixerBusFader" id="{c0dafc08-e553-493f-a797-31696e416839}" />
+	<object class="SpatialiserEffect" id="{644711b7-98f4-4e77-8164-f093fe741028}">
+		<property name="minimumDistance">
+			<value>7.5</value>
+		</property>
+		<property name="maximumDistance">
+			<value>650</value>
+		</property>
+		<property name="soundSize">
+			<value>6.5</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>-60</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b76f5b4e-13a1-4c42-9dab-4018311c9230}" />
 	<object class="AutomationPoint" id="{6faab55a-1faf-4dad-be70-0968caaa8cf9}">
 		<property name="position">

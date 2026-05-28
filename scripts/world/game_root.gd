@@ -38,6 +38,8 @@ func _detach_player() -> void:
 		return
 
 	player.reparent(self)
+	if player.has_method("resync_sound_listener"):
+		player.resync_sound_listener()
 
 
 func _attach_player_to_area(area: Node, spawn_id: StringName) -> void:
@@ -52,10 +54,15 @@ func _attach_player_to_area(area: Node, spawn_id: StringName) -> void:
 	if spawn:
 		player.global_position = spawn.global_position
 
+	if player.has_method("resync_sound_listener"):
+		player.resync_sound_listener()
+	_resync_area_sound_emitters(area)
+
 	_apply_area_camera_config(area)
 	_warn_if_player_is_outside_camera_limits(area)
 	_snap_camera_to_player()
 	call_deferred("_snap_camera_to_player")
+	call_deferred("_resync_area_sound_emitters", area)
 
 
 func _apply_area_camera_config(area: Node) -> void:
@@ -105,3 +112,16 @@ func _find_spawn(area: Node, spawn_id: StringName) -> Node2D:
 		if spawn.get("spawn_id") == spawn_id:
 			return spawn as Node2D
 	return null
+
+
+# Funcións necesarias para que o SoundListener do Player siga funcionando cando se introduce na escea
+
+func _resync_area_sound_emitters(area: Node) -> void:
+	if not is_instance_valid(area):
+		return
+
+	for node in area.find_children("*", "", true, false):
+		if not node.has_method("set_2d_attributes"):
+			continue
+		node.force_update_transform()
+		node.set_2d_attributes(node.global_transform)

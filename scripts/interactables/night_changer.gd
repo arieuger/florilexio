@@ -11,3 +11,5 @@ func _on_reached_night():
 	visible = visible_at_night
 	process_mode = Node.PROCESS_MODE_INHERIT if visible_at_night \
 		else Node.PROCESS_MODE_DISABLED
+	if has_node("NightSound"):
+		get_node("NightSound").play()
