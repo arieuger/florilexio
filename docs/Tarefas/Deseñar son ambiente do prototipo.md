@@ -27,3 +27,11 @@ responsable: poch
 - [ ] Vento
 - [ ] Choiva
       https://xscxxtxr.org/soundscape/paxaros-chuvia-e-arbores-cun-pouco-de-vento-en-boan-2/
+- [ ] Fogueira
+      https://freesound.org/people/KikeVilaplana/sounds/501280/ + 
+      https://freesound.org/people/Satoration/sounds/54945/
+- [ ] Festa
+      https://xscxxtxr.org/soundscape/mercado-de-fisterra-1797/
+      https://xscxxtxr.org/soundscape/paseo-sonoro-por-unha-rua-de-porrino-1695/
+      https://xscxxtxr.org/soundscape/coruna-pulperia-a-nova-lanchina-1674/
+      https://xscxxtxr.org/soundscape/praza-de-abastos-de-porrino-1698/

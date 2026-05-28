@@ -1,7 +1,7 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779959728 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1779995882 0
   <NOTES 0 2
   >
-  RIPPLE 1 0
+  RIPPLE 0 0
   GROUPOVERRIDE 0 0 0 0
   AUTOXFADE 129
   ENVATTACH 2
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 257.6
-  ZOOM 50.47430263272146 12328 0
-  VZOOMEX 2.54999995 370
+  CURSOR 282
+  ZOOM 50.47430263272146 14700 0
+  VZOOMEX 2.54999995 566
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -1450,9 +1450,10 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 1 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
@@ -1479,10 +1480,11 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    LANEREC -1 -1 -1 0
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -1500,7 +1502,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {98D184DB-1F59-A00C-3850-2AEBF636635C}
       IID 489
       NAME 511847__luke100000__turning-pages.wav
@@ -1523,7 +1525,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {B56A9D54-7652-61BA-A9F6-C2BD4778B01A}
       IID 495
       NAME 511847__luke100000__turning-pages.wav
@@ -1546,7 +1548,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {78F7F4EB-E70C-8206-5DD9-63215A5140FB}
       IID 497
       NAME 511847__luke100000__turning-pages.wav
@@ -1569,7 +1571,7 @@
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       MIXFLAG 1
-      SEL 1
+      SEL 0
       IGUID {87614587-BAB7-CEE9-7793-1E13BE2CF168}
       IID 499
       NAME 511847__luke100000__turning-pages.wav
@@ -1580,6 +1582,273 @@
       GUID {93197DBE-DDE5-D462-2D42-FA8DE6C491D4}
       <SOURCE WAVE
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/511847__luke100000__turning-pages.wav"
+      >
+    >
+  >
+  <TRACK {AE1F30D4-681D-C11D-3FF5-14167488CCC6}
+    NAME Campfire
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {AE1F30D4-681D-C11D-3FF5-14167488CCC6}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {C4C140E7-48DF-F9F4-FF20-8CEFEB4E1EEC}
+    NAME "Campfire - People 1"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.15480329951752 -0.408 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {C4C140E7-48DF-F9F4-FF20-8CEFEB4E1EEC}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 266.4
+      SNAPOFFS 0
+      LENGTH 119.4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {2A53E4DB-9F0E-B6D1-3653-81B51811D224}
+      IID 500
+      NAME Mercado_de_Fisterra_1.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.59999999997672
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {716CFFE4-B2CC-634F-E554-46E8525287DA}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/Mercado_de_Fisterra_1.mp3" 1
+      >
+    >
+  >
+  <TRACK {166965DC-04CB-D4F9-D90B-39B055BA38A2}
+    NAME "Campfire - People 2"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.12609984410629 0.416 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {166965DC-04CB-D4F9-D90B-39B055BA38A2}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 266.4
+      SNAPOFFS 0
+      LENGTH 56.8
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {C9E8BB66-325A-1A63-9AF4-553C44DA5B70}
+      IID 501
+      NAME paseo_sonoro.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 4
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7DCEEBAF-F6BC-5737-9CE9-8A78A9D0B619}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/paseo_sonoro.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 323.2
+      SNAPOFFS 0
+      LENGTH 47.2
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0285F48D-63DC-FE03-10DF-68155C05DA20}
+      IID 501
+      NAME paseo_sonoro.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 70.4
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8C7C4BB4-9495-3E70-7C65-C928299996C8}
+      <SOURCE MP3
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/paseo_sonoro.mp3" 1
+      >
+    >
+  >
+  <TRACK {6F38C31C-7839-F2B9-48FF-4A85D7DB17DF}
+    NAME "Campfire - Fire 1"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.93504135003819 -0.424 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6F38C31C-7839-F2B9-48FF-4A85D7DB17DF}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 2200 122 887 260
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <JS sstillwell/1175 ""
+        -18.5 5 5.7 20 250 100 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      >
+      FLOATPOS 0 0 0 0
+      FXID {A3509DD2-B2FF-6863-23F9-847A3E64F019}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 266.40000000002328
+      SNAPOFFS 0
+      LENGTH 109.39999999997673
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {86DD36F8-A5C9-B009-DF5B-76DFBAE0C5A1}
+      IID 502
+      NAME 54945__satoration__preparing-fire-at-the-picnic.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6B9D80AB-322A-7577-377B-23B7DABFD900}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/54945__satoration__preparing-fire-at-the-picnic.wav"
+      >
+    >
+  >
+  <TRACK {9C8C81E3-2B5F-8AC0-8CB2-5C43A18BA0FB}
+    NAME "Campfire - Fire 2"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.11583089096271 0.424 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {9C8C81E3-2B5F-8AC0-8CB2-5C43A18BA0FB}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1712 112 887 260
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <JS sstillwell/1175 ""
+        -25.5 5 16.1 20 250 100 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      >
+      FLOATPOS 0 0 0 0
+      FXID {0450712B-D2AB-398E-570E-DAEAA37DACF2}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 266.40000000002328
+      SNAPOFFS 0
+      LENGTH 49.59999999997672
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {A326146F-B3B4-CA45-91EE-6A76266B0A55}
+      IID 503
+      NAME 501280__kikevilaplana__fx-fire-bonfire-wood-01-str_zoom_h4npro.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EABEEB6F-9EBC-189E-F672-E40E537CD028}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/501280__kikevilaplana__fx-fire-bonfire-wood-01-str_zoom_h4npro.wav"
       >
     >
   >
