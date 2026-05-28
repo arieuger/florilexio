@@ -4,11 +4,14 @@ class_name CuttingMinigame
 signal completed(plant_id: StringName)
 signal failed(plant_id: StringName)
 
+const DIRECTION_CHANGE_INTERVAL := 4.0
+
 var plant_id: StringName
 var plant_display_name: String
 var required_hits: int = 3
 var max_misses: int = 3
 var rotation_speed_degrees: float = 120.0
+var direction_change_chance: float = 0.0
 @export var cursor_radius: float = 21.0
 var time_cost_blocks: float = 1.0
 var miss_time_cost_blocks: float = 0.0
@@ -21,6 +24,8 @@ var success_alpha_threshold := 0.1
 @onready var feedback_label: Label = $FeedbackLabel
 
 var _current_angle := 0.0
+var _rotation_direction := 1.0
+var _direction_change_elapsed := 0.0
 var _hits := 0
 var _misses := 0
 var _is_finished := false
@@ -41,7 +46,8 @@ func _process(delta: float) -> void:
 	if _is_finished:
 		return
 
-	_current_angle = fposmod(_current_angle + rotation_speed_degrees * delta, 360.0)
+	_update_rotation_direction(delta)
+	_current_angle = fposmod(_current_angle + rotation_speed_degrees * _rotation_direction * delta, 360.0)
 	cursor_pivot.rotation_degrees = _current_angle
 	cursor.rotation_degrees = -_current_angle
 
@@ -82,6 +88,19 @@ func _try_cut() -> void:
 
 func _is_successful_cut() -> bool:
 	return _is_cursor_on_success_zone()
+
+
+func _update_rotation_direction(delta: float) -> void:
+	if direction_change_chance <= 0.0:
+		return
+
+	_direction_change_elapsed += delta
+	if _direction_change_elapsed < DIRECTION_CHANGE_INTERVAL:
+		return
+
+	_direction_change_elapsed = 0.0
+	if randf() <= direction_change_chance:
+		_rotation_direction *= -1.0
 
 
 func _is_cursor_on_success_zone() -> bool:

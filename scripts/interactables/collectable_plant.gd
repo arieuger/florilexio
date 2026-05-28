@@ -11,16 +11,19 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 0.5,
 		"base_rotation_speed_degrees": 240.0,
+		"direction_change_chance": 0.2,
 	},
 	CuttingDifficulty.MEDIUM: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 0.5,
 		"base_rotation_speed_degrees": 280.0,
+		"direction_change_chance": 0.45,
 	},
 	CuttingDifficulty.HARD: {
 		"time_cost_blocks": 2.0,
 		"miss_time_cost_blocks": 1.0,
 		"base_rotation_speed_degrees": 320.0,
+		"direction_change_chance": 0.8,
 	},
 }
 
@@ -150,6 +153,7 @@ func start_cutting_minigame() -> void:
 	minigame.required_hits = cutting_required_hits
 	minigame.max_misses = cutting_max_misses
 	minigame.rotation_speed_degrees = _get_cutting_rotation_speed(difficulty_settings)
+	minigame.direction_change_chance = difficulty_settings["direction_change_chance"]
 	minigame.success_alpha_threshold = cutting_success_alpha_threshold
 	minigame.completed.connect(_on_cutting_minigame_completed)
 	minigame.tree_exited.connect(_on_cutting_minigame_closed)
