@@ -10,17 +10,17 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 	CuttingDifficulty.EASY: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 0.5,
-		"base_rotation_speed_degrees": 90.0,
+		"base_rotation_speed_degrees": 240.0,
 	},
 	CuttingDifficulty.MEDIUM: {
 		"time_cost_blocks": 1.0,
 		"miss_time_cost_blocks": 0.5,
-		"base_rotation_speed_degrees": 120.0,
+		"base_rotation_speed_degrees": 280.0,
 	},
 	CuttingDifficulty.HARD: {
 		"time_cost_blocks": 2.0,
 		"miss_time_cost_blocks": 1.0,
-		"base_rotation_speed_degrees": 160.0,
+		"base_rotation_speed_degrees": 320.0,
 	},
 }
 

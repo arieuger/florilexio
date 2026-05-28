@@ -17,6 +17,7 @@ plant_launches_tutorial = true
 plant_id = &"dedaleira"
 plant_display_name = "Dedaleira"
 hover_color = Color(0.8591121, 0.4394232, 0.8452123, 0.6862745)
+cutting_difficulty = 0
 cutting_miss_time_cost_blocks = 0.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
