@@ -22,6 +22,8 @@ func _ready() -> void:
 	_update_time_label(GameState.consumed_time)
 	GameState.consumed_time_added.connect(_on_consumed_time_added)
 	inventory_button.pressed.connect(_toggle_inventory)
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
+	inventory_button.mouse_entered.connect(_on_inventory_button_mouse_entered)
 	if inventory_panel.has_signal(&"close_requested"):
 		inventory_panel.connect(&"close_requested", _hide_inventory)
 
@@ -32,6 +34,14 @@ func _toggle_inventory() -> void:
 
 func _hide_inventory() -> void:
 	_set_inventory_open(false)
+
+
+func _on_inventory_button_pressed() -> void:
+	SoundManager.play_simple_sound("Actions/Click")
+
+
+func _on_inventory_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")
 
 
 func _set_inventory_open(is_open: bool) -> void:

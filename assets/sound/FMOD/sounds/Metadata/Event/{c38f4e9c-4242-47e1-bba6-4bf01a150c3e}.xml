@@ -100,6 +100,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{31063cee-8b2c-4fac-b468-d797584ef275}">
+		<property name="volume">
+			<value>6</value>
+		</property>
 		<property name="name">
 			<value>Moving Grass</value>
 		</property>

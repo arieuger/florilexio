@@ -19,6 +19,7 @@ var _current_page := 0
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(_refresh)
 	close_button.pressed.connect(_on_close_button_pressed)
+	close_button.mouse_entered.connect(_on_close_button_mouse_entered)
 	previous_page_button.pressed.connect(_on_previous_page_pressed)
 	next_page_button.pressed.connect(_on_next_page_pressed)
 	_refresh()
@@ -51,7 +52,12 @@ func _refresh() -> void:
 
 
 func _on_close_button_pressed() -> void:
+	SoundManager.play_simple_sound("Actions/Click")
 	close_requested.emit()
+
+
+func _on_close_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")
 
 
 func _on_previous_page_pressed() -> void:
