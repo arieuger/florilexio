@@ -339,15 +339,6 @@ speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 voice_type = 1.0
 
-[node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
-position = Vector2(31, 131)
-
-[node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
-position = Vector2(290, 103)
-
-[node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
-position = Vector2(302, 104)
-
 [node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
 position = Vector2(254, 114)
 metadata/_edit_group_ = true
@@ -363,31 +354,6 @@ offset = Vector2(0, -17)
 position = Vector2(2.5, -0.5)
 shape = SubResource("RectangleShape2D_ycdy4")
 
-[node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
-position = Vector2(83, 138)
-
-[node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
-position = Vector2(194, 136)
-
-[node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
-position = Vector2(183, 137)
-
-[node name="Menta" parent="YSortables" unique_id=1542834651 instance=ExtResource("3_d13ii")]
-position = Vector2(42, 134)
-
-[node name="Ortiga" parent="YSortables" unique_id=503916748 instance=ExtResource("20_0odxb")]
-position = Vector2(25, 127)
-
-[node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
-position = Vector2(205, 137)
-plant_launches_tutorial = false
-
-[node name="Macela" parent="YSortables" unique_id=567619104 instance=ExtResource("26_lswn8")]
-position = Vector2(292, 113)
-
-[node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
-position = Vector2(271, 108)
-
 [node name="Fire" type="Node2D" parent="YSortables" unique_id=1584284445]
 visible = false
 position = Vector2(115, 130)
@@ -397,7 +363,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortables/Fire" unique_id=1704969301]
 sprite_frames = SubResource("SpriteFrames_5rejm")
 autoplay = "default"
-frame_progress = 0.9256385
+frame_progress = 0.5887007
 centered = false
 offset = Vector2(-24, -59)
 
@@ -416,6 +382,51 @@ flicker_speed = 5.0
 position = Vector2(0, -2)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_vhepp")
+
+[node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
+position = Vector2(31, 131)
+collection_id = &"silveira1"
+
+[node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
+position = Vector2(290, 103)
+collection_id = &"silveira2"
+
+[node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
+position = Vector2(302, 104)
+collection_id = &"silveira3"
+
+[node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
+position = Vector2(83, 138)
+collection_id = &"dedaleira1"
+
+[node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
+position = Vector2(194, 136)
+collection_id = &"hortensia1"
+
+[node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
+position = Vector2(183, 137)
+collection_id = &"hortensia2"
+
+[node name="Menta" parent="YSortables" unique_id=1542834651 instance=ExtResource("3_d13ii")]
+position = Vector2(42, 134)
+collection_id = &"menta1"
+
+[node name="Ortiga" parent="YSortables" unique_id=503916748 instance=ExtResource("20_0odxb")]
+position = Vector2(25, 127)
+collection_id = &"ortiga1"
+
+[node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
+position = Vector2(205, 137)
+plant_launches_tutorial = false
+collection_id = &"dedaleira2"
+
+[node name="Macela" parent="YSortables" unique_id=567619104 instance=ExtResource("26_lswn8")]
+position = Vector2(292, 113)
+collection_id = &"macela1"
+
+[node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
+position = Vector2(271, 108)
+collection_id = &"macela2"
 
 [node name="ParkPortal" type="Area2D" parent="YSortables" unique_id=901001003]
 position = Vector2(312, 153)

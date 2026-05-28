@@ -11,6 +11,8 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
 ## Identifies the plant type/species. Multiple CollectablePlant instances can share it.
 @export var plant_id: StringName
+## Optional stable id for this exact plant instance. Empty ids are derived from the area scene and node path.
+@export var collection_id: StringName
 @export var plant_display_name: String
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
@@ -38,14 +40,16 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
 var _hover_tween: Tween
 var _is_interacting := false
-var _is_collected := false
+var _collection_id: StringName
 
 
 func _ready() -> void:
+	_collection_id = _get_collection_id()
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
 	name_label.text = plant_display_name
 	name_label.visible = false
+	click_area.input_pickable = not _is_collected()
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
@@ -126,7 +130,7 @@ func start_cutting_minigame() -> void:
 
 
 func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
-	_is_collected = true
+	GameState.collect_plant(_collection_id)
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
 	_set_name_label_visible(false)
@@ -146,7 +150,11 @@ func _should_launch_tutorial() -> bool:
 
 
 func _can_interact() -> bool:
-	return not _is_interacting and not _is_collected and not _is_blocked_by_tutorial()
+	return not _is_interacting and not _is_collected() and not _is_blocked_by_tutorial()
+
+
+func _is_collected() -> bool:
+	return GameState.is_plant_collected(_collection_id)
 
 
 func _is_blocked_by_tutorial() -> bool:
@@ -185,3 +193,29 @@ func _make_hover_ignore_world_tint() -> void:
 	hover_material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	hover_sprite.material = hover_material
 	name_label.material = hover_material
+
+
+func _get_collection_id() -> StringName:
+	if collection_id != &"":
+		return collection_id
+
+	var area_root := _get_area_root()
+	if area_root:
+		var area_path := area_root.scene_file_path
+		if area_path.is_empty():
+			area_path = str(area_root.get_path())
+
+		return StringName("%s:%s" % [area_path, area_root.get_path_to(self)])
+
+	return StringName(str(get_path()))
+
+
+func _get_area_root() -> Node:
+	var current := get_parent()
+	while current:
+		if not current.scene_file_path.is_empty():
+			return current
+
+		current = current.get_parent()
+
+	return null

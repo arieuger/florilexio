@@ -48,13 +48,16 @@ func add_consumed_time(time: int) -> void:
 		reached_night.emit()
 
 func discover_plant(plant_id: String) -> void:
+	# TODO: De momento non se usa. Para fase 2
 	if not discovered_plants.has(plant_id):
 		discovered_plants[plant_id] = true
 
-func collect_plant(plant_id: String) -> bool:
-	if discovered_plants.has(plant_id):
-		collected_plants[plant_id] = true
-		return true
-	else:
-		print("Cannot collect plant that has not been discovered: " + plant_id)
-		return false
+func collect_plant(plant_collection_id: StringName) -> void:
+	if plant_collection_id == &"":
+		return
+
+	collected_plants[plant_collection_id] = true
+
+
+func is_plant_collected(plant_collection_id: StringName) -> bool:
+	return collected_plants.has(plant_collection_id)

@@ -200,21 +200,27 @@ polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
 [node name="Fiuncho" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_hgbhm")]
 position = Vector2(81, 159)
+collection_id = &"fiuncho1"
 
 [node name="Malva" parent="YSortables" unique_id=732674066 instance=ExtResource("10_ynua0")]
 position = Vector2(87, 153)
+collection_id = &"malva1"
 
 [node name="Romeu" parent="YSortables" unique_id=1219994463 instance=ExtResource("12_ynua0")]
 position = Vector2(193, 134)
+collection_id = &"romeu1"
 
 [node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
 position = Vector2(205, 134)
+collection_id = &"herba_luisa1"
 
 [node name="Xesta" parent="YSortables" unique_id=97273433 instance=ExtResource("13_wlbh6")]
 position = Vector2(186, 108)
+collection_id = &"xesta1"
 
 [node name="Xesta2" parent="YSortables" unique_id=1274703653 instance=ExtResource("13_wlbh6")]
 position = Vector2(164, 105)
+collection_id = &"xesta2"
 
 [node name="CameraConfig" type="Node2D" parent="." unique_id=901002001]
 visible = false
