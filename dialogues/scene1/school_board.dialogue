@@ -14,5 +14,4 @@ Data límite de entrega\: 7 de setembro
 if not GameState.acknowledged_invasive_plants:
 	do GameState.add_consumed_time(1)
 	do GameState.acknowledged_invasive_plants = true
-	do GameState.acknowledged_magic_plants = true
 => END
