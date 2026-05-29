@@ -39,6 +39,7 @@ func _on_discard_button_gui_input(event: InputEvent) -> void:
 
 func _on_discard_button_mouse_entered() -> void:
 	discard_button.add_theme_color_override("font_color", DISCARD_HOVER_COLOR)
+	SoundManager.play_simple_sound("Actions/Hover")
 
 
 func _on_discard_button_mouse_exited() -> void:

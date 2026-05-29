@@ -157,6 +157,7 @@ func add_to_bouquet(plant_id: StringName) -> bool:
 
 	selected_bouquet.append(_make_bouquet_entry(plant_id))
 	bouquet_changed.emit()
+	SoundManager.play_simple_sound("Bouquet/Update")
 	return true
 
 
@@ -166,6 +167,7 @@ func remove_from_bouquet(index: int) -> void:
 
 	selected_bouquet.remove_at(index)
 	bouquet_changed.emit()
+	SoundManager.play_simple_sound("Bouquet/Update")
 
 
 func clear_bouquet() -> void:
