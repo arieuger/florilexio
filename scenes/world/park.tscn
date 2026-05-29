@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bognclbnndo1g" path="res://scenes/interactables/plants/mimosa.tscn" id="19_1okcc"]
 [ext_resource type="PackedScene" uid="uid://f4tlv8x7hw45" path="res://scenes/interactables/plants/pan_de_cuco.tscn" id="19_3hvtc"]
 [ext_resource type="PackedScene" uid="uid://dm5e8xnmt7wsq" path="res://scenes/interactables/plants/pervinca.tscn" id="20_m4b7g"]
+[ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -55,9 +56,12 @@ size = Vector2(37, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weyec"]
 size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q76u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyiui"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybx22"]
+size = Vector2(249, 72)
 
 [node name="Park" type="Node2D" unique_id=643443187]
 
@@ -249,7 +253,7 @@ texture = ExtResource("11_2q76u")
 
 [node name="CollisionShape2D" parent="YSortables/TerracePoster/NPC/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(-1.875, -4.875)
-shape = SubResource("RectangleShape2D_2q76u")
+shape = SubResource("RectangleShape2D_uyiui")
 
 [node name="Fiuncho" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_hgbhm")]
 position = Vector2(84, 160)
@@ -353,5 +357,13 @@ bounds_size = Vector2(245, 205)
 drag_horizontal_enabled = false
 drag_top_margin = 0.24
 drag_bottom_margin = 0.18
+
+[node name="GrassArea" type="Area2D" parent="." unique_id=192444353]
+position = Vector2(123, 118)
+script = ExtResource("26_y4r3u")
+
+[node name="GrassCollision" type="CollisionShape2D" parent="GrassArea" unique_id=834856363]
+position = Vector2(-0.5, -13)
+shape = SubResource("RectangleShape2D_ybx22")
 
 [editable path="YSortables/TerracePoster/NPC"]

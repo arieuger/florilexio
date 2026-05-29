@@ -165,7 +165,6 @@ func play_footstep_sound():
 		return
 	last_step_time = now
 
-	SoundManager.set_global_parameter("GroundType", 0.0)
 	SoundManager.play_simple_sound("Player/Steps")
 
 # Funcións necesarias para que o SoundListener do Player siga funcionando cando se introduce na escea
