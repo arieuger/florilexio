@@ -5,8 +5,15 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 
 @export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
 @export_file("*.tscn") var final_area_path := "res://scenes/world/town_square.tscn"
-@export var final_spawn_id: StringName = &"default"
+@export var final_spawn_id: StringName = &"final_player_spawn"
+@export var final_reveal_spawn_id: StringName = &"final_player_spawn"
 @export var final_area_transition_duration := 0.45
+@export_group("Final Spotlight")
+@export_range(8.0, 360.0, 1.0) var final_spotlight_radius := 72.0
+@export_range(0.0, 120.0, 1.0) var final_spotlight_softness := 10.0
+@export var final_spotlight_marker_id: StringName = &"fire_place"
+@export var final_spotlight_marker_path: NodePath
+@export var final_spotlight_color := Color.BLACK
 
 @onready var inventory_button: TextureButton = $InventoryButton
 @onready var time_label: Label = $TimeLabel
@@ -17,6 +24,7 @@ var _time_blink_tween: Tween
 var _time_label_base_position: Vector2
 var _final_sequence_started := false
 var _final_composition_panel: FinalCompositionPanel
+var _final_scene_spotlight: FinalSceneSpotlight
 
 
 func _ready() -> void:
@@ -108,6 +116,7 @@ func _set_time_label_color(color: Color) -> void:
 func _launch_final_sequence() -> void:
 	_set_inventory_open(false)
 	inventory_button.visible = false
+	_set_player_movement_enabled(false)
 
 	await _close_cutting_minigames()
 	await _go_to_final_area()
@@ -167,3 +176,83 @@ func _show_final_composition() -> void:
 
 func _on_final_composition_requested(composition: Dictionary) -> void:
 	print("Composición final do cacho: ", composition)
+	_close_final_composition_panel()
+	await _move_player_to_final_reveal_spawn()
+	_show_final_scene_spotlight()
+	await get_tree().create_timer(0.35).timeout
+	await DialogueBalloonCoordinator.show_info_dialogue_and_wait(_get_final_result_dialogue_title(composition))
+
+
+func _close_final_composition_panel() -> void:
+	if not is_instance_valid(_final_composition_panel):
+		return
+
+	_final_composition_panel.queue_free()
+	_final_composition_panel = null
+
+
+func _move_player_to_final_reveal_spawn() -> void:
+	var root := get_tree().current_scene
+	if root and root.has_method("move_player_to_spawn"):
+		root.move_player_to_spawn(final_reveal_spawn_id)
+		await get_tree().process_frame
+
+
+func _show_final_scene_spotlight() -> void:
+	if is_instance_valid(_final_scene_spotlight):
+		return
+
+	_final_scene_spotlight = FinalSceneSpotlight.new()
+	_final_scene_spotlight.radius_pixels = final_spotlight_radius
+	_final_scene_spotlight.softness_pixels = final_spotlight_softness
+	_final_scene_spotlight.dim_color = final_spotlight_color
+	var root := get_tree().current_scene
+	if root:
+		root.add_child(_final_scene_spotlight)
+	else:
+		add_child(_final_scene_spotlight)
+
+	var marker := _get_final_spotlight_marker()
+	if marker:
+		_final_scene_spotlight.set_focus_node(marker)
+		return
+
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	if player:
+		_final_scene_spotlight.set_focus_node(player)
+
+
+func _get_final_spotlight_marker() -> Node2D:
+	if not final_spotlight_marker_path.is_empty():
+		var marker_from_path := get_node_or_null(final_spotlight_marker_path) as Node2D
+		if marker_from_path:
+			return marker_from_path
+
+	var root := get_tree().current_scene
+	if root and root.has_method("get_current_area_marker"):
+		return root.get_current_area_marker(final_spotlight_marker_id) as Node2D
+
+	return null
+
+
+func _get_final_result_dialogue_title(composition: Dictionary) -> String:
+	var rank := StringName(composition.get("rank", &"empty"))
+	match rank:
+		&"traditional":
+			return "final_bouquet_traditional"
+		&"invader":
+			return "final_bouquet_invader"
+		&"too_big":
+			return "final_bouquet_too_big"
+		&"too_small":
+			return "final_bouquet_too_small"
+		&"empty":
+			return "final_bouquet_empty"
+		_:
+			return "final_bouquet_mediocre"
+
+
+func _set_player_movement_enabled(enabled: bool) -> void:
+	var root := get_tree().current_scene
+	if root and root.has_method("set_player_movement_enabled"):
+		root.set_player_movement_enabled(enabled)

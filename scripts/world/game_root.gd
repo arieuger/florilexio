@@ -72,6 +72,48 @@ func transition_to_area(area_scene: PackedScene, spawn_id: StringName = &"defaul
 	await _area_transition_tween.finished
 
 
+func move_player_to_spawn(spawn_id: StringName) -> void:
+	if not is_instance_valid(_current_area) or not is_instance_valid(player):
+		return
+
+	var spawn := _find_spawn(_current_area, spawn_id)
+	if not spawn:
+		push_warning("GameRoot: could not find spawn: %s" % spawn_id)
+		return
+
+	player.global_position = spawn.global_position
+	if player.has_method("resync_sound_listener"):
+		player.resync_sound_listener()
+	_snap_camera_to_player()
+	call_deferred("_snap_camera_to_player")
+
+
+func set_player_movement_enabled(enabled: bool) -> void:
+	_set_player_movement_enabled(enabled)
+
+
+func get_current_area_marker(marker_id: StringName) -> Node2D:
+	if marker_id == &"" or not is_instance_valid(_current_area):
+		return null
+
+	var spawn := _find_spawn(_current_area, marker_id)
+	if spawn:
+		return spawn
+
+	var node_by_name := _current_area.find_child(String(marker_id), true, false) as Node2D
+	if node_by_name:
+		return node_by_name
+
+	for node in _current_area.find_children("*", "Node2D", true, false):
+		var node_2d := node as Node2D
+		if not node_2d:
+			continue
+		if _node_matches_marker_id(node_2d, marker_id):
+			return node_2d
+
+	return null
+
+
 func _run_intro_sequence() -> void:
 	await get_tree().process_frame
 
@@ -187,6 +229,23 @@ func _find_spawn(area: Node, spawn_id: StringName) -> Node2D:
 		if spawn.get("spawn_id") == spawn_id:
 			return spawn as Node2D
 	return null
+
+
+func _node_matches_marker_id(node: Node2D, marker_id: StringName) -> bool:
+	if StringName(node.name) == marker_id:
+		return true
+	if _node_property_matches(node, &"marker_id", marker_id):
+		return true
+	if _node_property_matches(node, &"spawn_id", marker_id):
+		return true
+	return false
+
+
+func _node_property_matches(node: Node, property_name: StringName, expected_value: Variant) -> bool:
+	for property in node.get_property_list():
+		if StringName(property.get("name", "")) == property_name:
+			return node.get(property_name) == expected_value
+	return false
 
 
 # Funcións necesarias para que o SoundListener do Player siga funcionando cando se introduce na escea

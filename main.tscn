@@ -29,6 +29,9 @@ max_speed = 65.0
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=810013888]
 script = ExtResource("5_hud")
+final_area_path = "uid://dsm7uwl8e3sqr"
+final_spotlight_radius = 50.0
+final_spotlight_softness = 7.0
 
 [node name="InventoryButton" type="TextureButton" parent="GameHUD" unique_id=1684215566]
 anchors_preset = 1

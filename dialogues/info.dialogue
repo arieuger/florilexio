@@ -28,3 +28,21 @@ Conseguiches {plant_name}! => END
 	Si non chego pola noite,
 	hei de chegar polo albor.
 	=> END
+
+~ final_bouquet_traditional
+Cacho tradicional => END
+
+~ final_bouquet_invader
+Cacho invasor => END
+
+~ final_bouquet_too_big
+Cacho demasiado grande => END
+
+~ final_bouquet_too_small
+Cacho demasiado pequeno => END
+
+~ final_bouquet_empty
+Cacho baleiro => END
+
+~ final_bouquet_mediocre
+Cacho mediocre => END
