@@ -30,7 +30,17 @@ var acknowledged_invasive_plants: bool:
 var acknowledged_on_danger_plants: bool = false
 var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
-var acknowledged_magic_plants: bool = false
+
+var acknowledged_magic_plants: bool:
+	get:
+		return _acknowledged_magic_plants
+	set(value):
+		if _acknowledged_magic_plants == value:
+			return
+
+		_acknowledged_magic_plants = value
+
+
 var acknowledged_not_all_aromatics: bool = false
 
 var discarded_invasive_plants_count: int = 0
@@ -38,6 +48,7 @@ var discarded_invasive_plants_count: int = 0
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
 var _acknowledged_invasive_plants: bool = false
+var _acknowledged_magic_plants: bool = false
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras
 

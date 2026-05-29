@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfo6c8xhf73fe" path="res://scripts/ui/final_composition_selected_row.gd" id="1_row"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+[ext_resource type="Script" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
 
 [node name="FinalCompositionSelectedRow" type="HBoxContainer" unique_id=224116135]
 custom_minimum_size = Vector2(0, 10)
@@ -22,10 +23,13 @@ text = "Fiuncho"
 
 [node name="InvasiveWarningLabel" type="Label" parent="NameContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.45, 0, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 6
 text = "[ ! ]"
+script = ExtResource("3_tooltip")
+custom_tooltip_text = "Invasora!"
 
 [node name="RemoveButton" type="Label" parent="." unique_id=215372733]
 custom_minimum_size = Vector2(10, 0)

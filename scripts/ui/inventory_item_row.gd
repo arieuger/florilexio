@@ -46,4 +46,8 @@ func _on_discard_button_mouse_exited() -> void:
 
 func _update_invasive_warning(marks: Dictionary) -> void:
 	invasive_warning_label.text = InventoryManager.INVASIVE_WARNING_TEXT
+	if invasive_warning_label.has_method(&"set_custom_tooltip_text"):
+		invasive_warning_label.set_custom_tooltip_text(InventoryManager.INVASIVE_WARNING_TOOLTIP)
+	else:
+		invasive_warning_label.tooltip_text = InventoryManager.INVASIVE_WARNING_TOOLTIP
 	invasive_warning_label.visible = InventoryManager.should_show_invasive_warning(marks)

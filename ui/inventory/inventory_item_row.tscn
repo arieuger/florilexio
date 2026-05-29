@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dekpif70ca531" path="res://scripts/ui/inventory_item_row.gd" id="1_row"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_pr0fb"]
+[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
 
 [node name="InventoryItemRow" type="HBoxContainer" unique_id=324749099]
 custom_minimum_size = Vector2(0, 8)
 theme_override_constants/separation = 8
 script = ExtResource("1_row")
 
-[node name="NameContainer" type="HBoxContainer" parent="."]
+[node name="NameContainer" type="HBoxContainer" parent="." unique_id=1568261224]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
@@ -20,12 +21,17 @@ theme_override_fonts/font = ExtResource("2_pr0fb")
 theme_override_font_sizes/font_size = 6
 text = "Fiuncho"
 
-[node name="InvasiveWarningLabel" type="Label" parent="NameContainer"]
+[node name="InvasiveWarningLabel" type="Label" parent="NameContainer" unique_id=1765532004]
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.45, 0, 1)
 theme_override_fonts/font = ExtResource("2_pr0fb")
 theme_override_font_sizes/font_size = 6
 text = "[ ! ]"
+script = ExtResource("3_tooltip")
+custom_tooltip_text = "Invasora!"
+tooltip_font_color = Color(0.8545729, 0.38123325, 3.85046e-07, 1)
+tooltip_font_size = 5
 
 [node name="AmountLabel" type="Label" parent="." unique_id=222522802]
 custom_minimum_size = Vector2(18, 0)
@@ -36,7 +42,7 @@ theme_override_font_sizes/font_size = 6
 text = "x1"
 horizontal_alignment = 2
 
-[node name="DiscardButton" type="Label" parent="."]
+[node name="DiscardButton" type="Label" parent="." unique_id=436980177]
 custom_minimum_size = Vector2(26, 0)
 layout_mode = 2
 mouse_filter = 0

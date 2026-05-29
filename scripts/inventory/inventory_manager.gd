@@ -11,6 +11,7 @@ const PLANT_MARKS := [MARK_IS_INVASIVE, MARK_IS_MAGIC]
 const BOUQUET_PLANT_ID_KEY := &"plant_id"
 const BOUQUET_MARKS_KEY := &"marks"
 const INVASIVE_WARNING_TEXT := "[ ! ]"
+const INVASIVE_WARNING_TOOLTIP := "Invasora!"
 
 var items: Dictionary = {}
 var plant_display_names: Dictionary = {}
