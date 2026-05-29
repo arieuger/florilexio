@@ -72,6 +72,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_constants/separation = 3
 
 [node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=795559341]
 unique_name_in_owner = true
@@ -91,6 +92,26 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_eawnk")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_7vb20")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ea51b")
 text = "Xogar"
+flat = true
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=850260818]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
+theme_override_colors/font_pressed_color = Color(0.9872183, 0.83431065, 5.390644e-06, 1)
+theme_override_colors/font_hover_color = Color(1, 0.87889504, 0.3806794, 1)
+theme_override_colors/font_outline_color = Color(0, 0.13936871, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ixxch")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eawnk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7vb20")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ea51b")
+text = "Saír"
 flat = true
 
 [node name="LanguageRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=84612334]

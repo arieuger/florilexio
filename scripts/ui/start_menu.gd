@@ -6,6 +6,7 @@ const GALICIAN_LOCALE := "gl"
 const ENGLISH_LOCALE := "en"
 
 @onready var play_button: Button = %PlayButton
+@onready var exit_button: Button = %ExitButton
 @onready var toggle_lang: TextureRect = %ToggleLang
 
 var _selected_locale := DEFAULT_LOCALE
@@ -15,6 +16,7 @@ func _ready() -> void:
 	_set_locale(DEFAULT_LOCALE)
 	_apply_texts()
 	play_button.pressed.connect(_on_play_button_pressed)
+	exit_button.pressed.connect(_on_exit_button_pressed)
 	toggle_lang.gui_input.connect(_on_toggle_lang_gui_input)
 	play_button.grab_focus()
 
@@ -50,3 +52,6 @@ func _on_toggle_lang_gui_input(event: InputEvent) -> void:
 func _on_play_button_pressed() -> void:
 	GameState.preferred_locale = _selected_locale
 	get_tree().change_scene_to_file(GAME_SCENE_PATH)
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
