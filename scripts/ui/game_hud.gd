@@ -6,7 +6,6 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 @export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
 @export_file("*.tscn") var final_area_path := "res://scenes/world/town_square.tscn"
 @export var final_spawn_id: StringName = &"final_player_spawn"
-@export var final_reveal_spawn_id: StringName = &"final_player_spawn"
 @export var final_area_transition_duration := 0.45
 @export_group("Final Spotlight")
 @export_range(8.0, 360.0, 1.0) var final_spotlight_radius := 72.0
@@ -177,7 +176,7 @@ func _show_final_composition() -> void:
 func _on_final_composition_requested(composition: Dictionary) -> void:
 	print("Composición final do cacho: ", composition)
 	_close_final_composition_panel()
-	await _move_player_to_final_reveal_spawn()
+	await _move_player_to_final_spawn()
 	_show_final_scene_spotlight()
 	await get_tree().create_timer(0.35).timeout
 	await DialogueBalloonCoordinator.show_info_dialogue_and_wait(_get_final_result_dialogue_title(composition))
@@ -191,10 +190,10 @@ func _close_final_composition_panel() -> void:
 	_final_composition_panel = null
 
 
-func _move_player_to_final_reveal_spawn() -> void:
+func _move_player_to_final_spawn() -> void:
 	var root := get_tree().current_scene
 	if root and root.has_method("move_player_to_spawn"):
-		root.move_player_to_spawn(final_reveal_spawn_id)
+		root.move_player_to_spawn(final_spawn_id)
 		await get_tree().process_frame
 
 
