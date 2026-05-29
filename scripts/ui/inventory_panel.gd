@@ -69,11 +69,13 @@ func _on_close_button_mouse_entered() -> void:
 
 func _on_previous_page_pressed() -> void:
 	_current_page = maxi(_current_page - 1, 0)
+	SoundManager.play_simple_sound("Inventory/Open Inventory")
 	_refresh()
 
 
 func _on_next_page_pressed() -> void:
 	_current_page += 1
+	SoundManager.play_simple_sound("Inventory/Open Inventory")
 	_refresh()
 
 

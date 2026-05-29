@@ -58,6 +58,15 @@ var consumed_time: int:
 	get:
 		return _consumed_time
 
+func _get_daytime_parameter_value() -> float:
+	if TOTAL_BLOCKS <= 0:
+		return 0.0
+
+	return clampf(float(_consumed_time) / float(TOTAL_BLOCKS), 0.0, 1.0)
+
+func _update_daytime_sound_parameter() -> void:
+	SoundManager.set_global_parameter("DayTime", _get_daytime_parameter_value())
+
 func get_current_time_minutes() -> int:
 	var clamped_blocks = clampi(_consumed_time, 0, TOTAL_BLOCKS)
 	return (START_HOUR * 60) + (clamped_blocks * BLOCK_MINUTES)
@@ -82,6 +91,7 @@ func add_consumed_time(time: float) -> void:
 	_consumed_time += completed_blocks
 
 	consumed_time_added.emit(_consumed_time)
+	_update_daytime_sound_parameter()
 	print("Consumed time: " + str(_consumed_time) + " blocks")
 	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
 		reached_night.emit()
@@ -97,6 +107,7 @@ func set_consumed_time_blocks(blocks: int) -> void:
 	_consumed_time = new_consumed_time
 
 	consumed_time_added.emit(_consumed_time)
+	_update_daytime_sound_parameter()
 	print("Consumed time: " + str(_consumed_time) + " blocks")
 	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
 		reached_night.emit()
