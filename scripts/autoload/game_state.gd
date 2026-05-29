@@ -86,6 +86,21 @@ func add_consumed_time(time: float) -> void:
 	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
 		reached_night.emit()
 
+
+func set_consumed_time_blocks(blocks: int) -> void:
+	var new_consumed_time := clampi(blocks, 0, TOTAL_BLOCKS)
+	if _consumed_time == new_consumed_time:
+		return
+
+	var previous_consumed_time := _consumed_time
+	_pending_consumed_time = 0.0
+	_consumed_time = new_consumed_time
+
+	consumed_time_added.emit(_consumed_time)
+	print("Consumed time: " + str(_consumed_time) + " blocks")
+	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
+		reached_night.emit()
+
 func discover_plant(plant_id: String) -> void:
 	# TODO: De momento non se usa. Para fase 2
 	if not discovered_plants.has(plant_id):

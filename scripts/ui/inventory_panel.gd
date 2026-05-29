@@ -1,6 +1,7 @@
 extends Control
 
 signal close_requested
+signal compose_bouquet_requested
 
 @export var item_row_scene: PackedScene = preload("res://ui/inventory/inventory_item_row.tscn")
 @export_range(1, 20, 1) var items_per_page := 10
@@ -12,6 +13,7 @@ signal close_requested
 @onready var previous_page_button: TextureButton = %PreviousPageButton
 @onready var page_label: Label = %PageLabel
 @onready var next_page_button: TextureButton = %NextPageButton
+@onready var compose_bouquet_button: PanelContainer = %ComposeBouquetButton
 
 var _current_page := 0
 
@@ -24,6 +26,8 @@ func _ready() -> void:
 	close_button.mouse_entered.connect(_on_close_button_mouse_entered)
 	previous_page_button.pressed.connect(_on_previous_page_pressed)
 	next_page_button.pressed.connect(_on_next_page_pressed)
+	compose_bouquet_button.gui_input.connect(_on_compose_bouquet_button_gui_input)
+	compose_bouquet_button.mouse_entered.connect(_on_compose_bouquet_button_mouse_entered)
 	_refresh()
 
 
@@ -76,6 +80,17 @@ func _on_next_page_pressed() -> void:
 func _on_item_row_discard_requested(plant_id: StringName) -> void:
 	if InventoryManager.discard_item(plant_id):
 		SoundManager.play_simple_sound("Actions/Click")
+
+
+func _on_compose_bouquet_button_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		get_viewport().set_input_as_handled()
+		SoundManager.play_simple_sound("Actions/Click")
+		compose_bouquet_requested.emit()
+
+
+func _on_compose_bouquet_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")
 
 
 func _on_some_acknowledgement_changed(_is_acknowledged: bool) -> void:

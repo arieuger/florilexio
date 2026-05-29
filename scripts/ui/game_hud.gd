@@ -29,6 +29,8 @@ func _ready() -> void:
 	inventory_button.mouse_entered.connect(_on_inventory_button_mouse_entered)
 	if inventory_panel.has_signal(&"close_requested"):
 		inventory_panel.connect(&"close_requested", _hide_inventory)
+	if inventory_panel.has_signal(&"compose_bouquet_requested"):
+		inventory_panel.connect(&"compose_bouquet_requested", _on_inventory_compose_bouquet_requested)
 
 
 func _toggle_inventory() -> void:
@@ -59,9 +61,21 @@ func _update_time_label(_total_consumed_time: int) -> void:
 func _on_consumed_time_added(total_consumed_time: int) -> void:
 	_update_time_label(total_consumed_time)
 	_play_time_feedback()
-	if total_consumed_time >= GameState.TOTAL_BLOCKS and not _final_sequence_started:
-		_final_sequence_started = true
-		_launch_final_sequence.call_deferred()
+	if total_consumed_time >= GameState.TOTAL_BLOCKS:
+		_start_final_sequence()
+
+
+func _on_inventory_compose_bouquet_requested() -> void:
+	GameState.set_consumed_time_blocks(GameState.TOTAL_BLOCKS)
+	_start_final_sequence()
+
+
+func _start_final_sequence() -> void:
+	if _final_sequence_started:
+		return
+
+	_final_sequence_started = true
+	_launch_final_sequence.call_deferred()
 
 
 func _play_time_feedback() -> void:

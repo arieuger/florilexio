@@ -18,6 +18,14 @@ texture_margin_right = 2.0
 texture_margin_bottom = 3.0
 modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_compose_button"]
+texture = ExtResource("2_p6mik")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.716, 0.816, 0.312, 1)
+
 [node name="InventoryPanel" type="Control" unique_id=272040109]
 layout_mode = 3
 anchors_preset = 15
@@ -115,3 +123,20 @@ theme_override_fonts/font = ExtResource("3_obcwt")
 theme_override_font_sizes/font_size = 6
 text = "Inda non recolliches ningunha herba!"
 horizontal_alignment = 1
+
+[node name="ComposeBouquetButton" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_compose_button")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ComposeBouquetButton"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("3_obcwt")
+theme_override_font_sizes/font_size = 7
+text = "Compoñer cacho"
+horizontal_alignment = 1
+vertical_alignment = 1
