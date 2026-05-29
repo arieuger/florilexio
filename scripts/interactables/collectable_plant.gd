@@ -81,12 +81,17 @@ func _ready() -> void:
 	_collection_id = _get_collection_id()
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
-	name_label.text = plant_display_name
+	name_label.text = _get_localized_plant_display_name()
 	name_label.visible = false
 	click_area.input_pickable = not _is_collected()
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED and is_instance_valid(name_label):
+		name_label.text = _get_localized_plant_display_name()
 
 
 func _on_mouse_entered() -> void:
@@ -175,7 +180,7 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 
 	DialogueBalloonCoordinator.show_info_dialogue(
 		"plant_collected",
-		{"plant_name": plant_display_name},
+		{"plant_name": _get_localized_plant_display_name()},
 		1.5
 	)
 
@@ -248,6 +253,13 @@ func _fade_hover_to(target_alpha: float) -> void:
 
 func _set_name_label_visible(should_show: bool) -> void:
 	name_label.visible = should_show and not plant_display_name.is_empty()
+
+
+func _get_localized_plant_display_name() -> String:
+	if plant_display_name.is_empty():
+		return ""
+
+	return tr(plant_display_name)
 
 
 func _make_hover_ignore_world_tint() -> void:

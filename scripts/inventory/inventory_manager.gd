@@ -118,9 +118,9 @@ func clear() -> void:
 
 func get_display_name(plant_id: StringName) -> String:
 	if plant_display_names.has(plant_id):
-		return plant_display_names[plant_id]
+		return tr(plant_display_names[plant_id])
 
-	return _format_plant_id(plant_id)
+	return tr(_format_plant_id(plant_id))
 
 
 func get_description(plant_id: StringName) -> String:

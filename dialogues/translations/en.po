@@ -322,5 +322,81 @@ msgstr "Great!"
 msgid "Fallaches"
 msgstr "You missed"
 
+#: scenes/interactables/plants/dedaleira.tscn
+msgid "Dedaleira"
+msgstr "Foxglove"
+
+#: scenes/interactables/plants/fento.tscn
+msgid "Fento"
+msgstr "Fern"
+
+#: scenes/interactables/plants/fiuncho.tscn
+msgid "Fiúncho"
+msgstr "Fennel"
+
+#: scenes/interactables/plants/herba_luisa.tscn
+msgid "Herba luísa"
+msgstr "Lemon verbena"
+
+#: scenes/interactables/plants/hiperico.tscn
+msgid "Hipérico"
+msgstr "St. John's wort"
+
+#: scenes/interactables/plants/hortensia.tscn
+msgid "Hortensia"
+msgstr "Hydrangea"
+
+#: scenes/interactables/plants/ipomea.tscn
+msgid "Ipomea azul"
+msgstr "Blue morning glory"
+
+#: scenes/interactables/plants/macela.tscn
+msgid "Macela"
+msgstr "Chamomile"
+
+#: scenes/interactables/plants/malva.tscn
+msgid "Malva"
+msgstr "Mallow"
+
+#: scenes/interactables/plants/menta.tscn
+msgid "Menta"
+msgstr "Mint"
+
+#: scenes/interactables/plants/mimosa.tscn
+msgid "Mimosa"
+msgstr "Mimosa"
+
+#: scenes/interactables/plants/ortiga.tscn
+msgid "Ortiga"
+msgstr "Nettle"
+
+#: scenes/interactables/plants/pan_de_cuco.tscn
+msgid "Pan de cuco"
+msgstr "Cuckoo flower"
+
+#: scenes/interactables/plants/pervinca.tscn
+msgid "Pervinca"
+msgstr "Periwinkle"
+
+#: scenes/interactables/plants/romeu.tscn
+msgid "Romeu"
+msgstr "Rosemary"
+
+#: scenes/interactables/plants/ruda.tscn
+msgid "Ruda"
+msgstr "Rue"
+
+#: scenes/interactables/plants/silveira.tscn
+msgid "Silveira"
+msgstr "Bramble"
+
+#: scenes/interactables/plants/tominho.tscn
+msgid "Tomiño"
+msgstr "Thyme"
+
+#: scenes/interactables/plants/xesta.tscn
+msgid "Xesta"
+msgstr "Broom"
+
 msgid "Florilexio"
 msgstr "Florilexio"
