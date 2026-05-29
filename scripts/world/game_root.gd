@@ -16,6 +16,7 @@ var _area_transition_tween: Tween
 
 
 func _ready() -> void:
+	TranslationServer.set_locale("en")
 	_set_player_movement_enabled(false)
 	if initial_area:
 		load_area(initial_area, initial_spawn_id)

@@ -1,0 +1,261 @@
+# LANGUAGE translation for Florilexio for the following files:
+# res://dialogues/example.dialogue
+# res://dialogues/scene1/oldwoman.dialogue
+# res://dialogues/info.dialogue
+# res://dialogues/scene1/tutorial.dialogue
+# res://dialogues/scene1/school_board.dialogue
+# res://dialogues/intro.dialogue
+# res://dialogues/scene2/terrace_poster.dialogue
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Florilexio\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: dialogues/example.dialogue
+msgid "Queres que che diga todas as opcións?"
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Vai levar [shake rate=20 level=10]tempo[/shake]..."
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "si"
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Que peñazo"
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "non"
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Estas son todas as opcions que che podo contar."
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Primeiro, podes mirar a planta con calma."
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Despois, podes volver falar comigo cando queiras."
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Vale, entendo. Vou mirar con calma."
+msgstr ""
+
+#: dialogues/example.dialogue
+msgid "Perfecto. Se atopas algo raro, volve e cóntamo."
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esqueciches as herbiñas ou é que che sobra o tempo?"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esta Mundo xa non rexe. Faltoulle o tomiño,"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "a menta, a ruda, e mais a macela."
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "E tamén o sabugueiro e a herba da Nosa Señora…"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "E mira de levar silveira, pero ollo con prender nela!"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esquecín, si"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Non"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Fiúncho, fento macho, herba luísa, xesta, romeu,"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "malva, herba de San Xoán…"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Se queres collelas todas, bule, paxarín,"
+msgstr ""
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Conseguiches {plant_name}!"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Se arraiar, se arraiará"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "tódalas meigas levará;"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "xa arraiou, xa arraiou,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "tódalas meigas levou."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Por ser noite de San Xoán"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "noite de encantos e bruxas"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "por ser noite de San Xoán"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "non teño medo, curuxa!"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Vinte unha crara noite,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "noitiña de San Xoán,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "poñendo as frescas herbas"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "na fonte a serenar."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Amigue, irei ó San Xoán,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "queira ou non quera meu pai!"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Agárdame na verbena"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "- enriba, na calle Maior-,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Si non chego pola noite,"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "hei de chegar polo albor."
+msgstr ""
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "Nunca estouraches o estalo?"
+msgstr ""
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "Proba a cortalo e bótallo ao cacho:"
+msgstr ""
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "preme cando o punto de corte estea no verde claro"
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Ao alumnado dos cursos que corresponda:"
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Materia: Ciencias da Terra e Botánica."
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Contidos:"
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "- Endemismos e plantas en perigo de extinción no"
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "barrio de Duasaugas: detección e coidados in situ."
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "- Especies invasoras: como recoñecelas, cortalas e desbotalas."
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Prácticum: Herbario de San Xoán. As herbas \"máxicas\" de Duasaugas."
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Exame: 7 de setembro, aula 7G."
+msgstr ""
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Data límite de entrega: 7 de setembro"
+msgstr ""
+
+#: dialogues/intro.dialogue
+msgid "É a mañá do 23 de xuño, véspera de San Xoán, a data que marca no calendario o final do curso escolar e o solsticio de verán."
+msgstr ""
+
+#: dialogues/intro.dialogue
+msgid "A xente de Dúasaugas prepárase para celebrar o Lumenovo, noite de culto, de festa e de ritos de cambio de ciclo que se perden atrás na memoria."
+msgstr ""
+
+#: dialogues/intro.dialogue
+msgid "Mais a vella Mundo, unha das veciñas máis lonxevas do barrio, lembra aínda o nome das plantas que noutro tempo se usaban para curar feridas, espantar os demos e protexer de meigas o berce, a casa e as cortes."
+msgstr ""
+
+#: dialogues/intro.dialogue
+msgid "Os males de hoxe non son os que eran pero as Herbas de San Xoán aínda funcionan como ritual de protección e purificación a calquera que crea nelas."
+msgstr ""
+
+#: dialogues/intro.dialogue
+msgid "Cada unha co seu poder. Búscaas para escorrentar os malos espíritos…"
+msgstr ""
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "Aromáticas e medicinais plantadas pola"
+msgstr ""
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "comunidade do parque de Duasaugas."
+msgstr ""
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "Cortar con tino. Non asulagar. Deixar para quen vén detrás."
+msgstr ""
+
+msgid "Florilexio"
+msgstr ""

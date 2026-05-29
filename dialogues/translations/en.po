@@ -1,0 +1,276 @@
+# LANGUAGE translation for Florilexio for the following files:
+# res://dialogues/example.dialogue
+# res://dialogues/scene1/oldwoman.dialogue
+# res://dialogues/info.dialogue
+# res://dialogues/scene1/tutorial.dialogue
+# res://dialogues/scene1/school_board.dialogue
+# res://dialogues/intro.dialogue
+# res://dialogues/scene2/terrace_poster.dialogue
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Florilexio\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: dialogues/example.dialogue
+msgid "Queres que che diga todas as opcións?"
+msgstr "Do you want me to tell you all the options?"
+
+#: dialogues/example.dialogue
+msgid "Vai levar [shake rate=20 level=10]tempo[/shake]..."
+msgstr "It will take [shake rate=20 level=10]time[/shake]..."
+
+#: dialogues/example.dialogue
+msgid "si"
+msgstr "yes"
+
+#: dialogues/example.dialogue
+msgid "Que peñazo"
+msgstr "What a drag"
+
+#: dialogues/example.dialogue
+msgid "non"
+msgstr "no"
+
+#: dialogues/example.dialogue
+msgid "Estas son todas as opcions que che podo contar."
+msgstr "These are all the options I can tell you."
+
+#: dialogues/example.dialogue
+msgid "Primeiro, podes mirar a planta con calma."
+msgstr "First, you can look at the plant calmly."
+
+#: dialogues/example.dialogue
+msgid "Despois, podes volver falar comigo cando queiras."
+msgstr "Afterward, you can talk to me again whenever you want."
+
+#: dialogues/example.dialogue
+msgid "Vale, entendo. Vou mirar con calma."
+msgstr "Okay, I understand. I'll take a careful look."
+
+#: dialogues/example.dialogue
+msgid "Perfecto. Se atopas algo raro, volve e cóntamo."
+msgstr "Perfect. If you find something strange, come back and tell me."
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esqueciches as herbiñas ou é que che sobra o tempo?"
+msgstr "Did you forget the little herbs, or do you just have time to spare?"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esta Mundo xa non rexe. Faltoulle o tomiño,"
+msgstr "This Mundo brew no longer works. It's missing thyme,"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "a menta, a ruda, e mais a macela."
+msgstr "mint, rue, and chamomile."
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "E tamén o sabugueiro e a herba da Nosa Señora…"
+msgstr "And also elder and Our Lady's bedstraw..."
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "E mira de levar silveira, pero ollo con prender nela!"
+msgstr "And make sure to bring bramble, but be careful not to get snagged on it!"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Esquecín, si"
+msgstr "I forgot, yes"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Non"
+msgstr "No"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Fiúncho, fento macho, herba luísa, xesta, romeu,"
+msgstr "Fennel, male fern, lemon verbena, broom, rosemary,"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "malva, herba de San Xoán…"
+msgstr "mallow, St. John's wort..."
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "Se queres collelas todas, bule, paxarín,"
+msgstr "If you want to gather them all, hurry up, little bird,"
+
+#: dialogues/scene1/oldwoman.dialogue
+msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”."
+msgstr "because [shake rate=20 level=5]time[/shake] flies the way the wind flies!\"."
+
+#: dialogues/info.dialogue
+msgid "Conseguiches {plant_name}!"
+msgstr "You got {plant_name}!"
+
+#: dialogues/info.dialogue
+msgid "Se arraiar, se arraiará"
+msgstr "If it takes root, it will take root"
+
+#: dialogues/info.dialogue
+msgid "tódalas meigas levará;"
+msgstr "it will carry off all the witches;"
+
+#: dialogues/info.dialogue
+msgid "xa arraiou, xa arraiou,"
+msgstr "it has already taken root, it has already taken root,"
+
+#: dialogues/info.dialogue
+msgid "tódalas meigas levou."
+msgstr "it carried off all the witches."
+
+#: dialogues/info.dialogue
+msgid "Por ser noite de San Xoán"
+msgstr "Because it is Saint John's night"
+
+#: dialogues/info.dialogue
+msgid "noite de encantos e bruxas"
+msgstr "a night of charms and witches"
+
+#: dialogues/info.dialogue
+msgid "por ser noite de San Xoán"
+msgstr "because it is Saint John's night"
+
+#: dialogues/info.dialogue
+msgid "non teño medo, curuxa!"
+msgstr "I am not afraid, owl!"
+
+#: dialogues/info.dialogue
+msgid "Vinte unha crara noite,"
+msgstr "I came on a clear night,"
+
+#: dialogues/info.dialogue
+msgid "noitiña de San Xoán,"
+msgstr "little Saint John's night,"
+
+#: dialogues/info.dialogue
+msgid "poñendo as frescas herbas"
+msgstr "placing the fresh herbs"
+
+#: dialogues/info.dialogue
+msgid "na fonte a serenar."
+msgstr "in the fountain to steep."
+
+#: dialogues/info.dialogue
+msgid "Amigue, irei ó San Xoán,"
+msgstr "Friend, I will go to Saint John's,"
+
+#: dialogues/info.dialogue
+msgid "queira ou non quera meu pai!"
+msgstr "whether my father wants it or not!"
+
+#: dialogues/info.dialogue
+msgid "Agárdame na verbena"
+msgstr "Wait for me at the festival"
+
+#: dialogues/info.dialogue
+msgid "- enriba, na calle Maior-,"
+msgstr "- up there, on Main Street -,"
+
+#: dialogues/info.dialogue
+msgid "Si non chego pola noite,"
+msgstr "If I don't arrive at night,"
+
+#: dialogues/info.dialogue
+msgid "hei de chegar polo albor."
+msgstr "I'll arrive at dawn."
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "Nunca estouraches o estalo?"
+msgstr "Have you never popped the popper?"
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "Proba a cortalo e bótallo ao cacho:"
+msgstr "Try cutting it and tossing it into the pile:"
+
+#: dialogues/scene1/tutorial.dialogue
+msgid "preme cando o punto de corte estea no verde claro"
+msgstr "press when the cut point is in the light green"
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Ao alumnado dos cursos que corresponda:"
+msgstr "To the students of the corresponding grades:"
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Materia: Ciencias da Terra e Botánica."
+msgstr "Subject: Earth Sciences and Botany."
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Contidos:"
+msgstr "Contents:"
+
+#: dialogues/scene1/school_board.dialogue
+msgid "- Endemismos e plantas en perigo de extinción no"
+msgstr "- Endemic species and plants in danger of extinction in the"
+
+#: dialogues/scene1/school_board.dialogue
+msgid "barrio de Duasaugas: detección e coidados in situ."
+msgstr "Duasaugas neighborhood: detection and in situ care."
+
+#: dialogues/scene1/school_board.dialogue
+msgid "- Especies invasoras: como recoñecelas, cortalas e desbotalas."
+msgstr "- Invasive species: how to recognize them, cut them, and dispose of them."
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Prácticum: Herbario de San Xoán. As herbas \"máxicas\" de Duasaugas."
+msgstr "Practicum: Saint John's Herbarium. The \"magical\" herbs of Duasaugas."
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Exame: 7 de setembro, aula 7G."
+msgstr "Exam: September 7, classroom 7G."
+
+#: dialogues/scene1/school_board.dialogue
+msgid "Data límite de entrega: 7 de setembro"
+msgstr "Submission deadline: September 7"
+
+#: dialogues/intro.dialogue
+msgid ""
+"É a mañá do 23 de xuño, véspera de San Xoán, a data que marca no calendario "
+"o final do curso escolar e o solsticio de verán."
+msgstr "It is the morning of June 23, the eve of Saint John, the date that marks on the calendar the end of the school year and the summer solstice."
+
+#: dialogues/intro.dialogue
+msgid ""
+"A xente de Dúasaugas prepárase para celebrar o Lumenovo, noite de culto, de "
+"festa e de ritos de cambio de ciclo que se perden atrás na memoria."
+msgstr "The people of Dúasaugas are getting ready to celebrate Lumenovo, a night of worship, celebration, and cycle-change rites that fade deep into memory."
+
+#: dialogues/intro.dialogue
+msgid ""
+"Mais a vella Mundo, unha das veciñas máis lonxevas do barrio, lembra aínda o "
+"nome das plantas que noutro tempo se usaban para curar feridas, espantar os "
+"demos e protexer de meigas o berce, a casa e as cortes."
+msgstr "But old Mundo, one of the neighborhood's longest-lived residents, still remembers the names of the plants that were once used to heal wounds, drive away demons, and protect cradle, home, and byre from witches."
+
+#: dialogues/intro.dialogue
+msgid ""
+"Os males de hoxe non son os que eran pero as Herbas de San Xoán aínda "
+"funcionan como ritual de protección e purificación a calquera que crea nelas."
+msgstr "Today's evils are not what they used to be, but Saint John's Herbs still work as a ritual of protection and purification for anyone who believes in them."
+
+#: dialogues/intro.dialogue
+msgid "Cada unha co seu poder. Búscaas para escorrentar os malos espíritos…"
+msgstr "Each one has its own power. Seek them out to drive away evil spirits..."
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "Aromáticas e medicinais plantadas pola"
+msgstr "Aromatic and medicinal plants grown by the"
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "comunidade do parque de Duasaugas."
+msgstr "community of Duasaugas park."
+
+#: dialogues/scene2/terrace_poster.dialogue
+msgid "Cortar con tino. Non asulagar. Deixar para quen vén detrás."
+msgstr "Cut with care. Do not overwater. Leave some for those who come after."
+
+msgid "Florilexio"
+msgstr "Florilexio"
