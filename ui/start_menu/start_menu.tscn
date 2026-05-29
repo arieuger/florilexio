@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://pd4lsh33fvqc"]
+
+[ext_resource type="Script" uid="uid://b0i1yatrbkgoe" path="res://scripts/ui/start_menu.gd" id="1_menu"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://bm1ltc8rt6f0s" path="res://assets/sprites/ui/lang_selector.png" id="4_ixxch"]
+[ext_resource type="Texture2D" uid="uid://bd0jkeo0e6nw0" path="res://assets/sprites/ui/background_menu.png" id="4_nhkli"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpy53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixxch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eawnk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vb20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ea51b"]
+
+[node name="StartMenu" type="Control" unique_id=150869724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=879892493]
+layout_mode = 0
+offset_right = 1416.0
+offset_bottom = 858.0
+scale = Vector2(0.227, 0.227)
+texture = ExtResource("4_nhkli")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1180285078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.047058824, 0.1254902, 0.03137255, 0.36078432)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=876259681]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qpy53")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=23665199]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1684370585]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1836656921]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.9227143, 0.85358554, 0.49865633, 1)
+theme_override_colors/font_outline_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 18
+text = "Un pequeno florilexio"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=795559341]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
+theme_override_colors/font_pressed_color = Color(0.9872183, 0.83431065, 5.390644e-06, 1)
+theme_override_colors/font_hover_color = Color(1, 0.87889504, 0.3806794, 1)
+theme_override_colors/font_outline_color = Color(0, 0.13936871, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ixxch")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eawnk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7vb20")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ea51b")
+text = "Xogar"
+flat = true
+
+[node name="LanguageRow" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=84612334]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 6
+
+[node name="LanguageLabelGl" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/LanguageRow" unique_id=441335198]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+text = "Galego"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ToggleLang" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/LanguageRow" unique_id=717214918]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("4_ixxch")
+stretch_mode = 4
+
+[node name="LanguageLabelEn" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/LanguageRow" unique_id=1319016703]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+text = "English"
+vertical_alignment = 1

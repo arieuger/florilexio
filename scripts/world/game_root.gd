@@ -32,6 +32,11 @@ func _ready() -> void:
 
 
 func _apply_locale_settings() -> void:
+	if GameState.preferred_locale != "":
+		game_locale = GameState.preferred_locale
+	else:
+		GameState.preferred_locale = game_locale
+
 	TranslationServer.set_locale(game_locale)
 	if game_locale == "gl":
 		_set_project_translations_enabled(false)

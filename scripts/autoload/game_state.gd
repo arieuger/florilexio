@@ -16,6 +16,7 @@ const NIGHT_START_BLOCK := 41
 var discovered_plants: Dictionary = {}
 var collected_plants: Dictionary = {}
 var final_bouquet_composition: Dictionary = {}
+var preferred_locale := "gl"
 
 var old_woman_already_spoke: bool = false
 var tutorial_already_launched: bool = false
