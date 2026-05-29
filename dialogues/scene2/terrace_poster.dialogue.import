@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://btlia331ufjlo"
+path="res://.godot/imported/terrace_poster.dialogue-8f68cdd3301346c8005632edf8117c9f.tres"
+
+[deps]
+
+source_file="res://dialogues/scene2/terrace_poster.dialogue"
+dest_files=["res://.godot/imported/terrace_poster.dialogue-8f68cdd3301346c8005632edf8117c9f.tres"]
+
+[params]
+
+defaults=true

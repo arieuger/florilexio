@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bognclbnndo1g"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_woudt"]
+[ext_resource type="Texture2D" uid="uid://dxo4fbcjpn4pa" path="res://assets/sprites/environment/plants/mimosa.png" id="2_5vgkn"]
+[ext_resource type="Texture2D" uid="uid://fs5ays77lwff" path="res://assets/sprites/environment/plants/mimosa_hover.png" id="3_5vgkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhj8r"]
+resource_local_to_scene = true
+size = Vector2(9, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmug4"]
+resource_local_to_scene = true
+size = Vector2(10, 2)
+
+[node name="Mimosa" unique_id=1542834651 instance=ExtResource("1_woudt")]
+plant_id = &"mimosa"
+plant_display_name = "Mimosa"
+hover_color = Color(0.84935623, 0.944244, 0.593495, 0.6862745)
+is_invasive = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_5vgkn")
+offset = Vector2(-7, -14)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-4, -3)
+texture = ExtResource("3_5vgkn")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+shape = SubResource("RectangleShape2D_jhj8r")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kmug4")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = -13.0

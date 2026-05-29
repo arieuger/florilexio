@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dm5e8xnmt7wsq"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mxave"]
+[ext_resource type="Texture2D" uid="uid://hu65hmu0110g" path="res://assets/sprites/environment/plants/pervinca.png" id="2_mxave"]
+[ext_resource type="Texture2D" uid="uid://bgrrxe4hcyj0v" path="res://assets/sprites/environment/plants/pervinca_hover.png" id="3_4gjtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbswa"]
+resource_local_to_scene = true
+size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3xro"]
+resource_local_to_scene = true
+size = Vector2(10, 2)
+
+[node name="Macela" unique_id=1542834651 instance=ExtResource("1_mxave")]
+plant_id = &"pervinca"
+plant_display_name = "Pervinca"
+hover_color = Color(0.940219, 0.86542207, 0.99695617, 0.6862745)
+is_invasive = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_mxave")
+offset = Vector2(-5, -2)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(0, 9)
+texture = ExtResource("3_4gjtk")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gbswa")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(0, 7)
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_p3xro")
+disabled = true
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+visible = true
+offset_top = -9.0
+offset_bottom = -3.0

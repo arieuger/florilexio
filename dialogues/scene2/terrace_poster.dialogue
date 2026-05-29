@@ -1,0 +1,8 @@
+~ start
+Aromáticas e medicinais plantadas pola
+comunidade do parque de Duasaugas.
+Cortar con tino. Non asulagar. Deixar para quen vén detrás.
+if not GameState.acknowledged_not_all_aromatics
+	do GameState.add_consumed_time(1)
+	do GameState.acknowledged_not_all_aromatics = true
+=> END

@@ -20,6 +20,7 @@ var acknowledged_on_danger_plants: bool = false
 var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
+var acknowledged_not_all_aromatics: bool = false
 
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
