@@ -243,6 +243,11 @@ position = Vector2(304, 153)
 script = ExtResource("29_spawn")
 spawn_id = &"park_gate"
 
+[node name="FirePlaceSpawn" type="Marker2D" parent="." unique_id=1222289084]
+position = Vector2(107, 117)
+script = ExtResource("29_spawn")
+spawn_id = &"fire_place"
+
 [node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1956318489]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
