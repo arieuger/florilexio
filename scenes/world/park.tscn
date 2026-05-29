@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="22_arrow_hover"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="23_arrow_pressed"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
+[ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -56,7 +57,7 @@ size = Vector2(37, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weyec"]
 size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmh8e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl8ky"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
 
@@ -305,7 +306,7 @@ texture = ExtResource("11_2q76u")
 
 [node name="CollisionShape2D" parent="YSortables/TerracePoster/NPC/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(-1.875, -4.875)
-shape = SubResource("RectangleShape2D_wmh8e")
+shape = SubResource("RectangleShape2D_sl8ky")
 
 [node name="Fiuncho" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_hgbhm")]
 position = Vector2(84, 160)
@@ -401,6 +402,18 @@ position = Vector2(147, 132)
 [node name="Macela5" parent="YSortables" unique_id=1836051713 instance=ExtResource("20_m4b7g")]
 position = Vector2(156, 127)
 
+[node name="Firefly" parent="YSortables" unique_id=155381040 instance=ExtResource("30_sl8ky")]
+position = Vector2(54, 175)
+
+[node name="Firefly2" parent="YSortables" unique_id=71226426 instance=ExtResource("30_sl8ky")]
+position = Vector2(210, 165)
+
+[node name="Firefly3" parent="YSortables" unique_id=845138448 instance=ExtResource("30_sl8ky")]
+position = Vector2(27, 113)
+
+[node name="Firefly4" parent="YSortables" unique_id=1216146489 instance=ExtResource("30_sl8ky")]
+position = Vector2(189, 119)
+
 [node name="TownPortal" type="Area2D" parent="." unique_id=473107869]
 position = Vector2(8, 156)
 script = ExtResource("2_transition")
@@ -429,6 +442,7 @@ drag_top_margin = 0.24
 drag_bottom_margin = 0.18
 
 [node name="GrassArea" type="Area2D" parent="." unique_id=192444353]
+visible = false
 position = Vector2(123, 118)
 script = ExtResource("26_y4r3u")
 

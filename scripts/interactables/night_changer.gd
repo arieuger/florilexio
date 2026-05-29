@@ -1,4 +1,4 @@
-extends CanvasItem
+extends Node2D
 
 @export var visible_at_night := true
 

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cn0kbnywofiwo"]
+
+[ext_resource type="Script" uid="uid://bdhrcbnwiau2y" path="res://scripts/world/firefly.gd" id="1_m2ayh"]
+[ext_resource type="Texture2D" uid="uid://bp8j4y4w4awhx" path="res://assets/sprites/environment/scene2/firefly.png" id="1_sd0gd"]
+[ext_resource type="Texture2D" uid="uid://7towvker4nr6" path="res://assets/sprites/environment/scene2/firefly_light.png" id="2_pl0y7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl0y7"]
+atlas = ExtResource("1_sd0gd")
+region = Rect2(7, 9, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2ayh"]
+atlas = ExtResource("1_sd0gd")
+region = Rect2(23, 9, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0nyn"]
+atlas = ExtResource("1_sd0gd")
+region = Rect2(39, 9, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry756"]
+atlas = ExtResource("1_sd0gd")
+region = Rect2(55, 9, 3, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv1t7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl0y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2ayh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0nyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry756")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="Firefly" type="Node2D" unique_id=155381040]
+script = ExtResource("1_m2ayh")
+
+[node name="Firefly" type="AnimatedSprite2D" parent="." unique_id=1359722699]
+self_modulate = Color(1, 1, 1, 0.39215687)
+sprite_frames = SubResource("SpriteFrames_yv1t7")
+autoplay = "default"
+frame_progress = 0.07252842
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1994005600]
+color = Color(0, 0.8886675, 0.8964698, 1)
+energy = 0.86
+texture = ExtResource("2_pl0y7")
+offset = Vector2(0.5, 0)
+texture_scale = 1.41
