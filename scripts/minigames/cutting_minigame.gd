@@ -73,7 +73,7 @@ func _input(event: InputEvent) -> void:
 func _try_cut() -> void:
 	if _is_successful_cut():
 		_hits += 1
-		_show_feedback("Ben! " + str(_hits) + "/" + str(required_hits), Color(0.6, 1.0, 0.6, 1.0))
+		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0))
 		_pulse_success_zones()
 		SoundManager.play_simple_sound("Minigame/Cutting Grass")
 		if _hits >= required_hits:
@@ -81,7 +81,7 @@ func _try_cut() -> void:
 	else:
 		_misses += 1
 		GameState.add_consumed_time(miss_time_cost_blocks)
-		_show_feedback("Fallaches " + str(_misses) + "/" + str(max_misses), Color(1.0, 0.45, 0.45, 1.0))
+		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0))
 		_shake_ring()
 		SoundManager.play_simple_sound('Actions/Error')
 		if _misses >= max_misses:

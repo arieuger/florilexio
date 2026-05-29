@@ -6,6 +6,7 @@
 # res://dialogues/scene1/school_board.dialogue
 # res://dialogues/intro.dialogue
 # res://dialogues/scene2/terrace_poster.dialogue
+# res://scripts/minigames/cutting_minigame.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -177,6 +178,34 @@ msgstr ""
 msgid "hei de chegar polo albor."
 msgstr ""
 
+#: dialogues/info.dialogue
+msgid "Cacho tradicional"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Cacho invasor"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Cacho demasiado grande"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Cacho demasiado pequeno"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Cacho baleiro"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Cacho mediocre"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Arrincaches invasoras."
+msgstr ""
+
 #: dialogues/scene1/tutorial.dialogue
 msgid "Nunca estouraches o estalo?"
 msgstr ""
@@ -255,6 +284,14 @@ msgstr ""
 
 #: dialogues/scene2/terrace_poster.dialogue
 msgid "Cortar con tino. Non asulagar. Deixar para quen vén detrás."
+msgstr ""
+
+#: scripts/minigames/cutting_minigame.gd:76
+msgid "Ben!"
+msgstr ""
+
+#: scripts/minigames/cutting_minigame.gd:84
+msgid "Fallaches"
 msgstr ""
 
 msgid "Florilexio"

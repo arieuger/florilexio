@@ -81,7 +81,8 @@ msgstr "And also elder and Our Lady's bedstraw..."
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "E mira de levar silveira, pero ollo con prender nela!"
-msgstr "And make sure to bring bramble, but be careful not to get snagged on it!"
+msgstr ""
+"And make sure to bring bramble, but be careful not to get snagged on it!"
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "Esquecín, si"
@@ -105,7 +106,8 @@ msgstr "If you want to gather them all, hurry up, little bird,"
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”."
-msgstr "because [shake rate=20 level=5]time[/shake] flies the way the wind flies!\"."
+msgstr ""
+"because [shake rate=20 level=5]time[/shake] flies the way the wind flies!\"."
 
 #: dialogues/info.dialogue
 msgid "Conseguiches {plant_name}!"
@@ -183,6 +185,34 @@ msgstr "If I don't arrive at night,"
 msgid "hei de chegar polo albor."
 msgstr "I'll arrive at dawn."
 
+#: dialogues/info.dialogue
+msgid "Cacho tradicional"
+msgstr "Traditional bunch"
+
+#: dialogues/info.dialogue
+msgid "Cacho invasor"
+msgstr "Invasive bunch"
+
+#: dialogues/info.dialogue
+msgid "Cacho demasiado grande"
+msgstr "Bunch too large"
+
+#: dialogues/info.dialogue
+msgid "Cacho demasiado pequeno"
+msgstr "Bunch too small"
+
+#: dialogues/info.dialogue
+msgid "Cacho baleiro"
+msgstr "Empty bunch"
+
+#: dialogues/info.dialogue
+msgid "Cacho mediocre"
+msgstr "Mediocre bunch"
+
+#: dialogues/info.dialogue
+msgid "Arrincaches invasoras."
+msgstr "You pulled up invasive plants."
+
 #: dialogues/scene1/tutorial.dialogue
 msgid "Nunca estouraches o estalo?"
 msgstr "Have you never popped the popper?"
@@ -217,7 +247,8 @@ msgstr "Duasaugas neighborhood: detection and in situ care."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "- Especies invasoras: como recoñecelas, cortalas e desbotalas."
-msgstr "- Invasive species: how to recognize them, cut them, and dispose of them."
+msgstr ""
+"- Invasive species: how to recognize them, cut them, and dispose of them."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Prácticum: Herbario de San Xoán. As herbas \"máxicas\" de Duasaugas."
@@ -235,30 +266,41 @@ msgstr "Submission deadline: September 7"
 msgid ""
 "É a mañá do 23 de xuño, véspera de San Xoán, a data que marca no calendario "
 "o final do curso escolar e o solsticio de verán."
-msgstr "It is the morning of June 23, the eve of Saint John, the date that marks on the calendar the end of the school year and the summer solstice."
+msgstr ""
+"It is the morning of June 23, the eve of Saint John, the date that marks on "
+"the calendar the end of the school year and the summer solstice."
 
 #: dialogues/intro.dialogue
 msgid ""
 "A xente de Dúasaugas prepárase para celebrar o Lumenovo, noite de culto, de "
 "festa e de ritos de cambio de ciclo que se perden atrás na memoria."
-msgstr "The people of Dúasaugas are getting ready to celebrate Lumenovo, a night of worship, celebration, and cycle-change rites that fade deep into memory."
+msgstr ""
+"The people of Dúasaugas are getting ready to celebrate Lumenovo, a night of "
+"worship, celebration, and cycle-change rites that fade deep into memory."
 
 #: dialogues/intro.dialogue
 msgid ""
 "Mais a vella Mundo, unha das veciñas máis lonxevas do barrio, lembra aínda o "
 "nome das plantas que noutro tempo se usaban para curar feridas, espantar os "
 "demos e protexer de meigas o berce, a casa e as cortes."
-msgstr "But old Mundo, one of the neighborhood's longest-lived residents, still remembers the names of the plants that were once used to heal wounds, drive away demons, and protect cradle, home, and byre from witches."
+msgstr ""
+"But old Mundo, one of the neighborhood's longest-lived residents, still "
+"remembers the names of the plants that were once used to heal wounds, drive "
+"away demons, and protect cradle, home, and byre from witches."
 
 #: dialogues/intro.dialogue
 msgid ""
 "Os males de hoxe non son os que eran pero as Herbas de San Xoán aínda "
 "funcionan como ritual de protección e purificación a calquera que crea nelas."
-msgstr "Today's evils are not what they used to be, but Saint John's Herbs still work as a ritual of protection and purification for anyone who believes in them."
+msgstr ""
+"Today's evils are not what they used to be, but Saint John's Herbs still "
+"work as a ritual of protection and purification for anyone who believes in "
+"them."
 
 #: dialogues/intro.dialogue
 msgid "Cada unha co seu poder. Búscaas para escorrentar os malos espíritos…"
-msgstr "Each one has its own power. Seek them out to drive away evil spirits..."
+msgstr ""
+"Each one has its own power. Seek them out to drive away evil spirits..."
 
 #: dialogues/scene2/terrace_poster.dialogue
 msgid "Aromáticas e medicinais plantadas pola"
@@ -271,6 +313,14 @@ msgstr "community of Duasaugas park."
 #: dialogues/scene2/terrace_poster.dialogue
 msgid "Cortar con tino. Non asulagar. Deixar para quen vén detrás."
 msgstr "Cut with care. Do not overwater. Leave some for those who come after."
+
+#: scripts/minigames/cutting_minigame.gd:76
+msgid "Ben!"
+msgstr "Great!"
+
+#: scripts/minigames/cutting_minigame.gd:84
+msgid "Fallaches"
+msgstr "You missed"
 
 msgid "Florilexio"
 msgstr "Florilexio"

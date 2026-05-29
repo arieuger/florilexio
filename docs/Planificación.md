@@ -10,6 +10,7 @@ kanban-plugin: board
 
 ## Desenvolvendo
 
+- [ ] [[Traducir os textos do prototipo ao ingles]]
 - [ ] [[Deseñar escenarios]]
 
 

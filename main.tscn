@@ -65,6 +65,6 @@ event_guid = "{f63cd916-4f04-4c51-b3fb-9593389337f1}"
 autoplay = true
 
 [node name="EnvironmentalSound" type="FmodEventEmitter2D" parent="." unique_id=73649499]
-event_name = "event:/Environment/Day"
+event_name = "event:/Environment/Ambience"
 event_guid = "{09365fd8-35e4-4b7d-80f0-562141fd67d1}"
 autoplay = true
