@@ -9,13 +9,24 @@ mouse_filter = 0
 theme_override_constants/separation = 6
 script = ExtResource("1_row")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="NameLabel" type="Label" parent="NameContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 6
 text = "Fiuncho"
+
+[node name="InvasiveWarningLabel" type="Label" parent="NameContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "[ ! ]"
 
 [node name="AmountLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(18, 0)

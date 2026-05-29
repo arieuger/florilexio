@@ -3,6 +3,7 @@ extends Node
 signal consumed_time_added(total_consumed_time: int)
 signal reached_night()
 signal discarded_invasive_plants_changed(total_discarded_invasive_plants: int)
+signal invasive_plants_acknowledgement_changed(is_acknowledged: bool)
 
 const START_HOUR := 10
 const END_HOUR := 22
@@ -16,7 +17,16 @@ var collected_plants: Dictionary = {}
 var old_woman_already_spoke: bool = false
 var tutorial_already_launched: bool = false
 
-var acknowledged_invasive_plants: bool = false
+var acknowledged_invasive_plants: bool:
+	get:
+		return _acknowledged_invasive_plants
+	set(value):
+		if _acknowledged_invasive_plants == value:
+			return
+
+		_acknowledged_invasive_plants = value
+		invasive_plants_acknowledgement_changed.emit(_acknowledged_invasive_plants)
+
 var acknowledged_on_danger_plants: bool = false
 var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
@@ -27,6 +37,7 @@ var discarded_invasive_plants_count: int = 0
 
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
+var _acknowledged_invasive_plants: bool = false
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras
 

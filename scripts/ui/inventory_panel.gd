@@ -18,6 +18,7 @@ var _current_page := 0
 
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(_refresh)
+	GameState.invasive_plants_acknowledgement_changed.connect(_on_invasive_plants_acknowledgement_changed)
 	close_button.pressed.connect(_on_close_button_pressed)
 	close_button.mouse_entered.connect(_on_close_button_mouse_entered)
 	previous_page_button.pressed.connect(_on_previous_page_pressed)
@@ -74,6 +75,10 @@ func _on_next_page_pressed() -> void:
 func _on_item_row_discard_requested(plant_id: StringName) -> void:
 	if InventoryManager.discard_item(plant_id):
 		SoundManager.play_simple_sound("Actions/Click")
+
+
+func _on_invasive_plants_acknowledgement_changed(_is_acknowledged: bool) -> void:
+	_refresh()
 
 
 func _get_page_count(item_count: int) -> int:

@@ -40,6 +40,7 @@ var _selected_current_page := 0
 func _ready() -> void:
 	InventoryManager.bouquet_changed.connect(_refresh)
 	InventoryManager.inventory_changed.connect(_refresh)
+	GameState.invasive_plants_acknowledgement_changed.connect(_on_invasive_plants_acknowledgement_changed)
 	bowl_drop_area.connect(&"plant_dropped", _on_bowl_plant_dropped)
 	available_previous_page_button.pressed.connect(_on_available_previous_page_pressed)
 	available_next_page_button.pressed.connect(_on_available_next_page_pressed)
@@ -103,7 +104,7 @@ func _refresh_selected_items() -> void:
 		var plant_id := bouquet_items[index]
 		var row := selected_row_scene.instantiate()
 		selected_container.add_child(row)
-		row.setup(index, InventoryManager.get_display_name(plant_id))
+		row.setup(index, InventoryManager.get_display_name(plant_id), InventoryManager.get_bouquet_item_marks(index))
 		row.remove_requested.connect(_on_selected_row_remove_requested)
 
 	_update_selected_paginator(page_count)
@@ -179,6 +180,10 @@ func _on_available_next_page_pressed() -> void:
 func _on_available_row_discard_requested(plant_id: StringName) -> void:
 	if InventoryManager.discard_item(plant_id):
 		SoundManager.play_simple_sound("Actions/Click")
+
+
+func _on_invasive_plants_acknowledgement_changed(_is_acknowledged: bool) -> void:
+	_refresh()
 
 
 func _on_selected_previous_page_pressed() -> void:
