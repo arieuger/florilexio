@@ -15,7 +15,6 @@
 script = ExtResource("1_root")
 initial_area = ExtResource("3_town")
 play_intro_on_start = false
-game_locale = "en"
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=353280469]
 bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank"]
