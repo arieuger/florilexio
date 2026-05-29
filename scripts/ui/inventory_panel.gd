@@ -31,6 +31,11 @@ func _ready() -> void:
 	_refresh()
 
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED and is_node_ready():
+		_refresh()
+
+
 func _refresh() -> void:
 	for child in items_container.get_children():
 		items_container.remove_child(child)

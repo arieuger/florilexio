@@ -51,6 +51,11 @@ func _ready() -> void:
 	_refresh()
 
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED and is_node_ready():
+		_refresh()
+
+
 func _refresh() -> void:
 	_refresh_available_items()
 	_refresh_selected_items()

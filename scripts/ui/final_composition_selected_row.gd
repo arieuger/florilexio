@@ -58,7 +58,7 @@ func _update_warning_labels(marks: Dictionary) -> void:
 func _setup_warning_label(warning_label: Label, warning_text: String, tooltip: String, should_show: bool) -> void:
 	warning_label.text = warning_text
 	if warning_label.has_method(&"set_custom_tooltip_text"):
-		warning_label.set_custom_tooltip_text(tooltip)
+		warning_label.set_custom_tooltip_text(tr(tooltip))
 	else:
-		warning_label.tooltip_text = tooltip
+		warning_label.tooltip_text = tr(tooltip)
 	warning_label.visible = should_show
