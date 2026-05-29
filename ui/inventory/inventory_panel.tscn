@@ -124,15 +124,14 @@ theme_override_font_sizes/font_size = 6
 text = "Inda non recolliches ningunha herba!"
 horizontal_alignment = 1
 
-[node name="ComposeBouquetButton" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ComposeBouquetButton" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=26162256]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-mouse_filter = 0
 mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_compose_button")
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ComposeBouquetButton"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ComposeBouquetButton" unique_id=407154066]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("3_obcwt")

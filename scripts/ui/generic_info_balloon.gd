@@ -129,6 +129,7 @@ func _emit_closed() -> void:
 
 
 func _handle_click() -> void:
+	SoundManager.play_simple_sound("Actions/Next Dialogue")
 	if _is_dialogue_running:
 		_advance_dialogue()
 		return
