@@ -37,6 +37,7 @@ func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> 
 
 		viewport.set_input_as_handled()
 		_play_button_animation(pressed_animation)
+		SoundManager.play_simple_sound("Actions/Click")
 		_transition(true)
 
 
@@ -51,6 +52,7 @@ func _on_mouse_entered() -> void:
 
 	_is_mouse_over = true
 	_play_button_animation(hovered_animation)
+	SoundManager.play_simple_sound("Actions/Hover")
 
 
 func _on_mouse_exited() -> void:
