@@ -180,6 +180,8 @@ func _on_final_composition_requested(composition: Dictionary) -> void:
 	_show_final_scene_spotlight()
 	await get_tree().create_timer(0.35).timeout
 	await DialogueBalloonCoordinator.show_info_dialogue_and_wait(_get_final_result_dialogue_title(composition))
+	if bool(composition.get("player_removed_invasors", false)):
+		await DialogueBalloonCoordinator.show_info_dialogue_and_wait("final_player_removed_invasors")
 
 
 func _close_final_composition_panel() -> void:
