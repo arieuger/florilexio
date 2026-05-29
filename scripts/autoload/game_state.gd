@@ -4,6 +4,7 @@ signal consumed_time_added(total_consumed_time: int)
 signal reached_night()
 signal discarded_invasive_plants_changed(total_discarded_invasive_plants: int)
 signal invasive_plants_acknowledgement_changed(is_acknowledged: bool)
+signal magic_plants_acknowledgement_changed(is_acknowledged: bool)
 
 const START_HOUR := 10
 const END_HOUR := 22
@@ -39,6 +40,7 @@ var acknowledged_magic_plants: bool:
 			return
 
 		_acknowledged_magic_plants = value
+		magic_plants_acknowledgement_changed.emit(_acknowledged_magic_plants)
 
 
 var acknowledged_not_all_aromatics: bool = false

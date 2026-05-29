@@ -12,6 +12,8 @@ const BOUQUET_PLANT_ID_KEY := &"plant_id"
 const BOUQUET_MARKS_KEY := &"marks"
 const INVASIVE_WARNING_TEXT := "[ ! ]"
 const INVASIVE_WARNING_TOOLTIP := "Invasora!"
+const MAGIC_WARNING_TEXT := "[ *_. ]"
+const MAGIC_WARNING_TOOLTIP := "Máxica!"
 
 var items: Dictionary = {}
 var plant_display_names: Dictionary = {}
@@ -135,6 +137,10 @@ func has_plant_mark(plant_id: StringName, mark: StringName) -> bool:
 
 func should_show_invasive_warning(marks: Dictionary) -> bool:
 	return GameState.acknowledged_invasive_plants and bool(marks.get(MARK_IS_INVASIVE, false))
+
+
+func should_show_magic_warning(marks: Dictionary) -> bool:
+	return GameState.acknowledged_magic_plants and bool(marks.get(MARK_IS_MAGIC, false))
 
 
 func build_plant_marks(source: Object) -> Dictionary:

@@ -40,7 +40,8 @@ var _selected_current_page := 0
 func _ready() -> void:
 	InventoryManager.bouquet_changed.connect(_refresh)
 	InventoryManager.inventory_changed.connect(_refresh)
-	GameState.invasive_plants_acknowledgement_changed.connect(_on_invasive_plants_acknowledgement_changed)
+	GameState.invasive_plants_acknowledgement_changed.connect(_on_some_acknowledgement_changed)
+	GameState.magic_plants_acknowledgement_changed.connect(_on_some_acknowledgement_changed)
 	bowl_drop_area.connect(&"plant_dropped", _on_bowl_plant_dropped)
 	available_previous_page_button.pressed.connect(_on_available_previous_page_pressed)
 	available_next_page_button.pressed.connect(_on_available_next_page_pressed)
@@ -182,7 +183,7 @@ func _on_available_row_discard_requested(plant_id: StringName) -> void:
 		SoundManager.play_simple_sound("Actions/Click")
 
 
-func _on_invasive_plants_acknowledgement_changed(_is_acknowledged: bool) -> void:
+func _on_some_acknowledgement_changed(_is_acknowledged: bool) -> void:
 	_refresh()
 
 

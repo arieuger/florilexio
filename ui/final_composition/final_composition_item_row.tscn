@@ -32,6 +32,17 @@ text = "[ ! ]"
 script = ExtResource("3_tooltip")
 custom_tooltip_text = "Invasora!"
 
+[node name="MagicWarningLabel" type="Label" parent="NameContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0.24, 0.08, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 6
+text = "[ *_. ]"
+script = ExtResource("3_tooltip")
+custom_tooltip_text = "Máxica!"
+tooltip_font_color = Color(0, 0.24, 0.08, 1)
+
 [node name="AmountLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
