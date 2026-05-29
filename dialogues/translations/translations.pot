@@ -370,5 +370,45 @@ msgstr ""
 msgid "Xesta"
 msgstr ""
 
+#: ui/inventory/inventory_panel.tscn
+msgid "Herbas recollidas"
+msgstr ""
+
+#: ui/inventory/inventory_panel.tscn
+msgid "Inda non recolliches ningunha herba!"
+msgstr ""
+
+#: ui/inventory/inventory_panel.tscn
+msgid "Compoñer cacho"
+msgstr ""
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Herbas"
+msgstr ""
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Non tes herbas."
+msgstr ""
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "No cacho"
+msgstr ""
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Arrastra herbas á cunca"
+msgstr ""
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Invasora!"
+msgstr ""
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Máxica!"
+msgstr ""
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Tirar"
+msgstr ""
+
 msgid "Florilexio"
 msgstr ""

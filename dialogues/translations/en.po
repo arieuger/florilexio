@@ -320,7 +320,7 @@ msgstr "Great!"
 
 #: scripts/minigames/cutting_minigame.gd:84
 msgid "Fallaches"
-msgstr "You missed"
+msgstr "Miss!"
 
 #: scenes/interactables/plants/dedaleira.tscn
 msgid "Dedaleira"
@@ -397,6 +397,46 @@ msgstr "Thyme"
 #: scenes/interactables/plants/xesta.tscn
 msgid "Xesta"
 msgstr "Broom"
+
+#: ui/inventory/inventory_panel.tscn
+msgid "Herbas recollidas"
+msgstr "Collected Herbs"
+
+#: ui/inventory/inventory_panel.tscn
+msgid "Inda non recolliches ningunha herba!"
+msgstr "You haven't collected any herbs yet!"
+
+#: ui/inventory/inventory_panel.tscn
+msgid "Compoñer cacho"
+msgstr "Compose bouquet"
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Herbas"
+msgstr "Herbs"
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Non tes herbas."
+msgstr "You have no herbs."
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "No cacho"
+msgstr "In the bouquet"
+
+#: ui/final_composition/final_composition_panel.tscn
+msgid "Arrastra herbas á cunca"
+msgstr "Drag herbs into the bowl"
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Invasora!"
+msgstr "Invasive!"
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Máxica!"
+msgstr "Magical!"
+
+#: ui/inventory/inventory_item_row.tscn
+msgid "Tirar"
+msgstr "Discard"
 
 msgid "Florilexio"
 msgstr "Florilexio"
