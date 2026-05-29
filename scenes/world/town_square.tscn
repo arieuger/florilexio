@@ -29,7 +29,10 @@
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
+[ext_resource type="Texture2D" uid="uid://p0tebjapslw2" path="res://assets/sprites/ui/buttons/next_space_arrow.png" id="31_a3e3a"]
 [ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="31_camera"]
+[ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="32_vm2rq"]
+[ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="33_iaic6"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -162,8 +165,68 @@ animations = [{
 radius = 7.0
 height = 28.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaic6"]
+atlas = ExtResource("31_a3e3a")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0348l"]
+atlas = ExtResource("31_a3e3a")
+region = Rect2(10, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7g5c"]
+atlas = ExtResource("32_vm2rq")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr2sd"]
+atlas = ExtResource("32_vm2rq")
+region = Rect2(10, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp5kr"]
+atlas = ExtResource("33_iaic6")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdqtp"]
+atlas = ExtResource("33_iaic6")
+region = Rect2(10, 0, 10, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7g5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaic6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0348l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7g5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr2sd")
+}],
+"loop": true,
+"name": &"hovered",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp5kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdqtp")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 2.5
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_park_portal"]
-size = Vector2(5, 40)
+size = Vector2(14, 14)
 
 [node name="TownSquare" type="Node2D" unique_id=66873482]
 
@@ -454,6 +517,7 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_vhepp")
 
 [node name="NightSound" type="FmodEventEmitter2D" parent="YSortables/Fire" unique_id=1714815642]
+event_name = "event:/Environment/Campfire"
 event_guid = "{1472490c-d952-4a52-a464-cd5054073c09}"
 
 [node name="Silveira" parent="YSortables" unique_id=1872331309 instance=ExtResource("18_1u8w0")]
@@ -508,20 +572,29 @@ collection_id = &"macela1"
 position = Vector2(271, 108)
 collection_id = &"macela2"
 
-[node name="ParkPortal" type="Area2D" parent="YSortables" unique_id=901001003]
+[node name="CameraConfig" type="Node2D" parent="." unique_id=901001005]
+visible = false
+script = ExtResource("31_camera")
+
+[node name="ParkPortal" type="Area2D" parent="." unique_id=901001003]
 position = Vector2(312, 153)
 script = ExtResource("30_transition")
 target_area_path = "res://scenes/world/park.tscn"
 target_spawn_id = &"town_gate"
+transition_on_body_entered = false
+button_sprite_path = NodePath("GoToNextSpace")
+button_visibility_distance = 40.0
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/ParkPortal" unique_id=901001004]
-position = Vector2(6.5, 0)
-shape = SubResource("RectangleShape2D_park_portal")
+[node name="GoToNextSpace" type="AnimatedSprite2D" parent="ParkPortal" unique_id=130542209]
+position = Vector2(2, 3)
+sprite_frames = SubResource("SpriteFrames_a7g5c")
+autoplay = "default"
+frame_progress = 0.93289983
 
-[node name="CameraConfig" type="Node2D" parent="." unique_id=901001005]
-visible = false
-script = ExtResource("31_camera")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParkPortal" unique_id=901001004]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_park_portal")
 
 [editable path="YSortables/BenchRight/OldWoman"]
 [editable path="YSortables/SchoolBoard"]
