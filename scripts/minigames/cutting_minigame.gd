@@ -8,6 +8,7 @@ const DIRECTION_CHANGE_INTERVAL := 3.0
 
 var plant_id: StringName
 var plant_display_name: String
+var plant_marks: Dictionary = {}
 var required_hits: int = 3
 var max_misses: int = 3
 var rotation_speed_degrees: float = 120.0
@@ -148,7 +149,7 @@ func _finish(was_successful: bool) -> void:
 	GameState.add_consumed_time(time_cost_blocks)
 
 	if was_successful:
-		InventoryManager.add_item(plant_id, 1, plant_display_name)
+		InventoryManager.add_item(plant_id, 1, plant_display_name, plant_marks)
 		completed.emit(plant_id)
 		SoundManager.play_simple_sound('Actions/Success')
 	else:

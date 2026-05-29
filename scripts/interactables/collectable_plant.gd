@@ -154,6 +154,7 @@ func start_cutting_minigame() -> void:
 	var difficulty_settings := _get_cutting_difficulty_settings()
 	minigame.plant_id = plant_id
 	minigame.plant_display_name = plant_display_name
+	minigame.plant_marks = InventoryManager.build_plant_marks(self)
 	minigame.time_cost_blocks = _get_cutting_time_cost(difficulty_settings)
 	minigame.miss_time_cost_blocks = _get_cutting_miss_time_cost(difficulty_settings)
 	minigame.required_hits = cutting_required_hits

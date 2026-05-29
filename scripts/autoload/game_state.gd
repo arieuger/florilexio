@@ -2,6 +2,7 @@ extends Node
 
 signal consumed_time_added(total_consumed_time: int)
 signal reached_night()
+signal discarded_invasive_plants_changed(total_discarded_invasive_plants: int)
 
 const START_HOUR := 10
 const END_HOUR := 22
@@ -21,6 +22,8 @@ var acknowledged_poisonous_plants: bool = false # De momento nada
 var acknowledged_mortal_plants: bool = false
 var acknowledged_magic_plants: bool = false
 var acknowledged_not_all_aromatics: bool = false
+
+var discarded_invasive_plants_count: int = 0
 
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
@@ -69,6 +72,14 @@ func collect_plant(plant_collection_id: StringName) -> void:
 		return
 
 	collected_plants[plant_collection_id] = true
+
+
+func add_discarded_invasive_plants(amount: int = 1) -> void:
+	if amount <= 0:
+		return
+
+	discarded_invasive_plants_count += amount
+	discarded_invasive_plants_changed.emit(discarded_invasive_plants_count)
 
 
 func is_plant_collected(plant_collection_id: StringName) -> bool:

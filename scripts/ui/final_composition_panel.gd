@@ -195,4 +195,4 @@ func _on_compose_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled()
 		composition_requested.emit()
-		print("TODO: calcular puntuacións do cacho con ", InventoryManager.get_bouquet_items())
+		print("TODO: calcular puntuacións do cacho con ", InventoryManager.get_bouquet_entries())
