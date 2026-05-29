@@ -2,17 +2,29 @@
 Conseguiches {plant_name}! => END
 
 ~ final_game_intro
-Se arraiar, se arraiará
-tódalas meigas levará
-xa arraiou, xa arraiou
-tódalas meigas levou.
-
-Peladas eran
-peladas serán
-tódalas meigas
-que andan polo chan.
-
-Peladas son
-peladas eran
-tódalas meigas
-que andan pola terra => END
+%
+	Se arraiar, se arraiará
+	tódalas meigas levará;
+	xa arraiou, xa arraiou,
+	tódalas meigas levou.
+	=> END
+%
+	Por ser noite de San Xoán
+	noite de encantos e bruxas
+	por ser noite de San Xoán
+	non teño medo, curuxa!
+	=> END
+%
+	Vinte unha crara noite,
+	noitiña de San Xoán,
+	poñendo as frescas herbas
+	na fonte a serenar.
+	=> END
+%
+	Amigue, irei ó San Xoán,
+	queira ou non quera meu pai!
+	Agárdame na verbena
+	\- enriba, na calle Maior-,
+	Si non chego pola noite,
+	hei de chegar polo albor.
+	=> END
