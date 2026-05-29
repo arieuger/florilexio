@@ -22,15 +22,18 @@
 			<value>false</value>
 		</property>
 		<relationship name="modulators">
-			<destination>{4e5cf38d-2efb-41d5-878f-65ba378a0777}</destination>
+			<destination>{d127340a-d24f-4287-b090-a7fe14f2c51a}</destination>
 		</relationship>
 	</object>
-	<object class="SeekModulator" id="{4e5cf38d-2efb-41d5-878f-65ba378a0777}">
+	<object class="SeekModulator" id="{d127340a-d24f-4287-b090-a7fe14f2c51a}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>cursorPosition</value>
 		</property>
-		<property name="speedAscending">
-			<value>0.48999997973442078</value>
+		<property name="speedDescending">
+			<value>1.5</value>
+		</property>
+		<property name="asymmetric">
+			<value>true</value>
 		</property>
 	</object>
 </objects>
