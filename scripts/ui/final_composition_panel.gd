@@ -79,6 +79,7 @@ func _refresh_available_items() -> void:
 		var row := item_row_scene.instantiate()
 		items_container.add_child(row)
 		row.setup(plant_id, InventoryManager.get_display_name(plant_id), available_amount)
+		row.discard_requested.connect(_on_available_row_discard_requested)
 
 	_update_available_paginator(page_count)
 
@@ -173,6 +174,11 @@ func _on_available_previous_page_pressed() -> void:
 func _on_available_next_page_pressed() -> void:
 	_available_current_page += 1
 	_refresh_available_items()
+
+
+func _on_available_row_discard_requested(plant_id: StringName) -> void:
+	if InventoryManager.discard_item(plant_id):
+		SoundManager.play_simple_sound("Actions/Click")
 
 
 func _on_selected_previous_page_pressed() -> void:

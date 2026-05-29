@@ -17,9 +17,20 @@ theme_override_font_sizes/font_size = 6
 text = "Fiuncho"
 
 [node name="AmountLabel" type="Label" parent="." unique_id=222522802]
+custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("2_pr0fb")
 theme_override_font_sizes/font_size = 6
 text = "x1"
 horizontal_alignment = 2
+
+[node name="DiscardButton" type="Label" parent="."]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
+theme_override_fonts/font = ExtResource("2_pr0fb")
+theme_override_font_sizes/font_size = 6
+text = "Tirar"
+horizontal_alignment = 1

@@ -63,6 +63,13 @@ func remove_item(plant_id: StringName, amount: int = 1) -> bool:
 	return true
 
 
+func discard_item(plant_id: StringName, amount: int = 1) -> bool:
+	if amount <= 0 or not can_discard_item(plant_id, amount):
+		return false
+
+	return remove_item(plant_id, amount)
+
+
 func get_amount(plant_id: StringName) -> int:
 	return int(items.get(plant_id, 0))
 
@@ -136,6 +143,14 @@ func get_bouquet_items() -> Array[StringName]:
 func can_add_to_bouquet(plant_id: StringName) -> bool:
 	var already_selected := _get_selected_bouquet_amount(plant_id)
 	return get_amount(plant_id) > already_selected
+
+
+func can_discard_item(plant_id: StringName, amount: int = 1) -> bool:
+	if amount <= 0:
+		return false
+
+	var available_amount := get_amount(plant_id) - _get_selected_bouquet_amount(plant_id)
+	return available_amount >= amount
 
 
 func is_good_bouquet_size() -> bool:

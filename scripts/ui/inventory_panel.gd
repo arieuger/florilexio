@@ -43,10 +43,11 @@ func _refresh() -> void:
 	var end_index = mini(start_index + items_per_page, plant_ids.size())
 
 	for index in range(start_index, end_index):
-		var plant_id = plant_ids[index]
+		var plant_id: StringName = plant_ids[index]
 		var row := item_row_scene.instantiate()
 		items_container.add_child(row)
-		row.setup(InventoryManager.get_display_name(plant_id), int(inventory_items[plant_id]))
+		row.setup(plant_id, InventoryManager.get_display_name(plant_id), int(inventory_items[plant_id]))
+		row.discard_requested.connect(_on_item_row_discard_requested)
 
 	_update_paginator(page_count)
 
@@ -68,6 +69,11 @@ func _on_previous_page_pressed() -> void:
 func _on_next_page_pressed() -> void:
 	_current_page += 1
 	_refresh()
+
+
+func _on_item_row_discard_requested(plant_id: StringName) -> void:
+	if InventoryManager.discard_item(plant_id):
+		SoundManager.play_simple_sound("Actions/Click")
 
 
 func _get_page_count(item_count: int) -> int:
