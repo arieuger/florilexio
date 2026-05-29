@@ -27,6 +27,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueBalloonCoordinator="*uid://cpfd6edlan4so"
 FmodManager="*uid://cds10pm7hwn3p"
 SoundManager="*uid://cvtendwncqa75"
+FinalBouquetCompositionCalculator="*res://scripts/autoload/final_bouquet_composition_calculator.gd"
 
 [dialogue_manager]
 

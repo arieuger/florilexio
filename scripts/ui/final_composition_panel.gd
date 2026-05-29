@@ -1,7 +1,7 @@
 extends Control
 class_name FinalCompositionPanel
 
-signal composition_requested
+signal composition_requested(composition: Dictionary)
 
 const FLOWERS_EMPTY_COUNT := 0
 const FLOWERS_LOW_COUNT := 1
@@ -200,5 +200,7 @@ func _on_selected_next_page_pressed() -> void:
 func _on_compose_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled()
-		composition_requested.emit()
-		print("TODO: calcular puntuacións do cacho con ", InventoryManager.get_bouquet_entries())
+		SoundManager.play_simple_sound("Actions/Click")
+		var bouquet_entries := InventoryManager.get_bouquet_entries()
+		var composition := GameState.compose_final_bouquet(bouquet_entries)
+		composition_requested.emit(composition)

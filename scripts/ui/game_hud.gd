@@ -155,6 +155,7 @@ func _show_final_composition() -> void:
 	if is_instance_valid(_final_composition_panel) or not is_instance_valid(final_composition_scene):
 		return
 
+	GameState.clear_final_bouquet_composition()
 	InventoryManager.clear_bouquet()
 	_final_composition_panel = final_composition_scene.instantiate() as FinalCompositionPanel
 	if not _final_composition_panel:
@@ -164,5 +165,5 @@ func _show_final_composition() -> void:
 	add_child(_final_composition_panel)
 
 
-func _on_final_composition_requested() -> void:
-	print("TODO: desencadear cálculo final de puntuacións.")
+func _on_final_composition_requested(composition: Dictionary) -> void:
+	print("Composición final do cacho: ", composition)
