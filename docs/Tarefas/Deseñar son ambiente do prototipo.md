@@ -7,7 +7,7 @@ responsable: poch
 - [ ] Sons de día
       https://xscxxtxr.org/soundscape/paxaros-de-san-estevo-de-chouzan/
       https://xscxxtxr.org/soundscape/rio-dos-gafos-ponte-dos-rocios-ou-da-estrada-1105/      
-- [ ] Sons de noite
+- [x] Sons de noite
       https://xscxxtxr.org/soundscape/carlos-suarez-dende-o-carballino-717/ + https://xscxxtxr.org/soundscape/o-son-dos-grilos-2009/
       https://xscxxtxr.org/soundscape/chiu-longina-dende-viana-374/ (non puxeron licencia)
 - [x] Pobo

@@ -6,7 +6,6 @@ kanban-plugin: board
 
 ## Definindo
 
-- [ ] [[Deseñar sons de interacción co cacho do prototipo]]
 
 
 ## Desenvolvendo
@@ -16,6 +15,7 @@ kanban-plugin: board
 
 ## Revisando
 
+- [ ] [[Deseñar sons de interacción co cacho do prototipo]]
 - [ ] [[Deseñar sons de interacción coa contorna do prototipo]]
 - [ ] [[Deseñar sons de interacción co inventario do prototipo]]
 - [ ] [[Compoñer melodía principal do prototipo]]
