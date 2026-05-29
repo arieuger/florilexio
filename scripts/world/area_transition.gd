@@ -84,6 +84,7 @@ func _transition(move_player_first: bool) -> void:
 			_play_button_animation(default_animation)
 			return
 		root.call_deferred("load_area", target_area, target_spawn_id)
+		GameState.add_consumed_time(1)
 	else:
 		_is_transitioning = false
 		_play_button_animation(default_animation)
