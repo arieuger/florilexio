@@ -33,10 +33,10 @@ custom_tooltip_text = "Invasora!"
 tooltip_font_color = Color(0.8545729, 0.38123325, 3.85046e-07, 1)
 tooltip_font_size = 5
 
-[node name="MagicWarningLabel" type="Label" parent="NameContainer"]
+[node name="MagicWarningLabel" type="Label" parent="NameContainer" unique_id=1776324722]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0.24, 0.08, 1)
+theme_override_colors/font_color = Color(7.099286e-07, 0.33070597, 0.11992384, 1)
 theme_override_fonts/font = ExtResource("2_pr0fb")
 theme_override_font_sizes/font_size = 6
 text = "[ *_. ]"

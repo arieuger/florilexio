@@ -1,28 +1,28 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cny3odsvc334k"]
 
-[ext_resource type="Script" path="res://scripts/ui/final_composition_item_row.gd" id="1_row"]
+[ext_resource type="Script" uid="uid://bgvpv7v27oglk" path="res://scripts/ui/final_composition_item_row.gd" id="1_row"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
-[ext_resource type="Script" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
+[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
 
-[node name="FinalCompositionItemRow" type="HBoxContainer"]
+[node name="FinalCompositionItemRow" type="HBoxContainer" unique_id=582692234]
 custom_minimum_size = Vector2(0, 10)
 mouse_filter = 0
 theme_override_constants/separation = 6
 script = ExtResource("1_row")
 
-[node name="NameContainer" type="HBoxContainer" parent="."]
+[node name="NameContainer" type="HBoxContainer" parent="." unique_id=551103418]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="NameLabel" type="Label" parent="NameContainer"]
+[node name="NameLabel" type="Label" parent="NameContainer" unique_id=1880522725]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 6
 text = "Fiuncho"
 
-[node name="InvasiveWarningLabel" type="Label" parent="NameContainer"]
+[node name="InvasiveWarningLabel" type="Label" parent="NameContainer" unique_id=292430257]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.45, 0, 1)
@@ -32,18 +32,19 @@ text = "[ ! ]"
 script = ExtResource("3_tooltip")
 custom_tooltip_text = "Invasora!"
 
-[node name="MagicWarningLabel" type="Label" parent="NameContainer"]
+[node name="MagicWarningLabel" type="Label" parent="NameContainer" unique_id=39527553]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0, 0.24, 0.08, 1)
+theme_override_colors/font_color = Color(0, 0.32941177, 0.12156863, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 6
 text = "[ *_. ]"
 script = ExtResource("3_tooltip")
 custom_tooltip_text = "Máxica!"
 tooltip_font_color = Color(0, 0.24, 0.08, 1)
+tooltip_font_size = 5
 
-[node name="AmountLabel" type="Label" parent="."]
+[node name="AmountLabel" type="Label" parent="." unique_id=89255489]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
@@ -52,7 +53,7 @@ theme_override_font_sizes/font_size = 6
 text = "x1"
 horizontal_alignment = 2
 
-[node name="DiscardButton" type="Label" parent="."]
+[node name="DiscardButton" type="Label" parent="." unique_id=121244553]
 custom_minimum_size = Vector2(26, 0)
 layout_mode = 2
 mouse_filter = 0
