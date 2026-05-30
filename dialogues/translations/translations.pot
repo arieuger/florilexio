@@ -410,5 +410,17 @@ msgstr ""
 msgid "Tirar"
 msgstr ""
 
+#: ui/start_menu/start_menu.tscn
+msgid "Un pequeno florilexio"
+msgstr ""
+
+#: ui/start_menu/start_menu.tscn
+msgid "Xogar"
+msgstr ""
+
+#: ui/start_menu/start_menu.tscn
+msgid "Saír"
+msgstr ""
+
 msgid "Florilexio"
 msgstr ""

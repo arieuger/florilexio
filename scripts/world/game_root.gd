@@ -4,7 +4,6 @@ extends Node2D
 @export var initial_spawn_id: StringName = &"default"
 @export var transition_color := Color(0, 0, 0, 1)
 @export var play_intro_on_start := true
-@export_enum("en", "gl") var game_locale := "gl"
 @export var intro_dialogue: DialogueResource = preload("res://dialogues/intro.dialogue")
 @export var intro_dialogue_title := "start"
 @export var intro_info_balloon_scene: PackedScene = preload("res://ui/dialogue/generic_info_balloon.tscn")
@@ -14,11 +13,6 @@ extends Node2D
 
 var _current_area: Node
 var _area_transition_tween: Tween
-var _project_translations: Array[Translation] = []
-
-
-func _enter_tree() -> void:
-	_apply_locale_settings()
 
 
 func _ready() -> void:
@@ -29,44 +23,6 @@ func _ready() -> void:
 		_run_intro_sequence.call_deferred()
 	else:
 		_set_player_movement_enabled(true)
-
-
-func _apply_locale_settings() -> void:
-	if GameState.preferred_locale != "":
-		game_locale = GameState.preferred_locale
-	else:
-		GameState.preferred_locale = game_locale
-
-	TranslationServer.set_locale(game_locale)
-	if game_locale == "gl":
-		_set_project_translations_enabled(false)
-		DialogueManager.translation_source = DMConstants.TranslationSource.None
-	else:
-		_set_project_translations_enabled(true)
-		DialogueManager.translation_source = DMConstants.TranslationSource.Guess
-
-
-func _set_project_translations_enabled(enabled: bool) -> void:
-	_ensure_project_translations_cached()
-
-	for translation in _project_translations:
-		# Remove first to avoid duplicate registrations when re-enabling.
-		TranslationServer.remove_translation(translation)
-		if enabled:
-			TranslationServer.add_translation(translation)
-
-
-func _ensure_project_translations_cached() -> void:
-	if not _project_translations.is_empty():
-		return
-
-	var translation_files: PackedStringArray = ProjectSettings.get_setting("internationalization/locale/translations", PackedStringArray())
-	for file_path in translation_files:
-		var translation_resource := load(file_path)
-		if translation_resource is Translation:
-			_project_translations.append(translation_resource)
-
-
 func load_area(area_scene: PackedScene, spawn_id: StringName = &"default") -> void:
 	if not area_scene:
 		return

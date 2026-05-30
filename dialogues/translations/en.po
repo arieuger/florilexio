@@ -438,5 +438,17 @@ msgstr "Magical!"
 msgid "Tirar"
 msgstr "Discard"
 
+#: ui/start_menu/start_menu.tscn
+msgid "Un pequeno florilexio"
+msgstr "A little florilegium"
+
+#: ui/start_menu/start_menu.tscn
+msgid "Xogar"
+msgstr "Play"
+
+#: ui/start_menu/start_menu.tscn
+msgid "Saír"
+msgstr "Exit"
+
 msgid "Florilexio"
 msgstr "Florilexio"
