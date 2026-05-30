@@ -7,6 +7,9 @@
 # res://dialogues/intro.dialogue
 # res://dialogues/scene2/terrace_poster.dialogue
 # res://scripts/minigames/cutting_minigame.gd
+# res://dialogues/scene1/firelight.dialogue
+# res://dialogues/scene2/wind_and_font.dialogue
+# res://dialogues/other.dialogue
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -294,131 +297,201 @@ msgstr ""
 msgid "Fallaches"
 msgstr ""
 
-#: scenes/interactables/plants/dedaleira.tscn
+#: dialogues/scene1/firelight.dialogue
+msgid "Sálvame, lume de San Xoán,"
+msgstr ""
+
+#: dialogues/scene1/firelight.dialogue
+msgid "para que non me trabe caseiro nin can"
+msgstr ""
+
+#: dialogues/scene1/firelight.dialogue
+msgid "nin cantos males han…"
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid "Uuuuuuuuuh….. Aaaaaaaaah….. Iiiiiiuuuuuuh……. Aaaaaaaaah…."
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"Iraaaaás ao abrente do dííía\n"
+"a aaauga freeesca cataaaaaar"
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"da aaaaauga do paxariiiiño\n"
+"que saúúde che haaa de daaaar."
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"Coooooorre, criatura,\n"
+"vaaaite lavaaaaar"
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"alááá na foooooonte\n"
+"te haaaaaas de lavaaar,"
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"e a freeeeeesca aaaaauga\n"
+"deeeesta amañeciiiiida"
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"cooooooor da cereixa\n"
+"che teeeen que daaaaar."
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid "Uuuuuuuh….. Aaaaaaah….. Uuuuuuh……. Ooooaaaaah…."
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"Nin apio, nin fiuncho nin pirixel.\n"
+"Se atopas nabo de San Pedro\n"
+"escapa del."
+msgstr ""
+
+#: dialogues/scene2/wind_and_font.dialogue
+msgid ""
+"E, lembra, hoxe como sempre foi:\n"
+"Vale máis a pegada de cen mosquitos\n"
+"que pé de boi."
+msgstr ""
+
+#: dialogues/other.dialogue
 msgid "Dedaleira"
 msgstr ""
 
-#: scenes/interactables/plants/fento.tscn
+#: dialogues/other.dialogue
 msgid "Fento"
 msgstr ""
 
-#: scenes/interactables/plants/fiuncho.tscn
+#: dialogues/other.dialogue
 msgid "Fiúncho"
 msgstr ""
 
-#: scenes/interactables/plants/herba_luisa.tscn
+#: dialogues/other.dialogue
 msgid "Herba luísa"
 msgstr ""
 
-#: scenes/interactables/plants/hiperico.tscn
+#: dialogues/other.dialogue
 msgid "Hipérico"
 msgstr ""
 
-#: scenes/interactables/plants/hortensia.tscn
+#: dialogues/other.dialogue
 msgid "Hortensia"
 msgstr ""
 
-#: scenes/interactables/plants/ipomea.tscn
+#: dialogues/other.dialogue
 msgid "Ipomea azul"
 msgstr ""
 
-#: scenes/interactables/plants/macela.tscn
+#: dialogues/other.dialogue
 msgid "Macela"
 msgstr ""
 
-#: scenes/interactables/plants/malva.tscn
+#: dialogues/other.dialogue
 msgid "Malva"
 msgstr ""
 
-#: scenes/interactables/plants/menta.tscn
+#: dialogues/other.dialogue
 msgid "Menta"
 msgstr ""
 
-#: scenes/interactables/plants/mimosa.tscn
+#: dialogues/other.dialogue
 msgid "Mimosa"
 msgstr ""
 
-#: scenes/interactables/plants/ortiga.tscn
+#: dialogues/other.dialogue
 msgid "Ortiga"
 msgstr ""
 
-#: scenes/interactables/plants/pan_de_cuco.tscn
+#: dialogues/other.dialogue
 msgid "Pan de cuco"
 msgstr ""
 
-#: scenes/interactables/plants/pervinca.tscn
+#: dialogues/other.dialogue
 msgid "Pervinca"
 msgstr ""
 
-#: scenes/interactables/plants/romeu.tscn
+#: dialogues/other.dialogue
 msgid "Romeu"
 msgstr ""
 
-#: scenes/interactables/plants/ruda.tscn
+#: dialogues/other.dialogue
 msgid "Ruda"
 msgstr ""
 
-#: scenes/interactables/plants/silveira.tscn
+#: dialogues/other.dialogue
 msgid "Silveira"
 msgstr ""
 
-#: scenes/interactables/plants/tominho.tscn
+#: dialogues/other.dialogue
 msgid "Tomiño"
 msgstr ""
 
-#: scenes/interactables/plants/xesta.tscn
+#: dialogues/other.dialogue
 msgid "Xesta"
 msgstr ""
 
-#: ui/inventory/inventory_panel.tscn
+#: dialogues/other.dialogue
 msgid "Herbas recollidas"
 msgstr ""
 
-#: ui/inventory/inventory_panel.tscn
+#: dialogues/other.dialogue
 msgid "Inda non recolliches ningunha herba!"
 msgstr ""
 
-#: ui/inventory/inventory_panel.tscn
+#: dialogues/other.dialogue
 msgid "Compoñer cacho"
 msgstr ""
 
-#: ui/final_composition/final_composition_panel.tscn
+#: dialogues/other.dialogue
 msgid "Herbas"
 msgstr ""
 
-#: ui/final_composition/final_composition_panel.tscn
+#: dialogues/other.dialogue
 msgid "Non tes herbas."
 msgstr ""
 
-#: ui/final_composition/final_composition_panel.tscn
+#: dialogues/other.dialogue
 msgid "No cacho"
 msgstr ""
 
-#: ui/final_composition/final_composition_panel.tscn
+#: dialogues/other.dialogue
 msgid "Arrastra herbas á cunca"
 msgstr ""
 
-#: ui/inventory/inventory_item_row.tscn
+#: dialogues/other.dialogue
 msgid "Invasora!"
 msgstr ""
 
-#: ui/inventory/inventory_item_row.tscn
+#: dialogues/other.dialogue
 msgid "Máxica!"
 msgstr ""
 
-#: ui/inventory/inventory_item_row.tscn
+#: dialogues/other.dialogue
 msgid "Tirar"
 msgstr ""
 
-#: ui/start_menu/start_menu.tscn
+#: dialogues/other.dialogue
 msgid "Un pequeno florilexio"
 msgstr ""
 
-#: ui/start_menu/start_menu.tscn
+#: dialogues/other.dialogue
 msgid "Xogar"
 msgstr ""
 
-#: ui/start_menu/start_menu.tscn
+#: dialogues/other.dialogue
 msgid "Saír"
 msgstr ""
 
