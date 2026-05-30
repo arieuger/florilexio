@@ -31,9 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="22_arrow_hover"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="23_arrow_pressed"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="25_jc6it"]
-[ext_resource type="Script" uid="uid://bty5sv57u0rth" path="res://scripts/interactables/wind.gd" id="25_u7one"]
+[ext_resource type="Script" path="res://scripts/interactables/wind.gd" id="25_u7one"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
-[ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
+[ext_resource type="PackedScene" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -457,6 +457,7 @@ position = Vector2(-56, -16)
 script = ExtResource("25_jc6it")
 speaker_id = &"wind"
 balloon_color = Color(0.7607843, 0.7607843, 0.7607843, 0.79607844)
+voice_type = 3.0
 
 [node name="TriggerArea" type="Area2D" parent="YSortables/Wind" unique_id=1971551553]
 
