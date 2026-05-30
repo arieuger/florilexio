@@ -149,3 +149,8 @@ vertical_alignment = 1
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1966566123]
 bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank"]
+
+[node name="EnvironmentSound" type="FmodEventEmitter2D" parent="." unique_id=520113029]
+event_name = "event:/Environment/Ambience"
+event_guid = "{09365fd8-35e4-4b7d-80f0-562141fd67d1}"
+autoplay = true
