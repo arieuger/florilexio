@@ -80,7 +80,7 @@ cut={
 [internationalization]
 
 locale/translations=PackedStringArray("res://dialogues/translations/en.po")
-locale/translations_pot_files=PackedStringArray("res://dialogues/example.dialogue", "res://dialogues/scene1/oldwoman.dialogue", "res://dialogues/info.dialogue", "res://dialogues/scene1/tutorial.dialogue", "res://dialogues/scene1/school_board.dialogue", "res://dialogues/intro.dialogue", "res://dialogues/scene2/terrace_poster.dialogue", "res://scripts/minigames/cutting_minigame.gd", "res://dialogues/scene1/firelight.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/example.dialogue", "res://dialogues/scene1/oldwoman.dialogue", "res://dialogues/info.dialogue", "res://dialogues/scene1/tutorial.dialogue", "res://dialogues/scene1/school_board.dialogue", "res://dialogues/intro.dialogue", "res://dialogues/scene2/terrace_poster.dialogue", "res://scripts/minigames/cutting_minigame.gd", "res://dialogues/scene1/firelight.dialogue", "res://dialogues/scene2/wind_and_font.dialogue")
 
 [physics]
 

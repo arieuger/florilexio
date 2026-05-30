@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dem5g48lb2le5"
+path="res://.godot/imported/wind_and_font.dialogue-a74261cb974dc33e3a6e39f617fa7cb6.tres"
+
+[deps]
+
+source_file="res://dialogues/scene2/wind_and_font.dialogue"
+dest_files=["res://.godot/imported/wind_and_font.dialogue-a74261cb974dc33e3a6e39f617fa7cb6.tres"]
+
+[params]
+
+defaults=true

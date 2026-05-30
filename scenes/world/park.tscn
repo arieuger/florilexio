@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://p0tebjapslw2" path="res://assets/sprites/ui/buttons/next_space_arrow.png" id="21_arrow"]
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="22_arrow_hover"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="23_arrow_pressed"]
+[ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="25_jc6it"]
+[ext_resource type="Script" uid="uid://bty5sv57u0rth" path="res://scripts/interactables/wind.gd" id="25_u7one"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
 [ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
 
@@ -60,6 +62,9 @@ size = Vector2(10, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl8ky"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc6it"]
+size = Vector2(132, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arrow_default_1"]
 atlas = ExtResource("21_arrow")
@@ -413,6 +418,23 @@ position = Vector2(27, 113)
 
 [node name="Firefly4" parent="YSortables" unique_id=1216146489 instance=ExtResource("30_sl8ky")]
 position = Vector2(189, 119)
+
+[node name="Wind" type="Node2D" parent="YSortables" unique_id=1717615843]
+position = Vector2(115, 100)
+script = ExtResource("25_u7one")
+metadata/_edit_group_ = true
+
+[node name="Marker2D" type="Marker2D" parent="YSortables/Wind" unique_id=1453647555]
+position = Vector2(-56, -16)
+script = ExtResource("25_jc6it")
+speaker_id = &"wind"
+balloon_color = Color(0.7607843, 0.7607843, 0.7607843, 0.79607844)
+
+[node name="TriggerArea" type="Area2D" parent="YSortables/Wind" unique_id=1971551553]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Wind/TriggerArea" unique_id=1168329853]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_jc6it")
 
 [node name="TownPortal" type="Area2D" parent="." unique_id=473107869]
 position = Vector2(8, 156)

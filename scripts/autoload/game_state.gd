@@ -50,6 +50,8 @@ var acknowledged_not_all_aromatics: bool = false
 
 var discarded_invasive_plants_count: int = 0
 
+var wind_already_spoke: bool = false
+
 var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
 var _acknowledged_invasive_plants: bool = false
