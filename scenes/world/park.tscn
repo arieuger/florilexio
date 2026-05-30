@@ -200,6 +200,7 @@ requires_wind_already_spoke = true
 position = Vector2(-22, -29)
 speaker_id = &"font"
 balloon_color = Color(0.5715888, 0.8701616, 0.96494645, 1)
+voice_type = 4.0
 
 [node name="InteractionPoint" parent="YSortables/Font/NPC" index="1" unique_id=222721431]
 position = Vector2(0, 13)
