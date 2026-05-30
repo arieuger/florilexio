@@ -39,7 +39,7 @@ msgid "non"
 msgstr ""
 
 #: dialogues/example.dialogue
-msgid "Estas son todas as opcions que che podo contar."
+msgid "Estas son todas as opcións que che podo contar."
 msgstr ""
 
 #: dialogues/example.dialogue
@@ -99,7 +99,7 @@ msgid "Se queres collelas todas, bule, paxarín,"
 msgstr ""
 
 #: dialogues/scene1/oldwoman.dialogue
-msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”."
+msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!."
 msgstr ""
 
 #: dialogues/info.dialogue

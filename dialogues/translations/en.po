@@ -44,7 +44,7 @@ msgid "non"
 msgstr "no"
 
 #: dialogues/example.dialogue
-msgid "Estas son todas as opcions que che podo contar."
+msgid "Estas son todas as opcións que che podo contar."
 msgstr "These are all the options I can tell you."
 
 #: dialogues/example.dialogue
@@ -69,7 +69,7 @@ msgstr "Did you forget the little herbs, or do you just have time to spare?"
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "Esta Mundo xa non rexe. Faltoulle o tomiño,"
-msgstr "This Mundo brew no longer works. It's missing thyme,"
+msgstr "This Mundo’s gone off the rails. She forgot to mention the thyme,"
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "a menta, a ruda, e mais a macela."
@@ -77,7 +77,7 @@ msgstr "mint, rue, and chamomile."
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "E tamén o sabugueiro e a herba da Nosa Señora…"
-msgstr "And also elder and Our Lady's bedstraw..."
+msgstr "And also elder and mugwort..."
 
 #: dialogues/scene1/oldwoman.dialogue
 msgid "E mira de levar silveira, pero ollo con prender nela!"
@@ -105,9 +105,9 @@ msgid "Se queres collelas todas, bule, paxarín,"
 msgstr "If you want to gather them all, hurry up, little bird,"
 
 #: dialogues/scene1/oldwoman.dialogue
-msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!”."
+msgid "que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!."
 msgstr ""
-"because [shake rate=20 level=5]time[/shake] flies the way the wind flies!\"."
+"because [shake rate=20 level=5]time[/shake] flies just like the wind does!."
 
 #: dialogues/info.dialogue
 msgid "Conseguiches {plant_name}!"
@@ -115,99 +115,99 @@ msgstr "You got {plant_name}!"
 
 #: dialogues/info.dialogue
 msgid "Se arraiar, se arraiará"
-msgstr "If it takes root, it will take root"
+msgstr "If dawn breaks, break it will,"
 
 #: dialogues/info.dialogue
 msgid "tódalas meigas levará;"
-msgstr "it will carry off all the witches;"
+msgstr "sweep the witches off the hill;"
 
 #: dialogues/info.dialogue
 msgid "xa arraiou, xa arraiou,"
-msgstr "it has already taken root, it has already taken root,"
+msgstr "dawn has broke, dawn has broke,"
 
 #: dialogues/info.dialogue
 msgid "tódalas meigas levou."
-msgstr "it carried off all the witches."
+msgstr "swept the witches up like smoke."
 
 #: dialogues/info.dialogue
 msgid "Por ser noite de San Xoán"
-msgstr "Because it is Saint John's night"
+msgstr "Cause tonight's Saint John's Eve"
 
 #: dialogues/info.dialogue
 msgid "noite de encantos e bruxas"
-msgstr "a night of charms and witches"
+msgstr "night of spells and witches' howl"
 
 #: dialogues/info.dialogue
 msgid "por ser noite de San Xoán"
-msgstr "because it is Saint John's night"
+msgstr "'cause tonight's Saint John's Eve"
 
 #: dialogues/info.dialogue
 msgid "non teño medo, curuxa!"
-msgstr "I am not afraid, owl!"
+msgstr "I'm not scared of you, old owl!"
 
 #: dialogues/info.dialogue
 msgid "Vinte unha crara noite,"
-msgstr "I came on a clear night,"
+msgstr "I saw you one clear evening,"
 
 #: dialogues/info.dialogue
 msgid "noitiña de San Xoán,"
-msgstr "little Saint John's night,"
+msgstr "on Saint John's Eve by moonlight,"
 
 #: dialogues/info.dialogue
 msgid "poñendo as frescas herbas"
-msgstr "placing the fresh herbs"
+msgstr "placing the fresh-cut herbs"
 
 #: dialogues/info.dialogue
 msgid "na fonte a serenar."
-msgstr "in the fountain to steep."
+msgstr "in the fountain overnight."
 
 #: dialogues/info.dialogue
 msgid "Amigue, irei ó San Xoán,"
-msgstr "Friend, I will go to Saint John's,"
+msgstr "Friend, I'm going to Saint John's"
 
 #: dialogues/info.dialogue
 msgid "queira ou non quera meu pai!"
-msgstr "whether my father wants it or not!"
+msgstr "whether my dad likes it or not!"
 
 #: dialogues/info.dialogue
 msgid "Agárdame na verbena"
-msgstr "Wait for me at the festival"
+msgstr "Wait for me at the verbena"
 
 #: dialogues/info.dialogue
 msgid "- enriba, na calle Maior-,"
-msgstr "- up there, on Main Street -,"
+msgstr "on Main Street - that's the spot -,"
 
 #: dialogues/info.dialogue
 msgid "Si non chego pola noite,"
-msgstr "If I don't arrive at night,"
+msgstr "If I don't get there before midnight,"
 
 #: dialogues/info.dialogue
 msgid "hei de chegar polo albor."
-msgstr "I'll arrive at dawn."
+msgstr "I'll be there come morning light!"
 
 #: dialogues/info.dialogue
 msgid "Cacho tradicional"
-msgstr "Traditional bunch"
+msgstr "Traditional bouquet"
 
 #: dialogues/info.dialogue
 msgid "Cacho invasor"
-msgstr "Invasive bunch"
+msgstr "Invasive bouquet"
 
 #: dialogues/info.dialogue
 msgid "Cacho demasiado grande"
-msgstr "Bunch too large"
+msgstr "Bouquet too large"
 
 #: dialogues/info.dialogue
 msgid "Cacho demasiado pequeno"
-msgstr "Bunch too small"
+msgstr "Bouquet too small"
 
 #: dialogues/info.dialogue
 msgid "Cacho baleiro"
-msgstr "Empty bunch"
+msgstr "Empty bouquet"
 
 #: dialogues/info.dialogue
 msgid "Cacho mediocre"
-msgstr "Mediocre bunch"
+msgstr "Mediocre bouquet"
 
 #: dialogues/info.dialogue
 msgid "Arrincaches invasoras."
@@ -219,11 +219,11 @@ msgstr "Have you never popped the popper?"
 
 #: dialogues/scene1/tutorial.dialogue
 msgid "Proba a cortalo e bótallo ao cacho:"
-msgstr "Try cutting it and tossing it into the pile:"
+msgstr "Try cutting it and add it to the bouquet:"
 
 #: dialogues/scene1/tutorial.dialogue
 msgid "preme cando o punto de corte estea no verde claro"
-msgstr "press when the cut point is in the light green"
+msgstr "press when the marker is in the light green zone"
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Ao alumnado dos cursos que corresponda:"

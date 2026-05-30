@@ -14,7 +14,7 @@ do request_player_dialogue("player_response_test")
 	Que peñazo => END
 
 ~ npc_all_options
-Estas son todas as opcions que che podo contar.
+Estas son todas as opcións que che podo contar.
 Primeiro, podes mirar a planta con calma.
 Despois, podes volver falar comigo cando queiras. => END
 
