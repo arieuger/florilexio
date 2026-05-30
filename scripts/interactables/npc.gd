@@ -4,6 +4,7 @@ extends Node2D
 @export var dialogue_title := "start"
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
+@export var requires_wind_already_spoke := false
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
@@ -16,11 +17,17 @@ var _is_interacting := false
 func _ready():
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
+	_update_availability()
+	if requires_wind_already_spoke:
+		GameState.wind_already_spoke_changed.connect(_on_wind_already_spoke_changed)
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
+	if not _is_available():
+		return
+
 	SoundManager.play_simple_sound("Actions/Hover")
 	_fade_hover_to(hover_color.a)
 
@@ -28,12 +35,15 @@ func _on_mouse_exited():
 	_fade_hover_to(0.0)
 
 func _on_input_event(viewport, event, _shape_idx):
+	if not _is_available():
+		return
+
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		viewport.set_input_as_handled()
 		_interact()
 
 func _interact():
-	if _is_interacting:
+	if _is_interacting or not _is_available():
 		return
 	
 	_is_interacting = true
@@ -59,6 +69,22 @@ func _interact():
 	)
 
 	_is_interacting = false
+
+func _on_wind_already_spoke_changed(_has_spoken: bool) -> void:
+	_update_availability()
+
+func _is_available() -> bool:
+	return not requires_wind_already_spoke or GameState.wind_already_spoke
+
+func _update_availability() -> void:
+	var available := _is_available()
+	visible = available
+	click_area.input_pickable = available
+	click_area.monitoring = available
+	click_area.monitorable = available
+
+	if not available:
+		_fade_hover_to(0.0)
 
 func _get_balloon_color() -> Color:
 	if "balloon_color" in balloon_marker:
