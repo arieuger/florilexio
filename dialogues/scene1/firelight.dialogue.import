@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cadc65tk3jfdc"
+path="res://.godot/imported/firelight.dialogue-71ca1f79a1300535db5e272e2a572fa3.tres"
+
+[deps]
+
+source_file="res://dialogues/scene1/firelight.dialogue"
+dest_files=["res://.godot/imported/firelight.dialogue-71ca1f79a1300535db5e272e2a572fa3.tres"]
+
+[params]
+
+defaults=true

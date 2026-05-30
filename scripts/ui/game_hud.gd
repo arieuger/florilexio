@@ -4,6 +4,9 @@ const TIME_LABEL_DEFAULT_COLOR := Color('#d3ffce')
 const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 
 @export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
+@export var final_firelight_dialogue: DialogueResource = preload("res://dialogues/scene1/firelight.dialogue")
+@export var final_firelight_dialogue_title := "final_firelight_talk"
+@export var final_firelight_speaker_id := "firelight"
 @export_file("*.tscn") var final_area_path := "res://scenes/world/town_square.tscn"
 @export var final_spawn_id: StringName = &"final_player_spawn"
 @export var final_area_transition_duration := 0.45
@@ -179,6 +182,7 @@ func _on_final_composition_requested(composition: Dictionary) -> void:
 	await _move_player_to_final_spawn()
 	_show_final_scene_spotlight()
 	await get_tree().create_timer(0.35).timeout
+	await _show_final_firelight_dialogue()
 	await DialogueBalloonCoordinator.show_info_dialogue_and_wait(_get_final_result_dialogue_title(composition))
 	if bool(composition.get("player_removed_invasors", false)):
 		await DialogueBalloonCoordinator.show_info_dialogue_and_wait("final_player_removed_invasors")
@@ -221,6 +225,20 @@ func _show_final_scene_spotlight() -> void:
 	var player := get_tree().get_first_node_in_group("player") as Node2D
 	if player:
 		_final_scene_spotlight.set_focus_node(player)
+
+
+func _show_final_firelight_dialogue() -> void:
+	if not is_instance_valid(final_firelight_dialogue):
+		return
+
+	var fallback_marker := _get_final_spotlight_marker()
+	var fallback_position := fallback_marker.global_position if fallback_marker else Vector2.ZERO
+	await DialogueBalloonCoordinator.run_speaker_sequence(
+		final_firelight_dialogue,
+		final_firelight_dialogue_title,
+		final_firelight_speaker_id,
+		fallback_position
+	)
 
 
 func _get_final_spotlight_marker() -> Node2D:

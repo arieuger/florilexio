@@ -189,6 +189,8 @@ func apply_dialogue_line() -> void:
 
 	# Show our balloon
 	if is_instance_valid(balloon):
+		if _follows_world_position:
+			_update_balloon_position()
 		balloon.show()
 	will_hide_balloon = false
 

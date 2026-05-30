@@ -213,6 +213,11 @@ func _request_dialogue_step(speaker: String, title: String, speaker_id: String =
 
 
 func _prepare_world_balloon(balloon: Node, world_position: Vector2, balloon_color: Color) -> void:
+	if is_instance_valid(balloon) and "visible" in balloon:
+		balloon.visible = false
+	if is_instance_valid(balloon) and balloon.has_method("set_balloon_world_position"):
+		balloon.set_balloon_world_position(world_position)
+
 	await get_tree().process_frame
 	if not is_instance_valid(balloon):
 		return
@@ -220,6 +225,8 @@ func _prepare_world_balloon(balloon: Node, world_position: Vector2, balloon_colo
 		balloon.set_balloon_color(balloon_color)
 	if balloon.has_method("set_balloon_world_position"):
 		balloon.set_balloon_world_position(world_position)
+	if "visible" in balloon:
+		balloon.visible = true
 
 
 func _run_requested_dialogues(

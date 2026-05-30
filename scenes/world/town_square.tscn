@@ -519,6 +519,13 @@ texture = ExtResource("23_jujta")
 script = ExtResource("24_bt8g2")
 flicker_speed = 5.0
 
+[node name="FirelightBalloonConfig" type="Marker2D" parent="YSortables/Fire" unique_id=1956946131]
+position = Vector2(-25, -51)
+script = ExtResource("14_kek77")
+speaker_id = &"firelight"
+balloon_color = Color(0.9239885, 0.54399693, 0.30584052, 1)
+voice_type = 1.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="YSortables/Fire" unique_id=1310840813]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Fire/StaticBody2D" unique_id=618280100]
