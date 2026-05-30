@@ -465,7 +465,7 @@ msgstr "Nettle"
 
 #: dialogues/other.dialogue
 msgid "Pan de cuco"
-msgstr "Cuckoo flower"
+msgstr "Sourgrass"
 
 #: dialogues/other.dialogue
 msgid "Pervinca"
