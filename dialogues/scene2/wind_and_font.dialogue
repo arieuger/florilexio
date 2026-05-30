@@ -7,8 +7,12 @@ Coooooorre, criatura,\nvaaaite lavaaaaar
 alááá na foooooonte\nte haaaaaas de lavaaar,
 e a freeeeeesca aaaaauga\ndeeeesta amañeciiiiida
 cooooooor da cereixa\nche teeeen que daaaaar.
-Uuuuuuuh….. Aaaaaaah….. Uuuuuuh……. Ooooaaaaah…. => END
+Uuuuuuuh….. Aaaaaaah….. Uuuuuuh……. Ooooaaaaah…. 
+do GameState.add_consumed_time(1)
+=> END
 
 ~ font
 Nin apio, nin fiuncho nin pirixel.\nSe atopas nabo de San Pedro\nescapa del. 
-E, lembra, hoxe como sempre foi\:\nVale máis a pegada de cen mosquitos\nque pé de boi. => END
+E, lembra, hoxe como sempre foi\:\nVale máis a pegada de cen mosquitos\nque pé de boi. 
+do GameState.add_consumed_time(1)
+=> END
