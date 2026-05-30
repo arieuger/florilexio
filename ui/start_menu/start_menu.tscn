@@ -146,3 +146,6 @@ theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 10
 text = "English"
 vertical_alignment = 1
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1966566123]
+bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank"]

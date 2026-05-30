@@ -16,7 +16,7 @@ script = ExtResource("1_root")
 initial_area = ExtResource("3_town")
 play_intro_on_start = false
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=353280469]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1772391022]
 bank_paths = ["res://assets/sound/FMOD/sounds/Build/Desktop/Master.strings.bank", "res://assets/sound/FMOD/sounds/Build/Desktop/Master.bank"]
 
 [node name="WorldTimeController" type="CanvasModulate" parent="." unique_id=943296988]

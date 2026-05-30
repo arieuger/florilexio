@@ -20,7 +20,9 @@ func _ready() -> void:
 	_set_manual_text_translation_disabled()
 	_set_locale(DEFAULT_LOCALE)
 	play_button.pressed.connect(_on_play_button_pressed)
+	play_button.mouse_entered.connect(_on_play_button_mouse_entered)
 	exit_button.pressed.connect(_on_exit_button_pressed)
+	exit_button.mouse_entered.connect(_on_exit_button_mouse_entered)
 	toggle_lang.gui_input.connect(_on_toggle_lang_gui_input)
 	play_button.grab_focus()
 	call_deferred("_apply_texts")
@@ -102,13 +104,24 @@ func _on_toggle_lang_gui_input(event: InputEvent) -> void:
 	if not mouse_event or not mouse_event.pressed or mouse_event.button_index != MOUSE_BUTTON_LEFT:
 		return
 
+	SoundManager.play_simple_sound("Actions/Click")
 	var next_locale := ENGLISH_LOCALE if _selected_locale == GALICIAN_LOCALE else GALICIAN_LOCALE
 	_set_locale(next_locale)
 
 
 func _on_play_button_pressed() -> void:
+	SoundManager.play_simple_sound("Actions/Click")
 	GameState.preferred_locale = _selected_locale
 	get_tree().change_scene_to_file(GAME_SCENE_PATH)
 
+
+func _on_play_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")
+
+
+func _on_exit_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")
+
 func _on_exit_button_pressed() -> void:
+	SoundManager.play_simple_sound("Actions/Click")
 	get_tree().quit()
