@@ -7,7 +7,8 @@ signal bouquet_changed
 
 const MARK_IS_INVASIVE := &"is_invasive"
 const MARK_IS_MAGIC := &"is_magic"
-const PLANT_MARKS := [MARK_IS_INVASIVE, MARK_IS_MAGIC]
+const MARK_IS_MORTAL := &"is_mortal"
+const PLANT_MARKS := [MARK_IS_INVASIVE, MARK_IS_MAGIC, MARK_IS_MORTAL]
 const BOUQUET_PLANT_ID_KEY := &"plant_id"
 const BOUQUET_MARKS_KEY := &"marks"
 const INVASIVE_WARNING_TEXT := "[ ! ]"

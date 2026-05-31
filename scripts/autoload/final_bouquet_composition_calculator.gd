@@ -6,6 +6,7 @@ func calculate(bouquet_entries: Array[Dictionary]) -> Dictionary:
 	var total_count := 0
 	var magic_count := 0
 	var invasive_count := 0
+	var some_mortal := false
 
 	for entry in entries:
 		var plant_id := StringName(entry.get(InventoryManager.BOUQUET_PLANT_ID_KEY, &""))
@@ -19,12 +20,15 @@ func calculate(bouquet_entries: Array[Dictionary]) -> Dictionary:
 			magic_count += 1
 		if bool(marks.get(InventoryManager.MARK_IS_INVASIVE, false)):
 			invasive_count += 1
+		if bool(marks.get(InventoryManager.MARK_IS_MORTAL, false)):
+			some_mortal = true
 
 	var unique_count := plant_counts.size()
 	var duplicate_count := total_count - unique_count
 	var has_traditional_size := total_count == 7 or total_count == 9
 
 	return {
+		"mortal": some_mortal,
 		"invasive": invasive_count,
 		"magic": magic_count,
 		"rank": _get_rank(total_count, invasive_count, magic_count, has_traditional_size, duplicate_count),

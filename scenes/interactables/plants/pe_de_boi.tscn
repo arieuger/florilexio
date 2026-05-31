@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://i2sxdwtyd47j"]
+
+[ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_l5fds"]
+[ext_resource type="Texture2D" uid="uid://dqh3ks8h2hvu6" path="res://assets/sprites/environment/plants/pe-de-boi.png" id="2_vbg5g"]
+[ext_resource type="Texture2D" uid="uid://cw4xiqlqaridn" path="res://assets/sprites/environment/plants/pe-de-boi_hover.png" id="3_vbg5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3e2vc"]
+resource_local_to_scene = true
+size = Vector2(8.5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cith"]
+resource_local_to_scene = true
+size = Vector2(8, 2)
+
+[node name="PeDeBoi" unique_id=1542834651 instance=ExtResource("1_l5fds")]
+plant_id = &"pe-de-boi"
+plant_display_name = "Pé de boi"
+hover_color = Color(0.99555427, 0.7644009, 0.851286, 0.6862745)
+is_mortal = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=2017130019]
+texture = ExtResource("2_vbg5g")
+offset = Vector2(-5, -11)
+
+[node name="HoverSprite" parent="." index="1" unique_id=995138453]
+position = Vector2(-2, 0)
+texture = ExtResource("3_vbg5g")
+
+[node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+position = Vector2(-0.25, -5)
+shape = SubResource("RectangleShape2D_3e2vc")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_0cith")
+
+[node name="NameLabel" parent="." index="5" unique_id=1783969518]
+offset_left = -8.0
+offset_top = -17.0
+offset_right = 9.0
+offset_bottom = -11.0
