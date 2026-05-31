@@ -422,22 +422,22 @@ collection_id = &"mimosa1"
 position = Vector2(198, 108)
 collection_id = &"mimosa2"
 
-[node name="Macela" parent="YSortables" unique_id=1235862383 instance=ExtResource("19_3hvtc")]
+[node name="PCuco" parent="YSortables" unique_id=1235862383 instance=ExtResource("19_3hvtc")]
 position = Vector2(59, 160)
 collection_id = &"pan-de-cuco2"
 
-[node name="Macela2" parent="YSortables" unique_id=483703657 instance=ExtResource("19_3hvtc")]
+[node name="PCuco2" parent="YSortables" unique_id=483703657 instance=ExtResource("19_3hvtc")]
 position = Vector2(48, 159)
 collection_id = &"pan-de-cuco3"
 
-[node name="Macela3" parent="YSortables" unique_id=111787892 instance=ExtResource("19_3hvtc")]
+[node name="PCuco3" parent="YSortables" unique_id=111787892 instance=ExtResource("19_3hvtc")]
 position = Vector2(66, 155)
 collection_id = &"pan-de-cuco1"
 
-[node name="Macela4" parent="YSortables" unique_id=919881374 instance=ExtResource("20_m4b7g")]
+[node name="Pervinca" parent="YSortables" unique_id=919881374 instance=ExtResource("20_m4b7g")]
 position = Vector2(147, 132)
 
-[node name="Macela5" parent="YSortables" unique_id=1836051713 instance=ExtResource("20_m4b7g")]
+[node name="Pervinca2" parent="YSortables" unique_id=1836051713 instance=ExtResource("20_m4b7g")]
 position = Vector2(156, 127)
 
 [node name="PeDeBoi" parent="YSortables" unique_id=791538594 instance=ExtResource("26_r2kch")]

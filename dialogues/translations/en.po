@@ -472,6 +472,10 @@ msgid "Pervinca"
 msgstr "Periwinkle"
 
 #: dialogues/other.dialogue
+msgid "Herba da envexa"
+msgstr "Periwinkle"
+
+#: dialogues/other.dialogue
 msgid "Romeu"
 msgstr "Rosemary"
 
