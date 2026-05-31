@@ -53,7 +53,8 @@ func _interact():
 	if interaction_point:
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.has_method("move_to_point"):
-			var reached: bool = await player.move_to_point(interaction_point.global_position)
+			var stop_distance: float = player.interaction_stop_distance if "interaction_stop_distance" in player else 6.0
+			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:
 				_is_interacting = false
 				return

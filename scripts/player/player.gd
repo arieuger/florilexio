@@ -6,6 +6,7 @@ signal auto_move_finished(reached: bool)
 @export var acceleration := 420.0
 @export var deceleration := 520.0
 @export var auto_move_stop_distance := 2.0
+@export var interaction_stop_distance := 6.0
 @export var auto_move_timeout := 5.0
 @export var auto_move_stuck_distance := 0.1
 @export var auto_move_stuck_time := 0.8
@@ -25,6 +26,7 @@ var _last_facing := "down"
 var _auto_move_target := Vector2.ZERO
 var _auto_move_path: PackedVector2Array = []
 var _auto_move_path_index := 0
+var _auto_move_arrival_distance := 2.0
 var _auto_move_elapsed := 0.0
 var _auto_move_current_timeout := 0.0
 var _auto_move_stuck_elapsed := 0.0
@@ -69,19 +71,20 @@ func _physics_process(delta: float):
 	if _is_auto_moving:
 		_check_auto_move_stuck(delta)
 
-func move_to_point(global_target: Vector2) -> bool:
+func move_to_point(global_target: Vector2, stop_distance := -1.0) -> bool:
 	if not movement_enabled:
 		return false
 
-	if global_position.distance_to(global_target) <= auto_move_stop_distance:
+	var arrival_distance := auto_move_stop_distance if stop_distance < 0.0 else stop_distance
+	if global_position.distance_to(global_target) <= arrival_distance:
 		return true
 
-	if not start_auto_move(global_target):
+	if not start_auto_move(global_target, arrival_distance):
 		return false
 
 	return await auto_move_finished
 
-func start_auto_move(global_target: Vector2) -> bool:
+func start_auto_move(global_target: Vector2, stop_distance := -1.0) -> bool:
 	if not movement_enabled:
 		return false
 
@@ -92,14 +95,8 @@ func start_auto_move(global_target: Vector2) -> bool:
 	if next_path.is_empty():
 		return false
 
-	_auto_move_target = global_target
-	_auto_move_path = next_path
-	_auto_move_path_index = 0
-	_auto_move_elapsed = 0.0
-	_auto_move_current_timeout = maxf(auto_move_timeout, _get_path_length(next_path) / max_speed + 1.0)
-	_auto_move_stuck_elapsed = 0.0
-	_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
-	_auto_move_previous_position = global_position
+	var arrival_distance := auto_move_stop_distance if stop_distance < 0.0 else stop_distance
+	_start_auto_move_path(global_target, next_path, arrival_distance)
 	_is_auto_moving = true
 	return true
 
@@ -126,7 +123,7 @@ func _process_auto_move(delta: float):
 	var current_target := _get_current_auto_move_target()
 	var target_offset := current_target - global_position
 	var target_distance := target_offset.length()
-	var arrival_distance := auto_move_stop_distance if _is_last_auto_move_waypoint() else pathfinding_waypoint_distance
+	var arrival_distance := _auto_move_arrival_distance if _is_last_auto_move_waypoint() else pathfinding_waypoint_distance
 
 	if target_distance <= arrival_distance:
 		if _advance_auto_move_path():
@@ -147,9 +144,21 @@ func _finish_auto_move(reached: bool):
 	_is_auto_moving = false
 	_auto_move_path = []
 	_auto_move_path_index = 0
+	_auto_move_arrival_distance = auto_move_stop_distance
 	velocity = Vector2.ZERO
 	_update_animation(Vector2.ZERO)
 	auto_move_finished.emit(reached)
+
+func _start_auto_move_path(global_target: Vector2, path: PackedVector2Array, arrival_distance: float) -> void:
+	_auto_move_target = global_target
+	_auto_move_path = path
+	_auto_move_path_index = 0
+	_auto_move_arrival_distance = arrival_distance
+	_auto_move_elapsed = 0.0
+	_auto_move_current_timeout = maxf(auto_move_timeout, _get_path_length(path) / max_speed + 1.0)
+	_auto_move_stuck_elapsed = 0.0
+	_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
+	_auto_move_previous_position = global_position
 
 func _check_auto_move_stuck(delta: float):
 	var current_distance := global_position.distance_to(_get_current_auto_move_target())

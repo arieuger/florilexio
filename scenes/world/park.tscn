@@ -173,6 +173,9 @@ shape = SubResource("SegmentShape2D_top")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollision" unique_id=607417452]
 shape = SubResource("SegmentShape2D_g5rbj")
 
+[node name="TopBlocker" type="CollisionPolygon2D" parent="WorldCollision" unique_id=891639253]
+polygon = PackedVector2Array(0, 109, 112, 98, 246, 110, 246, -25, 0, -25)
+
 [node name="YSortables" type="Node2D" parent="." unique_id=330749495]
 y_sort_enabled = true
 position = Vector2(0, -25)

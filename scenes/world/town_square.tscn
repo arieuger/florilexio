@@ -257,11 +257,11 @@ spawn_id = &"final_player_spawn"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
 position = Vector2(31, 114)
-polygon = PackedVector2Array(2, 13, 0, 11, -10, 11, -10, -5, -21, -5, -21, -13, -31, -13, -31, -38, 56, -53, 117, -62, 117, -14, 62, -14, 60, 22, 17, 22, 14, 14)
+polygon = PackedVector2Array(2, 13, 0, 11, -10, 11, -10, -5, -21, -5, -21, -13, -31, -13, -31, -124, 128, -136, 117, -14, 62, -14, 60, 22, 17, 22, 14, 14)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WorldCollision" unique_id=1854061891]
 position = Vector2(255, 121)
-polygon = PackedVector2Array(-9, 1, -9, -20, 58, -20, 58, -22, 65, -22, 65, -72, -107, -71, -107, -22, -96, -22, -95, 14, -90, 14, -92, -21, -81, -21, -81, 2)
+polygon = PackedVector2Array(-9, 1, -9, -20, 58, -20, 58, -22, 65, -22, 68, -142, -96, -161, -107, -22, -96, -22, -95, 14, -90, 14, -92, -21, -81, -21, -81, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollision" unique_id=609625496]
 shape = SubResource("SegmentShape2D_ycdy4")

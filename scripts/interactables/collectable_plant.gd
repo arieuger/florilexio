@@ -75,6 +75,8 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 var _hover_tween: Tween
 var _is_interacting := false
 var _collection_id: StringName
+var _minigame_player: Node
+var _minigame_player_movement_was_enabled := true
 
 
 func _ready() -> void:
@@ -129,7 +131,8 @@ func _interact() -> void:
 	if interaction_point:
 		var player := get_tree().get_first_node_in_group("player")
 		if player and player.has_method("move_to_point"):
-			var reached: bool = await player.move_to_point(interaction_point.global_position)
+			var stop_distance: float = player.interaction_stop_distance if "interaction_stop_distance" in player else 6.0
+			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:
 				_is_interacting = false
 				return
@@ -155,6 +158,8 @@ func start_cutting_minigame() -> void:
 	if not minigame:
 		_on_cutting_minigame_closed()
 		return
+
+	_disable_player_movement_for_minigame()
 
 	var difficulty_settings := _get_cutting_difficulty_settings()
 	minigame.plant_id = plant_id
@@ -185,7 +190,36 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 	)
 
 func _on_cutting_minigame_closed() -> void:
+	_restore_player_movement_after_minigame()
 	_is_interacting = false
+
+
+func _disable_player_movement_for_minigame() -> void:
+	_minigame_player = get_tree().get_first_node_in_group("player")
+	_minigame_player_movement_was_enabled = true
+
+	if not _minigame_player:
+		return
+
+	if "movement_enabled" in _minigame_player:
+		_minigame_player_movement_was_enabled = _minigame_player.get("movement_enabled")
+
+	if _minigame_player.has_method("set_movement_enabled"):
+		_minigame_player.set_movement_enabled(false)
+	else:
+		_minigame_player.set("movement_enabled", false)
+
+
+func _restore_player_movement_after_minigame() -> void:
+	if not is_instance_valid(_minigame_player):
+		return
+
+	if _minigame_player.has_method("set_movement_enabled"):
+		_minigame_player.set_movement_enabled(_minigame_player_movement_was_enabled)
+	else:
+		_minigame_player.set("movement_enabled", _minigame_player_movement_was_enabled)
+
+	_minigame_player = null
 
 
 func _should_launch_tutorial() -> bool:
