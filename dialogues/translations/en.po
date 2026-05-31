@@ -626,7 +626,7 @@ msgstr "Discard"
 
 #: dialogues/other.dialogue
 msgid "Un pequeno florilexio"
-msgstr "A little florilegium"
+msgstr "A Small Florilegium"
 
 #: dialogues/other.dialogue
 msgid "Xogar"
