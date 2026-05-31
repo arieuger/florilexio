@@ -1,10 +1,13 @@
 extends Label
 class_name TooltipLabel
 
+enum TooltipPlacement { ABOVE, RIGHT }
+
 @export var custom_tooltip_text := ""
 @export var tooltip_font_color := Color(1.0, 0.45, 0.0, 1.0)
 @export_range(1, 32, 1) var tooltip_font_size := 6
 @export var tooltip_offset := Vector2(0, -2)
+@export_enum("Above", "Right") var tooltip_placement: int = TooltipPlacement.RIGHT
 @export var use_label_font := true
 
 var _tooltip_label: Label
@@ -65,10 +68,18 @@ func _position_tooltip() -> void:
 	var label_size := _tooltip_label.get_combined_minimum_size()
 	var source_rect := get_global_rect()
 	_tooltip_label.size = label_size
-	_tooltip_label.global_position = Vector2(
-		source_rect.position.x + (source_rect.size.x - label_size.x) * 0.5 + tooltip_offset.x,
-		source_rect.position.y - label_size.y + tooltip_offset.y
-	)
+
+	match tooltip_placement:
+		TooltipPlacement.RIGHT:
+			_tooltip_label.global_position = Vector2(
+				source_rect.end.x + tooltip_offset.x,
+				source_rect.position.y + (source_rect.size.y - label_size.y) * 0.5 + tooltip_offset.y
+			)
+		_:
+			_tooltip_label.global_position = Vector2(
+				source_rect.position.x + (source_rect.size.x - label_size.x) * 0.5 + tooltip_offset.x,
+				source_rect.position.y - label_size.y + tooltip_offset.y
+			)
 
 
 func _on_visibility_changed() -> void:

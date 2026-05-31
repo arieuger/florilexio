@@ -31,6 +31,8 @@ theme_override_font_sizes/font_size = 6
 text = "[ ! ]"
 script = ExtResource("3_tooltip")
 custom_tooltip_text = "Invasora!"
+tooltip_offset = Vector2(2, 0)
+tooltip_placement = 1
 
 [node name="MagicWarningLabel" type="Label" parent="NameContainer" unique_id=39527553]
 layout_mode = 2
@@ -43,6 +45,8 @@ script = ExtResource("3_tooltip")
 custom_tooltip_text = "Máxica!"
 tooltip_font_color = Color(0, 0.24, 0.08, 1)
 tooltip_font_size = 5
+tooltip_offset = Vector2(2, 0)
+tooltip_placement = 1
 
 [node name="MortalWarningLabel" type="Label" parent="NameContainer"]
 layout_mode = 2
@@ -55,6 +59,8 @@ script = ExtResource("3_tooltip")
 custom_tooltip_text = "Mortal!"
 tooltip_font_color = Color(0.72, 0.24, 0.24, 1)
 tooltip_font_size = 5
+tooltip_offset = Vector2(2, 0)
+tooltip_placement = 1
 
 [node name="AmountLabel" type="Label" parent="." unique_id=89255489]
 custom_minimum_size = Vector2(18, 0)

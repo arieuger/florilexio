@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bq0x3087r84fg" path="res://assets/sprites/minigame/ring_base.png" id="2_ring"]
 [ext_resource type="Texture2D" uid="uid://d6oqcytddcyq" path="res://assets/sprites/minigame/success_zones.png" id="3_zones"]
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_8anea"]
 
 [node name="CuttingMinigame" type="CanvasLayer" unique_id=537483352]
 script = ExtResource("1_script")
@@ -41,5 +42,9 @@ offset_top = 122.0
 offset_right = 48.0
 offset_bottom = 138.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_8anea")
+theme_override_font_sizes/font_size = 14
 text = "Ben!"
 horizontal_alignment = 1

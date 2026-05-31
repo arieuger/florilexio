@@ -73,7 +73,7 @@ func _input(event: InputEvent) -> void:
 func _try_cut() -> void:
 	if _is_successful_cut():
 		_hits += 1
-		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0))
+		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0), Color('#6f8f6f'))
 		_pulse_success_zones()
 		SoundManager.play_simple_sound("Minigame/Cutting Grass")
 		if _hits >= required_hits:
@@ -81,7 +81,7 @@ func _try_cut() -> void:
 	else:
 		_misses += 1
 		GameState.add_consumed_time(miss_time_cost_blocks)
-		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0))
+		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0), Color('#db5968'))
 		_shake_ring()
 		SoundManager.play_simple_sound('Actions/Error')
 		if _misses >= max_misses:
@@ -159,12 +159,16 @@ func _finish(was_successful: bool) -> void:
 	queue_free()
 
 
-func _show_feedback(text: String, color: Color) -> void:
+func _show_feedback(text: String, color: Color, outline_color) -> void:
 	if _feedback_tween:
 		_feedback_tween.kill()
 
 	feedback_label.text = text
 	feedback_label.modulate = color
+	var setting = LabelSettings.new()
+	setting.outline_color = outline_color
+	setting.outline_size = 1
+	feedback_label.label_settings = setting
 	_feedback_tween = create_tween()
 	_feedback_tween.tween_interval(0.25)
 	_feedback_tween.tween_property(feedback_label, "modulate:a", 0.0, 0.25)
