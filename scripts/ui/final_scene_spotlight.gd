@@ -43,7 +43,7 @@ func _ready() -> void:
 
 	var overlay := ColorRect.new()
 	overlay.color = Color.WHITE
-	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	overlay.material = _material
 	add_child(overlay)

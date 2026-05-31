@@ -111,6 +111,14 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		_handle_click()
 
 
+func _input(event: InputEvent) -> void:
+	if not _is_dialogue_running:
+		return
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		get_viewport().set_input_as_handled()
+		_handle_click()
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_dialogue_running and event.is_action_pressed(next_action):
 		get_viewport().set_input_as_handled()
