@@ -15,6 +15,8 @@ const INVASIVE_WARNING_TEXT := "[ ! ]"
 const INVASIVE_WARNING_TOOLTIP := "Invasora!"
 const MAGIC_WARNING_TEXT := "[ *_. ]"
 const MAGIC_WARNING_TOOLTIP := "Máxica!"
+const MORTAL_WARNING_TEXT := "[ R.I.P ]"
+const MORTAL_WARNING_TOOLTIP := "Mortal!"
 
 var items: Dictionary = {}
 var plant_display_names: Dictionary = {}
@@ -142,6 +144,10 @@ func should_show_invasive_warning(marks: Dictionary) -> bool:
 
 func should_show_magic_warning(marks: Dictionary) -> bool:
 	return GameState.acknowledged_magic_plants and bool(marks.get(MARK_IS_MAGIC, false))
+
+
+func should_show_mortal_warning(marks: Dictionary) -> bool:
+	return GameState.acknowledged_mortal_plants and bool(marks.get(MARK_IS_MORTAL, false))
 
 
 func build_plant_marks(source: Object) -> Dictionary:

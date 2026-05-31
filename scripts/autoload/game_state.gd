@@ -4,6 +4,7 @@ signal consumed_time_added(total_consumed_time: int)
 signal reached_night()
 signal discarded_invasive_plants_changed(total_discarded_invasive_plants: int)
 signal invasive_plants_acknowledgement_changed(is_acknowledged: bool)
+signal mortal_plants_acknowledgement_changed(is_acknowledged: bool)
 signal magic_plants_acknowledgement_changed(is_acknowledged: bool)
 signal final_bouquet_composed(composition: Dictionary)
 signal wind_already_spoke_changed(has_spoken: bool)
@@ -34,7 +35,16 @@ var acknowledged_invasive_plants: bool:
 
 var acknowledged_on_danger_plants: bool = false
 var acknowledged_poisonous_plants: bool = false # De momento nada
-var acknowledged_mortal_plants: bool = false
+var acknowledged_mortal_plants: bool:
+	get:
+		return _acknowledged_mortal_plants
+	set(value):
+		if _acknowledged_mortal_plants == value:
+			return
+		
+		_acknowledged_mortal_plants = value
+		mortal_plants_acknowledgement_changed.emit(_acknowledged_mortal_plants)
+		
 
 var acknowledged_magic_plants: bool:
 	get:
@@ -65,6 +75,7 @@ var _consumed_time: int = 0 # Bloques de 15 minutos: en 12 horas, 48 bloques
 var _pending_consumed_time: float = 0.0
 var _acknowledged_invasive_plants: bool = false
 var _acknowledged_magic_plants: bool = false
+var _acknowledged_mortal_plants: bool = false
 var _wind_already_spoke: bool = false
 
 # tóxicas, invasoras, p. de extición, máxicas (s. xoán, básicas e outras), outras

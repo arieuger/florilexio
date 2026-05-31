@@ -45,6 +45,18 @@ custom_tooltip_text = "Máxica!"
 tooltip_font_color = Color(0, 0.24, 0.08, 1)
 tooltip_font_size = 5
 
+[node name="MortalWarningLabel" type="Label" parent="NameContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.9, 0.42, 0.42, 1)
+theme_override_fonts/font = ExtResource("2_pr0fb")
+theme_override_font_sizes/font_size = 6
+text = "[ R.I.P ]"
+script = ExtResource("3_tooltip")
+custom_tooltip_text = "Mortal!"
+tooltip_font_color = Color(0.72, 0.24, 0.24, 1)
+tooltip_font_size = 5
+
 [node name="AmountLabel" type="Label" parent="." unique_id=222522802]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2

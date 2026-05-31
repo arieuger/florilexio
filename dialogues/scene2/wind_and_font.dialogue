@@ -15,4 +15,5 @@ do GameState.add_consumed_time(1)
 Nin apio, nin fiuncho nin pirixel.\nSe atopas nabo de San Pedro\nescapa del. 
 E, lembra, hoxe como sempre foi\:\nVale máis a pegada de cen mosquitos\nque pé de boi. 
 do GameState.add_consumed_time(1)
+do GameState.acknowledged_mortal_plants = true
 => END

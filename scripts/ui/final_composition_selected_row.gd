@@ -8,6 +8,7 @@ const REMOVE_HOVER_COLOR := Color(0.85, 0.08, 0.06, 1)
 @onready var name_label: Label = $NameContainer/NameLabel
 @onready var invasive_warning_label: Label = $NameContainer/InvasiveWarningLabel
 @onready var magic_warning_label: Label = $NameContainer/MagicWarningLabel
+@onready var mortal_warning_label: Label = $NameContainer/MortalWarningLabel
 @onready var remove_button: Label = $RemoveButton
 
 var index := -1
@@ -52,6 +53,12 @@ func _update_warning_labels(marks: Dictionary) -> void:
 		InventoryManager.MAGIC_WARNING_TEXT,
 		InventoryManager.MAGIC_WARNING_TOOLTIP,
 		InventoryManager.should_show_magic_warning(marks)
+	)
+	_setup_warning_label(
+		mortal_warning_label,
+		InventoryManager.MORTAL_WARNING_TEXT,
+		InventoryManager.MORTAL_WARNING_TOOLTIP,
+		InventoryManager.should_show_mortal_warning(marks)
 	)
 
 

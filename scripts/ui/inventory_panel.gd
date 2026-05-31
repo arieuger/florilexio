@@ -21,6 +21,7 @@ var _current_page := 0
 func _ready() -> void:
 	InventoryManager.inventory_changed.connect(_refresh)
 	GameState.invasive_plants_acknowledgement_changed.connect(_on_some_acknowledgement_changed)
+	GameState.mortal_plants_acknowledgement_changed.connect(_on_some_acknowledgement_changed)
 	GameState.magic_plants_acknowledgement_changed.connect(_on_some_acknowledgement_changed)
 	close_button.pressed.connect(_on_close_button_pressed)
 	close_button.mouse_entered.connect(_on_close_button_mouse_entered)
