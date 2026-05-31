@@ -76,20 +76,21 @@ func move_to_point(global_target: Vector2) -> bool:
 	if global_position.distance_to(global_target) <= auto_move_stop_distance:
 		return true
 
-	start_auto_move(global_target)
+	if not start_auto_move(global_target):
+		return false
+
 	return await auto_move_finished
 
-func start_auto_move(global_target: Vector2):
+func start_auto_move(global_target: Vector2) -> bool:
 	if not movement_enabled:
-		return
+		return false
 
 	if _is_auto_moving:
 		_finish_auto_move(false)		
 
 	var next_path := _find_auto_move_path(global_target)
 	if next_path.is_empty():
-		auto_move_finished.emit(false)
-		return
+		return false
 
 	_auto_move_target = global_target
 	_auto_move_path = next_path
@@ -100,6 +101,7 @@ func start_auto_move(global_target: Vector2):
 	_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
 	_auto_move_previous_position = global_position
 	_is_auto_moving = true
+	return true
 
 func set_movement_enabled(enabled: bool) -> void:
 	movement_enabled = enabled
@@ -226,13 +228,20 @@ func _find_auto_move_path(global_target: Vector2) -> PackedVector2Array:
 		return PackedVector2Array()
 
 	var target_is_walkable := _is_pathfinding_point_walkable(global_target)
-	if not target_is_walkable:
+	var target_point_id := _pathfinding_cell_id(target_cell, grid_size.x)
+	var reachable_target := global_target
+	var use_exact_target_point := target_is_walkable and not walkable_cells.has(target_cell)
+
+	if use_exact_target_point:
+		target_point_id = grid_size.x * grid_size.y
+		astar.add_point(target_point_id, global_target)
+	elif not target_is_walkable:
 		target_cell = _get_nearest_walkable_target_cell(target_cell, global_target, walkable_cells, grid_size)
+		if not walkable_cells.has(target_cell):
+			return PackedVector2Array()
 
-	if not walkable_cells.has(target_cell):
-		return PackedVector2Array()
-
-	var reachable_target := global_target if target_is_walkable else _pathfinding_position_from_cell(target_cell)
+		target_point_id = _pathfinding_cell_id(target_cell, grid_size.x)
+		reachable_target = _pathfinding_position_from_cell(target_cell)
 
 	for cell in walkable_cells.keys():
 		var cell_id := _pathfinding_cell_id(cell, grid_size.x)
@@ -248,7 +257,10 @@ func _find_auto_move_path(global_target: Vector2) -> PackedVector2Array:
 			if not astar.are_points_connected(cell_id, neighbor_id):
 				astar.connect_points(cell_id, neighbor_id)
 
-	var id_path := astar.get_id_path(_pathfinding_cell_id(start_cell, grid_size.x), _pathfinding_cell_id(target_cell, grid_size.x))
+	if use_exact_target_point:
+		_connect_exact_target_point(astar, target_point_id, global_target, walkable_cells, grid_size)
+
+	var id_path := astar.get_id_path(_pathfinding_cell_id(start_cell, grid_size.x), target_point_id)
 	if id_path.is_empty():
 		return PackedVector2Array()
 
@@ -260,6 +272,35 @@ func _find_auto_move_path(global_target: Vector2) -> PackedVector2Array:
 		path.remove_at(0)
 
 	path = _smooth_auto_move_path(path)
+
+	path = _add_reachable_target_to_auto_move_path(path, reachable_target, target_is_walkable)
+
+	return path
+
+func _connect_exact_target_point(astar: AStar2D, target_point_id: int, global_target: Vector2, walkable_cells: Dictionary, grid_size: Vector2i) -> void:
+	var target_cell := _pathfinding_cell_from_position(global_target)
+	var max_cell_radius := ceili(pathfinding_nearest_target_radius / pathfinding_cell_size)
+
+	for y in range(target_cell.y - max_cell_radius, target_cell.y + max_cell_radius + 1):
+		for x in range(target_cell.x - max_cell_radius, target_cell.x + max_cell_radius + 1):
+			var candidate := Vector2i(x, y)
+			if not _is_cell_inside_pathfinding_bounds(candidate, grid_size):
+				continue
+			if not walkable_cells.has(candidate):
+				continue
+
+			var candidate_position := _pathfinding_position_from_cell(candidate)
+			if candidate_position.distance_to(global_target) > pathfinding_nearest_target_radius:
+				continue
+			if not _is_pathfinding_segment_walkable(candidate_position, global_target):
+				continue
+
+			astar.connect_points(_pathfinding_cell_id(candidate, grid_size.x), target_point_id)
+
+func _add_reachable_target_to_auto_move_path(path: PackedVector2Array, reachable_target: Vector2, target_is_walkable: bool) -> PackedVector2Array:
+	var approach_origin := global_position if path.is_empty() else path[path.size() - 1]
+	if not _is_pathfinding_segment_walkable(approach_origin, reachable_target):
+		return PackedVector2Array() if target_is_walkable else path
 
 	if path.is_empty() or path[path.size() - 1].distance_to(reachable_target) > pathfinding_waypoint_distance:
 		path.append(reachable_target)
@@ -288,7 +329,8 @@ func _get_nearest_walkable_target_cell(target_cell: Vector2i, global_target: Vec
 				if not walkable_cells.has(candidate):
 					continue
 
-				var candidate_distance := _pathfinding_position_from_cell(candidate).distance_squared_to(global_target)
+				var candidate_position := _pathfinding_position_from_cell(candidate)
+				var candidate_distance := candidate_position.distance_squared_to(global_target)
 				if candidate_distance < nearest_distance:
 					nearest_cell = candidate
 					nearest_distance = candidate_distance
