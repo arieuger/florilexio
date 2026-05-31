@@ -10,6 +10,7 @@ kanban-plugin: board
 
 ## Desenvolvendo
 
+- [ ] [[Preparar a páxina de itch.io]]
 - [ ] [[Traducir os textos do prototipo ao ingles]]
 - [ ] [[Deseñar escenarios]]
 

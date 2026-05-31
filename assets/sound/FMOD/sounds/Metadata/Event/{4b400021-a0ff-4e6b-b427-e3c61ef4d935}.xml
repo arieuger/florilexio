@@ -624,7 +624,13 @@
 	<object class="MixerBusFader" id="{289d0365-acab-4816-9895-bf02b24104d0}" />
 	<object class="SFXReverbEffect" id="{0bcea927-ee7c-45c1-aa09-fafc83d1edd3}">
 		<property name="decayTime">
-			<value>6000</value>
+			<value>2500</value>
+		</property>
+		<property name="wetLevel">
+			<value>-12.5</value>
+		</property>
+		<property name="dryLevel">
+			<value>-80</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{28760f70-5abb-48bc-bd1f-14908e364427}">
