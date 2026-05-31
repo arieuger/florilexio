@@ -182,23 +182,76 @@ msgid "hei de chegar polo albor."
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho tradicional"
+msgid ""
+"Herbiñas de San Xoán\n"
+"Grandes poderes nos traerán"
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho invasor"
+msgid ""
+"Auga roseira, flor de verán,\n"
+"todos os males afastarán."
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho demasiado grande"
+msgid ""
+"Co seu esconxuro de grande ocultismo\n"
+"mandarán para o lume o capitalismo."
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho demasiado pequeno"
+msgid ""
+"Mala herba, onde medre,\n"
+"non hai xiada que a leve."
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho baleiro"
+msgid ""
+"Mal agoiro, cando prenda,\n"
+"non hai ensalmo que o fenda."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Ovella e abella\n"
+"e pedra que trebella"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"e péndola tras da orella.\n"
+"Lembra, para a vindeira,\n"
+"o que dicía a vella:"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"“Se a cobiza fose sol,\n"
+"a ninguén daría calor”."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Non envexes a quen ten\n"
+"herbas e flores dos montes"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Só envexa a quen bebe\n"
+"auga de todas as fontes.”"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Nin herba nin pétalo, espiña nin póla\n"
+"Deixaches ir todo nesta noite tola."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Corta a rosa, paxaro, cando a flor aínda é nova\n"
+"e lembra que a idade murcha igual que a folla"
 msgstr ""
 
 #: dialogues/info.dialogue
@@ -206,7 +259,17 @@ msgid "Cacho mediocre"
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Arrincaches invasoras."
+msgid ""
+"A mal mortal ningunha menciña lle val.\n"
+"Morte por morte! En ti caeu hoxe a sorte…"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "Por San Xoán, pedras ao can, bólas ao chan, fouce na man:"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid "malas herbas que xa non están outras mellores traerán."
 msgstr ""
 
 #: dialogues/scene1/tutorial.dialogue
@@ -421,6 +484,10 @@ msgstr ""
 
 #: dialogues/other.dialogue
 msgid "Pervinca"
+msgstr ""
+
+#: dialogues/other.dialogue
+msgid "Herba da envexa"
 msgstr ""
 
 #: dialogues/other.dialogue

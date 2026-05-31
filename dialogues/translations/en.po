@@ -190,32 +190,123 @@ msgid "hei de chegar polo albor."
 msgstr "I'll be there come morning light!"
 
 #: dialogues/info.dialogue
-msgid "Cacho tradicional"
-msgstr "Traditional bouquet"
+msgid ""
+"Herbiñas de San Xoán\n"
+"Grandes poderes nos traerán"
+msgstr ""
+"Little herbs of Saint John's Day\n,"
+"great powers you will bring our way,"
 
 #: dialogues/info.dialogue
-msgid "Cacho invasor"
-msgstr "Invasive bouquet"
+msgid ""
+"Auga roseira, flor de verán,\n"
+"todos os males afastarán."
+msgstr ""
+"rosewater, summer's sweet bouquet,\n"
+"all evil you will drive away."
 
 #: dialogues/info.dialogue
-msgid "Cacho demasiado grande"
-msgstr "Bouquet too large"
+msgid ""
+"Co seu esconxuro de grande ocultismo\n"
+"mandarán para o lume o capitalismo."
+msgstr ""
+"With their grand old occultism,\n"
+"they'll cast into the fire: capitalism."
 
 #: dialogues/info.dialogue
-msgid "Cacho demasiado pequeno"
-msgstr "Bouquet too small"
+msgid ""
+"Mala herba, onde medre,\n"
+"non hai xiada que a leve."
+msgstr ""
+"Bad weed, wherever it may grow,\n"
+"no killing frost can lay it low."
 
 #: dialogues/info.dialogue
-msgid "Cacho baleiro"
-msgstr "Empty bouquet"
+msgid ""
+"Mal agoiro, cando prenda,\n"
+"non hai ensalmo que o fenda."
+msgstr ""
+"Bad omen, once it takes its hold,\n"
+"no spell can break it, truth be told."
+
+#: dialogues/info.dialogue
+msgid ""
+"Ovella e abella\n"
+"e pedra que trebella"
+msgstr ""
+"Sheep bell and honey spell,\n"
+"the rolling stone that stumbled, fell,"
+
+#: dialogues/info.dialogue
+msgid ""
+"e péndola tras da orella.\n"
+"Lembra, para a vindeira,\n"
+"o que dicía a vella:"
+msgstr ""
+"a feather tucked where whispers dwell.\n"
+"Remember, for the next round - well,\n"
+"what the old woman used to tell:"
+
+#: dialogues/info.dialogue
+msgid ""
+"“Se a cobiza fose sol,\n"
+"a ninguén daría calor”."
+msgstr ""
+"“If greed were ever sun,\n"
+"it would warm no one.”"
+
+#: dialogues/info.dialogue
+msgid ""
+"Non envexes a quen ten\n"
+"herbas e flores dos montes"
+msgstr ""
+"Don't envy those who have\n"
+"herbs and flowers from the mountains."
+
+#: dialogues/info.dialogue
+msgid ""
+"Só envexa a quen bebe\n"
+"auga de todas as fontes.”"
+msgstr ""
+"Only envy those who drink\n"
+"water from all the fountains."
+
+#: dialogues/info.dialogue
+msgid ""
+"Nin herba nin pétalo, espiña nin póla\n"
+"Deixaches ir todo nesta noite tola."
+msgstr ""
+"Neither herb nor petal, thorn nor branch in sight,\n"
+"you let it all slip by on this one midsummer night."
+
+#: dialogues/info.dialogue
+msgid ""
+"Corta a rosa, paxaro, cando a flor aínda é nova\n"
+"e lembra que a idade murcha igual que a folla"
+msgstr ""
+"Cut the rose, little bird, while the bloom has yet to unfold,\n"
+"and remember: age will wilt you as the year grows cold."
+
 
 #: dialogues/info.dialogue
 msgid "Cacho mediocre"
 msgstr "Mediocre bouquet"
 
 #: dialogues/info.dialogue
-msgid "Arrincaches invasoras."
-msgstr "You pulled up invasive plants."
+msgid ""
+"A mal mortal ningunha menciña lle val.\n"
+"Morte por morte! En ti caeu hoxe a sorte…"
+msgstr ""
+"For mortal ill, no cure at all.\n"
+"Death for death! Today fate made its call…"
+
+#: dialogues/info.dialogue
+msgid "Por San Xoán, pedras ao can, bólas ao chan, fouce na man:"
+msgstr "Saint John's Day: stone at the hound, balls to the ground, scythe turning round:"
+
+#: dialogues/info.dialogue
+msgid "malas herbas que xa non están outras mellores traerán."
+msgstr "bad weeds no longer abound, better ones are sure to be found."
 
 #: dialogues/scene1/tutorial.dialogue
 msgid "Nunca estouraches o estalo?"
@@ -251,8 +342,7 @@ msgstr "Duasaugas neighborhood: detection and in situ care."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "- Especies invasoras: como recoñecelas, cortalas e desbotalas."
-msgstr ""
-"- Invasive species: how to identify, cut, and remove them."
+msgstr "- Invasive species: how to identify, cut, and remove them."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Prácticum: Herbario de San Xoán. As herbas \"máxicas\" de Duasaugas."
@@ -271,8 +361,8 @@ msgid ""
 "É a mañá do 23 de xuño, véspera de San Xoán, a data que marca no calendario "
 "o final do curso escolar e o solsticio de verán."
 msgstr ""
-"It is the morning of June 23, Saint John's Eve, the date that marks on "
-"the calendar the end of the school year and the summer solstice."
+"It is the morning of June 23, Saint John's Eve, the date that marks on the "
+"calendar the end of the school year and the summer solstice."
 
 #: dialogues/intro.dialogue
 msgid ""
@@ -297,9 +387,9 @@ msgid ""
 "Os males de hoxe non son os que eran pero as Herbas de San Xoán aínda "
 "funcionan como ritual de protección e purificación a calquera que crea nelas."
 msgstr ""
-"Today's evils are not what they used to be, but the Herbs of Saint John still "
-"work as a ritual of protection and purification for anyone who believes in "
-"them."
+"Today's evils are not what they used to be, but the Herbs of Saint John "
+"still work as a ritual of protection and purification for anyone who "
+"believes in them."
 
 #: dialogues/intro.dialogue
 msgid "Cada unha co seu poder. Búscaas para escorrentar os malos espíritos…"
@@ -403,7 +493,6 @@ msgstr ""
 "No celery, no fennel, no parsley – none!\n"
 "If Saint Peter's turnip comes along,\n"
 "you'd better run."
-
 
 #: dialogues/scene2/wind_and_font.dialogue
 msgid ""
@@ -549,3 +638,21 @@ msgstr "Exit"
 
 msgid "Florilexio"
 msgstr "Florilexio"
+
+#~ msgid "Cacho tradicional"
+#~ msgstr "Traditional bouquet"
+
+#~ msgid "Cacho invasor"
+#~ msgstr "Invasive bouquet"
+
+#~ msgid "Cacho demasiado grande"
+#~ msgstr "Bouquet too large"
+
+#~ msgid "Cacho demasiado pequeno"
+#~ msgstr "Bouquet too small"
+
+#~ msgid "Cacho baleiro"
+#~ msgstr "Empty bouquet"
+
+#~ msgid "Arrincaches invasoras."
+#~ msgstr "You pulled up invasive plants."
