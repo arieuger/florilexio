@@ -194,8 +194,8 @@ msgid ""
 "Herbiñas de San Xoán\n"
 "Grandes poderes nos traerán"
 msgstr ""
-"Little herbs of Saint John's Day\n,"
-"great powers you will bring our way,"
+"Little herbs of Saint John's Day\n"
+",great powers you will bring our way,"
 
 #: dialogues/info.dialogue
 msgid ""
@@ -287,7 +287,6 @@ msgstr ""
 "Cut the rose, little bird, while the bloom has yet to unfold,\n"
 "and remember: age will wilt you as the year grows cold."
 
-
 #: dialogues/info.dialogue
 msgid "Cacho mediocre"
 msgstr "Mediocre bouquet"
@@ -302,7 +301,9 @@ msgstr ""
 
 #: dialogues/info.dialogue
 msgid "Por San Xoán, pedras ao can, bólas ao chan, fouce na man:"
-msgstr "Saint John's Day: stone at the hound, balls to the ground, scythe turning round:"
+msgstr ""
+"Saint John's Day: stone at the hound, balls to the ground, scythe turning "
+"round:"
 
 #: dialogues/info.dialogue
 msgid "malas herbas que xa non están outras mellores traerán."
@@ -583,6 +584,10 @@ msgstr "Thyme"
 #: dialogues/other.dialogue
 msgid "Xesta"
 msgstr "Broom"
+
+#: dialogues/other.dialogue
+msgid "Pé de boi"
+msgstr "Dead man's fingers"
 
 #: dialogues/other.dialogue
 msgid "Herbas recollidas"

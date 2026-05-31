@@ -511,6 +511,10 @@ msgid "Xesta"
 msgstr ""
 
 #: dialogues/other.dialogue
+msgid "Pé de boi"
+msgstr ""
+
+#: dialogues/other.dialogue
 msgid "Herbas recollidas"
 msgstr ""
 
