@@ -255,7 +255,21 @@ msgid ""
 msgstr ""
 
 #: dialogues/info.dialogue
-msgid "Cacho mediocre"
+msgid ""
+"O tempo trae as flores e, despois de as traer, \n"
+"fainas toller e vólveas traer."
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Se desta non foi, na vindeira ha ser\n"
+"sempre que se faga o que hai que facer:"
+msgstr ""
+
+#: dialogues/info.dialogue
+msgid ""
+"Sementar menos, sementar todes\n"
+"colleitar o xusto, repartilo entre todes"
 msgstr ""
 
 #: dialogues/info.dialogue

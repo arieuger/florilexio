@@ -288,8 +288,28 @@ msgstr ""
 "and remember: age will wilt you as the year grows cold."
 
 #: dialogues/info.dialogue
-msgid "Cacho mediocre"
-msgstr "Mediocre bouquet"
+msgid ""
+"O tempo trae as flores e, despois de as traer, \n"
+"fainas toller e vólveas traer."
+msgstr ""
+"Time brings the flowers, and after bringing them,\n"
+"withers them and brings them back again."
+
+#: dialogues/info.dialogue
+msgid ""
+"Se desta non foi, na vindeira ha ser\n"
+"sempre que se faga o que hai que facer:"
+msgstr ""
+"If not this time, then next time it shall be\n"
+"so long as what must be done is done:"
+
+#: dialogues/info.dialogue
+msgid ""
+"Sementar menos, sementar todes\n"
+"colleitar o xusto, repartilo entre todes"
+msgstr ""
+"sow less, sow together,\n"
+"harvest what is fair, share it among us all"
 
 #: dialogues/info.dialogue
 msgid ""

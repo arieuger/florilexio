@@ -41,18 +41,20 @@ Mal agoiro, cando prenda,\nnon hai ensalmo que o fenda. => END
 ~ final_bouquet_too_big
 Ovella e abella\ne pedra que trebella
 e péndola tras da orella.\nLembra, para a vindeira,\no que dicía a vella\:
-“Se a cobiza fose sol,\na ninguén daría calor”. => END
+“Se a cobiza fose sol,\na ninguén daría calor. => END
 
 ~ final_bouquet_too_small
 Non envexes a quen ten\nherbas e flores dos montes
-Só envexa a quen bebe\nauga de todas as fontes.” => END
+Só envexa a quen bebe\nauga de todas as fontes. => END
 
 ~ final_bouquet_empty
 Nin herba nin pétalo, espiña nin póla\nDeixaches ir todo nesta noite tola.
-Corta a rosa, paxaro, cando a flor aínda é nova\ne lembra que a idade murcha igual que a folla => END
+Corta a rosa, paxaro, cando a flor aínda é nova\ne lembra que a idade murcha igual que a folla. => END
 
 ~ final_bouquet_mediocre
-Cacho mediocre => END
+O tempo trae as flores e, despois de as traer, \nfainas toller e vólveas traer.
+Se desta non foi, na vindeira ha ser\nsempre que se faga o que hai que facer\:
+Sementar menos, sementar todes\ncolleitar o xusto, repartilo entre todes => END
 
 ~ final_bouquet_mortal
 A mal mortal ningunha menciña lle val.\nMorte por morte! En ti caeu hoxe a sorte… => END
