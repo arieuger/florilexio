@@ -16,6 +16,10 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 @export var final_spotlight_marker_id: StringName = &"fire_place"
 @export var final_spotlight_marker_path: NodePath
 @export var final_spotlight_color := Color.BLACK
+@export_group("Mortal Final")
+@export var final_mortal_overlay_color := Color(0.7, 0.02, 0.02, 0.65)
+@export_range(0.1, 8.0, 0.1) var final_mortal_overlay_fade_duration := 3
+@export_group("")
 
 @onready var inventory_button: TextureButton = $InventoryButton
 @onready var time_label: Label = $TimeLabel
@@ -27,6 +31,8 @@ var _time_label_base_position: Vector2
 var _final_sequence_started := false
 var _final_composition_panel: FinalCompositionPanel
 var _final_scene_spotlight: FinalSceneSpotlight
+var _final_mortal_overlay_layer: CanvasLayer
+var _final_mortal_overlay_tween: Tween
 
 
 func _ready() -> void:
@@ -178,11 +184,16 @@ func _show_final_composition() -> void:
 
 func _on_final_composition_requested(composition: Dictionary) -> void:
 	print("Composición final do cacho: ", composition)
+	var is_mortal_final := _is_mortal_final(composition)
+	if is_mortal_final:
+		_set_player_visible(false)
 	_close_final_composition_panel()
 	await _move_player_to_final_spawn()
 	_show_final_scene_spotlight()
 	await get_tree().create_timer(0.35).timeout
 	await _show_final_firelight_dialogue()
+	if is_mortal_final:
+		_show_mortal_red_overlay()
 	await DialogueBalloonCoordinator.show_info_dialogue_and_wait(_get_final_result_dialogue_title(composition))
 	if bool(composition.get("player_removed_invasors", false)):
 		await DialogueBalloonCoordinator.show_info_dialogue_and_wait("final_player_removed_invasors")
@@ -225,6 +236,51 @@ func _show_final_scene_spotlight() -> void:
 	var player := get_tree().get_first_node_in_group("player") as Node2D
 	if player:
 		_final_scene_spotlight.set_focus_node(player)
+
+
+func _is_mortal_final(composition: Dictionary) -> bool:
+	return StringName(composition.get("rank", &"empty")) == &"mortal"
+
+
+func _set_player_visible(should_show: bool) -> void:
+	var player := get_tree().get_first_node_in_group("player") as CanvasItem
+	if player:
+		player.visible = should_show
+
+
+func _show_mortal_red_overlay() -> void:
+	if is_instance_valid(_final_mortal_overlay_layer):
+		return
+
+	_final_mortal_overlay_layer = CanvasLayer.new()
+	_final_mortal_overlay_layer.layer = 79
+
+	var overlay := ColorRect.new()
+	overlay.color = Color(
+		final_mortal_overlay_color.r,
+		final_mortal_overlay_color.g,
+		final_mortal_overlay_color.b,
+		0.0
+	)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_final_mortal_overlay_layer.add_child(overlay)
+
+	var root := get_tree().current_scene
+	if root:
+		root.add_child(_final_mortal_overlay_layer)
+	else:
+		add_child(_final_mortal_overlay_layer)
+
+	if _final_mortal_overlay_tween:
+		_final_mortal_overlay_tween.kill()
+	_final_mortal_overlay_tween = create_tween()
+	_final_mortal_overlay_tween.tween_property(
+		overlay,
+		"color:a",
+		final_mortal_overlay_color.a,
+		final_mortal_overlay_fade_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func _show_final_firelight_dialogue() -> void:
