@@ -231,7 +231,7 @@ msgstr "press when the marker is in the light green zone"
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Ao alumnado dos cursos que corresponda:"
-msgstr "To the students of the corresponding grades:"
+msgstr "To the students of the relevant courses:"
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Materia: Ciencias da Terra e Botánica."
@@ -243,7 +243,7 @@ msgstr "Contents:"
 
 #: dialogues/scene1/school_board.dialogue
 msgid "- Endemismos e plantas en perigo de extinción no"
-msgstr "- Endemic species and plants in danger of extinction in the"
+msgstr "- Endemic species and endangered plants in the"
 
 #: dialogues/scene1/school_board.dialogue
 msgid "barrio de Duasaugas: detección e coidados in situ."
@@ -252,7 +252,7 @@ msgstr "Duasaugas neighborhood: detection and in situ care."
 #: dialogues/scene1/school_board.dialogue
 msgid "- Especies invasoras: como recoñecelas, cortalas e desbotalas."
 msgstr ""
-"- Invasive species: how to recognize them, cut them, and dispose of them."
+"- Invasive species: how to identify, cut, and remove them."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Prácticum: Herbario de San Xoán. As herbas \"máxicas\" de Duasaugas."
@@ -260,18 +260,18 @@ msgstr "Practicum: Saint John's Herbarium. The \"magical\" herbs of Duasaugas."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Exame: 7 de setembro, aula 7G."
-msgstr "Exam: September 7, classroom 7G."
+msgstr "Exam: September 7th, classroom 7G."
 
 #: dialogues/scene1/school_board.dialogue
 msgid "Data límite de entrega: 7 de setembro"
-msgstr "Submission deadline: September 7"
+msgstr "Submission deadline: September 7th"
 
 #: dialogues/intro.dialogue
 msgid ""
 "É a mañá do 23 de xuño, véspera de San Xoán, a data que marca no calendario "
 "o final do curso escolar e o solsticio de verán."
 msgstr ""
-"It is the morning of June 23, the eve of Saint John, the date that marks on "
+"It is the morning of June 23, Saint John's Eve, the date that marks on "
 "the calendar the end of the school year and the summer solstice."
 
 #: dialogues/intro.dialogue
@@ -280,7 +280,7 @@ msgid ""
 "festa e de ritos de cambio de ciclo que se perden atrás na memoria."
 msgstr ""
 "The people of Dúasaugas are getting ready to celebrate Lumenovo, a night of "
-"worship, celebration, and cycle-change rites that fade deep into memory."
+"worship, festivity, and cycle-changing rituals lost in the mists of memory."
 
 #: dialogues/intro.dialogue
 msgid ""
@@ -290,14 +290,14 @@ msgid ""
 msgstr ""
 "But old Mundo, one of the neighborhood's longest-lived residents, still "
 "remembers the names of the plants that were once used to heal wounds, drive "
-"away demons, and protect cradle, home, and byre from witches."
+"away demons, and protect the cradle, the home, and the stables from witches."
 
 #: dialogues/intro.dialogue
 msgid ""
 "Os males de hoxe non son os que eran pero as Herbas de San Xoán aínda "
 "funcionan como ritual de protección e purificación a calquera que crea nelas."
 msgstr ""
-"Today's evils are not what they used to be, but Saint John's Herbs still "
+"Today's evils are not what they used to be, but the Herbs of Saint John still "
 "work as a ritual of protection and purification for anyone who believes in "
 "them."
 
