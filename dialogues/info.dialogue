@@ -30,22 +30,33 @@ Conseguiches {plant_name}! => END
 	=> END
 
 ~ final_bouquet_traditional
-Cacho tradicional => END
+Herbiñas de San Xoán\nGrandes poderes nos traerán
+Auga roseira, flor de verán,\ntodos os males afastarán.
+Co seu esconxuro de grande ocultismo\nmandarán para o lume o capitalismo. => END
 
 ~ final_bouquet_invader
-Cacho invasor => END
+Mala herba, onde medre,\nnon hai xiada que a leve.
+Mal agoiro, cando prenda,\nnon hai ensalmo que o fenda. => END
 
 ~ final_bouquet_too_big
-Cacho demasiado grande => END
+Ovella e abella\ne pedra que trebella
+e péndola tras da orella.\nLembra, para a vindeira,\no que dicía a vella\:
+“Se a cobiza fose sol,\na ninguén daría calor”. => END
 
 ~ final_bouquet_too_small
-Cacho demasiado pequeno => END
+Non envexes a quen ten\nherbas e flores dos montes
+Só envexa a quen bebe\nauga de todas as fontes.” => END
 
 ~ final_bouquet_empty
-Cacho baleiro => END
+Nin herba nin pétalo, espiña nin póla\nDeixaches ir todo nesta noite tola.
+Corta a rosa, paxaro, cando a flor aínda é nova\ne lembra que a idade murcha igual que a folla => END
 
 ~ final_bouquet_mediocre
 Cacho mediocre => END
 
+~ final_bouquet_mortal
+A mal mortal ningunha menciña lle val.\nMorte por morte! En ti caeu hoxe a sorte…
+
 ~ final_player_removed_invasors
-Arrincaches invasoras. => END
+Por San Xoán, pedras ao can, bólas ao chan, fouce na man\:
+malas herbas que xa non están outras mellores traerán. => END

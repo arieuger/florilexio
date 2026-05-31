@@ -31,7 +31,7 @@ func calculate(bouquet_entries: Array[Dictionary]) -> Dictionary:
 		"mortal": some_mortal,
 		"invasive": invasive_count,
 		"magic": magic_count,
-		"rank": _get_rank(total_count, invasive_count, magic_count, has_traditional_size, duplicate_count),
+		"rank": _get_rank(some_mortal, total_count, invasive_count, magic_count, has_traditional_size, duplicate_count),
 		"player_removed_invasors": GameState.discarded_invasive_plants_count >= 3
 	}
 
@@ -58,12 +58,15 @@ func _calculate_score(
 
 
 func _get_rank(
+	some_mortal: bool,
 	total_count: int,
 	invasive_count: int,
 	magic_count: int,
 	has_traditional_size: bool,
 	duplicate_count: int
 ) -> StringName:
+	if some_mortal:
+		return &"mortal"
 	if total_count <= 0:
 		return &"empty"
 	if invasive_count > 0:

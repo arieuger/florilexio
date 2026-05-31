@@ -257,6 +257,8 @@ func _get_final_spotlight_marker() -> Node2D:
 func _get_final_result_dialogue_title(composition: Dictionary) -> String:
 	var rank := StringName(composition.get("rank", &"empty"))
 	match rank:
+		&"mortal":
+			return "final_bouquet_mortal"
 		&"traditional":
 			return "final_bouquet_traditional"
 		&"invader":
