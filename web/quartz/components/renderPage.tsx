@@ -23,17 +23,25 @@ interface RenderComponents {
 }
 
 const headerRegex = new RegExp(/h[1-6]/)
+const buildTimestamp = Date.now().toString()
+
 export function pageResources(
   baseDir: FullSlug | RelativeURL,
   staticResources: StaticResources,
 ): StaticResources {
+  const cssVersion = process.env.CSS_VERSION?.trim() || buildTimestamp
+  const indexCssPath = joinSegments(baseDir, "index.css")
+  const versionedIndexCssPath = cssVersion
+    ? `${indexCssPath}?v=${encodeURIComponent(cssVersion)}`
+    : indexCssPath
+
   const contentIndexPath = joinSegments(baseDir, "static/contentIndex.json")
   const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json())`
 
   const resources: StaticResources = {
     css: [
       {
-        content: joinSegments(baseDir, "index.css"),
+        content: versionedIndexCssPath,
       },
       ...staticResources.css,
     ],
