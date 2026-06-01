@@ -1,0 +1,4 @@
+---
+tipo: arte
+responsable: Roig
+---
