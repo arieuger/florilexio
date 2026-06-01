@@ -10,13 +10,17 @@ kanban-plugin: board
 
 ## Desenvolvendo
 
-- [ ] [[Preparar a páxina de itch.io]]
-- [ ] [[Traducir os textos do prototipo ao ingles]]
 - [ ] [[Deseñar escenarios]]
 
 
 ## Revisando
 
+
+
+## Completado
+
+- [ ] [[Preparar a páxina de itch.io]]
+- [ ] [[Traducir os textos do prototipo ao ingles]]
 - [ ] [[Deseñar sons de interacción co cacho do prototipo]]
 - [ ] [[Deseñar sons de interacción coa contorna do prototipo]]
 - [ ] [[Deseñar sons de interacción co inventario do prototipo]]
@@ -25,10 +29,6 @@ kanban-plugin: board
 - [ ] [[Deseñar sons do minixogo do prototipo]]
 - [ ] [[Deseñar sons de interacción global do prototipo]]
 - [ ] [[Deseñar son ambiente do prototipo]]
-
-
-## Completado
-
 
 
 
