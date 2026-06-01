@@ -24,26 +24,29 @@ jobs:
               uses: actions/cache@v5
               with:
                   path: ~/.npm
-                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  key: ${{ runner.os }}-node-${{ hashFiles('web/package-lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-node-
 
             - name: Cache Quartz plugins
               uses: actions/cache@v5
               with:
-                  path: .quartz/plugins
-                  key: ${{ runner.os }}-plugins-${{ hashFiles('quartz.lock.json') }}
+                  path: web/.quartz/plugins
+                  key: ${{ runner.os }}-plugins-${{ hashFiles('web/quartz.lock.json') }}
                   restore-keys: |
                       ${{ runner.os }}-plugins-
 
             - name: Install Dependencies
               run: npm ci
+              working-directory: web
 
             - name: Install Quartz plugins
               run: npx quartz plugin install
+              working-directory: web
 
             - name: Build Quartz
               run: npx quartz build
+              working-directory: web
 
             - name: Upload artifact
               uses: actions/upload-artifact@v4
