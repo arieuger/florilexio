@@ -8,6 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
+      "Ver o prototipo": "https://aroig.itch.io/un-pequeno-florilexio",
+      "Ver o código fonte": "https://github.com/arieuger/florilexio-prototipo",
     },
   }),
 }

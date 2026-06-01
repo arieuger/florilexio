@@ -2,6 +2,15 @@
 title: Que é Florilexio?
 draft: false
 ---
+## Antes de nada
+
+Podes xogar ao noso primeiro prototipo en itch.io: 
+https://aroig.itch.io/un-pequeno-florilexio
+
+ou consultar o código fonte deste proxecto _open source_ en Github: 
+https://github.com/arieuger/florilexio-prototipo
+
+## Agora si, que é _Florilexio_?
 
 **_Florilexio_** é o nome dun proxecto de videoxogo en galego que toma como base para a súa historia os rituais vinculados coa recollida das herbas de San Xoán o 23 de xuño en Galiza para afondar nesta tradición desde perspectivas que van da etnobotánica e o simbolismo dos ritos do San Xoán á súa pegada na tradición oral e a fitonimia, así como noutras manifestacións culturais e patrimoniais. 
 
