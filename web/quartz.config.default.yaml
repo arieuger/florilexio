@@ -220,6 +220,7 @@ plugins:
         - title
         - modified
         - draft
+        - kanban-plugin
       hidePropertiesView: false
       delimiters: ---
       language: yaml

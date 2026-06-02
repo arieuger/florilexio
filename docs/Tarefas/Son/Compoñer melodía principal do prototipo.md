@@ -1,4 +1,0 @@
----
-tipo: música
-responsable: poch
----
