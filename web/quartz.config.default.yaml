@@ -219,6 +219,7 @@ plugins:
       excludedProperties:
         - title
         - modified
+        - draft
       hidePropertiesView: false
       delimiters: ---
       language: yaml
