@@ -42,7 +42,8 @@ y voces en la puerta.
 \*froito  
 \*tilo  
 a casa de vouveñovou: abrir, aire, adiante\!  
-a casa do con
+a casa do con  
+Mundo
 
 Que foi, paxarín? Paxarín pimpín  
 Landra pequena, ou outros apelativos
@@ -57,7 +58,10 @@ eu chorar, chorente
 ## **FLORES E PLANTAS QUE FAN COUSAS**
 
 flores mellizas/xemelgas. dopleganger de flores  
-flores de auga, pingas nas puntas das polas pequenas despois ds chuvia
+flores de auga, pingas nas puntas das polas pequenas despois ds chuvia  
+fento que florece a medianoite
+
+\-A [flor da auga](https://baresymaslugares.blogspot.com/2022/06/as-flores-da-auga-de-san-xoan-da-rosa.html) é a que se recolle ó amencer cos primeiros raios do sol a rentes da fonte. Dise que é como se nesa escasa corrente tocada por primeira vez polo día se xuntaran todas as virtudes da auga coas da luz da mañá, como se as derradeiras gotas do orballo coincidiran no bico da corrente cos primeiros raios de luz. Compárase cun paxaro que levara no peteiro unha flor recollida da auga, como un instante, único, que desaparece ata o vindeiro solsticio. A fror ou flor da auga é unha expresión poética da tradición literaria popular que aparece habitualmente nas cantigas aludindo á sutileza do tempo.
 
 ## **ÁRBORES QUE FAN COUSAS:**
 
@@ -81,7 +85,7 @@ Paxarín pinpín
 \-a aldea ao pé da montaña  
 \-as eiras (nones de sitios q signifiquen cousas)  
 a eira de abaixo  
-\-Nasugas (un barrio, un pobo, unha vila). homenaxe hobbiton. polauga /cricaba  
+\-Nasaugas (un barrio, un pobo, unha vila). homenaxe hobbiton. polauga /cricaba  
 nome dun porto no interior  
 a pasaxe, o montiño, curramontes, pedra furada, arrabiada, berbiriana.  
 \--souto vello  
@@ -111,9 +115,34 @@ corros de brujas de setas: senderuelas
 
 [https://orgullogalego.gal/crenzas-e-lendas-asociadas-con-animais/](https://orgullogalego.gal/crenzas-e-lendas-asociadas-con-animais/)
 
-## **DITOS** **Salto por enriba/ do lume de San Xoan/ para que non me trabe/nin cobra nen can./ Pasades os lumes de San Xoan/ para que non vos morda cadela nin can/ nen cantos males han./ Cachela de San Xoan/ que nin morda cadela/ nen can/nen cousa que ande polo chan.**
+## **DITOS**
 
-Por ser noite de San Xoan/ noite de encantos e bruxas/ por ser noite de San Xoan/ teñoche medo, Maruxa.
+**no san Xoán, fouciña na man**
+
+Salto por enriba/ do lume de San Xoan/ para que non me trabe/nin cobra nen can./ Pasades os lumes de San Xoan/ para que non vos morda cadela nin can/ nen cantos males han./ Cachela de San Xoan/ que nin morda cadela/ nen can/nen cousa que ande polo chan.
+
+Por ser noite de San Xoan/ noite de encantos e bruxas/ por ser noite de San Xoan/ téñoche medo, Maruxa.
+
+En San Xoán, meigas e bruxas fuxirán...
+
+Día de san Xoán, alegre  
+~~meniña~~, criatura, vaite lavar,  
+pillarás auga do paxaro  
+antes de que o sol raiar  
+Irás arrente do día  
+a i-auga fresca a catar  
+da auga do paxariño  
+que saúde che ha de dar.
+
+Corre criatura vaite lavar  
+alá na fonte te has de lavar  
+i a fresca i-auga desta manecida  
+cor de cereixa che ten que dar.
+
+Se arraiar, se arraiará  
+tódalas meigas levará;  
+xa arraiou, xa arraiou,  
+tódalas meigas levou.
 
 ## **IDEAS SOLTAS**
 
@@ -121,6 +150,8 @@ Por ser noite de San Xoan/ noite de encantos e bruxas/ por ser noite de San Xoan
 \-un cruceiro  
 \-unha hermida  
 \-un camposanto  
+\-terraza de bar  
+\- bolboretas ou bichos á tardiña  
 \-farolas  
 \-muíño  
 \-lumeiradas que se prenden pola noite  

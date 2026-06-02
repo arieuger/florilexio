@@ -4,10 +4,14 @@
 
 .page {
 
-    & article p {
+    & article {
 
-        font-size: 1.2rem;
-        line-height: 1.8rem;
+        & p, & li {
+
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+
+        }
 
     }
 
