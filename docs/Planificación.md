@@ -7,6 +7,7 @@ kanban-plugin: board
 ## Definindo
 
 - [ ] [[Deseñar escenarios]]
+- [ ] [[Pipeline_Crear ferramenta xeradora de herbas]]
 
 
 ## Desenvolvendo
