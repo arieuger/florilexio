@@ -7,7 +7,7 @@
 ## Decisións
 
 - **Data: 08/06/26**  
-  Coñecemento de plantas: As plantas que non coñeces non teñen nome de momento, pero podes rexistrar información temporal.  
+  Coñecemento de plantas: As plantas que non coñeces non teñen nome de momento, pero podes rexistrar información temporal. [Para poder recoller unha herba hai que cumplir certas condicións](#bookmark=id.6s4fd3apddwa)  
 
 - **Data: 08/06/26**  
   O xogo tén que rematar ás 00:00 para que floreza o fento macho  
