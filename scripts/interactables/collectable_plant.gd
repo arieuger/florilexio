@@ -150,16 +150,26 @@ func start_cutting_minigame() -> void:
 	plant_selected.emit(self)
 	cutting_minigame_requested.emit(plant_id, self)
 
-	if not cutting_minigame_scene:
-		_on_cutting_minigame_closed()
-		return
-
-	var minigame := cutting_minigame_scene.instantiate() as CuttingMinigame
+	var minigame := create_cutting_minigame()
 	if not minigame:
 		_on_cutting_minigame_closed()
 		return
 
 	_disable_player_movement_for_minigame()
+
+	minigame.completed.connect(_on_cutting_minigame_completed)
+	minigame.tree_exited.connect(_on_cutting_minigame_closed)
+	get_tree().current_scene.add_child(minigame)
+
+
+## Builds the configured minigame without starting the normal collection flow.
+func create_cutting_minigame() -> CuttingMinigame:
+	if not cutting_minigame_scene:
+		return null
+
+	var minigame := cutting_minigame_scene.instantiate() as CuttingMinigame
+	if not minigame:
+		return null
 
 	var difficulty_settings := _get_cutting_difficulty_settings()
 	minigame.plant_id = plant_id
@@ -172,9 +182,7 @@ func start_cutting_minigame() -> void:
 	minigame.rotation_speed_degrees = _get_cutting_rotation_speed(difficulty_settings)
 	minigame.direction_change_chance = difficulty_settings["direction_change_chance"]
 	minigame.success_alpha_threshold = cutting_success_alpha_threshold
-	minigame.completed.connect(_on_cutting_minigame_completed)
-	minigame.tree_exited.connect(_on_cutting_minigame_closed)
-	get_tree().current_scene.add_child(minigame)
+	return minigame
 
 
 func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:

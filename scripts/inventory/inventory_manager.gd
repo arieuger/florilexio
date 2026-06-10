@@ -119,6 +119,19 @@ func clear() -> void:
 	bouquet_changed.emit()
 
 
+## Development-only reset used by the in-game debug panel.
+func debug_reset() -> void:
+	if not OS.is_debug_build():
+		return
+
+	items.clear()
+	plant_display_names.clear()
+	plant_marks.clear()
+	selected_bouquet.clear()
+	inventory_changed.emit()
+	bouquet_changed.emit()
+
+
 func get_display_name(plant_id: StringName) -> String:
 	if plant_display_names.has(plant_id):
 		return tr(plant_display_names[plant_id])

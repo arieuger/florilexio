@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://dosqr80lvhtg1"]
+
+[ext_resource type="Script" uid="uid://bseveiylxljl5" path="res://scripts/debug/debug_panel.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
+
+[sub_resource type="Theme" id="Theme_debug"]
+default_font = ExtResource("2_font")
+default_font_size = 4
+Button/font_sizes/font_size = 4
+Label/font_sizes/font_size = 4
+LineEdit/font_sizes/font_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.055, 0.07, 0.065, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.72, 0.55, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="DebugPanel" type="CanvasLayer" unique_id=251624195]
+layer = 100
+visible = false
+script = ExtResource("1_script")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=401521776]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 110.0
+offset_bottom = 64.0
+theme = SubResource("Theme_debug")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=551713267]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1503898882]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Header" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=706449238]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/Header" unique_id=2137591565]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DEBUG PANEL"
+
+[node name="Hint" type="Label" parent="Panel/MarginContainer/VBoxContainer/Header" unique_id=1791757873]
+layout_mode = 2
+text = "F1 / Esc"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=363375870]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Sections" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=960903512]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="TimeTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=160455651]
+layout_mode = 2
+text = "TEMPO"
+
+[node name="TimeStatusLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1639426868]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hora: 10:00 | bloque 0/48"
+
+[node name="TimeButtons1" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=206874326]
+layout_mode = 2
+
+[node name="AddOneBlockButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons1" unique_id=283664324]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+1 bloque"
+
+[node name="AddFourBlocksButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons1" unique_id=288877659]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+4 bloques"
+
+[node name="GoMorningButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons1" unique_id=50635783]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mañá"
+
+[node name="TimeButtons2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1655285419]
+layout_mode = 2
+
+[node name="GoAfternoonButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons2" unique_id=1017476683]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tarde"
+
+[node name="GoDuskButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons2" unique_id=405607]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Solpor"
+
+[node name="GoNightButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons2" unique_id=646293301]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Noite"
+
+[node name="GoEndOfDayButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/TimeButtons2" unique_id=568362500]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Final de xornada"
+
+[node name="InventoryTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1273719038]
+layout_mode = 2
+text = "INVENTARIO"
+
+[node name="PlantIdInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1216051133]
+unique_name_in_owner = true
+layout_mode = 2
+text = "macela"
+placeholder_text = "plant_id"
+
+[node name="InventoryButtons" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1539479380]
+layout_mode = 2
+
+[node name="AddPlantButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/InventoryButtons" unique_id=2082130469]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Engadir planta"
+
+[node name="ClearInventoryButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/InventoryButtons" unique_id=1855256475]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Vaciar"
+
+[node name="InventoryToggleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/InventoryButtons" unique_id=1004098474]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Abrir/Cerrar"
+
+[node name="FlorilexioTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1102501579]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FLORILEXIO / COÑECEMENTO"
+
+[node name="FlorilexioStatusLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=933702955]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FlorilexioManager inda sen facer"
+
+[node name="FlorilexioButtons1" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1281478361]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarkObservedButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons1" unique_id=2068822490]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Marcar observada"
+
+[node name="UnlockNameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons1" unique_id=1095825494]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Desbloquear nome"
+
+[node name="FlorilexioButtons2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=70600411]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnlockVisualIdButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons2" unique_id=342409884]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Desbloquear ID visual"
+
+[node name="MarkIdentifiedButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons2" unique_id=1194896850]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Marcar identificada"
+
+[node name="ResetKnowledgeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=82107644]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset coñecemento da planta"
+
+[node name="MinigameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1260756113]
+layout_mode = 2
+text = "MINIXOGO"
+
+[node name="LaunchCuttingMinigameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1271710771]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lanzar minixogo"
+
+[node name="ResetTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1877412218]
+layout_mode = 2
+text = "RESET"
+
+[node name="ResetButtons" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=513088938]
+layout_mode = 2
+
+[node name="ResetGameStateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/ResetButtons" unique_id=1789638127]
+unique_name_in_owner = true
+layout_mode = 2
+text = "GameState"
+
+[node name="ResetInventoryButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/ResetButtons" unique_id=1095242740]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Inventario"
+
+[node name="ResetAllButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/ResetButtons" unique_id=285132661]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset todo debug"

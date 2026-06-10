@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="8_inventory_hover"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="9_inventory_panel"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="10_font"]
+[ext_resource type="PackedScene" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]
 
 [node name="GameRoot" type="Node2D" unique_id=1136013151]
 script = ExtResource("1_root")
@@ -27,6 +28,7 @@ script = ExtResource("2_time")
 max_speed = 65.0
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=810013888]
+groups = ["game_hud"]
 script = ExtResource("5_hud")
 final_area_path = "uid://dsm7uwl8e3sqr"
 final_spotlight_radius = 50.0
@@ -58,6 +60,8 @@ text = "10:00"
 
 [node name="InventoryPanel" parent="GameHUD" unique_id=1014228628 instance=ExtResource("9_inventory_panel")]
 visible = false
+
+[node name="DebugPanel" parent="." instance=ExtResource("11_debug_panel")]
 
 [node name="Music" type="FmodEventEmitter2D" parent="." unique_id=1212419938]
 event_name = "event:/Music"

@@ -138,6 +138,29 @@ func set_consumed_time_blocks(blocks: int) -> void:
 	if previous_consumed_time < NIGHT_START_BLOCK and _consumed_time >= NIGHT_START_BLOCK:
 		reached_night.emit()
 
+
+## Development-only reset used by the in-game debug panel.
+func debug_reset() -> void:
+	if not OS.is_debug_build():
+		return
+
+	discovered_plants.clear()
+	collected_plants.clear()
+	final_bouquet_composition.clear()
+	old_woman_already_spoke = false
+	tutorial_already_launched = false
+	acknowledged_invasive_plants = false
+	acknowledged_on_danger_plants = false
+	acknowledged_poisonous_plants = false
+	acknowledged_mortal_plants = false
+	acknowledged_magic_plants = false
+	acknowledged_not_all_aromatics = false
+	discarded_invasive_plants_count = 0
+	discarded_invasive_plants_changed.emit(discarded_invasive_plants_count)
+	wind_already_spoke = false
+	set_consumed_time_blocks(0)
+
+
 func discover_plant(plant_id: String) -> void:
 	# TODO: De momento non se usa. Para fase 2
 	if not discovered_plants.has(plant_id):
