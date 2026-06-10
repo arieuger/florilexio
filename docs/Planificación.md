@@ -12,6 +12,7 @@ kanban-plugin: board
 
 ## Desenvolvendo
 
+- [ ] [[Pipeline_Crear debugger]]
 
 
 ## Revisando
