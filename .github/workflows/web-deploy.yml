@@ -74,5 +74,4 @@ jobs:
                   REMOTE_PORT: ${{ secrets.SSH_PORT || 22 }}
                   SOURCE: "public/"
                   TARGET: "/www/"
-                  ARGS: "-rlgoDzvc -i --delete"
                   EXCLUDE: "cgi-bin,.well-known,.htaccess"
