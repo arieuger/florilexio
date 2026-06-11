@@ -1,6 +1,6 @@
 ## Lenda
 
-- Para cada decisión tomada, anotamos a data na que se decidiu!
+- Para cada decisión tomada, anotamos a data na que se decidiu
 - As cousas pendentes de decidir marcámolas cun subliñado
 - As cousas descartadas ~~marcámolas cun tachado~~ e indicamos as razóns polas que as descartamos
 
