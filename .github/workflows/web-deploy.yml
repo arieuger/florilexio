@@ -73,6 +73,6 @@ jobs:
                   REMOTE_USER: ${{ secrets.SSH_USER }}
                   REMOTE_PORT: ${{ secrets.SSH_PORT || 22 }}
                   SOURCE: "public/."
-                  TARGET: "/www/"
+                  TARGET: "www/"
                   ARGS: "-rlgoDzvc -i --delete --delete-after"
                   EXCLUDE: "cgi-bin,.well-known,.htaccess"
