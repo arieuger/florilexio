@@ -1,16 +1,16 @@
 ## Lenda
 
-- Para cada decisión tomada, anotamos a data na que se decidiu
+- Para cada decisión tomada, anotamos a data na que se decidiu!
 - As cousas pendentes de decidir marcámolas cun subliñado
 - As cousas descartadas ~~marcámolas cun tachado~~ e indicamos as razóns polas que as descartamos
 
 ## Decisións
 
 - **Data: 08/06/26**  
-  Coñecemento de plantas: As plantas que non coñeces non teñen nome de momento, pero podes rexistrar información temporal. [Para poder recoller unha herba hai que cumplir certas condicións](#bookmark=id.6s4fd3apddwa)  
+  Coñecemento de plantas: As plantas que non coñeces non teñen nome de momento, pero podes rexistrar información temporal. [Para poder recoller unha herba hai que cumplir certas condicións](#bookmark=id.6s4fd3apddwa)
 
 - **Data: 08/06/26**  
-  O xogo tén que rematar ás 00:00 para que floreza o fento macho  
+  O xogo tén que rematar ás 00:00 para que floreza o fento macho
 
 - **Data: 08/06/26**  
   Como pode o xogador ser máis consciente do paso do tempo
@@ -19,19 +19,19 @@
   - Cambio de luz
   - Espíritos e lucecús cando chega a noite
   - Integralo na pantalla
-  - Romper a cuarta parede: Mundo pode falar de botóns  
+  - Romper a cuarta parede: Mundo pode falar de botóns
 
 - **Data: 08/06/26**  
   Finais intermedios e final:
   - Ao final do día hai un resumo de final de xornada no que se lle explica á xogadora algo do que foi adquirindo para o florilexio
   - Facer o cacho pode ser un minixogo. Terá un magiómetro que dará o resultado final cando remate o cacho
   - Mantémonos na parametrización do prototipo inda que probablemente haxa máis elementos que condicionen o resultado
-  - O final bo é cando cubres todas as herbas. O final superbo é o que consigues cando cubres todas as herbas e os cachos extra  
+  - O final bo é cando cubres todas as herbas. O final superbo é o que consigues cando cubres todas as herbas e os cachos extra
 
 - **Data: 08/06/26**  
   Minixogos distintos por tipos de herbas: árbores, plantas e arbustos. con distintos niveis de dificultade e distintos condicionanes: os pinchos das silveiras, o picor das ortigas, etc
   - Pode haber info que che facilite (reduza o nivel de dificultade) un minixogo: alguén che explica que esta planta a hai que coller polas tardes, etc.
-  - Tamén ao revés: cando eres máis nova tés máis enerxía, por eso é máis sinxelo coller plantas  
+  - Tamén ao revés: cando eres máis nova tés máis enerxía, por eso é máis sinxelo coller plantas
 
 - **Data: 08/06/26**  
   Haberá obxectos que:
@@ -50,8 +50,7 @@
 
   - Permitan o avance do xogo e o desenvolvemento do florilexio:
     - Botella para poder coller auga das sete fontes e sube o magiómetro. Cóllese na segunda xornada (obxecto permanente)
-    - Na primeira pantalla: lápis  
-
+    - Na primeira pantalla: lápis
 
 - **Data: 08/06/26**  
   Inventario: pendiente de decidir se podemos ir á casa a deixar herbas ou non. No caso de que si, a casa podería ser tamén a vía para rematar o día.
@@ -72,11 +71,11 @@
       - Para recoller plantas tén que conseguir información. Que hai fontes diversas para esta información.
       - Entender o paso do tempo
     - Cando remata o primeiro día:
-      - Saberá que a información que recolleu servirá para facer un Florilexio. Daranlle o libro/libreta para ir compoñéndoo  
+      - Saberá que a información que recolleu servirá para facer un Florilexio. Daranlle o libro/libreta para ir compoñéndoo
 
 - **Data: 08/06/26**  
   Pendiente de definir que facemos con todo o que non son herbas de San Xoán
-  - Invasoras e perigo de extinción: as invasoras e as plantas en perigo de extinción poden seguir no xogo. As primeiras debes tiralas e as segundas non recolectalas. Haberá unha sección “outras plantas/outra información” no florilexio, un pouco máis sinxela que as fichas das herbas de San Xoán  
+  - Invasoras e perigo de extinción: as invasoras e as plantas en perigo de extinción poden seguir no xogo. As primeiras debes tiralas e as segundas non recolectalas. Haberá unha sección “outras plantas/outra información” no florilexio, un pouco máis sinxela que as fichas das herbas de San Xoán
 
 - **Data: 08/06/26**  
   O florilexio compónse de:
