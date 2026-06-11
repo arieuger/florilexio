@@ -65,15 +65,24 @@ jobs:
                   name: web-public
                   path: public
 
-            - name: Deploy to FTP
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ secrets.FTP_SERVER }}
-                  username: ${{ secrets.FTP_USERNAME }}
-                  password: ${{ secrets.FTP_PASSWORD }}
-                  local-dir: public/
-                  server-dir: /www/
-                  exclude: |
-                      **/cgi-bin
-                      **/.well-known
-                      .htaccess
+            - name: Install sshpass
+              run: sudo apt-get update && sudo apt-get install -y sshpass
+
+            - name: Configure known hosts
+              run: |
+                  mkdir -p ~/.ssh
+                  if [ -n "${{ secrets.SSH_KNOWN_HOSTS }}" ]; then
+                    echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+                  else
+                    ssh-keyscan -p "${{ secrets.SSH_PORT || 22 }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+                  fi
+
+            - name: Deploy to server over SSH (rsync)
+              run: |
+                  sshpass -p "${{ secrets.SSH_PASSWORD }}" rsync -az --delete \
+                    --exclude='cgi-bin' \
+                    --exclude='.well-known' \
+                    --exclude='.htaccess' \
+                    -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o PreferredAuthentications=password -o PubkeyAuthentication=no" \
+                    public/ \
+                    "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/www/"
