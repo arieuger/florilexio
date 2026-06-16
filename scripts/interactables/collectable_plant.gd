@@ -70,7 +70,7 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var name_label: Label = $NameLabel
 @onready var click_area: Area2D = $ClickArea
-@onready var interaction_point: Marker2D = get_node_or_null("InteractionPoint")
+@onready var interaction_point: Area2D = get_node_or_null("InteractionPoint") as Area2D
 
 var _hover_tween: Tween
 var _is_interacting := false
@@ -130,7 +130,12 @@ func _interact() -> void:
 
 	if interaction_point:
 		var player := get_tree().get_first_node_in_group("player")
-		if player and player.has_method("move_to_point"):
+		if player and player.has_method("move_to_area"):
+			var reached: bool = await player.move_to_area(interaction_point)
+			if not reached:
+				_is_interacting = false
+				return
+		elif player and player.has_method("move_to_point"):
 			var stop_distance: float = player.interaction_stop_distance if "interaction_stop_distance" in player else 6.0
 			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:

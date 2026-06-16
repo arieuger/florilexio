@@ -4,9 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dqh3ks8h2hvu6" path="res://assets/sprites/environment/plants/pe-de-boi.png" id="2_vbg5g"]
 [ext_resource type="Texture2D" uid="uid://cw4xiqlqaridn" path="res://assets/sprites/environment/plants/pe-de-boi_hover.png" id="3_vbg5g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3e2vc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbg5g"]
 resource_local_to_scene = true
 size = Vector2(8.5, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e2vc"]
+resource_local_to_scene = true
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cith"]
 resource_local_to_scene = true
@@ -28,7 +32,13 @@ texture = ExtResource("3_vbg5g")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(-0.25, -5)
-shape = SubResource("RectangleShape2D_3e2vc")
+shape = SubResource("RectangleShape2D_vbg5g")
+
+[node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
+position = Vector2(0, -1)
+
+[node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
+shape = SubResource("CircleShape2D_3e2vc")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -1)

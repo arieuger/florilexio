@@ -8,7 +8,11 @@
 resource_local_to_scene = true
 size = Vector2(6, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bie7r"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bie7r"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxpoy"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -30,9 +34,14 @@ texture = ExtResource("3_4h568")
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_4h568")
 
+[node name="CollisionShape2D" parent="InteractionPoint" parent_id_path=PackedInt32Array(2011579778) index="0" unique_id=2094798677]
+position = Vector2(1, 0)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_bie7r")
+
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_bie7r")
+shape = SubResource("RectangleShape2D_xxpoy")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

@@ -8,7 +8,11 @@
 resource_local_to_scene = true
 size = Vector2(14, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qocsl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qocsl"]
+resource_local_to_scene = true
+radius = 10.049875
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ml8x"]
 resource_local_to_scene = true
 size = Vector2(13, 3)
 
@@ -31,11 +35,14 @@ position = Vector2(1, -4.5)
 shape = SubResource("RectangleShape2D_d7qrg")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
-position = Vector2(0, 5)
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
+shape = SubResource("CircleShape2D_qocsl")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0.5, -1.5)
-shape = SubResource("RectangleShape2D_qocsl")
+shape = SubResource("RectangleShape2D_1ml8x")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

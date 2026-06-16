@@ -84,6 +84,25 @@ func move_to_point(global_target: Vector2, stop_distance := -1.0) -> bool:
 
 	return await auto_move_finished
 
+func move_to_area(area: Area2D) -> bool:
+	if not movement_enabled or not is_instance_valid(area):
+		return false
+
+	if _is_global_point_inside_area(area, global_position):
+		return true
+
+	if _is_auto_moving:
+		_finish_auto_move(false)
+
+	var next_path := _find_auto_move_path_to_area(area)
+	if next_path.is_empty():
+		return false
+
+	var global_target := next_path[next_path.size() - 1]
+	_start_auto_move_path(global_target, next_path, auto_move_stop_distance)
+	_is_auto_moving = true
+	return await auto_move_finished
+
 func start_auto_move(global_target: Vector2, stop_distance := -1.0) -> bool:
 	if not movement_enabled:
 		return false
@@ -206,6 +225,107 @@ func _skip_reachable_auto_move_waypoints() -> void:
 		_auto_move_stuck_elapsed = 0.0
 		_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
 		_auto_move_previous_position = global_position
+
+func _find_auto_move_path_to_area(area: Area2D) -> PackedVector2Array:
+	var candidate_points := _get_area_candidate_points(area)
+
+	for candidate_point in candidate_points:
+		if pathfinding_enabled and not pathfinding_bounds.has_point(candidate_point):
+			continue
+		if pathfinding_enabled and not _is_pathfinding_point_walkable(candidate_point):
+			continue
+		if _is_pathfinding_segment_walkable(global_position, candidate_point):
+			return PackedVector2Array([candidate_point])
+
+		var path := _find_auto_move_path(candidate_point)
+		if not path.is_empty():
+			return path
+
+	return PackedVector2Array()
+
+func _get_area_candidate_points(area: Area2D) -> PackedVector2Array:
+	var candidates := PackedVector2Array()
+	var collision_shapes := _get_area_collision_shapes(area)
+
+	for collision_shape in collision_shapes:
+		candidates.append_array(_get_collision_shape_candidate_points(collision_shape))
+
+	if candidates.is_empty():
+		candidates.append(area.global_position)
+
+	var sorted_candidates := Array(candidates)
+	sorted_candidates.sort_custom(func(a: Vector2, b: Vector2) -> bool:
+		return global_position.distance_squared_to(a) < global_position.distance_squared_to(b)
+	)
+
+	return PackedVector2Array(sorted_candidates)
+
+func _get_area_collision_shapes(area: Area2D) -> Array[CollisionShape2D]:
+	var collision_shapes: Array[CollisionShape2D] = []
+	for child in area.find_children("*", "CollisionShape2D", true, false):
+		var collision_shape := child as CollisionShape2D
+		if collision_shape and not collision_shape.disabled and collision_shape.shape:
+			collision_shapes.append(collision_shape)
+
+	return collision_shapes
+
+func _get_collision_shape_candidate_points(collision_shape: CollisionShape2D) -> PackedVector2Array:
+	var candidates := PackedVector2Array()
+	var shape := collision_shape.shape
+	var local_bounds := _get_shape_local_bounds(shape)
+	var step := maxf(pathfinding_cell_size, 1.0)
+
+	if _is_local_point_inside_shape(shape, Vector2.ZERO):
+		candidates.append(collision_shape.global_position)
+
+	var local_y := local_bounds.position.y
+	while local_y <= local_bounds.end.y:
+		var local_x := local_bounds.position.x
+		while local_x <= local_bounds.end.x:
+			var local_point := Vector2(local_x, local_y)
+			if _is_local_point_inside_shape(shape, local_point):
+				candidates.append(collision_shape.global_transform * local_point)
+			local_x += step
+		local_y += step
+
+	return candidates
+
+func _get_shape_local_bounds(shape: Shape2D) -> Rect2:
+	if shape is CircleShape2D:
+		var circle := shape as CircleShape2D
+		return Rect2(Vector2(-circle.radius, -circle.radius), Vector2(circle.radius * 2.0, circle.radius * 2.0))
+	if shape is RectangleShape2D:
+		var rectangle := shape as RectangleShape2D
+		return Rect2(-rectangle.size * 0.5, rectangle.size)
+	if shape is CapsuleShape2D:
+		var capsule := shape as CapsuleShape2D
+		return Rect2(Vector2(-capsule.radius, -capsule.height * 0.5), Vector2(capsule.radius * 2.0, capsule.height))
+
+	return Rect2(Vector2.ZERO, Vector2.ZERO)
+
+func _is_global_point_inside_area(area: Area2D, global_point: Vector2) -> bool:
+	for collision_shape in _get_area_collision_shapes(area):
+		var local_point := collision_shape.global_transform.affine_inverse() * global_point
+		if _is_local_point_inside_shape(collision_shape.shape, local_point):
+			return true
+
+	return false
+
+func _is_local_point_inside_shape(shape: Shape2D, local_point: Vector2) -> bool:
+	if shape is CircleShape2D:
+		var circle := shape as CircleShape2D
+		return local_point.length_squared() <= circle.radius * circle.radius
+	if shape is RectangleShape2D:
+		var rectangle := shape as RectangleShape2D
+		var half_size := rectangle.size * 0.5
+		return absf(local_point.x) <= half_size.x and absf(local_point.y) <= half_size.y
+	if shape is CapsuleShape2D:
+		var capsule := shape as CapsuleShape2D
+		var half_segment_height := maxf(0.0, capsule.height * 0.5 - capsule.radius)
+		var closest_point := Vector2(0.0, clampf(local_point.y, -half_segment_height, half_segment_height))
+		return local_point.distance_squared_to(closest_point) <= capsule.radius * capsule.radius
+
+	return local_point == Vector2.ZERO
 
 func _find_auto_move_path(global_target: Vector2) -> PackedVector2Array:
 	if not pathfinding_enabled:
@@ -409,6 +529,8 @@ func _is_pathfinding_point_walkable(global_point: Vector2) -> bool:
 	query.shape = shape
 	query.transform = Transform2D(0.0, global_point)
 	query.collision_mask = collision_mask
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
 	query.exclude = [get_rid()]
 
 	return get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty()

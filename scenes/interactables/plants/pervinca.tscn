@@ -8,7 +8,11 @@
 resource_local_to_scene = true
 size = Vector2(10, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gjtk"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxave"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbswa"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -31,11 +35,15 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mxave")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
-position = Vector2(0, 7)
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_mxave")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, 0)
-shape = SubResource("RectangleShape2D_4gjtk")
+shape = SubResource("RectangleShape2D_gbswa")
 disabled = true
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
