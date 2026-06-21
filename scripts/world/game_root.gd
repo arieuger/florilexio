@@ -13,9 +13,11 @@ extends Node2D
 
 var _current_area: Node
 var _area_transition_tween: Tween
+var minigame_coordinator: MinigameCoordinator
 
 
 func _ready() -> void:
+	_setup_minigame_coordinator()
 	_set_player_movement_enabled(false)
 	if initial_area:
 		load_area(initial_area, initial_spawn_id)
@@ -23,6 +25,15 @@ func _ready() -> void:
 		_run_intro_sequence.call_deferred()
 	else:
 		_set_player_movement_enabled(true)
+
+
+func _setup_minigame_coordinator() -> void:
+	minigame_coordinator = MinigameCoordinator.new()
+	minigame_coordinator.name = "MinigameCoordinator"
+	minigame_coordinator.add_to_group(&"minigame_coordinator")
+	add_child(minigame_coordinator)
+
+
 func load_area(area_scene: PackedScene, spawn_id: StringName = &"default") -> void:
 	if not area_scene:
 		return

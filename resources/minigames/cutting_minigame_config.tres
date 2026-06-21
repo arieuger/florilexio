@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MinigameConfig" format=3 uid="uid://b0gjtlqiwais4"]
+
+[ext_resource type="Script" uid="uid://b1b214h3232gm" path="res://scripts/minigames/minigame_config.gd" id="1_8pr18"]
+[ext_resource type="PackedScene" uid="uid://bgxnnxw0sfyea" path="res://scenes/minigames/cutting_minigame.tscn" id="1_35773"]
+
+[resource]
+script = ExtResource("1_8pr18")
+minigame_id = &"cutting"
+scene = ExtResource("1_35773")
+metadata/_custom_type_script = "uid://b1b214h3232gm"

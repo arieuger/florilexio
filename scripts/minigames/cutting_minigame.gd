@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends BaseMinigame
 class_name CuttingMinigame
 
 signal completed(plant_id: StringName)
@@ -29,7 +29,6 @@ var _rotation_direction := 1.0
 var _direction_change_elapsed := 0.0
 var _hits := 0
 var _misses := 0
-var _is_finished := false
 var _feedback_tween: Tween
 var _success_zones_image: Image
 var movingGrassSound : FmodEvent
@@ -45,7 +44,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _is_finished:
+	if is_finished:
 		return
 
 	_update_rotation_direction(delta)
@@ -54,15 +53,34 @@ func _process(delta: float) -> void:
 	cursor.rotation_degrees = -_current_angle
 
 
+func setup(new_context: MinigameContext) -> void:
+	super.setup(new_context)
+	if not context:
+		return
+
+	plant_id = context.target_id
+	plant_display_name = context.display_name
+	time_cost_blocks = float(context.get_parameter(&"time_cost_blocks", time_cost_blocks))
+	miss_time_cost_blocks = float(context.get_parameter(&"miss_time_cost_blocks", miss_time_cost_blocks))
+	required_hits = int(context.get_parameter(&"required_hits", required_hits))
+	max_misses = int(context.get_parameter(&"max_misses", max_misses))
+	rotation_speed_degrees = float(context.get_parameter(&"rotation_speed_degrees", rotation_speed_degrees))
+	direction_change_chance = float(context.get_parameter(&"direction_change_chance", direction_change_chance))
+	success_alpha_threshold = float(context.get_parameter(&"success_alpha_threshold", success_alpha_threshold))
+
+
 func _input(event: InputEvent) -> void:
 	
-	if _is_finished:
+	if is_finished:
+		return
+
+	if event.is_action_pressed(&"ui_cancel"):
+		get_viewport().set_input_as_handled()
+		cancel()
 		return
 
 	var wants_cut := event.is_action_pressed("ui_accept") or event.is_action_pressed("cut")
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_X:
-		wants_cut = true
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		wants_cut = true
 
 	if wants_cut:
@@ -80,7 +98,7 @@ func _try_cut() -> void:
 			_finish(true)
 	else:
 		_misses += 1
-		GameState.add_consumed_time(miss_time_cost_blocks)
+		request_time_cost(miss_time_cost_blocks)
 		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0), Color('#db5968'))
 		_shake_ring()
 		SoundManager.play_simple_sound('Actions/Error')
@@ -89,11 +107,11 @@ func _try_cut() -> void:
 
 
 func cancel() -> void:
-	if _is_finished:
+	if is_finished:
 		return
 
-	_is_finished = true
 	SoundManager.stop_looped_sound(movingGrassSound)
+	emit_finished(_build_cancelled_result())
 	queue_free()
 
 
@@ -144,19 +162,80 @@ func _cache_success_zones_image() -> void:
 
 
 func _finish(was_successful: bool) -> void:
-	_is_finished = true
+	if is_finished:
+		return
+
 	SoundManager.stop_looped_sound(movingGrassSound)
-	GameState.add_consumed_time(time_cost_blocks)
+	var result := _build_result(was_successful)
 
 	if was_successful:
-		InventoryManager.add_item(plant_id, 1, plant_display_name, plant_marks)
 		completed.emit(plant_id)
 		SoundManager.play_simple_sound('Actions/Success')
 	else:
 		failed.emit(plant_id)
 
+	emit_finished(result)
+
 	await get_tree().create_timer(0.35).timeout
 	queue_free()
+
+
+func _build_result(was_successful: bool) -> MinigameResult:
+	var result: MinigameResult
+	var minigame_id := _get_minigame_id()
+	var rewards := _get_result_rewards()
+	var metadata := _get_result_metadata()
+
+	if was_successful:
+		result = MinigameResult.success_result(minigame_id, plant_id, rewards, metadata)
+	else:
+		result = MinigameResult.failed_result(minigame_id, plant_id, rewards, metadata)
+
+	result.hits = _hits
+	result.misses = _misses
+	result.time_cost_blocks = time_cost_blocks
+	result.miss_time_cost_blocks = miss_time_cost_blocks
+	return result
+
+
+func _build_cancelled_result() -> MinigameResult:
+	var result := MinigameResult.cancelled_result(
+		_get_minigame_id(),
+		plant_id,
+		_get_result_rewards(),
+		_get_result_metadata()
+	)
+	result.hits = _hits
+	result.misses = _misses
+	return result
+
+
+func _get_minigame_id() -> StringName:
+	if context:
+		var context_minigame_id := context.get_minigame_id()
+		if context_minigame_id != &"":
+			return context_minigame_id
+
+	return &"cutting"
+
+
+func _get_result_rewards() -> Dictionary:
+	if context:
+		return context.rewards.duplicate(true)
+
+	return {
+		&"plant_id": plant_id,
+		&"amount": 1,
+		&"display_name": plant_display_name,
+		&"marks": plant_marks,
+	}
+
+
+func _get_result_metadata() -> Dictionary:
+	if context:
+		return context.metadata.duplicate(true)
+
+	return {}
 
 
 func _show_feedback(text: String, color: Color, outline_color) -> void:

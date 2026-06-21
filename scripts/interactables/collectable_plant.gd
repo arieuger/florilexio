@@ -6,33 +6,6 @@ signal cutting_minigame_requested(plant_id: StringName, plant: CollectablePlant)
 
 enum CuttingDifficulty { EASY, MEDIUM, HARD, TUTORIAL }
 
-const CUTTING_DIFFICULTY_SETTINGS := {
-	CuttingDifficulty.EASY: {
-		"time_cost_blocks": 1.0,
-		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 340.0,
-		"direction_change_chance": 0.6,
-	},
-	CuttingDifficulty.MEDIUM: {
-		"time_cost_blocks": 1.0,
-		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 400.0,
-		"direction_change_chance": 0.8,
-	},
-	CuttingDifficulty.HARD: {
-		"time_cost_blocks": 2.0,
-		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 500.0,
-		"direction_change_chance": 0.9,
-	},
-	CuttingDifficulty.TUTORIAL: {
-		"time_cost_blocks": 1.0,
-		"miss_time_cost_blocks": 1,
-		"base_rotation_speed_degrees": 300.0,
-		"direction_change_chance": 0,
-	}
-}
-
 @export var plant_launches_tutorial := false
 @export var tutorial_dialogue: DialogueResource = preload("res://dialogues/scene1/tutorial.dialogue")
 @export var tutorial_dialogue_title := "start"
@@ -75,8 +48,6 @@ const CUTTING_DIFFICULTY_SETTINGS := {
 var _hover_tween: Tween
 var _is_interacting := false
 var _collection_id: StringName
-var _minigame_player: Node
-var _minigame_player_movement_was_enabled := true
 
 
 func _ready() -> void:
@@ -155,16 +126,18 @@ func start_cutting_minigame() -> void:
 	plant_selected.emit(self)
 	cutting_minigame_requested.emit(plant_id, self)
 
-	var minigame := create_cutting_minigame()
-	if not minigame:
+	var context := _build_cutting_minigame_context()
+	var coordinator := _get_minigame_coordinator()
+	if not coordinator:
+		push_warning("CollectablePlant: MinigameCoordinator not found")
 		_on_cutting_minigame_closed()
 		return
 
-	_disable_player_movement_for_minigame()
-
-	minigame.completed.connect(_on_cutting_minigame_completed)
-	minigame.tree_exited.connect(_on_cutting_minigame_closed)
-	get_tree().current_scene.add_child(minigame)
+	_connect_minigame_time_cost(coordinator)
+	var result: MinigameResult = await coordinator.play_minigame(context)
+	_disconnect_minigame_time_cost(coordinator)
+	_apply_cutting_minigame_result(result)
+	_on_cutting_minigame_closed()
 
 
 ## Builds the configured minigame without starting the normal collection flow.
@@ -176,18 +149,82 @@ func create_cutting_minigame() -> CuttingMinigame:
 	if not minigame:
 		return null
 
-	var difficulty_settings := _get_cutting_difficulty_settings()
-	minigame.plant_id = plant_id
-	minigame.plant_display_name = plant_display_name
-	minigame.plant_marks = InventoryManager.build_plant_marks(self)
-	minigame.time_cost_blocks = _get_cutting_time_cost(difficulty_settings)
-	minigame.miss_time_cost_blocks = _get_cutting_miss_time_cost(difficulty_settings)
-	minigame.required_hits = cutting_required_hits
-	minigame.max_misses = cutting_max_misses
-	minigame.rotation_speed_degrees = _get_cutting_rotation_speed(difficulty_settings)
-	minigame.direction_change_chance = difficulty_settings["direction_change_chance"]
-	minigame.success_alpha_threshold = cutting_success_alpha_threshold
+	var context := _build_cutting_minigame_context()
+	minigame.setup(context)
 	return minigame
+
+
+func build_cutting_minigame_context() -> MinigameContext:
+	return _build_cutting_minigame_context()
+
+
+func _build_cutting_minigame_config() -> MinigameConfig:
+	var config := MinigameConfig.new()
+	config.minigame_id = &"cutting"
+	config.scene = cutting_minigame_scene
+	return config
+
+
+func _build_cutting_minigame_context() -> MinigameContext:
+	var context := MinigameContext.new()
+	context.config = _build_cutting_minigame_config()
+	context.target_id = plant_id
+	context.display_name = plant_display_name
+	context.difficulty_id = _get_cutting_difficulty_id()
+	context.parameters = _build_cutting_parameters()
+	context.rewards = _build_cutting_rewards()
+	context.metadata = _build_cutting_metadata()
+	return context
+
+
+func _build_cutting_parameters() -> Dictionary:
+	var difficulty_settings := _get_cutting_difficulty_settings()
+	return {
+		&"time_cost_blocks": _get_cutting_time_cost(difficulty_settings),
+		&"miss_time_cost_blocks": _get_cutting_miss_time_cost(difficulty_settings),
+		&"required_hits": cutting_required_hits,
+		&"max_misses": cutting_max_misses,
+		&"rotation_speed_degrees": _get_cutting_rotation_speed(difficulty_settings),
+		&"direction_change_chance": difficulty_settings["direction_change_chance"],
+		&"success_alpha_threshold": cutting_success_alpha_threshold,
+	}
+
+
+func _build_cutting_rewards() -> Dictionary:
+	return {
+		&"plant_id": plant_id,
+		&"amount": 1,
+		&"display_name": plant_display_name,
+		&"marks": InventoryManager.build_plant_marks(self),
+	}
+
+
+func _build_cutting_metadata() -> Dictionary:
+	return {
+		&"collection_id": _collection_id,
+	}
+
+
+func _apply_cutting_minigame_result(result: MinigameResult) -> void:
+	if not result or result.is_cancelled():
+		return
+
+	GameState.add_consumed_time(result.time_cost_blocks)
+	if not result.is_success():
+		return
+
+	InventoryManager.add_item(
+		StringName(result.rewards.get(&"plant_id", result.target_id)),
+		int(result.rewards.get(&"amount", 1)),
+		str(result.rewards.get(&"display_name", "")),
+		_get_result_marks(result)
+	)
+	_on_cutting_minigame_completed(result.target_id)
+
+
+func _get_result_marks(result: MinigameResult) -> Dictionary:
+	var marks: Variant = result.rewards.get(&"marks", {})
+	return marks if marks is Dictionary else {}
 
 
 func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
@@ -203,36 +240,23 @@ func _on_cutting_minigame_completed(_completed_plant_id: StringName) -> void:
 	)
 
 func _on_cutting_minigame_closed() -> void:
-	_restore_player_movement_after_minigame()
 	_is_interacting = false
 
 
-func _disable_player_movement_for_minigame() -> void:
-	_minigame_player = get_tree().get_first_node_in_group("player")
-	_minigame_player_movement_was_enabled = true
-
-	if not _minigame_player:
+func _connect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
+	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
 		return
 
-	if "movement_enabled" in _minigame_player:
-		_minigame_player_movement_was_enabled = _minigame_player.get("movement_enabled")
-
-	if _minigame_player.has_method("set_movement_enabled"):
-		_minigame_player.set_movement_enabled(false)
-	else:
-		_minigame_player.set("movement_enabled", false)
+	coordinator.time_cost_requested.connect(_on_minigame_time_cost_requested)
 
 
-func _restore_player_movement_after_minigame() -> void:
-	if not is_instance_valid(_minigame_player):
-		return
+func _disconnect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
+	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
+		coordinator.time_cost_requested.disconnect(_on_minigame_time_cost_requested)
 
-	if _minigame_player.has_method("set_movement_enabled"):
-		_minigame_player.set_movement_enabled(_minigame_player_movement_was_enabled)
-	else:
-		_minigame_player.set("movement_enabled", _minigame_player_movement_was_enabled)
 
-	_minigame_player = null
+func _on_minigame_time_cost_requested(time_cost_blocks: float) -> void:
+	GameState.add_consumed_time(time_cost_blocks)
 
 
 func _should_launch_tutorial() -> bool:
@@ -265,8 +289,23 @@ func _run_tutorial() -> bool:
 	return tutorial_was_run
 
 
+func _get_minigame_coordinator() -> MinigameCoordinator:
+	var coordinator := get_tree().get_first_node_in_group(&"minigame_coordinator") as MinigameCoordinator
+	if coordinator:
+		return coordinator
+
+	var current_scene := get_tree().current_scene
+	if current_scene:
+		return current_scene.get_node_or_null("MinigameCoordinator") as MinigameCoordinator
+	return null
+
+
+func _get_cutting_difficulty_id() -> StringName:
+	return CuttingMinigameDifficulty.get_id(cutting_difficulty)
+
+
 func _get_cutting_difficulty_settings() -> Dictionary:
-	return CUTTING_DIFFICULTY_SETTINGS.get(cutting_difficulty, CUTTING_DIFFICULTY_SETTINGS[CuttingDifficulty.MEDIUM])
+	return CuttingMinigameDifficulty.get_settings(cutting_difficulty)
 
 
 func _get_cutting_time_cost(difficulty_settings: Dictionary) -> float:
