@@ -6,7 +6,7 @@
 # res://dialogues/scene1/school_board.dialogue
 # res://dialogues/intro.dialogue
 # res://dialogues/scene2/terrace_poster.dialogue
-# res://scripts/minigames/cutting_minigame.gd
+# res://scripts/minigames/cutting_minigame/cutting_minigame.gd
 # res://dialogues/scene1/firelight.dialogue
 # res://dialogues/scene2/wind_and_font.dialogue
 # res://dialogues/other.dialogue
@@ -366,11 +366,11 @@ msgstr ""
 msgid "Cortar con tino. Non asulagar. Deixar para quen vén detrás."
 msgstr ""
 
-#: scripts/minigames/cutting_minigame.gd:76
+#: scripts/minigames/cutting_minigame/cutting_minigame.gd:76
 msgid "Ben!"
 msgstr ""
 
-#: scripts/minigames/cutting_minigame.gd:84
+#: scripts/minigames/cutting_minigame/cutting_minigame.gd:84
 msgid "Fallaches"
 msgstr ""
 

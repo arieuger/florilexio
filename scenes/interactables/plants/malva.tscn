@@ -21,7 +21,7 @@ plant_id = &"malva"
 plant_display_name = "Malva"
 hover_color = Color(0.8595422, 0.64244825, 1, 0.6862745)
 is_magic = true
-cutting_difficulty = 0
+collection_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_24dq6")

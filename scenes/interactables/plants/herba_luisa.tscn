@@ -21,7 +21,6 @@ plant_id = &"herba_luisa"
 plant_display_name = "Herba luísa"
 hover_color = Color(0.33817145, 1, 0.6640658, 0.6862745)
 is_magic = true
-cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_ss1ap")

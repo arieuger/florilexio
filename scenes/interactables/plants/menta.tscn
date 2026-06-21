@@ -21,7 +21,7 @@ plant_id = &"menta"
 plant_display_name = "Menta"
 hover_color = Color(0.4588933, 0.9999997, 0.80019796, 0.6862745)
 is_magic = true
-cutting_difficulty = 0
+collection_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_g0w0b")

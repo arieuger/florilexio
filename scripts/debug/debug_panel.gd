@@ -25,8 +25,6 @@ const DUSK_BLOCK := 36
 ]
 
 var _florilexio_manager: Node
-var _minigame_player: Node
-var _minigame_player_movement_was_enabled := true
 
 
 func _ready() -> void:
@@ -167,33 +165,94 @@ func _call_florilexio_method(method_name: StringName) -> void:
 
 
 func _on_launch_cutting_minigame_pressed() -> void:
-	if not get_tree().get_nodes_in_group(&"cutting_minigame").is_empty():
+	var coordinator := _get_minigame_coordinator()
+	if not coordinator:
+		push_warning("[DebugPanel] MinigameCoordinator not available")
+		return
+	if coordinator.is_minigame_running():
 		print("[DebugPanel] A cutting minigame is already running")
 		return
 
 	var plant_id := _get_plant_id()
 	var plant := _get_plant_debug_source(plant_id)
-	var minigame: CuttingMinigame
+	var context: MinigameContext
 	if plant:
-		minigame = plant.create_cutting_minigame()
+		context = plant.build_collection_minigame_context()
 	else:
-		minigame = CUTTING_MINIGAME_SCENE.instantiate() as CuttingMinigame
-	if not minigame:
-		push_warning("[DebugPanel] Could not instantiate the cutting minigame")
-		_free_debug_plant_source(plant)
-		return
-
-	if not plant:
-		minigame.plant_id = plant_id
-		minigame.plant_display_name = InventoryManager.get_display_name(plant_id)
-		minigame.plant_marks = {}
+		context = _build_debug_cutting_minigame_context(plant_id)
 
 	_free_debug_plant_source(plant)
-	_disable_player_movement_for_minigame()
-	minigame.tree_exited.connect(_restore_player_movement_after_minigame)
 	visible = false
-	get_tree().current_scene.add_child(minigame)
+	_connect_minigame_time_cost(coordinator)
+	var result: MinigameResult = await coordinator.play_minigame(context)
+	_disconnect_minigame_time_cost(coordinator)
+	_apply_debug_minigame_result(result)
 	print("[DebugPanel] Launched cutting minigame for %s" % plant_id)
+
+
+func _build_debug_cutting_minigame_context(plant_id: StringName) -> MinigameContext:
+	var config := MinigameConfig.new()
+	config.minigame_id = &"cutting"
+	config.scene = CUTTING_MINIGAME_SCENE
+
+	var context := MinigameContext.new()
+	context.config = config
+	context.target_id = plant_id
+	context.display_name = InventoryManager.get_display_name(plant_id)
+	context.difficulty_id = &"medium"
+	context.parameters = {
+		&"time_cost_blocks": 1.0,
+		&"miss_time_cost_blocks": 1.0,
+		&"required_hits": 3,
+		&"max_misses": 3,
+		&"rotation_speed_degrees": 400.0,
+		&"direction_change_chance": 0.8,
+		&"success_alpha_threshold": 0.1,
+	}
+	context.rewards = {
+		&"plant_id": plant_id,
+		&"amount": 1,
+		&"display_name": context.display_name,
+		&"marks": {},
+	}
+	return context
+
+
+func _apply_debug_minigame_result(result: MinigameResult) -> void:
+	if not result or result.is_cancelled():
+		return
+
+	GameState.add_consumed_time(result.time_cost_blocks)
+	if not result.is_success():
+		return
+
+	InventoryManager.add_item(
+		StringName(result.rewards.get(&"plant_id", result.target_id)),
+		int(result.rewards.get(&"amount", 1)),
+		str(result.rewards.get(&"display_name", "")),
+		_get_result_marks(result)
+	)
+
+
+func _get_result_marks(result: MinigameResult) -> Dictionary:
+	var marks: Variant = result.rewards.get(&"marks", {})
+	return marks if marks is Dictionary else {}
+
+
+func _connect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
+	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
+		return
+
+	coordinator.time_cost_requested.connect(_on_minigame_time_cost_requested)
+
+
+func _disconnect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
+	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
+		coordinator.time_cost_requested.disconnect(_on_minigame_time_cost_requested)
+
+
+func _on_minigame_time_cost_requested(time_cost_blocks: float) -> void:
+	GameState.add_consumed_time(time_cost_blocks)
 
 
 func _on_reset_game_state_pressed() -> void:
@@ -286,6 +345,17 @@ func _get_game_hud() -> Node:
 	return null
 
 
+func _get_minigame_coordinator() -> MinigameCoordinator:
+	var coordinator := get_tree().get_first_node_in_group(&"minigame_coordinator") as MinigameCoordinator
+	if coordinator:
+		return coordinator
+
+	var current_scene := get_tree().current_scene
+	if current_scene:
+		return current_scene.get_node_or_null("MinigameCoordinator") as MinigameCoordinator
+	return null
+
+
 func _find_collectable_plant_recursive(node: Node, plant_id: StringName) -> CollectablePlant:
 	if node is CollectablePlant and node.plant_id == plant_id:
 		return node
@@ -294,28 +364,3 @@ func _find_collectable_plant_recursive(node: Node, plant_id: StringName) -> Coll
 		if result:
 			return result
 	return null
-
-
-func _disable_player_movement_for_minigame() -> void:
-	_minigame_player = get_tree().get_first_node_in_group(&"player")
-	_minigame_player_movement_was_enabled = true
-	if not _minigame_player:
-		return
-
-	if "movement_enabled" in _minigame_player:
-		_minigame_player_movement_was_enabled = bool(_minigame_player.get("movement_enabled"))
-	if _minigame_player.has_method(&"set_movement_enabled"):
-		_minigame_player.call(&"set_movement_enabled", false)
-	else:
-		_minigame_player.set("movement_enabled", false)
-
-
-func _restore_player_movement_after_minigame() -> void:
-	if not is_instance_valid(_minigame_player):
-		return
-
-	if _minigame_player.has_method(&"set_movement_enabled"):
-		_minigame_player.call(&"set_movement_enabled", _minigame_player_movement_was_enabled)
-	else:
-		_minigame_player.set("movement_enabled", _minigame_player_movement_was_enabled)
-	_minigame_player = null

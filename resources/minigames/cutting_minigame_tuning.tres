@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CuttingMinigameTuning" format=3 uid="uid://b72w7sk7pnx6"]
+
+[ext_resource type="Script" uid="uid://1ixgfku65yef" path="res://scripts/minigames/cutting_minigame/cutting_minigame_tuning.gd" id="1_j38ui"]
+
+[resource]
+script = ExtResource("1_j38ui")
+metadata/_custom_type_script = "uid://1ixgfku65yef"
