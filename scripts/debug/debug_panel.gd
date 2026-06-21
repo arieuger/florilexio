@@ -177,7 +177,7 @@ func _on_launch_cutting_minigame_pressed() -> void:
 	var plant := _get_plant_debug_source(plant_id)
 	var context: MinigameContext
 	if plant:
-		context = plant.build_cutting_minigame_context()
+		context = plant.build_collection_minigame_context()
 	else:
 		context = _build_debug_cutting_minigame_context(plant_id)
 

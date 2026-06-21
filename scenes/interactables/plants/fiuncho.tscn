@@ -21,6 +21,7 @@ plant_id = &"fiuncho"
 plant_display_name = "Fiúncho"
 hover_color = Color(0.99999946, 0.98197144, 0.6196342, 0.6862745)
 is_magic = true
+collection_difficulty = 0
 cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
