@@ -23,19 +23,13 @@ class_name CollectablePlant
 
 @export_group("Collection Minigame")
 @export var collection_minigame_config: MinigameConfig = preload("res://resources/minigames/cutting_minigame_config.tres")
+## Si queremos parametrizar específicamente unha planta, creamos un "new tuning resource" do tipo de minixogo que sexa dende o inspector. NUNCA MODIFICAR O RESOURCE BASE
+@export var collection_minigame_tuning: MinigameTuning = preload("res://resources/minigames/cutting_minigame_tuning.tres")
 @export_enum("Easy", "Medium", "Hard", "Tutorial") var collection_difficulty: int = MinigameDifficulty.Level.MEDIUM
 ## Negative values use the selected minigame/difficulty time cost.
 @export var collection_time_cost_blocks: float = -1.0
 ## Negative values use the selected minigame/difficulty miss time cost.
 @export var collection_miss_time_cost_blocks: float = -1.0
-@export_group("")
-
-# TODO: Legacy
-@export var cutting_required_hits: int = 3
-@export var cutting_max_misses: int = 3
-## 0 uses the selected difficulty base speed.
-@export var cutting_rotation_speed_degrees: float = 0.0
-@export_range(0.0, 1.0, 0.01) var cutting_success_alpha_threshold := 0.1
 @export_group("")
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
@@ -153,18 +147,10 @@ func _build_collection_parameters() -> Dictionary:
 		&"time_cost_blocks": _get_collection_time_cost(difficulty_settings),
 		&"miss_time_cost_blocks": _get_collection_miss_time_cost(difficulty_settings),
 	}
-	parameters.merge(_build_cutting_parameters(difficulty_settings))
+	if collection_minigame_tuning:
+		parameters = collection_minigame_tuning.build_parameters(collection_difficulty, parameters)
+
 	return parameters
-
-
-func _build_cutting_parameters(difficulty_settings: Dictionary) -> Dictionary:
-	return {
-		&"required_hits": cutting_required_hits,
-		&"max_misses": cutting_max_misses,
-		&"rotation_speed_degrees": _get_cutting_rotation_speed(difficulty_settings),
-		&"direction_change_chance": difficulty_settings["direction_change_chance"],
-		&"success_alpha_threshold": cutting_success_alpha_threshold,
-	}
 
 
 func _build_collection_rewards() -> Dictionary:
@@ -289,13 +275,6 @@ func _get_collection_miss_time_cost(difficulty_settings: Dictionary) -> float:
 		return collection_miss_time_cost_blocks
 
 	return float(difficulty_settings["miss_time_cost_blocks"])
-
-
-func _get_cutting_rotation_speed(difficulty_settings: Dictionary) -> float:
-	if cutting_rotation_speed_degrees > 0.0:
-		return cutting_rotation_speed_degrees
-
-	return float(difficulty_settings["base_rotation_speed_degrees"])
 
 
 func _fade_hover_to(target_alpha: float) -> void:

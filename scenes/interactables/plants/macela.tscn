@@ -22,7 +22,6 @@ plant_display_name = "Macela"
 hover_color = Color(1, 0.87983257, 0.7148997, 0.6862745)
 is_magic = true
 collection_difficulty = 0
-cutting_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_b52fh")

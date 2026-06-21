@@ -541,13 +541,11 @@ event_guid = "{1472490c-d952-4a52-a464-cd5054073c09}"
 position = Vector2(31, 131)
 collection_id = &"silveira1"
 collection_difficulty = 1
-cutting_difficulty = 1
 
 [node name="Silveira2" parent="YSortables" unique_id=648529183 instance=ExtResource("18_1u8w0")]
 position = Vector2(290, 103)
 collection_id = &"silveira2"
 collection_difficulty = 1
-cutting_difficulty = 1
 
 [node name="Silveira3" parent="YSortables" unique_id=929731170 instance=ExtResource("18_1u8w0")]
 position = Vector2(302, 104)
@@ -557,7 +555,7 @@ collection_id = &"silveira3"
 position = Vector2(83, 138)
 collection_id = &"dedaleira1"
 collection_difficulty = 3
-cutting_difficulty = 3
+collection_miss_time_cost_blocks = 0.0
 
 [node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
 position = Vector2(194, 136)
