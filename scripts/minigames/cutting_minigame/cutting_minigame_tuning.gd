@@ -1,8 +1,6 @@
 extends MinigameTuning
 class_name CuttingMinigameTuning
 
-@export var required_hits: int = 3
-@export var max_misses: int = 3
 @export var rotation_speed_degrees: float = 0.0
 @export_range(0.0, 1.0, 0.01) var success_alpha_threshold := 0.1
 
@@ -10,8 +8,6 @@ func build_parameters(difficulty: int, base_parameters: Dictionary) -> Dictionar
     var parameters := base_parameters.duplicate(true)
     var difficulty_settings := CuttingMinigameDifficulty.get_settings(difficulty)
 
-    parameters[&"required_hits"] = required_hits
-    parameters[&"max_misses"] = max_misses
     parameters[&"rotation_speed_degrees"] = (
 		rotation_speed_degrees
 		if rotation_speed_degrees > 0.0

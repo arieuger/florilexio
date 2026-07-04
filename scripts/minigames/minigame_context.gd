@@ -7,6 +7,8 @@ var target_id: StringName = &""
 var display_name := ""
 
 var difficulty_id: StringName = &"medium"
+var required_hits: int = 3
+var max_misses: int = 3
 var parameters: Dictionary = {}
 var rewards: Dictionary = {} # Así podemos incluír algún elemento extra máis que a planta
 var metadata: Dictionary = {} # Para calquera outra cousa que se queira pasar

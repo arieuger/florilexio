@@ -200,11 +200,11 @@ func _build_debug_cutting_minigame_context(plant_id: StringName) -> MinigameCont
 	context.target_id = plant_id
 	context.display_name = InventoryManager.get_display_name(plant_id)
 	context.difficulty_id = &"medium"
+	context.required_hits = 3
+	context.max_misses = 3
 	context.parameters = {
 		&"time_cost_blocks": 1.0,
 		&"miss_time_cost_blocks": 1.0,
-		&"required_hits": 3,
-		&"max_misses": 3,
 		&"rotation_speed_degrees": 400.0,
 		&"direction_change_chance": 0.8,
 		&"success_alpha_threshold": 0.1,

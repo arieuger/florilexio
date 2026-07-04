@@ -60,10 +60,10 @@ func setup(new_context: MinigameContext) -> void:
 
 	plant_id = context.target_id
 	plant_display_name = context.display_name
+	required_hits = context.required_hits
+	max_misses = context.max_misses
 	time_cost_blocks = float(context.get_parameter(&"time_cost_blocks", time_cost_blocks))
 	miss_time_cost_blocks = float(context.get_parameter(&"miss_time_cost_blocks", miss_time_cost_blocks))
-	required_hits = int(context.get_parameter(&"required_hits", required_hits))
-	max_misses = int(context.get_parameter(&"max_misses", max_misses))
 	rotation_speed_degrees = float(context.get_parameter(&"rotation_speed_degrees", rotation_speed_degrees))
 	direction_change_chance = float(context.get_parameter(&"direction_change_chance", direction_change_chance))
 	success_alpha_threshold = float(context.get_parameter(&"success_alpha_threshold", success_alpha_threshold))

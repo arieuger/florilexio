@@ -135,22 +135,26 @@ func build_collection_minigame_context() -> MinigameContext:
 	context.target_id = plant_id
 	context.display_name = plant_display_name
 	context.difficulty_id = MinigameDifficulty.get_id(collection_difficulty)
-	context.parameters = _build_collection_parameters()
+	_apply_collection_tuning(context)
 	context.rewards = _build_collection_rewards()
 	context.metadata = _build_collection_metadata()
 	return context
 
 
-func _build_collection_parameters() -> Dictionary:
+func _apply_collection_tuning(context: MinigameContext) -> void:
+	var base_parameters := _build_collection_base_parameters()
+	if collection_minigame_tuning:
+		collection_minigame_tuning.apply_to_context(context, collection_difficulty, base_parameters)
+	else:
+		context.parameters = base_parameters
+
+
+func _build_collection_base_parameters() -> Dictionary:
 	var difficulty_settings := CuttingMinigameDifficulty.get_settings(collection_difficulty)
-	var parameters := {
+	return {
 		&"time_cost_blocks": _get_collection_time_cost(difficulty_settings),
 		&"miss_time_cost_blocks": _get_collection_miss_time_cost(difficulty_settings),
 	}
-	if collection_minigame_tuning:
-		parameters = collection_minigame_tuning.build_parameters(collection_difficulty, parameters)
-
-	return parameters
 
 
 func _build_collection_rewards() -> Dictionary:
