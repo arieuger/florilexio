@@ -22,7 +22,7 @@ const FLOWERS_HIGH_COUNT := 7
 @onready var empty_bowl_label: Label = %EmptyBowlLabel
 @onready var flowers_texture_rect: TextureRect = %FlowersTextureRect
 @onready var bowl_drop_area: Control = %BowlDropArea
-@onready var compose_button: PanelContainer = %ComposeButton
+@onready var compose_button: Button = %ComposeButton
 @onready var count_label: Label = %CountLabel
 @onready var available_paginator: HBoxContainer = %AvailablePaginator
 @onready var available_previous_page_button: TextureButton = %AvailablePreviousPageButton
@@ -48,7 +48,7 @@ func _ready() -> void:
 	available_next_page_button.pressed.connect(_on_available_next_page_pressed)
 	selected_previous_page_button.pressed.connect(_on_selected_previous_page_pressed)
 	selected_next_page_button.pressed.connect(_on_selected_next_page_pressed)
-	compose_button.gui_input.connect(_on_compose_button_gui_input)
+	compose_button.pressed.connect(_on_compose_button_pressed)
 	_refresh()
 
 
@@ -203,10 +203,8 @@ func _on_selected_next_page_pressed() -> void:
 	_refresh_selected_items()
 
 
-func _on_compose_button_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		get_viewport().set_input_as_handled()
-		SoundManager.play_simple_sound("Actions/Click")
-		var bouquet_entries := InventoryManager.get_bouquet_entries()
-		var composition := GameState.compose_final_bouquet(bouquet_entries)
-		composition_requested.emit(composition)
+func _on_compose_button_pressed() -> void:
+	SoundManager.play_simple_sound("Actions/Click")
+	var bouquet_entries := InventoryManager.get_bouquet_entries()
+	var composition := GameState.compose_final_bouquet(bouquet_entries)
+	composition_requested.emit(composition)

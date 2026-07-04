@@ -2,20 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c5ixf2eoep4iy" path="res://scripts/ui/final_composition_panel.gd" id="1_panel"]
 [ext_resource type="Script" uid="uid://d003cntpuro1d" path="res://scripts/ui/final_composition_bowl_drop_area.gd" id="2_drop"]
-[ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="3_panel_texture"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="4_font"]
 [ext_resource type="Texture2D" uid="uid://dy587eo2lh2fq" path="res://assets/sprites/environment/flowers_composition/bowl.png" id="5_bowl"]
 [ext_resource type="Texture2D" uid="uid://lmdmq4krfq5p" path="res://assets/sprites/ui/buttons/next_unpressed.png" id="9_next_normal"]
 [ext_resource type="Texture2D" uid="uid://ban5tvj8xnu56" path="res://assets/sprites/ui/buttons/next_pressed.png" id="10_next_pressed"]
 [ext_resource type="Texture2D" uid="uid://qxi1qn66iya0" path="res://assets/sprites/ui/buttons/next_hovered.png" id="11_next_hover"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
-texture = ExtResource("3_panel_texture")
-texture_margin_left = 2.0
-texture_margin_top = 3.0
-texture_margin_right = 2.0
-texture_margin_bottom = 3.0
-modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bowl"]
 bg_color = Color(0.861, 0.941, 0.837, 0.2)
@@ -24,14 +14,6 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8v7mn"]
-texture = ExtResource("3_panel_texture")
-texture_margin_left = 2.0
-texture_margin_top = 3.0
-texture_margin_right = 2.0
-texture_margin_bottom = 3.0
-modulate_color = Color(0.15686275, 0.2509804, 0.21568628, 1)
 
 [node name="FinalCompositionPanel" type="Control" unique_id=1577260255]
 layout_mode = 3
@@ -60,7 +42,6 @@ anchor_right = 0.92
 anchor_bottom = 0.92
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=802474854]
 layout_mode = 2
@@ -75,9 +56,6 @@ theme_override_constants/separation = 5
 
 [node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/RootVBox" unique_id=1135632036]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0002908594, 0.017125925, 0.03321679, 1)
-theme_override_fonts/font = ExtResource("4_font")
-theme_override_font_sizes/font_size = 8
 text = "Compoñer cacho"
 horizontal_alignment = 1
 
@@ -94,8 +72,6 @@ theme_override_constants/separation = 3
 
 [node name="InventoryTitle" type="Label" parent="PanelContainer/MarginContainer/RootVBox/Content/InventoryColumn" unique_id=1877013301]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 text = "Herbas"
 
@@ -123,8 +99,6 @@ flip_h = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(28, 10)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -139,8 +113,6 @@ texture_hover = ExtResource("11_next_hover")
 [node name="EmptyInventoryLabel" type="Label" parent="PanelContainer/MarginContainer/RootVBox/Content/InventoryColumn" unique_id=1118738044]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 text = "Non tes herbas."
 horizontal_alignment = 1
@@ -210,16 +182,12 @@ layout_mode = 2
 [node name="SelectedTitle" type="Label" parent="PanelContainer/MarginContainer/RootVBox/Content/SelectedColumn/SelectedHeader" unique_id=328656880]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 text = "No cacho"
 
 [node name="CountLabel" type="Label" parent="PanelContainer/MarginContainer/RootVBox/Content/SelectedColumn/SelectedHeader" unique_id=594692036]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 text = "0"
 horizontal_alignment = 2
@@ -248,8 +216,6 @@ flip_h = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(28, 10)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -264,24 +230,13 @@ texture_hover = ExtResource("11_next_hover")
 [node name="EmptyBowlLabel" type="Label" parent="PanelContainer/MarginContainer/RootVBox/Content/SelectedColumn" unique_id=1751689085]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
-theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 6
 text = "Arrastra herbas á cunca"
 horizontal_alignment = 1
 
-[node name="ComposeButton" type="PanelContainer" parent="PanelContainer/MarginContainer/RootVBox" unique_id=1009816403]
+[node name="ComposeButton" type="Button" parent="PanelContainer/MarginContainer/RootVBox" unique_id=1009816403]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_8v7mn")
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/RootVBox/ComposeButton" unique_id=818114970]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.33333334, 0.4392157, 0.16862746, 1)
-theme_override_fonts/font = ExtResource("4_font")
-theme_override_font_sizes/font_size = 7
 text = "Compoñer cacho"
-horizontal_alignment = 1
-vertical_alignment = 1
