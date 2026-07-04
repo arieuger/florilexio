@@ -35,6 +35,7 @@ static func success_result(
 	result.cancelled = false
 	result.rewards = p_rewards.duplicate(true)
 	result.metadata = p_metadata.duplicate(true)
+	print("success_result: ", result)
 	return result
 
 
@@ -52,6 +53,7 @@ static func failed_result(
 	result.cancelled = false
 	result.rewards = p_rewards.duplicate(true)
 	result.metadata = p_metadata.duplicate(true)
+	print("failed_result: ", result)
 	return result
 
 

@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=3 format=3]
+
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_panel_texture"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+texture = ExtResource("2_panel_texture")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
+
+[resource]
+default_font = ExtResource("1_font")
+default_font_size = 8
+Button/font_sizes/font_size = 8
+ItemList/font_sizes/font_size = 8
+Label/font_sizes/font_size = 8
+LineEdit/font_sizes/font_size = 8
+OptionButton/font_sizes/font_size = 8
+Panel/styles/panel = SubResource("StyleBoxTexture_panel")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_panel")
+RichTextLabel/font_sizes/normal_font_size = 8
+TextEdit/font_sizes/font_size = 8
