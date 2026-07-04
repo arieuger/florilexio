@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ct05xjv0d2vnf"]
 
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="1_font"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_panel_texture"]
@@ -11,15 +11,65 @@ texture_margin_right = 2.0
 texture_margin_bottom = 3.0
 modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_normal"]
+texture = ExtResource("2_panel_texture")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.15686275, 0.2509804, 0.21568628, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_hover"]
+texture = ExtResource("2_panel_texture")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.213, 0.337, 0.29, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_pressed"]
+content_margin_top = 1.0
+texture = ExtResource("2_panel_texture")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.102, 0.165, 0.141, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_disabled"]
+texture = ExtResource("2_panel_texture")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.12, 0.16, 0.14, 0.65)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_button_focus"]
+
 [resource]
 default_font = ExtResource("1_font")
 default_font_size = 8
+Button/colors/font_color = Color(0.33333334, 0.4392157, 0.16862746, 1)
+Button/colors/font_disabled_color = Color(0.33333334, 0.4392157, 0.16862746, 0.45)
+Button/colors/font_focus_color = Color(0.545, 0.706, 0.27, 1)
+Button/colors/font_hover_color = Color(0.545, 0.706, 0.27, 1)
+Button/colors/font_hover_pressed_color = Color(0.65882355, 0.8784314, 0.43529412, 1)
+Button/colors/font_pressed_color = Color(0.65882355, 0.8784314, 0.43529412, 1)
 Button/font_sizes/font_size = 8
+Button/styles/disabled = SubResource("StyleBoxTexture_button_disabled")
+Button/styles/focus = SubResource("StyleBoxEmpty_button_focus")
+Button/styles/hover = SubResource("StyleBoxTexture_button_hover")
+Button/styles/normal = SubResource("StyleBoxTexture_button_normal")
+Button/styles/pressed = SubResource("StyleBoxTexture_button_pressed")
 ItemList/font_sizes/font_size = 8
+Label/colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 Label/font_sizes/font_size = 8
+LineEdit/colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 LineEdit/font_sizes/font_size = 8
 OptionButton/font_sizes/font_size = 8
 Panel/styles/panel = SubResource("StyleBoxTexture_panel")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_panel")
+RichTextLabel/colors/default_color = Color(0, 0.015686275, 0.03137255, 1)
 RichTextLabel/font_sizes/normal_font_size = 8
+TextEdit/colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 TextEdit/font_sizes/font_size = 8
