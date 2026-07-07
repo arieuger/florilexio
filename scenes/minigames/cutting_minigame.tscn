@@ -5,10 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d6oqcytddcyq" path="res://assets/sprites/minigame/cutting_success_zones.png" id="3_zones"]
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_8anea"]
-[ext_resource type="Texture2D" uid="uid://bx5v4d2fnquis" path="res://assets/sprites/ui/bar_background.png" id="6_x0f16"]
-[ext_resource type="Texture2D" uid="uid://c30pd6p73odvs" path="res://assets/sprites/ui/bar_fill_green.png" id="7_f1kwf"]
-[ext_resource type="Texture2D" uid="uid://hm2b24w4as44" path="res://assets/sprites/ui/bar_small_fill_red.png" id="8_f1kwf"]
-[ext_resource type="Texture2D" uid="uid://ce3ih0lfwyhx" path="res://assets/sprites/ui/time_icon.png" id="9_gjv3u"]
+[ext_resource type="PackedScene" path="res://ui/minigames/minigame_status_panel.tscn" id="6_status_panel"]
 
 [sub_resource type="Gradient" id="Gradient_background_dim"]
 offsets = PackedFloat32Array(0, 0.58, 1)
@@ -67,85 +64,4 @@ theme_override_font_sizes/font_size = 14
 text = "Ben!"
 horizontal_alignment = 1
 
-[node name="UIContainer" type="VBoxContainer" parent="." unique_id=1197907043]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = 29.0
-offset_right = 30.0
-offset_bottom = 69.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ControlProgressBox" type="Control" parent="UIContainer" unique_id=1787352305]
-custom_minimum_size = Vector2(49.31, 6)
-layout_mode = 2
-
-[node name="ProgressBoxBackground" type="NinePatchRect" parent="UIContainer/ControlProgressBox" unique_id=1694822718]
-layout_mode = 0
-offset_right = 60.0
-offset_bottom = 6.0
-texture = ExtResource("6_x0f16")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="CutProgressBar" type="TextureProgressBar" parent="UIContainer/ControlProgressBox" unique_id=1753143722]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 59.0
-offset_bottom = 4.0
-step = 0.0
-value = 100.0
-nine_patch_stretch = true
-stretch_margin_bottom = 1
-texture_progress = ExtResource("7_f1kwf")
-
-[node name="FailProgressBar" type="TextureProgressBar" parent="UIContainer/ControlProgressBox" unique_id=464815161]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.16666667
-anchor_bottom = -0.16666667
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 59.0
-offset_bottom = 6.0
-step = 0.0
-value = 82.0
-nine_patch_stretch = true
-texture_progress = ExtResource("8_f1kwf")
-
-[node name="TimeContainer" type="HBoxContainer" parent="UIContainer" unique_id=1092102747]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="UIContainer/TimeContainer" unique_id=1276945445]
-layout_mode = 2
-texture = ExtResource("9_gjv3u")
-stretch_mode = 2
-
-[node name="TimeLabel" type="Label" parent="UIContainer/TimeContainer" unique_id=1690133917]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.69803923, 0.36078432, 0.2, 1)
-theme_override_font_sizes/font_size = 6
-text = "+15 min"
-horizontal_alignment = 2
-
-[node name="ExplanationLabel" type="RichTextLabel" parent="UIContainer" unique_id=730601472]
-layout_mode = 2
-theme_override_colors/default_color = Color(0.82134485, 0.83663034, 0.81020397, 1)
-theme_override_constants/line_separation = -1
-theme_override_font_sizes/normal_font_size = 4
-bbcode_enabled = true
-text = "Presiona o botón de [color=985235]acción[/color]
-sobre as [color=55702b]zonas verdes[/color] para
-cortar"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
+[node name="UIContainer" parent="." unique_id=1197907043 instance=ExtResource("6_status_panel")]
