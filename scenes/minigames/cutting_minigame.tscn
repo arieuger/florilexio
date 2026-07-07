@@ -130,7 +130,7 @@ layout_mode = 2
 texture = ExtResource("9_gjv3u")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="UIContainer/TimeContainer" unique_id=1690133917]
+[node name="TimeLabel" type="Label" parent="UIContainer/TimeContainer" unique_id=1690133917]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.69803923, 0.36078432, 0.2, 1)
 theme_override_font_sizes/font_size = 6

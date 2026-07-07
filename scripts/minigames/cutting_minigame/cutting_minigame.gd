@@ -26,6 +26,7 @@ var success_alpha_threshold := 0.1
 
 @onready var _cut_progress_bar: TextureProgressBar = $UIContainer/ControlProgressBox/CutProgressBar
 @onready var _fail_progress_bar: TextureProgressBar = $UIContainer/ControlProgressBox/FailProgressBar
+@onready var _time_cost_label: Label = $UIContainer/TimeContainer/TimeLabel
 
 var _current_angle := 0.0
 var _rotation_direction := 1.0
@@ -49,6 +50,7 @@ func _ready() -> void:
 	_cache_success_zones_image()
 	movingGrassSound = SoundManager.play_looped_sound('Minigame/Moving Grass')
 	_setup_progress_bars()
+	_update_time_cost_label()
 
 
 func _process(delta: float) -> void:
@@ -109,6 +111,7 @@ func _try_cut() -> void:
 		_misses += 1
 		request_time_cost(miss_time_cost_blocks)
 		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0), Color('#db5968'))
+		_update_time_cost_label(true)
 		_shake_ring()
 		_animate_fail_progress_bar()
 		_shake_fail_bar()
@@ -351,3 +354,23 @@ func _shake_fail_bar() -> void:
 	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position + Vector2(-1.5, 0), 0.035)
 	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position + Vector2(1.0, 0), 0.03)
 	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position, 0.04)
+
+func _update_time_cost_label(animate := false) -> void:
+	var total_blocks := time_cost_blocks + (float(_misses) * miss_time_cost_blocks)
+	var total_minutes := roundi(total_blocks * GameState.BLOCK_MINUTES)
+	_time_cost_label.text = "+%d min" % total_minutes
+	if animate: _shake_time_cost()
+
+func _shake_time_cost() -> void:
+	var start_position := _time_cost_label.position
+	var base_color := _time_cost_label.modulate
+	var flash_color := Color(2.5, 2.5, 2.5, 1.0)
+
+	var tween := create_tween()
+	tween.tween_property(_time_cost_label, "position", start_position + Vector2(1.5, 0), 0.035)
+	tween.tween_property(_time_cost_label, "position", start_position + Vector2(-1.5, 0), 0.035)
+	tween.tween_property(_time_cost_label, "position", start_position + Vector2(1.0, 0), 0.03)
+	tween.tween_property(_time_cost_label, "position", start_position, 0.04)
+
+	tween.parallel().tween_property(_time_cost_label, "modulate", flash_color, 0.06)
+	tween.tween_property(_time_cost_label, "modulate", base_color, 0.16)
