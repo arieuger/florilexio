@@ -99,7 +99,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _try_cut() -> void:
-	if _is_successful_cut():
+	var hit_pixel := _get_success_zone_pixel_at_cursor()
+	if _is_success_zone_pixel(hit_pixel):
+		_consume_success_zone_at(hit_pixel)
 		_hits += 1
 		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0), Color('#6f8f6f'))
 		_pulse_success_zones()
@@ -107,6 +109,7 @@ func _try_cut() -> void:
 		SoundManager.play_simple_sound("Minigame/Cutting Grass")
 		if _hits >= required_hits:
 			_finish(true)
+
 	else:
 		_misses += 1
 		request_time_cost(miss_time_cost_blocks)
@@ -130,10 +133,6 @@ func cancel() -> void:
 	queue_free()
 
 
-func _is_successful_cut() -> bool:
-	return _is_cursor_on_success_zone()
-
-
 func _update_rotation_direction(delta: float) -> void:
 	if direction_change_chance <= 0.0:
 		return
@@ -147,17 +146,41 @@ func _update_rotation_direction(delta: float) -> void:
 		_rotation_direction *= -1.0
 
 
-func _is_cursor_on_success_zone() -> bool:
+func _is_success_zone_pixel(pixel_position: Vector2i) -> bool:
 	if not _success_zones_image:
 		return false
 
-	var pixel_position := _get_success_zone_pixel_at_cursor()
 	var image_size := _success_zones_image.get_size()
 	if pixel_position.x < 0 or pixel_position.y < 0 or pixel_position.x >= image_size.x or pixel_position.y >= image_size.y:
 		return false
 
-	var pixel_color := _success_zones_image.get_pixelv(pixel_position)
-	return pixel_color.a >= success_alpha_threshold
+	return _success_zones_image.get_pixelv(pixel_position).a >= success_alpha_threshold
+
+func _consume_success_zone_at(start_pixel: Vector2i) -> void:
+	if not _is_success_zone_pixel(start_pixel):
+		return
+
+	var image_size := _success_zones_image.get_size()
+	var pending: Array[Vector2i] = [start_pixel]
+	var visited := {}
+
+	while not pending.is_empty():
+		var pixel := pending.pop_back() as Vector2i
+		if visited.has(pixel): continue
+		visited[pixel] = true
+
+		if pixel.x < 0 or pixel.y < 0 or pixel.x >= image_size.x or pixel.y >= image_size.y: continue
+		if _success_zones_image.get_pixelv(pixel).a < success_alpha_threshold: continue
+
+		_success_zones_image.set_pixelv(pixel, Color(0, 0, 0, 0))
+
+		pending.append(pixel + Vector2i(1, 0))
+		pending.append(pixel + Vector2i(-1, 0))
+		pending.append(pixel + Vector2i(0, 1))
+		pending.append(pixel + Vector2i(0, -1))
+
+	_update_success_zones_texture()
+
 
 
 func _get_success_zone_pixel_at_cursor() -> Vector2i:
@@ -173,7 +196,11 @@ func _get_success_zone_pixel_at_cursor() -> Vector2i:
 
 func _cache_success_zones_image() -> void:
 	if success_zones.texture:
-		_success_zones_image = success_zones.texture.get_image()
+		_success_zones_image = success_zones.texture.get_image().duplicate()
+		_update_success_zones_texture()
+
+func _update_success_zones_texture() -> void:
+	success_zones.texture = ImageTexture.create_from_image(_success_zones_image)
 
 
 func _finish(was_successful: bool) -> void:
@@ -191,7 +218,7 @@ func _finish(was_successful: bool) -> void:
 
 	emit_finished(result)
 
-	await get_tree().create_timer(0.35).timeout
+	await get_tree().create_timer(0.45).timeout
 	queue_free()
 
 
