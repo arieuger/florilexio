@@ -24,6 +24,9 @@ var success_alpha_threshold := 0.1
 @onready var success_zones: Sprite2D = $GameRoot/SuccessZones
 @onready var feedback_label: Label = $FeedbackLabel
 
+@onready var _cut_progress_bar: TextureProgressBar = $UIContainer/ControlProgressBox/CutProgressBar
+@onready var _fail_progress_bar: TextureProgressBar = $UIContainer/ControlProgressBox/FailProgressBar
+
 var _current_angle := 0.0
 var _rotation_direction := 1.0
 var _direction_change_elapsed := 0.0
@@ -33,6 +36,10 @@ var _feedback_tween: Tween
 var _success_zones_image: Image
 var movingGrassSound : FmodEvent
 
+var _cut_progress_tween: Tween
+var _fail_progress_tween: Tween
+var _fail_bar_shake_tween: Tween
+
 func _ready() -> void:
 	add_to_group("cutting_minigame")
 	get_viewport().size_changed.connect(_center_game)
@@ -41,6 +48,7 @@ func _ready() -> void:
 	feedback_label.text = ""
 	_cache_success_zones_image()
 	movingGrassSound = SoundManager.play_looped_sound('Minigame/Moving Grass')
+	_setup_progress_bars()
 
 
 func _process(delta: float) -> void:
@@ -93,6 +101,7 @@ func _try_cut() -> void:
 		_hits += 1
 		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0), Color('#6f8f6f'))
 		_pulse_success_zones()
+		_animate_cut_progress_bar()
 		SoundManager.play_simple_sound("Minigame/Cutting Grass")
 		if _hits >= required_hits:
 			_finish(true)
@@ -101,9 +110,12 @@ func _try_cut() -> void:
 		request_time_cost(miss_time_cost_blocks)
 		_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0), Color('#db5968'))
 		_shake_ring()
+		_animate_fail_progress_bar()
+		_shake_fail_bar()
 		SoundManager.play_simple_sound('Actions/Error')
 		if _misses >= max_misses:
 			_finish(false)
+	
 
 
 func cancel() -> void:
@@ -269,3 +281,73 @@ func _shake_ring() -> void:
 
 func _center_game() -> void:
 	game_root.position = get_viewport().get_visible_rect().size * 0.5
+
+func _setup_progress_bars() -> void:
+	_cut_progress_bar.max_value = required_hits
+	_cut_progress_bar.min_value = 0
+	_cut_progress_bar.value = _hits
+
+	_fail_progress_bar.max_value = max_misses
+	_fail_progress_bar.min_value = 0
+	_fail_progress_bar.value = _misses
+
+func _animate_cut_progress_bar() -> void:
+	_cut_progress_tween = _animate_progress_bar(
+		_cut_progress_bar,
+		_cut_progress_tween,
+		float(_hits)
+	)
+
+
+func _animate_fail_progress_bar() -> void:
+	_fail_progress_tween = _animate_progress_bar(
+		_fail_progress_bar,
+		_fail_progress_tween,
+		float(_misses)
+	)
+
+
+func _animate_progress_bar(
+	bar: TextureProgressBar,
+	current_tween: Tween,
+	target_value: float
+) -> Tween:
+	if current_tween:
+		current_tween.kill()
+
+	var start_modulate := bar.self_modulate
+	var flash_modulate := Color(2.5, 2.5, 2.5, 1.0)
+	var overshoot := minf(target_value + 0.12, bar.max_value)
+
+	var tween := create_tween()
+
+	tween.tween_property(bar, "value", target_value, 0.18)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+
+	tween.parallel().tween_property(bar, "self_modulate", flash_modulate, 0.05)
+
+	tween.tween_property(bar, "value", overshoot, 0.07)\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)
+
+
+	tween.tween_property(bar, "value", target_value, 0.12)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+
+	tween.parallel().tween_property(bar, "self_modulate", start_modulate, 0.16)
+
+	return tween
+
+
+func _shake_fail_bar() -> void:
+	if _fail_bar_shake_tween:
+		_fail_bar_shake_tween.kill()
+
+	var start_position := _fail_progress_bar.position
+	_fail_bar_shake_tween = create_tween()
+	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position + Vector2(1.5, 0), 0.035)
+	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position + Vector2(-1.5, 0), 0.035)
+	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position + Vector2(1.0, 0), 0.03)
+	_fail_bar_shake_tween.tween_property(_fail_progress_bar, "position", start_position, 0.04)
