@@ -1,30 +1,31 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://bi4uv6l1o35m8"]
 
-[ext_resource type="Script" path="res://scripts/ui/minigame_status_panel.gd" id="1_status"]
+[ext_resource type="Script" uid="uid://vt33opu18ajn" path="res://scripts/ui/minigame_status_panel.gd" id="1_status"]
 [ext_resource type="Texture2D" uid="uid://bx5v4d2fnquis" path="res://assets/sprites/ui/bar_background.png" id="2_bar_background"]
 [ext_resource type="Texture2D" uid="uid://c30pd6p73odvs" path="res://assets/sprites/ui/bar_fill_green.png" id="3_hit_fill"]
 [ext_resource type="Texture2D" uid="uid://hm2b24w4as44" path="res://assets/sprites/ui/bar_small_fill_red.png" id="4_miss_fill"]
 [ext_resource type="Texture2D" uid="uid://ce3ih0lfwyhx" path="res://assets/sprites/ui/time_icon.png" id="5_time_icon"]
 
-[node name="MinigameStatusPanel" type="VBoxContainer"]
+[node name="MinigameStatusPanel" type="VBoxContainer" unique_id=817202264]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = 29.0
-offset_right = 30.0
-offset_bottom = 69.0
+offset_left = -44.0
+offset_top = 22.5
+offset_right = 46.0
+offset_bottom = 75.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_status")
 
-[node name="ControlProgressBox" type="Control" parent="."]
-custom_minimum_size = Vector2(49.31, 6)
+[node name="ControlProgressBox" type="Control" parent="." unique_id=1511347240]
+custom_minimum_size = Vector2(60, 6)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="ProgressBoxBackground" type="NinePatchRect" parent="ControlProgressBox"]
+[node name="ProgressBoxBackground" type="NinePatchRect" parent="ControlProgressBox" unique_id=42452171]
 layout_mode = 0
 offset_right = 60.0
 offset_bottom = 6.0
@@ -34,7 +35,7 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="HitProgressBar" type="TextureProgressBar" parent="ControlProgressBox"]
+[node name="HitProgressBar" type="TextureProgressBar" parent="ControlProgressBox" unique_id=966673992]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
@@ -45,7 +46,7 @@ nine_patch_stretch = true
 stretch_margin_bottom = 1
 texture_progress = ExtResource("3_hit_fill")
 
-[node name="MissProgressBar" type="TextureProgressBar" parent="ControlProgressBox"]
+[node name="MissProgressBar" type="TextureProgressBar" parent="ControlProgressBox" unique_id=804045368]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.16666667
@@ -58,30 +59,29 @@ step = 0.0
 nine_patch_stretch = true
 texture_progress = ExtResource("4_miss_fill")
 
-[node name="TimeContainer" type="HBoxContainer" parent="."]
+[node name="TimeContainer" type="HBoxContainer" parent="." unique_id=1914265143]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="TimeContainer"]
+[node name="TextureRect" type="TextureRect" parent="TimeContainer" unique_id=893789860]
 layout_mode = 2
 texture = ExtResource("5_time_icon")
 stretch_mode = 2
 
-[node name="TimeLabel" type="Label" parent="TimeContainer"]
+[node name="TimeLabel" type="Label" parent="TimeContainer" unique_id=152879849]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.69803923, 0.36078432, 0.2, 1)
 theme_override_font_sizes/font_size = 6
 text = "+15 min"
 horizontal_alignment = 2
 
-[node name="ExplanationLabel" type="RichTextLabel" parent="."]
+[node name="ExplanationLabel" type="RichTextLabel" parent="." unique_id=39728775]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.82134485, 0.83663034, 0.81020397, 1)
 theme_override_constants/line_separation = -1
 theme_override_font_sizes/normal_font_size = 4
 bbcode_enabled = true
-text = "Presiona o botón de [color=985235]acción[/color]\nsobre as [color=55702b]zonas verdes[/color] para\ncortar"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

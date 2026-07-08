@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_font"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="6_cut_anim"]
-[ext_resource type="PackedScene" path="res://ui/minigames/minigame_status_panel.tscn" id="7_status_panel"]
+[ext_resource type="PackedScene" uid="uid://bi4uv6l1o35m8" path="res://ui/minigames/minigame_status_panel.tscn" id="7_status_panel"]
 
 [sub_resource type="Gradient" id="Gradient_background_dim"]
 offsets = PackedFloat32Array(0, 0.58, 1)
@@ -65,7 +65,6 @@ animations = [{
 
 [node name="BushMinigame" type="CanvasLayer" unique_id=1211605647]
 script = ExtResource("1_script")
-cursor_radius = null
 
 [node name="BackgroundDim" type="TextureRect" parent="." unique_id=1510848901]
 anchors_preset = 15
@@ -113,3 +112,9 @@ text = "Ben!"
 horizontal_alignment = 1
 
 [node name="UIContainer" parent="." unique_id=606791474 instance=ExtResource("7_status_panel")]
+offset_top = 28.0
+offset_bottom = 81.0
+explanation_label_text = "Mantén presionado o botón de [color=985235]acción[/color]
+na [color=bfab45]zona amarela[/color] para cargar. 
+Sóltao na [color=55702b]zona verde[/color] para cortar. 
+Se cargas na [color=b25c33]zona vermella[/color], perderás o tempo!"

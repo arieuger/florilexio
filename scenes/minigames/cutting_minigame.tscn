@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_8anea"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="5_mkhcs"]
-[ext_resource type="PackedScene" path="res://ui/minigames/minigame_status_panel.tscn" id="6_status_panel"]
+[ext_resource type="PackedScene" uid="uid://bi4uv6l1o35m8" path="res://ui/minigames/minigame_status_panel.tscn" id="6_status_panel"]
 
 [sub_resource type="Gradient" id="Gradient_background_dim"]
 offsets = PackedFloat32Array(0, 0.58, 1)
@@ -115,3 +115,8 @@ text = "Ben!"
 horizontal_alignment = 1
 
 [node name="UIContainer" parent="." unique_id=1197907043 instance=ExtResource("6_status_panel")]
+offset_top = 29.0
+offset_bottom = 82.0
+explanation_label_text = "Presiona o botón de [color=985235]acción[/color]
+sobre as [color=55702b]zonas verdes[/color] para
+cortar"

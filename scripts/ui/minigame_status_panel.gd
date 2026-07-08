@@ -1,9 +1,12 @@
 extends VBoxContainer
 class_name MinigameStatusPanel
 
+@export_multiline var explanation_label_text: String = ""
+
 @onready var _hit_progress_bar: TextureProgressBar = $ControlProgressBox/HitProgressBar
 @onready var _miss_progress_bar: TextureProgressBar = $ControlProgressBox/MissProgressBar
 @onready var _time_cost_label: Label = $TimeContainer/TimeLabel
+@onready var _explanation_label: RichTextLabel = $ExplanationLabel
 
 var _time_cost_blocks := 0.0
 var _miss_time_cost_blocks := 0.0
@@ -24,6 +27,7 @@ func setup(
 	_miss_time_cost_blocks = miss_time_cost_blocks
 	_hits = 0
 	_misses = 0
+	_explanation_label.text = explanation_label_text
 
 	_setup_progress_bar(_hit_progress_bar, required_hits)
 	_setup_progress_bar(_miss_progress_bar, max_misses)
