@@ -148,11 +148,12 @@ func _apply_collection_tuning(context: MinigameContext) -> void:
 
 
 func _build_collection_base_parameters() -> Dictionary:
-	var difficulty_settings := CuttingMinigameDifficulty.get_settings(collection_difficulty)
-	return {
-		&"time_cost_blocks": _get_collection_time_cost(difficulty_settings),
-		&"miss_time_cost_blocks": _get_collection_miss_time_cost(difficulty_settings),
-	}
+	var parameters := {}
+	if collection_time_cost_blocks >= 0.0:
+		parameters[&"time_cost_blocks"] = collection_time_cost_blocks
+	if collection_miss_time_cost_blocks >= 0.0:
+		parameters[&"miss_time_cost_blocks"] = collection_miss_time_cost_blocks
+	return parameters
 
 
 func _build_collection_rewards() -> Dictionary:
@@ -246,20 +247,6 @@ func _get_minigame_coordinator() -> MinigameCoordinator:
 	if current_scene:
 		return current_scene.get_node_or_null("MinigameCoordinator") as MinigameCoordinator
 	return null
-
-
-func _get_collection_time_cost(difficulty_settings: Dictionary) -> float:
-	if collection_time_cost_blocks >= 0.0:
-		return collection_time_cost_blocks
-
-	return float(difficulty_settings["time_cost_blocks"])
-
-
-func _get_collection_miss_time_cost(difficulty_settings: Dictionary) -> float:
-	if collection_miss_time_cost_blocks >= 0.0:
-		return collection_miss_time_cost_blocks
-
-	return float(difficulty_settings["miss_time_cost_blocks"])
 
 
 func _fade_hover_to(target_alpha: float) -> void:
