@@ -6,7 +6,7 @@ class_name BushMinigameTuning
 @export var required_charge: float = 0.0
 @export var charge_rate: float = 0.0
 @export var charge_grace_seconds: float = -1.0
-@export var cut_zone_margin_pixels := 2
+@export var cut_zone_margin_pixels := 1
 
 
 func build_parameters(difficulty: int, base_parameters: Dictionary) -> Dictionary:

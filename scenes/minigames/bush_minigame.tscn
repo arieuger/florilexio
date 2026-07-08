@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://tp0c4nmo67ov" path="res://assets/sprites/minigame/bush/rd-game-zone1.png" id="3_zones"]
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_font"]
+[ext_resource type="Texture2D" uid="uid://bx5v4d2fnquis" path="res://assets/sprites/ui/bar_background.png" id="6_424f3"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="6_cut_anim"]
 [ext_resource type="Texture2D" uid="uid://b304u7wx65vwt" path="res://assets/sprites/ui/bar_fill_yellow_vertical.png" id="7_lno8g"]
 [ext_resource type="PackedScene" uid="uid://bi4uv6l1o35m8" path="res://ui/minigames/minigame_status_panel.tscn" id="7_status_panel"]
@@ -98,12 +99,23 @@ frame_progress = 1.0
 
 [node name="ChargeBarRoot" type="Node2D" parent="." unique_id=1974549947]
 
+[node name="NinePatchRect" type="NinePatchRect" parent="ChargeBarRoot" unique_id=1884894312]
+offset_left = -34.0
+offset_top = -26.0
+offset_right = -29.0
+offset_bottom = 21.0
+texture = ExtResource("6_424f3")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
 [node name="ChargeBar" type="TextureProgressBar" parent="ChargeBarRoot" unique_id=162755562]
 offset_left = -33.0
-offset_top = -24.0
+offset_top = -25.0
 offset_right = -30.0
-offset_bottom = 21.0
-value = 52.0
+offset_bottom = 20.0
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_left = 1

@@ -40,7 +40,7 @@ var miss_time_cost_blocks: float = 1.0
 var required_charge: float = 3.5
 var charge_rate: float = 7.0
 var charge_grace_seconds: float = 0.25
-var cut_zone_margin_pixels := 2
+var cut_zone_margin_pixels := 1
 var zone_alpha_threshold := 0.1
 
 @onready var game_root: Node2D = $GameRoot
@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 
 	var current_rotation_speed := rotation_speed_degrees
 	if _is_button_down and _get_effective_zone_at_cursor() == ZoneType.CHARGE:
-		current_rotation_speed /= 3.0
+		current_rotation_speed /= 1.5
 
 	_current_angle = fposmod(_current_angle + current_rotation_speed * _rotation_direction * delta, 360.0)
 	cursor_pivot.rotation_degrees = _current_angle
