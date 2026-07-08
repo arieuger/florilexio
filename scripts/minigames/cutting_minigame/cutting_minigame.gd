@@ -21,6 +21,7 @@ var success_alpha_threshold := 0.1
 @onready var game_root: Node2D = $GameRoot
 @onready var cursor_pivot: Node2D = $GameRoot/CursorPivot
 @onready var cursor: Sprite2D = $GameRoot/CursorPivot/Cursor
+@onready var cut_animation: AnimatedSprite2D = $GameRoot/CursorPivot/CutAnimation
 @onready var success_zones: Sprite2D = $GameRoot/SuccessZones
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var status_panel = $UIContainer
@@ -39,6 +40,7 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(_center_game)
 	_center_game()
 	cursor.position = Vector2(cursor_radius, 0.0)
+	_setup_cut_animation()
 	feedback_label.text = ""
 	_cache_success_zones_image()
 	status_panel.setup(required_hits, max_misses, time_cost_blocks, miss_time_cost_blocks)
@@ -93,6 +95,7 @@ func _input(event: InputEvent) -> void:
 func _try_cut() -> void:
 	var hit_pixel := _get_success_zone_pixel_at_cursor()
 	if _is_success_zone_pixel(hit_pixel):
+		_play_cut_animation_at_cursor()
 		_consume_success_zone_at(hit_pixel)
 		_hits += 1
 		_show_feedback("%s %d/%d" % [tr("Ben!"), _hits, required_hits], Color(0.6, 1.0, 0.6, 1.0), Color('#6f8f6f'))
@@ -301,3 +304,24 @@ func _shake_ring() -> void:
 
 func _center_game() -> void:
 	game_root.position = get_viewport().get_visible_rect().size * 0.5
+
+
+func _setup_cut_animation() -> void:
+	cut_animation.visible = false
+	cut_animation.top_level = true
+	if not cut_animation.animation_finished.is_connected(_on_cut_animation_finished):
+		cut_animation.animation_finished.connect(_on_cut_animation_finished)
+
+
+func _play_cut_animation_at_cursor() -> void:
+	cut_animation.stop()
+	cut_animation.global_position = cursor.global_position
+	cut_animation.global_rotation = 0.0
+	cut_animation.visible = true
+	cut_animation.frame = 0
+	cut_animation.frame_progress = 0.0
+	cut_animation.play()
+
+
+func _on_cut_animation_finished() -> void:
+	cut_animation.visible = false
