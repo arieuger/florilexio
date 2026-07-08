@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MinigameConfig" format=3 uid="uid://45u8rcfchp1t"]
+
+[ext_resource type="Script" uid="uid://b1b214h3232gm" path="res://scripts/minigames/minigame_config.gd" id="1_config_script"]
+[ext_resource type="PackedScene" uid="uid://6qqcyn4rnr14" path="res://scenes/minigames/bush_minigame.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_config_script")
+minigame_id = &"bush"
+scene = ExtResource("2_scene")

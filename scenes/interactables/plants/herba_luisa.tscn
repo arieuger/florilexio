@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://8ns53t1skih2"]
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_6neje"]
+[ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_0sghy"]
 [ext_resource type="Texture2D" uid="uid://cn2cmeqqhhuiv" path="res://assets/sprites/environment/plants/herba-luisa.png" id="2_ss1ap"]
 [ext_resource type="Texture2D" uid="uid://cypngrdoeea27" path="res://assets/sprites/environment/plants/herba-luisa_hover.png" id="3_pwej6"]
+[ext_resource type="Resource" uid="uid://dspy4lnw51bkx" path="res://resources/minigames/bush_minigame_tuning.tres" id="3_ysrt8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwej6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogpaa"]
 resource_local_to_scene = true
 size = Vector2(10, 6.5)
 
@@ -12,7 +14,7 @@ size = Vector2(10, 6.5)
 radius = 3.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sghy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xqy1"]
 resource_local_to_scene = true
 size = Vector2(10, 1)
 
@@ -21,6 +23,8 @@ plant_id = &"herba_luisa"
 plant_display_name = "Herba luísa"
 hover_color = Color(0.33817145, 1, 0.6640658, 0.6862745)
 is_magic = true
+collection_minigame_config = ExtResource("2_0sghy")
+collection_minigame_tuning = ExtResource("3_ysrt8")
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_ss1ap")
@@ -32,7 +36,7 @@ texture = ExtResource("3_pwej6")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -5.75)
-shape = SubResource("RectangleShape2D_pwej6")
+shape = SubResource("RectangleShape2D_ogpaa")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, -1)
@@ -44,7 +48,7 @@ shape = SubResource("CapsuleShape2D_pwej6")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_0sghy")
+shape = SubResource("RectangleShape2D_4xqy1")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 visible = true

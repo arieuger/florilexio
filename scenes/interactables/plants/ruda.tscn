@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mwfwv"]
 [ext_resource type="Texture2D" uid="uid://heyfl8t4opny" path="res://assets/sprites/environment/plants/ruda.png" id="2_dj0id"]
+[ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_pi808"]
 [ext_resource type="Texture2D" uid="uid://c5y66pu5oekb5" path="res://assets/sprites/environment/plants/ruda_hover.png" id="3_8q15t"]
+[ext_resource type="Resource" uid="uid://dspy4lnw51bkx" path="res://resources/minigames/bush_minigame_tuning.tres" id="3_heleh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q15t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gia1w"]
 resource_local_to_scene = true
 size = Vector2(12, 8)
 
@@ -12,7 +14,7 @@ size = Vector2(12, 8)
 radius = 3.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjks4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r167s"]
 resource_local_to_scene = true
 size = Vector2(12, 1)
 
@@ -21,7 +23,8 @@ plant_id = &"ruda"
 plant_display_name = "Ruda"
 hover_color = Color(0.62139684, 0.99999994, 0.7382242, 0.6862745)
 is_magic = true
-collection_difficulty = 0
+collection_minigame_config = ExtResource("2_pi808")
+collection_minigame_tuning = ExtResource("3_heleh")
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
 texture = ExtResource("2_dj0id")
@@ -33,7 +36,7 @@ texture = ExtResource("3_8q15t")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_8q15t")
+shape = SubResource("RectangleShape2D_gia1w")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, 6)
@@ -45,7 +48,7 @@ shape = SubResource("CapsuleShape2D_hjks4")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_hjks4")
+shape = SubResource("RectangleShape2D_r167s")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

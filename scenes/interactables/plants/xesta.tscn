@@ -2,17 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_w1inn"]
 [ext_resource type="Texture2D" uid="uid://b2ewxjrmsb488" path="res://assets/sprites/environment/plants/xesta.png" id="2_asf7v"]
+[ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_enc2c"]
+[ext_resource type="Resource" uid="uid://dspy4lnw51bkx" path="res://resources/minigames/bush_minigame_tuning.tres" id="3_4a3s6"]
 [ext_resource type="Texture2D" uid="uid://b3h76hp6155rh" path="res://assets/sprites/environment/plants/xesta_hover.png" id="3_ilg1s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilg1s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thb1q"]
 resource_local_to_scene = true
 size = Vector2(10, 8.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h788n"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_16vbv"]
 resource_local_to_scene = true
 radius = 9.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_enc2c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaqv7"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -21,6 +23,8 @@ plant_id = &"xesta"
 plant_display_name = "Xesta"
 hover_color = Color(0.935544, 1, 0.6177633, 0.6862745)
 is_magic = true
+collection_minigame_config = ExtResource("2_enc2c")
+collection_minigame_tuning = ExtResource("3_4a3s6")
 collection_difficulty = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
@@ -33,18 +37,18 @@ texture = ExtResource("3_ilg1s")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -4.25)
-shape = SubResource("RectangleShape2D_ilg1s")
+shape = SubResource("RectangleShape2D_thb1q")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_h788n")
+shape = SubResource("CircleShape2D_16vbv")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_enc2c")
+shape = SubResource("RectangleShape2D_kaqv7")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -6.0

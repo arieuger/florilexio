@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlfqafrpvpk81"
-path="res://.godot/imported/game-zone4.png-87980377e4b96a29e351a0c854ff80c5.ctex"
+uid="uid://4b3suqmmddb0"
+path="res://.godot/imported/ld-game-zone3.png-ae93c33a6cd9283ea7be7dbbcddb1c5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/minigame/bush/game-zone4.png"
-dest_files=["res://.godot/imported/game-zone4.png-87980377e4b96a29e351a0c854ff80c5.ctex"]
+source_file="res://assets/sprites/minigame/bush/ld-game-zone3.png"
+dest_files=["res://.godot/imported/ld-game-zone3.png-ae93c33a6cd9283ea7be7dbbcddb1c5b.ctex"]
 
 [params]
 

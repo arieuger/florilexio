@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="BushMinigameTuning" format=3 uid="uid://dspy4lnw51bkx"]
+
+[ext_resource type="Script" uid="uid://djvm4xt45qtwm" path="res://scripts/minigames/bush_minigame/bush_minigame_tuning.gd" id="1_tuning_script"]
+
+[resource]
+script = ExtResource("1_tuning_script")

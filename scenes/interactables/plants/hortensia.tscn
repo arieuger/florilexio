@@ -2,16 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_dh12d"]
 [ext_resource type="Texture2D" uid="uid://ceun6tcw7k0y1" path="res://assets/sprites/environment/plants/hortensia.png" id="2_aysac"]
+[ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_ieue3"]
+[ext_resource type="Resource" uid="uid://dspy4lnw51bkx" path="res://resources/minigames/bush_minigame_tuning.tres" id="3_gfbov"]
 [ext_resource type="Texture2D" uid="uid://0o3t8a6g8tub" path="res://assets/sprites/environment/plants/hortensia_hover.png" id="3_wyk1s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyk1s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xchss"]
 resource_local_to_scene = true
 size = Vector2(13, 9)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_two0v"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gd5j4"]
 resource_local_to_scene = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ieue3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd23e"]
 resource_local_to_scene = true
 size = Vector2(13, 2)
 
@@ -19,6 +21,8 @@ size = Vector2(13, 2)
 plant_id = &"hortensia"
 plant_display_name = "Hortensia"
 hover_color = Color(0.5039554, 0.8427262, 1, 0.6862745)
+collection_minigame_config = ExtResource("2_ieue3")
+collection_minigame_tuning = ExtResource("3_gfbov")
 collection_difficulty = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=2017130019]
@@ -31,14 +35,14 @@ texture = ExtResource("3_wyk1s")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0.5, -4.5)
-shape = SubResource("RectangleShape2D_wyk1s")
+shape = SubResource("RectangleShape2D_xchss")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
-shape = SubResource("CircleShape2D_two0v")
+shape = SubResource("CircleShape2D_gd5j4")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_ieue3")
+shape = SubResource("RectangleShape2D_xd23e")

@@ -560,6 +560,7 @@ collection_miss_time_cost_blocks = 0.0
 [node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
 position = Vector2(194, 136)
 collection_id = &"hortensia1"
+collection_difficulty = 1
 
 [node name="Hortensia2" parent="YSortables" unique_id=409591050 instance=ExtResource("19_1u8w0")]
 position = Vector2(183, 137)
