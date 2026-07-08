@@ -183,9 +183,7 @@ func _on_launch_cutting_minigame_pressed() -> void:
 
 	_free_debug_plant_source(plant)
 	visible = false
-	_connect_minigame_time_cost(coordinator)
 	var result: MinigameResult = await coordinator.play_minigame(context)
-	_disconnect_minigame_time_cost(coordinator)
 	_apply_debug_minigame_result(result)
 	print("[DebugPanel] Launched cutting minigame for %s" % plant_id)
 
@@ -222,7 +220,7 @@ func _apply_debug_minigame_result(result: MinigameResult) -> void:
 	if not result or result.is_cancelled():
 		return
 
-	GameState.add_consumed_time(result.time_cost_blocks)
+	GameState.add_consumed_time(result.get_total_time_cost_blocks())
 	if not result.is_success():
 		return
 
@@ -237,23 +235,6 @@ func _apply_debug_minigame_result(result: MinigameResult) -> void:
 func _get_result_marks(result: MinigameResult) -> Dictionary:
 	var marks: Variant = result.rewards.get(&"marks", {})
 	return marks if marks is Dictionary else {}
-
-
-func _connect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
-	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
-		return
-
-	coordinator.time_cost_requested.connect(_on_minigame_time_cost_requested)
-
-
-func _disconnect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
-	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
-		coordinator.time_cost_requested.disconnect(_on_minigame_time_cost_requested)
-
-
-func _on_minigame_time_cost_requested(time_cost_blocks: float) -> void:
-	GameState.add_consumed_time(time_cost_blocks)
-
 
 func _on_reset_game_state_pressed() -> void:
 	if GameState.has_method(&"debug_reset"):

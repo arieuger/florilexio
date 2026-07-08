@@ -208,7 +208,7 @@ func _finish(was_successful: bool) -> void:
 
 	emit_finished(result)
 
-	await get_tree().create_timer(0.45).timeout
+	await get_tree().create_timer(0.75).timeout
 	queue_free()
 
 

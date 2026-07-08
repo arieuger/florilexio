@@ -122,9 +122,7 @@ func start_collection_minigame() -> void:
 		_on_collection_minigame_closed()
 		return
 
-	_connect_minigame_time_cost(coordinator)
 	var result: MinigameResult = await coordinator.play_minigame(context)
-	_disconnect_minigame_time_cost(coordinator)
 	_apply_collection_minigame_result(result)
 	_on_collection_minigame_closed()
 
@@ -176,7 +174,7 @@ func _apply_collection_minigame_result(result: MinigameResult) -> void:
 	if not result or result.is_cancelled():
 		return
 
-	GameState.add_consumed_time(result.time_cost_blocks)
+	GameState.add_consumed_time(result.get_total_time_cost_blocks())
 	if not result.is_success():
 		return
 
@@ -208,23 +206,6 @@ func _on_collection_minigame_completed(_completed_plant_id: StringName) -> void:
 
 func _on_collection_minigame_closed() -> void:
 	_is_interacting = false
-
-
-func _connect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
-	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
-		return
-
-	coordinator.time_cost_requested.connect(_on_minigame_time_cost_requested)
-
-
-func _disconnect_minigame_time_cost(coordinator: MinigameCoordinator) -> void:
-	if coordinator.time_cost_requested.is_connected(_on_minigame_time_cost_requested):
-		coordinator.time_cost_requested.disconnect(_on_minigame_time_cost_requested)
-
-
-func _on_minigame_time_cost_requested(time_cost_blocks: float) -> void:
-	GameState.add_consumed_time(time_cost_blocks)
-
 
 func _should_launch_tutorial() -> bool:
 	return plant_launches_tutorial and not GameState.tutorial_already_launched
