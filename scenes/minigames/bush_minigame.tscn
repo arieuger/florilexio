@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_font"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="6_cut_anim"]
+[ext_resource type="Texture2D" uid="uid://b304u7wx65vwt" path="res://assets/sprites/ui/bar_fill_yellow_vertical.png" id="7_lno8g"]
 [ext_resource type="PackedScene" uid="uid://bi4uv6l1o35m8" path="res://ui/minigames/minigame_status_panel.tscn" id="7_status_panel"]
 
 [sub_resource type="Gradient" id="Gradient_background_dim"]
@@ -94,6 +95,21 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_cut")
 frame = 4
 frame_progress = 1.0
+
+[node name="ChargeBarRoot" type="Node2D" parent="." unique_id=1974549947]
+
+[node name="ChargeBar" type="TextureProgressBar" parent="ChargeBarRoot" unique_id=162755562]
+offset_left = -33.0
+offset_top = -24.0
+offset_right = -30.0
+offset_bottom = 21.0
+value = 52.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+texture_progress = ExtResource("7_lno8g")
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1237039696]
 anchors_preset = 5

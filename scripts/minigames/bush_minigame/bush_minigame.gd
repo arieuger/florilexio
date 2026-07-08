@@ -44,10 +44,12 @@ var cut_zone_margin_pixels := 2
 var zone_alpha_threshold := 0.1
 
 @onready var game_root: Node2D = $GameRoot
+@onready var charge_bar_root: Node2D = $ChargeBarRoot
 @onready var cursor_pivot: Node2D = $GameRoot/CursorPivot
 @onready var cursor: Sprite2D = $GameRoot/CursorPivot/Cursor
 @onready var cut_animation: AnimatedSprite2D = $GameRoot/CursorPivot/CutAnimation
 @onready var zone_sprite: Sprite2D = $GameRoot/ZoneSprite
+@onready var charge_bar: TextureProgressBar = $ChargeBarRoot/ChargeBar
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var status_panel = $UIContainer
 
@@ -59,6 +61,9 @@ var _charge := 0.0
 var _charge_grace_remaining := 0.0
 var _is_button_down := false
 var _feedback_tween: Tween
+var _charge_bar_flash_tween: Tween
+var _charge_bar_loss_tween: Tween
+var _charge_bar_base_position := Vector2.ZERO
 var _zone_image: Image
 var _current_zone_index := -1
 var _last_logged_charge_step := -1
@@ -70,6 +75,7 @@ func _ready() -> void:
 	_center_game()
 	cursor.position = Vector2(cursor_radius, 0.0)
 	_setup_cut_animation()
+	_setup_charge_bar()
 	feedback_label.text = ""
 	status_panel.setup(required_hits, max_misses, time_cost_blocks, miss_time_cost_blocks)
 	_load_next_zone_pack()
@@ -152,6 +158,7 @@ func _update_charge(delta: float) -> void:
 	if zone == ZoneType.CHARGE:
 		_charge = minf(required_charge, _charge + charge_rate * delta)
 		_charge_grace_remaining = charge_grace_seconds
+		_update_charge_bar()
 		_log_charge()
 		return
 
@@ -173,7 +180,9 @@ func _try_release_cut() -> void:
 
 	if _charge > 0.0:
 		print("[BushMinigame] Lost charge %.2f outside cut zone" % _charge)
-	_reset_charge()
+		_reset_charge(true)
+	else:
+		_reset_charge()
 
 
 func _apply_successful_cut() -> void:
@@ -195,7 +204,7 @@ func _apply_danger_failure() -> void:
 	_misses += 1
 	print("[BushMinigame] Danger failure %d/%d" % [_misses, max_misses])
 	_is_button_down = false
-	_reset_charge()
+	_reset_charge(true)
 	request_time_cost(miss_time_cost_blocks)
 	_show_feedback("%s %d/%d" % [tr("Fallaches"), _misses, max_misses], Color(1.0, 0.45, 0.45, 1.0), Color("#db5968"))
 	_shake_ring()
@@ -206,10 +215,75 @@ func _apply_danger_failure() -> void:
 		_finish(false)
 
 
-func _reset_charge() -> void:
+func _reset_charge(show_loss_feedback := false) -> void:
+	var lost_charge := _charge
 	_charge = 0.0
 	_charge_grace_remaining = 0.0
 	_last_logged_charge_step = -1
+	_stop_charge_bar_flash()
+	if show_loss_feedback and lost_charge > 0.0:
+		_show_charge_bar_loss_feedback(lost_charge)
+	else:
+		_update_charge_bar()
+
+
+func _setup_charge_bar() -> void:
+	_charge_bar_base_position = charge_bar.position
+	charge_bar.min_value = 0.0
+	charge_bar.max_value = required_charge
+	charge_bar.step = 0.0
+	charge_bar.self_modulate = Color.WHITE
+	_update_charge_bar()
+
+
+func _update_charge_bar() -> void:
+	_stop_charge_bar_loss_feedback()
+	charge_bar.value = clampf(_charge, 0.0, required_charge)
+	if _charge >= required_charge:
+		_start_charge_bar_flash()
+	else:
+		_stop_charge_bar_flash()
+
+
+func _start_charge_bar_flash() -> void:
+	if _charge_bar_flash_tween:
+		return
+
+	_charge_bar_flash_tween = create_tween().set_loops()
+	_charge_bar_flash_tween.tween_property(charge_bar, "self_modulate", Color(2.2, 2.2, 2.2, 1.0), 0.8)
+	_charge_bar_flash_tween.tween_property(charge_bar, "self_modulate", Color.WHITE, 0.8)
+
+
+func _stop_charge_bar_flash() -> void:
+	if _charge_bar_flash_tween:
+		_charge_bar_flash_tween.kill()
+		_charge_bar_flash_tween = null
+	charge_bar.self_modulate = Color.WHITE
+
+
+func _show_charge_bar_loss_feedback(lost_charge: float) -> void:
+	_stop_charge_bar_loss_feedback(false)
+
+	var time_cost_color := Color(0.69803923, 0.36078432, 0.2, 1.0)
+	charge_bar.value = clampf(lost_charge, 0.0, required_charge)
+	charge_bar.self_modulate = time_cost_color
+	_charge_bar_loss_tween = create_tween()
+	_charge_bar_loss_tween.tween_property(charge_bar, "position", _charge_bar_base_position + Vector2(1.5, 0), 0.035)
+	_charge_bar_loss_tween.tween_property(charge_bar, "position", _charge_bar_base_position + Vector2(-1.5, 0), 0.035)
+	_charge_bar_loss_tween.tween_property(charge_bar, "position", _charge_bar_base_position + Vector2(1.0, 0), 0.03)
+	_charge_bar_loss_tween.tween_property(charge_bar, "position", _charge_bar_base_position, 0.04)
+	_charge_bar_loss_tween.tween_interval(0.2)
+	_charge_bar_loss_tween.tween_property(charge_bar, "value", 0.0, 0.16)
+	_charge_bar_loss_tween.parallel().tween_property(charge_bar, "self_modulate", Color.WHITE, 0.16)
+
+
+func _stop_charge_bar_loss_feedback(reset_visual := true) -> void:
+	if _charge_bar_loss_tween:
+		_charge_bar_loss_tween.kill()
+		_charge_bar_loss_tween = null
+	charge_bar.position = _charge_bar_base_position
+	if reset_visual:
+		charge_bar.self_modulate = Color.WHITE
 
 
 func _log_charge() -> void:
@@ -413,7 +487,9 @@ func _shake_ring() -> void:
 
 
 func _center_game() -> void:
-	game_root.position = get_viewport().get_visible_rect().size * 0.5
+	var center := get_viewport().get_visible_rect().size * 0.5
+	game_root.position = center
+	charge_bar_root.position = center
 
 
 func _setup_cut_animation() -> void:
