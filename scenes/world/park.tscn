@@ -140,10 +140,12 @@ size = Vector2(14, 14)
 size = Vector2(249, 72)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8cg4"]
-vertices = PackedVector2Array(245, 85.90625, 245, 179, 1, 179, 1, 87.88281, 52.648438, 87.0625, 198.29688, 86, 161.64844, 84, 87.8125, 81.890625, 88.78906, 77.9375, 111.99219, 76, 156.61719, 79.96875, 47.632813, 82.046875, 204.24219, 82.03125, 185.92969, 86, 171.92969, 84)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(3, 11, 4), PackedInt32Array(5, 12, 0), PackedInt32Array(13, 5, 4), PackedInt32Array(13, 4, 7, 6), PackedInt32Array(13, 6, 14)])
+vertices = PackedVector2Array(45.257813, 106.859375, 49.5, 102.61719, 117.64844, 102.5, 130.42969, 102.5, 184.5, 104.5, 49.960938, 112.74219, 45.84375, 111.359375, 192.5, 131.5, 232.5, 131.5, 187.5, 134.5, 198.45313, 86.5, 224.5, 104.5, 139.5, 96.828125, 139.5, 90.828125, 185.89063, 86.5, 232.5, 120.5, 244.5, 86.359375, 244.5, 178.5, 106.5, 96.92969, 49.5, 96.921875, 31.75, 111.03125, 36.382813, 116.77344, 17.789063, 119.90625, 224.5, 115.5, 192.5, 120.5, 184.5, 115.5, 53.75, 121.796875, 187.5, 128.5, 174.5, 128.5, 1.5, 178.5, 174.5, 134.5, 204.39063, 82.53906, 52.46875, 87.59375, 88.21094, 82.34375, 106.5, 90.828125, 38.328125, 93.203125, 52.390625, 116.38281, 49.890625, 123.72656, 47.1875, 121.92969, 45.09375, 124.03125, 171.92969, 84.5, 161.46875, 84.5, 111.99219, 76.5, 156.39844, 80.4375, 130.17969, 88.5, 115.82031, 88.5, 89.1875, 78.39844, 1.5, 88.32031, 47.460938, 82.578125, 17.671875, 93.203125, 10.578125, 112.703125, 22.078125, 100.5625, 33.921875, 100.5625, 23.039063, 105.22656, 10.7421875, 106.859375, 6.5, 96.921875, 6.5, 102.61719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 9), PackedInt32Array(10, 11, 4, 12, 13, 14), PackedInt32Array(8, 15, 16, 17), PackedInt32Array(18, 2, 1, 19), PackedInt32Array(20, 0, 6, 21, 22), PackedInt32Array(23, 15, 24, 25), PackedInt32Array(26, 25, 24, 27, 28), PackedInt32Array(7, 9, 27, 24), PackedInt32Array(8, 17, 29, 9), PackedInt32Array(30, 9, 29), PackedInt32Array(16, 15, 23, 11), PackedInt32Array(31, 16, 11, 10), PackedInt32Array(32, 33, 34, 18, 19, 35), PackedInt32Array(4, 25, 26, 36), PackedInt32Array(26, 28, 30, 29, 37), PackedInt32Array(38, 37, 29, 39), PackedInt32Array(21, 39, 29, 22), PackedInt32Array(40, 14, 13, 41), PackedInt32Array(42, 43, 41, 13, 44), PackedInt32Array(42, 44, 45), PackedInt32Array(46, 42, 45, 34, 33), PackedInt32Array(47, 48, 32, 35, 49), PackedInt32Array(4, 36, 5), PackedInt32Array(50, 22, 29), PackedInt32Array(51, 35, 52, 53, 54), PackedInt32Array(35, 51, 49), PackedInt32Array(47, 49, 55), PackedInt32Array(29, 47, 55, 56), PackedInt32Array(50, 29, 56, 54), PackedInt32Array(53, 50, 54), PackedInt32Array(20, 53, 52, 0), PackedInt32Array(4, 3, 12)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(112, 75, 88, 77, 87, 81, 53, 86, 48, 81, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 198, 85, 186, 85, 172, 83, 162, 83, 157, 79)])
-agent_radius = 1.0
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_obstacle"
+agent_radius = 1.5
 
 [node name="Park" type="Node2D" unique_id=643443187]
 
@@ -186,7 +188,7 @@ polygon = PackedVector2Array(0, 109, 112, 98, 246, 110, 246, -25, 0, -25)
 y_sort_enabled = true
 position = Vector2(0, -25)
 
-[node name="Font" type="Node2D" parent="YSortables" unique_id=2095221352]
+[node name="Font" type="Node2D" parent="YSortables" unique_id=2095221352 groups=["nav_obstacle"]]
 position = Vector2(122, 118)
 metadata/_edit_group_ = true
 
@@ -223,7 +225,7 @@ texture = ExtResource("6_lsh6y")
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_r2kch")
 
-[node name="Terrace" type="Node2D" parent="YSortables" unique_id=490790186]
+[node name="Terrace" type="Node2D" parent="YSortables" unique_id=490790186 groups=["nav_obstacle"]]
 position = Vector2(213, 149)
 metadata/_edit_group_ = true
 
@@ -238,7 +240,7 @@ offset = Vector2(-18, -5)
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_ixevq")
 
-[node name="Terrace2" type="Node2D" parent="YSortables" unique_id=909735744]
+[node name="Terrace2" type="Node2D" parent="YSortables" unique_id=909735744 groups=["nav_obstacle"]]
 position = Vector2(205, 134)
 metadata/_edit_group_ = true
 
@@ -253,7 +255,7 @@ offset = Vector2(-18, -5)
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_ixevq")
 
-[node name="Swing" type="Node2D" parent="YSortables" unique_id=1652042088]
+[node name="Swing" type="Node2D" parent="YSortables" unique_id=1652042088 groups=["nav_obstacle"]]
 position = Vector2(20, 137)
 metadata/_edit_group_ = true
 
@@ -267,7 +269,7 @@ offset = Vector2(-7, -12)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSortables/Swing/StaticBody2D" unique_id=911603722]
 polygon = PackedVector2Array(9, -1, -2, 6, -7, 1, 3, -5)
 
-[node name="Slide" type="Node2D" parent="YSortables" unique_id=2103923007]
+[node name="Slide" type="Node2D" parent="YSortables" unique_id=2103923007 groups=["nav_obstacle"]]
 position = Vector2(45, 141)
 metadata/_edit_group_ = true
 
@@ -282,7 +284,7 @@ offset = Vector2(-6, -12)
 position = Vector2(-5, 1)
 polygon = PackedVector2Array(-1, 0, 5, 5, 7, 3, 10, 5, 12, 4, 11, 0, 9, -3, 6, -4)
 
-[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1185726926]
+[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1185726926 groups=["nav_obstacle"]]
 position = Vector2(8, 125)
 metadata/_edit_group_ = true
 
@@ -299,7 +301,7 @@ position = Vector2(11, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
-[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=326821555]
+[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=326821555 groups=["nav_obstacle"]]
 position = Vector2(48, 125)
 scale = Vector2(-1, 1)
 metadata/_edit_group_ = true
@@ -317,7 +319,7 @@ position = Vector2(11, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
-[node name="TerracePoster" type="Node2D" parent="YSortables" unique_id=2100336075]
+[node name="TerracePoster" type="Node2D" parent="YSortables" unique_id=2100336075 groups=["nav_obstacle"]]
 position = Vector2(183, 157)
 metadata/_edit_group_ = true
 

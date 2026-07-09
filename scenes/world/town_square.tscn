@@ -95,7 +95,7 @@ animations = [{
 size = Vector2(6, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycdy4"]
-size = Vector2(3, 3)
+size = Vector2(5, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jujta"]
 atlas = ExtResource("22_vhepp")
@@ -229,16 +229,20 @@ animations = [{
 size = Vector2(14, 14)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iaic6"]
-vertices = PackedVector2Array(317, 99, 320.97656, 99, 319.02344, 180, 317, 136.00781, 211.59375, 139.96094, 0, 180.99219, 181.60938, 142.03125, 0, 102, 8.109375, 102, 9.1015625, 111, 19, 111, 19, 121.27344, 12.2890625, 123.50781, 18.421875, 130.85938, 92.99219, 109.13281, 94.78125, 102, 158, 102, 158, 136, 90.953125, 139.78906, 47.148438, 140.10156, 214.5625, 135, 175.57813, 136, 81.61719, 142.13281, 50.296875, 137.99219, 77.53125, 137.00781)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(5, 7, 8, 9), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(5, 9, 12), PackedInt32Array(5, 12, 13), PackedInt32Array(14, 15, 16, 17, 18), PackedInt32Array(5, 13, 19), PackedInt32Array(4, 20, 3), PackedInt32Array(18, 17, 21, 6, 5, 22), PackedInt32Array(22, 5, 19, 23, 24)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 78, 136, 82, 141, 90, 139, 92, 109, 94, 101, 159, 101, 159, 135, 176, 135, 182, 141, 211, 139, 214, 134, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
-agent_radius = 1.0
+vertices = PackedVector2Array(106.5, 103.72656, 99.11719, 102.5, 147.5, 102.5, 147.5, 109.5, 125.078125, 116.5625, 125.03906, 116.5, 126.96094, 116.5, 126.921875, 116.5625, 317.5, 99.5, 320.46094, 99.5, 318.53125, 179.5, 317.5, 136.50781, 211.88281, 140.4375, 0.5, 180.49219, 181.42188, 142.53906, 0.5, 102.5, 7.65625, 102.5, 8.65625, 111.5, 18.5, 111.5, 18.5, 120.921875, 11.4375, 123.27344, 18.132813, 131.28906, 91.5, 140.22656, 91.5, 102.5, 97.5, 102.5, 97.5, 111.5, 155.5, 109.5, 155.5, 102.5, 157.5, 102.5, 157.5, 136.5, 146.5, 123.5, 146.5, 118.5, 142.5, 118.5, 142.5, 112.921875, 47.226563, 140.64844, 106.5, 111.5, 109.5, 112.921875, 109.5, 118.61719, 113.74219, 122.859375, 137.5, 122.42969, 137.5, 123.5, 214.84375, 135.5, 175.38281, 136.5, 131.32813, 109.203125, 130.54688, 110.5, 121.453125, 110.5, 120.671875, 109.203125, 50.46875, 138.47656, 81.25781, 137.52344, 84.36719, 141.65625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 11, 10, 13, 14), PackedInt32Array(13, 15, 16, 17), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(13, 17, 20), PackedInt32Array(13, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(26, 29, 30, 31, 3), PackedInt32Array(31, 32, 33, 3), PackedInt32Array(13, 21, 34), PackedInt32Array(22, 25, 35, 36, 37), PackedInt32Array(38, 4, 7, 39, 40, 22), PackedInt32Array(12, 41, 11), PackedInt32Array(42, 14, 13, 29), PackedInt32Array(40, 30, 29, 13, 22), PackedInt32Array(43, 44, 45, 46), PackedInt32Array(34, 47, 48, 49, 13), PackedInt32Array(3, 33, 43), PackedInt32Array(0, 3, 43), PackedInt32Array(0, 43, 46), PackedInt32Array(0, 46, 36, 35), PackedInt32Array(22, 37, 38), PackedInt32Array(22, 13, 49)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 82, 136, 85, 140, 90, 139, 90, 101, 159, 101, 159, 135, 176, 135, 182, 141, 211, 139, 214, 134, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_obstacle"
+agent_radius = 1.5
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0348l"]
-vertices = PackedVector2Array(310, 129, 247, 122.99219, 247, 102, 286.57813, 102, 290.5703, 105.97656, 164, 129.99219, 164, 102, 173, 102, 173, 124.00781, 310, 106.953125)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(0, 5, 8, 1), PackedInt32Array(0, 4, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 106, 291, 105, 287, 101, 246, 101, 246, 122, 174, 123)])
-agent_radius = 1.0
+vertices = PackedVector2Array(260.5, 116.5, 290.46875, 106.47656, 309.5, 107.421875, 309.5, 128.50781, 247.5, 123.47656, 286.5, 103.5, 260.5, 110.5, 247.5, 103.5, 252.5, 110.5, 252.5, 116.5, 164.5, 129.47656, 164.5, 102.5, 172.5, 102.5, 172.5, 124.52344)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 1, 0, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(4, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(3, 10, 13, 4), PackedInt32Array(0, 4, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 106, 291, 105, 287, 102, 246, 102, 246, 122, 174, 123)])
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_obstacle"
+agent_radius = 1.5
 
 [node name="TownSquare" type="Node2D" unique_id=66873482]
 
@@ -323,7 +327,7 @@ texture = ExtResource("3_k7al0")
 texture_scale = 4.5
 script = ExtResource("3_5rejm")
 
-[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244]
+[node name="BenchLeft" type="Node2D" parent="YSortables" unique_id=1665890244 groups=["nav_obstacle"]]
 position = Vector2(111, 116)
 script = ExtResource("3_5rejm")
 visible_at_night = false
@@ -342,7 +346,7 @@ position = Vector2(11, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
-[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=1537834856]
+[node name="BenchRight" type="Node2D" parent="YSortables" unique_id=1537834856 groups=["nav_obstacle"]]
 position = Vector2(130, 116)
 metadata/_edit_group_ = true
 
@@ -378,10 +382,7 @@ texture = ExtResource("7_dg77c")
 position = Vector2(6, -3)
 shape = SubResource("RectangleShape2D_old_woman_click")
 
-[node name="Ipomea" parent="YSortables/BenchRight/OldWoman/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="1" unique_id=1542834651 instance=ExtResource("9_s4hhf")]
-position = Vector2(143, -15)
-
-[node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649]
+[node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649 groups=["nav_obstacle"]]
 position = Vector2(93, 107)
 metadata/_edit_group_ = true
 
@@ -400,7 +401,7 @@ polygon = PackedVector2Array(-2, 5, -2, 11, 4, 11, 4, 6)
 position = Vector2(58, -10)
 polygon = PackedVector2Array(-2, 6, -2, 11, 3, 11, 3, 6)
 
-[node name="Font" type="Node2D" parent="YSortables" unique_id=886898638]
+[node name="Font" type="Node2D" parent="YSortables" unique_id=886898638 groups=["nav_obstacle"]]
 position = Vector2(124, 114)
 metadata/_edit_group_ = true
 
@@ -469,7 +470,7 @@ texture = ExtResource("14_icm3m")
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_school_board_click")
 
-[node name="Dog" type="Node2D" parent="YSortables" unique_id=417475737]
+[node name="Dog" type="Node2D" parent="YSortables" unique_id=417475737 groups=["nav_obstacle"]]
 position = Vector2(142, 122)
 metadata/_edit_group_ = true
 
@@ -494,7 +495,7 @@ speaker_id = &"dog"
 balloon_color = Color(0.72, 0.49, 0.28, 1)
 voice_type = 1.0
 
-[node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972]
+[node name="Basket" type="Node2D" parent="YSortables" unique_id=755205972 groups=["nav_obstacle"]]
 position = Vector2(254, 114)
 metadata/_edit_group_ = true
 
@@ -564,7 +565,7 @@ position = Vector2(302, 104)
 collection_id = &"silveira3"
 
 [node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
-position = Vector2(83, 138)
+position = Vector2(86, 138)
 collection_id = &"dedaleira1"
 collection_difficulty = 3
 collection_miss_time_cost_blocks = 0.0
@@ -594,6 +595,9 @@ collection_id = &"ortiga2"
 position = Vector2(205, 137)
 plant_launches_tutorial = false
 collection_id = &"dedaleira2"
+
+[node name="Ipomea" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_s4hhf")]
+position = Vector2(273, 101)
 
 [node name="Macela" parent="YSortables" unique_id=567619104 instance=ExtResource("26_lswn8")]
 position = Vector2(292, 113)
