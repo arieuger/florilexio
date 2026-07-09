@@ -35,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://i2sxdwtyd47j" path="res://scenes/interactables/plants/pe_de_boi.tscn" id="26_r2kch"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
 [ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
-[ext_resource type="Script" path="res://scripts/world/navigation_region_builder.gd" id="31_navigation"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -139,6 +138,12 @@ size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybx22"]
 size = Vector2(249, 72)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u8cg4"]
+vertices = PackedVector2Array(245, 85.90625, 245, 179, 1, 179, 1, 87.88281, 52.648438, 87.0625, 198.29688, 86, 161.64844, 84, 87.8125, 81.890625, 88.78906, 77.9375, 111.99219, 76, 156.61719, 79.96875, 47.632813, 82.046875, 204.24219, 82.03125, 185.92969, 86, 171.92969, 84)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(3, 11, 4), PackedInt32Array(5, 12, 0), PackedInt32Array(13, 5, 4), PackedInt32Array(13, 4, 7, 6), PackedInt32Array(13, 6, 14)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(112, 75, 88, 77, 87, 81, 53, 86, 48, 81, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 198, 85, 186, 85, 172, 83, 162, 83, 157, 79)])
+agent_radius = 1.0
 
 [node name="Park" type="Node2D" unique_id=643443187]
 
@@ -509,10 +514,10 @@ script = ExtResource("26_y4r3u")
 position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_ybx22")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1845410270]
-script = ExtResource("31_navigation")
-outer_outline = PackedVector2Array(0, 84, 245, 84, 245, 180, 0, 180)
-obstacle_padding = 1.5
+[node name="Navigation" type="Node2D" parent="." unique_id=584805140]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=376154472]
+navigation_polygon = SubResource("NavigationPolygon_u8cg4")
 
 [editable path="YSortables/Font/NPC"]
 [editable path="YSortables/TerracePoster/NPC"]

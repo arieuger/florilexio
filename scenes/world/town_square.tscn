@@ -33,7 +33,6 @@
 [ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="31_camera"]
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="32_vm2rq"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="33_iaic6"]
-[ext_resource type="Script" uid="uid://dke2jqqx1o6ot" path="res://scripts/world/navigation_region_builder.gd" id="34_navigation"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -228,6 +227,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_park_portal"]
 size = Vector2(14, 14)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_iaic6"]
+vertices = PackedVector2Array(317, 99, 320.97656, 99, 319.02344, 180, 317, 136.00781, 211.59375, 139.96094, 0, 180.99219, 181.60938, 142.03125, 0, 102, 8.109375, 102, 9.1015625, 111, 19, 111, 19, 121.27344, 12.2890625, 123.50781, 18.421875, 130.85938, 92.99219, 109.13281, 94.78125, 102, 158, 102, 158, 136, 90.953125, 139.78906, 47.148438, 140.10156, 214.5625, 135, 175.57813, 136, 81.61719, 142.13281, 50.296875, 137.99219, 77.53125, 137.00781)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(5, 7, 8, 9), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(5, 9, 12), PackedInt32Array(5, 12, 13), PackedInt32Array(14, 15, 16, 17, 18), PackedInt32Array(5, 13, 19), PackedInt32Array(4, 20, 3), PackedInt32Array(18, 17, 21, 6, 5, 22), PackedInt32Array(22, 5, 19, 23, 24)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 78, 136, 82, 141, 90, 139, 92, 109, 94, 101, 159, 101, 159, 135, 176, 135, 182, 141, 211, 139, 214, 134, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
+agent_radius = 1.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0348l"]
+vertices = PackedVector2Array(310, 129, 247, 122.99219, 247, 102, 286.57813, 102, 290.5703, 105.97656, 164, 129.99219, 164, 102, 173, 102, 173, 124.00781, 310, 106.953125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(0, 5, 8, 1), PackedInt32Array(0, 4, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 106, 291, 105, 287, 101, 246, 101, 246, 122, 174, 123)])
+agent_radius = 1.0
 
 [node name="TownSquare" type="Node2D" unique_id=66873482]
 
@@ -616,10 +627,17 @@ frame_progress = 0.93289983
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_park_portal")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1116394731]
-script = ExtResource("34_navigation")
-outer_outline = PackedVector2Array(0, 76, 320, 76, 320, 180, 0, 180)
-obstacle_padding = 1.5
+[node name="Navigation" type="Node2D" parent="." unique_id=2045750826]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=170704781]
+navigation_polygon = SubResource("NavigationPolygon_iaic6")
+
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="Navigation" unique_id=174366963]
+navigation_polygon = SubResource("NavigationPolygon_0348l")
+
+[node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=765014364]
+start_position = Vector2(218, 127)
+end_position = Vector2(218, 137)
 
 [editable path="YSortables/BenchRight/OldWoman"]
 [editable path="YSortables/SchoolBoard"]
