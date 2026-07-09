@@ -126,3 +126,7 @@ editor_draw_drag_margin = true
 
 [node name="SoundListener" type="FmodListener2D" parent="." unique_id=756617698]
 position = Vector2(0, -7)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1184201884]
+path_desired_distance = 3.0
+target_desired_distance = 2.0

@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="31_camera"]
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="32_vm2rq"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="33_iaic6"]
+[ext_resource type="Script" uid="uid://dke2jqqx1o6ot" path="res://scripts/world/navigation_region_builder.gd" id="34_navigation"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ycdy4"]
 a = Vector2(0, 76)
@@ -614,6 +615,11 @@ frame_progress = 0.93289983
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParkPortal" unique_id=901001004]
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_park_portal")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1116394731]
+script = ExtResource("34_navigation")
+outer_outline = PackedVector2Array(0, 76, 320, 76, 320, 180, 0, 180)
+obstacle_padding = 1.5
 
 [editable path="YSortables/BenchRight/OldWoman"]
 [editable path="YSortables/SchoolBoard"]

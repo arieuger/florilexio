@@ -12,20 +12,15 @@ signal auto_move_finished(reached: bool)
 @export var auto_move_stuck_time := 0.8
 @export var auto_move_stuck_speed := 3.0
 @export var movement_enabled := true
-@export var pathfinding_enabled := true
-@export var pathfinding_cell_size := 4.0
-@export var pathfinding_bounds := Rect2(0, 0, 320, 180)
-@export var pathfinding_agent_size := Vector2(4, 2)
-@export var pathfinding_waypoint_distance := 4.0
-@export var pathfinding_nearest_target_radius := 32.0
+@export var navigation_path_desired_distance := 3.0
+@export var navigation_target_desired_distance := 2.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_listener: Node2D = $SoundListener
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 var _last_facing := "down"
 var _auto_move_target := Vector2.ZERO
-var _auto_move_path: PackedVector2Array = []
-var _auto_move_path_index := 0
 var _auto_move_arrival_distance := 2.0
 var _auto_move_elapsed := 0.0
 var _auto_move_current_timeout := 0.0
@@ -38,6 +33,8 @@ var _has_synced_sound_listener := false
 
 func _ready():
 	add_to_group("player")
+	navigation_agent.path_desired_distance = navigation_path_desired_distance
+	navigation_agent.target_desired_distance = navigation_target_desired_distance
 	resync_sound_listener()
 
 func _unhandled_input(event):
@@ -94,13 +91,10 @@ func move_to_area(area: Area2D) -> bool:
 	if _is_auto_moving:
 		_finish_auto_move(false)
 
-	var next_path := _find_auto_move_path_to_area(area)
-	if next_path.is_empty():
+	var global_target: Vector2 = _find_auto_move_target_point_for_area(area)
+	if not start_auto_move(global_target, auto_move_stop_distance):
 		return false
 
-	var global_target := next_path[next_path.size() - 1]
-	_start_auto_move_path(global_target, next_path, auto_move_stop_distance)
-	_is_auto_moving = true
 	return await auto_move_finished
 
 func start_auto_move(global_target: Vector2, stop_distance := -1.0) -> bool:
@@ -108,14 +102,10 @@ func start_auto_move(global_target: Vector2, stop_distance := -1.0) -> bool:
 		return false
 
 	if _is_auto_moving:
-		_finish_auto_move(false)		
-
-	var next_path := _find_auto_move_path(global_target)
-	if next_path.is_empty():
-		return false
+		_finish_auto_move(false)
 
 	var arrival_distance := auto_move_stop_distance if stop_distance < 0.0 else stop_distance
-	_start_auto_move_path(global_target, next_path, arrival_distance)
+	_start_auto_move(global_target, arrival_distance)
 	_is_auto_moving = true
 	return true
 
@@ -138,20 +128,25 @@ func _process_player_input(delta: float, input_direction: Vector2):
 func _process_auto_move(delta: float):
 	_auto_move_elapsed += delta
 
-	_skip_reachable_auto_move_waypoints()
-	var current_target := _get_current_auto_move_target()
+	var current_target := navigation_agent.get_next_path_position()
 	var target_offset := current_target - global_position
-	var target_distance := target_offset.length()
-	var arrival_distance := _auto_move_arrival_distance if _is_last_auto_move_waypoint() else pathfinding_waypoint_distance
+	var final_distance := global_position.distance_to(_auto_move_target)
 
-	if target_distance <= arrival_distance:
-		if _advance_auto_move_path():
-			return
+	if final_distance <= _auto_move_arrival_distance:
 		_finish_auto_move(true)
 		return
 
 	if _auto_move_elapsed >= _auto_move_current_timeout:
 		_finish_auto_move(false)
+		return
+
+	if navigation_agent.is_navigation_finished():
+		_finish_auto_move(final_distance <= _auto_move_arrival_distance + navigation_target_desired_distance)
+		return
+
+	if target_offset.length_squared() <= 0.0001:
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+		_update_animation(Vector2.ZERO)
 		return
 
 	var move_direction := target_offset.normalized()
@@ -161,26 +156,24 @@ func _process_auto_move(delta: float):
 
 func _finish_auto_move(reached: bool):
 	_is_auto_moving = false
-	_auto_move_path = []
-	_auto_move_path_index = 0
 	_auto_move_arrival_distance = auto_move_stop_distance
+	navigation_agent.target_position = global_position
 	velocity = Vector2.ZERO
 	_update_animation(Vector2.ZERO)
 	auto_move_finished.emit(reached)
 
-func _start_auto_move_path(global_target: Vector2, path: PackedVector2Array, arrival_distance: float) -> void:
+func _start_auto_move(global_target: Vector2, arrival_distance: float) -> void:
 	_auto_move_target = global_target
-	_auto_move_path = path
-	_auto_move_path_index = 0
 	_auto_move_arrival_distance = arrival_distance
 	_auto_move_elapsed = 0.0
-	_auto_move_current_timeout = maxf(auto_move_timeout, _get_path_length(path) / max_speed + 1.0)
+	_auto_move_current_timeout = maxf(auto_move_timeout, global_position.distance_to(global_target) / max_speed + 1.0)
 	_auto_move_stuck_elapsed = 0.0
-	_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
+	_auto_move_previous_distance = global_position.distance_to(global_target)
 	_auto_move_previous_position = global_position
+	navigation_agent.target_position = global_target
 
 func _check_auto_move_stuck(delta: float):
-	var current_distance := global_position.distance_to(_get_current_auto_move_target())
+	var current_distance := global_position.distance_to(_auto_move_target)
 	var progress := _auto_move_previous_distance - current_distance
 	var moved_distance := global_position.distance_to(_auto_move_previous_position)
 	var is_moving := moved_distance > auto_move_stuck_speed * delta
@@ -196,52 +189,9 @@ func _check_auto_move_stuck(delta: float):
 	if _auto_move_stuck_elapsed >= auto_move_stuck_time:
 		_finish_auto_move(false)
 
-func _get_current_auto_move_target() -> Vector2:
-	if _auto_move_path_index >= 0 and _auto_move_path_index < _auto_move_path.size():
-		return _auto_move_path[_auto_move_path_index]
-
-	return _auto_move_target
-
-func _advance_auto_move_path() -> bool:
-	_auto_move_path_index += 1
-	if _auto_move_path_index < _auto_move_path.size():
-		_auto_move_stuck_elapsed = 0.0
-		_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
-		_auto_move_previous_position = global_position
-		return true
-
-	return false
-
-func _is_last_auto_move_waypoint() -> bool:
-	return _auto_move_path_index >= _auto_move_path.size() - 1
-
-func _skip_reachable_auto_move_waypoints() -> void:
-	while _auto_move_path_index + 1 < _auto_move_path.size():
-		var next_target := _auto_move_path[_auto_move_path_index + 1]
-		if not _is_pathfinding_segment_walkable(global_position, next_target):
-			return
-
-		_auto_move_path_index += 1
-		_auto_move_stuck_elapsed = 0.0
-		_auto_move_previous_distance = global_position.distance_to(_get_current_auto_move_target())
-		_auto_move_previous_position = global_position
-
-func _find_auto_move_path_to_area(area: Area2D) -> PackedVector2Array:
+func _find_auto_move_target_point_for_area(area: Area2D) -> Vector2:
 	var candidate_points := _get_area_candidate_points(area)
-
-	for candidate_point in candidate_points:
-		if pathfinding_enabled and not pathfinding_bounds.has_point(candidate_point):
-			continue
-		if pathfinding_enabled and not _is_pathfinding_point_walkable(candidate_point):
-			continue
-		if _is_pathfinding_segment_walkable(global_position, candidate_point):
-			return PackedVector2Array([candidate_point])
-
-		var path := _find_auto_move_path(candidate_point)
-		if not path.is_empty():
-			return path
-
-	return PackedVector2Array()
+	return candidate_points[0] if not candidate_points.is_empty() else area.global_position
 
 func _get_area_candidate_points(area: Area2D) -> PackedVector2Array:
 	var candidates := PackedVector2Array()
@@ -273,7 +223,7 @@ func _get_collision_shape_candidate_points(collision_shape: CollisionShape2D) ->
 	var candidates := PackedVector2Array()
 	var shape := collision_shape.shape
 	var local_bounds := _get_shape_local_bounds(shape)
-	var step := maxf(pathfinding_cell_size, 1.0)
+	var step := maxf(navigation_path_desired_distance, 1.0)
 
 	if _is_local_point_inside_shape(shape, Vector2.ZERO):
 		candidates.append(collision_shape.global_position)
@@ -326,237 +276,6 @@ func _is_local_point_inside_shape(shape: Shape2D, local_point: Vector2) -> bool:
 		return local_point.distance_squared_to(closest_point) <= capsule.radius * capsule.radius
 
 	return local_point == Vector2.ZERO
-
-func _find_auto_move_path(global_target: Vector2) -> PackedVector2Array:
-	if not pathfinding_enabled:
-		return PackedVector2Array([global_target])
-
-	if not pathfinding_bounds.has_point(global_target):
-		return PackedVector2Array()
-
-	var start_cell := _pathfinding_cell_from_position(global_position)
-	var target_cell := _pathfinding_cell_from_position(global_target)
-	var grid_size := _pathfinding_grid_size()
-
-	if not _is_cell_inside_pathfinding_bounds(start_cell, grid_size) or not _is_cell_inside_pathfinding_bounds(target_cell, grid_size):
-		return PackedVector2Array()
-
-	var astar := AStar2D.new()
-	var walkable_cells := {}
-
-	for y in grid_size.y:
-		for x in grid_size.x:
-			var cell := Vector2i(x, y)
-			var point := _pathfinding_position_from_cell(cell)
-			if _is_pathfinding_point_walkable(point):
-				var point_id := _pathfinding_cell_id(cell, grid_size.x)
-				walkable_cells[cell] = true
-				astar.add_point(point_id, point)
-
-	if not walkable_cells.has(start_cell):
-		return PackedVector2Array()
-
-	var target_is_walkable := _is_pathfinding_point_walkable(global_target)
-	var target_point_id := _pathfinding_cell_id(target_cell, grid_size.x)
-	var reachable_target := global_target
-	var use_exact_target_point := target_is_walkable and not walkable_cells.has(target_cell)
-
-	if use_exact_target_point:
-		target_point_id = grid_size.x * grid_size.y
-		astar.add_point(target_point_id, global_target)
-	elif not target_is_walkable:
-		target_cell = _get_nearest_walkable_target_cell(target_cell, global_target, walkable_cells, grid_size)
-		if not walkable_cells.has(target_cell):
-			return PackedVector2Array()
-
-		target_point_id = _pathfinding_cell_id(target_cell, grid_size.x)
-		reachable_target = _pathfinding_position_from_cell(target_cell)
-
-	for cell in walkable_cells.keys():
-		var cell_id := _pathfinding_cell_id(cell, grid_size.x)
-		for offset in _get_pathfinding_neighbor_offsets():
-			var neighbor: Vector2i = cell + offset
-			if not walkable_cells.has(neighbor):
-				continue
-			if offset.x != 0 and offset.y != 0:
-				if not walkable_cells.has(Vector2i(cell.x + offset.x, cell.y)) or not walkable_cells.has(Vector2i(cell.x, cell.y + offset.y)):
-					continue
-
-			var neighbor_id := _pathfinding_cell_id(neighbor, grid_size.x)
-			if not astar.are_points_connected(cell_id, neighbor_id):
-				astar.connect_points(cell_id, neighbor_id)
-
-	if use_exact_target_point:
-		_connect_exact_target_point(astar, target_point_id, global_target, walkable_cells, grid_size)
-
-	var id_path := astar.get_id_path(_pathfinding_cell_id(start_cell, grid_size.x), target_point_id)
-	if id_path.is_empty():
-		return PackedVector2Array()
-
-	var path := PackedVector2Array()
-	for point_id in id_path:
-		path.append(astar.get_point_position(point_id))
-
-	if path.size() > 0:
-		path.remove_at(0)
-
-	path = _smooth_auto_move_path(path)
-
-	path = _add_reachable_target_to_auto_move_path(path, reachable_target, target_is_walkable)
-
-	return path
-
-func _connect_exact_target_point(astar: AStar2D, target_point_id: int, global_target: Vector2, walkable_cells: Dictionary, grid_size: Vector2i) -> void:
-	var target_cell := _pathfinding_cell_from_position(global_target)
-	var max_cell_radius := ceili(pathfinding_nearest_target_radius / pathfinding_cell_size)
-
-	for y in range(target_cell.y - max_cell_radius, target_cell.y + max_cell_radius + 1):
-		for x in range(target_cell.x - max_cell_radius, target_cell.x + max_cell_radius + 1):
-			var candidate := Vector2i(x, y)
-			if not _is_cell_inside_pathfinding_bounds(candidate, grid_size):
-				continue
-			if not walkable_cells.has(candidate):
-				continue
-
-			var candidate_position := _pathfinding_position_from_cell(candidate)
-			if candidate_position.distance_to(global_target) > pathfinding_nearest_target_radius:
-				continue
-			if not _is_pathfinding_segment_walkable(candidate_position, global_target):
-				continue
-
-			astar.connect_points(_pathfinding_cell_id(candidate, grid_size.x), target_point_id)
-
-func _add_reachable_target_to_auto_move_path(path: PackedVector2Array, reachable_target: Vector2, target_is_walkable: bool) -> PackedVector2Array:
-	var approach_origin := global_position if path.is_empty() else path[path.size() - 1]
-	if not _is_pathfinding_segment_walkable(approach_origin, reachable_target):
-		return PackedVector2Array() if target_is_walkable else path
-
-	if path.is_empty() or path[path.size() - 1].distance_to(reachable_target) > pathfinding_waypoint_distance:
-		path.append(reachable_target)
-	else:
-		path[path.size() - 1] = reachable_target
-
-	return path
-
-func _get_nearest_walkable_target_cell(target_cell: Vector2i, global_target: Vector2, walkable_cells: Dictionary, grid_size: Vector2i) -> Vector2i:
-	if walkable_cells.has(target_cell):
-		return target_cell
-
-	var max_cell_radius := ceili(pathfinding_nearest_target_radius / pathfinding_cell_size)
-	var nearest_cell := Vector2i(-1, -1)
-	var nearest_distance := INF
-
-	for radius in range(1, max_cell_radius + 1):
-		for y in range(target_cell.y - radius, target_cell.y + radius + 1):
-			for x in range(target_cell.x - radius, target_cell.x + radius + 1):
-				if abs(x - target_cell.x) != radius and abs(y - target_cell.y) != radius:
-					continue
-
-				var candidate := Vector2i(x, y)
-				if not _is_cell_inside_pathfinding_bounds(candidate, grid_size):
-					continue
-				if not walkable_cells.has(candidate):
-					continue
-
-				var candidate_position := _pathfinding_position_from_cell(candidate)
-				var candidate_distance := candidate_position.distance_squared_to(global_target)
-				if candidate_distance < nearest_distance:
-					nearest_cell = candidate
-					nearest_distance = candidate_distance
-
-		if nearest_cell != Vector2i(-1, -1):
-			return nearest_cell
-
-	return nearest_cell
-
-func _smooth_auto_move_path(path: PackedVector2Array) -> PackedVector2Array:
-	if path.size() <= 2:
-		return path
-
-	var smoothed_path := PackedVector2Array()
-	var anchor := global_position
-	var index := 0
-
-	while index < path.size():
-		var furthest_reachable_index := index
-		for candidate_index in range(path.size() - 1, index - 1, -1):
-			if _is_pathfinding_segment_walkable(anchor, path[candidate_index]):
-				furthest_reachable_index = candidate_index
-				break
-
-		var next_point := path[furthest_reachable_index]
-		smoothed_path.append(next_point)
-		anchor = next_point
-		index = furthest_reachable_index + 1
-
-	return smoothed_path
-
-func _get_path_length(path: PackedVector2Array) -> float:
-	var total_length := 0.0
-	var previous_point := global_position
-	for point in path:
-		total_length += previous_point.distance_to(point)
-		previous_point = point
-
-	return total_length
-
-func _pathfinding_grid_size() -> Vector2i:
-	return Vector2i(
-		ceili(pathfinding_bounds.size.x / pathfinding_cell_size),
-		ceili(pathfinding_bounds.size.y / pathfinding_cell_size)
-	)
-
-func _pathfinding_cell_from_position(global_point: Vector2) -> Vector2i:
-	var local_point := global_point - pathfinding_bounds.position
-	return Vector2i(
-		floori(local_point.x / pathfinding_cell_size),
-		floori(local_point.y / pathfinding_cell_size)
-	)
-
-func _pathfinding_position_from_cell(cell: Vector2i) -> Vector2:
-	return pathfinding_bounds.position + (Vector2(cell) + Vector2(0.5, 0.5)) * pathfinding_cell_size
-
-func _pathfinding_cell_id(cell: Vector2i, grid_width: int) -> int:
-	return cell.y * grid_width + cell.x
-
-func _is_cell_inside_pathfinding_bounds(cell: Vector2i, grid_size: Vector2i) -> bool:
-	return cell.x >= 0 and cell.y >= 0 and cell.x < grid_size.x and cell.y < grid_size.y
-
-func _is_pathfinding_point_walkable(global_point: Vector2) -> bool:
-	var query := PhysicsShapeQueryParameters2D.new()
-	var shape := RectangleShape2D.new()
-	shape.size = pathfinding_agent_size
-	query.shape = shape
-	query.transform = Transform2D(0.0, global_point)
-	query.collision_mask = collision_mask
-	query.collide_with_areas = false
-	query.collide_with_bodies = true
-	query.exclude = [get_rid()]
-
-	return get_world_2d().direct_space_state.intersect_shape(query, 1).is_empty()
-
-func _is_pathfinding_segment_walkable(from: Vector2, to: Vector2) -> bool:
-	var distance := from.distance_to(to)
-	var step_count := ceili(distance / (pathfinding_cell_size * 0.5))
-
-	for step in range(1, step_count + 1):
-		var point := from.lerp(to, float(step) / float(step_count))
-		if not _is_pathfinding_point_walkable(point):
-			return false
-
-	return true
-
-func _get_pathfinding_neighbor_offsets() -> Array[Vector2i]:
-	return [
-		Vector2i(-1, 0),
-		Vector2i(1, 0),
-		Vector2i(0, -1),
-		Vector2i(0, 1),
-		Vector2i(-1, -1),
-		Vector2i(1, -1),
-		Vector2i(-1, 1),
-		Vector2i(1, 1),
-	]
 
 func _update_animation(direction: Vector2):
 	if direction == Vector2.ZERO:

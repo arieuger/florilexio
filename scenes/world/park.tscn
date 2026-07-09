@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://i2sxdwtyd47j" path="res://scenes/interactables/plants/pe_de_boi.tscn" id="26_r2kch"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
 [ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
+[ext_resource type="Script" path="res://scripts/world/navigation_region_builder.gd" id="31_navigation"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
 a = Vector2(0, 104)
@@ -507,6 +508,11 @@ script = ExtResource("26_y4r3u")
 [node name="GrassCollision" type="CollisionShape2D" parent="GrassArea" unique_id=834856363]
 position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_ybx22")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1845410270]
+script = ExtResource("31_navigation")
+outer_outline = PackedVector2Array(0, 84, 245, 84, 245, 180, 0, 180)
+obstacle_padding = 1.5
 
 [editable path="YSortables/Font/NPC"]
 [editable path="YSortables/TerracePoster/NPC"]
