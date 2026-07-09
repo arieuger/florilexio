@@ -71,7 +71,7 @@ resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc6it"]
-size = Vector2(132, 24)
+size = Vector2(141, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arrow_default_1"]
 atlas = ExtResource("21_arrow")
@@ -477,7 +477,7 @@ voice_type = 3.0
 [node name="TriggerArea" type="Area2D" parent="YSortables/Wind" unique_id=1971551553]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Wind/TriggerArea" unique_id=1168329853]
-position = Vector2(1, 2)
+position = Vector2(5.5, 4.5)
 shape = SubResource("RectangleShape2D_jc6it")
 
 [node name="TownPortal" type="Area2D" parent="." unique_id=473107869]

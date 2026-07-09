@@ -95,6 +95,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1506201651 groups=["player"]]
 script = ExtResource("1_dovo2")
+auto_move_timeout = 2.5
 metadata/_edit_group_ = true
 
 [node name="CollisionChecker" type="CollisionShape2D" parent="." unique_id=1767272530]

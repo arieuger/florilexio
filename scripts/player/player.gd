@@ -28,6 +28,7 @@ var _auto_move_stuck_elapsed := 0.0
 var _auto_move_previous_distance := INF
 var _auto_move_previous_position := Vector2.ZERO
 var _is_auto_moving := false
+var _auto_move_target_area: Area2D
 var _last_sound_listener_transform := Transform2D()
 var _has_synced_sound_listener := false
 
@@ -91,9 +92,8 @@ func move_to_area(area: Area2D) -> bool:
 	if _is_auto_moving:
 		_finish_auto_move(false)
 
-	var global_target: Vector2 = _find_auto_move_target_point_for_area(area)
-	if not start_auto_move(global_target, auto_move_stop_distance):
-		return false
+	_start_auto_move(_get_area_navigation_target(area), auto_move_stop_distance, area)
+	_is_auto_moving = true
 
 	return await auto_move_finished
 
@@ -128,6 +128,10 @@ func _process_player_input(delta: float, input_direction: Vector2):
 func _process_auto_move(delta: float):
 	_auto_move_elapsed += delta
 
+	if is_instance_valid(_auto_move_target_area) and _is_global_point_inside_area(_auto_move_target_area, global_position):
+		_finish_auto_move(true)
+		return
+
 	var current_target := navigation_agent.get_next_path_position()
 	var target_offset := current_target - global_position
 	var final_distance := global_position.distance_to(_auto_move_target)
@@ -157,12 +161,13 @@ func _process_auto_move(delta: float):
 func _finish_auto_move(reached: bool):
 	_is_auto_moving = false
 	_auto_move_arrival_distance = auto_move_stop_distance
+	_auto_move_target_area = null
 	navigation_agent.target_position = global_position
 	velocity = Vector2.ZERO
 	_update_animation(Vector2.ZERO)
 	auto_move_finished.emit(reached)
 
-func _start_auto_move(global_target: Vector2, arrival_distance: float) -> void:
+func _start_auto_move(global_target: Vector2, arrival_distance: float, target_area: Area2D = null) -> void:
 	_auto_move_target = global_target
 	_auto_move_arrival_distance = arrival_distance
 	_auto_move_elapsed = 0.0
@@ -170,6 +175,7 @@ func _start_auto_move(global_target: Vector2, arrival_distance: float) -> void:
 	_auto_move_stuck_elapsed = 0.0
 	_auto_move_previous_distance = global_position.distance_to(global_target)
 	_auto_move_previous_position = global_position
+	_auto_move_target_area = target_area
 	navigation_agent.target_position = global_target
 
 func _check_auto_move_stuck(delta: float):
@@ -189,27 +195,6 @@ func _check_auto_move_stuck(delta: float):
 	if _auto_move_stuck_elapsed >= auto_move_stuck_time:
 		_finish_auto_move(false)
 
-func _find_auto_move_target_point_for_area(area: Area2D) -> Vector2:
-	var candidate_points := _get_area_candidate_points(area)
-	return candidate_points[0] if not candidate_points.is_empty() else area.global_position
-
-func _get_area_candidate_points(area: Area2D) -> PackedVector2Array:
-	var candidates := PackedVector2Array()
-	var collision_shapes := _get_area_collision_shapes(area)
-
-	for collision_shape in collision_shapes:
-		candidates.append_array(_get_collision_shape_candidate_points(collision_shape))
-
-	if candidates.is_empty():
-		candidates.append(area.global_position)
-
-	var sorted_candidates := Array(candidates)
-	sorted_candidates.sort_custom(func(a: Vector2, b: Vector2) -> bool:
-		return global_position.distance_squared_to(a) < global_position.distance_squared_to(b)
-	)
-
-	return PackedVector2Array(sorted_candidates)
-
 func _get_area_collision_shapes(area: Area2D) -> Array[CollisionShape2D]:
 	var collision_shapes: Array[CollisionShape2D] = []
 	for child in area.find_children("*", "CollisionShape2D", true, false):
@@ -219,39 +204,20 @@ func _get_area_collision_shapes(area: Area2D) -> Array[CollisionShape2D]:
 
 	return collision_shapes
 
-func _get_collision_shape_candidate_points(collision_shape: CollisionShape2D) -> PackedVector2Array:
-	var candidates := PackedVector2Array()
-	var shape := collision_shape.shape
-	var local_bounds := _get_shape_local_bounds(shape)
-	var step := maxf(navigation_path_desired_distance, 1.0)
+func _get_area_navigation_target(area: Area2D) -> Vector2:
+	var collision_shapes := _get_area_collision_shapes(area)
+	if collision_shapes.is_empty():
+		return area.global_position
 
-	if _is_local_point_inside_shape(shape, Vector2.ZERO):
-		candidates.append(collision_shape.global_position)
+	var closest_shape: CollisionShape2D = collision_shapes[0]
+	var closest_distance := global_position.distance_squared_to(closest_shape.global_position)
+	for collision_shape in collision_shapes:
+		var distance := global_position.distance_squared_to(collision_shape.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_shape = collision_shape
 
-	var local_y := local_bounds.position.y
-	while local_y <= local_bounds.end.y:
-		var local_x := local_bounds.position.x
-		while local_x <= local_bounds.end.x:
-			var local_point := Vector2(local_x, local_y)
-			if _is_local_point_inside_shape(shape, local_point):
-				candidates.append(collision_shape.global_transform * local_point)
-			local_x += step
-		local_y += step
-
-	return candidates
-
-func _get_shape_local_bounds(shape: Shape2D) -> Rect2:
-	if shape is CircleShape2D:
-		var circle := shape as CircleShape2D
-		return Rect2(Vector2(-circle.radius, -circle.radius), Vector2(circle.radius * 2.0, circle.radius * 2.0))
-	if shape is RectangleShape2D:
-		var rectangle := shape as RectangleShape2D
-		return Rect2(-rectangle.size * 0.5, rectangle.size)
-	if shape is CapsuleShape2D:
-		var capsule := shape as CapsuleShape2D
-		return Rect2(Vector2(-capsule.radius, -capsule.height * 0.5), Vector2(capsule.radius * 2.0, capsule.height))
-
-	return Rect2(Vector2.ZERO, Vector2.ZERO)
+	return closest_shape.global_position
 
 func _is_global_point_inside_area(area: Area2D, global_point: Vector2) -> bool:
 	for collision_shape in _get_area_collision_shapes(area):
