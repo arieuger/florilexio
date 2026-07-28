@@ -1,33 +1,34 @@
 ~ start
-if not GameState.old_woman_already_spoke
-	=> old_woman_all_flowers
-else 
-	Esqueciches as herbiñas ou é que che sobra o tempo?
-	do request_player_dialogue("player_response_all_flowers_question")
+if not GameState.old_woman_first_conversation
+	Que fas tan cedo na rúa, paxarín?\nNon tes medo de te perder?
+	Andas buscando algo no que botar o día\nata que chegue a hora das lumeiradas?
+	Como me prestaría agora unha cuncquiña do\nbebedizo ese que quita do corpo terrores e arrepíos.
+	A receita era sinxela…\nUnhas follas de flor de malva a infusionar…
+	do request_player_dialogue("player_generic_response")
 	=> END
+else 
+	Resposta da vella cando xa che asignou a misión => END
 
-~ dog_more_flowers
-Esta Mundo xa non rexe. Faltoulle o tomiño,
-a menta, a ruda, e mais a macela.
-E tamén o sabugueiro e a herba da Nosa Señora… 
-E mira de levar silveira, pero ollo con prender nela! 
+~ old_woman_second_fragment
+Eu? Eu xa non podo ir collelas. Unha é tan vella, tan vella\nque xa todo a asusta. Lume! Auga! Cóbregas! Cadelas!
+Disque as malvas medran nas beiras  dos camiños.\nTamén no camposanto.\nSegue a ruta cara o parque, a ver que atopas…  
+do request_speaker_dialogue("dog", "dog_first_response") 
+=> END
+
+~ dog_first_response
+A infusionar di… Licor de flores é o que\nbebe a vella desde que o mundo é mundo. 
+Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar.
+Así é como poderás recoñecelas…
+[shake rate=10 level=2]bssbssbss….[/shake]
+Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
+Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas! 
+# TODO: acknowledged_magic_plants igual deixa de sernos útil
+set GameState.acknowledged_magic_plants = true
+set GameState.old_woman_first_conversation = true
 do GameState.add_consumed_time(1)
 => END
 
-~ player_response_all_flowers_question
-- Esquecín, si
-	do request_speaker_dialogue("old_woman", "old_woman_all_flowers")
-	=> END
-- Non
-	=> END
-
-~ old_woman_all_flowers
-Fiúncho, fento macho, herba luísa, xesta, romeu,
-malva, herba de San Xoán… 
-Se queres collelas todas, bule, paxarín, 
-que o [shake rate=20 level=5]tempo[/shake] voa como voa o vento!. 
-do request_speaker_dialogue("dog", "dog_more_flowers") 
-do GameState.acknowledged_magic_plants = true
-set GameState.old_woman_already_spoke = true
+~ player_generic_response
+...
+do request_speaker_dialogue("old_woman", "old_woman_second_fragment")
 => END
-
