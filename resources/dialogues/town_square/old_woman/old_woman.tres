@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://bprv0xt2yuov8"]
+
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="1_3yix4"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_2ftk6"]
+
+[resource]
+script = ExtResource("2_2ftk6")
+conversation_id = &"old_woman_first_meeting"
+dialogue_resource = ExtResource("1_3yix4")
+start_title = "first_meeting"
+initial_speaker_id = &"old_woman"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"

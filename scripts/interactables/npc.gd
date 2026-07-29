@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var conversation: ConversationDefinition
+@export var dialogue_profile: DialogueProfile
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var requires_wind_already_spoke := false
@@ -45,8 +46,9 @@ func _interact() -> void:
 	if _is_interacting or not _is_available():
 		return
 
-	if not is_instance_valid(conversation):
-		push_warning("NPC '%s' has no conversation assigned."% name)
+	var selected_conversation := _resolve_conversation()
+	if selected_conversation == null:
+		push_warning("NPC '%s' has no eligible conversation."% name)
 		return
 
 	_is_interacting = true
@@ -66,7 +68,7 @@ func _interact() -> void:
 				_is_interacting = false
 				return
 
-	await DialogueBalloonCoordinator.play( conversation, [self])
+	await DialogueBalloonCoordinator.play(selected_conversation, [self])
 	_is_interacting = false
 
 func _on_wind_already_spoke_changed(_has_spoken: bool) -> void:
@@ -97,3 +99,11 @@ func _make_hover_ignore_world_tint() -> void:
 	var hover_material := CanvasItemMaterial.new()
 	hover_material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	hover_sprite.material = hover_material
+
+
+func _resolve_conversation() -> ConversationDefinition:
+	if dialogue_profile != null:
+		var context := ConversationContext.create(self, get_tree().current_scene)
+		return ConversationResolver.resolve(dialogue_profile, context)
+
+	return conversation

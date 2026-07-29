@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
-[ext_resource type="Resource" uid="uid://bprv0xt2yuov8" path="res://resources/dialogues/town_square/old_woman.tres" id="8_0348l"]
+[ext_resource type="Resource" uid="uid://ovpulnr3u68y" path="res://resources/dialogues/town_square/old_woman/old_woman_profile.tres" id="9_0348l"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
@@ -363,7 +363,7 @@ position = Vector2(0, -1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
 [node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
-conversation = ExtResource("8_0348l")
+dialogue_profile = ExtResource("9_0348l")
 
 [node name="BalloonConfig" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1949997476]
 position = Vector2(-2, -27)
