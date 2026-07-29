@@ -144,6 +144,7 @@ func debug_reset() -> void:
 	if not OS.is_debug_build():
 		return
 
+	ConversationHistory.clear()
 	discovered_plants.clear()
 	collected_plants.clear()
 	final_bouquet_composition.clear()

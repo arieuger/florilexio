@@ -1,5 +1,11 @@
 extends Node
 
+signal conversation_started(conversation_id: StringName)
+signal conversation_finished(conversation_id: StringName)
+signal conversation_interrupted(conversation_id: StringName, reason: StringName)
+
+signal _active_conversation_resolved
+
 const DEFAULT_CONVERSATION_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/conversation_balloon.tscn")
 const DEFAULT_INFO_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/generic_info_balloon.tscn")
 const GENERAL_INFO_DIALOGUE : DialogueResource = preload("res://dialogues/info.dialogue")
@@ -7,8 +13,16 @@ const GENERAL_INFO_DIALOGUE : DialogueResource = preload("res://dialogues/info.d
 var is_running := false
 var active_conversation: ConversationDefinition
 var active_speaker_id: StringName = &""
+var active_balloon: Node
 var _current_info_balloon: GenericInfoBalloon
 
+var _active_dialogue_resource: DialogueResource
+var _active_session_resolved := false
+var _active_session_finished := false
+var _active_interruption_reason: StringName = &""
+
+func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func play(conversation: ConversationDefinition, extra_game_states: Array = []) -> bool:
 	if is_running:
@@ -30,25 +44,53 @@ func play(conversation: ConversationDefinition, extra_game_states: Array = []) -
 		push_warning("DialogueBalloonCoordinator: conversation_definition must have a valid initial_speaker_id.")
 		return false
 
+	var initial_speaker := _get_dialogue_speaker(conversation.initial_speaker_id)
+	if not is_instance_valid(initial_speaker):
+		push_warning("DialogueBalloonCoordinator: initial speaker '%s' in conversation ''%s was not found."
+			% [conversation.initial_speaker_id, conversation.conversation_id])
+		return false
+
 	is_running = true
 	active_conversation = conversation
 	active_speaker_id = conversation.initial_speaker_id
+	_active_dialogue_resource = conversation.dialogue_resource
+	_active_session_resolved = false
+	_active_session_finished = false
+	_active_interruption_reason = &""
 
-	var balloon := DialogueManager.show_dialogue_balloon_scene(
+	active_balloon = DialogueManager.show_dialogue_balloon_scene(
 		DEFAULT_CONVERSATION_BALLOON_SCENE,
 		conversation.dialogue_resource,
 		conversation.start_title,
 		[self] + extra_game_states
 	)
 
-	await _prepare_initial_speaker_balloon(balloon, conversation.initial_speaker_id)
-	await _wait_for_dialogue_to_end(conversation.dialogue_resource)
+	if not is_instance_valid(active_balloon):
+		var failed_conversation_id := conversation.conversation_id
+		_clear_active_conversation()
+		conversation_interrupted.emit(failed_conversation_id, &"balloon_failed")
+		return false
 
-	
-	active_conversation = null
-	active_speaker_id = &""
-	is_running = false
-	return true
+	active_balloon.tree_exited.connect(_on_active_balloon_tree_exited, CONNECT_ONE_SHOT)
+
+	conversation_started.emit(conversation.conversation_id)
+	await _prepare_initial_speaker_balloon(active_balloon, conversation.initial_speaker_id)
+
+	if not _active_session_resolved:
+		await _active_conversation_resolved
+
+	var resolved_conversation_id := conversation.conversation_id
+	var finished_normally := _active_session_finished
+	var interruption_reason := _active_interruption_reason
+
+	_clear_active_conversation()
+
+	if finished_normally:
+		conversation_finished.emit(resolved_conversation_id)
+	else:
+		conversation_interrupted.emit(resolved_conversation_id, interruption_reason)
+
+	return finished_normally
 
 func show_info_dialogue(
 	dialogue_title: String,
@@ -106,7 +148,7 @@ func show_info_dialogue_and_wait(
 	return true
 
 
-func resolve_line_speaker(character: String) -> Node2D:
+func resolve_line_speaker(character: String) -> DialogueSpeaker:
 	var requested_speaker_id := StringName(character.strip_edges())
 
 	if not requested_speaker_id.is_empty():
@@ -118,7 +160,7 @@ func resolve_line_speaker(character: String) -> Node2D:
 	if active_speaker_id.is_empty():
 		return null
 
-	return _get_dialogue_speaker(str(active_speaker_id))
+	return _get_dialogue_speaker(active_speaker_id)
 
 
 func apply_line_speaker(balloon: Node, character: String) -> bool:
@@ -148,13 +190,24 @@ func apply_line_speaker(balloon: Node, character: String) -> bool:
 	if balloon.has_method("set_balloon_world_position"):
 		balloon.set_balloon_world_position(speaker.global_position)
 
-	if balloon.has_method("set_balloon_color") and "balloon_color" in speaker:
-		var speaker_color: Color = speaker.get("balloon_color")
-		balloon.set_balloon_color(speaker_color)
+	if balloon.has_method("set_balloon_color"):
+		balloon.set_balloon_color(speaker.balloon_color)
 
-	if "voice_type" in speaker:
-		var voice_type_value: float = speaker.get("voice_type")
-		SoundManager.set_global_parameter("VoiceType", voice_type_value)
+	SoundManager.set_global_parameter("VoiceType", speaker.voice_type)
+
+	return true
+
+
+func interrupt_active_conversation(reason: StringName = &"cancelled") -> bool:
+	if not is_running:
+		return false
+
+	var balloon_to_close := active_balloon
+
+	_resolve_active_session(false, reason)
+
+	if is_instance_valid(balloon_to_close):
+		balloon_to_close.queue_free()
 
 	return true
 
@@ -168,20 +221,15 @@ func _apply_info_replacements(message: String, replacements: Dictionary) -> Stri
 
 
 func _prepare_initial_speaker_balloon(balloon: Node, speaker_id: StringName) -> void:
-	var speaker := _get_dialogue_speaker(str(speaker_id))
+	var speaker := _get_dialogue_speaker(speaker_id)
 	if not is_instance_valid(speaker):
 		push_warning("DialogueBalloonCoordinator: initial speaker '%s' was not found."% speaker_id)
 		SoundManager.set_global_parameter("VoiceType", 0.0)
 		await _prepare_world_balloon(balloon, Vector2.ZERO, Color.WHITE)
 		return
 
-	var speaker_color: Color = speaker.get("balloon_color")
-	var voice_type_value = speaker.get("voice_type")
-
-	if voice_type_value is float:
-		SoundManager.set_global_parameter("VoiceType", voice_type_value)
-
-	await _prepare_world_balloon(balloon, speaker.global_position, speaker_color)
+	SoundManager.set_global_parameter("VoiceType", speaker.voice_type)
+	await _prepare_world_balloon(balloon, speaker.global_position, speaker.balloon_color)
 
 
 func _prepare_world_balloon(balloon: Node, world_position: Vector2, balloon_color: Color) -> void:
@@ -208,12 +256,18 @@ func _prepare_world_balloon(balloon: Node, world_position: Vector2, balloon_colo
 		balloon.visible = true
 
 
-func _get_dialogue_speaker(speaker_id: String) -> Node2D:
+func _get_dialogue_speaker(speaker_id: StringName) -> DialogueSpeaker:
 	if speaker_id.is_empty():
 		return null
-	for speaker in get_tree().get_nodes_in_group("dialogue_speaker"):
-		if str(speaker.get("speaker_id")) == speaker_id:
-			return speaker as Node2D
+
+	for node in get_tree().get_nodes_in_group("dialogue_speaker"):
+		var speaker := node as DialogueSpeaker
+		if not is_instance_valid(speaker):
+			continue
+
+		if speaker.speaker_id == speaker_id:
+			return speaker
+
 	return null
 
 
@@ -222,3 +276,41 @@ func _wait_for_dialogue_to_end(dialogue_resource: DialogueResource) -> void:
 		var ended_resource: DialogueResource = await DialogueManager.dialogue_ended
 		if ended_resource == dialogue_resource:
 			return
+
+func _clear_active_conversation() -> void:
+	if is_instance_valid(active_balloon):
+		if active_balloon.tree_exited.is_connected(_on_active_balloon_tree_exited):
+			active_balloon.tree_exited.disconnect(_on_active_balloon_tree_exited)
+
+	active_balloon = null
+	active_conversation = null
+	active_speaker_id = &""
+	_active_dialogue_resource = null
+	_active_session_resolved = false
+	_active_session_finished = false
+	_active_interruption_reason = &""
+	is_running = false
+
+func _on_dialogue_ended(dialogue_resource: DialogueResource) -> void:
+	if not is_running:
+		return
+
+	if dialogue_resource != _active_dialogue_resource:
+		return
+
+	_resolve_active_session(true)
+
+func _on_active_balloon_tree_exited() -> void:
+	if not is_running:
+		return
+
+	_resolve_active_session(false,&"balloon_exited")
+
+func _resolve_active_session(finished: bool, interruption_reason: StringName = &"") -> void:
+	if not is_running or _active_session_resolved:
+		return
+
+	_active_session_resolved = true
+	_active_session_finished = finished
+	_active_interruption_reason = interruption_reason
+	_active_conversation_resolved.emit()
