@@ -1,15 +1,14 @@
 extends Node2D
 
-@export var dialogue_resource: DialogueResource
-@export var dialogue_title := "start"
+@export var conversation: ConversationDefinition
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
 @export var requires_wind_already_spoke := false
 
+
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
 @onready var interaction_point: Node2D = $InteractionPoint
-@onready var balloon_marker: Marker2D = $BalloonConfig
 
 var _hover_tween: Tween
 var _is_interacting := false
@@ -42,33 +41,32 @@ func _on_input_event(viewport, event, _shape_idx):
 		viewport.set_input_as_handled()
 		_interact()
 
-func _interact():
+func _interact() -> void:
 	if _is_interacting or not _is_available():
 		return
-	
-	_is_interacting = true
 
+	if not is_instance_valid(conversation):
+		push_warning("NPC '%s' has no conversation assigned."% name)
+		return
+
+	_is_interacting = true
 	SoundManager.play_simple_sound("Actions/Click")
-	
+
 	if interaction_point:
 		var player = get_tree().get_first_node_in_group("player")
 		if player and player.has_method("move_to_point"):
-			var stop_distance: float = player.interaction_stop_distance if "interaction_stop_distance" in player else 6.0
-			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
+			var stop_distance: float = (
+				player.interaction_stop_distance
+				if "interaction_stop_distance" in player
+				else 6.0
+			)
+			var reached: bool = await player.move_to_point(interaction_point.global_position,stop_distance
+			)
 			if not reached:
 				_is_interacting = false
 				return
 
-	await DialogueBalloonCoordinator.run_world_sequence(
-		dialogue_resource,
-		dialogue_title,
-		balloon_marker.global_position,
-		_get_balloon_color(),
-		_get_voice_type(),
-		[self],
-		_get_balloon_scene()
-	)
-
+	await DialogueBalloonCoordinator.play( conversation, [self])
 	_is_interacting = false
 
 func _on_wind_already_spoke_changed(_has_spoken: bool) -> void:
@@ -86,23 +84,6 @@ func _update_availability() -> void:
 
 	if not available:
 		_fade_hover_to(0.0)
-
-func _get_balloon_color() -> Color:
-	if "balloon_color" in balloon_marker:
-		var marker_color: Color = balloon_marker.get("balloon_color")
-		return marker_color
-	return Color.WHITE
-	
-func _get_voice_type() -> float:
-	if "voice_type" in balloon_marker:
-		var voice_type: float = balloon_marker.get("voice_type")
-		return voice_type
-	return 0.0
-
-func _get_balloon_scene() -> PackedScene:
-	if "balloon_scene" in balloon_marker:
-		return balloon_marker.get("balloon_scene") as PackedScene
-	return null
 
 func _fade_hover_to(target_alpha: float):
 	if _hover_tween:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://c7f1ravedk5ik"]
+
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="1_4ujhn"]
+[ext_resource type="Resource" uid="uid://0uakb4p3pgua" path="res://dialogues/scene1/school_board.dialogue" id="1_387kt"]
+
+[resource]
+script = ExtResource("1_4ujhn")
+conversation_id = &"school_board_conversation"
+dialogue_resource = ExtResource("1_387kt")
+initial_speaker_id = &"school_board"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"

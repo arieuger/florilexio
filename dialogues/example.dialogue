@@ -1,25 +1,19 @@
 ~ start
-Queres que che diga todas as opcións? 
+example_npc: Queres que che diga todas as opcións?
 Vai levar [shake rate=20 level=10]tempo[/shake]...
-do request_player_dialogue("player_response_test")
-=> END
 
-~ player_response_test
-- si
-	do request_npc_dialogue("npc_all_options")
-	do request_player_dialogue("player_understands")
-	do request_npc_dialogue("npc_after_player_understands")
+player: ...
+
+- Si
+	example_npc: Estas son todas as opcións que che podo contar.
+	Primeiro, podes mirar a planta con calma.
+	Despois, podes volver falar comigo cando queiras.
+
+	player: Vale, entendo. Vou mirar con calma.
+
+	example_npc: Perfecto. Se atopas algo raro, volve e cóntamo.
 	=> END
-- non
-	Que peñazo => END
 
-~ npc_all_options
-Estas son todas as opcións que che podo contar.
-Primeiro, podes mirar a planta con calma.
-Despois, podes volver falar comigo cando queiras. => END
-
-~ player_understands
-Vale, entendo. Vou mirar con calma. => END
-
-~ npc_after_player_understands
-Perfecto. Se atopas algo raro, volve e cóntamo. => END
+- Non
+	player: Que peñazo.
+	=> END

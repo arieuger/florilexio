@@ -1,34 +1,25 @@
 ~ start
 if not GameState.old_woman_first_conversation
-	Que fas tan cedo na rúa, paxarín?\nNon tes medo de te perder?
+	old_woman: Que fas tan cedo na rúa, paxarín?\nNon tes medo de te perder?
 	Andas buscando algo no que botar o día\nata que chegue a hora das lumeiradas?
 	Como me prestaría agora unha cuncquiña do\nbebedizo ese que quita do corpo terrores e arrepíos.
 	A receita era sinxela…\nUnhas follas de flor de malva a infusionar…
-	do request_player_dialogue("player_generic_response")
+	
+	player: ...
+	
+	old_woman: Eu? Eu xa non podo ir collelas. Unha é tan vella, tan vella\nque xa todo a asusta. Lume! Auga! Cóbregas! Cadelas!
+	Disque as malvas medran nas beiras  dos camiños.\nTamén no camposanto.\nSegue a ruta cara o parque, a ver que atopas…  
+	
+	dog: A infusionar di… Licor de flores é o que\nbebe a vella desde que o mundo é mundo. 
+	Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar.
+	Así é como poderás recoñecelas…
+	[shake rate=10 level=2]bssbssbss….[/shake]
+	Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
+	Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas! 
+	# TODO: acknowledged_magic_plants igual deixa de sernos útil
+	set GameState.acknowledged_magic_plants = true
+	set GameState.old_woman_first_conversation = true
+	do GameState.add_consumed_time(1)
 	=> END
 else 
 	Resposta da vella cando xa che asignou a misión => END
-
-~ old_woman_second_fragment
-Eu? Eu xa non podo ir collelas. Unha é tan vella, tan vella\nque xa todo a asusta. Lume! Auga! Cóbregas! Cadelas!
-Disque as malvas medran nas beiras  dos camiños.\nTamén no camposanto.\nSegue a ruta cara o parque, a ver que atopas…  
-do request_speaker_dialogue("dog", "dog_first_response") 
-=> END
-
-~ dog_first_response
-A infusionar di… Licor de flores é o que\nbebe a vella desde que o mundo é mundo. 
-Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar.
-Así é como poderás recoñecelas…
-[shake rate=10 level=2]bssbssbss….[/shake]
-Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
-Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas! 
-# TODO: acknowledged_magic_plants igual deixa de sernos útil
-set GameState.acknowledged_magic_plants = true
-set GameState.old_woman_first_conversation = true
-do GameState.add_consumed_time(1)
-=> END
-
-~ player_generic_response
-...
-do request_speaker_dialogue("old_woman", "old_woman_second_fragment")
-=> END

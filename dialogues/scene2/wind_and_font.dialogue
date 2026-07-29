@@ -1,6 +1,6 @@
 ~ wind_blowing
 set GameState.wind_already_spoke = true 
-Uuuuuuuuuh….. Aaaaaaaaah….. Iiiiiiuuuuuuh……. Aaaaaaaaah….  
+wind: Uuuuuuuuuh….. Aaaaaaaaah….. Iiiiiiuuuuuuh……. Aaaaaaaaah….  
 Iraaaaás ao abrente do dííía\na aaauga freeesca cataaaaaar
 da aaaaauga do paxariiiiño\nque saúúde che haaa de daaaar.
 Coooooorre, criatura,\nvaaaite lavaaaaar
@@ -12,8 +12,8 @@ do GameState.add_consumed_time(1)
 => END
 
 ~ font
-Nin apio, nin fiuncho nin pirixel.\nSe atopas nabo de San Pedro\nescapa del. 
+font: Nin apio, nin fiuncho nin pirixel.\nSe atopas nabo de San Pedro\nescapa del. 
 E, lembra, hoxe como sempre foi\:\nVale máis a pegada de cen mosquitos\nque pé de boi. 
 do GameState.add_consumed_time(1)
-do GameState.acknowledged_mortal_plants = true
+set GameState.acknowledged_mortal_plants = true
 => END

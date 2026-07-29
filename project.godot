@@ -31,7 +31,7 @@ FinalBouquetCompositionCalculator="*res://scripts/autoload/final_bouquet_composi
 
 [dialogue_manager]
 
-runtime/balloon_path="res://ui/dialogue/npc_balloon.tscn"
+runtime/balloon_path="uid://76dbvnpso5ox"
 
 [display]
 
@@ -90,7 +90,7 @@ toggle_debug_panel={
 [internationalization]
 
 locale/translations=PackedStringArray("res://dialogues/translations/en.po")
-locale/translations_pot_files=PackedStringArray("res://dialogues/example.dialogue", "res://dialogues/scene1/oldwoman.dialogue", "res://dialogues/info.dialogue", "res://dialogues/scene1/tutorial.dialogue", "res://dialogues/scene1/school_board.dialogue", "res://dialogues/intro.dialogue", "res://dialogues/scene2/terrace_poster.dialogue", "res://scripts/minigames/cutting_minigame/cutting_minigame.gd", "res://dialogues/scene1/firelight.dialogue", "res://dialogues/scene2/wind_and_font.dialogue", "res://dialogues/other.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/example.dialogue", "res://dialogues/scene1/oldwoman.dialogue", "res://dialogues/info.dialogue", "res://dialogues/scene1/school_board.dialogue", "res://dialogues/intro.dialogue", "res://dialogues/scene2/terrace_poster.dialogue", "res://scripts/minigames/cutting_minigame/cutting_minigame.gd", "res://dialogues/scene1/firelight.dialogue", "res://dialogues/scene2/wind_and_font.dialogue", "res://dialogues/other.dialogue")
 
 [physics]
 

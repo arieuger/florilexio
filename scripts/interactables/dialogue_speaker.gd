@@ -2,7 +2,6 @@ extends Marker2D
 
 @export var speaker_id: StringName
 @export var balloon_color: Color = Color.WHITE
-@export var balloon_scene: PackedScene
 @export var voice_type: float
 
 

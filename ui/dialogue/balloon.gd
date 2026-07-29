@@ -159,6 +159,12 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
+
+	if not dialogue_line.character.strip_edges().is_empty():
+		DialogueBalloonCoordinator.apply_line_speaker(
+			self,
+			dialogue_line.character
+		)
 	
 	if is_instance_valid(progress):
 		progress.hide()
@@ -229,6 +235,68 @@ func next(next_id: String) -> void:
 	SoundManager.play_simple_sound("Actions/Next Dialogue")
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
 
+
+func set_world_presentation() -> void:
+	_follows_world_position = true
+	show_progress_indicator = true
+
+	if not is_instance_valid(balloon):
+		return
+
+	balloon.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	balloon.offset_left = 0.0
+	balloon.offset_top = 0.0
+	balloon.offset_right = 0.0
+	balloon.offset_bottom = 0.0
+
+	var margin_container := balloon.get_node_or_null(
+		"MarginContainer"
+	) as MarginContainer
+
+	if is_instance_valid(margin_container):
+		margin_container.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		margin_container.offset_left = 0.0
+		margin_container.offset_top = 0.0
+		margin_container.offset_right = 48.0
+		margin_container.offset_bottom = 62.0
+
+	if is_instance_valid(progress):
+		var progress_container := progress.get_parent() as Control
+		if is_instance_valid(progress_container):
+			progress_container.show()
+
+
+func set_player_presentation() -> void:
+	_follows_world_position = false
+	show_progress_indicator = false
+
+	if not is_instance_valid(balloon):
+		return
+
+	if is_instance_valid(balloon):
+		balloon.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+		balloon.offset_left = 0.0
+		balloon.offset_top = 0.0
+		balloon.offset_right = 0.0
+		balloon.offset_bottom = 0.0
+
+	var margin_container := balloon.get_node_or_null(
+		"MarginContainer"
+	) as MarginContainer
+
+	if is_instance_valid(margin_container):
+		margin_container.set_anchors_preset(
+			Control.PRESET_CENTER_BOTTOM
+		)
+		margin_container.offset_left = -29.0
+		margin_container.offset_top = -32.0
+		margin_container.offset_right = 29.0
+		margin_container.offset_bottom = 0.0
+
+	if is_instance_valid(progress):
+		var progress_container := progress.get_parent() as Control
+		if is_instance_valid(progress_container):
+			progress_container.hide()
 
 #region Signals
 

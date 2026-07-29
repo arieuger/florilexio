@@ -1,5 +1,5 @@
 ~ start
-Ao alumnado dos cursos que corresponda: 
+school_board: Ao alumnado dos cursos que corresponda: 
 Materia\: Ciencias da Terra e Botánica.
 Contidos\: 
 \- Endemismos e plantas en perigo de extinción no
@@ -13,5 +13,5 @@ Data límite de entrega\: 7 de setembro
 
 if not GameState.acknowledged_invasive_plants:
 	do GameState.add_consumed_time(1)
-	do GameState.acknowledged_invasive_plants = true
+	set GameState.acknowledged_invasive_plants = true
 => END

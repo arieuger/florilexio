@@ -9,16 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://djer6t1dqemcl" path="res://assets/sprites/environment/scene1/window_light.png" id="3_k7al0"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
 [ext_resource type="Texture2D" uid="uid://hdd38jtpqw0h" path="res://assets/sprites/environment/scene1/font.png" id="5_lquwl"]
-[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="6_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://vi3pek1jytmt" path="res://assets/sprites/environment/scene1/wood.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://daai7xkehoynk" path="res://assets/sprites/hovers/ho_old-woman.png" id="7_dg77c"]
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
+[ext_resource type="Resource" uid="uid://bprv0xt2yuov8" path="res://resources/dialogues/town_square/old_woman.tres" id="8_0348l"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
-[ext_resource type="Resource" uid="uid://0uakb4p3pgua" path="res://dialogues/scene1/school_board.dialogue" id="13_5k67m"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
+[ext_resource type="Resource" uid="uid://c7f1ravedk5ik" path="res://resources/dialogues/town_square/school_board.tres" id="15_a7g5c"]
 [ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
@@ -363,7 +363,7 @@ position = Vector2(0, -1)
 polygon = PackedVector2Array(-1, 2, 8, 7, 11, 4, 11, 0, 2, -3)
 
 [node name="OldWoman" parent="YSortables/BenchRight" unique_id=2036821595 instance=ExtResource("5_4c57u")]
-dialogue_resource = ExtResource("6_ycdy4")
+conversation = ExtResource("8_0348l")
 
 [node name="BalloonConfig" parent="YSortables/BenchRight/OldWoman" index="0" unique_id=1949997476]
 position = Vector2(-2, -27)
@@ -452,7 +452,7 @@ polygon = PackedVector2Array(0, 0, 6, 0, 6, 1, 64, 1, 64, 0.18919182, 90, 0, 90,
 
 [node name="SchoolBoard" parent="YSortables" unique_id=122154945 instance=ExtResource("5_4c57u")]
 position = Vector2(194, 117)
-dialogue_resource = ExtResource("13_5k67m")
+conversation = ExtResource("15_a7g5c")
 hover_color = Color(0.9999997, 0.9671461, 0.7799386, 0.7490196)
 
 [node name="BalloonConfig" parent="YSortables/SchoolBoard" index="0" unique_id=1949997476]

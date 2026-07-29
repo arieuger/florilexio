@@ -1,9 +1,6 @@
 extends Node2D
 
-@export var final_wind_dialogue: DialogueResource = preload("res://dialogues/scene2/wind_and_font.dialogue")
-@export var final_wind_dialogue_title := "wind_blowing"
-@export var final_wind_speake_id := "wind"
-
+@export var conversation: ConversationDefinition
 @onready var trigger_area: Area2D = $TriggerArea
 
 var _is_running := false
@@ -17,11 +14,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 	_is_running = true
 	_set_player_movement_enabled(false)
-	await DialogueBalloonCoordinator.run_speaker_sequence(
-		final_wind_dialogue,
-		final_wind_dialogue_title,
-		final_wind_speake_id
-	)
+
+	if is_instance_valid(conversation):
+		await DialogueBalloonCoordinator.play(conversation)
+		
 	_set_player_movement_enabled(true)
 	_is_running = false
 

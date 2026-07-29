@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://cio4d6orh7te"]
+
+[ext_resource type="Resource" uid="uid://btlia331ufjlo" path="res://dialogues/scene2/terrace_poster.dialogue" id="1_5h70r"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="1_kr635"]
+
+[resource]
+script = ExtResource("1_kr635")
+conversation_id = &"terrace_poster_conversation"
+dialogue_resource = ExtResource("1_5h70r")
+initial_speaker_id = &"terrace_poster"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"

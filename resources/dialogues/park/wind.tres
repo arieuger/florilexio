@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://bxu2hh44ed7j7"]
+
+[ext_resource type="Resource" uid="uid://dem5g48lb2le5" path="res://dialogues/scene2/wind_and_font.dialogue" id="1_15r8q"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="1_cuatm"]
+
+[resource]
+script = ExtResource("1_cuatm")
+conversation_id = &"wind_conversation"
+dialogue_resource = ExtResource("1_15r8q")
+start_title = "wind_blowing"
+initial_speaker_id = &"wind"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"

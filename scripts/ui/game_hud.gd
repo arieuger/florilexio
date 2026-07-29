@@ -4,9 +4,9 @@ const TIME_LABEL_DEFAULT_COLOR := Color('#d3ffce')
 const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 
 @export var final_composition_scene: PackedScene = preload("res://ui/final_composition/final_composition_panel.tscn")
-@export var final_firelight_dialogue: DialogueResource = preload("res://dialogues/scene1/firelight.dialogue")
-@export var final_firelight_dialogue_title := "final_firelight_talk"
-@export var final_firelight_speaker_id := "firelight"
+@export var final_firelight_conversation: ConversationDefinition = preload(
+	"res://resources/dialogues/town_square/firelight.tres"
+)
 @export_file("*.tscn") var final_area_path := "res://scenes/world/town_square.tscn"
 @export var final_spawn_id: StringName = &"final_player_spawn"
 @export var final_area_transition_duration := 0.45
@@ -284,16 +284,12 @@ func _show_mortal_red_overlay() -> void:
 
 
 func _show_final_firelight_dialogue() -> void:
-	if not is_instance_valid(final_firelight_dialogue):
+	if not is_instance_valid(final_firelight_conversation):
+		push_warning("GameHUD: missing final firelight conversation.")
 		return
 
-	var fallback_marker := _get_final_spotlight_marker()
-	var fallback_position := fallback_marker.global_position if fallback_marker else Vector2.ZERO
-	await DialogueBalloonCoordinator.run_speaker_sequence(
-		final_firelight_dialogue,
-		final_firelight_dialogue_title,
-		final_firelight_speaker_id,
-		fallback_position
+	await DialogueBalloonCoordinator.play(
+		final_firelight_conversation
 	)
 
 
