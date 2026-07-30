@@ -20,8 +20,8 @@ var collected_plants: Dictionary = {}
 var final_bouquet_composition: Dictionary = {}
 var preferred_locale := "gl"
 
-var old_woman_first_conversation: bool = false
-var tutorial_already_launched: bool = false
+var tutorial_plant_unlocked := false
+var plant_collection_tutorial_completed := false
 
 var acknowledged_invasive_plants: bool:
 	get:
@@ -148,8 +148,8 @@ func debug_reset() -> void:
 	discovered_plants.clear()
 	collected_plants.clear()
 	final_bouquet_composition.clear()
-	old_woman_first_conversation = false
-	tutorial_already_launched = false
+	tutorial_plant_unlocked = false
+	plant_collection_tutorial_completed = false
 	acknowledged_invasive_plants = false
 	acknowledged_on_danger_plants = false
 	acknowledged_poisonous_plants = false

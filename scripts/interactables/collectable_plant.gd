@@ -102,9 +102,6 @@ func _interact() -> void:
 				_is_interacting = false
 				return
 
-	if plant_launches_tutorial and not GameState.tutorial_already_launched:
-		GameState.tutorial_already_launched = true
-
 	start_collection_minigame()
 
 
@@ -189,6 +186,10 @@ func _get_result_marks(result: MinigameResult) -> Dictionary:
 
 func _on_collection_minigame_completed(_completed_plant_id: StringName) -> void:
 	GameState.collect_plant(_collection_id)
+
+	if plant_launches_tutorial:
+		GameState.plant_collection_tutorial_completed = true
+
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
 	_set_name_label_visible(false)
@@ -202,9 +203,6 @@ func _on_collection_minigame_completed(_completed_plant_id: StringName) -> void:
 func _on_collection_minigame_closed() -> void:
 	_is_interacting = false
 
-func _is_tutorial_plant() -> bool:
-	return plant_launches_tutorial and not GameState.tutorial_already_launched
-
 
 func _can_interact() -> bool:
 	return not _is_interacting and not _is_collected() and not _is_blocked_by_tutorial()
@@ -215,8 +213,10 @@ func _is_collected() -> bool:
 
 
 func _is_blocked_by_tutorial() -> bool:
-	return not GameState.old_woman_first_conversation\
-	or (not GameState.tutorial_already_launched and not plant_launches_tutorial)
+	if plant_launches_tutorial:
+		return not GameState.tutorial_plant_unlocked
+
+	return not GameState.plant_collection_tutorial_completed
 
 
 func _get_minigame_coordinator() -> MinigameCoordinator:

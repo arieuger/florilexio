@@ -18,7 +18,7 @@ Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\
 
 # TODO: acknowledged_magic_plants igual deixa de sernos útil
 set GameState.acknowledged_magic_plants = true
-set GameState.old_woman_first_conversation = true
+set GameState.tutorial_plant_unlocked = true
 do GameState.add_consumed_time(1)
 => END
 

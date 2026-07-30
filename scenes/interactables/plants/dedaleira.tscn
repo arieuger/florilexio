@@ -17,7 +17,6 @@ resource_local_to_scene = true
 size = Vector2(7, 1.75)
 
 [node name="Dedaleira" unique_id=1542834651 instance=ExtResource("1_l4gmu")]
-plant_launches_tutorial = true
 plant_id = &"dedaleira"
 plant_display_name = "Dedaleira"
 hover_color = Color(0.8591121, 0.4394232, 0.8452123, 0.6862745)

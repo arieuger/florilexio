@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://td1wxx23bp73" path="res://assets/sprites/environment/scene1/fire_light.png" id="23_jujta"]
 [ext_resource type="Script" uid="uid://bflryiti23qla" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
 [ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
+[ext_resource type="PackedScene" uid="uid://dxxndj8gcrfap" path="res://scenes/interactables/plants/malva.tscn" id="29_0348l"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
 [ext_resource type="Texture2D" uid="uid://p0tebjapslw2" path="res://assets/sprites/ui/buttons/next_space_arrow.png" id="31_a3e3a"]
@@ -567,7 +568,6 @@ collection_id = &"silveira3"
 [node name="Dedaleira" parent="YSortables" unique_id=1524116644 instance=ExtResource("17_ryguw")]
 position = Vector2(86, 138)
 collection_id = &"dedaleira1"
-collection_difficulty = 3
 collection_miss_time_cost_blocks = 0.0
 
 [node name="Hortensia1" parent="YSortables" unique_id=1696850855 instance=ExtResource("19_1u8w0")]
@@ -593,7 +593,6 @@ collection_id = &"ortiga2"
 
 [node name="Dedaleira2" parent="YSortables" unique_id=1636816703 instance=ExtResource("17_ryguw")]
 position = Vector2(205, 137)
-plant_launches_tutorial = false
 collection_id = &"dedaleira2"
 
 [node name="Ipomea" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_s4hhf")]
@@ -606,6 +605,12 @@ collection_id = &"macela1"
 [node name="Macela2" parent="YSortables" unique_id=1438358246 instance=ExtResource("26_lswn8")]
 position = Vector2(271, 108)
 collection_id = &"macela2"
+
+[node name="Malva" parent="YSortables" unique_id=450859669 instance=ExtResource("29_0348l")]
+position = Vector2(233, 137)
+plant_launches_tutorial = true
+collection_id = &"malva_tutorial"
+collection_difficulty = 3
 
 [node name="CameraConfig" type="Node2D" parent="." unique_id=901001005]
 visible = false
