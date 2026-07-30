@@ -10,7 +10,9 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"): return
-	if GameState.wind_already_spoke or _is_running: return
+	if _is_running: return
+	if is_instance_valid(conversation) and ConversationHistory.has_finished(conversation.conversation_id):
+		return
 
 	_is_running = true
 	_set_player_movement_enabled(false)

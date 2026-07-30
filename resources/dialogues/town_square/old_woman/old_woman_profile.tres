@@ -3,8 +3,13 @@
 [ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_apnri"]
 [ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_jdbio"]
 [ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_y2sws"]
-[ext_resource type="Resource" uid="uid://bprv0xt2yuov8" path="res://resources/dialogues/town_square/old_woman/old_woman.tres" id="3_5m5hu"]
-[ext_resource type="Resource" uid="uid://bvbwe2dio0spi" path="res://resources/dialogues/town_square/old_woman/old_woman_after_first_meeting.tres" id="4_5m5hu"]
+[ext_resource type="Resource" uid="uid://bprv0xt2yuov8" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_first_meeting.tres" id="3_5m5hu"]
+[ext_resource type="Resource" uid="uid://bvbwe2dio0spi" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_reminder.tres" id="4_5m5hu"]
+[ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="4_vpk1j"]
+[ext_resource type="Script" uid="uid://d3638l0gkhmh3" path="res://scripts/dialogue/conditions/quest_objective_completed_condition.gd" id="6_75ost"]
+[ext_resource type="Resource" uid="uid://bjd4erc6e36nt" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_delivery.tres" id="6_dj41s"]
+[ext_resource type="Script" uid="uid://tgj7xbryb6rv" path="res://scripts/dialogue/conditions/inventory_has_plant_condition.gd" id="7_6wpjk"]
+[ext_resource type="Resource" uid="uid://yswocf4cuviv" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_completed.tres" id="9_6wpjk"]
 
 [sub_resource type="Resource" id="Resource_vpk1j"]
 script = ExtResource("1_apnri")
@@ -12,15 +17,58 @@ conversation = ExtResource("3_5m5hu")
 priority = 100
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
+[sub_resource type="Resource" id="Resource_dxo8b"]
+script = ExtResource("4_vpk1j")
+quest_id = &"old_woman_tutorial"
+metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
 [sub_resource type="Resource" id="Resource_dj41s"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("4_5m5hu")
 repeatable = true
 is_fallback = true
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_dxo8b")])
+metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
+
+[sub_resource type="Resource" id="Resource_a8q4m"]
+script = ExtResource("4_vpk1j")
+quest_id = &"old_woman_tutorial"
+metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
+[sub_resource type="Resource" id="Resource_i3gkp"]
+script = ExtResource("6_75ost")
+quest_id = &"old_woman_tutorial"
+objective_id = &"tutorial_collect_malva"
+metadata/_custom_type_script = "uid://d3638l0gkhmh3"
+
+[sub_resource type="Resource" id="Resource_osdha"]
+script = ExtResource("7_6wpjk")
+plant_id = &"malva"
+metadata/_custom_type_script = "uid://tgj7xbryb6rv"
+
+[sub_resource type="Resource" id="Resource_75ost"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("6_dj41s")
+priority = 100
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_a8q4m"), SubResource("Resource_i3gkp"), SubResource("Resource_osdha")])
+metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
+
+[sub_resource type="Resource" id="Resource_ufffc"]
+script = ExtResource("4_vpk1j")
+quest_id = &"old_woman_tutorial"
+expected_status = 2
+metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
+[sub_resource type="Resource" id="Resource_aaun5"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("9_6wpjk")
+priority = 90
+repeatable = true
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_ufffc")])
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [resource]
 script = ExtResource("2_jdbio")
 profile_id = &"old_woman"
-entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s")])
+entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

@@ -80,6 +80,7 @@ func play(conversation: ConversationDefinition, extra_game_states: Array = []) -
 		await _active_conversation_resolved
 
 	var resolved_conversation_id := conversation.conversation_id
+	var resolved_start_title := StringName(conversation.start_title)
 	var finished_normally := _active_session_finished
 	var interruption_reason := _active_interruption_reason
 
@@ -87,6 +88,7 @@ func play(conversation: ConversationDefinition, extra_game_states: Array = []) -
 
 	if finished_normally:
 		conversation_finished.emit(resolved_conversation_id)
+		GameplayEvents.report_dialogue_completed(resolved_conversation_id, resolved_start_title)
 	else:
 		conversation_interrupted.emit(resolved_conversation_id, interruption_reason)
 

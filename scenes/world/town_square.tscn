@@ -16,9 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
+[ext_resource type="Resource" uid="uid://bdt2hrn527rbd" path="res://resources/dialogues/town_square/school_board_profile.tres" id="14_0348l"]
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
-[ext_resource type="Resource" uid="uid://c7f1ravedk5ik" path="res://resources/dialogues/town_square/school_board.tres" id="15_a7g5c"]
 [ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
@@ -453,7 +453,7 @@ polygon = PackedVector2Array(0, 0, 6, 0, 6, 1, 64, 1, 64, 0.18919182, 90, 0, 90,
 
 [node name="SchoolBoard" parent="YSortables" unique_id=122154945 instance=ExtResource("5_4c57u")]
 position = Vector2(194, 117)
-conversation = ExtResource("15_a7g5c")
+dialogue_profile = ExtResource("14_0348l")
 hover_color = Color(0.9999997, 0.9671461, 0.7799386, 0.7490196)
 
 [node name="BalloonConfig" parent="YSortables/SchoolBoard" index="0" unique_id=1949997476]

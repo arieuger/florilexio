@@ -170,13 +170,16 @@ func _apply_collection_minigame_result(result: MinigameResult) -> void:
 	if not result.is_success():
 		return
 
+	var collected_plant_id := StringName(result.rewards.get(&"plant_id", result.target_id))
+	var collected_amount := int(result.rewards.get(&"amount", 1))
+
 	InventoryManager.add_item(
-		StringName(result.rewards.get(&"plant_id", result.target_id)),
-		int(result.rewards.get(&"amount", 1)),
+		collected_plant_id,
+		collected_amount,
 		str(result.rewards.get(&"display_name", "")),
 		_get_result_marks(result)
 	)
-	_on_collection_minigame_completed(result.target_id)
+	_on_collection_minigame_completed(collected_plant_id, collected_amount)
 
 
 func _get_result_marks(result: MinigameResult) -> Dictionary:
@@ -184,11 +187,13 @@ func _get_result_marks(result: MinigameResult) -> Dictionary:
 	return marks if marks is Dictionary else {}
 
 
-func _on_collection_minigame_completed(_completed_plant_id: StringName) -> void:
+func _on_collection_minigame_completed(completed_plant_id: StringName, collected_amount: int) -> void:
 	GameState.collect_plant(_collection_id)
 
 	if plant_launches_tutorial:
 		GameState.plant_collection_tutorial_completed = true
+
+	GameplayEvents.report_plant_collected(completed_plant_id, _collection_id, collected_amount)
 
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)

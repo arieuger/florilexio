@@ -1,11 +1,9 @@
 extends Node2D
 
-@export var conversation: ConversationDefinition
 @export var dialogue_profile: DialogueProfile
 @export var hover_color: Color = Color(1.0, 0.9, 0.35, 0.75)
 @export var hover_fade_duration: float = 0.18
-@export var requires_wind_already_spoke := false
-
+@export var required_finished_conversation_id: StringName
 
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
@@ -18,8 +16,9 @@ func _ready():
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
 	_update_availability()
-	if requires_wind_already_spoke:
-		GameState.wind_already_spoke_changed.connect(_on_wind_already_spoke_changed)
+	if not required_finished_conversation_id.is_empty():
+		ConversationHistory.history_changed.connect(_on_conversation_history_changed)
+		ConversationHistory.history_reloaded.connect(_on_conversation_history_reloaded)
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
@@ -71,11 +70,9 @@ func _interact() -> void:
 	await DialogueBalloonCoordinator.play(selected_conversation, [self])
 	_is_interacting = false
 
-func _on_wind_already_spoke_changed(_has_spoken: bool) -> void:
-	_update_availability()
 
 func _is_available() -> bool:
-	return not requires_wind_already_spoke or GameState.wind_already_spoke
+	return required_finished_conversation_id.is_empty() or ConversationHistory.has_finished(required_finished_conversation_id)
 
 func _update_availability() -> void:
 	var available := _is_available()
@@ -102,8 +99,18 @@ func _make_hover_ignore_world_tint() -> void:
 
 
 func _resolve_conversation() -> ConversationDefinition:
-	if dialogue_profile != null:
-		var context := ConversationContext.create(self, get_tree().current_scene)
-		return ConversationResolver.resolve(dialogue_profile, context)
+	if dialogue_profile == null:
+		return null
 
-	return conversation
+	var context := ConversationContext.create(self, get_tree().current_scene)
+	return ConversationResolver.resolve(dialogue_profile, context)
+
+func _on_conversation_history_changed(
+	conversation_id: StringName
+) -> void:
+	if conversation_id == required_finished_conversation_id:
+		_update_availability()
+
+
+func _on_conversation_history_reloaded() -> void:
+	_update_availability()

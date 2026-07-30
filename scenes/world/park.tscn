@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dexd6cje4p4g2" path="res://assets/sprites/environment/scene2/park_base.png" id="3_g5rbj"]
 [ext_resource type="Texture2D" uid="uid://dkudoxjjkdui1" path="res://assets/sprites/environment/scene2/font.png" id="4_xtwjg"]
 [ext_resource type="Texture2D" uid="uid://dj2r0a3n8358u" path="res://assets/sprites/environment/scene2/terrace.png" id="5_ixevq"]
-[ext_resource type="Resource" uid="uid://d3rcbp2ldxpbe" path="res://resources/dialogues/park/font.tres" id="5_u8cg4"]
+[ext_resource type="Resource" uid="uid://cd4vyv6yb81di" path="res://resources/dialogues/park/font_profile.tres" id="5_k3sex"]
 [ext_resource type="Texture2D" uid="uid://bn36pkne54guh" path="res://assets/sprites/environment/scene2/swing.png" id="6_e0xia"]
 [ext_resource type="Texture2D" uid="uid://bh6p7h1djfabj" path="res://assets/sprites/hovers/font_hover.png" id="6_lsh6y"]
 [ext_resource type="Texture2D" uid="uid://cu53s7jtcf4p6" path="res://assets/sprites/environment/scene2/slide.png" id="7_q318h"]
@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dxxndj8gcrfap" path="res://scenes/interactables/plants/malva.tscn" id="10_ynua0"]
 [ext_resource type="Texture2D" uid="uid://17mu0nn4evo8" path="res://assets/sprites/hovers/terrace_poster_hover.png" id="11_2q76u"]
 [ext_resource type="PackedScene" uid="uid://8ns53t1skih2" path="res://scenes/interactables/plants/herba_luisa.tscn" id="12_hebut"]
+[ext_resource type="Resource" uid="uid://3thquqlniy1s" path="res://resources/dialogues/park/terrace_poster_profile.tres" id="12_k3sex"]
 [ext_resource type="PackedScene" uid="uid://ba6f154tcth64" path="res://scenes/interactables/plants/romeu.tscn" id="12_ynua0"]
-[ext_resource type="Resource" uid="uid://cio4d6orh7te" path="res://resources/dialogues/park/terrace_poster.tres" id="13_52hl2"]
 [ext_resource type="PackedScene" uid="uid://dkr62j07qkejh" path="res://scenes/interactables/plants/xesta.tscn" id="13_wlbh6"]
 [ext_resource type="PackedScene" uid="uid://chx2eugcgoybj" path="res://scenes/interactables/plants/fento.tscn" id="14_0lm4f"]
 [ext_resource type="PackedScene" uid="uid://dgxrwtiolf3ai" path="res://scenes/interactables/plants/hiperico.tscn" id="15_rs8wy"]
@@ -57,7 +57,7 @@ b = Vector2(115, 98)
 a = Vector2(246, 110)
 b = Vector2(112, 98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8038b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8cg4"]
 resource_local_to_scene = true
 size = Vector2(30, 14)
 
@@ -67,7 +67,7 @@ size = Vector2(37, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weyec"]
 size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0yep"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52hl2"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
 
@@ -204,9 +204,9 @@ offset = Vector2(-14, -8)
 polygon = PackedVector2Array(-6, -3, -14, -1, -14, 3, -4, 8, 8, 8, 16, 3, 16, -1, 8, -3)
 
 [node name="NPC" parent="YSortables/Font" unique_id=2036821595 instance=ExtResource("9_mwukj")]
-conversation = ExtResource("5_u8cg4")
+dialogue_profile = ExtResource("5_k3sex")
 hover_color = Color(0.57361525, 0.9740457, 0.99999994, 0.7490196)
-requires_wind_already_spoke = true
+required_finished_conversation_id = &"wind_conversation"
 
 [node name="BalloonConfig" parent="YSortables/Font/NPC" index="0" unique_id=1949997476]
 position = Vector2(-22, -29)
@@ -223,7 +223,7 @@ texture = ExtResource("6_lsh6y")
 
 [node name="CollisionShape2D" parent="YSortables/Font/NPC/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_8038b")
+shape = SubResource("RectangleShape2D_u8cg4")
 
 [node name="Terrace" type="Node2D" parent="YSortables" unique_id=490790186 groups=["nav_obstacle"]]
 position = Vector2(213, 149)
@@ -335,7 +335,7 @@ position = Vector2(-2, -0.5)
 shape = SubResource("RectangleShape2D_weyec")
 
 [node name="NPC" parent="YSortables/TerracePoster" unique_id=1111542579 instance=ExtResource("9_mwukj")]
-conversation = ExtResource("13_52hl2")
+dialogue_profile = ExtResource("12_k3sex")
 
 [node name="BalloonConfig" parent="YSortables/TerracePoster/NPC" index="0" unique_id=1949997476]
 position = Vector2(-52, -27)
@@ -352,7 +352,7 @@ texture = ExtResource("11_2q76u")
 
 [node name="CollisionShape2D" parent="YSortables/TerracePoster/NPC/ClickArea" parent_id_path=PackedInt32Array(1111542579, 474706418) index="0" unique_id=654827359]
 position = Vector2(-1.875, -4.875)
-shape = SubResource("RectangleShape2D_s0yep")
+shape = SubResource("RectangleShape2D_52hl2")
 
 [node name="Fiuncho" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_hgbhm")]
 position = Vector2(84, 160)

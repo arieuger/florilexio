@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueProfile" format=3 uid="uid://bdt2hrn527rbd"]
+
+[ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_rw713"]
+[ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_jt5ci"]
+[ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_tsbd7"]
+[ext_resource type="Resource" uid="uid://c7f1ravedk5ik" path="res://resources/dialogues/town_square/school_board.tres" id="3_j6fhe"]
+
+[sub_resource type="Resource" id="Resource_igmxi"]
+script = ExtResource("1_rw713")
+conversation = ExtResource("3_j6fhe")
+repeatable = true
+is_fallback = true
+metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
+
+[resource]
+script = ExtResource("2_jt5ci")
+profile_id = &"school_board"
+entries = Array[ExtResource("1_rw713")]([SubResource("Resource_igmxi")])
+metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://bjd4erc6e36nt"]
+
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="1_8d0u5"]
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="1_q5ix7"]
+
+[resource]
+script = ExtResource("1_8d0u5")
+conversation_id = &"old_woman_tutorial_delivery"
+dialogue_resource = ExtResource("1_q5ix7")
+start_title = "tutorial_quest_delivery"
+initial_speaker_id = &"old_woman"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"
