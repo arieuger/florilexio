@@ -11,6 +11,7 @@ func _enter_tree() -> void:
 	dock.resource_open_requested.connect(_open_resource)
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL, dock)
 	dock.resource_created.connect(_on_resource_created)
+	dock.documentation_generated.connect(_on_documentation_generated)
 
 func _exit_tree() -> void:
 	if dock == null:
@@ -33,3 +34,7 @@ func _open_resource(resource_path: String) -> void:
 func _on_resource_created(resource_path: String) -> void:
 	get_editor_interface().get_resource_filesystem().scan()
 	_open_resource(resource_path)
+
+
+func _on_documentation_generated(_paths: PackedStringArray) -> void:
+	get_editor_interface().get_resource_filesystem().scan()

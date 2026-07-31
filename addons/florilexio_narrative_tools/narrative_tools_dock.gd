@@ -3,6 +3,7 @@ extends VBoxContainer
 
 signal resource_open_requested(resource_path: String)
 signal resource_created(resource_path: String)
+signal documentation_generated(paths: PackedStringArray)
 
 const ConversationCreatorPanel := preload("res://addons/florilexio_narrative_tools/conversation_creator_panel.gd")
 const QuestCreatorPanel := preload("res://addons/florilexio_narrative_tools/quest_creator_panel.gd")
@@ -52,7 +53,7 @@ func _ready() -> void:
 	quest_scroll.horizontal_scroll_mode = (
 		ScrollContainer.SCROLL_MODE_DISABLED
 	)
-	quest_scroll.custom_minimum_size.y = 420
+	quest_scroll.custom_minimum_size.y = 560
 	quest_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	add_child(quest_scroll)
 
@@ -65,6 +66,11 @@ func _ready() -> void:
 	validate_button.text = "Validar proxecto"
 	validate_button.pressed.connect(_validate_project)
 	add_child(validate_button)
+
+	var documentation_button := Button.new()
+	documentation_button.text = "Xerar documentación"
+	documentation_button.pressed.connect(_generate_documentation)
+	add_child(documentation_button)
 
 	summary_label = Label.new()
 	summary_label.text = "Non se lanzaou a validación."
@@ -189,3 +195,16 @@ func _toggle_quest_panel() -> void:
 func _on_quest_created(resource_path: String) -> void:
 	resource_created.emit(resource_path)
 	_validate_project()
+
+
+func _generate_documentation() -> void:
+	var index := NarrativeIndex.build()
+	var issues := NarrativeValidator.new().validate_project(index)
+	var result := NarrativeDocumentationGenerator.new().generate(index, issues)
+
+	if not result.success:
+		summary_label.text = "Erro xerando documentación:\n%s" % result.error_message
+		return
+
+	summary_label.text = "Documentación xerada:\n%s" % "\n".join(result.generated_paths)
+	documentation_generated.emit(result.generated_paths)
