@@ -5,8 +5,23 @@ extends RefCounted
 static func normalize_id(raw_value: String) -> StringName:
 	var normalized := raw_value.strip_edges().to_lower()
 
-	normalized = normalized.replace(" ", "_")
-	normalized = normalized.replace("-", "_")
+	var replacements := {
+		"á": "a",
+		"é": "e",
+		"í": "i",
+		"ó": "o",
+		"ú": "u",
+		"ü": "u",
+		"ñ": "n",
+		"ç": "c",
+	}
+
+	for source_character in replacements:
+		normalized = normalized.replace(source_character, replacements[source_character])
+
+	var invalid_characters := RegEx.new()
+	invalid_characters.compile("[^a-z0-9_]+")
+	normalized = invalid_characters.sub(normalized, "_", true)
 
 	while normalized.contains("__"):
 		normalized = normalized.replace("__", "_")
@@ -75,14 +90,20 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	definition.start_title = request.start_title
 	definition.initial_speaker_id = request.initial_speaker_id
 
-	var save_error := ResourceSaver.save(definition, request.save_path)
+	var save_error := ResourceSaver.save(definition, request.save_path, ResourceSaver.FLAG_CHANGE_PATH)
 
 	if save_error != OK:
 		result.error_message = "Could not save conversation definition at '%s': %s"% [request.save_path, error_string(save_error)]
 		return result
 
+	var saved_definition := ResourceLoader.load(request.save_path, "", ResourceLoader.CACHE_MODE_REPLACE) as ConversationDefinition
+	if saved_definition == null:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(request.save_path))
+		result.error_message = "Conversation definition was saved but could not be loaded back from '%s'." % request.save_path
+		return result
+
 	var entry := ConversationEntry.new()
-	entry.conversation = definition
+	entry.conversation = saved_definition
 	entry.priority = request.priority
 	entry.repeatable = request.repeatable
 	entry.is_fallback = request.fallback
@@ -107,5 +128,111 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	result.resource_path = request.save_path
 	result.conversation = definition
 	result.entry = entry
+
+	return result
+
+
+
+#################################
+## QUESTS ##
+#################################
+static func get_quest_creation_errors(request: QuestCreationRequest, index: NarrativeIndex) -> PackedStringArray:
+	var errors := PackedStringArray()
+
+	if request == null:
+		errors.append("creation request is null")
+		return errors
+
+	var definition := QuestDefinition.new()
+	definition.quest_id = request.quest_id
+	definition.objectives = request.objectives.duplicate()
+
+	errors.append_array(definition.get_validation_errors())
+
+	if index.has_quest(request.quest_id):
+		errors.append("quest_id '%s' already exists" % request.quest_id)
+
+	if request.target_catalog == null:
+		errors.append("target_catalog is null")
+	elif request.target_catalog.resource_path.is_empty():
+		errors.append("target_catalog has not been saved")
+	else:
+		for existing_quest in request.target_catalog.quests:
+			if existing_quest == null:
+				continue
+
+			if existing_quest.quest_id == request.quest_id:
+				errors.append("catalog '%s' already contains quest_id '%s'" % [request.target_catalog.catalog_id, request.quest_id,])
+				break
+
+	for objective in request.objectives:
+		if objective == null:
+			continue
+
+		if objective.target_type \
+				== QuestObjectiveDefinition.TargetType.CONVERSATION \
+				and not objective.target_id.is_empty() \
+				and not index.has_conversation(objective.target_id):
+			errors.append("objective '%s' refers to unknown conversation '%s'" % [objective.objective_id, objective.target_id])
+
+	if request.save_path.is_empty():
+		errors.append("save_path is empty")
+	elif not request.save_path.begins_with("res://"):
+		errors.append("save_path must be inside res://")
+	elif request.save_path.get_extension().to_lower() != "tres":
+		errors.append("save_path must use the .tres extension")
+	elif ResourceLoader.exists(request.save_path):
+		errors.append("a resource already exists at '%s'" % request.save_path)
+
+	return errors
+
+
+static func create_quest(request: QuestCreationRequest, index: NarrativeIndex) -> QuestCreationResult:
+	var result := QuestCreationResult.new()
+	var errors := get_quest_creation_errors(request, index)
+
+	if not errors.is_empty():
+		result.error_message = "\n".join(errors)
+		return result
+
+	var definition := QuestDefinition.new()
+	definition.quest_id = request.quest_id
+	definition.objectives = request.objectives.duplicate()
+
+	var save_error := ResourceSaver.save(
+		definition,
+		request.save_path,
+		ResourceSaver.FLAG_CHANGE_PATH
+	)
+
+	if save_error != OK:
+		result.error_message = ("Could not save quest definition at '%s': %s" % [request.save_path, error_string(save_error)])
+		return result
+
+	var saved_definition := ResourceLoader.load(request.save_path, "", ResourceLoader.CACHE_MODE_REPLACE) as QuestDefinition
+
+	if saved_definition == null:
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(request.save_path))
+		result.error_message = ("Quest definition was saved but could not be loaded back from '%s'.") % request.save_path
+		return result
+
+	request.target_catalog.quests.append(saved_definition)
+
+	var catalog_save_error := ResourceSaver.save(request.target_catalog, request.target_catalog.resource_path)
+
+	if catalog_save_error != OK:
+		request.target_catalog.quests.erase(saved_definition)
+
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(request.save_path))
+
+		result.error_message = "Quest definition was rolled back because catalog '%s' could not be saved: %s" % [
+			request.target_catalog.resource_path,
+			error_string(catalog_save_error),
+		]
+		return result
+
+	result.success = true
+	result.resource_path = request.save_path
+	result.quest = saved_definition
 
 	return result

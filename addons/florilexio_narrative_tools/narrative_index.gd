@@ -17,7 +17,7 @@ var objectives_by_quest: Dictionary = {}
 var catalogs_by_id: Dictionary = {}
 
 
-static func build(_include_world_scenes := false) -> NarrativeIndex:
+static func build() -> NarrativeIndex:
 	var index := NarrativeIndex.new()
 	index._scan_directory(DIALOGUE_ROOT)
 	index._scan_directory(QUEST_ROOT)

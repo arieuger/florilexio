@@ -53,23 +53,37 @@ func get_validation_errors() -> PackedStringArray:
 	return errors
 
 
-func _is_target_type_valid() -> bool:
-	match event_type:
+static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetType]:
+	match for_event_type:
 		EventType.PLANT_COLLECTED:
-			return target_type == TargetType.PLANT_SPECIES or target_type == TargetType.PLANT_INSTANCE
+			return [
+				TargetType.PLANT_SPECIES,
+				TargetType.PLANT_INSTANCE,
+			]
 
 		EventType.DIALOGUE_COMPLETED:
-			return target_type == TargetType.CONVERSATION
+			return [
+				TargetType.CONVERSATION,
+			]
 
 		EventType.INTERACTABLE_USED:
-			return target_type == TargetType.INTERACTABLE
+			return [
+				TargetType.INTERACTABLE,
+			]
 
 		EventType.LOCATION_REACHED:
-			return target_type == TargetType.LOCATION
+			return [
+				TargetType.LOCATION,
+			]
 
 		EventType.ITEM_SUBMITTED:
-			# Por agora solamente entregamos plantas por especie.
-			return target_type == TargetType.PLANT_SPECIES
+			return [
+				TargetType.PLANT_SPECIES,
+			]
 
 		_:
-			return false
+			return []
+
+
+func _is_target_type_valid() -> bool:
+	return target_type in get_allowed_target_types(event_type)

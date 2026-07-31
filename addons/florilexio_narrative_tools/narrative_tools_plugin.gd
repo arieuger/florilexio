@@ -9,7 +9,7 @@ func _enter_tree() -> void:
 	dock = NarrativeToolsDock.new()
 	dock.name = "Narrative"
 	dock.resource_open_requested.connect(_open_resource)
-	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, dock)
+	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL, dock)
 	dock.resource_created.connect(_on_resource_created)
 
 func _exit_tree() -> void:

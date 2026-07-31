@@ -213,7 +213,11 @@ func _on_conversation_id_changed(_new_id: String) -> void:
 
 
 func _update_suggested_save_path() -> void:
-	var conversation_id := conversation_id_field.text.strip_edges()
+	var conversation_id := str(
+		NarrativeResourceFactory.normalize_id(
+			conversation_id_field.text
+		)
+	)
 
 	if save_directory.is_empty() or conversation_id.is_empty():
 		save_path_field.text = ""
@@ -250,35 +254,23 @@ func _create_conversation() -> void:
 
 	create_button.disabled = true
 
-	var result := NarrativeResourceFactory.create_conversation(
-		request,
-		index
-	)
+	var result := NarrativeResourceFactory.create_conversation(request, index)
 
 	create_button.disabled = false
 
 	if not result.success:
-		_set_feedback(
-			result.error_message,
-			Color.INDIAN_RED
-		)
+		_set_feedback(result.error_message, Color.INDIAN_RED)
 		return
 
-	_set_feedback(
-		"Conversa creada correctamente:\n%s"
-			% result.resource_path,
-		Color.LIGHT_GREEN
-	)
+	_set_feedback("Conversa creada correctamente:\n%s"% result.resource_path, Color.LIGHT_GREEN)
 
 	conversation_created.emit(result.resource_path)
+	_reset_after_successful_creation()
 
 
 func _build_creation_request() -> ConversationCreationRequest:
 	var request := ConversationCreationRequest.new()
 
-	request.character = character_field.text
-	request.arc = arc_field.text
-	request.purpose = purpose_field.text
 	request.conversation_id = NarrativeResourceFactory.normalize_id(
 		conversation_id_field.text
 	)
@@ -309,3 +301,14 @@ func _build_creation_request() -> ConversationCreationRequest:
 func _set_feedback(message: String, color: Color) -> void:
 	feedback_label.text = message
 	feedback_label.modulate = color
+
+
+func _reset_after_successful_creation() -> void:
+	purpose_field.clear()
+	start_title_field.text = "start"
+	priority_field.value = 0
+	repeatable_check.button_pressed = false
+	fallback_check.button_pressed = false
+
+	_update_suggested_id("")
+	purpose_field.grab_focus()

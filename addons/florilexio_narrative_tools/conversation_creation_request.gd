@@ -2,10 +2,6 @@
 class_name ConversationCreationRequest
 extends RefCounted
 
-var character: String
-var arc: String
-var purpose: String
-
 var conversation_id: StringName
 var dialogue_resource: DialogueResource
 var start_title := "start"

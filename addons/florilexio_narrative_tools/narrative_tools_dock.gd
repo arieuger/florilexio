@@ -5,11 +5,15 @@ signal resource_open_requested(resource_path: String)
 signal resource_created(resource_path: String)
 
 const ConversationCreatorPanel := preload("res://addons/florilexio_narrative_tools/conversation_creator_panel.gd")
+const QuestCreatorPanel := preload("res://addons/florilexio_narrative_tools/quest_creator_panel.gd")
 
 var conversation_scroll: ScrollContainer
 var conversation_panel: Control
 var summary_label: Label
 var issues_tree: Tree
+
+var quest_scroll: ScrollContainer
+var quest_panel: Control
 
 func _ready() -> void:
 	var title := Label.new()
@@ -24,6 +28,13 @@ func _ready() -> void:
 	)
 	add_child(create_conversation_button)
 
+	var create_quest_button := Button.new()
+	create_quest_button.text = "Crear quest"
+	create_quest_button.pressed.connect(
+		_toggle_quest_panel
+	)
+	add_child(create_quest_button)
+
 	conversation_scroll = ScrollContainer.new()
 	conversation_scroll.visible = false
 	conversation_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -35,6 +46,20 @@ func _ready() -> void:
 	conversation_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	conversation_panel.conversation_created.connect(_on_conversation_created)
 	conversation_scroll.add_child(conversation_panel)
+
+	quest_scroll = ScrollContainer.new()
+	quest_scroll.visible = false
+	quest_scroll.horizontal_scroll_mode = (
+		ScrollContainer.SCROLL_MODE_DISABLED
+	)
+	quest_scroll.custom_minimum_size.y = 420
+	quest_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(quest_scroll)
+
+	quest_panel = QuestCreatorPanel.new()
+	quest_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	quest_panel.quest_created.connect(_on_quest_created)
+	quest_scroll.add_child(quest_panel)
 
 	var validate_button := Button.new()
 	validate_button.text = "Validar proxecto"
@@ -137,10 +162,30 @@ func _on_issue_activated() -> void:
 
 
 func _toggle_conversation_panel() -> void:
-	conversation_scroll.visible = not conversation_scroll.visible
+	var should_open := not conversation_scroll.visible
 
-	if conversation_scroll.visible:
+	conversation_scroll.visible = should_open
+	quest_scroll.visible = false
+
+	if should_open:
 		conversation_panel.refresh_profiles()
+
 
 func _on_conversation_created(resource_path: String) -> void:
 	resource_created.emit(resource_path)
+	_validate_project()
+
+
+func _toggle_quest_panel() -> void:
+	var should_open := not quest_scroll.visible
+
+	quest_scroll.visible = should_open
+	conversation_scroll.visible = false
+
+	if should_open:
+		quest_panel.refresh_catalogs()
+
+
+func _on_quest_created(resource_path: String) -> void:
+	resource_created.emit(resource_path)
+	_validate_project()
