@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://tgj7xbryb6rv"
 [sub_resource type="Resource" id="Resource_75ost"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("6_dj41s")
-priority = 100
+priority = 90
 conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_a8q4m"), SubResource("Resource_i3gkp"), SubResource("Resource_osdha")])
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 [sub_resource type="Resource" id="Resource_aaun5"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("9_6wpjk")
-priority = 90
+priority = 80
 repeatable = true
 conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_ufffc")])
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"

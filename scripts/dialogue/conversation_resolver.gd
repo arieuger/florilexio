@@ -5,6 +5,11 @@ static func resolve(profile: DialogueProfile, context: ConversationContext) -> C
 	if profile == null:
 		push_warning("ConversationResolver: dialogue profile is null")
 		return null
+
+	var profile_errors := profile.get_validation_errors()
+	if not profile_errors.is_empty():
+		push_warning("ConversationResolver: profile '%s' is invalid:\n- %s"% [profile.profile_id, "\n- ".join(profile_errors)])
+		return null
 	
 	var regular_candidates: Array[ConversationEntry] = []
 	var fallback_candidates: Array[ConversationEntry] = []
@@ -93,9 +98,6 @@ static func _get_rejection_reason(entry: ConversationEntry, context: Conversatio
 		return "non-repeatable conversation already finished"
 
 	for condition in entry.conditions:
-		if condition == null:
-			return "condition is null"
-
 		if not condition.is_met(context):
 			return condition.get_debug_description()
 
@@ -127,19 +129,15 @@ static func _get_configuration_error(entry: ConversationEntry) -> String:
 	if entry == null:
 		return "entry is null"
 
-	if entry.conversation == null:
-		return "conversation is null"
+	var entry_errors := entry.get_validation_errors()
+	if not entry_errors.is_empty():
+		return entry_errors[0]
 
-	var conversation := entry.conversation
-
-	if conversation.conversation_id.is_empty():
-		return "conversation_id is empty"
-
-	if conversation.dialogue_resource == null:
-		return "dialogue_resource is null"
-
-	if conversation.start_title.is_empty():
-		return "start_title is empty"
+	var conversation_errors := (
+		entry.conversation.get_validation_errors()
+	)
+	if not conversation_errors.is_empty():
+		return conversation_errors[0]
 
 	return ""
 

@@ -27,24 +27,21 @@ func register_catalog(catalog: QuestCatalog) -> bool:
 	if _registered_catalog_ids.has(catalog.catalog_id):
 		return false
 
-	var errors := PackedStringArray()
-	var catalog_quest_ids := {}
+	var errors := catalog.get_validation_errors()
 
 	for index in range(catalog.quests.size()):
 		var definition := catalog.quests[index]
 
 		if definition == null:
-			errors.append("quest at index %d is null" % index)
 			continue
 
 		for definition_error in _get_registration_errors(definition):
-			errors.append("quest %d ('%s'): %s"% [index, definition.quest_id, definition_error])
-
-		if not definition.quest_id.is_empty():
-			if catalog_quest_ids.has(definition.quest_id):
-				errors.append("duplicated quest_id '%s' inside catalog"% definition.quest_id)
-			else:
-				catalog_quest_ids[definition.quest_id] = true
+			errors.append("quest %d ('%s'): %s"% [
+					index,
+					definition.quest_id,
+					definition_error,
+				]
+			)
 
 	if not errors.is_empty():
 		push_warning("QuestManager: catalog '%s' is invalid:\n- %s"% [catalog.catalog_id, "\n- ".join(errors)])

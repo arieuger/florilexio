@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="QuestCatalog" format=3 uid="uid://cio3begu8v0co"]
 
 [ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="1_om78c"]
-[ext_resource type="Resource" uid="uid://ctwpufqp4tfdc" path="res://resources/quests/loop_1/old_woman_tutorial.tres" id="2_vskad"]
+[ext_resource type="Resource" uid="uid://ctwpufqp4tfdc" path="res://resources/quests/loop_1/old_woman_tutorial/old_woman_tutorial.tres" id="2_vskad"]
 [ext_resource type="Script" uid="uid://bltfqjlj8kbj4" path="res://scripts/quests/quest_catalog.gd" id="3_pjwf5"]
 
 [resource]
