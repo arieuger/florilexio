@@ -10,6 +10,7 @@ func _enter_tree() -> void:
 	dock.name = "Narrative"
 	dock.resource_open_requested.connect(_open_resource)
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_BL, dock)
+	dock.resource_created.connect(_on_resource_created)
 
 func _exit_tree() -> void:
 	if dock == null:
@@ -27,3 +28,8 @@ func _open_resource(resource_path: String) -> void:
 		return
 
 	get_editor_interface().edit_resource(resource)
+
+
+func _on_resource_created(resource_path: String) -> void:
+	get_editor_interface().get_resource_filesystem().scan()
+	_open_resource(resource_path)

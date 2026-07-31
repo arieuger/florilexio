@@ -2,7 +2,12 @@
 extends VBoxContainer
 
 signal resource_open_requested(resource_path: String)
+signal resource_created(resource_path: String)
 
+const ConversationCreatorPanel := preload("res://addons/florilexio_narrative_tools/conversation_creator_panel.gd")
+
+var conversation_scroll: ScrollContainer
+var conversation_panel: Control
 var summary_label: Label
 var issues_tree: Tree
 
@@ -12,6 +17,24 @@ func _ready() -> void:
 	title.add_theme_font_size_override("font_size", 16)
 	add_child(title)
 
+	var create_conversation_button := Button.new()
+	create_conversation_button.text = "Crear conversa"
+	create_conversation_button.pressed.connect(
+		_toggle_conversation_panel
+	)
+	add_child(create_conversation_button)
+
+	conversation_scroll = ScrollContainer.new()
+	conversation_scroll.visible = false
+	conversation_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	conversation_scroll.custom_minimum_size.y = 420
+	conversation_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(conversation_scroll)
+
+	conversation_panel = ConversationCreatorPanel.new()
+	conversation_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	conversation_panel.conversation_created.connect(_on_conversation_created)
+	conversation_scroll.add_child(conversation_panel)
 
 	var validate_button := Button.new()
 	validate_button.text = "Validar proxecto"
@@ -111,3 +134,13 @@ func _on_issue_activated() -> void:
 		return
 
 	resource_open_requested.emit(resource_path)
+
+
+func _toggle_conversation_panel() -> void:
+	conversation_scroll.visible = not conversation_scroll.visible
+
+	if conversation_scroll.visible:
+		conversation_panel.refresh_profiles()
+
+func _on_conversation_created(resource_path: String) -> void:
+	resource_created.emit(resource_path)
