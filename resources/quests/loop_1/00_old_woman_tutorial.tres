@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://ctwpufqp4tfdc"]
 
-[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="1_ey1yp"]
-[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_oryuo"]
+[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="1_a3qqy"]
+[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="2_fux1c"]
 
 [sub_resource type="Resource" id="Resource_tutorial_collect_malva"]
-script = ExtResource("1_ey1yp")
+script = ExtResource("1_a3qqy")
 objective_id = &"tutorial_collect_malva"
 event_type = 1
 target_type = 2
 target_id = &"malva_tutorial"
 
 [sub_resource type="Resource" id="Resource_tutorial_deliver_malva"]
-script = ExtResource("1_ey1yp")
+script = ExtResource("1_a3qqy")
 objective_id = &"tutorial_deliver_malva"
 event_type = 5
 target_type = 1
@@ -19,7 +19,7 @@ target_id = &"malva"
 item_submission_mode = 1
 
 [resource]
-script = ExtResource("3_oryuo")
-quest_id = &"old_woman_tutorial"
-objectives = Array[ExtResource("1_ey1yp")]([SubResource("Resource_tutorial_collect_malva"), SubResource("Resource_tutorial_deliver_malva")])
+script = ExtResource("2_fux1c")
+quest_id = &"00_old_woman_tutorial"
+objectives = Array[ExtResource("1_a3qqy")]([SubResource("Resource_tutorial_collect_malva"), SubResource("Resource_tutorial_deliver_malva")])
 metadata/_custom_type_script = "uid://wjfua8olxjb5"

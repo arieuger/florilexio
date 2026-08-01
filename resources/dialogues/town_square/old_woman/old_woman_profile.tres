@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_dxo8b"]
 script = ExtResource("4_vpk1j")
-quest_id = &"old_woman_tutorial"
+quest_id = &"00_old_woman_tutorial"
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 
 [sub_resource type="Resource" id="Resource_dj41s"]
@@ -32,12 +32,12 @@ metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_a8q4m"]
 script = ExtResource("4_vpk1j")
-quest_id = &"old_woman_tutorial"
+quest_id = &"00_old_woman_tutorial"
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 
 [sub_resource type="Resource" id="Resource_i3gkp"]
 script = ExtResource("6_75ost")
-quest_id = &"old_woman_tutorial"
+quest_id = &"00_old_woman_tutorial"
 objective_id = &"tutorial_collect_malva"
 metadata/_custom_type_script = "uid://d3638l0gkhmh3"
 
@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_ufffc"]
 script = ExtResource("4_vpk1j")
-quest_id = &"old_woman_tutorial"
+quest_id = &"00_old_woman_tutorial"
 expected_status = 2
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 

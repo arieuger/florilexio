@@ -4,8 +4,8 @@
 
 - Conversations: 9
 - Profiles: 4
-- Quests: 1
-- Objectives: 2
+- Quests: 2
+- Objectives: 3
 - Errors: 0
 - Warnings: 0
 - Info: 0

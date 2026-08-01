@@ -17,7 +17,7 @@ Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor pa
 Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas!
 
 # TODO: acknowledged_magic_plants igual deixa de sernos útil
-do QuestManager.start_quest("old_woman_tutorial")
+do QuestManager.start_quest("00_old_woman_tutorial")
 do GameState.add_consumed_time(1)
 set GameState.tutorial_plant_unlocked = true
 set GameState.acknowledged_magic_plants = true
@@ -30,7 +30,7 @@ old_woman: Recordatorio da vella mentres non entregas a malva => END
 old_woman: Traes as malvas? Xa se sabe que “cun horto e un malvar, hai menciñas para un fogar”
 Mmm… Que arrecendo. Parece que ata refresca… Queres un pouco?\nEste groliño recordoume que necesito as herbas para facer o cacho…
 
-do QuestManager.submit_item("old_woman_tutorial", "tutorial_deliver_malva", "malva", 1)
+do QuestManager.submit_item("00_old_woman_tutorial", "tutorial_deliver_malva", "malva", 1)
 
 player: ...
 
@@ -39,7 +39,9 @@ E que na túa casa non che aprenderon nada?\nE logo, como vos protexedes de male
 
 Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aquí no barrio atopas fento e xesta ou codeso,
 e con sorte tamén romeu, macela brava e herbaluísa.\nE terás que buscar estalos, que son da mesma cor da malva,
-pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o inxires.  => END
+pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o inxires.  
+do QuestManager.start_quest("01_collect_first_herbs")
+=> END
 
 ~ tutorial_quest_completed
-old_woman: Resposta da vella despois de completar a misión. => END
+old_woman: Resposta da vella despois de completar a misión 1.\n Aquí xa empezou a misión 2 que (demomento) é estalote => END

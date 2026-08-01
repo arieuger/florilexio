@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://3vpbwu7m8njf"]
+
+[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="1_vdjh1"]
+[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="2_dxx1j"]
+
+[sub_resource type="Resource" id="Resource_lio8o"]
+script = ExtResource("1_vdjh1")
+objective_id = &"collect_dedaleira"
+event_type = 1
+target_type = 1
+target_id = &"dedaleira"
+
+[resource]
+script = ExtResource("2_dxx1j")
+quest_id = &"01_collect_first_herbs"
+objectives = Array[ExtResource("1_vdjh1")]([SubResource("Resource_lio8o")])
