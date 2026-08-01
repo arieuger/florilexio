@@ -97,25 +97,39 @@ func submit_item(quest_id: StringName, objective_id: StringName, plant_id: Strin
 		return false
 
 	var current_amount := state.get_current_amount(objective_id)
-	var remaining_amount := (objective.required_amount - current_amount)
+	var remaining_amount := objective.required_amount - current_amount
 
 	if remaining_amount <= 0:
 		return false
 
-	var submitted_amount := mini(amount, remaining_amount)
+	var consumes_item := objective.consumes_submitted_item()
+	var submitted_amount := 0
 
-	if not InventoryManager.has_item(plant_id,submitted_amount):
+	if consumes_item:
+		submitted_amount = mini(amount, remaining_amount)
+	else:
+		submitted_amount = remaining_amount
+
+	if not InventoryManager.has_item(plant_id, submitted_amount):
 		return false
 
-	var display_name := InventoryManager.get_display_name(plant_id)
-	var marks := InventoryManager.get_plant_marks(plant_id)
+	var display_name := ""
+	var marks: Dictionary = {}
 
-	if not InventoryManager.remove_item(plant_id, submitted_amount):
-		return false
+	if consumes_item:
+		display_name = InventoryManager.get_display_name(plant_id)
+		marks = InventoryManager.get_plant_marks(plant_id)
+
+		if not InventoryManager.remove_item(plant_id, submitted_amount):
+			return false
 
 	if not advance_objective(quest_id, objective_id, submitted_amount):
-		InventoryManager.add_item(plant_id, submitted_amount, display_name, marks)
-		push_warning("QuestManager: item submission was rolled back for quest '%s', objective '%s'."% [quest_id, objective_id])
+		if consumes_item:
+			InventoryManager.add_item(plant_id, submitted_amount, display_name, marks)
+			push_warning("QuestManager: item submission was rolled back for quest '%s', objective '%s'." % [quest_id, objective_id])
+		else:
+			push_warning("QuestManager: shown item could not advance quest '%s', objective '%s'." % [quest_id, objective_id])
+
 		return false
 
 	return true

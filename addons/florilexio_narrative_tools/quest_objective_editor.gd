@@ -11,6 +11,8 @@ var target_id_field: LineEdit
 var target_id_selector_label: Label
 var target_id_selector: OptionButton
 var required_amount_field: SpinBox
+var submission_mode_label: Label
+var submission_mode_selector: OptionButton
 
 
 func _ready() -> void:
@@ -42,6 +44,16 @@ func _ready() -> void:
 	target_type_selector.item_selected.connect(_on_target_type_selected)
 
 	_refresh_target_id_options()
+
+	submission_mode_label = _add_label("Item submission mode")
+	submission_mode_selector = OptionButton.new()
+	add_child(submission_mode_selector)
+
+	for mode in QuestObjectiveDefinition.ItemSubmissionMode.values():
+		submission_mode_selector.add_item(QuestObjectiveDefinition.ItemSubmissionMode.keys()[mode])
+		submission_mode_selector.set_item_metadata(submission_mode_selector.item_count - 1, mode)
+
+	_refresh_submission_mode_visibility()
 
 	_add_label("Required amount")
 	required_amount_field = SpinBox.new()
@@ -75,6 +87,7 @@ func build_definition() -> QuestObjectiveDefinition:
 	objective.target_type = int(target_type_selector.get_selected_metadata())
 	objective.target_id = StringName(target_id_field.text.strip_edges())
 	objective.required_amount = int(required_amount_field.value)
+	objective.item_submission_mode = int(submission_mode_selector.get_selected_metadata())
 
 	return objective
 
@@ -107,6 +120,7 @@ func _on_event_type_selected(index: int) -> void:
 
 	_populate_target_types(event_type)
 	_refresh_target_id_options()
+	_refresh_submission_mode_visibility()
 
 
 func _add_line_field(label_text: String) -> LineEdit:
@@ -170,3 +184,16 @@ func _refresh_target_id_options() -> void:
 
 		target_id_selector.add_item(conversation_id)
 		target_id_selector.set_item_metadata(target_id_selector.item_count - 1, conversation_id)
+
+
+func _refresh_submission_mode_visibility() -> void:
+	var event_type := int(
+		event_selector.get_selected_metadata()
+	)
+	var is_item_submission := (
+		event_type
+		== QuestObjectiveDefinition.EventType.ITEM_SUBMITTED
+	)
+
+	submission_mode_label.visible = is_item_submission
+	submission_mode_selector.visible = is_item_submission

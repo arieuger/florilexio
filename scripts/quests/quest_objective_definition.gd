@@ -10,7 +10,7 @@ enum EventType {
 	LOCATION_REACHED,
 	ITEM_SUBMITTED
 	# TODO: Eventualmente haberá que engadir ITEM_COLLECTED e, en TargetType
-	# ITEM_INSTANCE e ITEM ou algo así
+	# ITEM_INSTANCE e ITEM ou algo así para obxetos de inventario (non plantas)
 }
 
 enum TargetType {
@@ -22,35 +22,17 @@ enum TargetType {
 	LOCATION
 }
 
+enum ItemSubmissionMode {
+	GIVE,
+	SHOW,
+}
+
 @export var objective_id: StringName
 @export var event_type: EventType = EventType.NONE
 @export var target_type: TargetType = TargetType.NONE
 @export var target_id: StringName
 @export_range(1, 999, 1) var required_amount := 1
-
-
-func get_validation_errors() -> PackedStringArray:
-	var errors := PackedStringArray()
-
-	if objective_id.is_empty():
-		errors.append("objective_id is empty")
-
-	if event_type == EventType.NONE:
-		errors.append("event_type is NONE")
-
-	if target_type == TargetType.NONE:
-		errors.append("target_type is NONE")
-
-	if target_id.is_empty():
-		errors.append("target_id is empty")
-
-	if required_amount < 1:
-		errors.append("required_amount must be at least 1")
-
-	if target_type != TargetType.NONE and not _is_target_type_valid():
-		errors.append("event_type %s is incompatible with target_type %s"% [EventType.keys()[event_type], TargetType.keys()[target_type],])
-
-	return errors
+@export var item_submission_mode: ItemSubmissionMode = ItemSubmissionMode.GIVE
 
 
 static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetType]:
@@ -85,5 +67,36 @@ static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetT
 			return []
 
 
+func get_validation_errors() -> PackedStringArray:
+	var errors := PackedStringArray()
+
+	if objective_id.is_empty():
+		errors.append("objective_id is empty")
+
+	if event_type == EventType.NONE:
+		errors.append("event_type is NONE")
+
+	if target_type == TargetType.NONE:
+		errors.append("target_type is NONE")
+
+	if target_id.is_empty():
+		errors.append("target_id is empty")
+
+	if required_amount < 1:
+		errors.append("required_amount must be at least 1")
+
+	if target_type != TargetType.NONE and not _is_target_type_valid():
+		errors.append("event_type %s is incompatible with target_type %s"% [EventType.keys()[event_type], TargetType.keys()[target_type],])
+
+	return errors
+
+
 func _is_target_type_valid() -> bool:
 	return target_type in get_allowed_target_types(event_type)
+
+
+func consumes_submitted_item() -> bool:
+	return (
+		event_type == EventType.ITEM_SUBMITTED
+		and item_submission_mode == ItemSubmissionMode.GIVE
+	)

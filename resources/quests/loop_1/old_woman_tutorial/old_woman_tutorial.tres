@@ -16,6 +16,7 @@ objective_id = &"tutorial_deliver_malva"
 event_type = 5
 target_type = 1
 target_id = &"malva"
+item_submission_mode = 1
 
 [resource]
 script = ExtResource("3_oryuo")
