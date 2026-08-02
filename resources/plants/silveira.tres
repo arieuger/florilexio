@@ -1,6 +1,16 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3]
-[ext_resource type="Script" path="res://scripts/data/plant_data.gd" id="1"]
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://bmi23krpy3esh"]
+
+[ext_resource type="Script" uid="uid://joe65o45qf51" path="res://scripts/data/plant_data.gd" id="1"]
+[ext_resource type="Script" uid="uid://doq0kbgt7al22" path="res://scripts/data/plant_knowledge_fragment.gd" id="2"]
+
+[sub_resource type="Resource" id="KnowledgeFragment_name"]
+script = ExtResource("2")
+id = &"name"
+text = "Silveira"
+
 [resource]
 script = ExtResource("1")
 id = &"silveira"
 display_name = "Silveira"
+knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
+collection_requirements = Array[StringName]([&"name"])

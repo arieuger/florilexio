@@ -609,7 +609,6 @@ collection_id = &"macela2"
 [node name="Malva" parent="YSortables" unique_id=450859669 instance=ExtResource("29_0348l")]
 position = Vector2(233, 137)
 plant_launches_tutorial = true
-override_collection_requirements = true
 collection_id = &"malva_tutorial"
 collection_difficulty = 3
 

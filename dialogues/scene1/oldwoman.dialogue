@@ -13,6 +13,7 @@ dog: A infusionar di… Licor de flores é o que\nbebe a vella desde que o mundo
 Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar.
 Así é como poderás recoñecelas…
 [shake rate=10 level=2]bssbssbss….[/shake]
+do FlorilexioManager.unlock_knowledge("malva", "name")
 Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
 Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas!
 
@@ -40,6 +41,7 @@ E que na túa casa non che aprenderon nada?\nE logo, como vos protexedes de male
 Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aquí no barrio atopas fento e xesta ou codeso,
 e con sorte tamén romeu, macela brava e herbaluísa.\nE terás que buscar estalos, que son da mesma cor da malva,
 pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o inxires.  
+do FlorilexioManager.unlock_knowledge("dedaleira", "name")
 do QuestManager.start_quest("01_collect_first_herbs")
 dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…
 Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo... => END
