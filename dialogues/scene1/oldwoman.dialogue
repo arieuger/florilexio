@@ -20,7 +20,6 @@ Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\
 # TODO: acknowledged_magic_plants igual deixa de sernos útil
 do QuestManager.start_quest("00_old_woman_tutorial")
 do GameState.add_consumed_time(1)
-set GameState.tutorial_plant_unlocked = true
 set GameState.acknowledged_magic_plants = true
 => END
 

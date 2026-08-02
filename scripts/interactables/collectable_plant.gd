@@ -1,8 +1,6 @@
 extends Node2D
 class_name CollectablePlant
 
-@export var plant_launches_tutorial := false
-
 @export_group("Plant data")
 @export var plant_data: PlantData
 
@@ -61,7 +59,6 @@ func _ready() -> void:
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
-	GameState.plant_collection_progress_changed.connect(_on_collection_progress_changed)
 
 
 func _notification(what: int) -> void:
@@ -207,9 +204,6 @@ func _get_result_marks(result: MinigameResult) -> Dictionary:
 func _on_collection_minigame_completed(completed_plant_id: StringName, collected_amount: int) -> void:
 	GameState.collect_plant(_collection_id)
 
-	if plant_launches_tutorial:
-		GameState.plant_collection_tutorial_completed = true
-
 	GameplayEvents.report_plant_collected(completed_plant_id, _collection_id, collected_amount)
 
 	click_area.input_pickable = false
@@ -248,11 +242,7 @@ func _can_interact() -> bool:
 
 
 func _can_start_collection() -> bool:
-	return (
-		not _is_collected()
-		and not _is_blocked_by_tutorial()
-		and _meets_collection_requirements()
-	)
+	return not _is_collected() and _meets_collection_requirements()
 
 
 func _meets_collection_requirements() -> bool:
@@ -266,11 +256,6 @@ func _is_collected() -> bool:
 	return GameState.is_plant_collected(_collection_id)
 
 
-func _is_blocked_by_tutorial() -> bool:
-	if plant_launches_tutorial:
-		return not GameState.tutorial_plant_unlocked
-
-	return not GameState.plant_collection_tutorial_completed
 
 
 func _get_minigame_coordinator() -> MinigameCoordinator:
