@@ -3,11 +3,17 @@ class_name CollectablePlant
 
 @export var plant_launches_tutorial := false
 
-## Identifies the plant type/species. Multiple CollectablePlant instances can share it.
-@export var plant_id: StringName
+@export_group("Plant data")
+@export var plant_data: PlantData
+
+@export_subgroup("Instance overrides")
+@export var override_collection_requirements := false
+@export var collection_requirements_override: Array[StringName] = []
+
+@export_group("")
+
 ## Optional stable id for this exact plant instance. Empty ids are derived from the area scene and node path.
 @export var collection_id: StringName
-@export var plant_display_name: String
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
 
@@ -40,15 +46,22 @@ var _collection_id: StringName
 
 
 func _ready() -> void:
+	if not plant_data:
+		push_error("CollectablePlant '%s' requires PlantData." % get_path())
+		click_area.input_pickable = false
+		return
+
 	_collection_id = _get_collection_id()
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
 	name_label.text = _get_localized_plant_display_name()
 	name_label.visible = false
-	click_area.input_pickable = not _is_collected()
+	FlorilexioManager.knowledge_changed.connect(_on_knowledge_changed)
+	_refresh_collection_availability()
 	click_area.mouse_entered.connect(_on_mouse_entered)
 	click_area.mouse_exited.connect(_on_mouse_exited)
 	click_area.input_event.connect(_on_input_event)
+	GameState.plant_collection_progress_changed.connect(_on_collection_progress_changed)
 
 
 func _notification(what: int) -> void:
@@ -106,6 +119,10 @@ func _interact() -> void:
 
 
 func start_collection_minigame() -> void:
+	if not _can_start_collection():
+		_on_collection_minigame_closed()
+		return
+
 	var context := build_collection_minigame_context()
 	var coordinator := _get_minigame_coordinator()
 	if not coordinator:
@@ -121,8 +138,8 @@ func start_collection_minigame() -> void:
 func build_collection_minigame_context() -> MinigameContext:
 	var context := MinigameContext.new()
 	context.config = collection_minigame_config
-	context.target_id = plant_id
-	context.display_name = plant_display_name
+	context.target_id = get_plant_id()
+	context.display_name = get_plant_display_name()
 	context.difficulty_id = MinigameDifficulty.get_id(collection_difficulty)
 	_apply_collection_tuning(context)
 	context.rewards = _build_collection_rewards()
@@ -149,9 +166,9 @@ func _build_collection_base_parameters() -> Dictionary:
 
 func _build_collection_rewards() -> Dictionary:
 	return {
-		&"plant_id": plant_id,
+		&"plant_id": get_plant_id(),
 		&"amount": 1,
-		&"display_name": plant_display_name,
+		&"display_name": get_plant_display_name(),
 		&"marks": InventoryManager.build_plant_marks(self),
 	}
 
@@ -205,12 +222,44 @@ func _on_collection_minigame_completed(completed_plant_id: StringName, collected
 		1.5
 	)
 
+
 func _on_collection_minigame_closed() -> void:
 	_is_interacting = false
+	_refresh_collection_availability()
+
+
+func get_collection_requirements() -> Array[StringName]:
+	if override_collection_requirements:
+		return collection_requirements_override
+
+	return plant_data.collection_requirements
+
+
+func get_plant_id() -> StringName:
+	return plant_data.id
+
+
+func get_plant_display_name() -> String:
+	return plant_data.display_name
 
 
 func _can_interact() -> bool:
-	return not _is_interacting and not _is_collected() and not _is_blocked_by_tutorial()
+	return not _is_interacting and _can_start_collection()
+
+
+func _can_start_collection() -> bool:
+	return (
+		not _is_collected()
+		and not _is_blocked_by_tutorial()
+		and _meets_collection_requirements()
+	)
+
+
+func _meets_collection_requirements() -> bool:
+	return FlorilexioManager.can_be_collected(
+		get_plant_id(),
+		get_collection_requirements()
+	)
 
 
 func _is_collected() -> bool:
@@ -244,14 +293,15 @@ func _fade_hover_to(target_alpha: float) -> void:
 
 
 func _set_name_label_visible(should_show: bool) -> void:
-	name_label.visible = should_show and not plant_display_name.is_empty()
+	name_label.visible = should_show and not get_plant_display_name().is_empty()
 
 
 func _get_localized_plant_display_name() -> String:
-	if plant_display_name.is_empty():
+	var display_name := get_plant_display_name()
+	if display_name.is_empty():
 		return ""
 
-	return tr(plant_display_name)
+	return tr(display_name)
 
 
 func _make_hover_ignore_world_tint() -> void:
@@ -286,3 +336,23 @@ func _get_area_root() -> Node:
 		current = current.get_parent()
 
 	return null
+
+
+func _on_knowledge_changed(changed_plant_id: StringName) -> void:
+	if changed_plant_id != get_plant_id():
+		return
+
+	_refresh_collection_availability()
+
+
+func _refresh_collection_availability() -> void:
+	click_area.input_pickable = _can_start_collection()
+
+	if click_area.input_pickable:
+		return
+
+	_fade_hover_to(0.0)
+	_set_name_label_visible(false)
+
+func _on_collection_progress_changed() -> void:
+	_refresh_collection_availability()

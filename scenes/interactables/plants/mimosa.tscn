@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bognclbnndo1g"]
 
+[ext_resource type="Resource" path="res://resources/plants/mimosa.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_woudt"]
 [ext_resource type="Texture2D" uid="uid://dxo4fbcjpn4pa" path="res://assets/sprites/environment/plants/mimosa.png" id="2_5vgkn"]
 [ext_resource type="Texture2D" uid="uid://fs5ays77lwff" path="res://assets/sprites/environment/plants/mimosa_hover.png" id="3_5vgkn"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="Mimosa" unique_id=1542834651 instance=ExtResource("1_woudt")]
-plant_id = &"mimosa"
-plant_display_name = "Mimosa"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.84935623, 0.944244, 0.593495, 0.6862745)
 is_invasive = true
 

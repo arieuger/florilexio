@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://i2sxdwtyd47j"]
 
+[ext_resource type="Resource" path="res://resources/plants/pe_de_boi.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_l5fds"]
 [ext_resource type="Texture2D" uid="uid://dqh3ks8h2hvu6" path="res://assets/sprites/environment/plants/pe-de-boi.png" id="2_vbg5g"]
 [ext_resource type="Texture2D" uid="uid://cw4xiqlqaridn" path="res://assets/sprites/environment/plants/pe-de-boi_hover.png" id="3_vbg5g"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(8, 2)
 
 [node name="PeDeBoi" unique_id=1542834651 instance=ExtResource("1_l5fds")]
-plant_id = &"pe-de-boi"
-plant_display_name = "Pé de boi"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.99555427, 0.7644009, 0.851286, 0.6862745)
 is_mortal = true
 

@@ -156,38 +156,29 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "FlorilexioManager inda sen facer"
 
-[node name="FlorilexioButtons1" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1281478361]
+[node name="FragmentIdInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections"]
 unique_name_in_owner = true
+layout_mode = 2
+text = "name"
+placeholder_text = "fragment_id"
+
+[node name="FlorilexioButtons" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections"]
 layout_mode = 2
 
-[node name="MarkObservedButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons1" unique_id=2068822490]
+[node name="UnlockKnowledgeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Marcar observada"
+text = "Desbloquear fragmento"
 
-[node name="UnlockNameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons1" unique_id=1095825494]
+[node name="LockKnowledgeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Desbloquear nome"
+text = "Bloquear fragmento"
 
-[node name="FlorilexioButtons2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=70600411]
+[node name="ResetKnowledgeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="UnlockVisualIdButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons2" unique_id=342409884]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Desbloquear ID visual"
-
-[node name="MarkIdentifiedButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/FlorilexioButtons2" unique_id=1194896850]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Marcar identificada"
-
-[node name="ResetKnowledgeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=82107644]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Reset coñecemento da planta"
+text = "Reset planta"
 
 [node name="MinigameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections" unique_id=1260756113]
 layout_mode = 2

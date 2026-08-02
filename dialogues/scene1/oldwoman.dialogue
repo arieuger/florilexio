@@ -41,7 +41,10 @@ Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aqu�
 e con sorte tamén romeu, macela brava e herbaluísa.\nE terás que buscar estalos, que son da mesma cor da malva,
 pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o inxires.  
 do QuestManager.start_quest("01_collect_first_herbs")
-=> END
+dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…
+Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo... => END
+# TODO: Inventario de obxetos
 
 ~ tutorial_quest_completed
-old_woman: Resposta da vella despois de completar a misión 1.\n Aquí xa empezou a misión 2 que (demomento) é estalote => END
+# Aquí xa empezou a misión 2 que (demomento) é estalote
+old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END

@@ -7,24 +7,9 @@ const DUSK_BLOCK := 36
 
 @onready var time_status_label: Label = %TimeStatusLabel
 @onready var plant_id_input: LineEdit = %PlantIdInput
+@onready var fragment_id_input: LineEdit = %FragmentIdInput
 @onready var inventory_toggle_button: Button = %InventoryToggleButton
 @onready var florilexio_status_label: Label = %FlorilexioStatusLabel
-@onready var florilexio_buttons: Array[Button] = [
-	%MarkObservedButton,
-	%UnlockNameButton,
-	%UnlockVisualIdButton,
-	%MarkIdentifiedButton,
-	%ResetKnowledgeButton,
-]
-@onready var florilexio_section_controls: Array[Control] = [
-	%FlorilexioTitle,
-	%FlorilexioStatusLabel,
-	%FlorilexioButtons1,
-	%FlorilexioButtons2,
-	%ResetKnowledgeButton,
-]
-
-var _florilexio_manager: Node
 
 
 func _ready() -> void:
@@ -74,26 +59,10 @@ func _setup_inventory_section() -> void:
 
 
 func _setup_florilexio_section() -> void:
-	_florilexio_manager = get_node_or_null("/root/FlorilexioManager")
-	var is_available := is_instance_valid(_florilexio_manager)
-	for control in florilexio_section_controls:
-		control.visible = is_available
-	florilexio_status_label.text = (
-		"FlorilexioManager available"
-		if is_available
-		else "FlorilexioManager not available yet"
-	)
-	for button in florilexio_buttons:
-		button.disabled = not is_available
-
-	if not is_available:
-		return
-
-	%MarkObservedButton.pressed.connect(_call_florilexio_method.bind(&"mark_observed"))
-	%UnlockNameButton.pressed.connect(_call_florilexio_method.bind(&"unlock_name"))
-	%UnlockVisualIdButton.pressed.connect(_call_florilexio_method.bind(&"unlock_visual_id"))
-	%MarkIdentifiedButton.pressed.connect(_call_florilexio_method.bind(&"mark_identified"))
-	%ResetKnowledgeButton.pressed.connect(_call_florilexio_method.bind(&"reset_entry"))
+	florilexio_status_label.text = "FlorilexioManager available"
+	%UnlockKnowledgeButton.pressed.connect(_on_unlock_knowledge_pressed)
+	%LockKnowledgeButton.pressed.connect(_on_lock_knowledge_pressed)
+	%ResetKnowledgeButton.pressed.connect(_on_reset_knowledge_pressed)
 
 
 func _setup_minigame_section() -> void:
@@ -151,17 +120,30 @@ func _on_toggle_inventory_pressed() -> void:
 		print("[DebugPanel] Inventory UI not available")
 
 
-func _call_florilexio_method(method_name: StringName) -> void:
-	if not is_instance_valid(_florilexio_manager):
-		print("[DebugPanel] FlorilexioManager not available")
-		return
-	if not _florilexio_manager.has_method(method_name):
-		print("[DebugPanel] FlorilexioManager.%s is not available" % method_name)
+func _on_unlock_knowledge_pressed() -> void:
+	var plant_id := _get_plant_id()
+	var fragment_id := _get_fragment_id()
+	if fragment_id == &"":
 		return
 
+	FlorilexioManager.unlock_knowledge(plant_id, fragment_id)
+	print("[DebugPanel] Unlocked knowledge '%s' for '%s'." % [fragment_id, plant_id])
+
+
+func _on_lock_knowledge_pressed() -> void:
 	var plant_id := _get_plant_id()
-	_florilexio_manager.call(method_name, plant_id)
-	print("[DebugPanel] Called FlorilexioManager.%s for %s" % [method_name, plant_id])
+	var fragment_id := _get_fragment_id()
+	if fragment_id == &"":
+		return
+
+	FlorilexioManager.lock_knowledge(plant_id, fragment_id)
+	print("[DebugPanel] Locked knowledge '%s' for '%s'." % [fragment_id, plant_id])
+
+
+func _on_reset_knowledge_pressed() -> void:
+	var plant_id := _get_plant_id()
+	FlorilexioManager.reset_entry(plant_id)
+	print("[DebugPanel] Reset knowledge for '%s'." % plant_id)
 
 
 func _on_launch_cutting_minigame_pressed() -> void:
@@ -245,6 +227,7 @@ func _on_reset_game_state_pressed() -> void:
 func _on_debug_reset_pressed() -> void:
 	_on_reset_game_state_pressed()
 	_on_clear_inventory_pressed()
+	FlorilexioManager.debug_reset()
 	print("[DebugPanel] All debug state reset")
 
 
@@ -271,13 +254,22 @@ func _get_plant_id() -> StringName:
 	return StringName(normalized_id)
 
 
+func _get_fragment_id() -> StringName:
+	var normalized_id := fragment_id_input.text.strip_edges()
+	if normalized_id.is_empty():
+		print("[DebugPanel] fragment_id cannot be empty.")
+		return &""
+
+	return StringName(normalized_id)
+
+
 func _get_plant_debug_data(plant_id: StringName) -> Dictionary:
 	var plant := _get_plant_debug_source(plant_id)
 	if not plant:
 		return {"display_name": "", "marks": {}}
 
 	var data := {
-		"display_name": str(plant.get("plant_display_name")),
+		"display_name": plant.get_plant_display_name(),
 		"marks": InventoryManager.build_plant_marks(plant),
 	}
 	_free_debug_plant_source(plant)
@@ -338,7 +330,7 @@ func _get_minigame_coordinator() -> MinigameCoordinator:
 
 
 func _find_collectable_plant_recursive(node: Node, plant_id: StringName) -> CollectablePlant:
-	if node is CollectablePlant and node.plant_id == plant_id:
+	if node is CollectablePlant and node.get_plant_id() == plant_id:
 		return node
 	for child in node.get_children():
 		var result := _find_collectable_plant_recursive(child, plant_id)

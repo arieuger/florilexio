@@ -7,6 +7,7 @@ signal invasive_plants_acknowledgement_changed(is_acknowledged: bool)
 signal mortal_plants_acknowledgement_changed(is_acknowledged: bool)
 signal magic_plants_acknowledgement_changed(is_acknowledged: bool)
 signal final_bouquet_composed(composition: Dictionary)
+signal plant_collection_progress_changed
 
 const START_HOUR := 10
 const END_HOUR := 22
@@ -19,8 +20,30 @@ var collected_plants: Dictionary = {}
 var final_bouquet_composition: Dictionary = {}
 var preferred_locale := "gl"
 
-var tutorial_plant_unlocked := false
-var plant_collection_tutorial_completed := false
+var tutorial_plant_unlocked: bool:
+	get:
+		return _tutorial_plant_unlocked
+	set(value):
+		if _tutorial_plant_unlocked == value:
+			return
+
+		_tutorial_plant_unlocked = value
+		plant_collection_progress_changed.emit()
+
+
+var plant_collection_tutorial_completed: bool:
+	get:
+		return _plant_collection_tutorial_completed
+	set(value):
+		if _plant_collection_tutorial_completed == value:
+			return
+
+		_plant_collection_tutorial_completed = value
+		plant_collection_progress_changed.emit()
+
+
+var _tutorial_plant_unlocked := false
+var _plant_collection_tutorial_completed := false
 
 var acknowledged_invasive_plants: bool:
 	get:

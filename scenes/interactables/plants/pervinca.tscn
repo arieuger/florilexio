@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dm5e8xnmt7wsq"]
 
+[ext_resource type="Resource" path="res://resources/plants/pervinca.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mxave"]
 [ext_resource type="Texture2D" uid="uid://hu65hmu0110g" path="res://assets/sprites/environment/plants/pervinca.png" id="2_mxave"]
 [ext_resource type="Texture2D" uid="uid://bgrrxe4hcyj0v" path="res://assets/sprites/environment/plants/pervinca_hover.png" id="3_4gjtk"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="Pervinca" unique_id=1542834651 instance=ExtResource("1_mxave")]
-plant_id = &"pervinca"
-plant_display_name = "Herba da envexa"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.940219, 0.86542207, 0.99695617, 0.6862745)
 is_invasive = true
 

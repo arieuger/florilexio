@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dgxrwtiolf3ai"]
 
+[ext_resource type="Resource" path="res://resources/plants/hiperico.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_vm8mp"]
 [ext_resource type="Texture2D" uid="uid://be6y6rc48atg8" path="res://assets/sprites/environment/plants/hiperico.png" id="2_rcsgu"]
 [ext_resource type="Texture2D" uid="uid://kv7n6k2sqowp" path="res://assets/sprites/environment/plants/hiperico_hover.png" id="3_rcsgu"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(9, 2)
 
 [node name="Hiperico" unique_id=1542834651 instance=ExtResource("1_vm8mp")]
-plant_id = &"hiperico"
-plant_display_name = "Hipérico"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.7809868, 1, 0.53371567, 0.6862745)
 is_magic = true
 collection_difficulty = 0

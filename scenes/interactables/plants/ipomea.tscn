@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://80rsdbh4iowk"]
 
+[ext_resource type="Resource" path="res://resources/plants/ipomea.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_g2e3d"]
 [ext_resource type="Texture2D" uid="uid://d4appjpaibl5l" path="res://assets/sprites/environment/plants/ipomea.png" id="2_cok0f"]
 [ext_resource type="Texture2D" uid="uid://chaal4br1lpdp" path="res://assets/sprites/environment/plants/ipomea_hover.png" id="3_cok0f"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(12, 1)
 
 [node name="Ipomea" unique_id=1542834651 instance=ExtResource("1_g2e3d")]
-plant_id = &"ipomea"
-plant_display_name = "Ipomea azul"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.70655483, 0.62303036, 1, 0.6862745)
 is_invasive = true
 

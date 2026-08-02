@@ -2,23 +2,23 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_cmqyv"]
 [ext_resource type="Texture2D" uid="uid://ba1e5tmw0q0g2" path="res://assets/sprites/environment/plants/malva.png" id="2_24dq6"]
+[ext_resource type="Resource" uid="uid://bf5vda7v5udif" path="res://resources/plants/malva.tres" id="2_tq5v8"]
 [ext_resource type="Texture2D" uid="uid://bovooip1mvcjw" path="res://assets/sprites/environment/plants/malva_hover.png" id="3_t3ovb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ovb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pux0"]
 resource_local_to_scene = true
 size = Vector2(8, 8.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tq5v8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtdhd"]
 resource_local_to_scene = true
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pux0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6op40"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="Malva" unique_id=1542834651 instance=ExtResource("1_cmqyv")]
-plant_id = &"malva"
-plant_display_name = "Malva"
+plant_data = ExtResource("2_tq5v8")
 hover_color = Color(0.8595422, 0.64244825, 1, 0.6862745)
 is_magic = true
 collection_difficulty = 0
@@ -33,17 +33,17 @@ texture = ExtResource("3_t3ovb")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -4.25)
-shape = SubResource("RectangleShape2D_t3ovb")
+shape = SubResource("RectangleShape2D_4pux0")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
-shape = SubResource("CircleShape2D_tq5v8")
+shape = SubResource("CircleShape2D_vtdhd")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_4pux0")
+shape = SubResource("RectangleShape2D_6op40")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 visible = true

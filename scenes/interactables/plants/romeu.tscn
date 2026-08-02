@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ba6f154tcth64"]
 
+[ext_resource type="Resource" path="res://resources/plants/romeu.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_2tpvn"]
 [ext_resource type="Texture2D" uid="uid://d3abskhnoc8gh" path="res://assets/sprites/environment/plants/romeu.png" id="2_kfstu"]
 [ext_resource type="Texture2D" uid="uid://b2y2cjrq15olx" path="res://assets/sprites/environment/plants/romeu_hover.png" id="3_nujs4"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="Romeu" unique_id=1542834651 instance=ExtResource("1_2tpvn")]
-plant_id = &"romeu"
-plant_display_name = "Romeu"
+plant_data = ExtResource("plant_data")
 hover_color = Color(5.1018596e-06, 0.9922119, 0.5624248, 0.6862745)
 is_magic = true
 

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://bf5vda7v5udif"]
+
+[ext_resource type="Script" uid="uid://doq0kbgt7al22" path="res://scripts/data/plant_knowledge_fragment.gd" id="1_5j2b2"]
+[ext_resource type="Script" uid="uid://joe65o45qf51" path="res://scripts/data/plant_data.gd" id="2_lcfw8"]
+
+[sub_resource type="Resource" id="Resource_5j2b2"]
+script = ExtResource("1_5j2b2")
+id = &"name"
+text = "Malva"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
+[sub_resource type="Resource" id="Resource_lcfw8"]
+script = ExtResource("1_5j2b2")
+id = &"visual_reference"
+knowledge_type = 2
+text = "Identificación visual da malva"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
+[resource]
+script = ExtResource("2_lcfw8")
+id = &"malva"
+display_name = "Malva"
+knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("Resource_lcfw8")])
+collection_requirements = Array[StringName]([&"name", &"visual_reference"])
+metadata/_custom_type_script = "uid://joe65o45qf51"

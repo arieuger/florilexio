@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://chx2eugcgoybj"]
 
+[ext_resource type="Resource" path="res://resources/plants/fento.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_kq6ye"]
 [ext_resource type="Texture2D" uid="uid://d3lkf52xg6d6i" path="res://assets/sprites/environment/plants/fento.png" id="2_xe6yg"]
 [ext_resource type="Texture2D" uid="uid://b1pv3ed7swgyx" path="res://assets/sprites/environment/plants/fento_hover.png" id="3_d7qrg"]
@@ -17,8 +19,7 @@ resource_local_to_scene = true
 size = Vector2(13, 3)
 
 [node name="Fento" unique_id=1542834651 instance=ExtResource("1_kq6ye")]
-plant_id = &"fento"
-plant_display_name = "Fento"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.21253657, 0.99999994, 0.49995482, 0.6862745)
 is_magic = true
 

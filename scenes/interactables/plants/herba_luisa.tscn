@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://8ns53t1skih2"]
 
+[ext_resource type="Resource" path="res://resources/plants/herba_luisa.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_6neje"]
 [ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_0sghy"]
 [ext_resource type="Texture2D" uid="uid://cn2cmeqqhhuiv" path="res://assets/sprites/environment/plants/herba-luisa.png" id="2_ss1ap"]
@@ -19,8 +21,7 @@ resource_local_to_scene = true
 size = Vector2(10, 1)
 
 [node name="HerbaLuisa" unique_id=1542834651 instance=ExtResource("1_6neje")]
-plant_id = &"herba_luisa"
-plant_display_name = "Herba luísa"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.33817145, 1, 0.6640658, 0.6862745)
 is_magic = true
 collection_minigame_config = ExtResource("2_0sghy")

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dkr62j07qkejh"]
 
+[ext_resource type="Resource" path="res://resources/plants/xesta.tres" id="plant_data"]
+
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_w1inn"]
 [ext_resource type="Texture2D" uid="uid://b2ewxjrmsb488" path="res://assets/sprites/environment/plants/xesta.png" id="2_asf7v"]
 [ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_enc2c"]
@@ -19,8 +21,7 @@ resource_local_to_scene = true
 size = Vector2(10, 2)
 
 [node name="Xesta" unique_id=1542834651 instance=ExtResource("1_w1inn")]
-plant_id = &"xesta"
-plant_display_name = "Xesta"
+plant_data = ExtResource("plant_data")
 hover_color = Color(0.935544, 1, 0.6177633, 0.6862745)
 is_magic = true
 collection_minigame_config = ExtResource("2_enc2c")
