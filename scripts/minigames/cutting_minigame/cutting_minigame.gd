@@ -8,7 +8,6 @@ const DIRECTION_CHANGE_INTERVAL := 3.0
 
 var plant_id: StringName
 var plant_display_name: String
-var plant_marks: Dictionary = {}
 var required_hits: int = 3
 var max_misses: int = 3
 var rotation_speed_degrees: float = 120.0
@@ -262,7 +261,6 @@ func _get_result_rewards() -> Dictionary:
 		&"plant_id": plant_id,
 		&"amount": 1,
 		&"display_name": plant_display_name,
-		&"marks": plant_marks,
 	}
 
 

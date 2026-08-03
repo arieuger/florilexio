@@ -91,14 +91,8 @@ func _on_consumed_time_changed(_blocks: int) -> void:
 
 func _on_add_inventory_item_pressed() -> void:
 	var plant_id := _get_plant_id()
-	var plant_data := _get_plant_debug_data(plant_id)
 
-	InventoryManager.add_item(
-		plant_id,
-		1,
-		str(plant_data.get("display_name", "")),
-		plant_data.get("marks", {})
-	)
+	InventoryManager.add_item(plant_id, 1)
 	print("[DebugPanel] Added plant to inventory: %s" % plant_id)
 
 
@@ -193,7 +187,6 @@ func _build_debug_cutting_minigame_context(plant_id: StringName) -> MinigameCont
 		&"plant_id": plant_id,
 		&"amount": 1,
 		&"display_name": context.display_name,
-		&"marks": {},
 	}
 	return context
 
@@ -208,15 +201,8 @@ func _apply_debug_minigame_result(result: MinigameResult) -> void:
 
 	InventoryManager.add_item(
 		StringName(result.rewards.get(&"plant_id", result.target_id)),
-		int(result.rewards.get(&"amount", 1)),
-		str(result.rewards.get(&"display_name", "")),
-		_get_result_marks(result)
+		int(result.rewards.get(&"amount", 1))
 	)
-
-
-func _get_result_marks(result: MinigameResult) -> Dictionary:
-	var marks: Variant = result.rewards.get(&"marks", {})
-	return marks if marks is Dictionary else {}
 
 func _on_reset_game_state_pressed() -> void:
 	if GameState.has_method(&"debug_reset"):
@@ -261,19 +247,6 @@ func _get_fragment_id() -> StringName:
 		return &""
 
 	return StringName(normalized_id)
-
-
-func _get_plant_debug_data(plant_id: StringName) -> Dictionary:
-	var plant := _get_plant_debug_source(plant_id)
-	if not plant:
-		return {"display_name": "", "marks": {}}
-
-	var data := {
-		"display_name": plant.get_plant_display_name(),
-		"marks": InventoryManager.build_plant_marks(plant),
-	}
-	_free_debug_plant_source(plant)
-	return data
 
 
 func _get_plant_debug_source(plant_id: StringName) -> CollectablePlant:

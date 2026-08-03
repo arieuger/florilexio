@@ -10,7 +10,8 @@ text = "Pan de cuco"
 
 [resource]
 script = ExtResource("1")
-id = &"pan-de-cuco"
-display_name = "Pan de cuco"
 knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
 collection_requirements = Array[StringName]([&"name"])
+is_invasive = true
+id = &"pan-de-cuco"
+display_name = "Pan de cuco"

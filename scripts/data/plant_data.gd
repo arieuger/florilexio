@@ -1,13 +1,9 @@
-extends Resource
+extends ItemData
 class_name PlantData
-
-@export var id: StringName
-@export var display_name: String
 
 @export  var short_description: String
 @export_multiline var discovered_text: String
 
-@export var icon: Texture2D
 @export var sprite: Texture2D
 
 @export_group("Knowledge")
@@ -16,17 +12,19 @@ class_name PlantData
 @export_group("Collection")
 @export var collection_requirements: Array[StringName] = []
 
+@export_group("Plant features")
+@export var is_poisonous := false
+@export var is_mortal := false
+@export var is_on_danger := false
+@export var is_magic := false
+@export var is_invasive := false
+
 @export_group("")
 
 func get_validation_errors() -> PackedStringArray:
-	var errors := PackedStringArray()
+	var errors := super.get_validation_errors()
 	var known_fragment_ids := {}
 	var seen_requirements := {}
-
-	if id == &"":
-		errors.append("Plant id cannot be empty.")
-	if display_name.is_empty():
-		errors.append("Plant display name cannot be empty.")
 
 	for fragment in knowledge_fragments:
 		if fragment == null:

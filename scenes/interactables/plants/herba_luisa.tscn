@@ -23,7 +23,6 @@ size = Vector2(10, 1)
 [node name="HerbaLuisa" unique_id=1542834651 instance=ExtResource("1_6neje")]
 plant_data = ExtResource("plant_data")
 hover_color = Color(0.33817145, 1, 0.6640658, 0.6862745)
-is_magic = true
 collection_minigame_config = ExtResource("2_0sghy")
 collection_minigame_tuning = ExtResource("3_ysrt8")
 

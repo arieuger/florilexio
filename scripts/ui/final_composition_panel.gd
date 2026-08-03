@@ -69,11 +69,20 @@ func _refresh_available_items() -> void:
 		child.queue_free()
 
 	var inventory_items := InventoryManager.get_items()
-	empty_inventory_label.visible = inventory_items.is_empty()
-	items_container.visible = not inventory_items.is_empty()
+	var plant_ids: Array[StringName] = []
 
-	var plant_ids := inventory_items.keys()
+	for raw_item_id in inventory_items.keys():
+		var item_id := StringName(raw_item_id)
+
+		if not ItemDatabase.get_plant(item_id):
+			continue
+
+		plant_ids.append(item_id)
+
 	plant_ids.sort()
+
+	empty_inventory_label.visible = plant_ids.is_empty()
+	items_container.visible = not plant_ids.is_empty()
 	var page_count := _get_page_count(plant_ids.size(), available_items_per_page)
 	available_paginator.visible = true
 	_available_current_page = clampi(_available_current_page, 0, page_count - 1)
@@ -111,7 +120,7 @@ func _refresh_selected_items() -> void:
 		var plant_id := bouquet_items[index]
 		var row := selected_row_scene.instantiate()
 		selected_container.add_child(row)
-		row.setup(index, InventoryManager.get_display_name(plant_id), InventoryManager.get_bouquet_item_marks(index))
+		row.setup(index, plant_id, InventoryManager.get_display_name(plant_id))
 		row.remove_requested.connect(_on_selected_row_remove_requested)
 
 	_update_selected_paginator(page_count)
@@ -205,6 +214,6 @@ func _on_selected_next_page_pressed() -> void:
 
 func _on_compose_button_pressed() -> void:
 	SoundManager.play_simple_sound("Actions/Click")
-	var bouquet_entries := InventoryManager.get_bouquet_entries()
-	var composition := GameState.compose_final_bouquet(bouquet_entries)
+	var bouquet_items := InventoryManager.get_bouquet_items()
+	var composition := GameState.compose_final_bouquet(bouquet_items)
 	composition_requested.emit(composition)

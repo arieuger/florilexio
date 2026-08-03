@@ -168,8 +168,8 @@ func is_plant_collected(plant_collection_id: StringName) -> bool:
 	return collected_plants.has(plant_collection_id)
 
 
-func compose_final_bouquet(bouquet_entries: Array[Dictionary]) -> Dictionary:
-	var composition := FinalBouquetCompositionCalculator.calculate(bouquet_entries)
+func compose_final_bouquet(bouquet_items: Array[StringName]) -> Dictionary:
+	var composition := FinalBouquetCompositionCalculator.calculate(bouquet_items)
 	final_bouquet_composition = composition
 	final_bouquet_composed.emit(final_bouquet_composition)
 	return final_bouquet_composition

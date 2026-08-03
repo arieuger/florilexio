@@ -18,8 +18,9 @@ metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
 [resource]
 script = ExtResource("2_lcfw8")
-id = &"malva"
-display_name = "Malva"
 knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("Resource_lcfw8")])
 collection_requirements = Array[StringName]([&"name"])
+is_magic = true
+id = &"malva"
+display_name = "Malva"
 metadata/_custom_type_script = "uid://joe65o45qf51"

@@ -21,7 +21,7 @@ func setup(new_plant_id: StringName, display_name: String, amount: int) -> void:
 	name_label.text = display_name
 	amount_label.text = "x" + str(amount)
 	discard_button.modulate.a = 1.0 if InventoryManager.can_discard_item(plant_id) else 0.45
-	_update_warning_labels(InventoryManager.get_plant_marks(plant_id))
+	_update_warning_labels(ItemDatabase.get_plant(plant_id))
 
 
 func _ready() -> void:
@@ -47,24 +47,24 @@ func _on_discard_button_mouse_exited() -> void:
 	discard_button.add_theme_color_override("font_color", DISCARD_DEFAULT_COLOR)
 
 
-func _update_warning_labels(marks: Dictionary) -> void:
+func _update_warning_labels(plant_data: PlantData) -> void:
 	_setup_warning_label(
 		invasive_warning_label,
 		InventoryManager.INVASIVE_WARNING_TEXT,
 		InventoryManager.INVASIVE_WARNING_TOOLTIP,
-		InventoryManager.should_show_invasive_warning(marks)
+		InventoryManager.should_show_invasive_warning(plant_data)
 	)
 	_setup_warning_label(
 		magic_warning_label,
 		InventoryManager.MAGIC_WARNING_TEXT,
 		InventoryManager.MAGIC_WARNING_TOOLTIP,
-		InventoryManager.should_show_magic_warning(marks)
+		InventoryManager.should_show_magic_warning(plant_data)
 	)
 	_setup_warning_label(
 		mortal_warning_label,
 		InventoryManager.MORTAL_WARNING_TEXT,
 		InventoryManager.MORTAL_WARNING_TOOLTIP,
-		InventoryManager.should_show_mortal_warning(marks)
+		InventoryManager.should_show_mortal_warning(plant_data)
 	)
 
 

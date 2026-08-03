@@ -10,7 +10,8 @@ text = "Silveira"
 
 [resource]
 script = ExtResource("1")
-id = &"silveira"
-display_name = "Silveira"
 knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
 collection_requirements = Array[StringName]([&"name"])
+is_magic = true
+id = &"silveira"
+display_name = "Silveira"

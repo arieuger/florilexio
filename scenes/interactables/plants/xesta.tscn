@@ -23,7 +23,6 @@ size = Vector2(10, 2)
 [node name="Xesta" unique_id=1542834651 instance=ExtResource("1_w1inn")]
 plant_data = ExtResource("plant_data")
 hover_color = Color(0.935544, 1, 0.6177633, 0.6862745)
-is_magic = true
 collection_minigame_config = ExtResource("2_enc2c")
 collection_minigame_tuning = ExtResource("3_4a3s6")
 collection_difficulty = 2

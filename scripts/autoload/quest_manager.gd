@@ -113,19 +113,13 @@ func submit_item(quest_id: StringName, objective_id: StringName, plant_id: Strin
 	if not InventoryManager.has_item(plant_id, submitted_amount):
 		return false
 
-	var display_name := ""
-	var marks: Dictionary = {}
-
 	if consumes_item:
-		display_name = InventoryManager.get_display_name(plant_id)
-		marks = InventoryManager.get_plant_marks(plant_id)
-
 		if not InventoryManager.remove_item(plant_id, submitted_amount):
 			return false
 
 	if not advance_objective(quest_id, objective_id, submitted_amount):
 		if consumes_item:
-			InventoryManager.add_item(plant_id, submitted_amount, display_name, marks)
+			InventoryManager.add_item(plant_id, submitted_amount)
 			push_warning("QuestManager: item submission was rolled back for quest '%s', objective '%s'." % [quest_id, objective_id])
 		else:
 			push_warning("QuestManager: shown item could not advance quest '%s', objective '%s'." % [quest_id, objective_id])

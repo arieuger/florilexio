@@ -15,12 +15,6 @@ class_name CollectablePlant
 @export var hover_color: Color = Color(1.0, 1.0, 1.0, 0.75)
 @export var hover_fade_duration: float = 0.18
 
-@export_group("Plant features")
-@export var is_poisonous := false
-@export var is_mortal := false
-@export var is_on_danger := false
-@export var is_magic := false
-@export var is_invasive := false
 
 @export_group("Collection Minigame")
 @export var collection_minigame_config: MinigameConfig = preload("res://resources/minigames/cutting_minigame_config.tres")
@@ -166,7 +160,6 @@ func _build_collection_rewards() -> Dictionary:
 		&"plant_id": get_plant_id(),
 		&"amount": 1,
 		&"display_name": get_plant_display_name(),
-		&"marks": InventoryManager.build_plant_marks(self),
 	}
 
 
@@ -187,18 +180,8 @@ func _apply_collection_minigame_result(result: MinigameResult) -> void:
 	var collected_plant_id := StringName(result.rewards.get(&"plant_id", result.target_id))
 	var collected_amount := int(result.rewards.get(&"amount", 1))
 
-	InventoryManager.add_item(
-		collected_plant_id,
-		collected_amount,
-		str(result.rewards.get(&"display_name", "")),
-		_get_result_marks(result)
-	)
+	InventoryManager.add_item(collected_plant_id, collected_amount)
 	_on_collection_minigame_completed(collected_plant_id, collected_amount)
-
-
-func _get_result_marks(result: MinigameResult) -> Dictionary:
-	var marks: Variant = result.rewards.get(&"marks", {})
-	return marks if marks is Dictionary else {}
 
 
 func _on_collection_minigame_completed(completed_plant_id: StringName, collected_amount: int) -> void:

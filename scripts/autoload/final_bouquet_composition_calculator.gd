@@ -1,26 +1,25 @@
 extends Node
 
-func calculate(bouquet_entries: Array[Dictionary]) -> Dictionary:
-	var entries := bouquet_entries.duplicate(true)
+func calculate(bouquet_items: Array[StringName]) -> Dictionary:
 	var plant_counts := {}
 	var total_count := 0
 	var magic_count := 0
 	var invasive_count := 0
 	var some_mortal := false
 
-	for entry in entries:
-		var plant_id := StringName(entry.get(InventoryManager.BOUQUET_PLANT_ID_KEY, &""))
-		if plant_id == &"":
+	for plant_id in bouquet_items:
+		var plant_data := ItemDatabase.get_plant(plant_id)
+		if not plant_data:
 			continue
 
 		total_count += 1
 		plant_counts[plant_id] = int(plant_counts.get(plant_id, 0)) + 1
-		var marks: Dictionary = entry.get(InventoryManager.BOUQUET_MARKS_KEY, {})
-		if bool(marks.get(InventoryManager.MARK_IS_MAGIC, false)):
+
+		if plant_data.is_magic:
 			magic_count += 1
-		if bool(marks.get(InventoryManager.MARK_IS_INVASIVE, false)):
+		if plant_data.is_invasive:
 			invasive_count += 1
-		if bool(marks.get(InventoryManager.MARK_IS_MORTAL, false)):
+		if plant_data.is_mortal:
 			some_mortal = true
 
 	var unique_count := plant_counts.size()
@@ -31,8 +30,16 @@ func calculate(bouquet_entries: Array[Dictionary]) -> Dictionary:
 		"mortal": some_mortal,
 		"invasive": invasive_count,
 		"magic": magic_count,
-		"rank": _get_rank(some_mortal, total_count, invasive_count, magic_count, has_traditional_size, duplicate_count),
-		"player_removed_invasors": GameState.discarded_invasive_plants_count >= 3
+		"rank": _get_rank(
+			some_mortal,
+			total_count,
+			invasive_count,
+			magic_count,
+			has_traditional_size,
+			duplicate_count
+		),
+		"player_removed_invasors":
+			GameState.discarded_invasive_plants_count >= 3,
 	}
 
 

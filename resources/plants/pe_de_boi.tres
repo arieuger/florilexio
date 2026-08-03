@@ -10,7 +10,8 @@ text = "Pé de boi"
 
 [resource]
 script = ExtResource("1")
-id = &"pe-de-boi"
-display_name = "Pé de boi"
 knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
 collection_requirements = Array[StringName]([&"name"])
+is_mortal = true
+id = &"pe-de-boi"
+display_name = "Pé de boi"
