@@ -42,6 +42,8 @@ var will_hide_balloon: bool = false
 
 var has_next_line: bool = false
 
+var _current_speaker_id: StringName = &""
+
 ## A dictionary to store any ephemeral variables
 var locals: Dictionary = {}
 
@@ -165,6 +167,7 @@ func apply_dialogue_line() -> void:
 			self,
 			dialogue_line.character
 		)
+	_current_speaker_id = DialogueBalloonCoordinator.active_speaker_id
 	
 	if is_instance_valid(progress):
 		progress.hide()
@@ -190,8 +193,7 @@ func apply_dialogue_line() -> void:
 
 	has_next_line = false
 	if not dialogue_line.next_id.is_empty():
-		var next_line := await DialogueManager.get_line(dialogue_resource, dialogue_line.next_id, temporary_game_states)
-		has_next_line = next_line != null
+		has_next_line = await _has_next_line_for_current_balloon(dialogue_line.next_id)
 
 	# Show our balloon
 	if is_instance_valid(balloon):
@@ -228,6 +230,30 @@ func apply_dialogue_line() -> void:
 		if is_instance_valid(balloon):
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
+
+## Skip internal instructions and only report dialogue assigned to this balloon.
+func _has_next_line_for_current_balloon(next_id: String) -> bool:
+	var pending_id := next_id
+	var visited_ids: Dictionary = {}
+
+	while not pending_id.is_empty() and not visited_ids.has(pending_id):
+		visited_ids[pending_id] = true
+		var next_line := await DialogueManager.get_line(
+			dialogue_resource,
+			pending_id,
+			temporary_game_states
+		) as DialogueLine
+		if not is_instance_valid(next_line):
+			return false
+		if next_line.type == DMConstants.TYPE_DIALOGUE:
+			var next_speaker_id := StringName(next_line.character.strip_edges())
+			# A missing character inherits the speaker of the preceding line.
+			return next_speaker_id.is_empty() or next_speaker_id == _current_speaker_id
+		if next_line.type != DMConstants.TYPE_MUTATION:
+			return false
+		pending_id = next_line.next_id
+
+	return false
 
 
 ## Go to the next line

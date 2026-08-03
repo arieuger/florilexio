@@ -338,6 +338,3 @@ func _refresh_collection_availability() -> void:
 
 	_fade_hover_to(0.0)
 	_set_name_label_visible(false)
-
-func _on_collection_progress_changed() -> void:
-	_refresh_collection_availability()
