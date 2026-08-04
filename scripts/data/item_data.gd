@@ -3,6 +3,7 @@ class_name ItemData
 
 @export var id: StringName
 @export var display_name: String
+@export_multiline var description: String
 @export var icon: Texture2D
 
 func get_validation_errors() -> PackedStringArray:

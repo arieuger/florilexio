@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ba13ut8ovxeoy"]
 
-[ext_resource type="Resource" path="res://resources/plants/silveira.tres" id="plant_data"]
-
+[ext_resource type="Resource" uid="uid://bmi23krpy3esh" path="res://resources/items/plants/silveira.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_x5c1h"]
 [ext_resource type="Texture2D" uid="uid://cphlbecjwo8jc" path="res://assets/sprites/environment/plants/silveira.png" id="2_w2lu3"]
 [ext_resource type="Texture2D" uid="uid://cirhvafvi162u" path="res://assets/sprites/environment/plants/silveira_hover.png" id="3_kjb8c"]

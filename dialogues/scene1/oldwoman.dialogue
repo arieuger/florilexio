@@ -43,8 +43,9 @@ pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o in
 do FlorilexioManager.unlock_knowledge("dedaleira", "name")
 do QuestManager.start_quest("01_collect_first_herbs")
 dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…
-Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo... => END
-# TODO: Inventario de obxetos
+Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo...
+do InventoryManager.add_item("plastic_bottle", 1)
+=> END
 
 ~ tutorial_quest_completed
 # Aquí xa empezou a misión 2 que (demomento) é estalote

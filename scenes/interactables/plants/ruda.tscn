@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://jlqlolglmkc4"]
 
-[ext_resource type="Resource" path="res://resources/plants/ruda.tres" id="plant_data"]
-
+[ext_resource type="Resource" uid="uid://s8koue2s1xnl" path="res://resources/items/plants/ruda.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mwfwv"]
 [ext_resource type="Texture2D" uid="uid://heyfl8t4opny" path="res://assets/sprites/environment/plants/ruda.png" id="2_dj0id"]
 [ext_resource type="Resource" uid="uid://45u8rcfchp1t" path="res://resources/minigames/bush_minigame_config.tres" id="2_pi808"]

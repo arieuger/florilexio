@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bemqll6ehos1h"]
 
-[ext_resource type="Resource" path="res://resources/plants/macela.tres" id="plant_data"]
-
+[ext_resource type="Resource" uid="uid://do0suxkpbd267" path="res://resources/items/plants/macela.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_worod"]
 [ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/macela.png" id="2_b52fh"]
 [ext_resource type="Texture2D" uid="uid://cto7yqspdwthh" path="res://assets/sprites/environment/plants/macela_hover.png" id="3_wro8n"]

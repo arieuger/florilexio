@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dm5e8xnmt7wsq"]
 
-[ext_resource type="Resource" path="res://resources/plants/pervinca.tres" id="plant_data"]
-
+[ext_resource type="Resource" uid="uid://c55qjad4rw70y" path="res://resources/items/plants/pervinca.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_mxave"]
 [ext_resource type="Texture2D" uid="uid://hu65hmu0110g" path="res://assets/sprites/environment/plants/pervinca.png" id="2_mxave"]
 [ext_resource type="Texture2D" uid="uid://bgrrxe4hcyj0v" path="res://assets/sprites/environment/plants/pervinca_hover.png" id="3_4gjtk"]

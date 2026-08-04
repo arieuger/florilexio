@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_cmqyv"]
 [ext_resource type="Texture2D" uid="uid://ba1e5tmw0q0g2" path="res://assets/sprites/environment/plants/malva.png" id="2_24dq6"]
-[ext_resource type="Resource" uid="uid://bf5vda7v5udif" path="res://resources/plants/malva.tres" id="2_tq5v8"]
+[ext_resource type="Resource" uid="uid://bf5vda7v5udif" path="res://resources/items/plants/malva.tres" id="2_tq5v8"]
 [ext_resource type="Texture2D" uid="uid://bovooip1mvcjw" path="res://assets/sprites/environment/plants/malva_hover.png" id="3_t3ovb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq5v8"]
