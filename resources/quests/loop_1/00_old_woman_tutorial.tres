@@ -22,4 +22,5 @@ item_submission_mode = 1
 script = ExtResource("2_fux1c")
 quest_id = &"00_old_woman_tutorial"
 objectives = Array[ExtResource("1_a3qqy")]([SubResource("Resource_tutorial_collect_malva"), SubResource("Resource_tutorial_deliver_malva")])
+description = "Levarlle a Mundo flores de malva para que faga a infusión que quita os medos."
 metadata/_custom_type_script = "uid://wjfua8olxjb5"

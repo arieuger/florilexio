@@ -6,6 +6,7 @@ signal quest_created(resource_path: String)
 const ObjectiveEditor := preload("res://addons/florilexio_narrative_tools/quest_objective_editor.gd")
 
 var quest_id_field: LineEdit
+var description_field: TextEdit
 var catalog_selector: OptionButton
 var objectives_container: VBoxContainer
 var objective_editors: Array[Control] = []
@@ -26,6 +27,8 @@ func _ready() -> void:
 
 	quest_id_field = _add_line_field("Quest ID")
 	quest_id_field.text_changed.connect(_on_quest_id_changed)
+
+	description_field = _add_multiline_field("Descrición")
 
 	_add_label("Catálogo destino")
 	catalog_selector = OptionButton.new()
@@ -160,6 +163,8 @@ func _build_creation_request() -> QuestCreationRequest:
 		quest_id_field.text
 	)
 
+	request.description = description_field.text
+
 	for editor in objective_editors:
 		request.objectives.append(editor.build_definition())
 
@@ -177,6 +182,7 @@ func _build_creation_request() -> QuestCreationRequest:
 
 func _reset_after_successful_creation() -> void:
 	quest_id_field.clear()
+	description_field.clear()
 
 	for editor in objective_editors:
 		editor.queue_free()
@@ -240,3 +246,11 @@ func _add_label(label_text: String) -> void:
 	var label := Label.new()
 	label.text = label_text
 	add_child(label)
+
+func _add_multiline_field(label_text: String) -> TextEdit:
+	_add_label(label_text)
+
+	var field := TextEdit.new()
+	field.custom_minimum_size.y = 100.0
+	add_child(field)
+	return field

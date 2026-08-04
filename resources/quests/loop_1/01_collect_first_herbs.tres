@@ -14,3 +14,4 @@ target_id = &"dedaleira"
 script = ExtResource("2_dxx1j")
 quest_id = &"01_collect_first_herbs"
 objectives = Array[ExtResource("1_vdjh1")]([SubResource("Resource_lio8o")])
+description = "Conseguir as herbas de San Xoán para Mundo. "

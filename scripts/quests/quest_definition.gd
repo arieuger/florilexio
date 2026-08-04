@@ -4,6 +4,7 @@ extends Resource
 
 @export var quest_id: StringName
 @export var objectives: Array[QuestObjectiveDefinition] = []
+@export_multiline var description: String
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()

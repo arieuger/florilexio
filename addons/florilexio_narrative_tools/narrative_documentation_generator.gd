@@ -87,15 +87,15 @@ func _get_profile_references(index: NarrativeIndex, conversation: ConversationDe
 func _build_quests(index: NarrativeIndex) -> String:
 	var lines := PackedStringArray([
 		"# Quests", "", "> Generated file. Do not edit manually.", "",
-		"| Quest ID | Catalog | Objectives | Resource |", "|---|---|---:|---|",
+		"| Quest ID | Description | Catalog | Objectives | Resource |", "|---|---|---|---:|---|",
 	])
 	var records := index.quests.duplicate()
 	records.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a["id"]) < str(b["id"]))
 
 	for record in records:
 		var quest := record["resource"] as QuestDefinition
-		lines.append("| %s | %s | %d | %s |" % [
-			_escape(quest.quest_id), _escape(_get_quest_catalogs(index, quest)), quest.objectives.size(),
+		lines.append("| %s | %s | %s | %d | %s |" % [
+			_escape(quest.quest_id), _escape(quest.description), _escape(_get_quest_catalogs(index, quest)), quest.objectives.size(),
 			_escape(_relative_path(str(record["path"]))),
 		])
 

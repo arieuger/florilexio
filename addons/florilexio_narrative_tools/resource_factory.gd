@@ -145,6 +145,7 @@ static func get_quest_creation_errors(request: QuestCreationRequest, index: Narr
 
 	var definition := QuestDefinition.new()
 	definition.quest_id = request.quest_id
+	definition.description = request.description
 	definition.objectives = request.objectives.duplicate()
 
 	errors.append_array(definition.get_validation_errors())
@@ -197,6 +198,7 @@ static func create_quest(request: QuestCreationRequest, index: NarrativeIndex) -
 
 	var definition := QuestDefinition.new()
 	definition.quest_id = request.quest_id
+	definition.description = request.description
 	definition.objectives = request.objectives.duplicate()
 
 	var save_error := ResourceSaver.save(
