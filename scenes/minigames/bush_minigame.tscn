@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bq0x3087r84fg" path="res://assets/sprites/minigame/ring_base.png" id="2_ring"]
 [ext_resource type="Texture2D" uid="uid://tp0c4nmo67ov" path="res://assets/sprites/minigame/bush/rd-game-zone1.png" id="3_zones"]
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_font"]
 [ext_resource type="Texture2D" uid="uid://bx5v4d2fnquis" path="res://assets/sprites/ui/bar_background.png" id="6_424f3"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="6_cut_anim"]
 [ext_resource type="Texture2D" uid="uid://b304u7wx65vwt" path="res://assets/sprites/ui/bar_fill_yellow_vertical.png" id="7_lno8g"]
@@ -134,7 +133,6 @@ offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_font")
 theme_override_font_sizes/font_size = 14
 text = "Ben!"
 horizontal_alignment = 1

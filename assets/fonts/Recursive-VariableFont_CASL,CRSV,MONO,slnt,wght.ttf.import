@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cc4sxcsqdrpjs"
-path="res://.godot/imported/BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-a58c1e4e632d71849915aff93a47703f.fontdata"
+uid="uid://b4feid4xmda56"
+path="res://.godot/imported/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf-e5f8805ad9c029feb78a874b1f1bc1e0.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf"
-dest_files=["res://.godot/imported/BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf-a58c1e4e632d71849915aff93a47703f.fontdata"]
+source_file="res://assets/fonts/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf"
+dest_files=["res://.godot/imported/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf-e5f8805ad9c029feb78a874b1f1bc1e0.fontdata"]
 
 [params]
 

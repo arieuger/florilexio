@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bq0x3087r84fg" path="res://assets/sprites/minigame/ring_base.png" id="2_ring"]
 [ext_resource type="Texture2D" uid="uid://d6oqcytddcyq" path="res://assets/sprites/minigame/cutting/cutting_success_zones.png" id="3_zones"]
 [ext_resource type="Texture2D" uid="uid://cgav5nt4eiuvm" path="res://assets/sprites/minigame/cursor.png" id="4_cursor"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="5_8anea"]
 [ext_resource type="Texture2D" uid="uid://byryk81j17g17" path="res://assets/sprites/minigame/cut_anim.png" id="5_mkhcs"]
 [ext_resource type="PackedScene" uid="uid://bi4uv6l1o35m8" path="res://ui/minigames/minigame_status_panel.tscn" id="6_status_panel"]
 
@@ -109,7 +108,6 @@ offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("5_8anea")
 theme_override_font_sizes/font_size = 14
 text = "Ben!"
 horizontal_alignment = 1

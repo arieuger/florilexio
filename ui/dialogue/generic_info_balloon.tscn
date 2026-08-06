@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://6daibv2p85bc" path="res://scripts/ui/generic_info_balloon.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_balloon"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_font"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_balloon"]
 texture = ExtResource("2_balloon")
@@ -55,7 +54,6 @@ custom_minimum_size = Vector2(100, 5)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72464263, 0.7246426, 0.7246426, 1)
 theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 5
 text = "Conseguiches unha silveira!"
 horizontal_alignment = 1

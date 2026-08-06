@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://pd4lsh33fvqc"]
 
 [ext_resource type="Script" uid="uid://b0i1yatrbkgoe" path="res://scripts/ui/start_menu.gd" id="1_menu"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="3_font"]
 [ext_resource type="Texture2D" uid="uid://bm1ltc8rt6f0s" path="res://assets/sprites/ui/lang_selector.png" id="4_ixxch"]
 [ext_resource type="Texture2D" uid="uid://bd0jkeo0e6nw0" path="res://assets/sprites/ui/background_menu.png" id="4_nhkli"]
 
@@ -63,7 +62,6 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.9227143, 0.85358554, 0.49865633, 1)
 theme_override_colors/font_outline_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 18
 text = "Un pequeno florilexio"
 horizontal_alignment = 1
@@ -85,7 +83,6 @@ theme_override_colors/font_pressed_color = Color(0.9872183, 0.83431065, 5.390644
 theme_override_colors/font_hover_color = Color(1, 0.87889504, 0.3806794, 1)
 theme_override_colors/font_outline_color = Color(0, 0.13936871, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ixxch")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_eawnk")
@@ -105,7 +102,6 @@ theme_override_colors/font_pressed_color = Color(0.9872183, 0.83431065, 5.390644
 theme_override_colors/font_hover_color = Color(1, 0.87889504, 0.3806794, 1)
 theme_override_colors/font_outline_color = Color(0, 0.13936871, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ixxch")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_eawnk")
@@ -124,7 +120,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 18)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 10
 text = "Galego"
 horizontal_alignment = 2
@@ -142,7 +137,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 18)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.93333334, 0.8980392, 0.7607843, 1)
-theme_override_fonts/font = ExtResource("3_font")
 theme_override_font_sizes/font_size = 10
 text = "English"
 vertical_alignment = 1

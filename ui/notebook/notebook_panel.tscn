@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dy47yqnsu0dwl" path="res://scripts/ui/notebook_panel.gd" id="1_lncma"]
 [ext_resource type="Texture2D" uid="uid://c5wrhaaspxbog" path="res://assets/sprites/ui/notebook/notebook_base.png" id="1_w0xa0"]
-[ext_resource type="FontVariation" uid="uid://csk44cj7axmwv" path="res://assets/fonts/variations/bitcount_normal.tres" id="2_u4u0i"]
 [ext_resource type="Texture2D" uid="uid://fngi8sqynsvy" path="res://assets/sprites/ui/buttons/close_unpressed.png" id="2_yundp"]
 [ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="3_lncma"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="4_u4u0i"]
@@ -15,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lncma")
-notebook_font = ExtResource("2_u4u0i")
 
 [node name="DimBackground" type="ColorRect" parent="." unique_id=2132972114]
 layout_mode = 1

@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://dosqr80lvhtg1"]
 
 [ext_resource type="Script" uid="uid://bseveiylxljl5" path="res://scripts/debug/debug_panel.gd" id="1_script"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="2_font"]
-
 [sub_resource type="Theme" id="Theme_debug"]
-default_font = ExtResource("2_font")
 default_font_size = 4
 Button/font_sizes/font_size = 4
 Label/font_sizes/font_size = 4

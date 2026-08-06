@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cr5su0dm2tp6g" path="res://ui/dialogue/balloon.gd" id="1_ykhdu"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_tufgs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_14lqd"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="4_cxucc"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_0708b"]
 [ext_resource type="Texture2D" uid="uid://clpb3gc37jsy8" path="res://assets/sprites/ui/ui_down_arrow.png" id="6_m63ww"]
 
@@ -191,7 +190,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0.034172826, 0.03418122, 1)
-theme_override_fonts/normal_font = ExtResource("4_cxucc")
 theme_override_font_sizes/normal_font_size = 4
 theme_override_font_sizes/bold_font_size = 4
 theme_override_font_sizes/bold_italics_font_size = 4
@@ -215,7 +213,6 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.8, 0.05, 0.04, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.25, 0.25, 0.25, 1)
-theme_override_fonts/font = ExtResource("4_cxucc")
 theme_override_font_sizes/font_size = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_response_button")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_response_button")

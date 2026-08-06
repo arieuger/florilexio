@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://ct05xjv0d2vnf"]
 
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="1_font"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_font"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_panel_texture"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_disabled"]

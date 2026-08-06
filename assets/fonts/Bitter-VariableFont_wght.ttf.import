@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dw16yymmu5i3f"
-path="res://.godot/imported/VT323-Regular.ttf-fc3781f5235ceff7fbc465ccf3078d1e.fontdata"
+uid="uid://dl6ej2fjvecfq"
+path="res://.godot/imported/Bitter-VariableFont_wght.ttf-818445b9d98fe516b424e3423e6540f0.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/VT323-Regular.ttf"
-dest_files=["res://.godot/imported/VT323-Regular.ttf-fc3781f5235ceff7fbc465ccf3078d1e.fontdata"]
+source_file="res://assets/fonts/Bitter-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/Bitter-VariableFont_wght.ttf-818445b9d98fe516b424e3423e6540f0.fontdata"]
 
 [params]
 

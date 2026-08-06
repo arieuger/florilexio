@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="7_inventory_pressed"]
 [ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="8_inventory_hover"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="9_inventory_panel"]
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="10_font"]
 [ext_resource type="PackedScene" uid="uid://dosqr80lvhtg1" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]
 [ext_resource type="PackedScene" uid="uid://lta5nh4w7xph" path="res://ui/notebook/notebook_panel.tscn" id="11_dg77c"]
 
@@ -69,7 +68,6 @@ offset_right = 55.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.82573575, 1, 0.80938697, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("10_font")
 theme_override_font_sizes/font_size = 8
 text = "10:00"
 
