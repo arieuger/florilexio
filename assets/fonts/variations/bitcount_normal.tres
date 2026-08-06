@@ -1,0 +1,14 @@
+[gd_resource type="FontVariation" format=3 uid="uid://csk44cj7axmwv"]
+
+[ext_resource type="FontFile" uid="uid://cc4sxcsqdrpjs" path="res://assets/fonts/BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf" id="1_4feah"]
+
+[resource]
+base_font = ExtResource("1_4feah")
+variation_opentype = {
+1129468758: 0,
+1162629960: 50,
+1162631248: 0,
+1936486004: 0,
+2003265652: 400
+}
+variation_embolden = -0.1

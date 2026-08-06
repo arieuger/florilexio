@@ -101,12 +101,12 @@ func _build_quests(index: NarrativeIndex) -> String:
 
 	for record in records:
 		var quest := record["resource"] as QuestDefinition
-		lines.append_array(["", "## %s" % quest.quest_id, "", "| Objective ID | Event | Target type | Target ID | Required |", "|---|---|---|---|---:|"])
+		lines.append_array(["", "## %s" % quest.quest_id, "", "| Objective ID | Description | Event | Target type | Target ID | Required |", "|---|---|---|---|---|---:|"])
 		for objective in quest.objectives:
 			if objective == null:
 				continue
-			lines.append("| %s | %s | %s | %s | %d |" % [
-				_escape(objective.objective_id), QuestObjectiveDefinition.EventType.keys()[objective.event_type],
+			lines.append("| %s | %s | %s | %s | %s | %d |" % [
+				_escape(objective.objective_id), _escape(objective.description), QuestObjectiveDefinition.EventType.keys()[objective.event_type],
 				QuestObjectiveDefinition.TargetType.keys()[objective.target_type], _escape(objective.target_id),
 				objective.required_amount,
 			])

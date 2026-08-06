@@ -22,8 +22,10 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 @export_group("")
 
 @onready var inventory_button: TextureButton = $InventoryButton
+@onready var notebook_button: TextureButton = %NotebookButton
 @onready var time_label: Label = $TimeLabel
 @onready var inventory_panel: Control = $InventoryPanel
+@onready var notebook_panel: Control = %NotebookPanel
 
 var _time_shake_tween: Tween
 var _time_blink_tween: Tween
@@ -33,7 +35,7 @@ var _final_composition_panel: FinalCompositionPanel
 var _final_scene_spotlight: FinalSceneSpotlight
 var _final_mortal_overlay_layer: CanvasLayer
 var _final_mortal_overlay_tween: Tween
-
+var _movement_enabled_before_notebook := true
 
 func _ready() -> void:
 	_time_label_base_position = time_label.position
@@ -48,9 +50,30 @@ func _ready() -> void:
 	if inventory_panel.has_signal(&"compose_bouquet_requested"):
 		inventory_panel.connect(&"compose_bouquet_requested", _on_inventory_compose_bouquet_requested)
 
+	notebook_panel.visible = false
+	notebook_button.pressed.connect(_toggle_notebook)
+
+	if notebook_panel.has_signal(&"close_requested"):
+		notebook_panel.connect(&"close_requested", _hide_notebook)
+
+	_update_panel_buttons()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed(&"toggle_notebook"):
+		return
+
+	get_viewport().set_input_as_handled()
+	_toggle_notebook()
+
 
 func _toggle_inventory() -> void:
-	_set_inventory_open(not inventory_panel.visible)
+	var should_open := not inventory_panel.visible
+
+	if should_open and notebook_panel.visible:
+		_hide_notebook()
+
+	_set_inventory_open(should_open)
 
 
 func _hide_inventory() -> void:
@@ -67,7 +90,7 @@ func _on_inventory_button_mouse_entered() -> void:
 
 func _set_inventory_open(is_open: bool) -> void:
 	inventory_panel.visible = is_open
-	inventory_button.visible = not is_open
+	_update_panel_buttons()
 
 
 func _update_time_label(_total_consumed_time: int) -> void:
@@ -122,6 +145,7 @@ func _set_time_label_color(color: Color) -> void:
 
 
 func _launch_final_sequence() -> void:
+	_hide_notebook()
 	_set_inventory_open(false)
 	inventory_button.visible = false
 	_set_player_movement_enabled(false)
@@ -329,3 +353,59 @@ func _set_player_movement_enabled(enabled: bool) -> void:
 	var root := get_tree().current_scene
 	if root and root.has_method("set_player_movement_enabled"):
 		root.set_player_movement_enabled(enabled)
+
+
+
+func _toggle_notebook() -> void:
+	if notebook_panel.visible:
+		_hide_notebook()
+	else:
+		_show_notebook()
+
+
+func _show_notebook() -> void:
+	if _final_sequence_started:
+		return
+
+	if DialogueBalloonCoordinator.is_running:
+		return
+
+	if inventory_panel.visible:
+		_set_inventory_open(false)
+
+	_movement_enabled_before_notebook = _is_player_movement_enabled()
+	_set_player_movement_enabled(false)
+
+	if notebook_panel.has_method(&"prepare_to_open"):
+		notebook_panel.call(&"prepare_to_open")
+
+	notebook_panel.visible = true
+	_update_panel_buttons()
+
+
+func _hide_notebook() -> void:
+	if not notebook_panel.visible:
+		return
+
+	notebook_panel.visible = false
+	_set_player_movement_enabled(_movement_enabled_before_notebook)
+	_update_panel_buttons()
+
+
+func _is_player_movement_enabled() -> bool:
+	var player := get_tree().get_first_node_in_group(&"player")
+	if player and "movement_enabled" in player:
+		return bool(player.get("movement_enabled"))
+
+	return true
+
+
+func _update_panel_buttons() -> void:
+	var should_show_buttons := (
+		not inventory_panel.visible
+		and not notebook_panel.visible
+		and not _final_sequence_started
+	)
+
+	inventory_button.visible = should_show_buttons
+	notebook_button.visible = should_show_buttons

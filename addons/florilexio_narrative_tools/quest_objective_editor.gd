@@ -5,6 +5,7 @@ signal remove_requested(editor: Control)
 
 var heading: Label
 var objective_id_field: LineEdit
+var description_field: TextEdit
 var event_selector: OptionButton
 var target_type_selector: OptionButton
 var target_id_field: LineEdit
@@ -21,6 +22,12 @@ func _ready() -> void:
 	add_child(heading)
 
 	objective_id_field = _add_line_field("Objective ID")
+
+	_add_label("Descrición (opcional)")
+	description_field = TextEdit.new()
+	description_field.custom_minimum_size.y = 56
+	description_field.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
+	add_child(description_field)
 
 	_add_label("Event type")
 	event_selector = OptionButton.new()
@@ -83,6 +90,7 @@ func build_definition() -> QuestObjectiveDefinition:
 	var objective := QuestObjectiveDefinition.new()
 
 	objective.objective_id = NarrativeResourceFactory.normalize_id(objective_id_field.text)
+	objective.description = description_field.text.strip_edges()
 	objective.event_type = int(event_selector.get_selected_metadata())
 	objective.target_type = int(target_type_selector.get_selected_metadata())
 	objective.target_id = StringName(target_id_field.text.strip_edges())

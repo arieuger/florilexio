@@ -28,6 +28,7 @@ enum ItemSubmissionMode {
 }
 
 @export var objective_id: StringName
+@export_multiline var description: String
 @export var event_type: EventType = EventType.NONE
 @export var target_type: TargetType = TargetType.NONE
 @export var target_id: StringName

@@ -6,6 +6,7 @@
 [sub_resource type="Resource" id="Resource_tutorial_collect_malva"]
 script = ExtResource("1_a3qqy")
 objective_id = &"tutorial_collect_malva"
+description = "Recolle unha flor de malva"
 event_type = 1
 target_type = 2
 target_id = &"malva_tutorial"
@@ -13,6 +14,7 @@ target_id = &"malva_tutorial"
 [sub_resource type="Resource" id="Resource_tutorial_deliver_malva"]
 script = ExtResource("1_a3qqy")
 objective_id = &"tutorial_deliver_malva"
+description = "Ensínalle a Mundo a flor de malva"
 event_type = 5
 target_type = 1
 target_id = &"malva"

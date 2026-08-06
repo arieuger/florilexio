@@ -345,6 +345,28 @@ func _is_valid_status(status: int) -> bool:
 		or status == QuestState.Status.FAILED
 
 
+func get_registered_quest_ids() -> Array[StringName]:
+	var quest_ids: Array[StringName] = []
+
+	for raw_quest_id in _definitions.keys():
+		quest_ids.append(StringName(raw_quest_id))
+
+	return quest_ids
+
+
+func get_quest_definition(quest_id: StringName) -> QuestDefinition:
+	return _get_definition(quest_id)
+
+
+func get_quest_status(quest_id: StringName) -> QuestState.Status:
+	var state := _get_state(quest_id)
+
+	if state == null:
+		return QuestState.Status.INACTIVE
+
+	return state.status
+
+
 func get_objective_required_amount(quest_id: StringName, objective_id: StringName) -> int:
 	var objective := _get_objective_definition(quest_id, objective_id)
 	return objective.required_amount if objective != null else 0

@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="8_inventory_hover"]
 [ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="9_inventory_panel"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://ui/dialogue/PixelifySans-VariableFont_wght.ttf" id="10_font"]
-[ext_resource type="PackedScene" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]
+[ext_resource type="PackedScene" uid="uid://dosqr80lvhtg1" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]
+[ext_resource type="PackedScene" uid="uid://lta5nh4w7xph" path="res://ui/notebook/notebook_panel.tscn" id="11_dg77c"]
 
 [node name="GameRoot" type="Node2D" unique_id=1136013151]
 script = ExtResource("1_root")
@@ -27,8 +28,7 @@ script = ExtResource("2_time")
 [node name="Player" parent="." unique_id=525240005 instance=ExtResource("4_player")]
 max_speed = 65.0
 
-[node name="GameHUD" type="CanvasLayer" parent="." unique_id=810013888]
-groups = ["game_hud"]
+[node name="GameHUD" type="CanvasLayer" parent="." unique_id=810013888 groups=["game_hud"]]
 script = ExtResource("5_hud")
 final_area_path = "uid://dsm7uwl8e3sqr"
 final_spotlight_radius = 50.0
@@ -41,6 +41,21 @@ anchor_right = 1.0
 offset_left = -30.0
 offset_top = 10.0
 offset_right = -17.0
+offset_bottom = 23.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_inventory_normal")
+texture_pressed = ExtResource("7_inventory_pressed")
+texture_hover = ExtResource("8_inventory_hover")
+
+[node name="NotebookButton" type="TextureButton" parent="GameHUD" unique_id=191346586]
+unique_name_in_owner = true
+modulate = Color(1, 0.2901961, 1, 1)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 10.0
+offset_right = -35.0
 offset_bottom = 23.0
 grow_horizontal = 0
 texture_normal = ExtResource("6_inventory_normal")
@@ -61,7 +76,11 @@ text = "10:00"
 [node name="InventoryPanel" parent="GameHUD" unique_id=1014228628 instance=ExtResource("9_inventory_panel")]
 visible = false
 
-[node name="DebugPanel" parent="." instance=ExtResource("11_debug_panel")]
+[node name="NotebookPanel" parent="GameHUD" unique_id=1027844528 instance=ExtResource("11_dg77c")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DebugPanel" parent="." unique_id=609689278 instance=ExtResource("11_debug_panel")]
 
 [node name="Music" type="FmodEventEmitter2D" parent="." unique_id=1212419938]
 event_name = "event:/Music"
