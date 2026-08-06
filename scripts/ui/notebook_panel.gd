@@ -2,10 +2,10 @@ extends Control
 
 signal close_requested
 
-var OBJECTIVE_FONT_SIZE := 3
+const OBJECTIVE_FONT_SIZE := 4
 const OBJECTIVE_COLOR := Color(0.25, 0.28, 0.25, 0.72)
 const OBJECTIVE_INDENT := 3
-const MISSION_FONT_SIZE := 4
+const MISSION_FONT_SIZE := 5
 
 @export var notebook_font: Font
 
@@ -14,8 +14,6 @@ const MISSION_FONT_SIZE := 4
 @onready var right_missions_list: VBoxContainer = %RightMissionsList
 @onready var empty_label: Label = %EmptyLabel
 @onready var close_button: TextureButton = %CloseButton
-
-var _tmp_font_size_test : Array[int]= [3, 4, 5, 6, 7, 8, 9, 10]
 
 
 func _ready() -> void:
@@ -71,18 +69,13 @@ func refresh() -> void:
 
 	var left_page_count := ceili(visible_quest_ids.size() / 2.0)
 
-	for i in range(_tmp_font_size_test.size()):
-		var test_size := _tmp_font_size_test[i]
-		OBJECTIVE_FONT_SIZE = test_size
+	for index in range(visible_quest_ids.size()):
+		var target_container := (left_missions_list
+			if index < left_page_count
+			else right_missions_list
+		)
 
-
-		for index in range(visible_quest_ids.size()):
-			var target_container := (left_missions_list
-				if index < left_page_count
-				else right_missions_list
-			)
-
-			_add_quest_entry(target_container, visible_quest_ids[index])
+		_add_quest_entry(target_container, visible_quest_ids[index])
 
 
 func _clear_missions() -> void:

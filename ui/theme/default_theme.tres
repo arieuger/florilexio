@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://ct05xjv0d2vnf"]
 
-[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_font"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_panel_texture"]
+[ext_resource type="FontFile" uid="uid://dg5bgpm02hd28" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_w0row"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_disabled"]
 texture = ExtResource("2_panel_texture")
@@ -47,7 +47,7 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
 [resource]
-default_font = ExtResource("1_font")
+default_font = ExtResource("2_w0row")
 default_font_size = 8
 Button/colors/font_color = Color(0.33333334, 0.4392157, 0.16862746, 1)
 Button/colors/font_disabled_color = Color(0.33333334, 0.4392157, 0.16862746, 0.45)
