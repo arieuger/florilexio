@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3 uid="uid://c2glwo8p370bp"]
+
+[ext_resource type="FontFile" uid="uid://dg5bgpm02hd28" path="res://assets/fonts/Jersey10-Regular.ttf" id="1_02ce4"]
+
+[resource]
+base_font = ExtResource("1_02ce4")
+variation_embolden = -0.3
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)

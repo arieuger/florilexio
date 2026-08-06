@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" format=3 uid="uid://foqn3igfk1cv"]
+
+[ext_resource type="FontFile" uid="uid://dg5bgpm02hd28" path="res://assets/fonts/Jersey10-Regular.ttf" id="1_6y2ef"]
+
+[resource]
+base_font = ExtResource("1_6y2ef")

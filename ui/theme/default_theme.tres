@@ -1,7 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://ct05xjv0d2vnf"]
 
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_panel_texture"]
-[ext_resource type="FontFile" uid="uid://dg5bgpm02hd28" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_w0row"]
+[ext_resource type="FontVariation" uid="uid://foqn3igfk1cv" path="res://assets/fonts/variations/bold-jersey-10.tres" id="2_ywhkj"]
+[ext_resource type="FontVariation" uid="uid://c2glwo8p370bp" path="res://assets/fonts/variations/italic-jersey-10.tres" id="3_nmid5"]
+[ext_resource type="FontVariation" uid="uid://dsm45d3eq468y" path="res://assets/fonts/variations/bold-italic-jersey-10.tres" id="3_vnaw2"]
+[ext_resource type="FontVariation" uid="uid://cn6fo5a4il3rh" path="res://assets/fonts/variations/heavy-jersey-10.tres" id="4_vnaw2"]
+[ext_resource type="FontVariation" uid="uid://bqokipmhff54g" path="res://assets/fonts/variations/base-jersey-10.tres" id="5_gct7h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_button_disabled"]
 texture = ExtResource("2_panel_texture")
@@ -47,7 +51,7 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.26409692, 0.5753922, 0.44491395, 1)
 
 [resource]
-default_font = ExtResource("2_w0row")
+default_font = ExtResource("5_gct7h")
 default_font_size = 8
 Button/colors/font_color = Color(0.33333334, 0.4392157, 0.16862746, 1)
 Button/colors/font_disabled_color = Color(0.33333334, 0.4392157, 0.16862746, 0.45)
@@ -77,5 +81,9 @@ RichTextLabel/font_sizes/bold_italics_font_size = 8
 RichTextLabel/font_sizes/italics_font_size = 8
 RichTextLabel/font_sizes/mono_font_size = 8
 RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/bold_font = ExtResource("2_ywhkj")
+RichTextLabel/fonts/bold_italics_font = ExtResource("3_vnaw2")
+RichTextLabel/fonts/italics_font = ExtResource("3_nmid5")
+RichTextLabel/fonts/mono_font = ExtResource("4_vnaw2")
 TextEdit/colors/font_color = Color(0, 0.015686275, 0.03137255, 1)
 TextEdit/font_sizes/font_size = 8

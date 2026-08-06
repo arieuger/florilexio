@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" format=3 uid="uid://cn6fo5a4il3rh"]
+
+[ext_resource type="FontFile" uid="uid://dg5bgpm02hd28" path="res://assets/fonts/Jersey10-Regular.ttf" id="1_w6ob3"]
+
+[resource]
+base_font = ExtResource("1_w6ob3")
+variation_embolden = 0.3
