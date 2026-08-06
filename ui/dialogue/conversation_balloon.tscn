@@ -102,7 +102,7 @@ scroll_active = false
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=316111825 instance=ExtResource("3_14lqd")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/default_color = Color(0, 0.034172826, 0.03418122, 1)
+theme_override_colors/default_color = Color(0, 0.03529412, 0.03529412, 0.8)
 theme_override_font_sizes/normal_font_size = 5
 theme_override_font_sizes/bold_font_size = 5
 theme_override_font_sizes/bold_italics_font_size = 5
