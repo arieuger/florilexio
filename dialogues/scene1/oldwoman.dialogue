@@ -14,6 +14,7 @@ Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar
 Así é como poderás recoñecelas…
 [shake rate=10 level=2]bssbssbss….[/shake]
 do FlorilexioManager.unlock_knowledge("malva", "name")
+do FlorilexioManager.unlock_knowledge("malva", "formal_description") 
 Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
 Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas!
 

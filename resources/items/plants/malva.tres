@@ -16,9 +16,21 @@ knowledge_type = 6
 text = "Malva sylvestris"
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
+[sub_resource type="Resource" id="Resource_3s3r2"]
+script = ExtResource("1_5j2b2")
+id = &"formal_description"
+knowledge_type = 1
+text = "As flores son de cor malva, rosa ou púrpura. Son solitarias na punta da rama. Cáliz con 3 pezas libres, elípticas e 5 sépalos triangulares. Corola con 5 pétalos libres, con nervios máis escuros, en xeral bífidos.  Estames numerosos.
+
+Follas palminervias, dentadas ou aserradas.
+
+O froito é unha cápsula formada por varios mericarpos, de forma arriñonada, de cor parda.
+"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("2_lcfw8")
-knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("KnowledgeFragment_scientific_name")])
+knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("KnowledgeFragment_scientific_name"), SubResource("Resource_3s3r2")])
 collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"malva"

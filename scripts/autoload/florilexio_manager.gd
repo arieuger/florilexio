@@ -4,6 +4,14 @@ signal knowledge_changed(plant_id: StringName)
 
 var _unlocked_fragments: Dictionary = {}
 
+
+func has_any_knowledge(plant_id: StringName) -> bool:
+	if plant_id == &"":
+		return false
+
+	var plant_knowledge: Dictionary = _unlocked_fragments.get(plant_id, {})
+	return not plant_knowledge.is_empty()
+
 func has_knowledge(plant_id: StringName, fragment_id: StringName) -> bool:
 	if plant_id == &"" or fragment_id == &"":
 		return false

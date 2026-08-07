@@ -7,6 +7,19 @@
 [ext_resource type="FontVariation" uid="uid://bqokipmhff54g" path="res://assets/fonts/variations/base-jersey-10.tres" id="3_k5eqy"]
 [ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="3_lncma"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="4_u4u0i"]
+[ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="5_malva_1"]
+[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="6_malva_2"]
+[ext_resource type="Texture2D" uid="uid://lmdmq4krfq5p" path="res://assets/sprites/ui/buttons/next_unpressed.png" id="7_next_normal"]
+[ext_resource type="Texture2D" uid="uid://ban5tvj8xnu56" path="res://assets/sprites/ui/buttons/next_pressed.png" id="8_next_pressed"]
+[ext_resource type="Texture2D" uid="uid://qxi1qn66iya0" path="res://assets/sprites/ui/buttons/next_hovered.png" id="9_next_hover"]
+[ext_resource type="Texture2D" uid="uid://db6jy53m33q3l" path="res://assets/sprites/ui/buttons/florilexio-marker.png" id="10_l56s5"]
+[ext_resource type="Texture2D" uid="uid://bolyndwyyqh26" path="res://assets/sprites/ui/buttons/florilexio-marker-toggled.png" id="11_irdbb"]
+[ext_resource type="Texture2D" uid="uid://l105xfm0ffxf" path="res://assets/sprites/ui/buttons/florilexio-marker-hovered.png" id="11_qy6fi"]
+[ext_resource type="Texture2D" uid="uid://c5xgkp7mweuwt" path="res://assets/sprites/ui/buttons/quest-marker.png" id="13_dyrrl"]
+[ext_resource type="Texture2D" uid="uid://egw08xuci0gs" path="res://assets/sprites/ui/buttons/quest-marker-toggled.png" id="14_dj3m7"]
+[ext_resource type="Texture2D" uid="uid://cr61mil3briff" path="res://assets/sprites/ui/buttons/quest-marker-hovered.png" id="15_3i2l8"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_sections"]
 
 [node name="NotebookPanel" type="Control" unique_id=1027844528]
 layout_mode = 3
@@ -18,6 +31,7 @@ grow_vertical = 2
 script = ExtResource("1_lncma")
 mission_font = ExtResource("2_opjdo")
 objective_font = ExtResource("3_k5eqy")
+florilexio_page_scenes = Array[PackedScene]([ExtResource("5_malva_1"), ExtResource("6_malva_2")])
 
 [node name="DimBackground" type="ColorRect" parent="." unique_id=2132972114]
 layout_mode = 1
@@ -90,6 +104,96 @@ offset_right = 84.0
 offset_bottom = 21.0
 theme_override_font_sizes/font_size = 5
 text = "Non hai misións dispoñibles"
+
+[node name="FlorilexioContent" type="Control" parent="CenterContainer/Notebook" unique_id=1896743912]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPageSlot" type="Control" parent="CenterContainer/Notebook/FlorilexioContent" unique_id=1180988183]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 117.0
+mouse_filter = 2
+
+[node name="RightPageSlot" type="Control" parent="CenterContainer/Notebook/FlorilexioContent" unique_id=341736401]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 199.0
+offset_bottom = 117.0
+mouse_filter = 2
+
+[node name="FlorilexioEmptyLabel" type="Label" parent="CenterContainer/Notebook/FlorilexioContent" unique_id=1340459183]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 5
+text = "O florilexio está baleiro"
+
+[node name="PreviousSpreadButton" type="TextureButton" parent="CenterContainer/Notebook/FlorilexioContent" unique_id=1565856296]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 53.0
+offset_right = 15.0
+offset_bottom = 66.0
+texture_normal = ExtResource("7_next_normal")
+texture_pressed = ExtResource("8_next_pressed")
+texture_hover = ExtResource("9_next_hover")
+flip_h = true
+
+[node name="NextSpreadButton" type="TextureButton" parent="CenterContainer/Notebook/FlorilexioContent" unique_id=1518226545]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 53.0
+offset_right = 205.0
+offset_bottom = 66.0
+texture_normal = ExtResource("7_next_normal")
+texture_pressed = ExtResource("8_next_pressed")
+texture_hover = ExtResource("9_next_hover")
+
+[node name="FlorilexioTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=2034229497]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 203.0
+offset_top = 13.0
+offset_right = 215.0
+offset_bottom = 26.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sections")
+texture_normal = ExtResource("10_l56s5")
+texture_pressed = ExtResource("11_irdbb")
+texture_hover = ExtResource("11_qy6fi")
+
+[node name="MissionsTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1787302882]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 202.0
+offset_top = 27.0
+offset_right = 215.0
+offset_bottom = 40.0
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_sections")
+texture_normal = ExtResource("13_dyrrl")
+texture_pressed = ExtResource("14_dj3m7")
+texture_hover = ExtResource("15_3i2l8")
 
 [node name="CloseButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1998345699]
 unique_name_in_owner = true

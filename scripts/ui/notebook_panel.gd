@@ -2,6 +2,11 @@ extends Control
 
 signal close_requested
 
+enum Section {
+	MISSIONS,
+	FLORILEXIO,
+}
+
 const OBJECTIVE_FONT_SIZE := 5
 const OBJECTIVE_COLOR := Color(0.25, 0.28, 0.25, 0.72)
 const OBJECTIVE_INDENT := 2
@@ -12,12 +17,26 @@ const LINE_SPACING := -1
 
 @export var mission_font: Font
 @export var objective_font: Font
+@export var florilexio_page_scenes: Array[PackedScene] = []
 
 @onready var missions_scroll: ScrollContainer = %MissionsScroll
 @onready var left_missions_list: VBoxContainer = %LeftMissionsList
 @onready var right_missions_list: VBoxContainer = %RightMissionsList
 @onready var empty_label: Label = %EmptyLabel
 @onready var close_button: TextureButton = %CloseButton
+@onready var missions_tab_button: TextureButton = %MissionsTabButton
+@onready var florilexio_tab_button: TextureButton = %FlorilexioTabButton
+@onready var florilexio_content: Control = %FlorilexioContent
+@onready var florilexio_empty_label: Label = %FlorilexioEmptyLabel
+@onready var left_page_slot: Control = %LeftPageSlot
+@onready var right_page_slot: Control = %RightPageSlot
+@onready var previous_spread_button: TextureButton = %PreviousSpreadButton
+@onready var next_spread_button: TextureButton = %NextSpreadButton
+
+var _active_section := Section.MISSIONS
+var _has_visible_missions := false
+var _available_florilexio_pages: Array[PackedScene] = []
+var _current_florilexio_spread := 0
 
 
 func _ready() -> void:
@@ -25,14 +44,21 @@ func _ready() -> void:
 		empty_label.add_theme_font_override("font", mission_font)
 
 	close_button.pressed.connect(_on_close_button_pressed)
+	missions_tab_button.pressed.connect(_on_missions_tab_pressed)
+	florilexio_tab_button.pressed.connect(_on_florilexio_tab_pressed)
+	previous_spread_button.pressed.connect(_on_previous_spread_pressed)
+	next_spread_button.pressed.connect(_on_next_spread_pressed)
 
 	QuestManager.quest_started.connect(_on_quest_changed)
 	QuestManager.quest_updated.connect(_on_quest_changed)
 	QuestManager.quest_completed.connect(_on_quest_changed)
 	QuestManager.quest_failed.connect(_on_quest_changed)
 	QuestManager.state_reloaded.connect(_on_state_reloaded)
+	FlorilexioManager.knowledge_changed.connect(_on_knowledge_changed)
 
 	refresh()
+	_rebuild_florilexio()
+	_apply_section_visibility()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -46,7 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func prepare_to_open() -> void:
 	refresh()
-	missions_scroll.set_deferred("scroll_vertical", 0)
+	_rebuild_florilexio()
+	if _active_section == Section.MISSIONS:
+		missions_scroll.set_deferred("scroll_vertical", 0)
+	_apply_section_visibility()
 
 
 func refresh() -> void:
@@ -72,16 +101,117 @@ func refresh() -> void:
 			return str(a) > str(b)
 	)
 
-	var has_visible_missions := not active_quest_ids.is_empty() or not completed_quest_ids.is_empty()
-
-	missions_scroll.visible = has_visible_missions
-	empty_label.visible = not has_visible_missions
+	_has_visible_missions = not active_quest_ids.is_empty() or not completed_quest_ids.is_empty()
 
 	for quest_id in active_quest_ids:
 		_add_quest_entry(left_missions_list, quest_id)
 
 	for quest_id in completed_quest_ids:
 		_add_quest_entry(right_missions_list, quest_id)
+
+	_apply_section_visibility()
+
+
+func _set_section(section: Section) -> void:
+	_active_section = section
+	_apply_section_visibility()
+	if section == Section.FLORILEXIO:
+		_show_current_florilexio_spread()
+
+
+func _apply_section_visibility() -> void:
+	if not is_node_ready():
+		return
+
+	var showing_missions := _active_section == Section.MISSIONS
+	missions_scroll.visible = showing_missions and _has_visible_missions
+	empty_label.visible = showing_missions and not _has_visible_missions
+	florilexio_content.visible = not showing_missions
+	missions_tab_button.button_pressed = showing_missions
+	florilexio_tab_button.button_pressed = not showing_missions
+
+
+func _rebuild_florilexio() -> void:
+	_available_florilexio_pages.clear()
+
+	for page_scene in florilexio_page_scenes:
+		if page_scene == null:
+			continue
+		var page := page_scene.instantiate() as FlorilexioPage
+		if page == null:
+			continue
+		if FlorilexioManager.has_any_knowledge(page.plant_id):
+			_available_florilexio_pages.append(page_scene)
+		page.free()
+
+	_current_florilexio_spread = clampi(
+		_current_florilexio_spread,
+		0,
+		maxi(_get_florilexio_spread_count() - 1, 0)
+	)
+	_show_current_florilexio_spread()
+
+
+func _show_current_florilexio_spread() -> void:
+	if not is_node_ready():
+		return
+
+	_clear_page_slot(left_page_slot)
+	_clear_page_slot(right_page_slot)
+
+	var first_page_index := _current_florilexio_spread * 2
+	_show_page_in_slot(left_page_slot, first_page_index)
+	_show_page_in_slot(right_page_slot, first_page_index + 1)
+
+	var spread_count := _get_florilexio_spread_count()
+	florilexio_empty_label.visible = _available_florilexio_pages.is_empty()
+	previous_spread_button.visible = spread_count > 1
+	next_spread_button.visible = spread_count > 1
+	previous_spread_button.disabled = _current_florilexio_spread <= 0
+	next_spread_button.disabled = _current_florilexio_spread >= spread_count - 1
+
+
+func _show_page_in_slot(slot: Control, page_index: int) -> void:
+	if page_index < 0 or page_index >= _available_florilexio_pages.size():
+		return
+
+	var page := _available_florilexio_pages[page_index].instantiate() as FlorilexioPage
+	if page == null:
+		return
+
+	slot.add_child(page)
+	page.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+
+func _clear_page_slot(slot: Control) -> void:
+	for child in slot.get_children():
+		slot.remove_child(child)
+		child.queue_free()
+
+
+func _get_florilexio_spread_count() -> int:
+	return ceili(float(_available_florilexio_pages.size()) / 2.0)
+
+
+func _on_missions_tab_pressed() -> void:
+	_set_section(Section.MISSIONS)
+
+
+func _on_florilexio_tab_pressed() -> void:
+	_set_section(Section.FLORILEXIO)
+
+
+func _on_previous_spread_pressed() -> void:
+	_current_florilexio_spread = maxi(_current_florilexio_spread - 1, 0)
+	_show_current_florilexio_spread()
+
+
+func _on_next_spread_pressed() -> void:
+	_current_florilexio_spread = mini(
+		_current_florilexio_spread + 1,
+		maxi(_get_florilexio_spread_count() - 1, 0)
+	)
+	_show_current_florilexio_spread()
 
 
 
@@ -258,3 +388,7 @@ func _on_quest_changed(_quest_id: StringName) -> void:
 
 func _on_state_reloaded() -> void:
 	refresh()
+
+
+func _on_knowledge_changed(_plant_id: StringName) -> void:
+	_rebuild_florilexio()

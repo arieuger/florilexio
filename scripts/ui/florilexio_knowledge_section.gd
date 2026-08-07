@@ -71,7 +71,7 @@ func _render() -> void:
 
 	var plant_data := ItemDatabase.get_plant(_plant_id)
 	if plant_data == null:
-		text = locked_text
+		_show_locked_state()
 		return
 
 	var revealed_texts: PackedStringArray = []
@@ -87,10 +87,16 @@ func _render() -> void:
 		revealed_texts.append(fragment.text)
 
 	if revealed_texts.is_empty():
-		text = locked_text
+		_show_locked_state()
 		return
 
+	visible = true
 	text = _format_text(fragment_separator.join(revealed_texts))
+
+
+func _show_locked_state() -> void:
+	text = locked_text
+	visible = not locked_text.is_empty()
 
 
 func _format_text(value: String) -> String:
