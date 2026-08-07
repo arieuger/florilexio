@@ -70,7 +70,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 
 [node name="RightMissionsList" type="VBoxContainer" parent="CenterContainer/Notebook/MissionsScroll/Pages" unique_id=2126894001]
 unique_name_in_owner = true
@@ -78,7 +78,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 7
+theme_override_constants/separation = 3
 
 [node name="EmptyLabel" type="Label" parent="CenterContainer/Notebook" unique_id=882456018]
 unique_name_in_owner = true

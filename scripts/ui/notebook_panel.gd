@@ -62,24 +62,27 @@ func refresh() -> void:
 			QuestState.Status.COMPLETED:
 				completed_quest_ids.append(quest_id)
 
-	active_quest_ids.sort()
-	completed_quest_ids.sort()
+	active_quest_ids.sort_custom(
+		func(a: StringName, b: StringName) -> bool:
+			return str(a) < str(b)
+	)
 
-	var visible_quest_ids := active_quest_ids + completed_quest_ids
-	var has_visible_missions := not visible_quest_ids.is_empty()
+	completed_quest_ids.sort_custom(
+		func(a: StringName, b: StringName) -> bool:
+			return str(a) > str(b)
+	)
+
+	var has_visible_missions := not active_quest_ids.is_empty() or not completed_quest_ids.is_empty()
 
 	missions_scroll.visible = has_visible_missions
 	empty_label.visible = not has_visible_missions
 
-	var left_page_count := ceili(visible_quest_ids.size() / 2.0)
+	for quest_id in active_quest_ids:
+		_add_quest_entry(left_missions_list, quest_id)
 
-	for index in range(visible_quest_ids.size()):
-		var target_container := (left_missions_list
-			if index < left_page_count
-			else right_missions_list
-		)
+	for quest_id in completed_quest_ids:
+		_add_quest_entry(right_missions_list, quest_id)
 
-		_add_quest_entry(target_container, visible_quest_ids[index])
 
 
 func _clear_missions() -> void:
