@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cs512v60lmgn6"]
+
+[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_h6whm"]
+
+[node name="MalvaPage02" unique_id=1591951097 instance=ExtResource("1_h6whm")]
+plant_id = &"malva"

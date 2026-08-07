@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://duw52wxnx1usu"]
+
+[ext_resource type="Script" uid="uid://bq0x2brjhricp" path="res://scripts/ui/florilexio_page.gd" id="1_page"]
+
+[node name="FlorilexioPage" type="Control" unique_id=1591951097]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(95, 115)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 95.0
+offset_bottom = 115.0
+script = ExtResource("1_page")
+
+[node name="MainContent" type="MarginContainer" parent="." unique_id=1335732758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="ContentCanvas" type="Control" parent="MainContent" unique_id=325095681]
+layout_mode = 2
+
+[node name="Marginalia" type="Control" parent="." unique_id=907118132]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

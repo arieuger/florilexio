@@ -1,3 +1,4 @@
+@tool
 extends ItemData
 class_name PlantData
 
@@ -20,6 +21,18 @@ class_name PlantData
 @export var is_invasive := false
 
 @export_group("")
+
+
+func get_knowledge_fragment(fragment_id: StringName) -> PlantKnowledgeFragment:
+	if fragment_id == &"":
+		return null
+
+	for fragment in knowledge_fragments:
+		if fragment and fragment.id == fragment_id:
+			return fragment
+
+	return null
+
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := super.get_validation_errors()

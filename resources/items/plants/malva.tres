@@ -9,16 +9,16 @@ id = &"name"
 text = "Malva"
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
-[sub_resource type="Resource" id="Resource_lcfw8"]
+[sub_resource type="Resource" id="KnowledgeFragment_scientific_name"]
 script = ExtResource("1_5j2b2")
-id = &"visual_reference"
-knowledge_type = 2
-text = "Identificación visual da malva"
+id = &"scientific_name"
+knowledge_type = 6
+text = "Malva sylvestris"
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
 [resource]
 script = ExtResource("2_lcfw8")
-knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("Resource_lcfw8")])
+knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("KnowledgeFragment_scientific_name")])
 collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"malva"

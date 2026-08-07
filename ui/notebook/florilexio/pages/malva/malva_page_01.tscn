@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b00qjesijwld6"]
+
+[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_page"]
+[ext_resource type="PackedScene" path="res://ui/notebook/florilexio/knowledge_section.tscn" id="2_section"]
+
+[node name="MalvaPage01" unique_id=1015934490 instance=ExtResource("1_page")]
+plant_id = &"malva"
+
+[node name="NameSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="0" unique_id=1000332948 instance=ExtResource("2_section")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 7
+theme_override_font_sizes/bold_font_size = 7
+text = "[center][b]Malva[/b][/center]"
+knowledge_type = 0
+fragment_ids = Array[StringName]([&"name"])
+presentation = 1
+
+[node name="ScientificNameSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="1" unique_id=2124665683 instance=ExtResource("2_section")]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 12.0
+grow_horizontal = 2
+theme_override_font_sizes/bold_italics_font_size = 5
+theme_override_font_sizes/italics_font_size = 5
+theme_override_font_sizes/mono_font_size = 5
+text = "[center][i]Malva sylvestris[/i][/center]"
+knowledge_type = 6
+fragment_ids = Array[StringName]([&"scientific_name"])
+presentation = 2

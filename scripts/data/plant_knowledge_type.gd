@@ -1,3 +1,4 @@
+@tool
 extends RefCounted
 class_name PlantKnowledgeType
 
@@ -7,7 +8,11 @@ enum Type {
 	VISUAL_REFERENCE,
 	USES,
 	LOCATION,
-	WARNING
+	WARNING,
+	SCIENTIFIC_NAME,
+	OTHER_NAME,
+	OTHER,
+	MARGINALIA,
 }
 
 static func is_valid(value: int) -> bool:

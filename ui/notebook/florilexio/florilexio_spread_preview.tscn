@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ci2ljtu6chwwg"]
+
+[ext_resource type="Texture2D" uid="uid://c5wrhaaspxbog" path="res://assets/sprites/ui/notebook/notebook_base.png" id="1_background"]
+[ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="2_malva_page"]
+[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="3_8h8ek"]
+
+[node name="FlorilexioSpreadPreview" type="Control" unique_id=1397534813]
+texture_filter = 1
+custom_minimum_size = Vector2(207, 119)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 207.0
+offset_bottom = 119.0
+
+[node name="Background" type="TextureRect" parent="." unique_id=209408643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_background")
+stretch_mode = 2
+
+[node name="LeftPage" parent="." unique_id=847986554 instance=ExtResource("2_malva_page")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 117.0
+
+[node name="RightPage" parent="." unique_id=1591951097 instance=ExtResource("3_8h8ek")]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 199.0
+offset_bottom = 117.0
