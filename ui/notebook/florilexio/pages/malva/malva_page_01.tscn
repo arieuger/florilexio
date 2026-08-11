@@ -2,11 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_page"]
 [ext_resource type="PackedScene" uid="uid://g00teca45qk1" path="res://ui/notebook/florilexio/knowledge_section.tscn" id="2_section"]
+[ext_resource type="PackedScene" path="res://ui/notebook/florilexio/visual_reference_section.tscn" id="3_visual"]
 
 [node name="MalvaPage01" unique_id=1015934490 instance=ExtResource("1_page")]
 plant_id = &"malva"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="0" unique_id=1787905729]
+[node name="VisualReferenceSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="0" unique_id=1963280146 instance=ExtResource("3_visual")]
+offset_left = 33.0
+offset_top = 59.0
+offset_right = 81.3
+offset_bottom = 101.384995
+fragment_id = &"visual_reference"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="1" unique_id=1787905729]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +43,6 @@ theme_override_font_sizes/bold_italics_font_size = 5
 theme_override_font_sizes/italics_font_size = 5
 theme_override_font_sizes/mono_font_size = 5
 text = "[center][i]Malva sylvestris[/i][/center]"
-fit_content = true
 knowledge_type = 6
 fragment_ids = Array[StringName]([&"scientific_name"])
 presentation = 2
@@ -55,5 +62,19 @@ Follas palminervias, dentadas ou aserradas.
 
 O froito é unha cápsula formada por varios mericarpos, de forma arriñonada, de cor parda.
 "
-fit_content = true
 fragment_ids = Array[StringName]([&"formal_description"])
+
+[node name="KnowledgeSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="2" unique_id=359769364 instance=ExtResource("2_section")]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 43.0
+offset_bottom = 75.0
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+text = "[i]“Cun horto e un malvar
+hai menciñas para un[/i] fogar”. "
+knowledge_type = 8
+fragment_ids = Array[StringName]([&"reference_proverb_1"])

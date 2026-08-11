@@ -27,6 +27,8 @@ func _refresh_sections() -> void:
 	for child in find_children("*", "", true, false):
 		if child is FlorilexioKnowledgeSection:
 			child.configure(plant_id, reveal_all)
+		elif child is FlorilexioVisualReferenceSection:
+			child.configure(plant_id, reveal_all)
 
 
 func _on_knowledge_changed(changed_plant_id: StringName) -> void:
