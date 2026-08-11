@@ -41,7 +41,7 @@ script = ExtResource("1_5j2b2")
 id = &"reference_proverb_1"
 knowledge_type = 8
 text = "[i]“Cun horto e un malvar
-hai menciñas para un[/i] fogar”. "
+hai menciñas para un fogar”.[/i]"
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
 [sub_resource type="Resource" id="Resource_maa5u"]
