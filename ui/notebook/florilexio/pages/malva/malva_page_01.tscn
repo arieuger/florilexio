@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_page"]
 [ext_resource type="PackedScene" uid="uid://g00teca45qk1" path="res://ui/notebook/florilexio/knowledge_section.tscn" id="2_section"]
 [ext_resource type="PackedScene" path="res://ui/notebook/florilexio/visual_reference_section.tscn" id="3_visual"]
+[ext_resource type="Texture2D" uid="uid://dxwqvkc08b17d" path="res://assets/sprites/ui/visual-test.png" id="3_yd6fw"]
 
 [node name="MalvaPage01" unique_id=1015934490 instance=ExtResource("1_page")]
 plant_id = &"malva"
@@ -12,6 +13,7 @@ offset_left = 33.0
 offset_top = 59.0
 offset_right = 81.3
 offset_bottom = 101.384995
+texture = ExtResource("3_yd6fw")
 fragment_id = &"visual_reference"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="1" unique_id=1787905729]
@@ -64,11 +66,12 @@ O froito é unha cápsula formada por varios mericarpos, de forma arriñonada, d
 "
 fragment_ids = Array[StringName]([&"formal_description"])
 
-[node name="KnowledgeSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="2" unique_id=359769364 instance=ExtResource("2_section")]
+[node name="Proverb1" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="2" unique_id=359769364 instance=ExtResource("2_section")]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 43.0
 offset_bottom = 75.0
+theme_override_constants/paragraph_separation = -1
 theme_override_font_sizes/normal_font_size = 4
 theme_override_font_sizes/bold_font_size = 4
 theme_override_font_sizes/bold_italics_font_size = 4
@@ -78,3 +81,20 @@ text = "[i]“Cun horto e un malvar
 hai menciñas para un[/i] fogar”. "
 knowledge_type = 8
 fragment_ids = Array[StringName]([&"reference_proverb_1"])
+
+[node name="TestMarginalia" parent="Marginalia" parent_id_path=PackedInt32Array(907118132) index="0" unique_id=787445562 instance=ExtResource("2_section")]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 43.0
+offset_bottom = 37.0
+rotation = -0.7853982
+theme_override_constants/paragraph_separation = -1
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+text = "[font_size=4][color=#4d4d4d]Proba de marxinalia[/color][/font_size]"
+knowledge_type = 9
+fragment_ids = Array[StringName]([&"test_marginalia"])
+presentation = 3

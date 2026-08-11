@@ -2,6 +2,9 @@
 extends RichTextLabel
 class_name FlorilexioKnowledgeSection
 
+const MARGINAL_NOTE_FONT_SIZE := 4
+const MARGINAL_NOTE_COLOR := "#4d4d4d"
+
 enum Presentation {
 	MAIN_TEXT,
 	TITLE,
@@ -105,5 +108,10 @@ func _format_text(value: String) -> String:
 			return "[center][b]%s[/b][/center]" % value
 		Presentation.SUBTITLE:
 			return "[center][i]%s[/i][/center]" % value
+		Presentation.MARGINAL_NOTE:
+			return (
+				"[font_size=%d][color=%s]%s[/color][/font_size]"
+				% [MARGINAL_NOTE_FONT_SIZE, MARGINAL_NOTE_COLOR, value]
+			)
 		_:
 			return value

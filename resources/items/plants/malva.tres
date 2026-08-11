@@ -44,9 +44,16 @@ text = "[i]“Cun horto e un malvar
 hai menciñas para un[/i] fogar”. "
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
+[sub_resource type="Resource" id="Resource_maa5u"]
+script = ExtResource("1_5j2b2")
+id = &"test_marginalia"
+knowledge_type = 9
+text = "Proba de marxinalia"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("2_lcfw8")
-knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("KnowledgeFragment_scientific_name"), SubResource("Resource_3s3r2"), SubResource("KnowledgeFragment_visual_reference"), SubResource("Resource_kq060")])
+knowledge_fragments = Array[ExtResource("1_5j2b2")]([SubResource("Resource_5j2b2"), SubResource("KnowledgeFragment_scientific_name"), SubResource("Resource_3s3r2"), SubResource("KnowledgeFragment_visual_reference"), SubResource("Resource_kq060"), SubResource("Resource_maa5u")])
 collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"malva"

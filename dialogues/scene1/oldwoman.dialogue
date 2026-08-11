@@ -15,6 +15,12 @@ Así é como poderás recoñecelas…
 [shake rate=10 level=2]bssbssbss….[/shake]
 do FlorilexioManager.unlock_knowledge("malva", "name")
 do FlorilexioManager.unlock_knowledge("malva", "formal_description") 
+
+# TESTING!
+do FlorilexioManager.unlock_knowledge("malva", "scientific_name")
+do FlorilexioManager.unlock_knowledge("malva", "visual_reference") 
+do FlorilexioManager.unlock_knowledge("malva", "reference_proverb_1")
+do FlorilexioManager.unlock_knowledge("malva", "test_marginalia")
 Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
 Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas!
 
