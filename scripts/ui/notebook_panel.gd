@@ -85,6 +85,11 @@ func refresh() -> void:
 	var completed_quest_ids: Array[StringName] = []
 
 	for quest_id in QuestManager.get_registered_quest_ids():
+		var definition := QuestManager.get_quest_definition(quest_id)
+
+		if definition == null or not definition.show_in_notebook:
+			continue
+
 		match QuestManager.get_quest_status(quest_id):
 			QuestState.Status.ACTIVE:
 				active_quest_ids.append(quest_id)
@@ -281,97 +286,21 @@ func _add_quest_entry(container_: VBoxContainer, quest_id: StringName) -> void:
 	objectives_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	objectives_margin.add_child(objectives_list)
 
-	var current_objective := _get_current_objective(quest_id, definition.objectives)
+	var notebook_items := _build_notebook_items(definition)
+	var first_pending_item: Dictionary = {}
 
-	for objective in definition.objectives:
-		if not _should_show_objective(quest_id, objective, current_objective):
+	for item in notebook_items:
+		if not _is_notebook_item_completed(quest_id, item):
+			first_pending_item = item
+			break
+
+	for item in notebook_items:
+		var is_completed := _is_notebook_item_completed(quest_id, item)
+
+		if not is_completed and item != first_pending_item:
 			continue
 
-		_add_objective(objectives_list, quest_id, objective)
-
-
-func _get_current_objective(quest_id: StringName, objectives: Array[QuestObjectiveDefinition]) -> QuestObjectiveDefinition:
-	for objective in objectives:
-		if objective == null:
-			continue
-		if not QuestManager.is_objective_completed(quest_id, objective.objective_id):
-			return objective
-
-	return null
-
-
-func _should_show_objective(
-	quest_id: StringName,
-	objective: QuestObjectiveDefinition,
-	current_objective: QuestObjectiveDefinition
-) -> bool:
-	if objective == null:
-		return false
-
-	if objective == current_objective:
-		return true
-
-	if QuestManager.is_objective_completed(
-		quest_id,
-		objective.objective_id
-	):
-		return true
-
-	return QuestManager.get_objective_progress(
-		quest_id,
-		objective.objective_id
-	) > 0
-
-
-func _add_objective(container: VBoxContainer, quest_id: StringName, objective: QuestObjectiveDefinition) -> void:
-	if objective == null:
-		return
-
-	var description := objective.description.strip_edges()
-	if description.is_empty():
-		return
-
-	var current_progress := QuestManager.get_objective_progress(
-		quest_id,
-		objective.objective_id
-	)
-	var is_completed := QuestManager.is_objective_completed(
-		quest_id,
-		objective.objective_id
-	)
-
-	var objective_text := description
-
-	if not is_completed and current_progress > 0:
-		objective_text += "  (%d)" % current_progress
-
-	var objective_label := RichTextLabel.new()
-	objective_label.bbcode_enabled = true
-	objective_label.text = _format_completed_text(
-		objective_text,
-		is_completed
-	)
-	objective_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	objective_label.fit_content = true
-	objective_label.scroll_active = false
-	objective_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	objective_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	if objective_font:
-		objective_label.add_theme_font_override(
-			"normal_font",
-			objective_font
-		)
-
-	objective_label.add_theme_font_size_override(
-		"normal_font_size",
-		OBJECTIVE_FONT_SIZE
-	)
-	objective_label.add_theme_color_override(
-		"default_color",
-		OBJECTIVE_COLOR
-	)
-
-	container.add_child(objective_label)
+		_add_notebook_item(objectives_list, quest_id, item, is_completed)
 
 
 func _format_completed_text(text: String, is_completed: bool) -> String:
@@ -392,3 +321,96 @@ func _on_state_reloaded() -> void:
 
 func _on_knowledge_changed(_plant_id: StringName) -> void:
 	_rebuild_florilexio()
+
+
+
+func _build_notebook_items(definition: QuestDefinition) -> Array[Dictionary]:
+	var items: Array[Dictionary] = []
+	var groups_by_objective_id := {}
+	var emitted_groups := {}
+
+	for objective_group in definition.objective_groups:
+		if objective_group == null:
+			continue
+
+		for objective_id in objective_group.objective_ids:
+			groups_by_objective_id[objective_id] = objective_group
+
+	for objective in definition.objectives:
+		if objective == null:
+			continue
+
+		var objective_group := groups_by_objective_id.get(
+			objective.objective_id
+		) as QuestObjectiveGroupDefinition
+
+		if objective_group != null:
+			var group_instance_id := objective_group.get_instance_id()
+
+			if emitted_groups.has(group_instance_id):
+				continue
+
+			emitted_groups[group_instance_id] = true
+			items.append({
+				"description": objective_group.description,
+				"objective_ids": objective_group.objective_ids,
+				"objective": null,
+			})
+			continue
+
+		if not objective.show_in_notebook:
+			continue
+
+		items.append({
+			"description": objective.description,
+			"objective_ids": [objective.objective_id],
+			"objective": objective,
+		})
+
+	return items
+
+
+func _is_notebook_item_completed(quest_id: StringName, item: Dictionary) -> bool:
+	var objective_ids: Array = item["objective_ids"]
+
+	if objective_ids.is_empty():
+		return false
+
+	for objective_id in objective_ids:
+		if not QuestManager.is_objective_completed(quest_id, StringName(objective_id)):
+			return false
+
+	return true
+
+
+func _add_notebook_item(container: VBoxContainer, quest_id: StringName, item: Dictionary, is_completed: bool) -> void:
+	var description := str(item["description"]).strip_edges()
+	if description.is_empty():
+		return
+
+	var item_text := description
+	var objective := item["objective"] as QuestObjectiveDefinition
+
+	# Contador só para obxectivos tradicionais
+	if objective != null and not is_completed:
+		var current_progress := QuestManager.get_objective_progress(quest_id, objective.objective_id)
+
+		if current_progress > 0:
+			item_text += "  (%d)" % current_progress
+
+	var objective_label := RichTextLabel.new()
+	objective_label.bbcode_enabled = true
+	objective_label.text = _format_completed_text(item_text, is_completed)
+	objective_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	objective_label.fit_content = true
+	objective_label.scroll_active = false
+	objective_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	objective_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	if objective_font:
+		objective_label.add_theme_font_override("normal_font", objective_font)
+
+	objective_label.add_theme_font_size_override("normal_font_size", OBJECTIVE_FONT_SIZE)
+	objective_label.add_theme_color_override("default_color", OBJECTIVE_COLOR)
+
+	container.add_child(objective_label)

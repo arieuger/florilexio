@@ -32,6 +32,7 @@ enum ItemSubmissionMode {
 @export var event_type: EventType = EventType.NONE
 @export var target_type: TargetType = TargetType.NONE
 @export var target_id: StringName
+@export var show_in_notebook := true
 @export_range(1, 999, 1) var required_amount := 1
 @export var item_submission_mode: ItemSubmissionMode = ItemSubmissionMode.GIVE
 

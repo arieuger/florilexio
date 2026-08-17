@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://3vpbwu7m8njf"]
 
+[ext_resource type="Script" uid="uid://ba57xkf53n8fl" path="res://scripts/quests/quest_objective_group_definition.gd" id="1_dxx1j"]
 [ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="1_vdjh1"]
 [ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="2_dxx1j"]
 
