@@ -87,32 +87,77 @@ func _get_profile_references(index: NarrativeIndex, conversation: ConversationDe
 func _build_quests(index: NarrativeIndex) -> String:
 	var lines := PackedStringArray([
 		"# Quests", "", "> Generated file. Do not edit manually.", "",
-		"| Quest ID | Description | Catalog | Objectives | Resource |", "|---|---|---|---:|---|",
+		"| Quest ID | Type | Notebook | Description | Catalog | Objectives | Resource |",
+		"|---|---|---|---|---|---:|---|",
 	])
 	var records := index.quests.duplicate()
 	records.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a["id"]) < str(b["id"]))
 
 	for record in records:
 		var quest := record["resource"] as QuestDefinition
-		lines.append("| %s | %s | %s | %d | %s |" % [
-			_escape(quest.quest_id), _escape(quest.description), _escape(_get_quest_catalogs(index, quest)), quest.objectives.size(),
+		lines.append("| %s | %s | %s | %s | %s | %d | %s |" % [
+			_escape(quest.quest_id), _quest_type_name(quest.quest_type), _yes_no(quest.show_in_notebook),
+			_escape(quest.description), _escape(_get_quest_catalogs(index, quest)), quest.objectives.size(),
 			_escape(_relative_path(str(record["path"]))),
 		])
 
 	for record in records:
 		var quest := record["resource"] as QuestDefinition
-		lines.append_array(["", "## %s" % quest.quest_id, "", "| Objective ID | Description | Event | Target type | Target ID | Required |", "|---|---|---|---|---|---:|"])
+		lines.append_array(["", "## %s" % quest.quest_id, "", "| Objective ID | Description | Event | Target type | Target ID | Required | Notebook |", "|---|---|---|---|---|---:|---|"])
 		for objective in quest.objectives:
 			if objective == null:
 				continue
-			lines.append("| %s | %s | %s | %s | %s | %d |" % [
+			lines.append("| %s | %s | %s | %s | %s | %d | %s |" % [
 				_escape(objective.objective_id), _escape(objective.description), QuestObjectiveDefinition.EventType.keys()[objective.event_type],
 				QuestObjectiveDefinition.TargetType.keys()[objective.target_type], _escape(objective.target_id),
-				objective.required_amount,
+				objective.required_amount, _yes_no(objective.show_in_notebook),
+			])
+
+		lines.append_array(["", "### Notebook representation", "", "| Kind | Description | Objective IDs |", "|---|---|---|"])
+		var groups_by_objective_id := {}
+		var emitted_groups := {}
+
+		for objective_group in quest.objective_groups:
+			if objective_group == null:
+				continue
+			for objective_id in objective_group.objective_ids:
+				groups_by_objective_id[objective_id] = objective_group
+
+		for objective in quest.objectives:
+			if objective == null:
+				continue
+
+			var objective_group := groups_by_objective_id.get(
+				objective.objective_id
+			) as QuestObjectiveGroupDefinition
+
+			if objective_group != null:
+				var group_instance_id := objective_group.get_instance_id()
+				if emitted_groups.has(group_instance_id):
+					continue
+				emitted_groups[group_instance_id] = true
+
+				var group_ids := PackedStringArray()
+				for objective_id in objective_group.objective_ids:
+					group_ids.append(str(objective_id))
+				lines.append("| Group | %s | %s |" % [
+					_escape(objective_group.description),
+					_escape(", ".join(group_ids)),
+				])
+				continue
+
+			lines.append("| %s | %s | %s |" % [
+				"Objective" if objective.show_in_notebook else "Internal",
+				_escape(objective.description),
+				_escape(objective.objective_id),
 			])
 
 	lines.append("")
 	return "\n".join(lines)
+
+
+func _quest_type_name(quest_type: int) -> String:
+	return QuestDefinition.QuestType.keys()[quest_type].capitalize()
 
 
 func _get_quest_catalogs(index: NarrativeIndex, quest: QuestDefinition) -> String:

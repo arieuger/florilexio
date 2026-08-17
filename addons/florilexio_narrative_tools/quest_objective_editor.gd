@@ -2,6 +2,7 @@
 extends VBoxContainer
 
 signal remove_requested(editor: Control)
+signal objective_id_changed
 
 var heading: Label
 var objective_id_field: LineEdit
@@ -14,6 +15,7 @@ var target_id_selector: OptionButton
 var required_amount_field: SpinBox
 var submission_mode_label: Label
 var submission_mode_selector: OptionButton
+var show_in_notebook_field: CheckBox
 
 
 func _ready() -> void:
@@ -22,6 +24,10 @@ func _ready() -> void:
 	add_child(heading)
 
 	objective_id_field = _add_line_field("Objective ID")
+	objective_id_field.text_changed.connect(
+		func(_new_text: String) -> void:
+			objective_id_changed.emit()
+	)
 
 	_add_label("Descrición (opcional)")
 	description_field = TextEdit.new()
@@ -70,6 +76,11 @@ func _ready() -> void:
 	required_amount_field.value = 1
 	add_child(required_amount_field)
 
+	show_in_notebook_field = CheckBox.new()
+	show_in_notebook_field.text = "Mostrar na libreta"
+	show_in_notebook_field.button_pressed = true
+	add_child(show_in_notebook_field)
+
 	var remove_button := Button.new()
 	remove_button.text = "Eliminar obxetivo"
 	remove_button.pressed.connect(
@@ -96,8 +107,13 @@ func build_definition() -> QuestObjectiveDefinition:
 	objective.target_id = StringName(target_id_field.text.strip_edges())
 	objective.required_amount = int(required_amount_field.value)
 	objective.item_submission_mode = int(submission_mode_selector.get_selected_metadata())
+	objective.show_in_notebook = show_in_notebook_field.button_pressed
 
 	return objective
+
+
+func get_objective_id() -> StringName:
+	return NarrativeResourceFactory.normalize_id(objective_id_field.text)
 
 
 func _populate_event_types() -> void:
