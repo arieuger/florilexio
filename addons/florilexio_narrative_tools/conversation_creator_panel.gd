@@ -3,6 +3,8 @@ extends VBoxContainer
 
 signal conversation_created(resource_path: String)
 
+const ConditionEditor := preload("res://addons/florilexio_narrative_tools/conversation_condition_editor.gd")
+
 var feedback_label: Label
 var character_field: LineEdit
 var arc_field: LineEdit
@@ -21,6 +23,8 @@ var save_path_field: LineEdit
 var create_button: Button
 var save_directory_dialog: FileDialog
 var save_directory: String
+var conditions_container: VBoxContainer
+var condition_editors: Array[ConditionEditor] = []
 
 
 func _ready() -> void:
@@ -56,9 +60,7 @@ func _ready() -> void:
 	dialogue_file_dialog = FileDialog.new()
 	dialogue_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	dialogue_file_dialog.access = FileDialog.ACCESS_RESOURCES
-	dialogue_file_dialog.filters = PackedStringArray([
-		"*.dialogue ; Dialogue Manager files",
-	])
+	dialogue_file_dialog.filters = PackedStringArray(["*.dialogue ; Dialogue Manager files",])
 	dialogue_file_dialog.current_dir = "res://dialogues"
 	dialogue_file_dialog.file_selected.connect(_on_dialogue_file_selected)
 	add_child(dialogue_file_dialog)
@@ -80,6 +82,19 @@ func _ready() -> void:
 	fallback_check = CheckBox.new()
 	fallback_check.text = "Fallback"
 	add_child(fallback_check)
+
+	var conditions_heading := Label.new()
+	conditions_heading.text = "Condicións"
+	conditions_heading.add_theme_font_size_override("font_size", 13)
+	add_child(conditions_heading)
+
+	conditions_container = VBoxContainer.new()
+	add_child(conditions_container)
+
+	var add_condition_button := Button.new()
+	add_condition_button.text = "Engadir condición"
+	add_condition_button.pressed.connect(_add_condition)
+	add_child(add_condition_button)
 
 	_add_label("DialogueProfile destino")
 	profile_selector = OptionButton.new()
@@ -285,6 +300,9 @@ func _build_creation_request() -> ConversationCreationRequest:
 	request.repeatable = repeatable_check.button_pressed
 	request.fallback = fallback_check.button_pressed
 
+	for editor in condition_editors:
+		request.conditions.append(editor.build_condition())
+
 	if profile_selector.selected > 0:
 		var profile_path := str(
 			profile_selector.get_selected_metadata()
@@ -309,6 +327,33 @@ func _reset_after_successful_creation() -> void:
 	priority_field.value = 0
 	repeatable_check.button_pressed = false
 	fallback_check.button_pressed = false
+	for editor in condition_editors:
+		editor.queue_free()
+	condition_editors.clear()
 
 	_update_suggested_id("")
 	purpose_field.grab_focus()
+
+
+func _add_condition() -> void:
+	var editor := ConditionEditor.new()
+	editor.remove_requested.connect(_remove_condition)
+	conditions_container.add_child(editor)
+	condition_editors.append(editor)
+	_renumber_conditions()
+
+
+func _remove_condition(editor: Control) -> void:
+	if not condition_editors.has(editor):
+		return
+
+	condition_editors.erase(editor)
+	editor.queue_free()
+	_renumber_conditions()
+
+
+func _renumber_conditions() -> void:
+	for index in range(condition_editors.size()):
+		condition_editors[index].set_condition_number(
+			index + 1
+		)

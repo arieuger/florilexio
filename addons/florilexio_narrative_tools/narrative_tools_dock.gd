@@ -7,6 +7,10 @@ signal documentation_generated(paths: PackedStringArray)
 
 const ConversationCreatorPanel := preload("res://addons/florilexio_narrative_tools/conversation_creator_panel.gd")
 const QuestCreatorPanel := preload("res://addons/florilexio_narrative_tools/quest_creator_panel.gd")
+const NarrativeUsedByPanel := preload("res://addons/florilexio_narrative_tools/narrative_used_by_panel.gd")
+const NarrativeCommandGeneratorPanel := preload(
+	"res://addons/florilexio_narrative_tools/narrative_command_generator_panel.gd"
+)
 
 var conversation_scroll: ScrollContainer
 var conversation_panel: Control
@@ -16,6 +20,12 @@ var issues_tree: Tree
 var quest_scroll: ScrollContainer
 var quest_panel: Control
 
+var used_by_scroll: ScrollContainer
+var used_by_panel: Control
+
+var command_generator_scroll: ScrollContainer
+var command_generator_panel: Control
+
 func _ready() -> void:
 	var title := Label.new()
 	title.text = "Florilexio - Ferramentas narrativas"
@@ -24,9 +34,7 @@ func _ready() -> void:
 
 	var create_conversation_button := Button.new()
 	create_conversation_button.text = "Crear conversa"
-	create_conversation_button.pressed.connect(
-		_toggle_conversation_panel
-	)
+	create_conversation_button.pressed.connect(_toggle_conversation_panel)
 	add_child(create_conversation_button)
 
 	var create_quest_button := Button.new()
@@ -35,6 +43,16 @@ func _ready() -> void:
 		_toggle_quest_panel
 	)
 	add_child(create_quest_button)
+
+	var used_by_button := Button.new()
+	used_by_button.text = "Usado por"
+	used_by_button.pressed.connect(_toggle_used_by_panel)
+	add_child(used_by_button)
+
+	var command_generator_button := Button.new()
+	command_generator_button.text = "Xerar comando .dialogue"
+	command_generator_button.pressed.connect(_toggle_command_generator_panel)
+	add_child(command_generator_button)
 
 	conversation_scroll = ScrollContainer.new()
 	conversation_scroll.visible = false
@@ -61,6 +79,33 @@ func _ready() -> void:
 	quest_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	quest_panel.quest_created.connect(_on_quest_created)
 	quest_scroll.add_child(quest_panel)
+
+	used_by_scroll = ScrollContainer.new()
+	used_by_scroll.visible = false
+	used_by_scroll.horizontal_scroll_mode = (
+		ScrollContainer.SCROLL_MODE_DISABLED
+	)
+	used_by_scroll.custom_minimum_size.y = 420
+	used_by_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(used_by_scroll)
+
+	used_by_panel = NarrativeUsedByPanel.new()
+	used_by_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	used_by_panel.resource_open_requested.connect(_on_used_by_resource_open_requested)
+	used_by_scroll.add_child(used_by_panel)
+
+	command_generator_scroll = ScrollContainer.new()
+	command_generator_scroll.visible = false
+	command_generator_scroll.horizontal_scroll_mode = (
+		ScrollContainer.SCROLL_MODE_DISABLED
+	)
+	command_generator_scroll.custom_minimum_size.y = 420
+	command_generator_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	add_child(command_generator_scroll)
+
+	command_generator_panel = NarrativeCommandGeneratorPanel.new()
+	command_generator_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	command_generator_scroll.add_child(command_generator_panel)
 
 	var validate_button := Button.new()
 	validate_button.text = "Validar proxecto"
@@ -172,6 +217,8 @@ func _toggle_conversation_panel() -> void:
 
 	conversation_scroll.visible = should_open
 	quest_scroll.visible = false
+	used_by_scroll.visible = false
+	command_generator_scroll.visible = false
 
 	if should_open:
 		conversation_panel.refresh_profiles()
@@ -187,9 +234,35 @@ func _toggle_quest_panel() -> void:
 
 	quest_scroll.visible = should_open
 	conversation_scroll.visible = false
+	used_by_scroll.visible = false
+	command_generator_scroll.visible = false
 
 	if should_open:
 		quest_panel.refresh_catalogs()
+
+
+func _toggle_used_by_panel() -> void:
+	var should_open := not used_by_scroll.visible
+
+	conversation_scroll.visible = false
+	quest_scroll.visible = false
+	used_by_scroll.visible = should_open
+	command_generator_scroll.visible = false
+
+	if should_open:
+		used_by_panel.refresh()
+
+
+func _toggle_command_generator_panel() -> void:
+	var should_open := not command_generator_scroll.visible
+
+	conversation_scroll.visible = false
+	quest_scroll.visible = false
+	used_by_scroll.visible = false
+	command_generator_scroll.visible = should_open
+
+	if should_open:
+		command_generator_panel.refresh()
 
 
 func _on_quest_created(resource_path: String) -> void:
@@ -208,3 +281,9 @@ func _generate_documentation() -> void:
 
 	summary_label.text = "Documentación xerada:\n%s" % "\n".join(result.generated_paths)
 	documentation_generated.emit(result.generated_paths)
+
+
+func _on_used_by_resource_open_requested(
+	resource_path: String
+) -> void:
+	resource_open_requested.emit(resource_path)

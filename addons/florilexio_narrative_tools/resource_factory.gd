@@ -64,6 +64,70 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 	elif request.target_profile.resource_path.is_empty():
 		errors.append("target_profile has not been saved")
 
+
+	for condition_index in range(request.conditions.size()):
+		var condition := request.conditions[condition_index]
+
+		if condition == null:
+			errors.append("condition %d is null" % condition_index)
+			continue
+
+		if condition is QuestStatusCondition:
+			var quest_condition := condition as QuestStatusCondition
+
+			if quest_condition.quest_id.is_empty():
+				errors.append("condition %d has no quest selected"% condition_index)
+			elif not index.has_quest(quest_condition.quest_id):
+				errors.append("condition %d refers to unknown quest '%s'"% [
+						condition_index,
+						quest_condition.quest_id,
+					]
+				)
+
+		elif condition is QuestObjectiveCompletedCondition:
+			var objective_condition := condition as QuestObjectiveCompletedCondition
+
+			if objective_condition.quest_id.is_empty():
+				errors.append("condition %d has no quest selected"% condition_index)
+			elif objective_condition.objective_id.is_empty():
+				errors.append("condition %d has no objective selected"% condition_index)
+			elif not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
+				errors.append("condition %d refers to unknown objective '%s' in quest '%s'" % [
+						condition_index,
+						objective_condition.objective_id,
+						objective_condition.quest_id,
+					]
+				)
+
+		elif condition is ConversationFinishedCondition:
+			var conversation_condition := condition as ConversationFinishedCondition
+
+			if conversation_condition.conversation_id.is_empty():
+				errors.append("condition %d has no conversation selected"% condition_index)
+			elif not index.has_conversation(conversation_condition.conversation_id):
+				errors.append("condition %d refers to unknown conversation '%s'"% [
+						condition_index,
+						conversation_condition.conversation_id,
+					]
+				)
+
+		elif condition is InventoryHasPlantCondition:
+			var inventory_condition := condition as InventoryHasPlantCondition
+
+			if inventory_condition.plant_id.is_empty():
+				errors.append("condition %d has no plant selected" % condition_index
+				)
+			elif not index.has_plant(inventory_condition.plant_id):
+				errors.append("condition %d refers to unknown plant '%s'" % [
+						condition_index,
+						inventory_condition.plant_id,
+					]
+				)
+
+			if inventory_condition.amount <= 0:
+				errors.append("condition %d must require at least one plant" % condition_index)
+
+
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")
 	elif not request.save_path.begins_with("res://"):
@@ -107,6 +171,7 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	entry.priority = request.priority
 	entry.repeatable = request.repeatable
 	entry.is_fallback = request.fallback
+	entry.conditions = request.conditions.duplicate()
 
 	request.target_profile.entries.append(entry)
 
@@ -170,14 +235,16 @@ static func get_quest_creation_errors(request: QuestCreationRequest, index: Narr
 				break
 
 	for objective in request.objectives:
-		if objective == null:
+		if objective == null or objective.target_id.is_empty():
 			continue
 
-		if objective.target_type \
-				== QuestObjectiveDefinition.TargetType.CONVERSATION \
-				and not objective.target_id.is_empty() \
-				and not index.has_conversation(objective.target_id):
-			errors.append("objective '%s' refers to unknown conversation '%s'" % [objective.objective_id, objective.target_id])
+		match objective.target_type:
+			QuestObjectiveDefinition.TargetType.CONVERSATION:
+				if not index.has_conversation(objective.target_id):
+					errors.append("objective '%s' refers to unknown conversation '%s'" % [objective.objective_id, objective.target_id])
+			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+				if not index.has_plant(objective.target_id):
+					errors.append("objective '%s' refers to unknown plant '%s'" % [objective.objective_id, objective.target_id])
 
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")

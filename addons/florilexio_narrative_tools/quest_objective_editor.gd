@@ -142,9 +142,15 @@ func _populate_target_types(event_type: int) -> void:
 func _on_event_type_selected(index: int) -> void:
 	var event_type := int(event_selector.get_item_metadata(index))
 
+	target_id_field.clear()
 	_populate_target_types(event_type)
 	_refresh_target_id_options()
 	_refresh_submission_mode_visibility()
+
+
+func _on_target_type_selected(_index: int) -> void:
+	target_id_field.clear()
+	_refresh_target_id_options()
 
 
 func _add_line_field(label_text: String) -> LineEdit:
@@ -162,38 +168,42 @@ func _add_label(label_text: String) -> Label:
 	return label
 
 
-func _on_target_type_selected(_index: int) -> void:
-	_refresh_target_id_options()
-
-
 func _on_target_id_selected(index: int) -> void:
 	if index <= 0:
+		target_id_field.clear()
 		return
 
-	target_id_field.text = str(
-		target_id_selector.get_item_metadata(index)
-	)
+	target_id_field.text = str(target_id_selector.get_item_metadata(index))
 
 
 func _refresh_target_id_options() -> void:
 	target_id_selector.clear()
-	target_id_selector.add_item("Introducir ID manualmente")
-	target_id_selector.set_item_metadata(0, "")
 
 	var target_type := int(
 		target_type_selector.get_selected_metadata()
 	)
-
-	var has_existing_targets := target_type == QuestObjectiveDefinition.TargetType.CONVERSATION
-
-	target_id_selector_label.visible = has_existing_targets
-	target_id_selector.visible = has_existing_targets
-
-	if not has_existing_targets:
-		return
-
 	var index := NarrativeIndex.build()
-	var records := index.conversations.duplicate()
+	var records: Array = []
+
+	match target_type:
+		QuestObjectiveDefinition.TargetType.CONVERSATION:
+			records = index.conversations.duplicate()
+
+		QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+			records = index.plants.duplicate()
+
+		_:
+			target_id_selector_label.visible = false
+			target_id_selector.visible = false
+			target_id_field.editable = true
+			return
+
+	target_id_selector_label.visible = true
+	target_id_selector.visible = true
+	target_id_field.editable = false
+
+	target_id_selector.add_item("Selecciona un target")
+	target_id_selector.set_item_metadata(0, "")
 
 	records.sort_custom(
 		func(first: Dictionary, second: Dictionary) -> bool:
@@ -201,13 +211,20 @@ func _refresh_target_id_options() -> void:
 	)
 
 	for record in records:
-		var conversation_id := str(record.get("id", ""))
-
-		if conversation_id.is_empty():
+		var target_id := StringName(record.get("id", &""))
+		if target_id.is_empty():
 			continue
 
-		target_id_selector.add_item(conversation_id)
-		target_id_selector.set_item_metadata(target_id_selector.item_count - 1, conversation_id)
+		var label := str(target_id)
+		var resource := record.get("resource") as Resource
+
+		if resource is ItemData:
+			var item := resource as ItemData
+			label = "%s (%s)" % [item.display_name, item.id]
+
+		var item_index := target_id_selector.item_count
+		target_id_selector.add_item(label)
+		target_id_selector.set_item_metadata(item_index, target_id)
 
 
 func _refresh_submission_mode_visibility() -> void:

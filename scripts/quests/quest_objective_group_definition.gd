@@ -4,6 +4,7 @@ extends Resource
 
 @export_multiline var description: String
 @export var objective_ids: Array[StringName] = []
+# TODO: Pode ser interesante ter un marcador ALL/ANY/AT_LEAST para permitir ramificacións de obxectivos
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()

@@ -183,35 +183,74 @@ func _validate_condition_reference(
 				issues
 			)
 
+
+	elif condition is InventoryHasPlantCondition:
+		var inventory_condition := condition as InventoryHasPlantCondition
+
+		if not inventory_condition.plant_id.is_empty() \
+				and not index.has_plant(inventory_condition.plant_id):
+			_append_missing_reference_issue(
+				&"condition_missing_plant",
+				"Entry %d condition %d refers to unknown plant '%s'."% [entry_index, condition_index, inventory_condition.plant_id,],
+				path,
+				inventory_condition.plant_id,
+				issues
+			)
+
 func _validate_quest_objective_references(index: NarrativeIndex, issues: Array[NarrativeValidationIssue]) -> void:
 	for record in index.objectives:
 		var objective := record["resource"] as QuestObjectiveDefinition
 
-		if objective.target_type != QuestObjectiveDefinition.TargetType.CONVERSATION:
+		if objective == null or objective.target_id.is_empty():
 			continue
 
-		if objective.target_id.is_empty():
-			continue
+		match objective.target_type:
+			QuestObjectiveDefinition.TargetType.CONVERSATION:
+				if index.has_conversation(objective.target_id):
+					continue
 
-		if index.has_conversation(objective.target_id):
-			continue
-
-		var quest_id := StringName(record.get("quest_id", &""))
-		var path := str(record.get("path", ""))
-
-		issues.append(NarrativeValidationIssue.new(
-				NarrativeValidationIssue.Severity.ERROR,
-				&"objective_missing_conversation",
-				"Objective '%s' in quest '%s' refers to unknown conversation '%s'."
-				% [
-					objective.objective_id,
-					quest_id,
+				_append_objective_reference_issue(
+					record,
+					&"objective_missing_conversation",
+					"conversation",
 					objective.target_id,
-				],
-				path,
-				objective.target_id
-			)
-		)
+					issues
+				)
+
+			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+				if index.has_plant(objective.target_id):
+					continue
+
+				_append_objective_reference_issue(
+					record,
+					&"objective_missing_plant",
+					"plant",
+					objective.target_id,
+					issues
+				)
+
+
+func _append_objective_reference_issue(
+	record: Dictionary,
+	code: StringName,
+	target_label: String,
+	target_id: StringName,
+	issues: Array[NarrativeValidationIssue]
+) -> void:
+	var objective := record["resource"] as QuestObjectiveDefinition
+	var quest_id := StringName(record.get("quest_id", &""))
+	var path := str(record.get("path", ""))
+
+	issues.append(NarrativeValidationIssue.new(NarrativeValidationIssue.Severity.ERROR, code,
+		"Objective '%s' in quest '%s' refers to unknown %s '%s'."% [
+			objective.objective_id,
+			quest_id,
+			target_label,
+			target_id,
+		],
+		path,
+		target_id)
+	)
 
 
 func _append_missing_reference_issue(
