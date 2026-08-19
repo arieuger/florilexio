@@ -2,13 +2,15 @@ extends Control
 
 signal close_requested
 
-enum Section { MISSIONS, FLORILEXIO }
+enum Section { MISSIONS, FLORILEXIO, INVENTORY }
 
 @onready var close_button: TextureButton = %CloseButton
 @onready var missions_tab_button: TextureButton = %MissionsTabButton
 @onready var florilexio_tab_button: TextureButton = %FlorilexioTabButton
+@onready var inventory_tab_button: TextureButton = %InventoryTabButton
 @onready var missions_panel: MissionsPanel = %MissionsPanel
 @onready var florilexio_panel: FlorilexioPanel = %FlorilexioPanel
+@onready var inventory_panel: Control = %InventoryPanel	# TODO: Tipar
 
 var _active_section := Section.MISSIONS
 
@@ -17,6 +19,7 @@ func _ready() -> void:
 	close_button.pressed.connect(func() -> void: close_requested.emit())
 	missions_tab_button.pressed.connect(func() -> void: _set_section(Section.MISSIONS))
 	florilexio_tab_button.pressed.connect(func() -> void: _set_section(Section.FLORILEXIO))
+	inventory_tab_button.pressed.connect(func() -> void: _set_section(Section.INVENTORY))
 	_apply_section_visibility()
 
 
@@ -40,12 +43,29 @@ func _set_section(section: Section) -> void:
 func _apply_section_visibility() -> void:
 	if not is_node_ready():
 		return
-	var showing_missions := _active_section == Section.MISSIONS
-	missions_panel.visible = showing_missions
-	florilexio_panel.visible = not showing_missions
-	missions_tab_button.button_pressed = showing_missions
-	florilexio_tab_button.button_pressed = not showing_missions
-	if showing_missions:
-		missions_panel.on_selected()
-	else:
-		florilexio_panel.on_selected()
+
+	match _active_section:
+		Section.MISSIONS:
+			missions_panel.visible = true
+			florilexio_panel.visible = false
+			inventory_panel.visible = false
+			missions_tab_button.button_pressed = true
+			florilexio_tab_button.button_pressed = false
+			inventory_tab_button.button_pressed = false
+			missions_panel.on_selected()
+		Section.FLORILEXIO:
+			missions_panel.visible = false
+			florilexio_panel.visible = true
+			inventory_panel.visible = false
+			missions_tab_button.button_pressed = false
+			florilexio_tab_button.button_pressed = true
+			inventory_tab_button.button_pressed = false
+			florilexio_panel.on_selected()
+		Section.INVENTORY:
+			missions_panel.visible = false
+			florilexio_panel.visible = false
+			inventory_panel.visible = true
+			missions_tab_button.button_pressed = false
+			florilexio_tab_button.button_pressed = false
+			inventory_tab_button.button_pressed = true
+			# TODO: OnSelected

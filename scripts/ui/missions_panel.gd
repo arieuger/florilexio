@@ -32,6 +32,7 @@ func prepare_to_open() -> void:
 
 
 func on_selected() -> void:
+	# TODO: aquí pode ir son
 	pass
 
 

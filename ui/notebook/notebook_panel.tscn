@@ -184,6 +184,25 @@ texture_normal = ExtResource("7_next_normal")
 texture_pressed = ExtResource("8_next_pressed")
 texture_hover = ExtResource("9_next_hover")
 
+[node name="InventoryPanel" type="Control" parent="CenterContainer/Notebook" unique_id=1244989792]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_right = 0.97400004
+anchor_bottom = 0.95600003
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 0.38198853
+offset_bottom = 4.236
+
+[node name="Label" type="Label" parent="CenterContainer/Notebook/InventoryPanel" unique_id=1925637549]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 45.0
+offset_right = 106.0
+offset_bottom = 55.0
+text = "Testing"
+
 [node name="FlorilexioTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=2034229497]
 unique_name_in_owner = true
 layout_mode = 0
