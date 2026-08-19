@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://lta5nh4w7xph"]
 
 [ext_resource type="Script" uid="uid://dy47yqnsu0dwl" path="res://scripts/ui/notebook_panel.gd" id="1_lncma"]
-[ext_resource type="Script" path="res://scripts/ui/missions_panel.gd" id="2_missions"]
-[ext_resource type="Script" path="res://scripts/ui/florilexio_panel.gd" id="3_florilexio"]
 [ext_resource type="Texture2D" uid="uid://c5wrhaaspxbog" path="res://assets/sprites/ui/notebook/notebook_base.png" id="1_w0xa0"]
+[ext_resource type="Script" uid="uid://dux4hilf0irmb" path="res://scripts/ui/missions_panel.gd" id="2_missions"]
 [ext_resource type="FontVariation" uid="uid://foqn3igfk1cv" path="res://assets/fonts/variations/bold-jersey-10.tres" id="2_opjdo"]
 [ext_resource type="Texture2D" uid="uid://fngi8sqynsvy" path="res://assets/sprites/ui/buttons/close_unpressed.png" id="2_yundp"]
+[ext_resource type="Script" uid="uid://m7be65gghd7p" path="res://scripts/ui/florilexio_panel.gd" id="3_florilexio"]
 [ext_resource type="FontVariation" uid="uid://bqokipmhff54g" path="res://assets/fonts/variations/base-jersey-10.tres" id="3_k5eqy"]
 [ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="3_lncma"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="4_u4u0i"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://c5xgkp7mweuwt" path="res://assets/sprites/ui/buttons/quest-marker.png" id="13_dyrrl"]
 [ext_resource type="Texture2D" uid="uid://egw08xuci0gs" path="res://assets/sprites/ui/buttons/quest-marker-toggled.png" id="14_dj3m7"]
 [ext_resource type="Texture2D" uid="uid://cr61mil3briff" path="res://assets/sprites/ui/buttons/quest-marker-hovered.png" id="15_3i2l8"]
+[ext_resource type="Texture2D" uid="uid://dycqb2fdsdf0" path="res://assets/sprites/ui/buttons/inventory-marker.png" id="18_ig3l4"]
+[ext_resource type="Texture2D" uid="uid://cp57t0nrrarda" path="res://assets/sprites/ui/buttons/inventory-marker-toggled.png" id="19_skers"]
+[ext_resource type="Texture2D" uid="uid://cegvcccobnw26" path="res://assets/sprites/ui/buttons/inventory-marker-hovered.png" id="20_kkav6"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_sections"]
 
@@ -64,7 +67,7 @@ mouse_filter = 2
 texture = ExtResource("1_w0xa0")
 stretch_mode = 2
 
-[node name="MissionsPanel" type="Control" parent="CenterContainer/Notebook"]
+[node name="MissionsPanel" type="Control" parent="CenterContainer/Notebook" unique_id=870673245]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -207,6 +210,19 @@ button_group = SubResource("ButtonGroup_sections")
 texture_normal = ExtResource("13_dyrrl")
 texture_pressed = ExtResource("14_dj3m7")
 texture_hover = ExtResource("15_3i2l8")
+
+[node name="InventoryTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1915670940]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 203.0
+offset_top = 42.0
+offset_right = 215.0
+offset_bottom = 55.0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_sections")
+texture_normal = ExtResource("18_ig3l4")
+texture_pressed = ExtResource("19_skers")
+texture_hover = ExtResource("20_kkav6")
 
 [node name="CloseButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1998345699]
 unique_name_in_owner = true
