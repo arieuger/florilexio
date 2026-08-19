@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bn1k52c15hrs"]
 
-[ext_resource type="Script" uid="uid://dfo6c8xhf73fe" path="res://scripts/ui/final_composition_selected_row.gd" id="1_row"]
-[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
+[ext_resource type="Script" uid="uid://dfo6c8xhf73fe" path="res://scripts/ui/final_composition/final_composition_selected_row.gd" id="1_row"]
+[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/common/tooltip_label.gd" id="3_tooltip"]
 
 [node name="FinalCompositionSelectedRow" type="HBoxContainer" unique_id=224116135]
 custom_minimum_size = Vector2(0, 10)

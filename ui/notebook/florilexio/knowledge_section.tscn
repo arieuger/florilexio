@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g00teca45qk1"]
 
-[ext_resource type="Script" uid="uid://c6wnv0mwm7uo7" path="res://scripts/ui/florilexio_knowledge_section.gd" id="1_section"]
+[ext_resource type="Script" uid="uid://c6wnv0mwm7uo7" path="res://scripts/ui/notebook/florilexio/florilexio_knowledge_section.gd" id="1_section"]
 
 [node name="KnowledgeSection" type="RichTextLabel" unique_id=597183931]
 mouse_filter = 2

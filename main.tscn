@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://qb1ef36t7t4n" path="res://assets/sprites/ui/buttons/inventory_pressed.png" id="7_inventory_pressed"]
 [ext_resource type="Texture2D" uid="uid://clr8vutj21uu2" path="res://assets/sprites/ui/buttons/inventory_hovered.png" id="8_inventory_hover"]
 [ext_resource type="FontVariation" uid="uid://cn6fo5a4il3rh" path="res://assets/fonts/variations/heavy-jersey-10.tres" id="9_dg77c"]
-[ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/inventory/inventory_panel.tscn" id="9_inventory_panel"]
+[ext_resource type="PackedScene" uid="uid://brtqy2e6vixtb" path="res://ui/deprecated/inventory/inventory_panel.tscn" id="9_inventory_panel"]
 [ext_resource type="Texture2D" uid="uid://dyjwdxdgp7lps" path="res://assets/sprites/ui/buttons/notebook-button.png" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://ckymghx6lr2yh" path="res://assets/sprites/ui/buttons/notebook-button-hovered.png" id="10_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dosqr80lvhtg1" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]

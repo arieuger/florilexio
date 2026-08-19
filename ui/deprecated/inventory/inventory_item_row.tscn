@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dw2xjxugum3ku"]
 
-[ext_resource type="Script" uid="uid://dekpif70ca531" path="res://scripts/ui/inventory_item_row.gd" id="1_row"]
-[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/tooltip_label.gd" id="3_tooltip"]
+[ext_resource type="Script" uid="uid://bdhxog2pvvjgx" path="res://scripts/ui/deprecated/inventory/inventory_item_row.gd" id="1_row"]
+[ext_resource type="Script" uid="uid://dr2mn1p1dn6w2" path="res://scripts/ui/common/tooltip_label.gd" id="3_tooltip"]
 
 [node name="InventoryItemRow" type="HBoxContainer" unique_id=324749099]
 custom_minimum_size = Vector2(0, 8)

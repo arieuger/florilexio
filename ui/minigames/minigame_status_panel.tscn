@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi4uv6l1o35m8"]
 
-[ext_resource type="Script" uid="uid://vt33opu18ajn" path="res://scripts/ui/minigame_status_panel.gd" id="1_status"]
+[ext_resource type="Script" uid="uid://vt33opu18ajn" path="res://scripts/ui/minigames/minigame_status_panel.gd" id="1_status"]
 [ext_resource type="Texture2D" uid="uid://bx5v4d2fnquis" path="res://assets/sprites/ui/bar_background.png" id="2_bar_background"]
 [ext_resource type="Texture2D" uid="uid://c30pd6p73odvs" path="res://assets/sprites/ui/bar_fill_green.png" id="3_hit_fill"]
 [ext_resource type="Texture2D" uid="uid://hm2b24w4as44" path="res://assets/sprites/ui/bar_small_fill_red.png" id="4_miss_fill"]

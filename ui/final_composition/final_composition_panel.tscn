@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://oq61q3uavps5"]
 
-[ext_resource type="Script" uid="uid://c5ixf2eoep4iy" path="res://scripts/ui/final_composition_panel.gd" id="1_panel"]
-[ext_resource type="Script" uid="uid://d003cntpuro1d" path="res://scripts/ui/final_composition_bowl_drop_area.gd" id="2_drop"]
+[ext_resource type="Script" uid="uid://c5ixf2eoep4iy" path="res://scripts/ui/final_composition/final_composition_panel.gd" id="1_panel"]
+[ext_resource type="Script" uid="uid://d003cntpuro1d" path="res://scripts/ui/final_composition/final_composition_bowl_drop_area.gd" id="2_drop"]
 [ext_resource type="Texture2D" uid="uid://dy587eo2lh2fq" path="res://assets/sprites/environment/flowers_composition/bowl.png" id="5_bowl"]
 [ext_resource type="Texture2D" uid="uid://lmdmq4krfq5p" path="res://assets/sprites/ui/buttons/next_unpressed.png" id="9_next_normal"]
 [ext_resource type="Texture2D" uid="uid://ban5tvj8xnu56" path="res://assets/sprites/ui/buttons/next_pressed.png" id="10_next_pressed"]

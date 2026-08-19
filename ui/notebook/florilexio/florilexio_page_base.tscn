@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duw52wxnx1usu"]
 
-[ext_resource type="Script" uid="uid://bq0x2brjhricp" path="res://scripts/ui/florilexio_page.gd" id="1_page"]
+[ext_resource type="Script" uid="uid://bq0x2brjhricp" path="res://scripts/ui/notebook/florilexio/florilexio_page.gd" id="1_page"]
 
 [node name="FlorilexioPage" type="Control" unique_id=1591951097]
 texture_filter = 1

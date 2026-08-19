@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccjn73fieo4cu"]
 
-[ext_resource type="Script" uid="uid://6daibv2p85bc" path="res://scripts/ui/generic_info_balloon.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://6daibv2p85bc" path="res://scripts/ui/dialogue/generic_info_balloon.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c4u6dt8xtgs2r" path="res://assets/sprites/ui/npc_balloon.png" id="2_balloon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_balloon"]

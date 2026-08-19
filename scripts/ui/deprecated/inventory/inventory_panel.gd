@@ -3,7 +3,7 @@ extends Control
 signal close_requested
 signal compose_bouquet_requested
 
-@export var item_row_scene: PackedScene = preload("res://ui/inventory/inventory_item_row.tscn")
+@export var item_row_scene: PackedScene = preload("res://ui/deprecated/inventory/inventory_item_row.tscn")
 @export_range(1, 20, 1) var items_per_page := 10
 
 @onready var items_container: VBoxContainer = %ItemsContainer
