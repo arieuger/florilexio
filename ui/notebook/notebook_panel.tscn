@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://db6jy53m33q3l" path="res://assets/sprites/ui/buttons/florilexio-marker.png" id="10_l56s5"]
 [ext_resource type="Texture2D" uid="uid://bolyndwyyqh26" path="res://assets/sprites/ui/buttons/florilexio-marker-toggled.png" id="11_irdbb"]
 [ext_resource type="Texture2D" uid="uid://l105xfm0ffxf" path="res://assets/sprites/ui/buttons/florilexio-marker-hovered.png" id="11_qy6fi"]
+[ext_resource type="PackedScene" uid="uid://b8jj4w6st3jk8" path="res://ui/notebook/inventory/inventory_panel.tscn" id="12_skers"]
 [ext_resource type="Texture2D" uid="uid://c5xgkp7mweuwt" path="res://assets/sprites/ui/buttons/quest-marker.png" id="13_dyrrl"]
 [ext_resource type="Texture2D" uid="uid://egw08xuci0gs" path="res://assets/sprites/ui/buttons/quest-marker-toggled.png" id="14_dj3m7"]
 [ext_resource type="Texture2D" uid="uid://cr61mil3briff" path="res://assets/sprites/ui/buttons/quest-marker-hovered.png" id="15_3i2l8"]
@@ -184,24 +185,9 @@ texture_normal = ExtResource("7_next_normal")
 texture_pressed = ExtResource("8_next_pressed")
 texture_hover = ExtResource("9_next_hover")
 
-[node name="InventoryPanel" type="Control" parent="CenterContainer/Notebook" unique_id=1244989792]
+[node name="InventoryPanel" parent="CenterContainer/Notebook" unique_id=1023505643 instance=ExtResource("12_skers")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
-anchor_right = 0.97400004
-anchor_bottom = 0.95600003
-offset_left = 9.0
-offset_top = 5.0
-offset_right = 0.38198853
-offset_bottom = 4.236
-
-[node name="Label" type="Label" parent="CenterContainer/Notebook/InventoryPanel" unique_id=1925637549]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 45.0
-offset_right = 106.0
-offset_bottom = 55.0
-text = "Testing"
 
 [node name="FlorilexioTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=2034229497]
 unique_name_in_owner = true

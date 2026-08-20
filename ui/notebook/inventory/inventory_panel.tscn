@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b8jj4w6st3jk8"]
+
+[ext_resource type="Script" uid="uid://b1in5jxnn2x2y" path="res://scripts/ui/notebook/inventory/inventory_panel.gd" id="1_yr6hk"]
+[ext_resource type="PackedScene" uid="uid://qntjhbwvfrrs" path="res://ui/notebook/inventory/inventory_slot.tscn" id="2_1p1sh"]
+[ext_resource type="Texture2D" uid="uid://ch60reokrei2j" path="res://assets/sprites/ui/notebook/inventory_slots/slot_1.png" id="3_nsiqh"]
+[ext_resource type="Texture2D" uid="uid://baeubrtrxre2a" path="res://assets/sprites/ui/notebook/inventory_slots/slot_2.png" id="5_gi2eg"]
+[ext_resource type="Texture2D" uid="uid://cmfl1fwdpw74o" path="res://assets/sprites/ui/notebook/inventory_slots/slot_3.png" id="6_2x717"]
+[ext_resource type="Texture2D" uid="uid://qllxds1mmx3p" path="res://assets/sprites/ui/notebook/inventory_slots/slot_4.png" id="7_4fw38"]
+[ext_resource type="Texture2D" uid="uid://dabuhd15l2n1u" path="res://assets/sprites/ui/notebook/inventory_slots/slot_5.png" id="8_h8gdc"]
+
+[node name="InventoryPanel" type="Control" unique_id=1023505643]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yr6hk")
+
+[node name="Label" type="Label" parent="." unique_id=1948584259]
+visible = false
+layout_mode = 0
+offset_left = 66.0
+offset_top = 45.0
+offset_right = 106.0
+offset_bottom = 55.0
+text = "Testing"
+
+[node name="LeftPageSlot" type="Control" parent="." unique_id=729294526]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 102.0
+offset_bottom = 116.0
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="LeftPageSlot" unique_id=403779020]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 26.0
+offset_right = 84.0
+offset_bottom = 98.0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 6
+columns = 3
+
+[node name="InventorySlot" parent="LeftPageSlot/GridContainer" unique_id=469480829 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("3_nsiqh")
+
+[node name="InventorySlot2" parent="LeftPageSlot/GridContainer" unique_id=1954003539 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("5_gi2eg")
+
+[node name="InventorySlot3" parent="LeftPageSlot/GridContainer" unique_id=1802615555 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("6_2x717")
+
+[node name="InventorySlot4" parent="LeftPageSlot/GridContainer" unique_id=582266590 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("7_4fw38")
+
+[node name="InventorySlot5" parent="LeftPageSlot/GridContainer" unique_id=248117807 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("8_h8gdc")
+
+[node name="InventorySlot6" parent="LeftPageSlot/GridContainer" unique_id=757760570 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("7_4fw38")
+
+[node name="InventorySlot7" parent="LeftPageSlot/GridContainer" unique_id=1978420815 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("6_2x717")
+
+[node name="InventorySlot8" parent="LeftPageSlot/GridContainer" unique_id=1742467035 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("5_gi2eg")
+
+[node name="InventorySlot9" parent="LeftPageSlot/GridContainer" unique_id=1560032886 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("3_nsiqh")
+
+[node name="RightPageSlot" type="Control" parent="." unique_id=607905176]
+anchors_preset = 0
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 199.0
+offset_bottom = 117.0
+mouse_filter = 2

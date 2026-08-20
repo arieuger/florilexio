@@ -10,7 +10,7 @@ enum Section { MISSIONS, FLORILEXIO, INVENTORY }
 @onready var inventory_tab_button: TextureButton = %InventoryTabButton
 @onready var missions_panel: MissionsPanel = %MissionsPanel
 @onready var florilexio_panel: FlorilexioPanel = %FlorilexioPanel
-@onready var inventory_panel: Control = %InventoryPanel	# TODO: Tipar
+@onready var inventory_panel: InventoryPanel = %InventoryPanel
 
 var _active_section := Section.MISSIONS
 
@@ -32,6 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func prepare_to_open() -> void:
 	missions_panel.prepare_to_open()
 	florilexio_panel.prepare_to_open()
+	inventory_panel.prepare_to_open()
 	_apply_section_visibility()
 
 
@@ -44,28 +45,17 @@ func _apply_section_visibility() -> void:
 	if not is_node_ready():
 		return
 
+	missions_panel.visible = _active_section == Section.MISSIONS
+	florilexio_panel.visible = _active_section == Section.FLORILEXIO
+	inventory_panel.visible = _active_section == Section.INVENTORY	
+	missions_tab_button.button_pressed = missions_panel.visible
+	florilexio_tab_button.button_pressed = florilexio_panel.visible
+	inventory_tab_button.button_pressed = inventory_panel.visible	
+
 	match _active_section:
 		Section.MISSIONS:
-			missions_panel.visible = true
-			florilexio_panel.visible = false
-			inventory_panel.visible = false
-			missions_tab_button.button_pressed = true
-			florilexio_tab_button.button_pressed = false
-			inventory_tab_button.button_pressed = false
 			missions_panel.on_selected()
 		Section.FLORILEXIO:
-			missions_panel.visible = false
-			florilexio_panel.visible = true
-			inventory_panel.visible = false
-			missions_tab_button.button_pressed = false
-			florilexio_tab_button.button_pressed = true
-			inventory_tab_button.button_pressed = false
 			florilexio_panel.on_selected()
 		Section.INVENTORY:
-			missions_panel.visible = false
-			florilexio_panel.visible = false
-			inventory_panel.visible = true
-			missions_tab_button.button_pressed = false
-			florilexio_tab_button.button_pressed = false
-			inventory_tab_button.button_pressed = true
-			# TODO: OnSelected
+			inventory_panel.on_selected()

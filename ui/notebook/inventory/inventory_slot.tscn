@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://qntjhbwvfrrs"]
+
+[ext_resource type="Script" uid="uid://dmgmg4w4dhvlc" path="res://scripts/ui/notebook/inventory/inventory_slot.gd" id="1_cxw2a"]
+[ext_resource type="Texture2D" uid="uid://ch60reokrei2j" path="res://assets/sprites/ui/notebook/inventory_slots/slot_1.png" id="2_m0637"]
+
+[node name="InventorySlot" type="Control" unique_id=469480829]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cxw2a")
+
+[node name="Frame" type="TextureRect" parent="." unique_id=691239685]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m0637")
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1772412064]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
