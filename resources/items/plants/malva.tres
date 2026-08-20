@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://doq0kbgt7al22" path="res://scripts/data/plant_knowledge_fragment.gd" id="1_5j2b2"]
 [ext_resource type="Texture2D" uid="uid://dxwqvkc08b17d" path="res://assets/sprites/ui/visual-test.png" id="2_kq060"]
 [ext_resource type="Script" uid="uid://joe65o45qf51" path="res://scripts/data/plant_data.gd" id="2_lcfw8"]
+[ext_resource type="Texture2D" uid="uid://ba1e5tmw0q0g2" path="res://assets/sprites/environment/plants/malva.png" id="4_maa5u"]
 
 [sub_resource type="Resource" id="Resource_5j2b2"]
 script = ExtResource("1_5j2b2")
@@ -58,4 +59,5 @@ collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"malva"
 display_name = "Malva"
+icon = ExtResource("4_maa5u")
 metadata/_custom_type_script = "uid://joe65o45qf51"

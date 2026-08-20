@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://joe65o45qf51" path="res://scripts/data/plant_data.gd" id="1"]
 [ext_resource type="Script" uid="uid://doq0kbgt7al22" path="res://scripts/data/plant_knowledge_fragment.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://be6y6rc48atg8" path="res://assets/sprites/environment/plants/hiperico.png" id="3_icon"]
 
 [sub_resource type="Resource" id="KnowledgeFragment_name"]
 script = ExtResource("2")
@@ -15,3 +16,4 @@ collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"hiperico"
 display_name = "Hipérico"
+icon = ExtResource("3_icon")

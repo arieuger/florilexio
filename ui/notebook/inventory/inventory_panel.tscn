@@ -87,3 +87,49 @@ offset_top = 2.0
 offset_right = 199.0
 offset_bottom = 117.0
 mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="RightPageSlot" unique_id=2089749946]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 25.0
+offset_right = 80.0
+offset_bottom = 97.0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 6
+columns = 3
+
+[node name="InventorySlot" parent="RightPageSlot/GridContainer" unique_id=1310696830 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("3_nsiqh")
+
+[node name="InventorySlot2" parent="RightPageSlot/GridContainer" unique_id=1686948121 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("5_gi2eg")
+
+[node name="InventorySlot3" parent="RightPageSlot/GridContainer" unique_id=1159379298 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("6_2x717")
+
+[node name="InventorySlot4" parent="RightPageSlot/GridContainer" unique_id=35979828 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("7_4fw38")
+
+[node name="InventorySlot5" parent="RightPageSlot/GridContainer" unique_id=314256353 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("8_h8gdc")
+
+[node name="InventorySlot6" parent="RightPageSlot/GridContainer" unique_id=2035794761 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("7_4fw38")
+
+[node name="InventorySlot7" parent="RightPageSlot/GridContainer" unique_id=1922638776 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("6_2x717")
+
+[node name="InventorySlot8" parent="RightPageSlot/GridContainer" unique_id=1759047105 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("5_gi2eg")
+
+[node name="InventorySlot9" parent="RightPageSlot/GridContainer" unique_id=1085384473 instance=ExtResource("2_1p1sh")]
+layout_mode = 2
+frame_texture = ExtResource("3_nsiqh")

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dhknabfsg3vgs"]
 
+[ext_resource type="Texture2D" uid="uid://jpnusi4o5ne8" path="res://assets/sprites/ui/items/empty_bottle.png" id="1_inw2i"]
 [ext_resource type="Script" uid="uid://dhxlsvm177k7j" path="res://scripts/data/item_data.gd" id="1_n6c6r"]
 
 [resource]
@@ -7,4 +8,5 @@ script = ExtResource("1_n6c6r")
 id = &"plastic_bottle"
 display_name = "Botella de plástico"
 description = "Unha botella de plástico que atopou o can Eusebio ao pé do banco."
+icon = ExtResource("1_inw2i")
 metadata/_custom_type_script = "uid://dhxlsvm177k7j"

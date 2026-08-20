@@ -2,11 +2,6 @@
 extends ItemData
 class_name PlantData
 
-@export  var short_description: String
-@export_multiline var discovered_text: String
-
-@export var sprite: Texture2D
-
 @export_group("Knowledge")
 @export var knowledge_fragments: Array[PlantKnowledgeFragment] = []
 
