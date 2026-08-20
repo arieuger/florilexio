@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qntjhbwvfrrs"]
 
 [ext_resource type="Script" uid="uid://dmgmg4w4dhvlc" path="res://scripts/ui/notebook/inventory/inventory_slot.gd" id="1_cxw2a"]
+[ext_resource type="Texture2D" uid="uid://ch60reokrei2j" path="res://assets/sprites/ui/notebook/inventory_slots/slot_1.png" id="2_m0637"]
 
 [node name="InventorySlot" type="Control" unique_id=469480829]
 custom_minimum_size = Vector2(20, 20)
@@ -13,7 +14,6 @@ grow_vertical = 2
 script = ExtResource("1_cxw2a")
 
 [node name="Frame" type="TextureRect" parent="." unique_id=691239685]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -25,7 +25,6 @@ mouse_filter = 2
 stretch_mode = 2
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1772412064]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -34,4 +33,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-stretch_mode = 5
+texture = ExtResource("2_m0637")
+stretch_mode = 3
+
+[node name="AmountLabel" type="RichTextLabel" parent="." unique_id=1188300830]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -10.0
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.9013051, 0.96329087, 0.99999994, 1)
+theme_override_colors/font_outline_color = Color(0.014437638, 0.0026795298, 0.003051799, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/bold_font_size = 6
+bbcode_enabled = true
+text = "[b]2[/b]"
+fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 2

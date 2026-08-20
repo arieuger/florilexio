@@ -14,6 +14,7 @@ signal unhovered(slot: InventorySlot)
 
 @onready var frame: TextureRect = $Frame
 @onready var icon: TextureRect = $Icon
+@onready var amount_label: RichTextLabel = $AmountLabel
 
 var item = null
 
@@ -26,10 +27,15 @@ func update_frame() -> void:
 		frame.texture = frame_texture
 
 
-func set_icon(texture: Texture2D) -> void:
-	icon.texture = texture
+func setup(item_data: ItemData, amount: int) -> void:
+	item = item_data
+	icon.texture = item_data.icon
+	amount_label.text = "[b]%d[/b]" % amount
+	amount_label.visible = amount > 1
 
 
 func clear() -> void:
 	item = null
 	icon.texture = null
+	amount_label.text = ""
+	amount_label.visible = false
