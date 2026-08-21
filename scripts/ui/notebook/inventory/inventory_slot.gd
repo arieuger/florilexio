@@ -14,11 +14,16 @@ class_name InventorySlot
 @onready var name_tag: NinePatchRect = $NameTag
 @onready var name_label: RichTextLabel = $NameTag/Label
 
-var item = null
+var _item = null
+var _hover_tween: Tween
+
+var _name_tag_y: float
 
 func _ready() -> void:
 	mouse_entered.connect(_on_hovered.bind(true))
 	mouse_exited.connect(_on_hovered.bind(false))
+	_name_tag_y = name_tag.position.y
+	name_tag.hide()
 	update_frame()
 
 
@@ -28,15 +33,15 @@ func update_frame() -> void:
 
 
 func setup(item_data: ItemData, amount: int) -> void:
-	item = item_data
+	_item = item_data
 	icon.texture = item_data.icon
 	amount_label.text = "[b]%d[/b]" % amount
 	amount_label.visible = amount > 1
-	_set_name_tag(item.display_name)
+	_set_name_tag(_item.display_name)
 
 
 func clear() -> void:
-	item = null
+	_item = null
 	icon.texture = null
 	amount_label.text = ""
 	amount_label.visible = false
@@ -55,4 +60,52 @@ func _set_name_tag(text: String) -> void:
 
 
 func _on_hovered(entered: bool) -> void:
-	name_tag.visible = item != null and entered
+	if _item == null:
+		return
+
+	if _hover_tween:
+		_hover_tween.kill()
+
+	_hover_tween = create_tween()
+	_hover_tween.set_trans(Tween.TRANS_QUAD)
+	_hover_tween.set_ease(Tween.EASE_OUT)
+
+	if entered:
+		name_tag.show()
+		name_tag.modulate.a = 0.0
+		name_tag.position.y = _name_tag_y + 5.5
+		name_tag.rotation = 0.0
+
+		_hover_tween.parallel().tween_property(
+			name_tag,
+			"modulate:a",
+			1.0,
+			0.08
+		)
+		_hover_tween.parallel().tween_property(
+			name_tag,
+			"position:y",
+			_name_tag_y,
+			0.08
+		)
+		_hover_tween.tween_property(
+			name_tag,
+			"rotation_degrees",
+			3.0,
+			0.09
+		)
+		_hover_tween.tween_property(
+			name_tag,
+			"rotation_degrees",
+			0.0,
+			0.1
+		)
+
+	else:
+		_hover_tween.parallel().tween_property(
+			name_tag,
+			"modulate:a",
+			0.0,
+			0.06
+		)
+		_hover_tween.tween_callback(name_tag.hide)
