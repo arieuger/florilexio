@@ -42,9 +42,9 @@ func _ready() -> void:
 	_set_inventory_open(false)
 	_update_time_label(GameState.consumed_time)
 	GameState.consumed_time_added.connect(_on_consumed_time_added)
-	inventory_button.pressed.connect(_toggle_inventory)
-	inventory_button.pressed.connect(_on_inventory_button_pressed)
-	inventory_button.mouse_entered.connect(_on_inventory_button_mouse_entered)
+	# inventory_button.pressed.connect(_toggle_inventory)
+	# inventory_button.pressed.connect(_on_inventory_button_pressed)
+	# inventory_button.mouse_entered.connect(_on_inventory_button_mouse_entered)
 	if inventory_panel.has_signal(&"close_requested"):
 		inventory_panel.connect(&"close_requested", _hide_inventory)
 	if inventory_panel.has_signal(&"compose_bouquet_requested"):
@@ -355,7 +355,6 @@ func _set_player_movement_enabled(enabled: bool) -> void:
 		root.set_player_movement_enabled(enabled)
 
 
-
 func _toggle_notebook() -> void:
 	if notebook_panel.visible:
 		_hide_notebook()
@@ -407,5 +406,5 @@ func _update_panel_buttons() -> void:
 		and not _final_sequence_started
 	)
 
-	inventory_button.visible = should_show_buttons
+	# inventory_button.visible = should_show_buttons
 	notebook_button.visible = should_show_buttons

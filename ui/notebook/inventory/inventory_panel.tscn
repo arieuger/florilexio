@@ -37,9 +37,9 @@ mouse_filter = 2
 [node name="GridContainer" type="GridContainer" parent="LeftPageSlot" unique_id=403779020]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 26.0
+offset_top = 16.0
 offset_right = 84.0
-offset_bottom = 98.0
+offset_bottom = 88.0
 theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 6
 columns = 3
@@ -80,6 +80,9 @@ frame_texture = ExtResource("5_gi2eg")
 layout_mode = 2
 frame_texture = ExtResource("3_nsiqh")
 
+[node name="ItemDescription" type="RichTextLabel" parent="LeftPageSlot/GridContainer" unique_id=1703027603]
+layout_mode = 2
+
 [node name="RightPageSlot" type="Control" parent="." unique_id=607905176]
 anchors_preset = 0
 offset_left = 104.0
@@ -91,9 +94,9 @@ mouse_filter = 2
 [node name="GridContainer" type="GridContainer" parent="RightPageSlot" unique_id=2089749946]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 25.0
+offset_top = 15.0
 offset_right = 80.0
-offset_bottom = 97.0
+offset_bottom = 87.0
 theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 6
 columns = 3

@@ -37,6 +37,7 @@ final_spotlight_radius = 50.0
 final_spotlight_softness = 7.0
 
 [node name="InventoryButton" type="TextureButton" parent="GameHUD" unique_id=1684215566]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

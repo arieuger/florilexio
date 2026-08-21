@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmgmg4w4dhvlc" path="res://scripts/ui/notebook/inventory/inventory_slot.gd" id="1_cxw2a"]
 [ext_resource type="Texture2D" uid="uid://ch60reokrei2j" path="res://assets/sprites/ui/notebook/inventory_slots/slot_1.png" id="2_m0637"]
+[ext_resource type="Texture2D" uid="uid://833o0jmsxxrs" path="res://assets/sprites/ui/notebook/postit.png" id="3_pmrrx"]
 
 [node name="InventorySlot" type="Control" unique_id=469480829]
 custom_minimum_size = Vector2(20, 20)
@@ -58,3 +59,33 @@ text = "[b]2[/b]"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="NameTag" type="NinePatchRect" parent="." unique_id=446672720]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.0
+offset_top = -5.025
+offset_right = 18.0
+offset_bottom = 4.975
+grow_horizontal = 2
+texture = ExtResource("3_pmrrx")
+patch_margin_left = 2
+patch_margin_top = 4
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="Label" type="RichTextLabel" parent="NameTag" unique_id=125586249]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 34.0
+offset_bottom = 9.0
+rotation = -0.034906585
+theme_override_font_sizes/normal_font_size = 5
+text = "Botella de plástico"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

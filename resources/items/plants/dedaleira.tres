@@ -15,5 +15,5 @@ knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_na
 collection_requirements = Array[StringName]([&"name"])
 is_magic = true
 id = &"dedaleira"
-display_name = "Dedaleira"
+display_name = "Estalote"
 icon = ExtResource("3_icon")
