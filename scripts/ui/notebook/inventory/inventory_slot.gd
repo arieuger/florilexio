@@ -2,6 +2,8 @@
 extends Control
 class_name InventorySlot
 
+signal hovered_slot_item(item: ItemData, entered: bool)
+
 @export var frame_texture: Texture2D:
 	set(value):
 		frame_texture = value
@@ -66,46 +68,13 @@ func _on_hovered(entered: bool) -> void:
 	if _hover_tween:
 		_hover_tween.kill()
 
-	_hover_tween = create_tween()
-	_hover_tween.set_trans(Tween.TRANS_QUAD)
-	_hover_tween.set_ease(Tween.EASE_OUT)
-
 	if entered:
-		name_tag.show()
-		name_tag.modulate.a = 0.0
-		name_tag.position.y = _name_tag_y + 5.5
-		name_tag.rotation = 0.0
-
-		_hover_tween.parallel().tween_property(
-			name_tag,
-			"modulate:a",
-			1.0,
-			0.08
-		)
-		_hover_tween.parallel().tween_property(
-			name_tag,
-			"position:y",
-			_name_tag_y,
-			0.08
-		)
-		_hover_tween.tween_property(
-			name_tag,
-			"rotation_degrees",
-			3.0,
-			0.09
-		)
-		_hover_tween.tween_property(
-			name_tag,
-			"rotation_degrees",
-			0.0,
-			0.1
-		)
-
+		_hover_tween = UITweens.pop_tween(name_tag, _name_tag_y)
+		var current_tween = _hover_tween # con esto o await non bloquea futuros tweens que se pisen
+		await get_tree().create_timer(0.2).timeout
+		if current_tween != _hover_tween:
+			return
 	else:
-		_hover_tween.parallel().tween_property(
-			name_tag,
-			"modulate:a",
-			0.0,
-			0.06
-		)
-		_hover_tween.tween_callback(name_tag.hide)
+		_hover_tween = UITweens.hide_tween(name_tag)
+
+	hovered_slot_item.emit(_item, entered)

@@ -3,16 +3,23 @@ class_name InventoryPanel
 
 @onready var left_grid: GridContainer = $LeftPageSlot/GridContainer
 @onready var right_grid: GridContainer = $RightPageSlot/GridContainer
-
+@onready var left_item_description: RichTextLabel = $LeftPageSlot/ItemDescription
+@onready var right_item_description: RichTextLabel = $RightPageSlot/ItemDescription
 var slots: Array[InventorySlot] = []
 
+var _hover_tween: Tween
+var _item_description_y: float
+
 func _ready() -> void:
+	_item_description_y = left_item_description.position.y
 	for child in left_grid.get_children():
 		if child is InventorySlot:
+			child.hovered_slot_item.connect(_on_hovered_slot_item.bind(left_item_description))
 			slots.append(child)
 
 	for child in right_grid.get_children():
 		if child is InventorySlot:
+			child.hovered_slot_item.connect(_on_hovered_slot_item.bind(right_item_description))
 			slots.append(child)
 
 	InventoryManager.inventory_changed.connect(refresh)
@@ -45,3 +52,18 @@ func refresh() -> void:
 			item_data,
 			int(inventory_items[item_id])
 		)
+
+
+func _on_hovered_slot_item(item: ItemData, entered: bool, item_description: RichTextLabel) -> void:
+	if _hover_tween:
+		_hover_tween.kill()
+
+	if entered:
+		if item.description == null or item.description.is_empty():
+			return
+
+		item_description.text = item.description
+		_hover_tween = UITweens.pop_tween(item_description, _item_description_y)
+		
+	else:
+		_hover_tween = UITweens.hide_tween(item_description)
