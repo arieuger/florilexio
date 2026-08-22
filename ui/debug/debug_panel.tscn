@@ -131,7 +131,7 @@ layout_mode = 2
 [node name="AddPlantButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/InventoryButtons" unique_id=2082130469]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Engadir planta"
+text = "Engadir item"
 
 [node name="ClearInventoryButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/Sections/InventoryButtons" unique_id=1855256475]
 unique_name_in_owner = true

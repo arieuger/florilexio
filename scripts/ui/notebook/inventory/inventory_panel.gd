@@ -59,11 +59,11 @@ func _on_hovered_slot_item(item: ItemData, entered: bool, item_description: Rich
 		_hover_tween.kill()
 
 	if entered:
-		if item.description == null or item.description.is_empty():
+		if item.description.is_empty():
 			return
 
 		item_description.text = item.description
 		_hover_tween = UITweens.pop_tween(item_description, _item_description_y)
-		
+
 	else:
 		_hover_tween = UITweens.hide_tween(item_description)

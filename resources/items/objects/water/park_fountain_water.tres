@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaterData" format=3 uid="uid://ds2ugqsiu2ef6"]
+
+[ext_resource type="Texture2D" uid="uid://bb01rptxutnct" path="res://assets/sprites/ui/items/full_bottle.png" id="1_ln46v"]
+[ext_resource type="Script" uid="uid://dv6cuhvat3j7" path="res://scripts/data/water_data.gd" id="1_n3hfs"]
+
+[resource]
+script = ExtResource("1_n3hfs")
+source_font = &"park_fountain"
+id = &"full_bottle_park_fountain"
+display_name = "Botella de auga do parque"
+description = "Auga da fonte que hai no parque"
+icon = ExtResource("1_ln46v")
+metadata/_custom_type_script = "uid://dv6cuhvat3j7"

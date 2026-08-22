@@ -93,7 +93,7 @@ func _on_add_inventory_item_pressed() -> void:
 	var plant_id := _get_plant_id()
 
 	InventoryManager.add_item(plant_id, 1)
-	print("[DebugPanel] Added plant to inventory: %s" % plant_id)
+	print("[DebugPanel] Added item to inventory: %s" % plant_id)
 
 
 func _on_clear_inventory_pressed() -> void:

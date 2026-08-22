@@ -44,15 +44,19 @@ player: ...
 old_woman: Como que que cacho? [shake rate=20 level=4]O CACHO![/shake] O cacho de San Xoán! A auga roseira!
 E que na túa casa non che aprenderon nada?\nE logo, como vos protexedes de maleficios e urticarias?
 
-Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aquí no barrio atopas fento e xesta ou codeso,
-e con sorte tamén romeu, macela brava e herbaluísa.\nE terás que buscar estalos, que son da mesma cor da malva,
-pero ollo con confundilas porque o estalo, ademais de estourar, envelena se o inxires.  
+Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aquí no barrio atopas herbaluísa e romeu
+e herba de Santa María. E precisaremos xesta, fento e fiuncho\ne algunha herba que pica e algunha outra que sanda.
+E traerás os estalos, que son da mesma cor da malva,\npero ollo con confundilos\: estoura se o estrullas, se o tragas envelena
 do FlorilexioManager.unlock_knowledge("dedaleira", "name")
+do FlorilexioManager.unlock_knowledge("herba_luisa", "name")
+do FlorilexioManager.unlock_knowledge("romeu", "name")
+# TODO: Cal é a herba de santa maría?
 do QuestManager.start_quest("01_collect_first_herbs")
+# TODO: Definir cales son as herbas que vai haber que recoller
 dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…
 Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo...
 do InventoryManager.add_item("plastic_bottle", 1)
-=> END
+old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 
 ~ tutorial_quest_completed
 # Aquí xa empezou a misión 2 que (demomento) é estalote
