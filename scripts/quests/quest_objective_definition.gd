@@ -8,9 +8,8 @@ enum EventType {
 	DIALOGUE_COMPLETED,
 	INTERACTABLE_USED,
 	LOCATION_REACHED,
-	ITEM_SUBMITTED
-	# TODO: Eventualmente haberá que engadir ITEM_COLLECTED e, en TargetType
-	# ITEM_INSTANCE e ITEM ou algo así para obxetos de inventario (non plantas)
+	ITEM_SUBMITTED,
+	ITEM_COLLECTED,
 }
 
 enum TargetType {
@@ -19,7 +18,8 @@ enum TargetType {
 	PLANT_INSTANCE,
 	CONVERSATION,
 	INTERACTABLE,
-	LOCATION
+	LOCATION,
+	ITEM_TYPE,
 }
 
 enum ItemSubmissionMode {
@@ -65,6 +65,10 @@ static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetT
 				TargetType.PLANT_SPECIES,
 			]
 
+		EventType.ITEM_COLLECTED:
+			return [
+				TargetType.ITEM_TYPE
+			]
 		_:
 			return []
 
@@ -88,7 +92,7 @@ func get_validation_errors() -> PackedStringArray:
 		errors.append("required_amount must be at least 1")
 
 	if target_type != TargetType.NONE and not _is_target_type_valid():
-		errors.append("event_type %s is incompatible with target_type %s"% [EventType.keys()[event_type], TargetType.keys()[target_type],])
+		errors.append("event_type %s is incompatible with target_type %s" % [EventType.keys()[event_type], TargetType.keys()[target_type], ])
 
 	return errors
 

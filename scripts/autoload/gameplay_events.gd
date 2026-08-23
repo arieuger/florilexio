@@ -1,7 +1,7 @@
-
 extends Node
 
 signal plant_collected(plant_id: StringName, collection_id: StringName, amount: int)
+signal item_collected(item_id: StringName, amount: int)
 signal dialogue_completed(conversation_id: StringName, start_title: StringName, result_id: StringName)
 
 func report_plant_collected(plant_id: StringName, collection_id: StringName, amount: int) -> bool:
@@ -20,6 +20,17 @@ func report_plant_collected(plant_id: StringName, collection_id: StringName, amo
 	plant_collected.emit(plant_id, collection_id, amount)
 	return true
 
+func report_item_collected(item_id: StringName, amount: int) -> bool:
+	if item_id.is_empty():
+		push_warning("GameplayEvents: item_id cannot be empty")
+		return false
+
+	if amount <= 0:
+		push_warning("GameplayEvents: collected amount must be positive")
+		return false
+	
+	item_collected.emit(item_id, amount)
+	return true
 
 func report_dialogue_completed(conversation_id: StringName, start_title: StringName, result_id: StringName = &"") -> bool:
 	if conversation_id.is_empty():

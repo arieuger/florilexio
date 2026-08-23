@@ -18,6 +18,7 @@ func _ready() -> void:
 	register_catalog(FIRST_NIGHT_CATALOG) # TODO: Mentres só haxa 1 bucle
 	GameplayEvents.plant_collected.connect(_on_plant_collected)
 	GameplayEvents.dialogue_completed.connect(_on_dialogue_completed)
+	GameplayEvents.item_collected.connect(_on_item_collected)
 
 func register_catalog(catalog: QuestCatalog) -> bool:
 	if catalog == null or catalog.catalog_id.is_empty():
@@ -36,7 +37,7 @@ func register_catalog(catalog: QuestCatalog) -> bool:
 			continue
 
 		for definition_error in _get_registration_errors(definition):
-			errors.append("quest %d ('%s'): %s"% [
+			errors.append("quest %d ('%s'): %s" % [
 					index,
 					definition.quest_id,
 					definition_error,
@@ -44,7 +45,7 @@ func register_catalog(catalog: QuestCatalog) -> bool:
 			)
 
 	if not errors.is_empty():
-		push_warning("QuestManager: catalog '%s' is invalid:\n- %s"% [catalog.catalog_id, "\n- ".join(errors)])
+		push_warning("QuestManager: catalog '%s' is invalid:\n- %s" % [catalog.catalog_id, "\n- ".join(errors)])
 		return false
 
 	for definition in catalog.quests:
@@ -60,7 +61,7 @@ func register_definition(definition: QuestDefinition) -> bool:
 	if not errors.is_empty():
 		var quest_id := (definition.quest_id if definition != null else &"<null>")
 
-		push_warning("QuestManager: quest '%s' cannot be registered:\n- %s"% [quest_id, "\n- ".join(errors)])
+		push_warning("QuestManager: quest '%s' cannot be registered:\n- %s" % [quest_id, "\n- ".join(errors)])
 		return false
 
 	_register_validated_definition(definition)
@@ -70,7 +71,7 @@ func register_definition(definition: QuestDefinition) -> bool:
 func start_quest(quest_id: StringName) -> bool:
 	var state := _get_state(quest_id)
 	if state == null:
-		push_warning("QuestManager: cannot start unknown quest '%s'."% quest_id)
+		push_warning("QuestManager: cannot start unknown quest '%s'." % quest_id)
 		return false
 
 	if state.status != QuestState.Status.INACTIVE:
@@ -119,7 +120,11 @@ func submit_item(quest_id: StringName, objective_id: StringName, plant_id: Strin
 
 	if not advance_objective(quest_id, objective_id, submitted_amount):
 		if consumes_item:
-			InventoryManager.add_item(plant_id, submitted_amount)
+			InventoryManager.add_item(
+				plant_id,
+				submitted_amount,
+				InventoryManager.AdditionMode.RESTORE
+			)
 			push_warning("QuestManager: item submission was rolled back for quest '%s', objective '%s'." % [quest_id, objective_id])
 		else:
 			push_warning("QuestManager: shown item could not advance quest '%s', objective '%s'." % [quest_id, objective_id])
@@ -143,41 +148,63 @@ func get_objective_progress(quest_id: StringName, objective_id: StringName) -> i
 	return state.get_current_amount(objective_id)
 
 
-func _on_plant_collected(plant_id: StringName, collection_id: StringName, amount: int) -> void:
+func _advance_matching_objectives(
+	event_type: QuestObjectiveDefinition.EventType,
+	target_ids: Dictionary[
+		QuestObjectiveDefinition.TargetType, StringName
+	], amount: int) -> void:
+	if amount <= 0:
+		return
+
 	for raw_quest_id in _definitions.keys():
 		var quest_id := StringName(raw_quest_id)
-
 		if not is_active(quest_id):
 			continue
 
 		var definition := _get_definition(quest_id)
+
 		for objective in definition.objectives:
-			if objective.event_type != QuestObjectiveDefinition.EventType.PLANT_COLLECTED:
+			if objective.event_type != event_type:
 				continue
 
-			var matched_by := &""
-
-			match objective.target_type:
-				QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
-					if objective.target_id == plant_id:
-						matched_by = &"plant_id"
-				QuestObjectiveDefinition.TargetType.PLANT_INSTANCE:
-					if objective.target_id == collection_id:
-						matched_by = &"collection_id"
-
-
-			if matched_by.is_empty():
+			if not target_ids.has(objective.target_type):
 				continue
+
+			var reported_target_id := StringName(target_ids[objective.target_type])
+			if objective.target_id != reported_target_id:
+				continue
+
 
 			if OS.is_debug_build():
-				print("[QuestManager] plant_collected matched quest '%s', objective '%s' by %s."
-					% [
-						quest_id,
-						objective.objective_id,
-						matched_by,
-					])
+				print("[QuestManager] %s matched quest '%s', objective '%s' by %s." % [
+					QuestObjectiveDefinition.EventType.keys()[event_type],
+					quest_id,
+					objective.objective_id,
+					QuestObjectiveDefinition.TargetType.keys()[objective.target_type]
+				])
 
 			advance_objective(quest_id, objective.objective_id, amount)
+
+
+func _on_plant_collected(plant_id: StringName, collection_id: StringName, amount: int) -> void:
+	_advance_matching_objectives(
+		QuestObjectiveDefinition.EventType.PLANT_COLLECTED,
+		{
+			QuestObjectiveDefinition.TargetType.PLANT_SPECIES: plant_id,
+			QuestObjectiveDefinition.TargetType.PLANT_INSTANCE: collection_id,
+		},
+		amount
+	)
+
+
+func _on_item_collected(item_id: StringName, amount: int) -> void:
+	_advance_matching_objectives(
+		QuestObjectiveDefinition.EventType.ITEM_COLLECTED,
+		{
+			QuestObjectiveDefinition.TargetType.ITEM_TYPE: item_id,
+		},
+		amount
+	)
 
 
 func _on_dialogue_completed(conversation_id: StringName, start_title: StringName, result_id: StringName) -> void:
@@ -242,7 +269,7 @@ func export_state() -> Dictionary:
 func import_state(data: Dictionary) -> bool:
 	var version := int(data.get("version", -1))
 	if version != SAVE_VERSION:
-		push_warning("QuestManager: unsupported save version '%s'."% version)
+		push_warning("QuestManager: unsupported save version '%s'." % version)
 		return false
 
 	var raw_quests: Variant = data.get("quests", {})
@@ -256,12 +283,12 @@ func import_state(data: Dictionary) -> bool:
 		var quest_id := StringName(str(raw_quest_id))
 
 		if not _definitions.has(quest_id):
-			push_warning("QuestManager: ignoring retired quest '%s'."% quest_id)
+			push_warning("QuestManager: ignoring retired quest '%s'." % quest_id)
 			continue
 
 		var raw_quest: Variant = raw_quests[raw_quest_id]
 		if not raw_quest is Dictionary:
-			push_warning("QuestManager: invalid state for quest '%s'."% quest_id)
+			push_warning("QuestManager: invalid state for quest '%s'." % quest_id)
 			continue
 
 		var status := int(
@@ -269,7 +296,7 @@ func import_state(data: Dictionary) -> bool:
 		)
 
 		if not _is_valid_status(status):
-			push_warning("QuestManager: invalid status '%s' for quest '%s'."% [status, quest_id])
+			push_warning("QuestManager: invalid status '%s' for quest '%s'." % [status, quest_id])
 			continue
 
 		var state := _get_state(quest_id)
@@ -281,7 +308,7 @@ func import_state(data: Dictionary) -> bool:
 		var raw_objectives: Variant = raw_quest.get("objectives", {})
 
 		if not raw_objectives is Dictionary:
-			push_warning("QuestManager: invalid objectives for quest '%s'."% quest_id)
+			push_warning("QuestManager: invalid objectives for quest '%s'." % quest_id)
 			raw_objectives = {}
 
 		for objective in definition.objectives:
@@ -315,7 +342,7 @@ func _get_registration_errors(definition: QuestDefinition) -> PackedStringArray:
 	errors.append_array(definition.get_validation_errors())
 
 	if not definition.quest_id.is_empty() and _definitions.has(definition.quest_id):
-		errors.append("quest_id '%s' is already registered"% definition.quest_id)
+		errors.append("quest_id '%s' is already registered" % definition.quest_id)
 
 	return errors
 

@@ -12,16 +12,19 @@ const MAGIC_WARNING_TOOLTIP := "Máxica!"
 const MORTAL_WARNING_TEXT := "[ R.I.P ]"
 const MORTAL_WARNING_TOOLTIP := "Mortal!"
 
+enum AdditionMode {COLLECT, RESTORE}
+
 var items: Dictionary = {}
 
 var selected_bouquet: Array[StringName] = []
 
 
-func add_item(item_id: StringName, amount: int = 1) -> void:
+func add_item(item_id: StringName, amount: int = 1, mode: AdditionMode = AdditionMode.COLLECT) -> void:
 	if amount <= 0:
 		return
 
-	if not ItemDatabase.has_item(item_id):
+	var item := ItemDatabase.get_item(item_id)
+	if item == null:
 		push_warning("InventoryManager: Unknown item_id '%s'." % item_id)
 		return
 
@@ -29,6 +32,9 @@ func add_item(item_id: StringName, amount: int = 1) -> void:
 	items[item_id] = new_total
 	item_added.emit(item_id, amount, new_total)
 	inventory_changed.emit()
+
+	if mode == AdditionMode.COLLECT and not item is PlantData:
+		GameplayEvents.report_item_collected(item_id, amount) # TODO: Igual tén sentido unificar item e plant collected
 
 
 func remove_item(item_id: StringName, amount: int = 1) -> bool:
