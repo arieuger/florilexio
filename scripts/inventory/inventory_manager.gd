@@ -23,14 +23,14 @@ func add_item(
 	item_id: StringName,
 	amount: int = 1,
 	mode: AdditionMode = AdditionMode.ACQUIRE,
-	collection_id: StringName = &"") -> void:
+	collection_id: StringName = &"") -> bool:
 	if amount <= 0:
-		return
+		return false
 
 	var item := ItemDatabase.get_item(item_id)
 	if item == null:
 		push_warning("InventoryManager: Unknown item_id '%s'." % item_id)
-		return
+		return false
 
 	var new_total := get_amount(item_id) + amount
 	items[item_id] = new_total
@@ -39,6 +39,8 @@ func add_item(
 
 	if mode == AdditionMode.ACQUIRE:
 		GameplayEvents.report_item_acquired(item_id, collection_id, amount)
+
+	return true
 
 
 func remove_item(item_id: StringName, amount: int = 1) -> bool:

@@ -179,6 +179,13 @@ func _apply_collection_minigame_result(result: MinigameResult) -> void:
 
 	var collected_plant_id := StringName(result.rewards.get(&"plant_id", result.target_id))
 	var collected_amount := int(result.rewards.get(&"amount", 1))
+	if collected_amount <= 0:
+		push_warning("CollectablePlant: collected amount must be positive.")
+		return
+
+	if ItemDatabase.get_plant(collected_plant_id) == null:
+		push_warning("CollectablePlant: unknown collected plant '%s'." % collected_plant_id)
+		return
 
 	GameState.collect_plant(_collection_id)
 	InventoryManager.add_item(

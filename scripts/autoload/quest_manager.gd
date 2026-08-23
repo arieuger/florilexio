@@ -186,20 +186,19 @@ func _advance_matching_objectives(
 
 
 func _on_item_acquired(item_id: StringName, collection_id: StringName, amount: int) -> void:
-	var item_targets: Dictionary[QuestObjectiveDefinition.TargetType, StringName] = {}
-	item_targets[QuestObjectiveDefinition.TargetType.ITEM_TYPE] = item_id
-
-	_advance_matching_objectives(
-		QuestObjectiveDefinition.EventType.ITEM_COLLECTED, item_targets, amount
-	)
-
 	if ItemDatabase.get_plant(item_id) == null:
+		var item_targets: Dictionary[QuestObjectiveDefinition.TargetType, StringName] = {}
+		item_targets[QuestObjectiveDefinition.TargetType.ITEM_TYPE] = item_id
+
+		_advance_matching_objectives(
+			QuestObjectiveDefinition.EventType.ITEM_COLLECTED,
+			item_targets,
+			amount
+		)
 		return
 
 	var plant_targets: Dictionary[QuestObjectiveDefinition.TargetType, StringName] = {}
-		
 	plant_targets[QuestObjectiveDefinition.TargetType.PLANT_SPECIES] = item_id
-	
 
 	if not collection_id.is_empty():
 		plant_targets[QuestObjectiveDefinition.TargetType.PLANT_INSTANCE] = collection_id

@@ -245,6 +245,11 @@ static func get_quest_creation_errors(request: QuestCreationRequest, index: Narr
 			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
 				if not index.has_plant(objective.target_id):
 					errors.append("objective '%s' refers to unknown plant '%s'" % [objective.objective_id, objective.target_id])
+			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+				if not index.has_item(objective.target_id):
+					errors.append("objective '%s' refers to unknown item '%s'" % [objective.objective_id, objective.target_id])
+				elif index.has_plant(objective.target_id):
+					errors.append("objective '%s' refers to plant '%s' as ITEM_TYPE" % [objective.objective_id, objective.target_id])
 
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")

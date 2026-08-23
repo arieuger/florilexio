@@ -229,6 +229,24 @@ func _validate_quest_objective_references(index: NarrativeIndex, issues: Array[N
 					issues
 				)
 
+			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+				if index.has_item(objective.target_id) \
+						and not index.has_plant(objective.target_id):
+					continue
+
+				var issue_code := (
+					&"objective_item_is_plant"
+					if index.has_plant(objective.target_id)
+					else &"objective_missing_item"
+				)
+				_append_objective_reference_issue(
+					record,
+					issue_code,
+					"non-plant item",
+					objective.target_id,
+					issues
+				)
+
 
 func _append_objective_reference_issue(
 	record: Dictionary,

@@ -317,6 +317,16 @@ func _index_quest(quest: QuestDefinition, path: String) -> void:
 					"Obxectivo da quest '%s'" % quest.quest_id
 				)
 
+			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+				_add_reference(
+					&"item",
+					objective.target_id,
+					&"quest_objective",
+					objective.objective_id,
+					path,
+					"Obxectivo da quest '%s'" % quest.quest_id
+				)
+
 
 func _index_catalog(catalog: QuestCatalog, path: String) -> void:
 	var record := {

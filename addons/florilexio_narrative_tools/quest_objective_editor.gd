@@ -192,6 +192,12 @@ func _refresh_target_id_options() -> void:
 		QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
 			records = index.plants.duplicate()
 
+		QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+			for record in index.items:
+				var item := record.get("resource") as ItemData
+				if item != null and not item is PlantData:
+					records.append(record)
+
 		_:
 			target_id_selector_label.visible = false
 			target_id_selector.visible = false
@@ -200,7 +206,17 @@ func _refresh_target_id_options() -> void:
 
 	target_id_selector_label.visible = true
 	target_id_selector.visible = true
-	target_id_field.editable = false
+
+	var allows_manual_target := (
+		target_type
+		== QuestObjectiveDefinition.TargetType.CONVERSATION
+	)
+	target_id_selector_label.text = (
+		"Target existente (opcional)"
+		if allows_manual_target
+		else "Target existente"
+	)
+	target_id_field.editable = allows_manual_target
 
 	target_id_selector.add_item("Selecciona un target")
 	target_id_selector.set_item_metadata(0, "")
