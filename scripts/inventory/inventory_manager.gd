@@ -12,14 +12,18 @@ const MAGIC_WARNING_TOOLTIP := "Máxica!"
 const MORTAL_WARNING_TEXT := "[ R.I.P ]"
 const MORTAL_WARNING_TOOLTIP := "Mortal!"
 
-enum AdditionMode {COLLECT, RESTORE}
+enum AdditionMode {ACQUIRE, RESTORE}
 
 var items: Dictionary = {}
 
 var selected_bouquet: Array[StringName] = []
 
 
-func add_item(item_id: StringName, amount: int = 1, mode: AdditionMode = AdditionMode.COLLECT) -> void:
+func add_item(
+	item_id: StringName,
+	amount: int = 1,
+	mode: AdditionMode = AdditionMode.ACQUIRE,
+	collection_id: StringName = &"") -> void:
 	if amount <= 0:
 		return
 
@@ -33,8 +37,8 @@ func add_item(item_id: StringName, amount: int = 1, mode: AdditionMode = Additio
 	item_added.emit(item_id, amount, new_total)
 	inventory_changed.emit()
 
-	if mode == AdditionMode.COLLECT and not item is PlantData:
-		GameplayEvents.report_item_collected(item_id, amount) # TODO: Igual tén sentido unificar item e plant collected
+	if mode == AdditionMode.ACQUIRE:
+		GameplayEvents.report_item_acquired(item_id, collection_id, amount)
 
 
 func remove_item(item_id: StringName, amount: int = 1) -> bool:

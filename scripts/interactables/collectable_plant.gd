@@ -180,15 +180,16 @@ func _apply_collection_minigame_result(result: MinigameResult) -> void:
 	var collected_plant_id := StringName(result.rewards.get(&"plant_id", result.target_id))
 	var collected_amount := int(result.rewards.get(&"amount", 1))
 
-	InventoryManager.add_item(collected_plant_id, collected_amount)
-	_on_collection_minigame_completed(collected_plant_id, collected_amount)
-
-
-func _on_collection_minigame_completed(completed_plant_id: StringName, collected_amount: int) -> void:
 	GameState.collect_plant(_collection_id)
+	InventoryManager.add_item(
+		collected_plant_id, collected_amount,
+		InventoryManager.AdditionMode.ACQUIRE,
+		_collection_id
+	)
+	_on_collection_minigame_completed()
 
-	GameplayEvents.report_plant_collected(completed_plant_id, _collection_id, collected_amount)
 
+func _on_collection_minigame_completed() -> void:
 	click_area.input_pickable = false
 	_fade_hover_to(0.0)
 	_set_name_label_visible(false)
@@ -237,8 +238,6 @@ func _meets_collection_requirements() -> bool:
 
 func _is_collected() -> bool:
 	return GameState.is_plant_collected(_collection_id)
-
-
 
 
 func _get_minigame_coordinator() -> MinigameCoordinator:
