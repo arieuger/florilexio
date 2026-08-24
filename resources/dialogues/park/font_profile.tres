@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_fodbl"]
 [ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_2p2jh"]
 [ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_pg2qi"]
-[ext_resource type="Resource" uid="uid://d3rcbp2ldxpbe" path="res://resources/dialogues/park/font.tres" id="3_d3l8n"]
+[ext_resource type="Resource" uid="uid://d3rcbp2ldxpbe" path="res://resources/dialogues/park/font/font_before_bottle.tres" id="3_d3l8n"]
 [ext_resource type="Script" path="res://scripts/dialogue/conditions/inventory_has_item_condition.gd" id="3_xin7e"]
 [ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="4_xin7e"]
+[ext_resource type="Resource" uid="uid://i85n0seluj62" path="res://resources/dialogues/park/font/font_after_bottle_fallback.tres" id="6_h6y0r"]
+[ext_resource type="Script" uid="uid://bmc7bf1pxype4" path="res://scripts/dialogue/conditions/conversation_finished_condition.gd" id="6_kr0fx"]
 
 [sub_resource type="Resource" id="Resource_h6y0r"]
 script = ExtResource("3_xin7e")
@@ -20,13 +22,24 @@ metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 [sub_resource type="Resource" id="Resource_xin7e"]
 script = ExtResource("1_fodbl")
 conversation = ExtResource("3_d3l8n")
-repeatable = true
-is_fallback = true
+priority = 90
 conditions = Array[ExtResource("2_2p2jh")]([SubResource("Resource_h6y0r"), SubResource("Resource_kr0fx")])
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
+
+[sub_resource type="Resource" id="Resource_kyak8"]
+script = ExtResource("6_kr0fx")
+conversation_id = &"font_giving_bottle"
+metadata/_custom_type_script = "uid://bmc7bf1pxype4"
+
+[sub_resource type="Resource" id="Resource_nsmtx"]
+script = ExtResource("1_fodbl")
+conversation = ExtResource("6_h6y0r")
+repeatable = true
+is_fallback = true
+conditions = Array[ExtResource("2_2p2jh")]([SubResource("Resource_kyak8")])
 
 [resource]
 script = ExtResource("2_pg2qi")
 profile_id = &"font"
-entries = Array[ExtResource("1_fodbl")]([SubResource("Resource_xin7e")])
+entries = Array[ExtResource("1_fodbl")]([SubResource("Resource_xin7e"), SubResource("Resource_nsmtx")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

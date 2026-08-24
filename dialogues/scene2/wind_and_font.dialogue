@@ -17,3 +17,7 @@ do GameState.add_consumed_time(1)
 do InventoryManager.add_item("full_bottle_park_fountain", 1)
 do InventoryManager.remove_item("plastic_bottle", 1)
 => END
+
+~ font_fallback
+font: Irás ao abrente do día\na auga fresca catar
+da auga do paxariño\nque saúde che ha de dar”
