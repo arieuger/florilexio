@@ -263,6 +263,16 @@ func _index_profile(profile: DialogueProfile, path: String) -> void:
 					"Planta en inventario"
 				)
 
+			elif condition is InventoryHasItemCondition:
+				_add_reference(
+					&"item",
+					condition.item_id,
+					&"conversation_condition",
+					source_id,
+					path,
+					"Obxecto en inventario"
+				)
+
 
 func _index_quest(quest: QuestDefinition, path: String) -> void:
 	var quest_record := {
@@ -317,7 +327,7 @@ func _index_quest(quest: QuestDefinition, path: String) -> void:
 					"Obxectivo da quest '%s'" % quest.quest_id
 				)
 
-			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+			QuestObjectiveDefinition.TargetType.ITEM_ID:
 				_add_reference(
 					&"item",
 					objective.target_id,

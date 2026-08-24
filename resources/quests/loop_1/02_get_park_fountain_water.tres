@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://bh5acbtrcm5ek"]
+
+[ext_resource type="Script" uid="uid://ba57xkf53n8fl" path="res://scripts/quests/quest_objective_group_definition.gd" id="1_tp603"]
+[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="2_o1e3b"]
+[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_hhsfd"]
+
+[sub_resource type="Resource" id="Resource_c54tt"]
+script = ExtResource("2_o1e3b")
+objective_id = &"obtain_park_fountain_water"
+event_type = 6
+target_type = 6
+target_id = &"full_bottle_park_fountain"
+show_in_notebook = false
+
+[sub_resource type="Resource" id="Resource_tp603"]
+script = ExtResource("2_o1e3b")
+objective_id = &"show_water_to_mundo"
+event_type = 5
+target_type = 6
+target_id = &"full_bottle_park_fountain"
+show_in_notebook = false
+item_submission_mode = 1
+metadata/_custom_type_script = "uid://djwof256m8rue"
+
+[resource]
+script = ExtResource("3_hhsfd")
+quest_id = &"02_get_park_fountain_water"
+objectives = Array[ExtResource("2_o1e3b")]([SubResource("Resource_c54tt"), SubResource("Resource_tp603")])
+show_in_notebook = false
+description = "Consigue auga da fonte do parque"

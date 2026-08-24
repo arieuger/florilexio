@@ -57,7 +57,7 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 	errors.append_array(definition.get_validation_errors())
 
 	if index.has_conversation(request.conversation_id):
-		errors.append("conversation_id '%s' already exists"% request.conversation_id)
+		errors.append("conversation_id '%s' already exists" % request.conversation_id)
 
 	if request.target_profile == null:
 		errors.append("target_profile is null")
@@ -76,9 +76,9 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 			var quest_condition := condition as QuestStatusCondition
 
 			if quest_condition.quest_id.is_empty():
-				errors.append("condition %d has no quest selected"% condition_index)
+				errors.append("condition %d has no quest selected" % condition_index)
 			elif not index.has_quest(quest_condition.quest_id):
-				errors.append("condition %d refers to unknown quest '%s'"% [
+				errors.append("condition %d refers to unknown quest '%s'" % [
 						condition_index,
 						quest_condition.quest_id,
 					]
@@ -88,9 +88,9 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 			var objective_condition := condition as QuestObjectiveCompletedCondition
 
 			if objective_condition.quest_id.is_empty():
-				errors.append("condition %d has no quest selected"% condition_index)
+				errors.append("condition %d has no quest selected" % condition_index)
 			elif objective_condition.objective_id.is_empty():
-				errors.append("condition %d has no objective selected"% condition_index)
+				errors.append("condition %d has no objective selected" % condition_index)
 			elif not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
 				errors.append("condition %d refers to unknown objective '%s' in quest '%s'" % [
 						condition_index,
@@ -103,9 +103,9 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 			var conversation_condition := condition as ConversationFinishedCondition
 
 			if conversation_condition.conversation_id.is_empty():
-				errors.append("condition %d has no conversation selected"% condition_index)
+				errors.append("condition %d has no conversation selected" % condition_index)
 			elif not index.has_conversation(conversation_condition.conversation_id):
-				errors.append("condition %d refers to unknown conversation '%s'"% [
+				errors.append("condition %d refers to unknown conversation '%s'" % [
 						condition_index,
 						conversation_condition.conversation_id,
 					]
@@ -127,6 +127,27 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 			if inventory_condition.amount <= 0:
 				errors.append("condition %d must require at least one plant" % condition_index)
 
+		elif condition is InventoryHasItemCondition:
+			var inventory_condition := condition as InventoryHasItemCondition
+
+			if inventory_condition.item_id.is_empty():
+				errors.append("condition %d has no item selected" % condition_index)
+			elif not index.has_item(inventory_condition.item_id):
+				errors.append("condition %d refers to unknown item '%s'" % [
+						condition_index,
+						inventory_condition.item_id,
+					]
+				)
+			elif index.has_plant(inventory_condition.item_id):
+				errors.append("condition %d refers to plant '%s' as an item" % [
+						condition_index,
+						inventory_condition.item_id,
+					]
+				)
+
+			if inventory_condition.amount <= 0:
+				errors.append("condition %d must require at least one item" % condition_index)
+
 
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")
@@ -135,7 +156,7 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 	elif request.save_path.get_extension().to_lower() != "tres":
 		errors.append("save_path must use the .tres extension")
 	elif ResourceLoader.exists(request.save_path):
-		errors.append("a resource already exists at '%s'"% request.save_path)
+		errors.append("a resource already exists at '%s'" % request.save_path)
 
 	return errors
 
@@ -157,7 +178,7 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	var save_error := ResourceSaver.save(definition, request.save_path, ResourceSaver.FLAG_CHANGE_PATH)
 
 	if save_error != OK:
-		result.error_message = "Could not save conversation definition at '%s': %s"% [request.save_path, error_string(save_error)]
+		result.error_message = "Could not save conversation definition at '%s': %s" % [request.save_path, error_string(save_error)]
 		return result
 
 	var saved_definition := ResourceLoader.load(request.save_path, "", ResourceLoader.CACHE_MODE_REPLACE) as ConversationDefinition
@@ -183,7 +204,7 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 		var absolute_path := ProjectSettings.globalize_path(request.save_path)
 		DirAccess.remove_absolute(absolute_path)
 
-		result.error_message = "Conversation definition was rolled back because profile '%s' could not be saved: %s"% [
+		result.error_message = "Conversation definition was rolled back because profile '%s' could not be saved: %s" % [
 			request.target_profile.resource_path,
 			error_string(profile_save_error),
 		]
@@ -195,7 +216,6 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	result.entry = entry
 
 	return result
-
 
 
 #################################
@@ -231,7 +251,7 @@ static func get_quest_creation_errors(request: QuestCreationRequest, index: Narr
 				continue
 
 			if existing_quest.quest_id == request.quest_id:
-				errors.append("catalog '%s' already contains quest_id '%s'" % [request.target_catalog.catalog_id, request.quest_id,])
+				errors.append("catalog '%s' already contains quest_id '%s'" % [request.target_catalog.catalog_id, request.quest_id, ])
 				break
 
 	for objective in request.objectives:
@@ -245,11 +265,11 @@ static func get_quest_creation_errors(request: QuestCreationRequest, index: Narr
 			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
 				if not index.has_plant(objective.target_id):
 					errors.append("objective '%s' refers to unknown plant '%s'" % [objective.objective_id, objective.target_id])
-			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+			QuestObjectiveDefinition.TargetType.ITEM_ID:
 				if not index.has_item(objective.target_id):
 					errors.append("objective '%s' refers to unknown item '%s'" % [objective.objective_id, objective.target_id])
 				elif index.has_plant(objective.target_id):
-					errors.append("objective '%s' refers to plant '%s' as ITEM_TYPE" % [objective.objective_id, objective.target_id])
+					errors.append("objective '%s' refers to plant '%s' as ITEM_ID" % [objective.objective_id, objective.target_id])
 
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")

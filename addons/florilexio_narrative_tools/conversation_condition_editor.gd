@@ -10,6 +10,7 @@ enum ConditionType {
 	QUEST_OBJECTIVE_COMPLETED,
 	CONVERSATION_FINISHED,
 	INVENTORY_HAS_PLANT,
+	INVENTORY_HAS_ITEM,
 }
 
 var heading: Label
@@ -22,6 +23,8 @@ var conversation_label: Label
 var conversation_selector: OptionButton
 var plant_label: Label
 var plant_selector: OptionButton
+var item_label: Label
+var item_selector: OptionButton
 var amount_label: Label
 var amount_field: SpinBox
 
@@ -45,6 +48,8 @@ func _ready() -> void:
 	type_selector.set_item_metadata(2, ConditionType.CONVERSATION_FINISHED)
 	type_selector.add_item("Inventario ten planta")
 	type_selector.set_item_metadata(3, ConditionType.INVENTORY_HAS_PLANT)
+	type_selector.add_item("Inventario ten obxecto")
+	type_selector.set_item_metadata(4, ConditionType.INVENTORY_HAS_ITEM)
 	add_child(type_selector)
 
 	conversation_label = Label.new()
@@ -65,6 +70,16 @@ func _ready() -> void:
 	add_child(plant_selector)
 
 	_populate_plant_selector()
+
+	item_label = Label.new()
+	item_label.text = "Obxecto"
+	add_child(item_label)
+
+	item_selector = OptionButton.new()
+	item_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	add_child(item_selector)
+
+	_populate_item_selector()
 
 	amount_label = Label.new()
 	amount_label.text = "Cantidade"
@@ -151,6 +166,17 @@ func build_condition() -> ConversationCondition:
 			condition.expected_has_item = expected_completed_field.button_pressed
 			return condition
 
+		ConditionType.INVENTORY_HAS_ITEM:
+			var condition := InventoryHasItemCondition.new()
+
+			var selected_index := item_selector.selected
+			if selected_index >= 0:
+				condition.item_id = StringName(item_selector.get_item_metadata(selected_index))
+
+			condition.amount = int(amount_field.value)
+			condition.expected_has_item = expected_completed_field.button_pressed
+			return condition
+
 	return null
 
 
@@ -180,6 +206,7 @@ func _refresh_visibility() -> void:
 	)
 	var uses_conversation := condition_type == ConditionType.CONVERSATION_FINISHED
 	var uses_plant := condition_type == ConditionType.INVENTORY_HAS_PLANT
+	var uses_item := condition_type == ConditionType.INVENTORY_HAS_ITEM
 
 	reference_picker.visible = uses_quest
 	reference_picker.set_objective_selection_enabled(condition_type == ConditionType.QUEST_OBJECTIVE_COMPLETED)
@@ -192,8 +219,10 @@ func _refresh_visibility() -> void:
 
 	plant_label.visible = uses_plant
 	plant_selector.visible = uses_plant
-	amount_label.visible = uses_plant
-	amount_field.visible = uses_plant
+	item_label.visible = uses_item
+	item_selector.visible = uses_item
+	amount_label.visible = uses_plant or uses_item
+	amount_field.visible = uses_plant or uses_item
 
 	expected_completed_field.visible = condition_type != ConditionType.QUEST_STATUS
 
@@ -207,14 +236,16 @@ func _refresh_visibility() -> void:
 		ConditionType.INVENTORY_HAS_PLANT:
 			expected_completed_field.text = "A planta debe estar no inventario"
 
+		ConditionType.INVENTORY_HAS_ITEM:
+			expected_completed_field.text = "O obxecto debe estar no inventario"
+
 
 func _populate_conversation_selector() -> void:
 	conversation_selector.clear()
 	conversation_selector.add_item("Selecciona unha conversa…")
 	conversation_selector.set_item_metadata(0, &"")
 
-	var index := NarrativeIndex.new()
-	index.build()
+	var index := NarrativeIndex.build()
 
 	for record: Dictionary in index.conversations:
 		var conversation_id := StringName(record.get("id", &""))
@@ -231,15 +262,15 @@ func _populate_plant_selector() -> void:
 	plant_selector.add_item("Selecciona unha planta…")
 	plant_selector.set_item_metadata(0, &"")
 
-	var index := NarrativeIndex.new()
-	index.build()
+	var index := NarrativeIndex.build()
 
 	for record: Dictionary in index.plants:
 		var plant_id := StringName(record.get("id", &""))
 		if plant_id.is_empty():
 			continue
 
-		var display_name := String(record.get("display_name", ""))
+		var plant := record.get("resource") as PlantData
+		var display_name := plant.display_name if plant != null else ""
 		var item_text := String(plant_id)
 
 		if not display_name.is_empty():
@@ -249,4 +280,27 @@ func _populate_plant_selector() -> void:
 		plant_selector.set_item_metadata(
 			plant_selector.item_count - 1,
 			plant_id
+		)
+
+
+func _populate_item_selector() -> void:
+	item_selector.clear()
+	item_selector.add_item("Selecciona un obxecto…")
+	item_selector.set_item_metadata(0, &"")
+
+	var index := NarrativeIndex.build()
+
+	for record: Dictionary in index.items:
+		var item := record.get("resource") as ItemData
+		if item == null or item is PlantData or item.id.is_empty():
+			continue
+
+		var item_text := String(item.id)
+		if not item.display_name.is_empty():
+			item_text = "%s (%s)" % [item.display_name, item.id]
+
+		item_selector.add_item(item_text)
+		item_selector.set_item_metadata(
+			item_selector.item_count - 1,
+			item.id
 		)

@@ -192,7 +192,7 @@ func _refresh_target_id_options() -> void:
 		QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
 			records = index.plants.duplicate()
 
-		QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+		QuestObjectiveDefinition.TargetType.ITEM_ID:
 			for record in index.items:
 				var item := record.get("resource") as ItemData
 				if item != null and not item is PlantData:

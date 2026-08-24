@@ -61,7 +61,7 @@ func _validate_dialogue_profiles(index: NarrativeIndex, issues: Array[NarrativeV
 			issues.append(NarrativeValidationIssue.new(
 					NarrativeValidationIssue.Severity.WARNING,
 					&"dialogue_profile_without_fallback",
-					"Dialogue profile '%s' has no fallback entry."% profile.profile_id,
+					"Dialogue profile '%s' has no fallback entry." % profile.profile_id,
 					path,
 					profile.profile_id
 				)
@@ -71,7 +71,7 @@ func _validate_dialogue_profiles(index: NarrativeIndex, issues: Array[NarrativeV
 			issues.append(NarrativeValidationIssue.new(
 					NarrativeValidationIssue.Severity.WARNING,
 					&"dialogue_profile_multiple_fallbacks",
-					"Dialogue profile '%s' has %d fallback entries."% [profile.profile_id, fallback_count],
+					"Dialogue profile '%s' has %d fallback entries." % [profile.profile_id, fallback_count],
 					path,
 					profile.profile_id
 				)
@@ -132,7 +132,7 @@ func _validate_condition_reference(
 				and not index.has_quest(quest_condition.quest_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest",
-				"Entry %d condition %d refers to unknown quest '%s'."% [entry_index, condition_index, quest_condition.quest_id],
+				"Entry %d condition %d refers to unknown quest '%s'." % [entry_index, condition_index, quest_condition.quest_id],
 				path,
 				quest_condition.quest_id,
 				issues
@@ -147,7 +147,7 @@ func _validate_condition_reference(
 				and not index.has_quest(objective_condition.quest_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest",
-					"Entry %d condition %d refers to unknown quest '%s'."% [entry_index, condition_index, objective_condition.quest_id],
+					"Entry %d condition %d refers to unknown quest '%s'." % [entry_index, condition_index, objective_condition.quest_id],
 				path,
 				objective_condition.quest_id,
 				issues
@@ -157,7 +157,7 @@ func _validate_condition_reference(
 				and not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest_objective",
-					"Entry %d condition %d refers to unknown objective '%s' in quest '%s'."% [
+					"Entry %d condition %d refers to unknown objective '%s' in quest '%s'." % [
 					entry_index,
 					condition_index,
 					objective_condition.objective_id,
@@ -177,7 +177,7 @@ func _validate_condition_reference(
 				):
 			_append_missing_reference_issue(
 				&"condition_missing_conversation",
-				"Entry %d condition %d refers to unknown conversation '%s'."% [entry_index, condition_index, conversation_condition.conversation_id,],
+				"Entry %d condition %d refers to unknown conversation '%s'." % [entry_index, condition_index, conversation_condition.conversation_id, ],
 				path,
 				conversation_condition.conversation_id,
 				issues
@@ -191,9 +191,25 @@ func _validate_condition_reference(
 				and not index.has_plant(inventory_condition.plant_id):
 			_append_missing_reference_issue(
 				&"condition_missing_plant",
-				"Entry %d condition %d refers to unknown plant '%s'."% [entry_index, condition_index, inventory_condition.plant_id,],
+				"Entry %d condition %d refers to unknown plant '%s'." % [entry_index, condition_index, inventory_condition.plant_id, ],
 				path,
 				inventory_condition.plant_id,
+				issues
+			)
+
+	elif condition is InventoryHasItemCondition:
+		var inventory_condition := condition as InventoryHasItemCondition
+
+		if not inventory_condition.item_id.is_empty() \
+				and (
+					not index.has_item(inventory_condition.item_id)
+					or index.has_plant(inventory_condition.item_id)
+				):
+			_append_missing_reference_issue(
+				&"condition_missing_item",
+				"Entry %d condition %d refers to unknown non-plant item '%s'." % [entry_index, condition_index, inventory_condition.item_id, ],
+				path,
+				inventory_condition.item_id,
 				issues
 			)
 
@@ -229,7 +245,7 @@ func _validate_quest_objective_references(index: NarrativeIndex, issues: Array[N
 					issues
 				)
 
-			QuestObjectiveDefinition.TargetType.ITEM_TYPE:
+			QuestObjectiveDefinition.TargetType.ITEM_ID:
 				if index.has_item(objective.target_id) \
 						and not index.has_plant(objective.target_id):
 					continue
@@ -260,7 +276,7 @@ func _append_objective_reference_issue(
 	var path := str(record.get("path", ""))
 
 	issues.append(NarrativeValidationIssue.new(NarrativeValidationIssue.Severity.ERROR, code,
-		"Objective '%s' in quest '%s' refers to unknown %s '%s'."% [
+		"Objective '%s' in quest '%s' refers to unknown %s '%s'." % [
 			objective.objective_id,
 			quest_id,
 			target_label,
@@ -292,7 +308,7 @@ func _append_resource_errors(
 	var path := str(record.get("path", ""))
 
 	for error_message in errors:
-		issues.append(NarrativeValidationIssue.new(NarrativeValidationIssue.Severity.ERROR, code, "%s is invalid: %s"% [resource_label, error_message], path, related_id))
+		issues.append(NarrativeValidationIssue.new(NarrativeValidationIssue.Severity.ERROR, code, "%s is invalid: %s" % [resource_label, error_message], path, related_id))
 
 
 func _validate_duplicate_ids(index: NarrativeIndex, issues: Array[NarrativeValidationIssue]) -> void:
@@ -321,7 +337,7 @@ func _append_duplicate_issues(records_by_id: Dictionary, code: StringName, id_la
 
 		issues.append(NarrativeValidationIssue.new(NarrativeValidationIssue.Severity.ERROR,
 				code,
-				"Duplicate %s '%s' found in: %s"% [id_label, id, ", ".join(paths),],
+				"Duplicate %s '%s' found in: %s" % [id_label, id, ", ".join(paths), ],
 				paths[0],
 				id
 			))

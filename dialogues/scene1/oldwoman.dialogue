@@ -56,8 +56,19 @@ do QuestManager.start_quest("01_collect_first_herbs")
 dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…
 Mira, alguén deixou aquí, a pé de min, esta botella de plástico.\nLévaa, igual che pode servir para algo...
 do InventoryManager.add_item("plastic_bottle", 1)
+do QuestManager.start_quest("02_get_park_fountain_water")
 old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 
 ~ tutorial_quest_completed
-# Aquí xa empezou a misión 2 que (demomento) é estalote
+# Aquí xa empezou a misión 2
 old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
+
+~ give_water_fountain
+old_woman: Auga das sete fontes… Ou alomenos dunha.\nCando remate o día, deixa as herbas na auga,
+coa lúa e ao orballo, para activar a súa maxia curadora…
+Xa tés algunha?
+do QuestManager.submit_item("02_get_park_fountain_water", "show_water_to_mundo", "full_bottle_park_fountain", 1)
+=> END
+
+~ after_water_fountain_bottle_show
+old_woman: ...sete fontes, sete herbas, sete ondas, sete lendas... => END

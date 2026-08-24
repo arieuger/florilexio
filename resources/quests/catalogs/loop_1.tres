@@ -4,9 +4,10 @@
 [ext_resource type="Resource" uid="uid://ctwpufqp4tfdc" path="res://resources/quests/loop_1/00_old_woman_tutorial.tres" id="2_om78c"]
 [ext_resource type="Script" uid="uid://bltfqjlj8kbj4" path="res://scripts/quests/quest_catalog.gd" id="3_pjwf5"]
 [ext_resource type="Resource" uid="uid://3vpbwu7m8njf" path="res://resources/quests/loop_1/01_collect_first_herbs.tres" id="3_vskad"]
+[ext_resource type="Resource" uid="uid://bh5acbtrcm5ek" path="res://resources/quests/loop_1/02_get_park_fountain_water.tres" id="4_pjwf5"]
 
 [resource]
 script = ExtResource("3_pjwf5")
 catalog_id = &"loop_1"
-quests = Array[ExtResource("1_om78c")]([ExtResource("2_om78c"), ExtResource("3_vskad")])
+quests = Array[ExtResource("1_om78c")]([ExtResource("2_om78c"), ExtResource("3_vskad"), ExtResource("4_pjwf5")])
 metadata/_custom_type_script = "uid://bltfqjlj8kbj4"

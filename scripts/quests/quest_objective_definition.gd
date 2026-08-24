@@ -19,7 +19,7 @@ enum TargetType {
 	CONVERSATION,
 	INTERACTABLE,
 	LOCATION,
-	ITEM_TYPE,
+	ITEM_ID,
 }
 
 enum ItemSubmissionMode {
@@ -63,11 +63,12 @@ static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetT
 		EventType.ITEM_SUBMITTED:
 			return [
 				TargetType.PLANT_SPECIES,
+				TargetType.ITEM_ID
 			]
 
 		EventType.ITEM_COLLECTED:
 			return [
-				TargetType.ITEM_TYPE
+				TargetType.ITEM_ID
 			]
 		_:
 			return []

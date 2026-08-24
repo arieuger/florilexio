@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://brw8pb3mu558h"]
+
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="1_my03j"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_tt113"]
+
+[resource]
+script = ExtResource("2_tt113")
+conversation_id = &"old_woman_water_fountain_after_show"
+dialogue_resource = ExtResource("1_my03j")
+start_title = "after_water_fountain_bottle_show"
+initial_speaker_id = &"old_woman"

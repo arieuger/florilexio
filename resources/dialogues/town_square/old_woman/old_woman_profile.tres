@@ -10,6 +10,9 @@
 [ext_resource type="Resource" uid="uid://bjd4erc6e36nt" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_delivery.tres" id="6_dj41s"]
 [ext_resource type="Script" uid="uid://tgj7xbryb6rv" path="res://scripts/dialogue/conditions/inventory_has_plant_condition.gd" id="7_6wpjk"]
 [ext_resource type="Resource" uid="uid://yswocf4cuviv" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_completed.tres" id="9_6wpjk"]
+[ext_resource type="Script" path="res://scripts/dialogue/conditions/inventory_has_item_condition.gd" id="10_i3gkp"]
+[ext_resource type="Resource" uid="uid://d3oaxwuo1jnce" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_show_full_bottle.tres" id="11_osdha"]
+[ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
 
 [sub_resource type="Resource" id="Resource_vpk1j"]
 script = ExtResource("1_apnri")
@@ -62,13 +65,41 @@ metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 [sub_resource type="Resource" id="Resource_aaun5"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("9_6wpjk")
-priority = 80
+priority = 10
 repeatable = true
 conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_ufffc")])
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
+[sub_resource type="Resource" id="Resource_bt6ah"]
+script = ExtResource("6_75ost")
+quest_id = &"02_get_park_fountain_water"
+objective_id = &"obtain_park_fountain_water"
+metadata/_custom_type_script = "uid://d3638l0gkhmh3"
+
+[sub_resource type="Resource" id="Resource_qqofs"]
+script = ExtResource("10_i3gkp")
+item_id = &"full_bottle_park_fountain"
+
+[sub_resource type="Resource" id="Resource_3o8yu"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("11_osdha")
+priority = 80
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_bt6ah"), SubResource("Resource_qqofs")])
+
+[sub_resource type="Resource" id="Resource_glvj0"]
+script = ExtResource("4_vpk1j")
+quest_id = &"02_get_park_fountain_water"
+expected_status = 2
+
+[sub_resource type="Resource" id="Resource_hvw4d"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("12_osdha")
+priority = 11
+repeatable = true
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_glvj0")])
+
 [resource]
 script = ExtResource("2_jdbio")
 profile_id = &"old_woman"
-entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5")])
+entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

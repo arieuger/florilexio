@@ -233,12 +233,12 @@ func _refresh_command_fields() -> void:
 		command_type == CommandType.START_QUEST or submits_item
 	)
 	reference_picker.set_objective_selection_enabled(submits_item)
-	plant_label.visible = submits_item or unlocks_knowledge
-	plant_selector.visible = submits_item or unlocks_knowledge
+	plant_label.visible = unlocks_knowledge
+	plant_selector.visible = unlocks_knowledge
+	item_label.visible = submits_item or adds_inventory_item
+	item_selector.visible = submits_item or adds_inventory_item
 	fragment_label.visible = unlocks_knowledge
 	fragment_selector.visible = unlocks_knowledge
-	item_label.visible = adds_inventory_item
-	item_selector.visible = adds_inventory_item
 	amount_label.visible = submits_item or adds_inventory_item
 	amount_field.visible = submits_item or adds_inventory_item
 
@@ -269,19 +269,19 @@ func _build_command() -> String:
 
 		CommandType.SUBMIT_ITEM:
 			var objective_id: StringName = reference_picker.get_objective_id()
-			var plant_id := _get_selected_plant_id()
+			var item_id := _get_selected_item_id()
 
 			if (
 				quest_id.is_empty()
 				or objective_id.is_empty()
-				or plant_id.is_empty()
+				or item_id.is_empty()
 			):
 				return ""
 
 			return 'do QuestManager.submit_item("%s", "%s", "%s", %d)' % [
 				quest_id,
 				objective_id,
-				plant_id,
+				item_id,
 				int(amount_field.value),
 			]
 

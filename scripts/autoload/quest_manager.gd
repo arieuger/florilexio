@@ -82,7 +82,7 @@ func start_quest(quest_id: StringName) -> bool:
 	return true
 
 
-func submit_item(quest_id: StringName, objective_id: StringName, plant_id: StringName, amount: int = 1) -> bool:
+func submit_item(quest_id: StringName, objective_id: StringName, item_id: StringName, amount: int = 1) -> bool:
 	if amount <= 0:
 		return false
 
@@ -92,8 +92,9 @@ func submit_item(quest_id: StringName, objective_id: StringName, plant_id: Strin
 	if (state == null or objective == null) or \
 	(state.status != QuestState.Status.ACTIVE) or \
 	(objective.event_type != QuestObjectiveDefinition.EventType.ITEM_SUBMITTED) or \
-	(objective.target_type != QuestObjectiveDefinition.TargetType.PLANT_SPECIES) or \
-	(objective.target_id != plant_id):
+	((objective.target_type != QuestObjectiveDefinition.TargetType.PLANT_SPECIES) and \
+		(objective.target_type != QuestObjectiveDefinition.TargetType.ITEM_ID)) or \
+	(objective.target_id != item_id):
 		return false
 
 	var current_amount := state.get_current_amount(objective_id)
@@ -110,17 +111,17 @@ func submit_item(quest_id: StringName, objective_id: StringName, plant_id: Strin
 	else:
 		submitted_amount = remaining_amount
 
-	if not InventoryManager.has_item(plant_id, submitted_amount):
+	if not InventoryManager.has_item(item_id, submitted_amount):
 		return false
 
 	if consumes_item:
-		if not InventoryManager.remove_item(plant_id, submitted_amount):
+		if not InventoryManager.remove_item(item_id, submitted_amount):
 			return false
 
 	if not advance_objective(quest_id, objective_id, submitted_amount):
 		if consumes_item:
 			InventoryManager.add_item(
-				plant_id,
+				item_id,
 				submitted_amount,
 				InventoryManager.AdditionMode.RESTORE
 			)
@@ -188,7 +189,7 @@ func _advance_matching_objectives(
 func _on_item_acquired(item_id: StringName, collection_id: StringName, amount: int) -> void:
 	if ItemDatabase.get_plant(item_id) == null:
 		var item_targets: Dictionary[QuestObjectiveDefinition.TargetType, StringName] = {}
-		item_targets[QuestObjectiveDefinition.TargetType.ITEM_TYPE] = item_id
+		item_targets[QuestObjectiveDefinition.TargetType.ITEM_ID] = item_id
 
 		_advance_matching_objectives(
 			QuestObjectiveDefinition.EventType.ITEM_COLLECTED,
