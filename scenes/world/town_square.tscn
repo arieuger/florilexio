@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Texture2D" uid="uid://d4ad2nvydrxlf" path="res://assets/sprites/environment/scene1/bird.png" id="10_a7g5c"]
 [ext_resource type="Resource" uid="uid://bsi6a8qryavhq" path="res://resources/dialogues/town_square/bird_profile.tres" id="10_bp5kr"]
+[ext_resource type="Script" uid="uid://5ffqvuriec13" path="res://scripts/interactables/bird.gd" id="10_kdqtp"]
 [ext_resource type="Texture2D" uid="uid://b5wby3vexinis" path="res://assets/sprites/environment/scene1/bird_hover.png" id="11_rr2sd"]
 [ext_resource type="Texture2D" uid="uid://dvfskxfnuyy41" path="res://assets/sprites/environment/scene1/basket.png" id="13_ycdy4"]
 [ext_resource type="Resource" uid="uid://bdt2hrn527rbd" path="res://resources/dialogues/town_square/school_board_profile.tres" id="14_0348l"]
@@ -57,15 +58,44 @@ size = Vector2(6, 10)
 atlas = ExtResource("10_a7g5c")
 region = Rect2(4, 3, 9, 7)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cfg1"]
+atlas = ExtResource("10_a7g5c")
+region = Rect2(20, 3, 8, 7)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0348l"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_cgq1g")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_4cfg1")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl1jg"]
+atlas = ExtResource("11_rr2sd")
+region = Rect2(3, 3, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yktrm"]
+atlas = ExtResource("11_rr2sd")
+region = Rect2(19, 3, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bp5kr"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_rl1jg")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_yktrm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0348l"]
@@ -405,8 +435,9 @@ texture = ExtResource("7_dg77c")
 position = Vector2(6, -3)
 shape = SubResource("RectangleShape2D_old_woman_click")
 
-[node name="Bird" parent="YSortables" unique_id=1591479614 instance=ExtResource("5_4c57u")]
+[node name="Bird" type="Node2D" parent="YSortables" unique_id=1591479614]
 position = Vector2(114, 118)
+script = ExtResource("10_kdqtp")
 dialogue_profile = ExtResource("10_bp5kr")
 hover_color = Color(0.6496351, 0.7252679, 0.7355359, 0.7490196)
 required_finished_conversation_id = &"font_giving_bottle"
@@ -417,19 +448,26 @@ animation = &"idle"
 centered = false
 offset = Vector2(-1, -14)
 
-[node name="BalloonConfig" parent="YSortables/Bird" index="1" unique_id=1949997476]
+[node name="BalloonConfig" type="Marker2D" parent="YSortables/Bird" unique_id=423472999]
 position = Vector2(-7, -28)
+script = ExtResource("14_kek77")
 speaker_id = &"bird"
 balloon_color = Color(0.5132329, 0.5132329, 0.5132329, 1)
 
-[node name="InteractionPoint" parent="YSortables/Bird" index="2" unique_id=222721431]
+[node name="InteractionPoint" type="Marker2D" parent="YSortables/Bird" unique_id=1828596235]
 position = Vector2(8, 3)
 
-[node name="HoverSprite" parent="YSortables/Bird" index="3" unique_id=1049314272]
-position = Vector2(-7, -8)
-texture = ExtResource("11_rr2sd")
+[node name="HoverSprite" type="AnimatedSprite2D" parent="YSortables/Bird" unique_id=844890557]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-4, -5)
+sprite_frames = SubResource("SpriteFrames_bp5kr")
+animation = &"idle"
+centered = false
+offset = Vector2(2, -9)
 
-[node name="CollisionShape2D" parent="YSortables/Bird/ClickArea" parent_id_path=PackedInt32Array(1591479614, 474706418) index="0" unique_id=654827359]
+[node name="ClickArea" type="Area2D" parent="YSortables/Bird" unique_id=474706418]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Bird/ClickArea" unique_id=2049842626]
 position = Vector2(2, -10.0625)
 shape = SubResource("RectangleShape2D_0348l")
 
@@ -698,5 +736,4 @@ start_position = Vector2(218, 127)
 end_position = Vector2(218, 137)
 
 [editable path="YSortables/BenchRight/OldWoman"]
-[editable path="YSortables/Bird"]
 [editable path="YSortables/SchoolBoard"]

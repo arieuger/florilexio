@@ -6,7 +6,7 @@ extends Node2D
 @export var hover_fade_duration: float = 0.18
 @export var required_finished_conversation_id: StringName
 
-@onready var hover_sprite: Sprite2D = $HoverSprite
+@onready var hover_sprite: CanvasItem = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
 @onready var interaction_point: Node2D = $InteractionPoint
 
