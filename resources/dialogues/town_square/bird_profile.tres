@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueProfile" format=3 uid="uid://bsi6a8qryavhq"]
+
+[ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_j3wok"]
+[ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_88bao"]
+[ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_veb6n"]
+[ext_resource type="Resource" uid="uid://cfcr10g0mbert" path="res://resources/dialogues/town_square/bird_give_clock.tres" id="3_qplim"]
+
+[sub_resource type="Resource" id="Resource_05lih"]
+script = ExtResource("1_j3wok")
+conversation = ExtResource("3_qplim")
+priority = 90
+repeatable = true
+
+[resource]
+script = ExtResource("2_veb6n")
+profile_id = &"bird"
+entries = Array[ExtResource("1_j3wok")]([SubResource("Resource_05lih")])
+metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

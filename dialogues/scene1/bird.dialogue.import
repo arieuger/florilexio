@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://62ygf6dyf7ig"
+path="res://.godot/imported/bird.dialogue-842fb9fb2e2783ccc1495986c9a3b48f.tres"
+
+[deps]
+
+source_file="res://dialogues/scene1/bird.dialogue"
+dest_files=["res://.godot/imported/bird.dialogue-842fb9fb2e2783ccc1495986c9a3b48f.tres"]
+
+[params]
+
+defaults=true

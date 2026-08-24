@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://cfcr10g0mbert"]
+
+[ext_resource type="Resource" uid="uid://62ygf6dyf7ig" path="res://dialogues/scene1/bird.dialogue" id="1_r2tmb"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_4ujpc"]
+
+[resource]
+script = ExtResource("2_4ujpc")
+conversation_id = &"bird_give_clock"
+dialogue_resource = ExtResource("1_r2tmb")
+start_title = "bird_give_clock"
+initial_speaker_id = &"bird"
