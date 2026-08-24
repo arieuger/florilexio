@@ -80,11 +80,16 @@ metadata/_custom_type_script = "uid://d3638l0gkhmh3"
 script = ExtResource("10_i3gkp")
 item_id = &"full_bottle_park_fountain"
 
+[sub_resource type="Resource" id="Resource_8niit"]
+script = ExtResource("4_vpk1j")
+quest_id = &"02_get_park_fountain_water"
+metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
 [sub_resource type="Resource" id="Resource_3o8yu"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("11_osdha")
 priority = 80
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_bt6ah"), SubResource("Resource_qqofs")])
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_bt6ah"), SubResource("Resource_qqofs"), SubResource("Resource_8niit")])
 
 [sub_resource type="Resource" id="Resource_glvj0"]
 script = ExtResource("4_vpk1j")

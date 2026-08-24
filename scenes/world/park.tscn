@@ -206,7 +206,6 @@ polygon = PackedVector2Array(-6, -3, -14, -1, -14, 3, -4, 8, 8, 8, 16, 3, 16, -1
 [node name="NPC" parent="YSortables/Font" unique_id=2036821595 instance=ExtResource("9_mwukj")]
 dialogue_profile = ExtResource("5_k3sex")
 hover_color = Color(0.57361525, 0.9740457, 0.99999994, 0.7490196)
-required_finished_conversation_id = &"wind_conversation"
 
 [node name="BalloonConfig" parent="YSortables/Font/NPC" index="0" unique_id=1949997476]
 position = Vector2(-22, -29)
@@ -463,6 +462,7 @@ position = Vector2(27, 113)
 position = Vector2(189, 119)
 
 [node name="Wind" type="Node2D" parent="YSortables" unique_id=1717615843]
+process_mode = 4
 position = Vector2(115, 100)
 script = ExtResource("25_u7one")
 conversation = ExtResource("31_52hl2")
@@ -480,6 +480,7 @@ voice_type = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Wind/TriggerArea" unique_id=1168329853]
 position = Vector2(5.5, 4.5)
 shape = SubResource("RectangleShape2D_jc6it")
+disabled = true
 
 [node name="TownPortal" type="Area2D" parent="." unique_id=473107869]
 position = Vector2(8, 156)

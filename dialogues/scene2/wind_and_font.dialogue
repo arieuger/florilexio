@@ -10,9 +10,10 @@ Uuuuuuuh….. Aaaaaaah….. Uuuuuuh……. Ooooaaaaah….
 do GameState.add_consumed_time(1)
 => END
 
-~ font
-font: Nin apio, nin fiuncho nin pirixel.\nSe atopas nabo de San Pedro\nescapa del. 
-E, lembra, hoxe como sempre foi\:\nVale máis a pegada de cen mosquitos\nque pé de boi. 
+~ font_giving_bottle
+font: Irás ao abrente do día\na auga fresca catar
+da auga do paxariño\nque saúde che ha de dar” 
 do GameState.add_consumed_time(1)
-set GameState.acknowledged_mortal_plants = true
+do InventoryManager.add_item("full_bottle_park_fountain", 1)
+do InventoryManager.remove_item("plastic_bottle", 1)
 => END

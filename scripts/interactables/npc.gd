@@ -1,3 +1,4 @@
+class_name NPC
 extends Node2D
 
 @export var dialogue_profile: DialogueProfile
@@ -24,7 +25,7 @@ func _ready():
 	click_area.input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
-	if not _is_available():
+	if not _can_interact():
 		return
 
 	SoundManager.play_simple_sound("Actions/Hover")
@@ -34,7 +35,7 @@ func _on_mouse_exited():
 	_fade_hover_to(0.0)
 
 func _on_input_event(viewport, event, _shape_idx):
-	if not _is_available():
+	if not _can_interact():
 		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -42,15 +43,16 @@ func _on_input_event(viewport, event, _shape_idx):
 		_interact()
 
 func _interact() -> void:
-	if _is_interacting or not _is_available():
+	if not _can_interact():
 		return
 
 	var selected_conversation := _resolve_conversation()
 	if selected_conversation == null:
-		push_warning("NPC '%s' has no eligible conversation."% name)
+		push_warning("NPC '%s' has no eligible conversation." % name)
 		return
 
 	_is_interacting = true
+	_fade_hover_to(0.0)
 	SoundManager.play_simple_sound("Actions/Click")
 
 	if interaction_point:
@@ -61,14 +63,22 @@ func _interact() -> void:
 				if "interaction_stop_distance" in player
 				else 6.0
 			)
-			var reached: bool = await player.move_to_point(interaction_point.global_position,stop_distance
-			)
+			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:
 				_is_interacting = false
+				_fade_hover_to(0.0)
 				return
 
 	await DialogueBalloonCoordinator.play(selected_conversation, [self])
 	_is_interacting = false
+	_fade_hover_to(0.0)
+	
+	_on_conversation_finished(selected_conversation.conversation_id)
+
+
+## Para clases herdadas, según necesidade específica
+func _on_conversation_finished(_conversation_id: StringName) -> void:
+	pass
 
 
 func _is_available() -> bool:
@@ -76,6 +86,7 @@ func _is_available() -> bool:
 
 func _update_availability() -> void:
 	var available := _is_available()
+
 	visible = available
 	click_area.input_pickable = available
 	click_area.monitoring = available
@@ -83,6 +94,14 @@ func _update_availability() -> void:
 
 	if not available:
 		_fade_hover_to(0.0)
+
+
+func _can_interact() -> bool:
+	if _is_interacting or not _is_available():
+		return false
+
+	return _resolve_conversation() != null
+		
 
 func _fade_hover_to(target_alpha: float):
 	if _hover_tween:

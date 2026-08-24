@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_cj2g8")
-conversation_id = &"font_conversation"
+conversation_id = &"font_giving_bottle"
 dialogue_resource = ExtResource("1_tig7f")
-start_title = "font"
+start_title = "font_giving_bottle"
 initial_speaker_id = &"font"
 metadata/_custom_type_script = "uid://c5fcus2dkgobv"
