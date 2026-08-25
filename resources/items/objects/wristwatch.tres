@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cm0y3r08h485q"]
+
+[ext_resource type="Script" uid="uid://dhxlsvm177k7j" path="res://scripts/data/item_data.gd" id="1_3bstv"]
+[ext_resource type="Texture2D" uid="uid://c61kdornokrpg" path="res://assets/sprites/ui/items/wristwatch.png" id="1_b1df7"]
+
+[resource]
+script = ExtResource("1_3bstv")
+id = &"wristwatch"
+display_name = "Reloxo"
+description = "Con esto podes mirar canto tempo queda"
+icon = ExtResource("1_b1df7")
+metadata/_custom_type_script = "uid://dhxlsvm177k7j"

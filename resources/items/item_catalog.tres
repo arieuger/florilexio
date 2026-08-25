@@ -24,8 +24,9 @@
 [ext_resource type="Resource" uid="uid://jvaq075htb3j" path="res://resources/items/plants/xesta.tres" id="21_pgbdn"]
 [ext_resource type="Resource" uid="uid://dhknabfsg3vgs" path="res://resources/items/objects/plastic_bottle.tres" id="22_c4v8s"]
 [ext_resource type="Resource" uid="uid://ds2ugqsiu2ef6" path="res://resources/items/objects/water/park_fountain_water.tres" id="23_wsfoh"]
+[ext_resource type="Resource" uid="uid://cm0y3r08h485q" path="res://resources/items/objects/wristwatch.tres" id="24_fogxd"]
 
 [resource]
 script = ExtResource("2_uv6bq")
-items = Array[ExtResource("1_vrblu")]([ExtResource("2_kfgcf"), ExtResource("3_wsfoh"), ExtResource("4_fogxd"), ExtResource("5_lhv76"), ExtResource("6_hptgk"), ExtResource("7_rh50l"), ExtResource("8_cpl8c"), ExtResource("9_axyve"), ExtResource("10_i8m33"), ExtResource("11_7ptma"), ExtResource("12_jsqpy"), ExtResource("13_y2d41"), ExtResource("14_5itpl"), ExtResource("15_kt7is"), ExtResource("16_5ebln"), ExtResource("17_n2mex"), ExtResource("18_fdljv"), ExtResource("19_b6ab6"), ExtResource("20_vw7nl"), ExtResource("21_pgbdn"), ExtResource("22_c4v8s"), ExtResource("23_wsfoh")])
+items = Array[ExtResource("1_vrblu")]([ExtResource("2_kfgcf"), ExtResource("3_wsfoh"), ExtResource("4_fogxd"), ExtResource("5_lhv76"), ExtResource("6_hptgk"), ExtResource("7_rh50l"), ExtResource("8_cpl8c"), ExtResource("9_axyve"), ExtResource("10_i8m33"), ExtResource("11_7ptma"), ExtResource("12_jsqpy"), ExtResource("13_y2d41"), ExtResource("14_5itpl"), ExtResource("15_kt7is"), ExtResource("16_5ebln"), ExtResource("17_n2mex"), ExtResource("18_fdljv"), ExtResource("19_b6ab6"), ExtResource("20_vw7nl"), ExtResource("21_pgbdn"), ExtResource("22_c4v8s"), ExtResource("23_wsfoh"), ExtResource("24_fogxd")])
 metadata/_custom_type_script = "uid://b8cq07f3pdak2"

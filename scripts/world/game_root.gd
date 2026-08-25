@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var current_area_container: Node2D = $CurrentArea
 @onready var player: CharacterBody2D = $Player
+@onready var time_label: Label = %TimeLabel
 
 var _current_area: Node
 var _area_transition_tween: Tween
@@ -17,6 +18,9 @@ var minigame_coordinator: MinigameCoordinator
 
 
 func _ready() -> void:
+	InventoryManager.item_added.connect(_on_inventory_changed.unbind(2))
+	InventoryManager.item_removed.connect(_on_inventory_changed.unbind(2))
+	_update_time_label_visibility(false)
 	_setup_minigame_coordinator()
 	_set_player_movement_enabled(false)
 	if initial_area:
@@ -256,6 +260,43 @@ func _node_property_matches(node: Node, property_name: StringName, expected_valu
 			return node.get(property_name) == expected_value
 	return false
 
+
+func _on_inventory_changed(item_id: StringName):
+	if item_id != &"wristwatch":
+		return
+
+	_update_time_label_visibility()
+	
+
+func _update_time_label_visibility(tweened := true) -> void:
+	var should_show := InventoryManager.has_item(&"wristwatch", 1)
+	
+	if tweened:
+		if should_show:
+			var base_color := time_label.get_theme_color(&"font_color")
+			var tween = UITweens.pop_tween(time_label, time_label.position.y)
+			time_label.pivot_offset = time_label.get_minimum_size() * 0.5
+
+			for _pulse in range(2):
+				tween.tween_property(time_label, "scale", Vector2(1.2, 1.2), 0.22) \
+					.set_trans(Tween.TRANS_QUAD) \
+					.set_ease(Tween.EASE_OUT)
+
+				tween.parallel().tween_property(time_label,
+					"theme_override_colors/font_color", Color("#cb6e5b"), 0.22)
+
+				tween.tween_property(time_label, "scale", Vector2.ONE, 0.32) \
+					.set_trans(Tween.TRANS_QUAD) \
+					.set_ease(Tween.EASE_IN)
+
+				tween.parallel().tween_property(time_label,
+					"theme_override_colors/font_color", base_color, 0.32)
+
+		else:
+			UITweens.hide_tween(time_label)
+	else:
+		time_label.visible = InventoryManager.has_item(&"wristwatch", 1)
+	
 
 # Funcións necesarias para que o SoundListener do Player siga funcionando cando se introduce na escea
 
