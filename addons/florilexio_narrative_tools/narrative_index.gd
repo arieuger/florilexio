@@ -218,55 +218,36 @@ func _index_profile(profile: DialogueProfile, path: String) -> void:
 				"Entrada do perfil de diálogo"
 			)
 
-		for condition in entry.conditions:
-			if condition == null:
-				continue
+		if entry.condition_group != null:
+			_index_condition(entry.condition_group, source_id, path)
 
-			if condition is QuestStatusCondition:
-				_add_reference(
-					&"quest",
-					condition.quest_id,
-					&"conversation_condition",
-					source_id,
-					path,
-					"Estado de misión"
-				)
 
-			elif condition is QuestObjectiveCompletedCondition:
-				_add_reference(
-					&"objective",
-					condition.objective_id,
-					&"conversation_condition",
-					source_id,
-					path,
-					"Objetivo completado",
-					condition.quest_id
-				)
+func _index_condition(condition: ConversationCondition, source_id: StringName, path: String) -> void:
+	if condition == null:
+		return
 
-			elif condition is ConversationFinishedCondition:
-				_add_reference(
-					&"conversation",
-					condition.conversation_id,
-					&"conversation_condition",
-					source_id,
-					path,
-					"Conversación finalizada"
-				)
+	if condition is ConditionGroup:
+		var group := condition as ConditionGroup
+		for child in group.conditions:
+			_index_condition(child, source_id, path)
 
-			elif condition is InventoryHasCondition:
-				var reference_type := (
-					&"plant"
-					if condition.target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
-					else &"item"
-				)
-				_add_reference(
-					reference_type,
-					condition.target_id,
-					&"conversation_condition",
-					source_id,
-					path,
-					"Elemento en inventario"
-				)
+		return
+
+	if condition is QuestStatusCondition:
+		_add_reference(&"quest", condition.quest_id, &"conversation_condition", source_id, path, "Estado de misión")
+
+	elif condition is QuestObjectiveCompletedCondition:
+		_add_reference(&"objective", condition.objective_id, &"conversation_condition", source_id, path, "Objetivo completado", condition.quest_id)
+
+	elif condition is ConversationFinishedCondition:
+		_add_reference(&"conversation", condition.conversation_id, &"conversation_condition", source_id, path, "Conversación finalizada")
+
+	elif condition is InventoryHasCondition:
+		var reference_type := (&"plant"
+			if condition.target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+			else &"item"
+		)
+		_add_reference(reference_type, condition.target_id, &"conversation_condition", source_id, path, "Elemento en inventario")
 
 
 func _index_quest(quest: QuestDefinition, path: String) -> void:

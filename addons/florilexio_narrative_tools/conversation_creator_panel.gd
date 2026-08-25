@@ -24,6 +24,7 @@ var create_button: Button
 var save_directory_dialog: FileDialog
 var save_directory: String
 var conditions_container: VBoxContainer
+var condition_group_mode_selector: OptionButton
 var condition_editors: Array[ConditionEditor] = []
 
 
@@ -60,7 +61,7 @@ func _ready() -> void:
 	dialogue_file_dialog = FileDialog.new()
 	dialogue_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	dialogue_file_dialog.access = FileDialog.ACCESS_RESOURCES
-	dialogue_file_dialog.filters = PackedStringArray(["*.dialogue ; Dialogue Manager files",])
+	dialogue_file_dialog.filters = PackedStringArray(["*.dialogue ; Dialogue Manager files", ])
 	dialogue_file_dialog.current_dir = "res://dialogues"
 	dialogue_file_dialog.file_selected.connect(_on_dialogue_file_selected)
 	add_child(dialogue_file_dialog)
@@ -87,6 +88,19 @@ func _ready() -> void:
 	conditions_heading.text = "Condicións"
 	conditions_heading.add_theme_font_size_override("font_size", 13)
 	add_child(conditions_heading)
+
+	_add_label("Modo do grupo raíz")
+	# TODO: Facer recursiva a selección de grupo ou condición
+	condition_group_mode_selector = OptionButton.new()
+	for mode in ConditionGroup.Mode.values():
+		condition_group_mode_selector.add_item(
+			ConditionGroup.Mode.keys()[mode]
+		)
+		condition_group_mode_selector.set_item_metadata(
+			condition_group_mode_selector.item_count - 1,
+			mode
+		)
+	add_child(condition_group_mode_selector)
 
 	conditions_container = VBoxContainer.new()
 	add_child(conditions_container)
@@ -277,7 +291,7 @@ func _create_conversation() -> void:
 		_set_feedback(result.error_message, Color.INDIAN_RED)
 		return
 
-	_set_feedback("Conversa creada correctamente:\n%s"% result.resource_path, Color.LIGHT_GREEN)
+	_set_feedback("Conversa creada correctamente:\n%s" % result.resource_path, Color.LIGHT_GREEN)
 
 	conversation_created.emit(result.resource_path)
 	_reset_after_successful_creation()
@@ -300,8 +314,18 @@ func _build_creation_request() -> ConversationCreationRequest:
 	request.repeatable = repeatable_check.button_pressed
 	request.fallback = fallback_check.button_pressed
 
-	for editor in condition_editors:
-		request.conditions.append(editor.build_condition())
+	if not condition_editors.is_empty():
+		var condition_group := ConditionGroup.new()
+		condition_group.mode = int(
+			condition_group_mode_selector.get_selected_metadata()
+		)
+
+		for editor in condition_editors:
+			condition_group.conditions.append(
+				editor.build_condition()
+			)
+
+		request.condition_group = condition_group
 
 	if profile_selector.selected > 0:
 		var profile_path := str(
@@ -327,6 +351,7 @@ func _reset_after_successful_creation() -> void:
 	priority_field.value = 0
 	repeatable_check.button_pressed = false
 	fallback_check.button_pressed = false
+	condition_group_mode_selector.select(0)
 	for editor in condition_editors:
 		editor.queue_free()
 	condition_editors.clear()

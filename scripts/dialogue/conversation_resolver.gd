@@ -8,7 +8,7 @@ static func resolve(profile: DialogueProfile, context: ConversationContext) -> C
 
 	var profile_errors := profile.get_validation_errors()
 	if not profile_errors.is_empty():
-		push_warning("ConversationResolver: profile '%s' is invalid:\n- %s"% [profile.profile_id, "\n- ".join(profile_errors)])
+		push_warning("ConversationResolver: profile '%s' is invalid:\n- %s" % [profile.profile_id, "\n- ".join(profile_errors)])
 		return null
 	
 	var regular_candidates: Array[ConversationEntry] = []
@@ -20,7 +20,7 @@ static func resolve(profile: DialogueProfile, context: ConversationContext) -> C
 		var rejection_reason := _get_rejection_reason(entry, context)
 
 		if not rejection_reason.is_empty():
-			rejection_messages.append("entry %d (%s): %s"% [index, _get_entry_label(entry), rejection_reason])
+			rejection_messages.append("entry %d (%s): %s" % [index, _get_entry_label(entry), rejection_reason])
 			continue
 
 		if entry.is_fallback:
@@ -38,13 +38,13 @@ static func resolve(profile: DialogueProfile, context: ConversationContext) -> C
 		if not rejection_messages.is_empty():
 			details = "\n- " + "\n- ".join(rejection_messages)
 
-		push_warning("ConversationResolver: profile '%s' has no eligible conversation. %s"% [profile.profile_id, details])
+		push_warning("ConversationResolver: profile '%s' has no eligible conversation. %s" % [profile.profile_id, details])
 		return null
 
 	return _select_highest_priority(profile, candidates).conversation
 
 
-static func resolve_by_id(profile: DialogueProfile, conversation_id: StringName, 
+static func resolve_by_id(profile: DialogueProfile, conversation_id: StringName,
 	context: ConversationContext, require_available := true
 ) -> ConversationDefinition:
 	if profile == null:
@@ -65,12 +65,12 @@ static func resolve_by_id(profile: DialogueProfile, conversation_id: StringName,
 			matches.append(entry)
 
 	if matches.is_empty():
-		push_warning("ConversationResolver: profile '%s' has no conversation '%s'."% [profile.profile_id, conversation_id])
+		push_warning("ConversationResolver: profile '%s' has no conversation '%s'." % [profile.profile_id, conversation_id])
 		return null
 
 	if matches.size() > 1:
 		push_warning("ConversationResolver: profile '%s' contains conversation '%s' more than once. "
-			+ "The first entry will be used."% [profile.profile_id, conversation_id]
+			+"The first entry will be used." % [profile.profile_id, conversation_id]
 		)
 
 	var selected := matches[0]
@@ -81,7 +81,7 @@ static func resolve_by_id(profile: DialogueProfile, conversation_id: StringName,
 	)
 
 	if not rejection_reason.is_empty():
-		push_warning("ConversationResolver: conversation '%s' cannot be resolved: %s."% [conversation_id, rejection_reason])
+		push_warning("ConversationResolver: conversation '%s' cannot be resolved: %s." % [conversation_id, rejection_reason])
 		return null
 
 	return selected.conversation
@@ -97,9 +97,8 @@ static func _get_rejection_reason(entry: ConversationEntry, context: Conversatio
 	if not entry.repeatable and ConversationHistory.has_finished(conversation.conversation_id):
 		return "non-repeatable conversation already finished"
 
-	for condition in entry.conditions:
-		if not condition.is_met(context):
-			return condition.get_debug_description()
+	if entry.condition_group != null and not entry.condition_group.is_met(context):
+		return entry.condition_group.get_debug_description()
 
 	return ""
 
@@ -114,7 +113,7 @@ static func _select_highest_priority(profile: DialogueProfile, candidates: Array
 			selected = candidate
 		elif candidate.priority == selected.priority:
 			push_warning("ConversationResolver: profile '%s' has equally eligible conversations '%s' and '%s' with priority %d. "
-				+ "The first entry will be used."
+				+"The first entry will be used."
 				% [
 					profile.profile_id,
 					selected.conversation.conversation_id,

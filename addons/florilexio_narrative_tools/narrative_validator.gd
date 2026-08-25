@@ -108,19 +108,57 @@ func _validate_condition_references(index: NarrativeIndex, issues: Array[Narrati
 			if entry == null:
 				continue
 
-			for condition_index in range(entry.conditions.size()):
-				var condition := entry.conditions[condition_index]
+			if entry.condition_group != null:
+				_validate_condition_tree(
+					entry.condition_group,
+					entry_index,
+					"root",
+					path,
+					index,
+					issues
+				)
 
-				if condition == null:
-					continue
 
-				_validate_condition_reference(condition, entry_index, condition_index, path, index, issues)
+func _validate_condition_tree(
+	condition: ConversationCondition,
+	entry_index: int,
+	condition_path: String,
+	path: String,
+	index: NarrativeIndex,
+	issues: Array[NarrativeValidationIssue]
+) -> void:
+	if condition == null:
+		return
+
+	if condition is ConditionGroup:
+		var group := condition as ConditionGroup
+
+		for child_index in range(group.conditions.size()):
+			_validate_condition_tree(
+				group.conditions[child_index],
+				entry_index,
+				"%s/%d" % [condition_path, child_index],
+				path,
+				index,
+				issues
+			)
+
+		return
+
+	_validate_condition_reference(
+		condition,
+		entry_index,
+		condition_path,
+		path,
+		index,
+		issues
+	)
 
 
 func _validate_condition_reference(
 	condition: ConversationCondition,
 	entry_index: int,
-	condition_index: int,
+	condition_path: String,
 	path: String,
 	index: NarrativeIndex,
 	issues: Array[NarrativeValidationIssue]
@@ -132,7 +170,7 @@ func _validate_condition_reference(
 				and not index.has_quest(quest_condition.quest_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest",
-				"Entry %d condition %d refers to unknown quest '%s'." % [entry_index, condition_index, quest_condition.quest_id],
+				"Entry %d condition %s refers to unknown quest '%s'." % [entry_index, condition_path, quest_condition.quest_id],
 				path,
 				quest_condition.quest_id,
 				issues
@@ -147,7 +185,7 @@ func _validate_condition_reference(
 				and not index.has_quest(objective_condition.quest_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest",
-					"Entry %d condition %d refers to unknown quest '%s'." % [entry_index, condition_index, objective_condition.quest_id],
+					"Entry %d condition %s refers to unknown quest '%s'." % [entry_index, condition_path, objective_condition.quest_id],
 				path,
 				objective_condition.quest_id,
 				issues
@@ -157,9 +195,9 @@ func _validate_condition_reference(
 				and not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
 			_append_missing_reference_issue(
 				&"condition_missing_quest_objective",
-					"Entry %d condition %d refers to unknown objective '%s' in quest '%s'." % [
+					"Entry %d condition %s refers to unknown objective '%s' in quest '%s'." % [
 					entry_index,
-					condition_index,
+					condition_path,
 					objective_condition.objective_id,
 					objective_condition.quest_id,
 				],
@@ -177,7 +215,7 @@ func _validate_condition_reference(
 				):
 			_append_missing_reference_issue(
 				&"condition_missing_conversation",
-				"Entry %d condition %d refers to unknown conversation '%s'." % [entry_index, condition_index, conversation_condition.conversation_id, ],
+				"Entry %d condition %s refers to unknown conversation '%s'." % [entry_index, condition_path, conversation_condition.conversation_id],
 				path,
 				conversation_condition.conversation_id,
 				issues
@@ -193,7 +231,7 @@ func _validate_condition_reference(
 						and not index.has_plant(inventory_condition.target_id):
 					_append_missing_reference_issue(
 						&"condition_missing_plant",
-						"Entry %d condition %d refers to unknown plant '%s'." % [entry_index, condition_index, inventory_condition.target_id],
+						"Entry %d condition %s refers to unknown plant '%s'." % [entry_index, condition_path, inventory_condition.target_id],
 						path,
 						inventory_condition.target_id,
 						issues
@@ -207,7 +245,7 @@ func _validate_condition_reference(
 						):
 					_append_missing_reference_issue(
 						&"condition_missing_item",
-						"Entry %d condition %d refers to unknown non-plant item '%s'." % [entry_index, condition_index, inventory_condition.target_id],
+						"Entry %d condition %s refers to unknown non-plant item '%s'." % [entry_index, condition_path, inventory_condition.target_id],
 						path,
 						inventory_condition.target_id,
 						issues

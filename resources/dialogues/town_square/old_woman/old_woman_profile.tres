@@ -6,9 +6,10 @@
 [ext_resource type="Resource" uid="uid://bprv0xt2yuov8" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_first_meeting.tres" id="3_5m5hu"]
 [ext_resource type="Resource" uid="uid://bvbwe2dio0spi" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_reminder.tres" id="4_5m5hu"]
 [ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="4_vpk1j"]
+[ext_resource type="Script" uid="uid://b7quctdo3ui46" path="res://scripts/dialogue/conditions/condition_group.gd" id="5_osdha"]
 [ext_resource type="Script" uid="uid://d3638l0gkhmh3" path="res://scripts/dialogue/conditions/quest_objective_completed_condition.gd" id="6_75ost"]
 [ext_resource type="Resource" uid="uid://bjd4erc6e36nt" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_delivery.tres" id="6_dj41s"]
-[ext_resource type="Script" uid="uid://c80jbqn0w3lt2" path="res://scripts/dialogue/conditions/inventory_has_condition.gd" id="7_6wpjk"]
+[ext_resource type="Script" path="res://scripts/dialogue/conditions/inventory_has_condition.gd" id="7_6wpjk"]
 [ext_resource type="Resource" uid="uid://yswocf4cuviv" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_completed.tres" id="9_6wpjk"]
 [ext_resource type="Resource" uid="uid://d3oaxwuo1jnce" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_show_full_bottle.tres" id="11_osdha"]
 [ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
@@ -19,17 +20,22 @@ conversation = ExtResource("3_5m5hu")
 priority = 100
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
-[sub_resource type="Resource" id="Resource_dxo8b"]
+[sub_resource type="Resource" id="Resource_0cprk"]
 script = ExtResource("4_vpk1j")
 quest_id = &"00_old_woman_tutorial"
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
+[sub_resource type="Resource" id="Resource_13p11"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_0cprk")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
 
 [sub_resource type="Resource" id="Resource_dj41s"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("4_5m5hu")
 repeatable = true
 is_fallback = true
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_dxo8b")])
+condition_group = SubResource("Resource_13p11")
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_a8q4m"]
@@ -48,11 +54,16 @@ script = ExtResource("7_6wpjk")
 target_type = 1
 target_id = &"malva"
 
+[sub_resource type="Resource" id="Resource_bjhks"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_a8q4m"), SubResource("Resource_i3gkp"), SubResource("Resource_osdha")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
+
 [sub_resource type="Resource" id="Resource_75ost"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("6_dj41s")
 priority = 90
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_a8q4m"), SubResource("Resource_i3gkp"), SubResource("Resource_osdha")])
+condition_group = SubResource("Resource_bjhks")
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_ufffc"]
@@ -61,12 +72,17 @@ quest_id = &"00_old_woman_tutorial"
 expected_status = 2
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 
+[sub_resource type="Resource" id="Resource_acxqu"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_ufffc")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
+
 [sub_resource type="Resource" id="Resource_aaun5"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("9_6wpjk")
 priority = 10
 repeatable = true
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_ufffc")])
+condition_group = SubResource("Resource_acxqu")
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_bt6ah"]
@@ -77,7 +93,6 @@ metadata/_custom_type_script = "uid://d3638l0gkhmh3"
 
 [sub_resource type="Resource" id="Resource_qqofs"]
 script = ExtResource("7_6wpjk")
-target_type = 6
 target_id = &"full_bottle_park_fountain"
 
 [sub_resource type="Resource" id="Resource_8niit"]
@@ -85,23 +100,33 @@ script = ExtResource("4_vpk1j")
 quest_id = &"02_get_park_fountain_water"
 metadata/_custom_type_script = "uid://gs4v2yogx6lj"
 
+[sub_resource type="Resource" id="Resource_tjlre"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_bt6ah"), SubResource("Resource_qqofs"), SubResource("Resource_8niit")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
+
 [sub_resource type="Resource" id="Resource_3o8yu"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("11_osdha")
 priority = 80
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_bt6ah"), SubResource("Resource_qqofs"), SubResource("Resource_8niit")])
+condition_group = SubResource("Resource_tjlre")
 
 [sub_resource type="Resource" id="Resource_glvj0"]
 script = ExtResource("4_vpk1j")
 quest_id = &"02_get_park_fountain_water"
 expected_status = 2
 
+[sub_resource type="Resource" id="Resource_yg2dn"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_glvj0")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
+
 [sub_resource type="Resource" id="Resource_hvw4d"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("12_osdha")
 priority = 11
 repeatable = true
-conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_glvj0")])
+condition_group = SubResource("Resource_yg2dn")
 
 [resource]
 script = ExtResource("2_jdbio")

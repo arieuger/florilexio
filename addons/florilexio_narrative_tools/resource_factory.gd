@@ -65,87 +65,16 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 		errors.append("target_profile has not been saved")
 
 
-	for condition_index in range(request.conditions.size()):
-		var condition := request.conditions[condition_index]
+	if request.condition_group != null:
+		for group_error in request.condition_group.get_validation_errors():
+			errors.append("condition_group: %s" % group_error)
 
-		if condition == null:
-			errors.append("condition %d is null" % condition_index)
-			continue
-
-		if condition is QuestStatusCondition:
-			var quest_condition := condition as QuestStatusCondition
-
-			if quest_condition.quest_id.is_empty():
-				errors.append("condition %d has no quest selected" % condition_index)
-			elif not index.has_quest(quest_condition.quest_id):
-				errors.append("condition %d refers to unknown quest '%s'" % [
-						condition_index,
-						quest_condition.quest_id,
-					]
-				)
-
-		elif condition is QuestObjectiveCompletedCondition:
-			var objective_condition := condition as QuestObjectiveCompletedCondition
-
-			if objective_condition.quest_id.is_empty():
-				errors.append("condition %d has no quest selected" % condition_index)
-			elif objective_condition.objective_id.is_empty():
-				errors.append("condition %d has no objective selected" % condition_index)
-			elif not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
-				errors.append("condition %d refers to unknown objective '%s' in quest '%s'" % [
-						condition_index,
-						objective_condition.objective_id,
-						objective_condition.quest_id,
-					]
-				)
-
-		elif condition is ConversationFinishedCondition:
-			var conversation_condition := condition as ConversationFinishedCondition
-
-			if conversation_condition.conversation_id.is_empty():
-				errors.append("condition %d has no conversation selected" % condition_index)
-			elif not index.has_conversation(conversation_condition.conversation_id):
-				errors.append("condition %d refers to unknown conversation '%s'" % [
-						condition_index,
-						conversation_condition.conversation_id,
-					]
-				)
-
-		elif condition is InventoryHasCondition:
-			var inventory_condition := condition as InventoryHasCondition
-
-			if inventory_condition.target_id.is_empty():
-				errors.append("condition %d has no inventory target selected" % condition_index)
-			else:
-				match inventory_condition.target_type:
-					QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
-						if not index.has_plant(inventory_condition.target_id):
-							errors.append("condition %d refers to unknown plant '%s'" % [
-								condition_index,
-								inventory_condition.target_id,
-							])
-
-					QuestObjectiveDefinition.TargetType.ITEM_ID:
-						if not index.has_item(inventory_condition.target_id):
-							errors.append("condition %d refers to unknown item '%s'" % [
-								condition_index,
-								inventory_condition.target_id,
-							])
-						elif index.has_plant(inventory_condition.target_id):
-							errors.append("condition %d refers to plant '%s' as ITEM_ID" % [
-								condition_index,
-								inventory_condition.target_id,
-							])
-
-					_:
-						errors.append("condition %d has unsupported inventory target type '%s'" % [
-							condition_index,
-							inventory_condition.target_type,
-						])
-
-			if inventory_condition.amount <= 0:
-				errors.append("condition %d must require at least one inventory item" % condition_index)
-
+		_append_condition_creation_reference_errors(
+			request.condition_group,
+			"root",
+			index,
+			errors
+		)
 
 	if request.save_path.is_empty():
 		errors.append("save_path is empty")
@@ -157,6 +86,94 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 		errors.append("a resource already exists at '%s'" % request.save_path)
 
 	return errors
+
+
+static func _append_condition_creation_reference_errors(
+	condition: ConversationCondition,
+	condition_path: String,
+	index: NarrativeIndex,
+	errors: PackedStringArray
+) -> void:
+	if condition == null:
+		return
+
+	if condition is ConditionGroup:
+		var group := condition as ConditionGroup
+
+		for child_index in range(group.conditions.size()):
+			_append_condition_creation_reference_errors(
+				group.conditions[child_index],
+				"%s/%d" % [condition_path, child_index],
+				index,
+				errors
+			)
+
+		return
+
+	if condition is QuestStatusCondition:
+		var quest_condition := condition as QuestStatusCondition
+
+		if quest_condition.quest_id.is_empty():
+			errors.append("condition %s has no quest selected" % condition_path)
+		elif not index.has_quest(quest_condition.quest_id):
+			errors.append("condition %s refers to unknown quest '%s'" % [
+				condition_path,
+				quest_condition.quest_id,
+			])
+
+	elif condition is QuestObjectiveCompletedCondition:
+		var objective_condition := condition as QuestObjectiveCompletedCondition
+
+		if objective_condition.quest_id.is_empty():
+			errors.append("condition %s has no quest selected" % condition_path)
+		elif objective_condition.objective_id.is_empty():
+			errors.append("condition %s has no objective selected" % condition_path)
+		elif not index.has_objective(objective_condition.quest_id, objective_condition.objective_id):
+			errors.append("condition %s refers to unknown objective '%s' in quest '%s'" % [
+				condition_path,
+				objective_condition.objective_id,
+				objective_condition.quest_id,
+			])
+
+	elif condition is ConversationFinishedCondition:
+		var conversation_condition := condition as ConversationFinishedCondition
+
+		if conversation_condition.conversation_id.is_empty():
+			errors.append("condition %s has no conversation selected" % condition_path)
+		elif not index.has_conversation(conversation_condition.conversation_id):
+			errors.append("condition %s refers to unknown conversation '%s'" % [
+				condition_path,
+				conversation_condition.conversation_id,
+			])
+
+	elif condition is InventoryHasCondition:
+		var inventory_condition := condition as InventoryHasCondition
+
+		if inventory_condition.target_id.is_empty():
+			return
+
+		match inventory_condition.target_type:
+			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+				if not index.has_plant(inventory_condition.target_id):
+					errors.append("condition %s refers to unknown plant '%s'" % [
+						condition_path,
+						inventory_condition.target_id,
+					])
+
+			QuestObjectiveDefinition.TargetType.ITEM_ID:
+				if not index.has_item(inventory_condition.target_id):
+					errors.append("condition %s refers to unknown item '%s'" % [
+						condition_path,
+						inventory_condition.target_id,
+					])
+				elif index.has_plant(inventory_condition.target_id):
+					errors.append("condition %s refers to plant '%s' as ITEM_ID" % [
+						condition_path,
+						inventory_condition.target_id,
+					])
+
+			_:
+				return
 
 
 static func create_conversation(request: ConversationCreationRequest, index: NarrativeIndex) -> NarrativeCreationResult:
@@ -190,7 +207,7 @@ static func create_conversation(request: ConversationCreationRequest, index: Nar
 	entry.priority = request.priority
 	entry.repeatable = request.repeatable
 	entry.is_fallback = request.fallback
-	entry.conditions = request.conditions.duplicate()
+	entry.condition_group = request.condition_group
 
 	request.target_profile.entries.append(entry)
 

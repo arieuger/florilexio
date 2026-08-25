@@ -326,7 +326,7 @@ func import_state(data: Dictionary) -> bool:
 
 			state.objective_progress[objective.objective_id] = clampi(saved_amount, 0, objective.required_amount)
 
-		state.status = status
+		state.status = status as QuestState.Status
 
 		if status == QuestState.Status.COMPLETED:
 			_complete_all_objective_progress(definition, state)
