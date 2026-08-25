@@ -2,14 +2,17 @@
 class_name QuestObjectiveGroupDefinition
 extends Resource
 
+enum CompletionMode { ALL, ANY }
+
 @export_multiline var description: String
 @export var objective_ids: Array[StringName] = []
-# TODO: Pode ser interesante ter un marcador ALL/ANY/AT_LEAST para permitir ramificacións de obxectivos
+@export var completion_mode: CompletionMode = CompletionMode.ALL
+@export var show_in_notebook := true
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()
 
-	if description.strip_edges().is_empty():
+	if show_in_notebook and description.strip_edges().is_empty():
 		errors.append("description is empty")
 
 	if objective_ids.is_empty():

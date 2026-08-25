@@ -5,6 +5,8 @@ signal remove_requested(editor: Control)
 
 var heading: Label
 var description_field: TextEdit
+var completion_mode_selector: OptionButton
+var show_in_notebook_field: CheckBox
 var objectives_list: ItemList
 var empty_options_label: Label
 
@@ -22,6 +24,26 @@ func _ready() -> void:
 	description_field.custom_minimum_size.y = 56
 	description_field.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	add_child(description_field)
+
+	var completion_mode_label := Label.new()
+	completion_mode_label.text = "Modo de completado"
+	add_child(completion_mode_label)
+
+	completion_mode_selector = OptionButton.new()
+	for mode in QuestObjectiveGroupDefinition.CompletionMode.values():
+		completion_mode_selector.add_item(
+			QuestObjectiveGroupDefinition.CompletionMode.keys()[mode]
+		)
+		completion_mode_selector.set_item_metadata(
+			completion_mode_selector.item_count - 1,
+			mode
+		)
+	add_child(completion_mode_selector)
+
+	show_in_notebook_field = CheckBox.new()
+	show_in_notebook_field.text = "Mostrar resumo na libreta"
+	show_in_notebook_field.button_pressed = true
+	add_child(show_in_notebook_field)
 
 	var objectives_label := Label.new()
 	objectives_label.text = "Obxectivos representados"
@@ -84,6 +106,10 @@ func set_objective_options(options: Array[Dictionary]) -> void:
 func build_definition() -> QuestObjectiveGroupDefinition:
 	var definition := QuestObjectiveGroupDefinition.new()
 	definition.description = description_field.text.strip_edges()
+	definition.completion_mode = int(
+		completion_mode_selector.get_selected_metadata()
+	)
+	definition.show_in_notebook = show_in_notebook_field.button_pressed
 
 	for selected_index in objectives_list.get_selected_items():
 		var metadata: Dictionary = objectives_list.get_item_metadata(selected_index)

@@ -113,7 +113,7 @@ func _build_quests(index: NarrativeIndex) -> String:
 				objective.required_amount, _yes_no(objective.show_in_notebook),
 			])
 
-		lines.append_array(["", "### Notebook representation", "", "| Kind | Description | Objective IDs |", "|---|---|---|"])
+		lines.append_array(["", "### Objective groups and notebook representation", "", "| Kind | Completion | Notebook | Description | Objective IDs |", "|---|---|---|---|---|"])
 		var groups_by_objective_id := {}
 		var emitted_groups := {}
 
@@ -140,14 +140,17 @@ func _build_quests(index: NarrativeIndex) -> String:
 				var group_ids := PackedStringArray()
 				for objective_id in objective_group.objective_ids:
 					group_ids.append(str(objective_id))
-				lines.append("| Group | %s | %s |" % [
+				lines.append("| Group | %s | %s | %s | %s |" % [
+					QuestObjectiveGroupDefinition.CompletionMode.keys()[objective_group.completion_mode],
+					_yes_no(objective_group.show_in_notebook),
 					_escape(objective_group.description),
 					_escape(", ".join(group_ids)),
 				])
 				continue
 
-			lines.append("| %s | %s | %s |" % [
+			lines.append("| %s | ALL | %s | %s | %s |" % [
 				"Objective" if objective.show_in_notebook else "Internal",
+				_yes_no(objective.show_in_notebook),
 				_escape(objective.description),
 				_escape(objective.objective_id),
 			])

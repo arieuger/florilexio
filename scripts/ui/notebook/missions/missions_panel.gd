@@ -138,15 +138,35 @@ func _build_notebook_items(definition: QuestDefinition) -> Array[Dictionary]:
 			if emitted_groups.has(group_id):
 				continue
 			emitted_groups[group_id] = true
-			items.append({"description": group.description, "objective_ids": group.objective_ids, "objective": null})
+			if group.show_in_notebook:
+				items.append({
+					"description": group.description,
+					"objective_ids": group.objective_ids,
+					"completion_mode": group.completion_mode,
+					"objective": null,
+				})
 		elif objective.show_in_notebook:
-			items.append({"description": objective.description, "objective_ids": [objective.objective_id], "objective": objective})
+			items.append({
+				"description": objective.description,
+				"objective_ids": [objective.objective_id],
+				"completion_mode": QuestObjectiveGroupDefinition.CompletionMode.ALL,
+				"objective": objective,
+			})
 	return items
 
 
 func _is_item_completed(quest_id: StringName, item: Dictionary) -> bool:
 	var objective_ids: Array = item["objective_ids"]
 	if objective_ids.is_empty():
+		return false
+	var completion_mode := int(item.get(
+		"completion_mode",
+		QuestObjectiveGroupDefinition.CompletionMode.ALL
+	))
+	if completion_mode == QuestObjectiveGroupDefinition.CompletionMode.ANY:
+		for objective_id in objective_ids:
+			if QuestManager.is_objective_completed(quest_id, StringName(objective_id)):
+				return true
 		return false
 	for objective_id in objective_ids:
 		if not QuestManager.is_objective_completed(quest_id, StringName(objective_id)):

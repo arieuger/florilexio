@@ -329,7 +329,7 @@ func import_state(data: Dictionary) -> bool:
 		state.status = status as QuestState.Status
 
 		if status == QuestState.Status.COMPLETED:
-			_complete_all_objective_progress(definition, state)
+			_complete_required_objective_progress(definition, state)
 		elif status == QuestState.Status.ACTIVE \
 				and _are_all_objectives_completed(quest_id):
 			state.status = QuestState.Status.COMPLETED
@@ -370,9 +370,82 @@ func _reset_states() -> void:
 		_states[quest_id] = QuestState.create(_get_definition(quest_id))
 
 
-func _complete_all_objective_progress(definition: QuestDefinition, state: QuestState) -> void:
+func _complete_required_objective_progress(
+	definition: QuestDefinition,
+	state: QuestState
+) -> Array[StringName]:
+	var completed_objective_ids: Array[StringName] = []
+	var grouped_objective_ids := {}
+
+	for group in definition.objective_groups:
+		if group == null:
+			continue
+
+		for objective_id in group.objective_ids:
+			grouped_objective_ids[objective_id] = true
+
+		if group.completion_mode == QuestObjectiveGroupDefinition.CompletionMode.ANY:
+			var already_satisfied := false
+			for objective_id in group.objective_ids:
+				var objective := _find_objective_in_definition(definition, objective_id)
+				if objective != null and state.get_current_amount(objective_id) >= objective.required_amount:
+					already_satisfied = true
+					break
+
+			if not already_satisfied and not group.objective_ids.is_empty():
+				_complete_objective_progress(
+					definition,
+					state,
+					group.objective_ids[0],
+					completed_objective_ids
+				)
+		else:
+			for objective_id in group.objective_ids:
+				_complete_objective_progress(
+					definition,
+					state,
+					objective_id,
+					completed_objective_ids
+				)
+
 	for objective in definition.objectives:
-		state.objective_progress[objective.objective_id] = (objective.required_amount)
+		if not grouped_objective_ids.has(objective.objective_id):
+			_complete_objective_progress(
+				definition,
+				state,
+				objective.objective_id,
+				completed_objective_ids
+			)
+
+	return completed_objective_ids
+
+
+func _complete_objective_progress(
+	definition: QuestDefinition,
+	state: QuestState,
+	objective_id: StringName,
+	completed_objective_ids: Array[StringName]
+) -> void:
+	var objective := _find_objective_in_definition(definition, objective_id)
+	if objective == null:
+		return
+
+	if state.get_current_amount(objective_id) >= objective.required_amount:
+		return
+
+	state.objective_progress[objective_id] = objective.required_amount
+	completed_objective_ids.append(objective_id)
+
+
+func _find_objective_in_definition(
+	definition: QuestDefinition,
+	objective_id: StringName
+) -> QuestObjectiveDefinition:
+	for objective in definition.objectives:
+		if objective != null and objective.objective_id == objective_id:
+			return objective
+
+	return null
 
 
 func _is_valid_status(status: int) -> bool:
@@ -493,10 +566,8 @@ func complete_quest(quest_id: StringName) -> bool:
 	if state.status != QuestState.Status.ACTIVE:
 		return false
 
-	for objective in definition.objectives:
-		if not is_objective_completed(quest_id, objective.objective_id):
-			state.objective_progress[objective.objective_id] = (objective.required_amount)
-			objective_completed.emit(quest_id, objective.objective_id)
+	for objective_id in _complete_required_objective_progress(definition, state):
+		objective_completed.emit(quest_id, objective_id)
 
 	state.status = QuestState.Status.COMPLETED
 	quest_completed.emit(quest_id)
@@ -532,12 +603,46 @@ func _are_all_objectives_completed(quest_id: StringName) -> bool:
 	var definition := _get_definition(quest_id)
 	if definition == null or definition.objectives.is_empty():
 		return false
+	var grouped_objective_ids := {}
+
+	for group in definition.objective_groups:
+		if group == null or group.objective_ids.is_empty():
+			return false
+
+		for objective_id in group.objective_ids:
+			grouped_objective_ids[objective_id] = true
+
+		if not _is_objective_group_completed(quest_id, group):
+			return false
 
 	for objective in definition.objectives:
+		if grouped_objective_ids.has(objective.objective_id):
+			continue
+
 		if not is_objective_completed(quest_id, objective.objective_id):
 			return false
 
 	return true
+
+
+func _is_objective_group_completed(
+	quest_id: StringName,
+	group: QuestObjectiveGroupDefinition
+) -> bool:
+	match group.completion_mode:
+		QuestObjectiveGroupDefinition.CompletionMode.ALL:
+			for objective_id in group.objective_ids:
+				if not is_objective_completed(quest_id, objective_id):
+					return false
+			return true
+
+		QuestObjectiveGroupDefinition.CompletionMode.ANY:
+			for objective_id in group.objective_ids:
+				if is_objective_completed(quest_id, objective_id):
+					return true
+			return false
+
+	return false
 
 
 func _set_objective_progress(quest_id: StringName, objective_id: StringName, amount: int) -> bool:
