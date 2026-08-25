@@ -9,7 +9,6 @@
 script = ExtResource("1_j3wok")
 conversation = ExtResource("3_qplim")
 priority = 90
-repeatable = true
 
 [resource]
 script = ExtResource("2_veb6n")

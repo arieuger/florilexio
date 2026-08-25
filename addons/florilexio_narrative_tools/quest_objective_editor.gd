@@ -249,7 +249,7 @@ func _refresh_submission_mode_visibility() -> void:
 	)
 	var is_item_submission := (
 		event_type
-		== QuestObjectiveDefinition.EventType.ITEM_SUBMITTED
+		== QuestObjectiveDefinition.EventType.INVENTORY_SUBMITTED
 	)
 
 	submission_mode_label.visible = is_item_submission

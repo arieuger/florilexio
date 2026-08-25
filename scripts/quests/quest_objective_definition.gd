@@ -8,8 +8,9 @@ enum EventType {
 	DIALOGUE_COMPLETED,
 	INTERACTABLE_USED,
 	LOCATION_REACHED,
-	ITEM_SUBMITTED,
+	INVENTORY_SUBMITTED,
 	ITEM_COLLECTED,
+	INVENTORY_OWNED,
 }
 
 enum TargetType {
@@ -60,7 +61,7 @@ static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetT
 				TargetType.LOCATION,
 			]
 
-		EventType.ITEM_SUBMITTED:
+		EventType.INVENTORY_SUBMITTED:
 			return [
 				TargetType.PLANT_SPECIES,
 				TargetType.ITEM_ID
@@ -69,6 +70,11 @@ static func get_allowed_target_types(for_event_type: EventType) -> Array[TargetT
 		EventType.ITEM_COLLECTED:
 			return [
 				TargetType.ITEM_ID
+			]
+		EventType.INVENTORY_OWNED:
+			return [
+				TargetType.ITEM_ID,
+				TargetType.PLANT_SPECIES,
 			]
 		_:
 			return []
@@ -104,6 +110,6 @@ func _is_target_type_valid() -> bool:
 
 func consumes_submitted_item() -> bool:
 	return (
-		event_type == EventType.ITEM_SUBMITTED
+		event_type == EventType.INVENTORY_SUBMITTED
 		and item_submission_mode == ItemSubmissionMode.GIVE
 	)

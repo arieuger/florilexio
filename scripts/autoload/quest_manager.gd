@@ -18,6 +18,9 @@ func _ready() -> void:
 	register_catalog(FIRST_NIGHT_CATALOG) # TODO: Mentres só haxa 1 bucle
 	GameplayEvents.item_acquired.connect(_on_item_acquired)
 	GameplayEvents.dialogue_completed.connect(_on_dialogue_completed)
+	InventoryManager.item_added.connect(_on_inventory_item_changed)
+	InventoryManager.item_removed.connect(_on_inventory_item_changed)
+
 
 func register_catalog(catalog: QuestCatalog) -> bool:
 	if catalog == null or catalog.catalog_id.is_empty():
@@ -78,7 +81,10 @@ func start_quest(quest_id: StringName) -> bool:
 
 	state.status = QuestState.Status.ACTIVE
 	quest_started.emit(quest_id)
-	quest_updated.emit(quest_id)
+	var progress_changed := _reevaluate_inventory_owned_objectives_for_quest(quest_id)
+
+	if not progress_changed:
+		quest_updated.emit(quest_id)
 	return true
 
 
@@ -91,7 +97,7 @@ func submit_item(quest_id: StringName, objective_id: StringName, item_id: String
 
 	if (state == null or objective == null) or \
 	(state.status != QuestState.Status.ACTIVE) or \
-	(objective.event_type != QuestObjectiveDefinition.EventType.ITEM_SUBMITTED) or \
+	(objective.event_type != QuestObjectiveDefinition.EventType.INVENTORY_SUBMITTED) or \
 	((objective.target_type != QuestObjectiveDefinition.TargetType.PLANT_SPECIES) and \
 		(objective.target_type != QuestObjectiveDefinition.TargetType.ITEM_ID)) or \
 	(objective.target_id != item_id):
@@ -532,3 +538,89 @@ func _are_all_objectives_completed(quest_id: StringName) -> bool:
 			return false
 
 	return true
+
+
+func _set_objective_progress(quest_id: StringName, objective_id: StringName, amount: int) -> bool:
+	var state := _get_state(quest_id)
+	var objective := _get_objective_definition(quest_id, objective_id)
+
+	if state == null or objective == null:
+		return false
+
+	if state.status != QuestState.Status.ACTIVE:
+		return false
+
+	var old_amount := state.get_current_amount(objective_id)
+	var new_amount := clampi(amount, 0, objective.required_amount)
+
+	if old_amount == new_amount:
+		return false
+
+	var was_completed := old_amount >= objective.required_amount
+	var is_now_completed := new_amount >= objective.required_amount
+
+	state.objective_progress[objective_id] = new_amount
+
+	if not was_completed and is_now_completed:
+		objective_completed.emit(quest_id, objective_id)
+
+	if _are_all_objectives_completed(quest_id):
+		state.status = QuestState.Status.COMPLETED
+		quest_completed.emit(quest_id)
+
+	quest_updated.emit(quest_id)
+	return true
+
+
+func _reevaluate_inventory_owned_objective(quest_id: StringName, objective: QuestObjectiveDefinition) -> bool:
+	if objective.event_type != QuestObjectiveDefinition.EventType.INVENTORY_OWNED:
+		return false
+
+	var current_amount := InventoryManager.get_amount(objective.target_id)
+
+	return _set_objective_progress(quest_id, objective.objective_id, current_amount)
+
+
+func _reevaluate_inventory_owned_objectives_for_quest(quest_id: StringName) -> bool:
+	if not is_active(quest_id):
+		return false
+
+	var definition := _get_definition(quest_id)
+	if definition == null:
+		return false
+
+	var changed := false
+
+	for objective in definition.objectives:
+		if _reevaluate_inventory_owned_objective(quest_id, objective):
+			changed = true
+
+	return changed
+
+
+func _reevaluate_inventory_owned_objectives_for_item(item_id: StringName) -> void:
+	if item_id.is_empty():
+		return
+
+	for raw_quest_id in _definitions.keys():
+		var quest_id := StringName(raw_quest_id)
+
+		if not is_active(quest_id):
+			continue
+
+		var definition := _get_definition(quest_id)
+		if definition == null:
+			continue
+
+		for objective in definition.objectives:
+			if objective.event_type != QuestObjectiveDefinition.EventType.INVENTORY_OWNED:
+				continue
+
+			if objective.target_id != item_id:
+				continue
+
+			_reevaluate_inventory_owned_objective(quest_id, objective)
+
+
+func _on_inventory_item_changed(item_id: StringName, _amount: int, _new_total: int) -> void:
+	_reevaluate_inventory_owned_objectives_for_item(item_id)
