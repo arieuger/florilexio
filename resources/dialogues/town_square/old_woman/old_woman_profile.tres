@@ -8,9 +8,8 @@
 [ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="4_vpk1j"]
 [ext_resource type="Script" uid="uid://d3638l0gkhmh3" path="res://scripts/dialogue/conditions/quest_objective_completed_condition.gd" id="6_75ost"]
 [ext_resource type="Resource" uid="uid://bjd4erc6e36nt" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_delivery.tres" id="6_dj41s"]
-[ext_resource type="Script" uid="uid://tgj7xbryb6rv" path="res://scripts/dialogue/conditions/inventory_has_plant_condition.gd" id="7_6wpjk"]
+[ext_resource type="Script" uid="uid://c80jbqn0w3lt2" path="res://scripts/dialogue/conditions/inventory_has_condition.gd" id="7_6wpjk"]
 [ext_resource type="Resource" uid="uid://yswocf4cuviv" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_completed.tres" id="9_6wpjk"]
-[ext_resource type="Script" path="res://scripts/dialogue/conditions/inventory_has_item_condition.gd" id="10_i3gkp"]
 [ext_resource type="Resource" uid="uid://d3oaxwuo1jnce" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_show_full_bottle.tres" id="11_osdha"]
 [ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
 
@@ -46,8 +45,8 @@ metadata/_custom_type_script = "uid://d3638l0gkhmh3"
 
 [sub_resource type="Resource" id="Resource_osdha"]
 script = ExtResource("7_6wpjk")
-plant_id = &"malva"
-metadata/_custom_type_script = "uid://tgj7xbryb6rv"
+target_type = 1
+target_id = &"malva"
 
 [sub_resource type="Resource" id="Resource_75ost"]
 script = ExtResource("1_apnri")
@@ -77,8 +76,9 @@ objective_id = &"obtain_park_fountain_water"
 metadata/_custom_type_script = "uid://d3638l0gkhmh3"
 
 [sub_resource type="Resource" id="Resource_qqofs"]
-script = ExtResource("10_i3gkp")
-item_id = &"full_bottle_park_fountain"
+script = ExtResource("7_6wpjk")
+target_type = 6
+target_id = &"full_bottle_park_fountain"
 
 [sub_resource type="Resource" id="Resource_8niit"]
 script = ExtResource("4_vpk1j")

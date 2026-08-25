@@ -111,42 +111,40 @@ static func get_conversation_creation_errors(request: ConversationCreationReques
 					]
 				)
 
-		elif condition is InventoryHasPlantCondition:
-			var inventory_condition := condition as InventoryHasPlantCondition
+		elif condition is InventoryHasCondition:
+			var inventory_condition := condition as InventoryHasCondition
 
-			if inventory_condition.plant_id.is_empty():
-				errors.append("condition %d has no plant selected" % condition_index
-				)
-			elif not index.has_plant(inventory_condition.plant_id):
-				errors.append("condition %d refers to unknown plant '%s'" % [
-						condition_index,
-						inventory_condition.plant_id,
-					]
-				)
+			if inventory_condition.target_id.is_empty():
+				errors.append("condition %d has no inventory target selected" % condition_index)
+			else:
+				match inventory_condition.target_type:
+					QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+						if not index.has_plant(inventory_condition.target_id):
+							errors.append("condition %d refers to unknown plant '%s'" % [
+								condition_index,
+								inventory_condition.target_id,
+							])
 
-			if inventory_condition.amount <= 0:
-				errors.append("condition %d must require at least one plant" % condition_index)
+					QuestObjectiveDefinition.TargetType.ITEM_ID:
+						if not index.has_item(inventory_condition.target_id):
+							errors.append("condition %d refers to unknown item '%s'" % [
+								condition_index,
+								inventory_condition.target_id,
+							])
+						elif index.has_plant(inventory_condition.target_id):
+							errors.append("condition %d refers to plant '%s' as ITEM_ID" % [
+								condition_index,
+								inventory_condition.target_id,
+							])
 
-		elif condition is InventoryHasItemCondition:
-			var inventory_condition := condition as InventoryHasItemCondition
-
-			if inventory_condition.item_id.is_empty():
-				errors.append("condition %d has no item selected" % condition_index)
-			elif not index.has_item(inventory_condition.item_id):
-				errors.append("condition %d refers to unknown item '%s'" % [
-						condition_index,
-						inventory_condition.item_id,
-					]
-				)
-			elif index.has_plant(inventory_condition.item_id):
-				errors.append("condition %d refers to plant '%s' as an item" % [
-						condition_index,
-						inventory_condition.item_id,
-					]
-				)
+					_:
+						errors.append("condition %d has unsupported inventory target type '%s'" % [
+							condition_index,
+							inventory_condition.target_type,
+						])
 
 			if inventory_condition.amount <= 0:
-				errors.append("condition %d must require at least one item" % condition_index)
+				errors.append("condition %d must require at least one inventory item" % condition_index)
 
 
 	if request.save_path.is_empty():

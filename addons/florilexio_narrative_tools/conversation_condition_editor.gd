@@ -9,8 +9,7 @@ enum ConditionType {
 	QUEST_STATUS,
 	QUEST_OBJECTIVE_COMPLETED,
 	CONVERSATION_FINISHED,
-	INVENTORY_HAS_PLANT,
-	INVENTORY_HAS_ITEM,
+	INVENTORY_HAS,
 }
 
 var heading: Label
@@ -21,6 +20,8 @@ var status_selector: OptionButton
 var expected_completed_field: CheckBox
 var conversation_label: Label
 var conversation_selector: OptionButton
+var inventory_target_type_label: Label
+var inventory_target_type_selector: OptionButton
 var plant_label: Label
 var plant_selector: OptionButton
 var item_label: Label
@@ -46,10 +47,8 @@ func _ready() -> void:
 	type_selector.item_selected.connect(_on_type_selected)
 	type_selector.add_item("Conversa finalizada")
 	type_selector.set_item_metadata(2, ConditionType.CONVERSATION_FINISHED)
-	type_selector.add_item("Inventario ten planta")
-	type_selector.set_item_metadata(3, ConditionType.INVENTORY_HAS_PLANT)
-	type_selector.add_item("Inventario ten obxecto")
-	type_selector.set_item_metadata(4, ConditionType.INVENTORY_HAS_ITEM)
+	type_selector.add_item("Inventario ten elemento")
+	type_selector.set_item_metadata(3, ConditionType.INVENTORY_HAS)
 	add_child(type_selector)
 
 	conversation_label = Label.new()
@@ -60,6 +59,26 @@ func _ready() -> void:
 	conversation_selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	add_child(conversation_selector)
 	_populate_conversation_selector()
+
+	inventory_target_type_label = Label.new()
+	inventory_target_type_label.text = "Tipo de elemento"
+	add_child(inventory_target_type_label)
+
+	inventory_target_type_selector = OptionButton.new()
+	inventory_target_type_selector.add_item("Obxecto")
+	inventory_target_type_selector.set_item_metadata(
+		0,
+		QuestObjectiveDefinition.TargetType.ITEM_ID
+	)
+	inventory_target_type_selector.add_item("Especie de planta")
+	inventory_target_type_selector.set_item_metadata(
+		1,
+		QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+	)
+	inventory_target_type_selector.item_selected.connect(
+		_on_inventory_target_type_selected
+	)
+	add_child(inventory_target_type_selector)
 
 	plant_label = Label.new()
 	plant_label.text = "Planta"
@@ -155,26 +174,29 @@ func build_condition() -> ConversationCondition:
 			condition.expected_finished = expected_completed_field.button_pressed
 			return condition
 
-		ConditionType.INVENTORY_HAS_PLANT:
-			var condition := InventoryHasPlantCondition.new()
+		ConditionType.INVENTORY_HAS:
+			var condition := InventoryHasCondition.new()
+			condition.target_type = int(
+				inventory_target_type_selector.get_selected_metadata()
+			)
 
-			var selected_index := plant_selector.selected
+			var selected_index := (
+				plant_selector.selected
+				if condition.target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+				else item_selector.selected
+			)
+			var selected_selector := (
+				plant_selector
+				if condition.target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+				else item_selector
+			)
 			if selected_index >= 0:
-				condition.plant_id = StringName(plant_selector.get_item_metadata(selected_index))
+				condition.target_id = StringName(
+					selected_selector.get_item_metadata(selected_index)
+				)
 
 			condition.amount = int(amount_field.value)
-			condition.expected_has_item = expected_completed_field.button_pressed
-			return condition
-
-		ConditionType.INVENTORY_HAS_ITEM:
-			var condition := InventoryHasItemCondition.new()
-
-			var selected_index := item_selector.selected
-			if selected_index >= 0:
-				condition.item_id = StringName(item_selector.get_item_metadata(selected_index))
-
-			condition.amount = int(amount_field.value)
-			condition.expected_has_item = expected_completed_field.button_pressed
+			condition.expected_has = expected_completed_field.button_pressed
 			return condition
 
 	return null
@@ -196,6 +218,10 @@ func _on_type_selected(_index: int) -> void:
 	_refresh_visibility()
 
 
+func _on_inventory_target_type_selected(_index: int) -> void:
+	_refresh_visibility()
+
+
 func _refresh_visibility() -> void:
 	var condition_type := int(type_selector.get_selected_metadata())
 
@@ -205,8 +231,18 @@ func _refresh_visibility() -> void:
 		or condition_type == ConditionType.QUEST_OBJECTIVE_COMPLETED
 	)
 	var uses_conversation := condition_type == ConditionType.CONVERSATION_FINISHED
-	var uses_plant := condition_type == ConditionType.INVENTORY_HAS_PLANT
-	var uses_item := condition_type == ConditionType.INVENTORY_HAS_ITEM
+	var uses_inventory := condition_type == ConditionType.INVENTORY_HAS
+	var inventory_target_type := int(
+		inventory_target_type_selector.get_selected_metadata()
+	)
+	var uses_plant := (
+		uses_inventory
+		and inventory_target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+	)
+	var uses_item := (
+		uses_inventory
+		and inventory_target_type == QuestObjectiveDefinition.TargetType.ITEM_ID
+	)
 
 	reference_picker.visible = uses_quest
 	reference_picker.set_objective_selection_enabled(condition_type == ConditionType.QUEST_OBJECTIVE_COMPLETED)
@@ -216,6 +252,8 @@ func _refresh_visibility() -> void:
 
 	conversation_label.visible = uses_conversation
 	conversation_selector.visible = uses_conversation
+	inventory_target_type_label.visible = uses_inventory
+	inventory_target_type_selector.visible = uses_inventory
 
 	plant_label.visible = uses_plant
 	plant_selector.visible = uses_plant
@@ -233,11 +271,8 @@ func _refresh_visibility() -> void:
 		ConditionType.CONVERSATION_FINISHED:
 			expected_completed_field.text = "A conversa debe estar finalizada"
 
-		ConditionType.INVENTORY_HAS_PLANT:
-			expected_completed_field.text = "A planta debe estar no inventario"
-
-		ConditionType.INVENTORY_HAS_ITEM:
-			expected_completed_field.text = "O obxecto debe estar no inventario"
+		ConditionType.INVENTORY_HAS:
+			expected_completed_field.text = "O elemento debe estar no inventario"
 
 
 func _populate_conversation_selector() -> void:

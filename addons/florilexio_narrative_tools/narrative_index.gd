@@ -253,24 +253,19 @@ func _index_profile(profile: DialogueProfile, path: String) -> void:
 					"Conversación finalizada"
 				)
 
-			elif condition is InventoryHasPlantCondition:
-				_add_reference(
-					&"plant",
-					condition.plant_id,
-					&"conversation_condition",
-					source_id,
-					path,
-					"Planta en inventario"
+			elif condition is InventoryHasCondition:
+				var reference_type := (
+					&"plant"
+					if condition.target_type == QuestObjectiveDefinition.TargetType.PLANT_SPECIES
+					else &"item"
 				)
-
-			elif condition is InventoryHasItemCondition:
 				_add_reference(
-					&"item",
-					condition.item_id,
+					reference_type,
+					condition.target_id,
 					&"conversation_condition",
 					source_id,
 					path,
-					"Obxecto en inventario"
+					"Elemento en inventario"
 				)
 
 

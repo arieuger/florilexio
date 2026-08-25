@@ -18,5 +18,11 @@ func get_validation_errors() -> PackedStringArray:
 	for index in range(conditions.size()):
 		if conditions[index] == null:
 			errors.append("condition at index %d is null" % index)
+			continue
+
+		for condition_error in conditions[index].get_validation_errors():
+			errors.append(
+				"condition at index %d: %s" % [index, condition_error]
+			)
 
 	return errors

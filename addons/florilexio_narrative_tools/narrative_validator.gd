@@ -184,34 +184,34 @@ func _validate_condition_reference(
 			)
 
 
-	elif condition is InventoryHasPlantCondition:
-		var inventory_condition := condition as InventoryHasPlantCondition
+	elif condition is InventoryHasCondition:
+		var inventory_condition := condition as InventoryHasCondition
 
-		if not inventory_condition.plant_id.is_empty() \
-				and not index.has_plant(inventory_condition.plant_id):
-			_append_missing_reference_issue(
-				&"condition_missing_plant",
-				"Entry %d condition %d refers to unknown plant '%s'." % [entry_index, condition_index, inventory_condition.plant_id, ],
-				path,
-				inventory_condition.plant_id,
-				issues
-			)
+		match inventory_condition.target_type:
+			QuestObjectiveDefinition.TargetType.PLANT_SPECIES:
+				if not inventory_condition.target_id.is_empty() \
+						and not index.has_plant(inventory_condition.target_id):
+					_append_missing_reference_issue(
+						&"condition_missing_plant",
+						"Entry %d condition %d refers to unknown plant '%s'." % [entry_index, condition_index, inventory_condition.target_id],
+						path,
+						inventory_condition.target_id,
+						issues
+					)
 
-	elif condition is InventoryHasItemCondition:
-		var inventory_condition := condition as InventoryHasItemCondition
-
-		if not inventory_condition.item_id.is_empty() \
-				and (
-					not index.has_item(inventory_condition.item_id)
-					or index.has_plant(inventory_condition.item_id)
-				):
-			_append_missing_reference_issue(
-				&"condition_missing_item",
-				"Entry %d condition %d refers to unknown non-plant item '%s'." % [entry_index, condition_index, inventory_condition.item_id, ],
-				path,
-				inventory_condition.item_id,
-				issues
-			)
+			QuestObjectiveDefinition.TargetType.ITEM_ID:
+				if not inventory_condition.target_id.is_empty() \
+						and (
+							not index.has_item(inventory_condition.target_id)
+							or index.has_plant(inventory_condition.target_id)
+						):
+					_append_missing_reference_issue(
+						&"condition_missing_item",
+						"Entry %d condition %d refers to unknown non-plant item '%s'." % [entry_index, condition_index, inventory_condition.target_id],
+						path,
+						inventory_condition.target_id,
+						issues
+					)
 
 func _validate_quest_objective_references(index: NarrativeIndex, issues: Array[NarrativeValidationIssue]) -> void:
 	for record in index.objectives:
