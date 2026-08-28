@@ -278,7 +278,7 @@ func _update_time_label_visibility(tweened := true) -> void:
 			time_label.pivot_offset = time_label.get_minimum_size() * 0.5
 
 			for _pulse in range(2):
-				tween.tween_property(time_label, "scale", Vector2(1.2, 1.2), 0.22) \
+				tween.parallel().tween_property(time_label, "scale", Vector2(1.2, 1.2), 0.22) \
 					.set_trans(Tween.TRANS_QUAD) \
 					.set_ease(Tween.EASE_OUT)
 
