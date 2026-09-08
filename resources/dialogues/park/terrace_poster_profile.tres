@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="DialogueProfile" format=3 uid="uid://3thquqlniy1s"]
 
 [ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_y3soj"]
-[ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_p56tx"]
 [ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_pmd2o"]
 [ext_resource type="Resource" uid="uid://cio4d6orh7te" path="res://resources/dialogues/park/terrace_poster.tres" id="3_qyelb"]
 
