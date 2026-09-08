@@ -11,6 +11,18 @@
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="34_24plp"]
 [ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="35_hdxb8"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_left_boundary"]
+a = Vector2(1, 74)
+b = Vector2(1, 184)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bottom_boundary"]
+a = Vector2(1, 184)
+b = Vector2(240, 184)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_right_boundary"]
+a = Vector2(240, 184)
+b = Vector2(240, 85)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_arrow_default_1"]
 atlas = ExtResource("32_c6r3w")
 region = Rect2(0, 0, 10, 8)
@@ -75,9 +87,9 @@ animations = [{
 size = Vector2(14, 14)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ym5vt"]
-vertices = PackedVector2Array(74.0625, 88.828125, 59.828125, 62.046875, 151.75781, 92.36719, 145.71875, 132.71094, 55.101563, 78.78906, 55.9375, 66.38281, 56.046875, 63.789063, 54.273438, 62.898438, 209.77344, 117.82031, 194.95313, 126.53125, 195.82813, 116.828125, 206.79688, 115.84375, 193.79688, 139.25781, 194.39844, 132.57031, 208.22656, 137.17969, 238, 179, 73.9375, 91.359375, 224, 97.86719, 224, 84, 238, 84, 226.85156, 123.50781, 2.9765625, 179.99219, 2.0078125, 72.5, 59.898438, 97.21094, 208.78906, 98.88281, 227.11719, 126.07031, 33.859375, 75.21094, 41.0625, 84.640625, 20.65625, 67.171875, 22.960938, 68.703125, 22.9375, 69.14844, 32.757813, 75.24219, 33.429688, 74.96875, 40.9375, 87.171875, 26.992188, 71.390625)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4, 5), PackedInt32Array(6, 7, 1), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 0, 3), PackedInt32Array(17, 18, 19, 15, 20), PackedInt32Array(15, 21, 22, 23), PackedInt32Array(8, 11, 24, 17, 20), PackedInt32Array(25, 20, 15), PackedInt32Array(14, 25, 15), PackedInt32Array(5, 6, 1), PackedInt32Array(26, 5, 4, 27), PackedInt32Array(28, 29, 30, 22), PackedInt32Array(23, 16, 3), PackedInt32Array(31, 32, 26, 27, 33), PackedInt32Array(22, 30, 34, 31, 33), PackedInt32Array(3, 12, 15), PackedInt32Array(22, 33, 23), PackedInt32Array(15, 23, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 71, 21, 65, 33, 73, 54, 65, 47, 62, 60, 60, 154, 91, 148, 131, 192, 137, 194, 115, 205, 114, 207, 97, 222, 96, 222, 82, 240, 82, 240, 181, 1, 182)])
+vertices = PackedVector2Array(59.8125, 62.046875, 146.85938, 92.328125, 124.3125, 103.609375, 74.0625, 88.828125, 55.101563, 78.78906, 55.9375, 66.38281, 56.046875, 63.789063, 54.273438, 62.898438, 209.77344, 117.82031, 194.95313, 126.53125, 195.82813, 116.828125, 206.79688, 115.84375, 73.9375, 91.359375, 193.79688, 139.25, 194.39844, 132.57031, 208.22656, 137.17969, 238, 179, 224, 97.86719, 224, 84, 238, 84, 226.85156, 123.50781, 2.9765625, 179.99219, 2.0078125, 72.5, 59.898438, 97.21094, 132.22656, 109.953125, 144, 110.84375, 144, 132.75781, 208.78906, 98.88281, 227.11719, 126.07031, 33.78125, 75.24219, 41.0625, 84.640625, 32.75, 75.24219, 33.390625, 74.99219, 40.9375, 87.171875, 20.65625, 67.171875)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 0), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 3, 2), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 19, 16, 20), PackedInt32Array(16, 21, 22, 23), PackedInt32Array(24, 25, 26), PackedInt32Array(8, 11, 27, 17, 20), PackedInt32Array(28, 20, 16), PackedInt32Array(15, 28, 16), PackedInt32Array(5, 6, 0), PackedInt32Array(29, 5, 4, 30), PackedInt32Array(31, 32, 29, 30, 33), PackedInt32Array(22, 34, 31, 33), PackedInt32Array(23, 12, 2, 24, 26), PackedInt32Array(26, 13, 16), PackedInt32Array(22, 33, 23), PackedInt32Array(16, 23, 26)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 71, 21, 65, 33, 73, 54, 65, 47, 62, 60, 60, 152, 92, 128, 104, 133, 108, 146, 109, 146, 131, 192, 137, 194, 115, 205, 114, 207, 97, 222, 96, 222, 82, 240, 82, 240, 181, 1, 182)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
 agent_radius = 2.0
@@ -104,6 +116,15 @@ position = Vector2(0, -25)
 
 [node name="TopBlocker" type="CollisionPolygon2D" parent="WorldCollision" unique_id=1041640297]
 polygon = PackedVector2Array(2, 76, 45, 64, 53.844578, 66.024124, 61, 64, 154, 94, 196, 117, 205, 117, 206, 102, 222, 99, 222, 87, 238, 87, 239, -25, 0, -25)
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=346011636]
+shape = SubResource("SegmentShape2D_left_boundary")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=1308118140]
+shape = SubResource("SegmentShape2D_bottom_boundary")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=612321358]
+shape = SubResource("SegmentShape2D_right_boundary")
 
 [node name="YSortables" type="Node2D" parent="." unique_id=330749495]
 y_sort_enabled = true

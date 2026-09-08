@@ -146,7 +146,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), Packe
 outlines = Array[PackedVector2Array]([PackedVector2Array(112, 75, 88, 77, 87, 81, 53, 86, 48, 81, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 198, 85, 186, 85, 172, 83, 162, 83, 157, 79)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
-agent_radius = 1.5
+agent_radius = 2.0
 
 [node name="Park" type="Node2D" unique_id=643443187]
 

@@ -129,5 +129,6 @@ editor_draw_drag_margin = true
 position = Vector2(0, -7)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1184201884]
-path_desired_distance = 3.0
+path_desired_distance = 1.5
+path_max_distance = 3.0
 target_desired_distance = 2.0

@@ -287,7 +287,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 82, 136, 85, 140, 90, 139, 90, 101, 159, 101, 159, 135, 176, 135, 182, 141, 211, 139, 214, 134, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
-agent_radius = 1.5
+agent_radius = 2.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0348l"]
 vertices = PackedVector2Array(260.5, 116.5, 290.46875, 106.47656, 309.5, 107.421875, 309.5, 128.50781, 247.5, 123.47656, 286.5, 103.5, 260.5, 110.5, 247.5, 103.5, 252.5, 110.5, 252.5, 116.5, 164.5, 129.47656, 164.5, 102.5, 172.5, 102.5, 172.5, 124.52344)
@@ -295,7 +295,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 106, 291, 105, 287, 102, 246, 102, 246, 122, 174, 123)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
-agent_radius = 1.5
+agent_radius = 2.0
 
 [node name="TownSquare" type="Node2D" unique_id=66873482]
 
