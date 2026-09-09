@@ -12,8 +12,6 @@ signal auto_move_finished(reached: bool)
 @export var auto_move_stuck_time := 0.8
 @export var auto_move_stuck_speed := 3.0
 @export var movement_enabled := true
-@export var navigation_path_desired_distance := 3.0
-@export var navigation_target_desired_distance := 2.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_listener: Node2D = $SoundListener
@@ -34,8 +32,6 @@ var _has_synced_sound_listener := false
 
 func _ready():
 	add_to_group("player")
-	navigation_agent.path_desired_distance = navigation_path_desired_distance
-	navigation_agent.target_desired_distance = navigation_target_desired_distance
 	resync_sound_listener()
 
 func _unhandled_input(event):
@@ -120,7 +116,7 @@ func _process_player_input(delta: float, input_direction: Vector2):
 	if input_direction != Vector2.ZERO:
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)	
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 
 	play_footstep(delta)
 	_update_animation(input_direction)
@@ -145,7 +141,7 @@ func _process_auto_move(delta: float):
 		return
 
 	if navigation_agent.is_navigation_finished():
-		_finish_auto_move(final_distance <= _auto_move_arrival_distance + navigation_target_desired_distance)
+		_finish_auto_move(final_distance <= _auto_move_arrival_distance + navigation_agent.target_desired_distance)
 		return
 
 	if target_offset.length_squared() <= 0.0001:
@@ -168,6 +164,9 @@ func _finish_auto_move(reached: bool):
 	auto_move_finished.emit(reached)
 
 func _start_auto_move(global_target: Vector2, arrival_distance: float, target_area: Area2D = null) -> void:
+	var nav_map := navigation_agent.get_navigation_map()
+	var navigable_target := NavigationServer2D.map_get_closest_point(nav_map, global_target)
+
 	_auto_move_target = global_target
 	_auto_move_arrival_distance = arrival_distance
 	_auto_move_elapsed = 0.0
@@ -176,7 +175,8 @@ func _start_auto_move(global_target: Vector2, arrival_distance: float, target_ar
 	_auto_move_previous_distance = global_position.distance_to(global_target)
 	_auto_move_previous_position = global_position
 	_auto_move_target_area = target_area
-	navigation_agent.target_position = global_target
+	navigation_agent.target_position = navigable_target
+
 
 func _check_auto_move_stuck(delta: float):
 	var current_distance := global_position.distance_to(_auto_move_target)
@@ -260,7 +260,7 @@ func _play_animation_if_needed(animation_name: String) -> void:
 	animated_sprite.play(animation_name)
 
 # Sounds
-const MIN_STEP_GAP := 0.25  # segundos mínimos entre pasos
+const MIN_STEP_GAP := 0.25 # segundos mínimos entre pasos
 const STEP_INTERVAL := 1.5
 var last_step_time := 0.0
 var step_distance := 0.0
@@ -272,7 +272,7 @@ func play_footstep(delta):
 			step_distance = fmod(step_distance, STEP_INTERVAL)
 			play_footstep_sound()
 	else:
-		step_distance = 0.0  # reset ao parar
+		step_distance = 0.0 # reset ao parar
 
 func play_footstep_sound():
 	var now = Time.get_ticks_msec() / 1000.0

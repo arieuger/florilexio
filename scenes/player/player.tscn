@@ -130,5 +130,9 @@ position = Vector2(0, -7)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1184201884]
 path_desired_distance = 1.5
-path_max_distance = 3.0
 target_desired_distance = 2.0
+path_max_distance = 10.0
+simplify_path = true
+simplify_epsilon = 1.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
