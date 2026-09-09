@@ -134,5 +134,4 @@ target_desired_distance = 2.0
 path_max_distance = 10.0
 simplify_path = true
 simplify_epsilon = 1.0
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)

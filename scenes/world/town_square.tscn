@@ -328,6 +328,7 @@ script = ExtResource("29_spawn")
 spawn_id = &"final_player_spawn"
 
 [node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1956318489]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision" unique_id=423251751]
 position = Vector2(31, 114)
@@ -752,9 +753,11 @@ shape = SubResource("RectangleShape2D_park_portal")
 [node name="Navigation" type="Node2D" parent="." unique_id=2045750826]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=170704781]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_iaic6")
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="Navigation" unique_id=174366963]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_0348l")
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=765014364]

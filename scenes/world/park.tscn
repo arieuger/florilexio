@@ -165,6 +165,7 @@ script = ExtResource("1_spawn")
 spawn_id = &"town_gate"
 
 [node name="WorldCollision" type="StaticBody2D" parent="." unique_id=1169935711]
+visible = false
 position = Vector2(0, -25)
 
 [node name="LeftBoundary" type="CollisionShape2D" parent="WorldCollision" unique_id=1472640769]
@@ -519,6 +520,7 @@ position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_ybx22")
 
 [node name="Navigation" type="Node2D" parent="." unique_id=584805140]
+visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=376154472]
 navigation_polygon = SubResource("NavigationPolygon_u8cg4")
