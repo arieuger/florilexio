@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://djk3udbasb80b"
+path="res://.godot/imported/bus_waiter.dialogue-83e7bab4db2f43755d11af9fe8ce333c.tres"
+
+[deps]
+
+source_file="res://dialogues/scene3/bus_waiter.dialogue"
+dest_files=["res://.godot/imported/bus_waiter.dialogue-83e7bab4db2f43755d11af9fe8ce333c.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://muvq55mq1h8h"]
+
+[ext_resource type="Resource" uid="uid://djk3udbasb80b" path="res://dialogues/scene3/bus_waiter.dialogue" id="1_aiqr2"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_mcgpf"]
+
+[resource]
+script = ExtResource("2_mcgpf")
+conversation_id = &"bus_waiter_find_herbs_intro"
+dialogue_resource = ExtResource("1_aiqr2")
+initial_speaker_id = &"bus_waiter"

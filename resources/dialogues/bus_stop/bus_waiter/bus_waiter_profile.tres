@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueProfile" format=3 uid="uid://cu45yt30rblm6"]
+
+[ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_obq8h"]
+[ext_resource type="Resource" uid="uid://muvq55mq1h8h" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_find_herbs_intro.tres" id="2_hfsx5"]
+[ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_llcej"]
+
+[sub_resource type="Resource" id="Resource_sag28"]
+script = ExtResource("1_obq8h")
+conversation = ExtResource("2_hfsx5")
+priority = 90
+repeatable = true
+
+[resource]
+script = ExtResource("2_llcej")
+profile_id = &"bus_waiter"
+entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28")])
+metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"
