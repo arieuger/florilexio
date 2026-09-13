@@ -9,11 +9,15 @@ extends Node2D
 @onready var hover_sprite: CanvasItem = $HoverSprite
 @onready var click_area: Area2D = $ClickArea
 @onready var interaction_point: Node2D = $InteractionPoint
+@onready var time_warn_sprite: Sprite2D = $TimeWarn
 
+var _time_warn_base_y: float
 var _hover_tween: Tween
+var _time_warn_tween: Tween
 var _is_interacting := false
 
 func _ready():
+	_time_warn_base_y = time_warn_sprite.position.y
 	_make_hover_ignore_world_tint()
 	hover_sprite.modulate = Color(hover_color.r, hover_color.g, hover_color.b, 0.0)
 	_update_availability()
@@ -25,14 +29,17 @@ func _ready():
 	click_area.input_event.connect(_on_input_event)
 
 func _on_mouse_entered():
-	if not _can_interact():
-		return
+	if _is_interacting or not _is_available():
+		return false
+
+	var conversation: ConversationDefinition = _resolve_conversation()
+	if conversation == null: return
 
 	SoundManager.play_simple_sound("Actions/Hover")
-	_fade_hover_to(hover_color.a)
+	_fade_tweens_to(hover_color.a, conversation.time_cost_blocks > 0.0)
 
 func _on_mouse_exited():
-	_fade_hover_to(0.0)
+	_fade_tweens_to(0.0)
 
 func _on_input_event(viewport, event, _shape_idx):
 	if not _can_interact():
@@ -52,7 +59,7 @@ func _interact() -> void:
 		return
 
 	_is_interacting = true
-	_fade_hover_to(0.0)
+	_fade_tweens_to(0.0)
 	SoundManager.play_simple_sound("Actions/Click")
 
 	if interaction_point:
@@ -66,12 +73,12 @@ func _interact() -> void:
 			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:
 				_is_interacting = false
-				_fade_hover_to(0.0)
+				_fade_tweens_to(0.0)
 				return
 
 	await DialogueBalloonCoordinator.play(selected_conversation, [self])
 	_is_interacting = false
-	_fade_hover_to(0.0)
+	_fade_tweens_to(0.0)
 	
 	_on_conversation_finished(selected_conversation.conversation_id)
 
@@ -93,7 +100,7 @@ func _update_availability() -> void:
 	click_area.monitorable = available
 
 	if not available:
-		_fade_hover_to(0.0)
+		_fade_tweens_to(0.0)
 
 
 func _can_interact() -> bool:
@@ -103,18 +110,28 @@ func _can_interact() -> bool:
 	return _resolve_conversation() != null
 		
 
-func _fade_hover_to(target_alpha: float):
+func _fade_tweens_to(target_alpha: float, show_time_warning := false) -> void:
 	if _hover_tween:
 		_hover_tween.kill()
-	
-	_hover_tween = create_tween()
-	_hover_tween.tween_property(hover_sprite, "modulate:a", target_alpha, hover_fade_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
+	_hover_tween = create_tween()
+	_hover_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_hover_tween.tween_property(hover_sprite, "modulate:a", target_alpha, hover_fade_duration)
 	
+	if _time_warn_tween:
+		_time_warn_tween.kill()
+
+	if show_time_warning and target_alpha > 0.0:
+		_time_warn_tween = UITweens.pop_tween(time_warn_sprite, _time_warn_base_y)
+	else:
+		_time_warn_tween = UITweens.hide_tween(time_warn_sprite)
+
+
 func _make_hover_ignore_world_tint() -> void:
 	var hover_material := CanvasItemMaterial.new()
 	hover_material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	hover_sprite.material = hover_material
+	time_warn_sprite.material = hover_material
 
 
 func _resolve_conversation() -> ConversationDefinition:

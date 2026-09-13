@@ -1,6 +1,6 @@
 class_name UITweens
 
-static func pop_tween(control: Control, base_y: float) -> Tween:
+static func pop_tween(control: CanvasItem, base_y: float) -> Tween:
 	var tween = control.create_tween()
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_OUT)
@@ -38,7 +38,7 @@ static func pop_tween(control: Control, base_y: float) -> Tween:
 	return tween
 
 
-static func hide_tween(control: Control) -> Tween:
+static func hide_tween(control: CanvasItem) -> Tween:
 	var tween = control.create_tween()
 	tween.parallel().tween_property(
 		control,

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://oqpilop87x70"]
 
 [ext_resource type="Script" uid="uid://doffkk6u6ewot" path="res://scripts/interactables/npc.gd" id="1_dngen"]
+[ext_resource type="Texture2D" uid="uid://buuw1ceu26ng8" path="res://assets/sprites/ui/time_warn.png" id="3_2asdl"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="3_jkvbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkvbc"]
@@ -26,3 +27,8 @@ offset = Vector2(2, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=654827359]
 shape = SubResource("RectangleShape2D_jkvbc")
+
+[node name="TimeWarn" type="Sprite2D" parent="." unique_id=280577781]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -12)
+texture = ExtResource("3_2asdl")

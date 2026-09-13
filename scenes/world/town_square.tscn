@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://bdt2hrn527rbd" path="res://resources/dialogues/town_square/school_board_profile.tres" id="14_0348l"]
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
+[ext_resource type="Texture2D" uid="uid://buuw1ceu26ng8" path="res://assets/sprites/ui/time_warn.png" id="15_cgq1g"]
 [ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
@@ -441,6 +442,9 @@ texture = ExtResource("7_dg77c")
 position = Vector2(6, -3)
 shape = SubResource("RectangleShape2D_old_woman_click")
 
+[node name="TimeWarn" parent="YSortables/BenchRight/OldWoman" index="4" unique_id=280577781]
+position = Vector2(7, -14)
+
 [node name="Bird" type="Node2D" parent="YSortables" unique_id=1591479614]
 position = Vector2(114, 118)
 script = ExtResource("10_kdqtp")
@@ -476,6 +480,11 @@ offset = Vector2(2, -9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSortables/Bird/ClickArea" unique_id=2049842626]
 position = Vector2(2, -10.0625)
 shape = SubResource("RectangleShape2D_0348l")
+
+[node name="TimeWarn" type="Sprite2D" parent="YSortables/Bird" unique_id=2109640570]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(3, -17)
+texture = ExtResource("15_cgq1g")
 
 [node name="Trees" type="Node2D" parent="YSortables" unique_id=100362649 groups=["nav_obstacle"]]
 position = Vector2(93, 107)
