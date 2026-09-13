@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_8afob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1822447936]
 sprite_frames = SubResource("SpriteFrames_dovo2")
-animation = &"walk_down"
+animation = &"idle_down"
 speed_scale = 1.4
 centered = false
 offset = Vector2(-3, -9)

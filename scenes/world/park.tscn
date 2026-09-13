@@ -141,12 +141,12 @@ size = Vector2(14, 14)
 size = Vector2(249, 72)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8cg4"]
-vertices = PackedVector2Array(45.257813, 106.859375, 49.5, 102.61719, 117.64844, 102.5, 130.42969, 102.5, 184.5, 104.5, 49.960938, 112.74219, 45.84375, 111.359375, 192.5, 131.5, 232.5, 131.5, 187.5, 134.5, 198.45313, 86.5, 224.5, 104.5, 139.5, 96.828125, 139.5, 90.828125, 185.89063, 86.5, 232.5, 120.5, 244.5, 86.359375, 244.5, 178.5, 106.5, 96.92969, 49.5, 96.921875, 31.75, 111.03125, 36.382813, 116.77344, 17.789063, 119.90625, 224.5, 115.5, 192.5, 120.5, 184.5, 115.5, 53.75, 121.796875, 187.5, 128.5, 174.5, 128.5, 1.5, 178.5, 174.5, 134.5, 204.39063, 82.53906, 52.46875, 87.59375, 88.21094, 82.34375, 106.5, 90.828125, 38.328125, 93.203125, 52.390625, 116.38281, 49.890625, 123.72656, 47.1875, 121.92969, 45.09375, 124.03125, 171.92969, 84.5, 161.46875, 84.5, 111.99219, 76.5, 156.39844, 80.4375, 130.17969, 88.5, 115.82031, 88.5, 89.1875, 78.39844, 1.5, 88.32031, 47.460938, 82.578125, 17.671875, 93.203125, 10.578125, 112.703125, 22.078125, 100.5625, 33.921875, 100.5625, 23.039063, 105.22656, 10.7421875, 106.859375, 6.5, 96.921875, 6.5, 102.61719)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 9), PackedInt32Array(10, 11, 4, 12, 13, 14), PackedInt32Array(8, 15, 16, 17), PackedInt32Array(18, 2, 1, 19), PackedInt32Array(20, 0, 6, 21, 22), PackedInt32Array(23, 15, 24, 25), PackedInt32Array(26, 25, 24, 27, 28), PackedInt32Array(7, 9, 27, 24), PackedInt32Array(8, 17, 29, 9), PackedInt32Array(30, 9, 29), PackedInt32Array(16, 15, 23, 11), PackedInt32Array(31, 16, 11, 10), PackedInt32Array(32, 33, 34, 18, 19, 35), PackedInt32Array(4, 25, 26, 36), PackedInt32Array(26, 28, 30, 29, 37), PackedInt32Array(38, 37, 29, 39), PackedInt32Array(21, 39, 29, 22), PackedInt32Array(40, 14, 13, 41), PackedInt32Array(42, 43, 41, 13, 44), PackedInt32Array(42, 44, 45), PackedInt32Array(46, 42, 45, 34, 33), PackedInt32Array(47, 48, 32, 35, 49), PackedInt32Array(4, 36, 5), PackedInt32Array(50, 22, 29), PackedInt32Array(51, 35, 52, 53, 54), PackedInt32Array(35, 51, 49), PackedInt32Array(47, 49, 55), PackedInt32Array(29, 47, 55, 56), PackedInt32Array(50, 29, 56, 54), PackedInt32Array(53, 50, 54), PackedInt32Array(20, 53, 52, 0), PackedInt32Array(4, 3, 12)])
+vertices = PackedVector2Array(191.5, 132.5, 233.5, 132.5, 188.5, 135.5, 243.5, 87.27344, 243.5, 177.5, 233.5, 119.5, 225.5, 116.5, 222.5, 119.5, 222.5, 118.5, 33.578125, 111.046875, 45.429688, 108.10156, 45.726563, 110.27344, 34.632813, 116.61719, 17.648438, 121.1875, 95.5, 104.5, 50.5, 103.03906, 50.5, 96.203125, 105.5, 97.546875, 117.40625, 103.5, 109.5, 104.5, 183.5, 116.5, 205.5, 118.5, 188.5, 127.5, 191.5, 119.5, 95.5, 111.5, 109.5, 111.5, 173.5, 127.5, 54.90625, 122.34375, 53.320313, 115.96875, 136.5, 85.5, 136.5, 89.03906, 130.3125, 87.5, 131.5, 85.5, 2.5, 177.5, 173.5, 137.5, 205.5, 85.5, 205.5, 83.64844, 225.5, 103.5, 144.5, 85.5, 144.5, 80.390625, 156.03125, 81.421875, 150.5, 85.5, 183.5, 103.5, 130.71875, 103.5, 201.75781, 85.5, 198.75781, 87.5, 185.82031, 87.5, 99.5, 134.5, 158.5, 130.5, 158.5, 137.5, 90.5, 137.5, 99.5, 127.5, 52.117188, 88.65625, 89.02344, 83.22656, 105.5, 90.046875, 37.890625, 91.99219, 161.11719, 85.5, 171.85938, 85.5, 150.5, 92.5, 140.5, 97.390625, 140.5, 92.5, 205.5, 119.5, 173.5, 130.5, 71.5, 127.5, 71.5, 134.5, 77.5, 134.5, 77.5, 137.5, 90.5, 134.5, 173.5, 135.5, 91.5, 81.5, 91.5, 79.21094, 111.97656, 77.5, 115.6875, 87.5, 131.5, 79.24219, 50.601563, 111.89844, 45.148438, 125.38281, 47.3125, 123.21094, 49.820313, 124.88281, 89.453125, 81.5, 2.5, 89.203125, 47.09375, 83.63281, 18.109375, 91.99219, 8.96875, 112.5, 23.46875, 100.92969, 32.53125, 100.92969, 23.070313, 104.03906, 5.5, 96.203125, 5.5, 103.03906, 10.5703125, 108.10156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 1, 5), PackedInt32Array(6, 5, 7, 8), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19), PackedInt32Array(20, 6, 8, 21), PackedInt32Array(0, 2, 22, 23), PackedInt32Array(24, 25, 20, 23, 22, 26, 27, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(2, 1, 4, 33, 34), PackedInt32Array(35, 36, 3, 37), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(42, 20, 25, 19, 43), PackedInt32Array(3, 5, 6, 37), PackedInt32Array(44, 35, 37, 42, 45), PackedInt32Array(46, 45, 42), PackedInt32Array(47, 48, 49, 33, 50), PackedInt32Array(48, 47, 51), PackedInt32Array(52, 53, 54, 17, 16, 55), PackedInt32Array(56, 57, 46, 42, 58), PackedInt32Array(59, 60, 58, 42), PackedInt32Array(21, 61, 23, 20), PackedInt32Array(27, 26, 62, 48, 51), PackedInt32Array(27, 51, 63), PackedInt32Array(64, 65, 66, 33), PackedInt32Array(50, 67, 47), PackedInt32Array(34, 68, 2), PackedInt32Array(49, 34, 33), PackedInt32Array(66, 50, 33), PackedInt32Array(54, 69, 70, 71, 72), PackedInt32Array(71, 73, 32, 31, 72), PackedInt32Array(14, 24, 28, 74, 15), PackedInt32Array(75, 76, 77, 33), PackedInt32Array(53, 78, 69, 54), PackedInt32Array(41, 40, 56, 58), PackedInt32Array(27, 63, 64, 33, 77), PackedInt32Array(12, 75, 33, 13), PackedInt32Array(79, 80, 52, 55, 81), PackedInt32Array(82, 13, 33), PackedInt32Array(83, 55, 84, 85), PackedInt32Array(55, 83, 81), PackedInt32Array(79, 81, 86), PackedInt32Array(33, 79, 86, 87), PackedInt32Array(82, 33, 87), PackedInt32Array(82, 87, 88), PackedInt32Array(85, 82, 88, 83), PackedInt32Array(9, 85, 84, 10), PackedInt32Array(74, 11, 10, 15), PackedInt32Array(43, 59, 42), PackedInt32Array(19, 18, 43)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(112, 75, 88, 77, 87, 81, 53, 86, 48, 81, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 198, 85, 186, 85, 172, 83, 162, 83, 157, 79)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
-agent_radius = 2.0
+agent_radius = 2.5
 
 [node name="Park" type="Node2D" unique_id=643443187]
 
@@ -354,100 +354,100 @@ texture = ExtResource("11_2q76u")
 position = Vector2(-1.875, -4.875)
 shape = SubResource("RectangleShape2D_u8cg4")
 
-[node name="Fiuncho" parent="YSortables" unique_id=1542834651 instance=ExtResource("9_hgbhm")]
+[node name="Fiuncho" parent="YSortables" unique_id=1542834651 groups=["nav_obstacle"] instance=ExtResource("9_hgbhm")]
 position = Vector2(84, 160)
 collection_id = &"fiuncho2"
 
-[node name="Fiuncho2" parent="YSortables" unique_id=2044105780 instance=ExtResource("9_hgbhm")]
+[node name="Fiuncho2" parent="YSortables" unique_id=2044105780 groups=["nav_obstacle"] instance=ExtResource("9_hgbhm")]
 position = Vector2(78, 157)
 collection_id = &"fiuncho1"
 
-[node name="Malva" parent="YSortables" unique_id=732674066 instance=ExtResource("10_ynua0")]
+[node name="Malva" parent="YSortables" unique_id=732674066 groups=["nav_obstacle"] instance=ExtResource("10_ynua0")]
 position = Vector2(92, 157)
 collection_id = &"malva1"
 
-[node name="Malva2" parent="YSortables" unique_id=1390093559 instance=ExtResource("10_ynua0")]
+[node name="Malva2" parent="YSortables" unique_id=1390093559 groups=["nav_obstacle"] instance=ExtResource("10_ynua0")]
 position = Vector2(166, 160)
 collection_id = &"malva2"
 
-[node name="Romeu" parent="YSortables" unique_id=1219994463 instance=ExtResource("12_ynua0")]
+[node name="Romeu" parent="YSortables" unique_id=1219994463 groups=["nav_obstacle"] instance=ExtResource("12_ynua0")]
 position = Vector2(193, 134)
 collection_id = &"romeu1"
 
-[node name="Romeu2" parent="YSortables" unique_id=1827974212 instance=ExtResource("12_ynua0")]
+[node name="Romeu2" parent="YSortables" unique_id=1827974212 groups=["nav_obstacle"] instance=ExtResource("12_ynua0")]
 position = Vector2(217, 134)
 collection_id = &"romeu2"
 
-[node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
+[node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 groups=["nav_obstacle"] instance=ExtResource("12_hebut")]
 position = Vector2(205, 134)
 collection_id = &"herba_luisa1"
 
-[node name="Xesta" parent="YSortables" unique_id=97273433 instance=ExtResource("13_wlbh6")]
+[node name="Xesta" parent="YSortables" unique_id=97273433 groups=["nav_obstacle"] instance=ExtResource("13_wlbh6")]
 position = Vector2(186, 108)
 collection_id = &"xesta1"
 
-[node name="Xesta2" parent="YSortables" unique_id=1274703653 instance=ExtResource("13_wlbh6")]
+[node name="Xesta2" parent="YSortables" unique_id=1274703653 groups=["nav_obstacle"] instance=ExtResource("13_wlbh6")]
 position = Vector2(164, 105)
 collection_id = &"xesta2"
 
-[node name="Fento" parent="YSortables" unique_id=837198377 instance=ExtResource("14_0lm4f")]
+[node name="Fento" parent="YSortables" unique_id=837198377 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
 position = Vector2(56, 108)
 collection_id = &"fento1"
 
-[node name="Fento2" parent="YSortables" unique_id=228511052 instance=ExtResource("14_0lm4f")]
+[node name="Fento2" parent="YSortables" unique_id=228511052 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
 position = Vector2(69, 105)
 collection_id = &"fento2"
 
-[node name="Hiperico" parent="YSortables" unique_id=1109796564 instance=ExtResource("15_rs8wy")]
+[node name="Hiperico" parent="YSortables" unique_id=1109796564 groups=["nav_obstacle"] instance=ExtResource("15_rs8wy")]
 position = Vector2(102, 134)
 collection_id = &"hiperico1"
 
-[node name="Hiperico2" parent="YSortables" unique_id=1258944915 instance=ExtResource("15_rs8wy")]
+[node name="Hiperico2" parent="YSortables" unique_id=1258944915 groups=["nav_obstacle"] instance=ExtResource("15_rs8wy")]
 position = Vector2(143, 115)
 collection_id = &"hiperico2"
 
-[node name="Fento4" parent="YSortables" unique_id=136460072 instance=ExtResource("14_0lm4f")]
+[node name="Fento4" parent="YSortables" unique_id=136460072 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
 position = Vector2(175, 105)
 collection_id = &"fento4"
 
-[node name="Tominho" parent="YSortables" unique_id=727921110 instance=ExtResource("16_kuagl")]
+[node name="Tominho" parent="YSortables" unique_id=727921110 groups=["nav_obstacle"] instance=ExtResource("16_kuagl")]
 position = Vector2(225, 150)
 collection_id = &"tominho1"
 
-[node name="Tominho2" parent="YSortables" unique_id=2072385559 instance=ExtResource("16_kuagl")]
+[node name="Tominho2" parent="YSortables" unique_id=2072385559 groups=["nav_obstacle"] instance=ExtResource("16_kuagl")]
 position = Vector2(201, 150)
 collection_id = &"tominho2"
 
-[node name="Ruda" parent="YSortables" unique_id=1464132476 instance=ExtResource("17_bkeyp")]
+[node name="Ruda" parent="YSortables" unique_id=1464132476 groups=["nav_obstacle"] instance=ExtResource("17_bkeyp")]
 position = Vector2(213, 149)
 
-[node name="Mimosa" parent="YSortables" unique_id=1792863130 instance=ExtResource("19_1okcc")]
+[node name="Mimosa" parent="YSortables" unique_id=1792863130 groups=["nav_obstacle"] instance=ExtResource("19_1okcc")]
 position = Vector2(84, 104)
 collection_id = &"mimosa1"
 
-[node name="Mimosa2" parent="YSortables" unique_id=1367409711 instance=ExtResource("19_1okcc")]
+[node name="Mimosa2" parent="YSortables" unique_id=1367409711 groups=["nav_obstacle"] instance=ExtResource("19_1okcc")]
 position = Vector2(198, 108)
 collection_id = &"mimosa2"
 
-[node name="PCuco" parent="YSortables" unique_id=1235862383 instance=ExtResource("19_3hvtc")]
+[node name="PCuco" parent="YSortables" unique_id=1235862383 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
 position = Vector2(59, 160)
 collection_id = &"pan-de-cuco2"
 
-[node name="PCuco2" parent="YSortables" unique_id=483703657 instance=ExtResource("19_3hvtc")]
+[node name="PCuco2" parent="YSortables" unique_id=483703657 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
 position = Vector2(48, 159)
 collection_id = &"pan-de-cuco3"
 
-[node name="PCuco3" parent="YSortables" unique_id=111787892 instance=ExtResource("19_3hvtc")]
+[node name="PCuco3" parent="YSortables" unique_id=111787892 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
 position = Vector2(66, 155)
 collection_id = &"pan-de-cuco1"
 
-[node name="Pervinca" parent="YSortables" unique_id=919881374 instance=ExtResource("20_m4b7g")]
+[node name="Pervinca" parent="YSortables" unique_id=919881374 groups=["nav_obstacle"] instance=ExtResource("20_m4b7g")]
 position = Vector2(147, 132)
 
-[node name="Pervinca2" parent="YSortables" unique_id=1836051713 instance=ExtResource("20_m4b7g")]
+[node name="Pervinca2" parent="YSortables" unique_id=1836051713 groups=["nav_obstacle"] instance=ExtResource("20_m4b7g")]
 position = Vector2(156, 127)
 
-[node name="PeDeBoi" parent="YSortables" unique_id=791538594 instance=ExtResource("26_r2kch")]
+[node name="PeDeBoi" parent="YSortables" unique_id=791538594 groups=["nav_obstacle"] instance=ExtResource("26_r2kch")]
 position = Vector2(138, 108)
 
 [node name="Firefly" parent="YSortables" unique_id=155381040 instance=ExtResource("30_sl8ky")]
@@ -520,7 +520,6 @@ position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_ybx22")
 
 [node name="Navigation" type="Node2D" parent="." unique_id=584805140]
-visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=376154472]
 navigation_polygon = SubResource("NavigationPolygon_u8cg4")
