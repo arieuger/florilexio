@@ -8,7 +8,7 @@ signal _active_conversation_resolved
 
 const DEFAULT_CONVERSATION_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/conversation_balloon.tscn")
 const DEFAULT_INFO_BALLOON_SCENE: PackedScene = preload("res://ui/dialogue/generic_info_balloon.tscn")
-const GENERAL_INFO_DIALOGUE : DialogueResource = preload("res://dialogues/info.dialogue")
+const GENERAL_INFO_DIALOGUE: DialogueResource = preload("res://dialogues/info.dialogue")
 
 var is_running := false
 var active_conversation: ConversationDefinition
@@ -50,6 +50,11 @@ func play(conversation: ConversationDefinition, extra_game_states: Array = []) -
 			% [conversation.initial_speaker_id, conversation.conversation_id])
 		return false
 
+	var time_cost_blocks := conversation.time_cost_blocks
+	if not is_finite(time_cost_blocks) or time_cost_blocks < 0.0:
+		push_warning("DialogueBalloonCoordinator: invalid conversation time cost.")
+		return false
+
 	is_running = true
 	active_conversation = conversation
 	active_speaker_id = conversation.initial_speaker_id
@@ -87,6 +92,7 @@ func play(conversation: ConversationDefinition, extra_game_states: Array = []) -
 	_clear_active_conversation()
 
 	if finished_normally:
+		GameState.add_consumed_time(time_cost_blocks)
 		conversation_finished.emit(resolved_conversation_id)
 		GameplayEvents.report_dialogue_completed(resolved_conversation_id, resolved_start_title)
 	else:
@@ -221,11 +227,10 @@ func _apply_info_replacements(message: String, replacements: Dictionary) -> Stri
 	return resolved_message
 
 
-
 func _prepare_initial_speaker_balloon(balloon: Node, speaker_id: StringName) -> void:
 	var speaker := _get_dialogue_speaker(speaker_id)
 	if not is_instance_valid(speaker):
-		push_warning("DialogueBalloonCoordinator: initial speaker '%s' was not found."% speaker_id)
+		push_warning("DialogueBalloonCoordinator: initial speaker '%s' was not found." % speaker_id)
 		SoundManager.set_global_parameter("VoiceType", 0.0)
 		await _prepare_world_balloon(balloon, Vector2.ZERO, Color.WHITE)
 		return
@@ -306,7 +311,7 @@ func _on_active_balloon_tree_exited() -> void:
 	if not is_running:
 		return
 
-	_resolve_active_session(false,&"balloon_exited")
+	_resolve_active_session(false, &"balloon_exited")
 
 func _resolve_active_session(finished: bool, interruption_reason: StringName = &"") -> void:
 	if not is_running or _active_session_resolved:

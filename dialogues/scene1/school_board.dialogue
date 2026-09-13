@@ -12,6 +12,5 @@ Exame\: 7 de setembro, aula 7G.
 Data límite de entrega\: 7 de setembro
 
 if not GameState.acknowledged_invasive_plants:
-	do GameState.add_consumed_time(1)
 	set GameState.acknowledged_invasive_plants = true
 => END

@@ -7,13 +7,11 @@ alááá na foooooonte\nte haaaaaas de lavaaar,
 e a freeeeeesca aaaaauga\ndeeeesta amañeciiiiida
 cooooooor da cereixa\nche teeeen que daaaaar.
 Uuuuuuuh….. Aaaaaaah….. Uuuuuuh……. Ooooaaaaah…. 
-do GameState.add_consumed_time(1)
 => END
 
 ~ font_giving_bottle
 font: Irás ao abrente do día\na auga fresca catar
 da auga do paxariño\nque saúde che ha de dar” 
-do GameState.add_consumed_time(1)
 do InventoryManager.add_item("full_bottle_park_fountain", 1)
 do InventoryManager.remove_item("plastic_bottle", 1)
 => END

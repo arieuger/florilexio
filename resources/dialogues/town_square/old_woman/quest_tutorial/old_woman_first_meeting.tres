@@ -10,3 +10,4 @@ dialogue_resource = ExtResource("1_3yix4")
 start_title = "first_meeting"
 initial_speaker_id = &"old_woman"
 metadata/_custom_type_script = "uid://c5fcus2dkgobv"
+time_cost_blocks = 1.0
