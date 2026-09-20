@@ -1,17 +1,50 @@
 [gd_resource type="Resource" script_class="DialogueProfile" format=3 uid="uid://cu45yt30rblm6"]
 
 [ext_resource type="Script" uid="uid://bjgo1b0t5uf5o" path="res://scripts/dialogue/conversation_entry.gd" id="1_obq8h"]
-[ext_resource type="Resource" uid="uid://muvq55mq1h8h" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_find_herbs_intro.tres" id="2_hfsx5"]
 [ext_resource type="Script" uid="uid://bxwrsx1p4sj8v" path="res://scripts/dialogue/dialogue_profile.gd" id="2_llcej"]
+[ext_resource type="Script" uid="uid://cajmaj3yvf36d" path="res://scripts/dialogue/conditions/conversation_condition.gd" id="2_sag28"]
+[ext_resource type="Script" uid="uid://b7quctdo3ui46" path="res://scripts/dialogue/conditions/condition_group.gd" id="3_54cdn"]
+[ext_resource type="Script" uid="uid://bmc7bf1pxype4" path="res://scripts/dialogue/conditions/conversation_finished_condition.gd" id="3_wstug"]
+[ext_resource type="Resource" uid="uid://muvq55mq1h8h" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_fallback_before_mission.tres" id="5_54cdn"]
+[ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="6_7vdgf"]
+[ext_resource type="Resource" uid="uid://bck78gurg68ha" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_intro_explain_herbs.tres" id="7_dsu67"]
+
+[sub_resource type="Resource" id="Resource_7vdgf"]
+script = ExtResource("3_wstug")
+conversation_id = &"old_woman_tutorial_delivery"
+expected_finished = false
+metadata/_custom_type_script = "uid://bmc7bf1pxype4"
+
+[sub_resource type="Resource" id="Resource_wstug"]
+script = ExtResource("3_54cdn")
+mode = 1
+conditions = Array[ExtResource("2_sag28")]([SubResource("Resource_7vdgf")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
 
 [sub_resource type="Resource" id="Resource_sag28"]
 script = ExtResource("1_obq8h")
-conversation = ExtResource("2_hfsx5")
+conversation = ExtResource("5_54cdn")
 priority = 90
 repeatable = true
+is_fallback = true
+condition_group = SubResource("Resource_wstug")
+
+[sub_resource type="Resource" id="Resource_a5epu"]
+script = ExtResource("6_7vdgf")
+quest_id = &"01_collect_first_herbs"
+
+[sub_resource type="Resource" id="Resource_qw8yh"]
+script = ExtResource("3_54cdn")
+conditions = Array[ExtResource("2_sag28")]([SubResource("Resource_a5epu")])
+
+[sub_resource type="Resource" id="Resource_ymums"]
+script = ExtResource("1_obq8h")
+conversation = ExtResource("7_dsu67")
+priority = 91
+condition_group = SubResource("Resource_qw8yh")
 
 [resource]
 script = ExtResource("2_llcej")
 profile_id = &"bus_waiter"
-entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28")])
+entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28"), SubResource("Resource_ymums")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cjwic7sj1ydvb"]
 
-[ext_resource type="Resource" uid="uid://bfq3xl1uuros8" path="res://resources/items/plants/dedaleira.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_l4gmu"]
 [ext_resource type="Texture2D" uid="uid://cyu5wopn17g2f" path="res://assets/sprites/environment/plants/dedaleira.png" id="2_yte3j"]
 [ext_resource type="Texture2D" uid="uid://bs62l2fmkkb1q" path="res://assets/sprites/environment/plants/dedaleira_hover.png" id="3_2var2"]
+[ext_resource type="Resource" uid="uid://bfq3xl1uuros8" path="res://resources/items/plants/dedaleira.tres" id="plant_data"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2var2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ipta"]
 resource_local_to_scene = true
 size = Vector2(7, 10)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7ipta"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e83tw"]
 resource_local_to_scene = true
 radius = 8.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e83tw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtjmc"]
 resource_local_to_scene = true
 size = Vector2(7, 1.75)
 
@@ -31,18 +31,21 @@ position = Vector2(-1, 0)
 texture = ExtResource("3_2var2")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
+visible = false
 position = Vector2(1.5, -6)
-shape = SubResource("RectangleShape2D_2var2")
+shape = SubResource("RectangleShape2D_7ipta")
 
 [node name="InteractionPoint" parent="." index="3" unique_id=2011579778]
 position = Vector2(1, -1)
 
 [node name="CollisionShape2D" parent="InteractionPoint" index="0" unique_id=2094798677]
-shape = SubResource("CircleShape2D_7ipta")
+visible = false
+shape = SubResource("CircleShape2D_e83tw")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
+visible = false
 position = Vector2(1.5, -1.875)
-shape = SubResource("RectangleShape2D_e83tw")
+shape = SubResource("RectangleShape2D_rtjmc")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]
 offset_left = -5.0

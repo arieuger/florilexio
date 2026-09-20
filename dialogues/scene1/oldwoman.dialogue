@@ -14,18 +14,20 @@ Anda, non lle fagas caso e achégate,\nque eu son máis de parolar que de trabar
 Así é como poderás recoñecelas…
 [shake rate=10 level=2]bssbssbss….[/shake]
 do FlorilexioManager.unlock_knowledge("malva", "name")
-do FlorilexioManager.unlock_knowledge("malva", "formal_description") 
+do FlorilexioManager.unlock_knowledge("malva", "description") 
+do FlorilexioManager.unlock_knowledge("malva", "locations") 
 
 # TESTING!
-do FlorilexioManager.unlock_knowledge("malva", "scientific_name")
-do FlorilexioManager.unlock_knowledge("malva", "visual_reference") 
-do FlorilexioManager.unlock_knowledge("malva", "reference_proverb_1")
-do FlorilexioManager.unlock_knowledge("malva", "test_marginalia")
+# do FlorilexioManager.unlock_knowledge("malva", "scientific_name")
+# do FlorilexioManager.unlock_knowledge("malva", "visual_reference") 
+# do FlorilexioManager.unlock_knowledge("malva", "reference_proverb_1")
+# do FlorilexioManager.unlock_knowledge("malva", "test_marginalia")
 Para apañar as malvas, preme na barra\ncando vexas que o talo cambia\nde cor para poder tronzalo.
 Pero ollo que non che veña enriba a noite\nou perderás de saltar as fogueiras\ne esconxurar as meigas!
 
 # TODO: acknowledged_magic_plants igual deixa de sernos útil
 do QuestManager.start_quest("00_old_woman_tutorial")
+do GameState.add_consumed_time(1)
 set GameState.acknowledged_magic_plants = true
 => END
 
@@ -47,7 +49,12 @@ Anda, bule e tráeme as herbiñas para facermos o esconxuro.\nDe seguro que aqu�
 e herba de Santa María. E precisaremos xesta, fento e fiuncho\ne algunha herba que pica e algunha outra que sanda.
 E traerás os estalos, que son da mesma cor da malva,\npero ollo con confundilos\: estoura se o estrullas, se o tragas envelena
 do FlorilexioManager.unlock_knowledge("dedaleira", "name")
-# TODO: Cal é a herba de santa maría?
+do FlorilexioManager.unlock_knowledge("herba_luisa", "name")
+do FlorilexioManager.unlock_knowledge("romeu", "name")
+do FlorilexioManager.unlock_knowledge("xesta", "name")
+do FlorilexioManager.unlock_knowledge("fento", "name")
+do FlorilexioManager.unlock_knowledge("fiuncho", "name")
+# TODO: Facer herba de santa maría
 do QuestManager.start_quest("01_collect_first_herbs")
 # TODO: Definir cales son as herbas que vai haber que recoller
 dog: Non perdas de vista o reloxo que\ncomo che colla a noite non hai herba que che salve…

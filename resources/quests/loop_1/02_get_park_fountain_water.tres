@@ -26,5 +26,6 @@ metadata/_custom_type_script = "uid://djwof256m8rue"
 script = ExtResource("3_hhsfd")
 quest_id = &"02_get_park_fountain_water"
 objectives = Array[ExtResource("2_o1e3b")]([SubResource("Resource_c54tt"), SubResource("Resource_tp603")])
+quest_type = 1
 show_in_notebook = false
 description = "Consigue auga da fonte do parque"

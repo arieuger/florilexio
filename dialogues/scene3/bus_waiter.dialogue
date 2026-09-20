@@ -1,2 +1,12 @@
-~ start
-bus_waiter: Test => END
+~ fallback_before_mission
+bus_waiter: Se ves polo bus, pasou cedo esta mañá.\nCada día vén máis cedo… cando vén. => END
+
+~ intro_bus_waiter
+bus_waiter: Se ves polo bus, pasou cedo esta mañá.\nCada día vén máis cedo… cando vén.
+player: ...
+bus_waiter: Herbas máxicas? Esas que ves son estalos.\nChámanse así porque as flores estalan, se sabes como facelo. 
+[shake rate=20 level=4]Pum![/shake]
+Disque onde medran xúntanse as meigas.\nBoas para o corazón e para facer o cacho.
+Teñen, como o demo, moitos nomes\: croques ou milicroques, estraloques,\nestalotes, sanxoáns, dixitais ou  dedaleiras…
+player: ...
+ => END

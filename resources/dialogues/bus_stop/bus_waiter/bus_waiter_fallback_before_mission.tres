@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://muvq55mq1h8h"]
+
+[ext_resource type="Resource" uid="uid://djk3udbasb80b" path="res://dialogues/scene3/bus_waiter.dialogue" id="1_1km8y"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_7w5rx"]
+
+[resource]
+script = ExtResource("2_7w5rx")
+conversation_id = &"bus_waiter_fallback_before_mission"
+dialogue_resource = ExtResource("1_1km8y")
+start_title = "fallback_before_mission"
+initial_speaker_id = &"bus_waiter"

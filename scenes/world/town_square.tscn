@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://td62nxp88bdg" path="res://assets/sprites/environment/scene1/trees.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://bnpwgod0ba31n" path="res://scripts/interactables/night_changer.gd" id="3_5rejm"]
-[ext_resource type="PackedScene" uid="uid://bchhh1h1kbahf" path="res://scenes/interactables/plants/menta.tscn" id="3_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dvf3gxb0guqyk" path="res://assets/sprites/environment/scene1/right-bench.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://djer6t1dqemcl" path="res://assets/sprites/environment/scene1/window_light.png" id="3_k7al0"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="5_4c57u"]
@@ -14,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://nlcdrqwnhi6g" path="res://assets/sprites/environment/scene1/school-gate.png" id="8_5vw27"]
 [ext_resource type="Resource" uid="uid://ovpulnr3u68y" path="res://resources/dialogues/town_square/old_woman/old_woman_profile.tres" id="9_0348l"]
 [ext_resource type="Texture2D" uid="uid://coscsa43j75tw" path="res://assets/sprites/environment/scene1/dog.png" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://80rsdbh4iowk" path="res://scenes/interactables/plants/ipomea.tscn" id="9_s4hhf"]
 [ext_resource type="Texture2D" uid="uid://d4ad2nvydrxlf" path="res://assets/sprites/environment/scene1/bird.png" id="10_a7g5c"]
 [ext_resource type="Resource" uid="uid://bsi6a8qryavhq" path="res://resources/dialogues/town_square/bird_profile.tres" id="10_bp5kr"]
 [ext_resource type="Script" uid="uid://5ffqvuriec13" path="res://scripts/interactables/bird.gd" id="10_kdqtp"]
@@ -24,14 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://dlgvboo5a2vq" path="res://assets/sprites/hovers/school_board_hover.png" id="14_icm3m"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="14_kek77"]
 [ext_resource type="Texture2D" uid="uid://buuw1ceu26ng8" path="res://assets/sprites/ui/time_warn.png" id="15_cgq1g"]
-[ext_resource type="PackedScene" uid="uid://cjwic7sj1ydvb" path="res://scenes/interactables/plants/dedaleira.tscn" id="17_ryguw"]
-[ext_resource type="PackedScene" uid="uid://ba13ut8ovxeoy" path="res://scenes/interactables/plants/silveira.tscn" id="18_1u8w0"]
-[ext_resource type="PackedScene" uid="uid://gvx6pv8r4ioq" path="res://scenes/interactables/plants/hortensia.tscn" id="19_1u8w0"]
-[ext_resource type="PackedScene" uid="uid://bu21oukwjnaij" path="res://scenes/interactables/plants/ortiga.tscn" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dh7xeoajge8u7" path="res://assets/sprites/environment/scene1/fire.png" id="22_vhepp"]
 [ext_resource type="Texture2D" uid="uid://td1wxx23bp73" path="res://assets/sprites/environment/scene1/fire_light.png" id="23_jujta"]
 [ext_resource type="Script" uid="uid://bflryiti23qla" path="res://scripts/world/fire_light.gd" id="24_bt8g2"]
-[ext_resource type="PackedScene" uid="uid://bemqll6ehos1h" path="res://scenes/interactables/plants/macela.tscn" id="26_lswn8"]
 [ext_resource type="PackedScene" uid="uid://dxxndj8gcrfap" path="res://scenes/interactables/plants/malva.tscn" id="29_0348l"]
 [ext_resource type="Script" uid="uid://b0mi3de5ea4e8" path="res://scripts/world/area_spawn.gd" id="29_spawn"]
 [ext_resource type="Script" uid="uid://cswibiv02cv5y" path="res://scripts/world/area_transition.gd" id="30_transition"]
@@ -283,17 +276,17 @@ animations = [{
 size = Vector2(14, 14)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iaic6"]
-vertices = PackedVector2Array(156.5, 110.5, 156.5, 137.5, 147.5, 124.5, 147.5, 117.5, 146.5, 110.5, 143.5, 117.5, 143.5, 114.38281, 240.5, 139.5, 240.5, 136.75, 318.5, 137.52344, 317.54688, 178.5, 1.5, 179.49219, 1.5, 103.5, 6.7734375, 103.5, 7.7578125, 112.5, 17.5, 112.5, 17.5, 120.203125, 9.7265625, 122.78906, 17.539063, 132.15625, 92.5, 141.04688, 92.5, 139.5, 93.5, 139.5, 93.5, 132.75, 92.5, 132.75, 92.5, 103.5, 96.5, 103.5, 96.5, 112.5, 107.5, 103.5, 146.5, 103.5, 131.20313, 108.90625, 174.5, 137.5, 174.5, 139.5, 318.5, 100.5, 319.4375, 100.5, 225.5, 139.5, 212.46875, 141.39844, 215.39844, 136.50781, 225.5, 136.60938, 47.382813, 141.75, 107.5, 112.5, 108.5, 113.140625, 108.5, 119.03906, 130.75781, 109.5, 122.296875, 109, 181.03906, 143.57031, 176.96094, 139.5, 136.5, 124.5, 119.5, 109.5, 119.5, 109.84375, 136.5, 123.02344, 122.546875, 109.5, 120.63281, 109.5, 113.57031, 124.10156, 50.789063, 139.46875, 80.78125, 138.53906, 83.953125, 142.75781, 125.453125, 117.5, 126.5625, 117.5)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 12, 13, 14), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(11, 14, 17), PackedInt32Array(11, 17, 18), PackedInt32Array(19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(27, 28, 4, 29), PackedInt32Array(1, 30, 31, 11), PackedInt32Array(9, 32, 33), PackedInt32Array(9, 33, 10), PackedInt32Array(34, 7, 10, 11, 35), PackedInt32Array(36, 37, 34, 35), PackedInt32Array(11, 18, 38), PackedInt32Array(22, 26, 39, 40, 41), PackedInt32Array(4, 6, 29), PackedInt32Array(27, 29, 42, 43), PackedInt32Array(44, 35, 11), PackedInt32Array(45, 44, 11, 31), PackedInt32Array(2, 1, 11, 46), PackedInt32Array(27, 47, 48, 40, 39), PackedInt32Array(49, 46, 11, 19), PackedInt32Array(42, 50, 43), PackedInt32Array(27, 43, 51, 47), PackedInt32Array(22, 41, 52, 21), PackedInt32Array(38, 53, 54, 55, 11), PackedInt32Array(21, 52, 56, 57, 49, 19), PackedInt32Array(19, 11, 55)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 82, 136, 85, 140, 90, 139, 90, 101, 159, 101, 159, 135, 176, 135, 182, 141, 211, 139, 214, 134, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
+vertices = PackedVector2Array(156.5, 110.5, 156.5, 137.5, 147.5, 124.5, 147.5, 117.5, 146.5, 110.5, 143.5, 117.5, 143.5, 114.38281, 1.5, 179.49219, 1.5, 103.5, 6.7734375, 103.5, 7.7578125, 112.5, 17.5, 112.5, 17.5, 120.203125, 9.7265625, 122.78906, 17.539063, 132.15625, 92.5, 138.4375, 92.5, 132.5, 96.03906, 132.5, 92.5, 117.53125, 92.5, 103.5, 96.5, 103.5, 96.5, 112.5, 105.359375, 118.82031, 107.5, 112.5, 108.5, 113.140625, 108.5, 119.03906, 107.5, 103.5, 146.5, 103.5, 131.20313, 108.90625, 318.5, 137.5, 318.5, 100.5, 319.4375, 100.5, 317.54688, 178.5, 136.5, 124.5, 47.382813, 141.75, 130.75781, 109.5, 122.296875, 109, 119.5, 109.5, 119.5, 109.84375, 136.5, 123.02344, 122.546875, 109.5, 120.63281, 109.5, 103.63281, 123.99219, 113.57031, 124.10156, 104.5, 126.59375, 104.5, 132.04688, 97.82031, 130.71094, 50.78125, 139.47656, 125.453125, 117.5, 126.5625, 117.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(7, 10, 13), PackedInt32Array(7, 13, 14), PackedInt32Array(15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 18, 21, 23, 24, 25), PackedInt32Array(26, 27, 4, 28), PackedInt32Array(29, 30, 31), PackedInt32Array(29, 31, 32), PackedInt32Array(1, 29, 32, 7), PackedInt32Array(2, 1, 7, 33), PackedInt32Array(7, 14, 34), PackedInt32Array(4, 6, 28), PackedInt32Array(26, 28, 35, 36), PackedInt32Array(26, 37, 38, 24, 23), PackedInt32Array(39, 33, 7, 15), PackedInt32Array(35, 40, 36), PackedInt32Array(26, 36, 41, 37), PackedInt32Array(42, 22, 25, 43, 44), PackedInt32Array(45, 44, 43, 39), PackedInt32Array(17, 46, 45, 15), PackedInt32Array(34, 47, 15, 7), PackedInt32Array(39, 15, 45), PackedInt32Array(39, 43, 48, 49)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 101, 9, 101, 10, 110, 20, 110, 20, 122, 14, 124, 19, 130, 47, 139, 50, 137, 90, 136, 90, 101, 159, 101, 159, 135, 316, 135, 316, 98, 322, 98, 320, 181, -1, 182)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
 agent_radius = 2.5
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0348l"]
-vertices = PackedVector2Array(261.5, 117.5, 290.10938, 107.46094, 308.5, 108.38281, 308.5, 127.50781, 248.5, 124.46875, 286.17188, 104.5, 261.5, 109.5, 248.5, 104.5, 251.5, 109.5, 251.5, 117.5, 165.5, 128.47656, 165.5, 103.5, 171.5, 103.5, 171.5, 125.53125)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 1, 0, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(4, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(3, 10, 13, 4), PackedInt32Array(0, 4, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 106, 291, 105, 287, 102, 246, 102, 246, 122, 174, 123)])
+vertices = PackedVector2Array(261.5, 117.5, 308.5, 104.5, 308.5, 127.50781, 249.5, 124.5, 261.5, 109.5, 248.5, 104.5, 251.5, 109.5, 248.5, 117.5, 249.5, 117.5, 251.5, 117.5, 165.5, 128.47656, 165.5, 103.5, 171.5, 103.5, 171.5, 125.53125, 246.03125, 124.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 1, 4, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(8, 6, 9, 3), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(2, 10, 13, 14, 3), PackedInt32Array(0, 3, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(174, 101, 163, 101, 163, 131, 311, 130, 311, 102, 246, 102, 246, 122, 174, 123)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
 agent_radius = 2.5
@@ -520,7 +513,7 @@ offset = Vector2(0, -5)
 position = Vector2(2, -0.5)
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="Wood" type="Node2D" parent="YSortables" unique_id=1103164443]
+[node name="Wood" type="Node2D" parent="YSortables" unique_id=1103164443 groups=["nav_obstacle"]]
 position = Vector2(92, 122)
 script = ExtResource("3_5rejm")
 visible_at_night = false
@@ -654,63 +647,8 @@ shape = SubResource("CapsuleShape2D_vhepp")
 event_name = "event:/Environment/Campfire"
 event_guid = "{1472490c-d952-4a52-a464-cd5054073c09}"
 
-[node name="Silveira" parent="YSortables" unique_id=1872331309 groups=["nav_obstacle"] instance=ExtResource("18_1u8w0")]
-position = Vector2(31, 131)
-collection_id = &"silveira1"
-collection_difficulty = 1
-
-[node name="Silveira2" parent="YSortables" unique_id=648529183 groups=["nav_obstacle"] instance=ExtResource("18_1u8w0")]
-position = Vector2(290, 103)
-collection_id = &"silveira2"
-collection_difficulty = 1
-
-[node name="Silveira3" parent="YSortables" unique_id=929731170 groups=["nav_obstacle"] instance=ExtResource("18_1u8w0")]
-position = Vector2(302, 104)
-collection_id = &"silveira3"
-
-[node name="Dedaleira" parent="YSortables" unique_id=1524116644 groups=["nav_obstacle"] instance=ExtResource("17_ryguw")]
-position = Vector2(86, 138)
-collection_id = &"dedaleira1"
-collection_miss_time_cost_blocks = 0.0
-
-[node name="Hortensia1" parent="YSortables" unique_id=1696850855 groups=["nav_obstacle"] instance=ExtResource("19_1u8w0")]
-position = Vector2(194, 136)
-collection_id = &"hortensia1"
-collection_difficulty = 1
-
-[node name="Hortensia2" parent="YSortables" unique_id=409591050 groups=["nav_obstacle"] instance=ExtResource("19_1u8w0")]
-position = Vector2(183, 137)
-collection_id = &"hortensia2"
-
-[node name="Menta" parent="YSortables" unique_id=1760898384 groups=["nav_obstacle"] instance=ExtResource("3_d13ii")]
-position = Vector2(42, 134)
-collection_id = &"menta1"
-
-[node name="Ortiga" parent="YSortables" unique_id=503916748 groups=["nav_obstacle"] instance=ExtResource("20_0odxb")]
-position = Vector2(22, 127)
-collection_id = &"ortiga1"
-
-[node name="Ortiga2" parent="YSortables" unique_id=1600940236 groups=["nav_obstacle"] instance=ExtResource("20_0odxb")]
-position = Vector2(28, 128)
-collection_id = &"ortiga2"
-
-[node name="Dedaleira2" parent="YSortables" unique_id=1636816703 groups=["nav_obstacle"] instance=ExtResource("17_ryguw")]
-position = Vector2(205, 137)
-collection_id = &"dedaleira2"
-
-[node name="Ipomea" parent="YSortables" unique_id=1542834651 groups=["nav_obstacle"] instance=ExtResource("9_s4hhf")]
-position = Vector2(273, 101)
-
-[node name="Macela" parent="YSortables" unique_id=567619104 groups=["nav_obstacle"] instance=ExtResource("26_lswn8")]
-position = Vector2(292, 113)
-collection_id = &"macela1"
-
-[node name="Macela2" parent="YSortables" unique_id=1438358246 groups=["nav_obstacle"] instance=ExtResource("26_lswn8")]
-position = Vector2(271, 108)
-collection_id = &"macela2"
-
-[node name="Malva" parent="YSortables" unique_id=450859669 groups=["nav_obstacle"] instance=ExtResource("29_0348l")]
-position = Vector2(233, 137)
+[node name="Malva" parent="YSortables" unique_id=450859669 instance=ExtResource("29_0348l")]
+position = Vector2(242, 122)
 collection_id = &"malva_tutorial"
 collection_difficulty = 3
 
@@ -762,9 +700,11 @@ shape = SubResource("RectangleShape2D_park_portal")
 [node name="Navigation" type="Node2D" parent="." unique_id=2045750826]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=170704781]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_iaic6")
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="Navigation" unique_id=174366963]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_0348l")
 
 [node name="NavigationLink2D" type="NavigationLink2D" parent="." unique_id=765014364]
