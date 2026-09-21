@@ -9,10 +9,17 @@ script = ExtResource("2")
 id = &"name"
 text = "Dedaleira"
 
+[sub_resource type="Resource" id="Resource_iraxq"]
+script = ExtResource("2")
+id = &"base_description"
+knowledge_type = 1
+text = "afasfjdajlk aljksha lk"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("1")
-knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
-collection_requirements = Array[StringName]([&"name"])
+knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_iraxq")])
+collection_requirements = Array[StringName]([&"name", &"base_description"])
 is_magic = true
 id = &"dedaleira"
 display_name = "Estalote"

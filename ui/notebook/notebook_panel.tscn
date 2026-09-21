@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://fngi8sqynsvy" path="res://assets/sprites/ui/buttons/close_unpressed.png" id="2_yundp"]
 [ext_resource type="Script" uid="uid://m7be65gghd7p" path="res://scripts/ui/notebook/florilexio/florilexio_panel.gd" id="3_florilexio"]
 [ext_resource type="FontVariation" uid="uid://bqokipmhff54g" path="res://assets/fonts/variations/base-jersey-10.tres" id="3_k5eqy"]
+[ext_resource type="Texture2D" uid="uid://c8kxemcc8h3vk" path="res://assets/sprites/ui/notebook/notebook_left_hover.png" id="3_kkav6"]
 [ext_resource type="Texture2D" uid="uid://daphonoknacru" path="res://assets/sprites/ui/buttons/close_pressed.png" id="3_lncma"]
+[ext_resource type="Texture2D" uid="uid://dmsewmoikkgh2" path="res://assets/sprites/ui/notebook/notebook_right_hover.png" id="4_snpis"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="4_u4u0i"]
 [ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="5_malva_1"]
 [ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="6_malva_2"]
@@ -67,6 +69,24 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_w0xa0")
 stretch_mode = 2
+
+[node name="NotebookLeftHover" type="TextureRect" parent="CenterContainer/Notebook" unique_id=2128745687]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 1.0
+offset_right = 55.0
+offset_bottom = 118.0
+texture = ExtResource("3_kkav6")
+
+[node name="NotebookRightHover" type="TextureRect" parent="CenterContainer/Notebook" unique_id=1511380645]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 148.0
+offset_right = 207.0
+offset_bottom = 118.0
+texture = ExtResource("4_snpis")
 
 [node name="MissionsPanel" type="Control" parent="CenterContainer/Notebook" unique_id=870673245]
 unique_name_in_owner = true
@@ -239,3 +259,18 @@ offset_bottom = 20.0
 texture_normal = ExtResource("2_yundp")
 texture_pressed = ExtResource("3_lncma")
 texture_hover = ExtResource("4_u4u0i")
+
+[node name="NotebookLeftHoverArea" type="Control" parent="CenterContainer/Notebook" unique_id=1318871560]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 22.48
+offset_bottom = 118.0
+
+[node name="NotebookRightHoverArea" type="Control" parent="CenterContainer/Notebook" unique_id=1565354105]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 185.0
+offset_top = 1.0
+offset_right = 207.48
+offset_bottom = 118.0

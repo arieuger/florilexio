@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_page"]
 [ext_resource type="PackedScene" uid="uid://g00teca45qk1" path="res://ui/notebook/florilexio/knowledge_section.tscn" id="2_section"]
-[ext_resource type="PackedScene" uid="uid://bvq4aor371unf" path="res://ui/notebook/florilexio/visual_reference_section.tscn" id="3_visual"]
+[ext_resource type="PackedScene" path="res://ui/notebook/florilexio/visual_reference_section.tscn" id="3_visual"]
 [ext_resource type="Texture2D" uid="uid://dxwqvkc08b17d" path="res://assets/sprites/ui/visual-test.png" id="3_yd6fw"]
 [ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="5_m8lg2"]
 
@@ -14,7 +14,6 @@ variation_transform = Transform2D(1, 0.075, 0, 1, 0, 0)
 plant_id = &"malva"
 
 [node name="VisualReferenceSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="0" unique_id=1963280146 instance=ExtResource("3_visual")]
-layout_mode = 0
 offset_left = 33.0
 offset_top = 59.0
 offset_right = 81.3
