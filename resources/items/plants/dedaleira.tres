@@ -7,13 +7,15 @@
 [sub_resource type="Resource" id="KnowledgeFragment_name"]
 script = ExtResource("2")
 id = &"name"
-text = "Dedaleira"
+text = "Estalote"
 
 [sub_resource type="Resource" id="Resource_iraxq"]
 script = ExtResource("2")
 id = &"base_description"
 knowledge_type = 1
-text = "afasfjdajlk aljksha lk"
+text = "As flores son de cor malva.
+Chámanlles así porque as flores estralan, se as estrullas
+Son tóxicas cando se inxiren. "
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
 [resource]

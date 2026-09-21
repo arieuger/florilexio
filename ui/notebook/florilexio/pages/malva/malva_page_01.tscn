@@ -59,14 +59,12 @@ presentation = 2
 custom_minimum_size = Vector2(0, 28.445)
 layout_mode = 2
 theme_override_constants/line_separation = -2
-theme_override_constants/paragraph_separation = -2
 theme_override_font_sizes/normal_font_size = 4
 theme_override_font_sizes/bold_font_size = 4
 theme_override_font_sizes/bold_italics_font_size = 4
 theme_override_font_sizes/italics_font_size = 4
 theme_override_font_sizes/mono_font_size = 4
 text = "Flores de cor malva, rosa ou púrpura. Son solitarias na punta da rama. Cáliz con 3 pezas libres, elípticas e 5 sépalos triangulares. Corola con 5 pétalos libres, con nervios máis escuros, en xeral bífidos.  Estames numerosos.
-
 Follas verdes dentadas ou aserradas."
 fragment_ids = Array[StringName]([&"description"])
 fragment_separator = ""

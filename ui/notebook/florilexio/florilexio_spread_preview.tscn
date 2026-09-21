@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5wrhaaspxbog" path="res://assets/sprites/ui/notebook/notebook_base.png" id="1_background"]
 [ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="2_malva_page"]
-[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="3_8h8ek"]
+[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/dedaleira/dedaleira_page_02.tscn" id="3_8h8ek"]
 
 [node name="FlorilexioSpreadPreview" type="Control" unique_id=1397534813]
 texture_filter = 1

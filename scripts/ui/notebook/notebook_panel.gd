@@ -28,10 +28,14 @@ func _ready() -> void:
 	florilexio_tab_button.pressed.connect(func() -> void: _set_section(Section.FLORILEXIO))
 	inventory_tab_button.pressed.connect(func() -> void: _set_section(Section.INVENTORY))
 
-	left_hover_area.mouse_entered.connect(_on_pagination_hovered.bind(true, left_hover))
-	left_hover_area.mouse_exited.connect(_on_pagination_hovered.bind(false, left_hover))
-	right_hover_area.mouse_entered.connect(_on_pagination_hovered.bind(true, right_hover))
-	right_hover_area.mouse_exited.connect(_on_pagination_hovered.bind(false, right_hover))
+	for area in [left_hover_area, right_hover_area]:
+		area.mouse_entered.connect(_update_pagination)
+		area.mouse_exited.connect(_update_pagination)
+
+	florilexio_panel.pagination_changed.connect(_update_pagination)
+
+	left_hover_area.gui_input.connect(_on_pagination_input.bind(false))
+	right_hover_area.gui_input.connect(_on_pagination_input.bind(true))
 
 	_apply_section_visibility()
 
@@ -77,31 +81,54 @@ func _apply_section_visibility() -> void:
 
 
 func _update_pagination() -> void:
-	var enabled := _active_section in _paginated_sections
-	
-	left_hover_area.visible = enabled
-	left_hover_area.mouse_filter = (
+	var panel := _get_active_pagination_panel()
+	var can_previous := false
+	var can_next := false
+
+	if panel != null:
+		can_previous = panel.call(&"can_go_previous")
+		can_next = panel.call(&"can_go_next")
+
+	_set_pagination_area(left_hover_area, left_hover, can_previous)
+	_set_pagination_area(right_hover_area, right_hover, can_next)
+
+
+func _set_pagination_area(area: Control, hover_texture: TextureRect, enabled: bool) -> void:
+	area.visible = enabled
+	area.mouse_filter = (
 		Control.MOUSE_FILTER_STOP
 		if enabled
 		else Control.MOUSE_FILTER_IGNORE
 	)
-	right_hover_area.visible = enabled
-	right_hover_area.mouse_filter = (
-		Control.MOUSE_FILTER_STOP
-		if enabled
-		else Control.MOUSE_FILTER_IGNORE
-	)
 
-	left_hover.hide()
-	right_hover.hide()
+	hover_texture.visible = (
+		enabled and area.is_visible_in_tree()
+        and Rect2(Vector2.ZERO, area.size).has_point(area.get_local_mouse_position())
+    )
 
 
-func _on_pagination_hovered(entered: bool, hover_texture: TextureRect) -> void:
-	print("hovered: %s" % entered)
-	if not _active_section in _paginated_sections:
+func _on_pagination_input(event: InputEvent, forward: bool) -> void:
+	if not event is InputEventMouseButton:
+		return
+	if event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
+		# TODO: En algún momento haberá que implementar mando/teclado
 		return
 
-	if entered:
-		hover_texture.show()
-	else:
-		hover_texture.hide()
+	var panel := _get_active_pagination_panel()
+	if panel == null:
+		return
+
+	accept_event()
+	panel.call(&"next_spread" if forward else &"previous_spread")
+
+
+func _get_active_pagination_panel() -> Control:
+	# Por si engadimos paxinación a outros paneis como o de misións/inventario
+	if _active_section not in _paginated_sections:
+		return null
+
+	match _active_section:
+		Section.FLORILEXIO:
+			return florilexio_panel
+		_:
+			return null

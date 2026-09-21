@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cs512v60lmgn6"]
+[gd_scene format=3 uid="uid://b6flwforfa1xa"]
 
-[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_h6whm"]
+[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_n012j"]
 
-[node name="MalvaPage02" unique_id=1591951097 instance=ExtResource("1_h6whm")]
+[node name="MalvaPage02" unique_id=1591951097 instance=ExtResource("1_n012j")]
 plant_id = &"malva"

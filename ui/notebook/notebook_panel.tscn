@@ -12,13 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://dmsewmoikkgh2" path="res://assets/sprites/ui/notebook/notebook_right_hover.png" id="4_snpis"]
 [ext_resource type="Texture2D" uid="uid://cq4m3r3v0gt8m" path="res://assets/sprites/ui/buttons/close_hovered.png" id="4_u4u0i"]
 [ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="5_malva_1"]
-[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="6_malva_2"]
-[ext_resource type="Texture2D" uid="uid://lmdmq4krfq5p" path="res://assets/sprites/ui/buttons/next_unpressed.png" id="7_next_normal"]
-[ext_resource type="Texture2D" uid="uid://ban5tvj8xnu56" path="res://assets/sprites/ui/buttons/next_pressed.png" id="8_next_pressed"]
-[ext_resource type="Texture2D" uid="uid://qxi1qn66iya0" path="res://assets/sprites/ui/buttons/next_hovered.png" id="9_next_hover"]
+[ext_resource type="PackedScene" uid="uid://b6flwforfa1xa" path="res://ui/notebook/florilexio/pages/malva/malva_page_02.tscn" id="6_malva_2"]
 [ext_resource type="Texture2D" uid="uid://db6jy53m33q3l" path="res://assets/sprites/ui/buttons/florilexio-marker.png" id="10_l56s5"]
 [ext_resource type="Texture2D" uid="uid://bolyndwyyqh26" path="res://assets/sprites/ui/buttons/florilexio-marker-toggled.png" id="11_irdbb"]
+[ext_resource type="PackedScene" uid="uid://bdawwxp0doj1o" path="res://ui/notebook/florilexio/pages/dedaleira/dedaleira_page_01.tscn" id="11_k2hle"]
 [ext_resource type="Texture2D" uid="uid://l105xfm0ffxf" path="res://assets/sprites/ui/buttons/florilexio-marker-hovered.png" id="11_qy6fi"]
+[ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/dedaleira/dedaleira_page_02.tscn" id="12_kkav6"]
 [ext_resource type="PackedScene" uid="uid://b8jj4w6st3jk8" path="res://ui/notebook/inventory/inventory_panel.tscn" id="12_skers"]
 [ext_resource type="Texture2D" uid="uid://c5xgkp7mweuwt" path="res://assets/sprites/ui/buttons/quest-marker.png" id="13_dyrrl"]
 [ext_resource type="Texture2D" uid="uid://egw08xuci0gs" path="res://assets/sprites/ui/buttons/quest-marker-toggled.png" id="14_dj3m7"]
@@ -150,7 +149,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_florilexio")
-page_scenes = Array[PackedScene]([ExtResource("5_malva_1"), ExtResource("6_malva_2")])
+page_scenes = Array[PackedScene]([ExtResource("5_malva_1"), ExtResource("6_malva_2"), ExtResource("11_k2hle"), ExtResource("12_kkav6")])
 
 [node name="LeftPageSlot" type="Control" parent="CenterContainer/Notebook/FlorilexioPanel" unique_id=1180988183]
 unique_name_in_owner = true
@@ -179,31 +178,6 @@ offset_right = 120.0
 offset_bottom = 21.0
 theme_override_font_sizes/font_size = 5
 text = "O florilexio está baleiro"
-
-[node name="PreviousSpreadButton" type="TextureButton" parent="CenterContainer/Notebook/FlorilexioPanel" unique_id=1565856296]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 2.0
-offset_top = 53.0
-offset_right = 15.0
-offset_bottom = 66.0
-texture_normal = ExtResource("7_next_normal")
-texture_pressed = ExtResource("8_next_pressed")
-texture_hover = ExtResource("9_next_hover")
-flip_h = true
-
-[node name="NextSpreadButton" type="TextureButton" parent="CenterContainer/Notebook/FlorilexioPanel" unique_id=1518226545]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 192.0
-offset_top = 53.0
-offset_right = 205.0
-offset_bottom = 66.0
-texture_normal = ExtResource("7_next_normal")
-texture_pressed = ExtResource("8_next_pressed")
-texture_hover = ExtResource("9_next_hover")
 
 [node name="InventoryPanel" parent="CenterContainer/Notebook" unique_id=1023505643 instance=ExtResource("12_skers")]
 unique_name_in_owner = true
@@ -263,14 +237,15 @@ texture_hover = ExtResource("4_u4u0i")
 [node name="NotebookLeftHoverArea" type="Control" parent="CenterContainer/Notebook" unique_id=1318871560]
 unique_name_in_owner = true
 anchors_preset = 0
+offset_left = 8.0
 offset_top = 1.0
-offset_right = 22.48
-offset_bottom = 118.0
+offset_right = 19.0
+offset_bottom = 116.0
 
 [node name="NotebookRightHoverArea" type="Control" parent="CenterContainer/Notebook" unique_id=1565354105]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 185.0
+offset_left = 189.0
 offset_top = 1.0
-offset_right = 207.48
-offset_bottom = 118.0
+offset_right = 200.0
+offset_bottom = 116.0
