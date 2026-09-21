@@ -8,6 +8,9 @@ class_name PlantData
 @export_group("Collection")
 @export var collection_requirements: Array[StringName] = []
 
+@export_group("Florilexio")
+@export var florilexio_requirements: Array[StringName] = []
+
 @export_group("Plant features")
 @export var is_poisonous := false
 @export var is_mortal := false
@@ -70,5 +73,23 @@ func get_validation_errors() -> PackedStringArray:
 
 		if not known_fragment_ids.has(requirement_id):
 			errors.append("Collection requirement references an unknown fragment: %s." % requirement_id)
+
+	seen_requirements.clear()
+	
+	for requirement_id in florilexio_requirements:
+		if requirement_id == &"":
+			errors.append("Florilexio requirement id cannot be empty.")
+			continue
+
+		if seen_requirements.has(requirement_id):
+			errors.append(
+				"Duplicated florilexio requirement: %s." % requirement_id
+			)
+			continue
+
+		seen_requirements[requirement_id] = true
+
+		if not known_fragment_ids.has(requirement_id):
+			errors.append("Florilexio requirement references an unknown fragment: %s." % requirement_id)
 
 	return errors

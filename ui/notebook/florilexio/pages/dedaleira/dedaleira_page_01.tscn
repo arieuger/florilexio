@@ -42,7 +42,23 @@ fragment_ids = Array[StringName]([&"name"])
 presentation = 1
 fragment_separator = ""
 
-[node name="BaseDescriptions" parent="MainContent/ContentCanvas/VBoxContainer" index="1" unique_id=597183931 instance=ExtResource("4_xusn8")]
+[node name="OtherNamesSection" parent="MainContent/ContentCanvas/VBoxContainer" index="1" unique_id=597183931 instance=ExtResource("4_xusn8")]
+custom_minimum_size = Vector2(0, 15.4)
+layout_mode = 2
+theme_override_constants/line_separation = -2
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+text = "[center][i]Croques ou milicroques, estraloques, estalotes, dixitais ou dedaleiras, sanxoáns.
+Abeluria (nome compartido co hipérico).[/i][/center]"
+knowledge_type = 7
+fragment_ids = Array[StringName]([&"other_names"])
+presentation = 2
+fragment_separator = ""
+
+[node name="BaseDescriptions" parent="MainContent/ContentCanvas/VBoxContainer" index="2" unique_id=1444341100 instance=ExtResource("4_xusn8")]
 custom_minimum_size = Vector2(0, 28.445)
 layout_mode = 2
 theme_override_constants/line_separation = -2
@@ -57,7 +73,7 @@ Son tóxicas cando se inxiren. "
 fragment_ids = Array[StringName]([&"base_description"])
 fragment_separator = ""
 
-[node name="Location" parent="MainContent/ContentCanvas/VBoxContainer" index="2" unique_id=887080124 instance=ExtResource("4_xusn8")]
+[node name="Location" parent="MainContent/ContentCanvas/VBoxContainer" index="3" unique_id=887080124 instance=ExtResource("4_xusn8")]
 visible = false
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2

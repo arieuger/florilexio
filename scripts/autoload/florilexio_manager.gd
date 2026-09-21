@@ -57,7 +57,6 @@ func lock_knowledge(plant_id: StringName, fragment_id: StringName) -> void:
 
 
 func can_be_collected(plant_id: StringName, requirements: Array[StringName]) -> bool:
-
 	if requirements.is_empty():
 		return true
 
@@ -67,6 +66,18 @@ func can_be_collected(plant_id: StringName, requirements: Array[StringName]) -> 
 
 	for requirement_id in requirements:
 		if not has_knowledge(plant_id, requirement_id):
+			return false
+
+	return true
+
+
+func can_show_in_florilexio(plant: PlantData) -> bool:
+	var requirements := plant.florilexio_requirements
+	if requirements.is_empty():
+		requirements = plant.collection_requirements
+
+	for fragment_id in requirements:
+		if not has_knowledge(plant.id, fragment_id):
 			return false
 
 	return true

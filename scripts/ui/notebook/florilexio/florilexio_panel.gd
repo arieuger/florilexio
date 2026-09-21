@@ -57,7 +57,7 @@ func _rebuild() -> void:
 		if page == null:
 			continue
 		var plant := ItemDatabase.get_plant(page.plant_id)
-		if plant != null and FlorilexioManager.can_be_collected(page.plant_id, plant.collection_requirements):
+		if plant != null and FlorilexioManager.can_show_in_florilexio(plant):
 			_available_pages.append(page_scene)
 		# TODO: Comprobar se é así ou co mínimo coñecemento (un elemento como o nome): Para reunión!
 		page.free()

@@ -18,10 +18,19 @@ Chámanlles así porque as flores estralan, se as estrullas
 Son tóxicas cando se inxiren. "
 metadata/_custom_type_script = "uid://doq0kbgt7al22"
 
+[sub_resource type="Resource" id="Resource_aanv1"]
+script = ExtResource("2")
+id = &"other_names"
+knowledge_type = 7
+text = "Croques ou milicroques, estraloques, estalotes, dixitais ou dedaleiras, sanxoáns.
+Abeluria (nome compartido co hipérico)."
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("1")
-knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_iraxq")])
+knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_iraxq"), SubResource("Resource_aanv1")])
 collection_requirements = Array[StringName]([&"name", &"base_description"])
+florilexio_requirements = null
 is_magic = true
 id = &"dedaleira"
 display_name = "Estalote"

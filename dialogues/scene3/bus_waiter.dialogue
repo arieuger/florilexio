@@ -8,6 +8,12 @@ bus_waiter: Herbas máxicas? Esas que ves son estalos.\nChámanse así porque as
 [shake rate=20 level=4]Pum![/shake]
 Disque onde medran xúntanse as meigas.\nBoas para o corazón e para facer o cacho.
 Teñen, como o demo, moitos nomes\: croques ou milicroques, estraloques,\nestalotes, sanxoáns, dixitais ou  dedaleiras…
-player: ...
+Hai que lles chama sanxoáns ou abelurias. Pero a abeluria,por aquí,\né outras desas herbas polas que preguntas, e non se parece nada ao estalo.
+do FlorilexioManager.unlock_knowledge("dedaleira", "other_names")
 do FlorilexioManager.unlock_knowledge("dedaleira", "base_description")
+player: ...
+bus_waiter: Hipérico  ou pericón. É dourada, espigada,\ne tamén medra por San Xoán.
+As follas teñen unhas bochas escuras que parecen buratiños\ne conteñen un aceite que disque ten propiedades medicinais.
+Chámanlle a herba das feridas porque é boa para curalas.\nBúscao á beira dos camiños, en pradarías ou preto do río.
+Ben me faría para esta chaga tan fea que me fixo o zapato…
  => END
