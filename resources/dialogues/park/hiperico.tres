@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://i3n74unnm41t"]
+
+[ext_resource type="Resource" uid="uid://7kt4o37lfjhc" path="res://dialogues/scene2/hiperico.dialogue" id="1_cs82e"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="1_ig0gm"]
+
+[resource]
+script = ExtResource("1_ig0gm")
+conversation_id = &"hiperico_precollection"
+dialogue_resource = ExtResource("1_cs82e")
+start_title = "hiperico_precollection"
+initial_speaker_id = &"hiperico"
+metadata/_custom_type_script = "uid://c5fcus2dkgobv"

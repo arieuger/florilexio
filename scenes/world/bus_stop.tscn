@@ -277,7 +277,7 @@ position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qpub8")
 
 [node name="TimeWarn" parent="YSortables/Marquee/BusWaiter/NPC" index="4" unique_id=280577781]
-position = Vector2(0, -16)
+position = Vector2(1, -17)
 
 [node name="BusSign" type="Node2D" parent="YSortables" unique_id=2117930638 groups=["nav_obstacle"]]
 position = Vector2(97, 144)

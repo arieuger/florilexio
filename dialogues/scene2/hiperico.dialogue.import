@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://7kt4o37lfjhc"
+path="res://.godot/imported/hiperico.dialogue-bf480b00e7dbdf6ac8f1d4e9a9ad997f.tres"
+
+[deps]
+
+source_file="res://dialogues/scene2/hiperico.dialogue"
+dest_files=["res://.godot/imported/hiperico.dialogue-bf480b00e7dbdf6ac8f1d4e9a9ad997f.tres"]
+
+[params]
+
+defaults=true

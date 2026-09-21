@@ -27,6 +27,8 @@ class_name CollectablePlant
 @export var collection_miss_time_cost_blocks: float = -1.0
 @export_group("")
 
+@export var pre_collection_conversation: ConversationDefinition
+
 @onready var hover_sprite: Sprite2D = $HoverSprite
 @onready var name_label: Label = $NameLabel
 @onready var click_area: Area2D = $ClickArea
@@ -105,6 +107,12 @@ func _interact() -> void:
 			if not reached:
 				_is_interacting = false
 				return
+
+	if pre_collection_conversation:
+		var finished := await DialogueBalloonCoordinator.play(pre_collection_conversation, [self])
+		if not finished:
+			_is_interacting = false
+			return
 
 	start_collection_minigame()
 

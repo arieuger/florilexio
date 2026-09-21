@@ -66,6 +66,8 @@ old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 # Aquí xa empezou a misión 2
 old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 
+# TODO: Problema: aquí, por cómo está o xogo, pode que se de o caso de que
+# o xogador teña pendiente á vez esta conversa e algunha do hipérico. 
 ~ give_water_fountain
 old_woman: Auga das sete fontes… Ou alomenos dunha.\nCando remate o día, deixa as herbas na auga,
 coa lúa e ao orballo, para activar a súa maxia curadora…

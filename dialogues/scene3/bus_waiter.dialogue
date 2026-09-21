@@ -16,4 +16,6 @@ bus_waiter: Hipérico  ou pericón. É dourada, espigada,\ne tamén medra por Sa
 As follas teñen unhas bochas escuras que parecen buratiños\ne conteñen un aceite que disque ten propiedades medicinais.
 Chámanlle a herba das feridas porque é boa para curalas.\nBúscao á beira dos camiños, en pradarías ou preto do río.
 Ben me faría para esta chaga tan fea que me fixo o zapato…
+do FlorilexioManager.unlock_knowledge("hiperico", "name")
+do QuestManager.start_quest("03_bus_waiter_hiperico")
  => END

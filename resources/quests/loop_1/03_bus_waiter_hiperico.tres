@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://dgqx6wmv084y5"]
+
+[ext_resource type="Script" uid="uid://ba57xkf53n8fl" path="res://scripts/quests/quest_objective_group_definition.gd" id="1_6g4ee"]
+[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="2_nyhvl"]
+[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_tdf0l"]
+
+[sub_resource type="Resource" id="Resource_3nbkj"]
+script = ExtResource("2_nyhvl")
+objective_id = &"get_hiperico"
+description = "Atopa un hipérico"
+event_type = 7
+target_type = 1
+target_id = &"hiperico"
+show_in_notebook = false
+
+[sub_resource type="Resource" id="Resource_3h7hg"]
+script = ExtResource("2_nyhvl")
+objective_id = &"show_hiperico_to_bus_waiter"
+event_type = 5
+target_type = 1
+target_id = &"hiperico"
+show_in_notebook = false
+item_submission_mode = 1
+
+[resource]
+script = ExtResource("3_tdf0l")
+quest_id = &"03_bus_waiter_hiperico"
+objectives = Array[ExtResource("2_nyhvl")]([SubResource("Resource_3nbkj"), SubResource("Resource_3h7hg")])
+quest_type = 1
+description = "A quen espera o autobús viríalle ben un hipérico..."

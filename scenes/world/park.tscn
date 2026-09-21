@@ -11,28 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://cu53s7jtcf4p6" path="res://assets/sprites/environment/scene2/slide.png" id="7_q318h"]
 [ext_resource type="Texture2D" uid="uid://tixdljkcoy8l" path="res://assets/sprites/environment/scene1/left-bench.png" id="8_m0yas"]
 [ext_resource type="Script" uid="uid://ddytux25u342j" path="res://scripts/world/area_camera_config.gd" id="9_camera"]
-[ext_resource type="PackedScene" uid="uid://ct0s801fs50xx" path="res://scenes/interactables/plants/fiuncho.tscn" id="9_hgbhm"]
 [ext_resource type="PackedScene" uid="uid://oqpilop87x70" path="res://scenes/interactables/npc.tscn" id="9_mwukj"]
 [ext_resource type="Texture2D" uid="uid://c8qjsqde53x1h" path="res://assets/sprites/environment/scene2/terrace_poster.png" id="9_weyec"]
-[ext_resource type="PackedScene" uid="uid://dxxndj8gcrfap" path="res://scenes/interactables/plants/malva.tscn" id="10_ynua0"]
 [ext_resource type="Texture2D" uid="uid://17mu0nn4evo8" path="res://assets/sprites/hovers/terrace_poster_hover.png" id="11_2q76u"]
 [ext_resource type="PackedScene" uid="uid://8ns53t1skih2" path="res://scenes/interactables/plants/herba_luisa.tscn" id="12_hebut"]
 [ext_resource type="Resource" uid="uid://3thquqlniy1s" path="res://resources/dialogues/park/terrace_poster_profile.tres" id="12_k3sex"]
 [ext_resource type="PackedScene" uid="uid://ba6f154tcth64" path="res://scenes/interactables/plants/romeu.tscn" id="12_ynua0"]
-[ext_resource type="PackedScene" uid="uid://dkr62j07qkejh" path="res://scenes/interactables/plants/xesta.tscn" id="13_wlbh6"]
-[ext_resource type="PackedScene" uid="uid://chx2eugcgoybj" path="res://scenes/interactables/plants/fento.tscn" id="14_0lm4f"]
 [ext_resource type="PackedScene" uid="uid://dgxrwtiolf3ai" path="res://scenes/interactables/plants/hiperico.tscn" id="15_rs8wy"]
 [ext_resource type="PackedScene" uid="uid://d0mv5rpj0jdct" path="res://scenes/interactables/plants/tominho.tscn" id="16_kuagl"]
 [ext_resource type="PackedScene" uid="uid://jlqlolglmkc4" path="res://scenes/interactables/plants/ruda.tscn" id="17_bkeyp"]
-[ext_resource type="PackedScene" uid="uid://bognclbnndo1g" path="res://scenes/interactables/plants/mimosa.tscn" id="19_1okcc"]
-[ext_resource type="PackedScene" uid="uid://f4tlv8x7hw45" path="res://scenes/interactables/plants/pan_de_cuco.tscn" id="19_3hvtc"]
-[ext_resource type="PackedScene" uid="uid://dm5e8xnmt7wsq" path="res://scenes/interactables/plants/pervinca.tscn" id="20_m4b7g"]
+[ext_resource type="Resource" uid="uid://i3n74unnm41t" path="res://resources/dialogues/park/hiperico.tres" id="17_wmh8e"]
 [ext_resource type="Texture2D" uid="uid://p0tebjapslw2" path="res://assets/sprites/ui/buttons/next_space_arrow.png" id="21_arrow"]
 [ext_resource type="Texture2D" uid="uid://15ykwaabqvhb" path="res://assets/sprites/ui/buttons/hovered_next_space_arrow.png" id="22_arrow_hover"]
 [ext_resource type="Texture2D" uid="uid://0wtfq7w35qc2" path="res://assets/sprites/ui/buttons/pressed_next_space_arrow.png" id="23_arrow_pressed"]
 [ext_resource type="Script" uid="uid://bs0a181sb8rvj" path="res://scripts/interactables/dialogue_speaker.gd" id="25_jc6it"]
 [ext_resource type="Script" uid="uid://bty5sv57u0rth" path="res://scripts/interactables/wind.gd" id="25_u7one"]
-[ext_resource type="PackedScene" uid="uid://i2sxdwtyd47j" path="res://scenes/interactables/plants/pe_de_boi.tscn" id="26_r2kch"]
 [ext_resource type="Script" uid="uid://cpxge4at5rapc" path="res://scripts/world/grass_area.gd" id="26_y4r3u"]
 [ext_resource type="PackedScene" uid="uid://cn0kbnywofiwo" path="res://scenes/world/firefly.tscn" id="30_sl8ky"]
 [ext_resource type="Resource" uid="uid://bxu2hh44ed7j7" path="res://resources/dialogues/park/wind.tres" id="31_52hl2"]
@@ -57,7 +50,7 @@ b = Vector2(115, 98)
 a = Vector2(246, 110)
 b = Vector2(112, 98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3sex"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r3u"]
 resource_local_to_scene = true
 size = Vector2(30, 14)
 
@@ -67,7 +60,7 @@ size = Vector2(37, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weyec"]
 size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8cg4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyiui"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
 
@@ -223,7 +216,7 @@ texture = ExtResource("6_lsh6y")
 
 [node name="CollisionShape2D" parent="YSortables/Font/NPC/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_k3sex")
+shape = SubResource("RectangleShape2D_y4r3u")
 
 [node name="TimeWarn" parent="YSortables/Font/NPC" index="4" unique_id=280577781]
 position = Vector2(0, -15)
@@ -355,103 +348,38 @@ texture = ExtResource("11_2q76u")
 
 [node name="CollisionShape2D" parent="YSortables/TerracePoster/NPC/ClickArea" parent_id_path=PackedInt32Array(1111542579, 474706418) index="0" unique_id=654827359]
 position = Vector2(-1.875, -4.875)
-shape = SubResource("RectangleShape2D_u8cg4")
+shape = SubResource("RectangleShape2D_uyiui")
 
-[node name="Fiuncho" parent="YSortables" unique_id=1542834651 groups=["nav_obstacle"] instance=ExtResource("9_hgbhm")]
-position = Vector2(84, 160)
-collection_id = &"fiuncho2"
-
-[node name="Fiuncho2" parent="YSortables" unique_id=2044105780 groups=["nav_obstacle"] instance=ExtResource("9_hgbhm")]
-position = Vector2(78, 157)
-collection_id = &"fiuncho1"
-
-[node name="Malva" parent="YSortables" unique_id=732674066 groups=["nav_obstacle"] instance=ExtResource("10_ynua0")]
-position = Vector2(92, 157)
-collection_id = &"malva1"
-
-[node name="Malva2" parent="YSortables" unique_id=1390093559 groups=["nav_obstacle"] instance=ExtResource("10_ynua0")]
-position = Vector2(166, 160)
-collection_id = &"malva2"
-
-[node name="Romeu" parent="YSortables" unique_id=1219994463 groups=["nav_obstacle"] instance=ExtResource("12_ynua0")]
+[node name="Romeu" parent="YSortables" unique_id=1219994463 instance=ExtResource("12_ynua0")]
 position = Vector2(193, 134)
 collection_id = &"romeu1"
 
-[node name="Romeu2" parent="YSortables" unique_id=1827974212 groups=["nav_obstacle"] instance=ExtResource("12_ynua0")]
-position = Vector2(217, 134)
-collection_id = &"romeu2"
-
-[node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 groups=["nav_obstacle"] instance=ExtResource("12_hebut")]
+[node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
 position = Vector2(205, 134)
 collection_id = &"herba_luisa1"
 
-[node name="Xesta" parent="YSortables" unique_id=97273433 groups=["nav_obstacle"] instance=ExtResource("13_wlbh6")]
-position = Vector2(186, 108)
-collection_id = &"xesta1"
-
-[node name="Xesta2" parent="YSortables" unique_id=1274703653 groups=["nav_obstacle"] instance=ExtResource("13_wlbh6")]
-position = Vector2(164, 105)
-collection_id = &"xesta2"
-
-[node name="Fento" parent="YSortables" unique_id=837198377 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
-position = Vector2(56, 108)
-collection_id = &"fento1"
-
-[node name="Fento2" parent="YSortables" unique_id=228511052 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
-position = Vector2(69, 105)
-collection_id = &"fento2"
-
-[node name="Hiperico" parent="YSortables" unique_id=1109796564 groups=["nav_obstacle"] instance=ExtResource("15_rs8wy")]
+[node name="Hiperico" parent="YSortables" unique_id=1109796564 instance=ExtResource("15_rs8wy")]
 position = Vector2(102, 134)
 collection_id = &"hiperico1"
+pre_collection_conversation = ExtResource("17_wmh8e")
 
-[node name="Hiperico2" parent="YSortables" unique_id=1258944915 groups=["nav_obstacle"] instance=ExtResource("15_rs8wy")]
-position = Vector2(143, 115)
-collection_id = &"hiperico2"
+[node name="DialogueSpeaker" type="Marker2D" parent="YSortables/Hiperico" unique_id=1104115569]
+position = Vector2(-26, -32)
+script = ExtResource("25_jc6it")
+speaker_id = &"hiperico"
+balloon_color = Color(0.9434667, 0.94595677, 0.69145143, 1)
+metadata/_custom_type_script = "uid://bs0a181sb8rvj"
 
-[node name="Fento4" parent="YSortables" unique_id=136460072 groups=["nav_obstacle"] instance=ExtResource("14_0lm4f")]
-position = Vector2(175, 105)
-collection_id = &"fento4"
-
-[node name="Tominho" parent="YSortables" unique_id=727921110 groups=["nav_obstacle"] instance=ExtResource("16_kuagl")]
+[node name="Tominho" parent="YSortables" unique_id=727921110 instance=ExtResource("16_kuagl")]
 position = Vector2(225, 150)
 collection_id = &"tominho1"
 
-[node name="Tominho2" parent="YSortables" unique_id=2072385559 groups=["nav_obstacle"] instance=ExtResource("16_kuagl")]
+[node name="Tominho2" parent="YSortables" unique_id=2072385559 instance=ExtResource("16_kuagl")]
 position = Vector2(201, 150)
 collection_id = &"tominho2"
 
-[node name="Ruda" parent="YSortables" unique_id=1464132476 groups=["nav_obstacle"] instance=ExtResource("17_bkeyp")]
+[node name="Ruda" parent="YSortables" unique_id=1464132476 instance=ExtResource("17_bkeyp")]
 position = Vector2(213, 149)
-
-[node name="Mimosa" parent="YSortables" unique_id=1792863130 groups=["nav_obstacle"] instance=ExtResource("19_1okcc")]
-position = Vector2(84, 104)
-collection_id = &"mimosa1"
-
-[node name="Mimosa2" parent="YSortables" unique_id=1367409711 groups=["nav_obstacle"] instance=ExtResource("19_1okcc")]
-position = Vector2(198, 108)
-collection_id = &"mimosa2"
-
-[node name="PCuco" parent="YSortables" unique_id=1235862383 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
-position = Vector2(59, 160)
-collection_id = &"pan-de-cuco2"
-
-[node name="PCuco2" parent="YSortables" unique_id=483703657 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
-position = Vector2(48, 159)
-collection_id = &"pan-de-cuco3"
-
-[node name="PCuco3" parent="YSortables" unique_id=111787892 groups=["nav_obstacle"] instance=ExtResource("19_3hvtc")]
-position = Vector2(66, 155)
-collection_id = &"pan-de-cuco1"
-
-[node name="Pervinca" parent="YSortables" unique_id=919881374 groups=["nav_obstacle"] instance=ExtResource("20_m4b7g")]
-position = Vector2(147, 132)
-
-[node name="Pervinca2" parent="YSortables" unique_id=1836051713 groups=["nav_obstacle"] instance=ExtResource("20_m4b7g")]
-position = Vector2(156, 127)
-
-[node name="PeDeBoi" parent="YSortables" unique_id=791538594 groups=["nav_obstacle"] instance=ExtResource("26_r2kch")]
-position = Vector2(138, 108)
 
 [node name="Firefly" parent="YSortables" unique_id=155381040 instance=ExtResource("30_sl8ky")]
 position = Vector2(54, 175)
@@ -467,6 +395,7 @@ position = Vector2(189, 119)
 
 [node name="Wind" type="Node2D" parent="YSortables" unique_id=1717615843]
 process_mode = 4
+visible = false
 position = Vector2(115, 100)
 script = ExtResource("25_u7one")
 conversation = ExtResource("31_52hl2")
@@ -525,6 +454,7 @@ shape = SubResource("RectangleShape2D_ybx22")
 [node name="Navigation" type="Node2D" parent="." unique_id=584805140]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=376154472]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_u8cg4")
 
 [editable path="YSortables/Font/NPC"]
