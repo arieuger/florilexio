@@ -76,11 +76,12 @@ func _interact() -> void:
 				_fade_tweens_to(0.0)
 				return
 
-	await DialogueBalloonCoordinator.play(selected_conversation, [self])
+	var finished := await DialogueBalloonCoordinator.play(selected_conversation, [self])
 	_is_interacting = false
 	_fade_tweens_to(0.0)
 	
-	_on_conversation_finished(selected_conversation.conversation_id)
+	if finished:
+		_on_conversation_finished(selected_conversation.conversation_id)
 
 
 ## Para clases herdadas, según necesidade específica

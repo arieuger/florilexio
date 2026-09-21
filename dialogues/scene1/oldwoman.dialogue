@@ -67,12 +67,18 @@ old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 old_woman: Bule, paxarín, que o tempo voa como voa o vento! => END
 
 # TODO: Problema: aquí, por cómo está o xogo, pode que se de o caso de que
-# o xogador teña pendiente á vez esta conversa e algunha do hipérico. 
+# o xogador teña pendiente á vez esta conversa e a seguinte do hipérico. 
 ~ give_water_fountain
 old_woman: Auga das sete fontes… Ou alomenos dunha.\nCando remate o día, deixa as herbas na auga,
 coa lúa e ao orballo, para activar a súa maxia curadora…
 Xa tés algunha?
 do QuestManager.submit_item("02_get_park_fountain_water", "show_water_to_mundo", "full_bottle_park_fountain", 1)
+=> END
+
+~ bus_waiter_hiperico_showing_herb
+old_woman: Ah! Herba de San Xoán. A que afasta meigas e os demos.\nGrandes poderes contén! 
+Mais non é a única. Non, non. Tamén a da Nosa Señora, a\nHerba de Santa María, parecida á margarita  e cheiro de camomila.
+É balsámica e milagreira. Medra nas hortas e os campos e pendura\ndas portas que foron esconxuradas. Búscaa alí onde nunca irías tal día coma hoxe. 
 => END
 
 ~ after_water_fountain_bottle_show

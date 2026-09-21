@@ -448,6 +448,7 @@ drag_bottom_margin = 0.18
 position = Vector2(0, -22)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Navigation" unique_id=376154472]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ym5vt")
 
 [editable path="YSortables/Marquee/BusWaiter/NPC"]

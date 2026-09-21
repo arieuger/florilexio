@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://ba6f154tcth64"]
 
-[ext_resource type="Resource" uid="uid://e7ikat2b8ief" path="res://resources/items/plants/romeu.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_2tpvn"]
 [ext_resource type="Texture2D" uid="uid://d3abskhnoc8gh" path="res://assets/sprites/environment/plants/romeu.png" id="2_kfstu"]
 [ext_resource type="Texture2D" uid="uid://b2y2cjrq15olx" path="res://assets/sprites/environment/plants/romeu_hover.png" id="3_nujs4"]
+[ext_resource type="Resource" uid="uid://e7ikat2b8ief" path="res://resources/items/plants/romeu.tres" id="plant_data"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tpvn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfstu"]
 resource_local_to_scene = true
 size = Vector2(8, 10)
 
@@ -31,14 +31,14 @@ texture = ExtResource("3_nujs4")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_2tpvn")
+shape = SubResource("RectangleShape2D_kfstu")
 
 [node name="CollisionShape2D" parent="InteractionPoint" parent_id_path=PackedInt32Array(2011579778) index="0" unique_id=2094798677]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_kfstu")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_nujs4")
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tw0b0nv13o2t"
-path="res://.godot/imported/macela.png-fd21033d574cdbe6f3c0c5bbb086da36.ctex"
+path="res://.godot/imported/santa_maria.png-e55a8b801203a58680a062ce8057234e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/environment/plants/macela.png"
-dest_files=["res://.godot/imported/macela.png-fd21033d574cdbe6f3c0c5bbb086da36.ctex"]
+source_file="res://assets/sprites/environment/plants/santa_maria.png"
+dest_files=["res://.godot/imported/santa_maria.png-e55a8b801203a58680a062ce8057234e.ctex"]
 
 [params]
 

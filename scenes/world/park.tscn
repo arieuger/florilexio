@@ -50,7 +50,7 @@ b = Vector2(115, 98)
 a = Vector2(246, 110)
 b = Vector2(112, 98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r3u"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmh8e"]
 resource_local_to_scene = true
 size = Vector2(30, 14)
 
@@ -60,7 +60,7 @@ size = Vector2(37, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weyec"]
 size = Vector2(10, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyiui"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl8ky"]
 resource_local_to_scene = true
 size = Vector2(7.75, 10.25)
 
@@ -134,9 +134,9 @@ size = Vector2(14, 14)
 size = Vector2(249, 72)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u8cg4"]
-vertices = PackedVector2Array(191.5, 132.5, 233.5, 132.5, 188.5, 135.5, 243.5, 87.27344, 243.5, 177.5, 233.5, 119.5, 225.5, 116.5, 222.5, 119.5, 222.5, 118.5, 33.578125, 111.046875, 45.429688, 108.10156, 45.726563, 110.27344, 34.632813, 116.61719, 17.648438, 121.1875, 95.5, 104.5, 50.5, 103.03906, 50.5, 96.203125, 105.5, 97.546875, 117.40625, 103.5, 109.5, 104.5, 183.5, 116.5, 205.5, 118.5, 188.5, 127.5, 191.5, 119.5, 95.5, 111.5, 109.5, 111.5, 173.5, 127.5, 54.90625, 122.34375, 53.320313, 115.96875, 136.5, 85.5, 136.5, 89.03906, 130.3125, 87.5, 131.5, 85.5, 2.5, 177.5, 173.5, 137.5, 205.5, 85.5, 205.5, 83.64844, 225.5, 103.5, 144.5, 85.5, 144.5, 80.390625, 156.03125, 81.421875, 150.5, 85.5, 183.5, 103.5, 130.71875, 103.5, 201.75781, 85.5, 198.75781, 87.5, 185.82031, 87.5, 99.5, 134.5, 158.5, 130.5, 158.5, 137.5, 90.5, 137.5, 99.5, 127.5, 52.117188, 88.65625, 89.02344, 83.22656, 105.5, 90.046875, 37.890625, 91.99219, 161.11719, 85.5, 171.85938, 85.5, 150.5, 92.5, 140.5, 97.390625, 140.5, 92.5, 205.5, 119.5, 173.5, 130.5, 71.5, 127.5, 71.5, 134.5, 77.5, 134.5, 77.5, 137.5, 90.5, 134.5, 173.5, 135.5, 91.5, 81.5, 91.5, 79.21094, 111.97656, 77.5, 115.6875, 87.5, 131.5, 79.24219, 50.601563, 111.89844, 45.148438, 125.38281, 47.3125, 123.21094, 49.820313, 124.88281, 89.453125, 81.5, 2.5, 89.203125, 47.09375, 83.63281, 18.109375, 91.99219, 8.96875, 112.5, 23.46875, 100.92969, 32.53125, 100.92969, 23.070313, 104.03906, 5.5, 96.203125, 5.5, 103.03906, 10.5703125, 108.10156)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 1, 5), PackedInt32Array(6, 5, 7, 8), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19), PackedInt32Array(20, 6, 8, 21), PackedInt32Array(0, 2, 22, 23), PackedInt32Array(24, 25, 20, 23, 22, 26, 27, 28), PackedInt32Array(29, 30, 31, 32), PackedInt32Array(2, 1, 4, 33, 34), PackedInt32Array(35, 36, 3, 37), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(42, 20, 25, 19, 43), PackedInt32Array(3, 5, 6, 37), PackedInt32Array(44, 35, 37, 42, 45), PackedInt32Array(46, 45, 42), PackedInt32Array(47, 48, 49, 33, 50), PackedInt32Array(48, 47, 51), PackedInt32Array(52, 53, 54, 17, 16, 55), PackedInt32Array(56, 57, 46, 42, 58), PackedInt32Array(59, 60, 58, 42), PackedInt32Array(21, 61, 23, 20), PackedInt32Array(27, 26, 62, 48, 51), PackedInt32Array(27, 51, 63), PackedInt32Array(64, 65, 66, 33), PackedInt32Array(50, 67, 47), PackedInt32Array(34, 68, 2), PackedInt32Array(49, 34, 33), PackedInt32Array(66, 50, 33), PackedInt32Array(54, 69, 70, 71, 72), PackedInt32Array(71, 73, 32, 31, 72), PackedInt32Array(14, 24, 28, 74, 15), PackedInt32Array(75, 76, 77, 33), PackedInt32Array(53, 78, 69, 54), PackedInt32Array(41, 40, 56, 58), PackedInt32Array(27, 63, 64, 33, 77), PackedInt32Array(12, 75, 33, 13), PackedInt32Array(79, 80, 52, 55, 81), PackedInt32Array(82, 13, 33), PackedInt32Array(83, 55, 84, 85), PackedInt32Array(55, 83, 81), PackedInt32Array(79, 81, 86), PackedInt32Array(33, 79, 86, 87), PackedInt32Array(82, 33, 87), PackedInt32Array(82, 87, 88), PackedInt32Array(85, 82, 88, 83), PackedInt32Array(9, 85, 84, 10), PackedInt32Array(74, 11, 10, 15), PackedInt32Array(43, 59, 42), PackedInt32Array(19, 18, 43)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(112, 75, 88, 77, 87, 81, 53, 86, 48, 81, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 198, 85, 186, 85, 172, 83, 162, 83, 157, 79)])
+vertices = PackedVector2Array(191.5, 132.5, 233.5, 132.5, 188.5, 135.5, 203.75781, 83.49219, 243.5, 87.27344, 225.5, 103.5, 183.5, 103.5, 140.5, 97.390625, 140.5, 90.046875, 163.89063, 80.5, 243.5, 177.5, 233.5, 119.5, 225.5, 116.5, 191.5, 119.5, 183.5, 116.5, 95.5, 111.5, 109.5, 111.5, 188.5, 127.5, 173.5, 127.5, 54.90625, 122.34375, 53.320313, 115.96875, 33.578125, 111.046875, 45.429688, 108.10156, 45.726563, 110.27344, 34.632813, 116.61719, 17.648438, 121.1875, 95.5, 104.5, 50.5, 103.03906, 50.5, 96.203125, 105.5, 97.546875, 117.40625, 103.5, 109.5, 104.5, 2.5, 177.5, 173.5, 135.5, 163.89063, 80.49219, 203.75781, 83.47656, 130.71875, 103.5, 88.109375, 79.49219, 105.5, 90.046875, 37.890625, 91.99219, 49.820313, 124.88281, 47.3125, 123.21094, 45.148438, 125.38281, 119.96094, 78.5, 130.3125, 87.5, 115.6875, 87.5, 50.601563, 111.89844, 8.96875, 112.5, 23.46875, 100.92969, 32.53125, 100.92969, 23.070313, 104.03906, 18.109375, 91.99219, 2.5, 89.21875, 5.5, 96.203125, 5.5, 103.03906, 10.5703125, 108.10156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6, 7, 8, 9), PackedInt32Array(4, 10, 1, 11), PackedInt32Array(12, 11, 13, 14), PackedInt32Array(15, 16, 14, 13, 17, 18, 19, 20), PackedInt32Array(21, 22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29, 30, 31), PackedInt32Array(0, 2, 17, 13), PackedInt32Array(1, 10, 32, 2), PackedInt32Array(33, 2, 32), PackedInt32Array(9, 34, 35, 3), PackedInt32Array(6, 14, 16, 31, 36), PackedInt32Array(4, 11, 12, 5), PackedInt32Array(37, 38, 29, 28, 39), PackedInt32Array(19, 18, 33, 32, 40), PackedInt32Array(41, 40, 32, 42), PackedInt32Array(24, 42, 32, 25), PackedInt32Array(43, 9, 8, 44), PackedInt32Array(43, 44, 45, 37), PackedInt32Array(37, 45, 38), PackedInt32Array(26, 15, 20, 46, 27), PackedInt32Array(47, 25, 32), PackedInt32Array(48, 39, 49, 50), PackedInt32Array(39, 48, 51), PackedInt32Array(52, 37, 39, 51), PackedInt32Array(52, 51, 53), PackedInt32Array(32, 52, 53, 54), PackedInt32Array(47, 32, 54), PackedInt32Array(47, 54, 55), PackedInt32Array(50, 47, 55, 48), PackedInt32Array(21, 50, 49, 22), PackedInt32Array(46, 23, 22, 27), PackedInt32Array(36, 7, 6), PackedInt32Array(31, 30, 36)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(120, 76, 88, 77, 0, 87, 0, 180, 246, 180, 246, 85, 204, 81, 164, 78)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_obstacle"
 agent_radius = 2.5
@@ -216,7 +216,7 @@ texture = ExtResource("6_lsh6y")
 
 [node name="CollisionShape2D" parent="YSortables/Font/NPC/ClickArea" parent_id_path=PackedInt32Array(2036821595, 474706418) index="0" unique_id=654827359]
 position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_y4r3u")
+shape = SubResource("RectangleShape2D_wmh8e")
 
 [node name="TimeWarn" parent="YSortables/Font/NPC" index="4" unique_id=280577781]
 position = Vector2(0, -15)
@@ -348,14 +348,14 @@ texture = ExtResource("11_2q76u")
 
 [node name="CollisionShape2D" parent="YSortables/TerracePoster/NPC/ClickArea" parent_id_path=PackedInt32Array(1111542579, 474706418) index="0" unique_id=654827359]
 position = Vector2(-1.875, -4.875)
-shape = SubResource("RectangleShape2D_uyiui")
+shape = SubResource("RectangleShape2D_sl8ky")
 
 [node name="Romeu" parent="YSortables" unique_id=1219994463 instance=ExtResource("12_ynua0")]
-position = Vector2(193, 134)
+position = Vector2(202, 149)
 collection_id = &"romeu1"
 
 [node name="HerbaLuisa" parent="YSortables" unique_id=1134376028 instance=ExtResource("12_hebut")]
-position = Vector2(205, 134)
+position = Vector2(214, 149)
 collection_id = &"herba_luisa1"
 
 [node name="Hiperico" parent="YSortables" unique_id=1109796564 instance=ExtResource("15_rs8wy")]
@@ -364,22 +364,22 @@ collection_id = &"hiperico1"
 pre_collection_conversation = ExtResource("17_wmh8e")
 
 [node name="DialogueSpeaker" type="Marker2D" parent="YSortables/Hiperico" unique_id=1104115569]
-position = Vector2(-26, -32)
+position = Vector2(11, -16)
 script = ExtResource("25_jc6it")
 speaker_id = &"hiperico"
 balloon_color = Color(0.9434667, 0.94595677, 0.69145143, 1)
 metadata/_custom_type_script = "uid://bs0a181sb8rvj"
 
 [node name="Tominho" parent="YSortables" unique_id=727921110 instance=ExtResource("16_kuagl")]
-position = Vector2(225, 150)
+position = Vector2(216, 134)
 collection_id = &"tominho1"
 
 [node name="Tominho2" parent="YSortables" unique_id=2072385559 instance=ExtResource("16_kuagl")]
-position = Vector2(201, 150)
+position = Vector2(194, 134)
 collection_id = &"tominho2"
 
 [node name="Ruda" parent="YSortables" unique_id=1464132476 instance=ExtResource("17_bkeyp")]
-position = Vector2(213, 149)
+position = Vector2(204, 134)
 
 [node name="Firefly" parent="YSortables" unique_id=155381040 instance=ExtResource("30_sl8ky")]
 position = Vector2(54, 175)

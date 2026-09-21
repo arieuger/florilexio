@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://yswocf4cuviv" path="res://resources/dialogues/town_square/old_woman/quest_tutorial/old_woman_tutorial_completed.tres" id="9_6wpjk"]
 [ext_resource type="Resource" uid="uid://d3oaxwuo1jnce" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_show_full_bottle.tres" id="11_osdha"]
 [ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
+[ext_resource type="Resource" uid="uid://dvib8xuisix0g" path="res://resources/dialogues/town_square/old_woman/quest_hiperico/old_woman_bus_waiter_hiperico_showing_herb.tres" id="13_ufffc"]
 
 [sub_resource type="Resource" id="Resource_vpk1j"]
 script = ExtResource("1_apnri")
@@ -128,8 +129,23 @@ priority = 11
 repeatable = true
 condition_group = SubResource("Resource_yg2dn")
 
+[sub_resource type="Resource" id="Resource_3eu3v"]
+script = ExtResource("6_75ost")
+quest_id = &"03_bus_waiter_hiperico"
+objective_id = &"get_hiperico"
+
+[sub_resource type="Resource" id="Resource_2stbe"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_3eu3v")])
+
+[sub_resource type="Resource" id="Resource_jko0q"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("13_ufffc")
+priority = 90
+condition_group = SubResource("Resource_2stbe")
+
 [resource]
 script = ExtResource("2_jdbio")
 profile_id = &"old_woman"
-entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d")])
+entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d"), SubResource("Resource_jko0q")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

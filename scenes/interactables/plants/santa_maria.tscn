@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bemqll6ehos1h"]
 
-[ext_resource type="Resource" uid="uid://do0suxkpbd267" path="res://resources/items/plants/macela.tres" id="plant_data"]
 [ext_resource type="PackedScene" uid="uid://bvx4fi2l3atv8" path="res://scenes/interactables/plants/collectable_plant.tscn" id="1_worod"]
-[ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/macela.png" id="2_b52fh"]
+[ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/santa_maria.png" id="2_b52fh"]
 [ext_resource type="Texture2D" uid="uid://cto7yqspdwthh" path="res://assets/sprites/environment/plants/macela_hover.png" id="3_wro8n"]
+[ext_resource type="Resource" uid="uid://do0suxkpbd267" path="res://resources/items/plants/santa_maria.tres" id="plant_data"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wro8n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pofhu"]
 resource_local_to_scene = true
 size = Vector2(10, 5)
 
@@ -13,7 +13,7 @@ size = Vector2(10, 5)
 radius = 5.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p161h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yj63"]
 resource_local_to_scene = true
 size = Vector2(10, 2)
 
@@ -32,7 +32,7 @@ texture = ExtResource("3_wro8n")
 
 [node name="CollisionShape2D" parent="ClickArea" parent_id_path=PackedInt32Array(1884021542) index="0" unique_id=1684374644]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_wro8n")
+shape = SubResource("RectangleShape2D_pofhu")
 
 [node name="CollisionShape2D" parent="InteractionPoint" parent_id_path=PackedInt32Array(2011579778) index="0" unique_id=2094798677]
 position = Vector2(0, -7)
@@ -41,7 +41,7 @@ shape = SubResource("CapsuleShape2D_p161h")
 
 [node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(751808552) index="0" unique_id=1205980454]
 position = Vector2(0, 0)
-shape = SubResource("RectangleShape2D_p161h")
+shape = SubResource("RectangleShape2D_3yj63")
 disabled = true
 
 [node name="NameLabel" parent="." index="5" unique_id=1783969518]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConversationDefinition" format=3 uid="uid://dvib8xuisix0g"]
+
+[ext_resource type="Resource" uid="uid://7rnkylxgqjn3" path="res://dialogues/scene1/oldwoman.dialogue" id="1_sxfxp"]
+[ext_resource type="Script" uid="uid://c5fcus2dkgobv" path="res://scripts/dialogue/conversation_definition.gd" id="2_ake88"]
+
+[resource]
+script = ExtResource("2_ake88")
+conversation_id = &"old_woman_bus_waiter_hiperico_showing_herb"
+dialogue_resource = ExtResource("1_sxfxp")
+start_title = "bus_waiter_hiperico_showing_herb"
+initial_speaker_id = &"old_woman"

@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://bvboou7pa5l5n" path="res://resources/items/plants/hiperico.tres" id="6_hptgk"]
 [ext_resource type="Resource" uid="uid://dcwavm2hcup67" path="res://resources/items/plants/hortensia.tres" id="7_rh50l"]
 [ext_resource type="Resource" uid="uid://s6xog0fqbehm" path="res://resources/items/plants/ipomea.tres" id="8_cpl8c"]
-[ext_resource type="Resource" uid="uid://do0suxkpbd267" path="res://resources/items/plants/macela.tres" id="9_axyve"]
+[ext_resource type="Resource" uid="uid://do0suxkpbd267" path="res://resources/items/plants/santa_maria.tres" id="9_axyve"]
 [ext_resource type="Resource" uid="uid://bf5vda7v5udif" path="res://resources/items/plants/malva.tres" id="10_i8m33"]
 [ext_resource type="Resource" uid="uid://cg7l6lfi5d6ot" path="res://resources/items/plants/menta.tres" id="11_7ptma"]
 [ext_resource type="Resource" uid="uid://1h625eogpkjt" path="res://resources/items/plants/mimosa.tres" id="12_jsqpy"]

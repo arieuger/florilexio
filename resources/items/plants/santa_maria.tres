@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlantData" format=3 uid="uid://do0suxkpbd267"]
+
+[ext_resource type="Texture2D" uid="uid://tw0b0nv13o2t" path="res://assets/sprites/environment/plants/santa_maria.png" id="1_dhvk0"]
+[ext_resource type="Script" uid="uid://doq0kbgt7al22" path="res://scripts/data/plant_knowledge_fragment.gd" id="2_dtbvf"]
+[ext_resource type="Script" uid="uid://joe65o45qf51" path="res://scripts/data/plant_data.gd" id="3_inim1"]
+
+[sub_resource type="Resource" id="KnowledgeFragment_name"]
+script = ExtResource("2_dtbvf")
+id = &"name"
+text = "Herba da Nosa Señora"
+
+[resource]
+script = ExtResource("3_inim1")
+knowledge_fragments = Array[ExtResource("2_dtbvf")]([SubResource("KnowledgeFragment_name")])
+collection_requirements = Array[StringName]([&"name"])
+is_magic = true
+id = &"santa_maria"
+display_name = "Herba da Nosa Señora"
+icon = ExtResource("1_dhvk0")
