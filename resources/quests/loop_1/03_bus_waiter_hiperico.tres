@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="2_nyhvl"]
 [ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_tdf0l"]
 
+[sub_resource type="Resource" id="Resource_nyhvl"]
+script = ExtResource("1_6g4ee")
+description = "Atopa un hipérico para axudarlle"
+objective_ids = Array[StringName]([&"get_hiperico", &"show_hiperico_to_bus_waiter"])
+metadata/_custom_type_script = "uid://ba57xkf53n8fl"
+
 [sub_resource type="Resource" id="Resource_3nbkj"]
 script = ExtResource("2_nyhvl")
 objective_id = &"get_hiperico"
@@ -36,5 +42,6 @@ metadata/_custom_type_script = "uid://djwof256m8rue"
 script = ExtResource("3_tdf0l")
 quest_id = &"03_bus_waiter_hiperico"
 objectives = Array[ExtResource("2_nyhvl")]([SubResource("Resource_3nbkj"), SubResource("Resource_3h7hg"), SubResource("Resource_6g4ee")])
+objective_groups = Array[ExtResource("1_6g4ee")]([SubResource("Resource_nyhvl")])
 quest_type = 1
-description = "A quen espera o autobús viríalle ben un hipérico..."
+description = "A quen espera o autobús viríalle ben un hipérico para curar a bocha"
