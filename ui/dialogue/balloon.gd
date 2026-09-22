@@ -1,6 +1,7 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
+signal external_option_selected(index: int)
 
 ## The dialogue resource
 @export var dialogue_resource: DialogueResource
@@ -53,6 +54,8 @@ var _balloon_world_position: Vector2
 var _follows_world_position := false
 
 var _letter_count := 0
+
+var _external_selection_mode := false
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -231,6 +234,41 @@ func apply_dialogue_line() -> void:
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 
+
+func choose_player_option(options: PackedStringArray) -> int:
+	if options.is_empty():
+		return -1
+
+	_external_selection_mode = true
+	set_player_presentation()
+	set_balloon_color(Color.WHITE)
+	if is_instance_valid(dialogue_label):
+		dialogue_label.hide()
+
+	var responses: Array[DialogueResponse] = []
+
+	for index in range(options.size()):
+		var response := DialogueResponse.new()
+		response.id = str(index)
+		response.text = options[index]
+		responses.append(response)
+
+	responses_menu.responses = responses
+	
+	_preallocate_responses_menu()
+
+	if is_instance_valid(balloon):
+		balloon.show()
+
+	_show_responses_menu()
+
+	var selected_index: int = await external_option_selected
+
+	_external_selection_mode = false
+	queue_free()
+
+	return selected_index
+
 ## Skip internal instructions and only report dialogue assigned to this balloon.
 func _has_next_line_for_current_balloon(next_id: String) -> bool:
 	var pending_id := next_id
@@ -388,6 +426,11 @@ func _handle_dialogue_advance_input(event: InputEvent) -> bool:
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
+	if _external_selection_mode:
+		_set_response_items_disabled(true)
+		external_option_selected.emit(int(response.id))
+		return
+	
 	next(response.next_id)
 
 func _preallocate_responses_menu() -> void:

@@ -1,3 +1,4 @@
 {
-    "godotTools.editorPath.godot4": "/home/aroig/Godot/Godot_v4.6.2-stable_linux.x86_64"
+  "godotTools.editorPath.godot4": "/home/aroig/Godot/Godot_v4.6.2-stable_linux.x86_64",
+  "todo-tree.ripgrep.ripgrep": "/usr/bin/rg"
 }

@@ -2,12 +2,18 @@
 class_name ConversationEntry
 extends Resource
 
+enum InteractionMode {
+	DIRECT,
+	SELECTABLE
+}
 
 @export var conversation: ConversationDefinition
 @export var priority: int = 0
 @export var repeatable := false
 @export var is_fallback := false
 @export var condition_group: ConditionGroup
+@export var interaction_mode: InteractionMode = InteractionMode.DIRECT
+@export var selection_text: String
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()
@@ -18,5 +24,8 @@ func get_validation_errors() -> PackedStringArray:
 	if condition_group != null:
 		for condition_error in condition_group.get_validation_errors():
 			errors.append("condition_group: %s" % condition_error)
+
+	if interaction_mode == InteractionMode.SELECTABLE and selection_text == "":
+		errors.append("selection_text is empty for selectable interaction mode")
 
 	return errors

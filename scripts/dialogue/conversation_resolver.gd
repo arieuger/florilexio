@@ -43,6 +43,58 @@ static func resolve(profile: DialogueProfile, context: ConversationContext) -> C
 
 	return _select_highest_priority(profile, candidates).conversation
 
+static func resolve_entries(profile: DialogueProfile, context: ConversationContext) -> Array[ConversationEntry]:
+	if profile == null:
+		push_warning("ConversationResolver: dialogue profile is null")
+		return []
+
+	var profile_errors := profile.get_validation_errors()
+	if not profile_errors.is_empty():
+		push_warning("ConversationResolver: profile '%s' is invalid:\n- %s" % [profile.profile_id, "\n- ".join(profile_errors)])
+		return []
+
+	var regular_candidates: Array[ConversationEntry] = []
+	var fallback_candidates: Array[ConversationEntry] = []
+	var rejection_messages: Array[String] = []
+
+	for index in range(profile.entries.size()):
+		var entry := profile.entries[index]
+		var rejection_reason := _get_rejection_reason(entry, context)
+
+		if not rejection_reason.is_empty():
+			rejection_messages.append("entry %d (%s): %s" % [index, _get_entry_label(entry), rejection_reason])
+			continue
+
+		if entry.is_fallback:
+			fallback_candidates.append(entry)
+		else:
+			regular_candidates.append(entry)
+
+	var candidates := regular_candidates
+	if candidates.is_empty():
+		candidates = fallback_candidates
+
+	if candidates.is_empty():
+		var details := "profile has no entries"
+
+		if not rejection_messages.is_empty():
+			details = "\n- " + "\n- ".join(rejection_messages)
+
+		push_warning("ConversationResolver: profile '%s' has no eligible conversation. %s" % [profile.profile_id, details])
+		return []
+		
+	var highest_priority := candidates[0].priority
+
+	for entry in candidates:
+		highest_priority = max(highest_priority, entry.priority)
+
+	var resolved: Array[ConversationEntry] = []
+	for entry in candidates:
+		if entry.priority == highest_priority:
+			resolved.append(entry)
+
+	return resolved
+
 
 static func resolve_by_id(profile: DialogueProfile, conversation_id: StringName,
 	context: ConversationContext, require_available := true

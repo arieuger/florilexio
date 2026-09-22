@@ -156,6 +156,25 @@ func show_info_dialogue_and_wait(
 	return true
 
 
+func choose_player_option(options: PackedStringArray) -> int:
+	if options.is_empty():
+		return -1
+
+	var balloon := DEFAULT_CONVERSATION_BALLOON_SCENE.instantiate()
+
+	if not is_instance_valid(balloon):
+		return -1
+
+	get_tree().current_scene.add_child(balloon)
+
+	if not balloon.has_method("choose_player_option"):
+		push_warning("DialogueBalloonCoordinator: DEFAULT_CONVERSATION_BALLOON_SCENE must implement 'choose_player_option'.")
+		balloon.queue_free()
+		return -1
+
+	return await balloon.choose_player_option(options)
+
+
 func resolve_line_speaker(character: String) -> DialogueSpeaker:
 	var requested_speaker_id := StringName(character.strip_edges())
 

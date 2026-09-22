@@ -19,6 +19,8 @@
 script = ExtResource("1_apnri")
 conversation = ExtResource("3_5m5hu")
 priority = 100
+interaction_mode = null
+selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_0cprk"]
@@ -37,6 +39,8 @@ conversation = ExtResource("4_5m5hu")
 repeatable = true
 is_fallback = true
 condition_group = SubResource("Resource_13p11")
+interaction_mode = null
+selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_a8q4m"]
@@ -65,6 +69,8 @@ script = ExtResource("1_apnri")
 conversation = ExtResource("6_dj41s")
 priority = 90
 condition_group = SubResource("Resource_bjhks")
+interaction_mode = null
+selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_ufffc"]
@@ -84,6 +90,8 @@ conversation = ExtResource("9_6wpjk")
 priority = 10
 repeatable = true
 condition_group = SubResource("Resource_acxqu")
+interaction_mode = null
+selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_bt6ah"]
@@ -109,8 +117,10 @@ metadata/_custom_type_script = "uid://b7quctdo3ui46"
 [sub_resource type="Resource" id="Resource_3o8yu"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("11_osdha")
-priority = 80
+priority = 90
 condition_group = SubResource("Resource_tjlre")
+interaction_mode = 1
+selection_text = "[Ensínalle a botella chea]"
 
 [sub_resource type="Resource" id="Resource_glvj0"]
 script = ExtResource("4_vpk1j")
@@ -143,6 +153,8 @@ script = ExtResource("1_apnri")
 conversation = ExtResource("13_ufffc")
 priority = 90
 condition_group = SubResource("Resource_2stbe")
+interaction_mode = 1
+selection_text = "[Ensínalle o hipérico]"
 
 [resource]
 script = ExtResource("2_jdbio")

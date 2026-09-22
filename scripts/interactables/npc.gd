@@ -32,11 +32,16 @@ func _on_mouse_entered():
 	if _is_interacting or not _is_available():
 		return false
 
-	var conversation: ConversationDefinition = _resolve_conversation()
-	if conversation == null: return
+	var entries := _resolve_entries()
+	if entries.is_empty():
+		return
+
+	var has_time_cost := entries.any(func(entry: ConversationEntry) -> bool:
+		return entry.conversation.time_cost_blocks > 0.0
+	)
 
 	SoundManager.play_simple_sound("Actions/Hover")
-	_fade_tweens_to(hover_color.a, conversation.time_cost_blocks > 0.0)
+	_fade_tweens_to(hover_color.a, has_time_cost)
 
 func _on_mouse_exited():
 	_fade_tweens_to(0.0)
@@ -53,11 +58,6 @@ func _interact() -> void:
 	if not _can_interact():
 		return
 
-	var selected_conversation := _resolve_conversation()
-	if selected_conversation == null:
-		push_warning("NPC '%s' has no eligible conversation." % name)
-		return
-
 	_is_interacting = true
 	_fade_tweens_to(0.0)
 	SoundManager.play_simple_sound("Actions/Click")
@@ -72,17 +72,31 @@ func _interact() -> void:
 			)
 			var reached: bool = await player.move_to_point(interaction_point.global_position, stop_distance)
 			if not reached:
-				_is_interacting = false
-				_fade_tweens_to(0.0)
+				_finish_interaction()
 				return
 
-	var finished := await DialogueBalloonCoordinator.play(selected_conversation, [self])
+	var entries := _resolve_entries()
+	if entries.is_empty():
+		push_warning("NPC '%s' has no available conversation entries." % name)
+		_finish_interaction()
+		return
+
+	var selected_entry := await _select_entry(entries)
+	if selected_entry == null:
+		_finish_interaction()
+		return
+
+	var finished := await DialogueBalloonCoordinator.play(selected_entry.conversation, [self])
+
+	if finished:
+		_on_conversation_finished(selected_entry.conversation.conversation_id)
+
+	_finish_interaction()
+
+
+func _finish_interaction() -> void:
 	_is_interacting = false
 	_fade_tweens_to(0.0)
-	
-	if finished:
-		_on_conversation_finished(selected_conversation.conversation_id)
-
 
 ## Para clases herdadas, según necesidade específica
 func _on_conversation_finished(_conversation_id: StringName) -> void:
@@ -108,7 +122,7 @@ func _can_interact() -> bool:
 	if _is_interacting or not _is_available():
 		return false
 
-	return _resolve_conversation() != null
+	return not _resolve_entries().is_empty()
 		
 
 func _fade_tweens_to(target_alpha: float, show_time_warning := false) -> void:
@@ -135,6 +149,14 @@ func _make_hover_ignore_world_tint() -> void:
 	time_warn_sprite.material = hover_material
 
 
+func _resolve_entries() -> Array[ConversationEntry]:
+	if dialogue_profile == null:
+		return []
+
+	var context := ConversationContext.create(self, get_tree().current_scene)
+	return ConversationResolver.resolve_entries(dialogue_profile, context)
+
+
 func _resolve_conversation() -> ConversationDefinition:
 	if dialogue_profile == null:
 		return null
@@ -151,3 +173,32 @@ func _on_conversation_history_changed(
 
 func _on_conversation_history_reloaded() -> void:
 	_update_availability()
+
+
+func _select_entry(entries: Array[ConversationEntry]) -> ConversationEntry:
+	if entries.is_empty():
+		return null
+
+	if entries.size() == 1:
+		return entries[0]
+
+	var first_mode := entries[0].interaction_mode
+
+	for entry in entries:
+		if entry.interaction_mode != first_mode:
+			push_warning("NPC '%s' has conversation entries with mixed interaction modes. " % name)
+			return entries[0]
+
+	if first_mode == ConversationEntry.InteractionMode.DIRECT:
+		push_warning("NPC '%s' Multiple DIRECT conversations share priority. " % name)
+		return entries[0]
+	
+	var options := PackedStringArray()
+	for entry in entries:
+		options.append(entry.selection_text)
+	
+	var selected_index: int = await DialogueBalloonCoordinator.choose_player_option(options)
+	if selected_index < 0 or selected_index >= entries.size():
+		return null
+
+	return entries[selected_index]
