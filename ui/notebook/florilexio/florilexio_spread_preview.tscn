@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ci2ljtu6chwwg"]
 
 [ext_resource type="Texture2D" uid="uid://c5wrhaaspxbog" path="res://assets/sprites/ui/notebook/notebook_base.png" id="1_background"]
+[ext_resource type="PackedScene" uid="uid://cn5jkuxpr77sf" path="res://ui/notebook/florilexio/pages/herba_luisa/herba_luisa_page_01.tscn" id="2_fo1li"]
 [ext_resource type="PackedScene" uid="uid://b00qjesijwld6" path="res://ui/notebook/florilexio/pages/malva/malva_page_01.tscn" id="2_malva_page"]
 [ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/dedaleira/dedaleira_page_02.tscn" id="3_8h8ek"]
 
@@ -23,16 +24,27 @@ mouse_filter = 2
 texture = ExtResource("1_background")
 stretch_mode = 2
 
-[node name="LeftPage" parent="." unique_id=847986554 instance=ExtResource("2_malva_page")]
+[node name="herba_luisa" parent="." unique_id=1015934490 instance=ExtResource("2_fo1li")]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 2.0
 offset_right = 103.0
 offset_bottom = 117.0
 
-[node name="RightPage" parent="." unique_id=1591951097 instance=ExtResource("3_8h8ek")]
-layout_mode = 0
+[node name="Malva" type="Node" parent="." unique_id=1862461267]
+process_mode = 4
+
+[node name="LeftPage" parent="Malva" unique_id=847986554 instance=ExtResource("2_malva_page")]
+visible = false
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 103.0
+offset_bottom = 117.0
+
+[node name="RightPage" parent="Malva" unique_id=1591951097 instance=ExtResource("3_8h8ek")]
+visible = false
 offset_left = 104.0
 offset_top = 2.0
 offset_right = 199.0
 offset_bottom = 117.0
+plant_id = &"malva"

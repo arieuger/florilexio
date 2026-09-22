@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://61o723rh3jh7"]
+
+[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_808t1"]
+[ext_resource type="PackedScene" path="res://ui/notebook/florilexio/visual_reference_section.tscn" id="2_onkd5"]
+[ext_resource type="PackedScene" uid="uid://g00teca45qk1" path="res://ui/notebook/florilexio/knowledge_section.tscn" id="3_ififa"]
+[ext_resource type="FontFile" uid="uid://2882kav4wa24" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_tdrli"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehv2w"]
+content_margin_top = 4.0
+
+[sub_resource type="FontVariation" id="FontVariation_m8lg2"]
+base_font = ExtResource("4_tdrli")
+variation_transform = Transform2D(1, 0.075, 0, 1, 0, 0)
+
+[node name="RomeuPage01" unique_id=1015934490 instance=ExtResource("1_808t1")]
+plant_id = &"romeu"
+
+[node name="VisualReferenceSection" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="0" unique_id=1963280146 instance=ExtResource("2_onkd5")]
+visible = false
+offset_left = 33.0
+offset_top = 59.0
+offset_right = 81.3
+offset_bottom = 101.384995
+fragment_id = &"visual_reference"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContent/ContentCanvas" parent_id_path=PackedInt32Array(325095681) index="1" unique_id=1787905729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -14.089996
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="NameSection" parent="MainContent/ContentCanvas/VBoxContainer" index="0" unique_id=1000332948 instance=ExtResource("3_ififa")]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.038397163, 0.038397174, 0.038397145, 1)
+theme_override_font_sizes/normal_font_size = 7
+theme_override_font_sizes/bold_font_size = 7
+text = "[center][b]Romeu[/b][/center]"
+knowledge_type = 0
+fragment_ids = Array[StringName]([&"name"])
+presentation = 1
+fragment_separator = ""
+
+[node name="BaseDescriptions" parent="MainContent/ContentCanvas/VBoxContainer" index="1" unique_id=1444341100 instance=ExtResource("3_ififa")]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_constants/line_separation = -2
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+text = "Herba aromática. Matos leñosos e follas moi ramificadas
+Follas pequenas, lineais, abondosas, de cor verde escura\\nFloriñas violeta pálido"
+fragment_ids = Array[StringName]([&"base_description"])
+fragment_separator = ""
+
+[node name="Location" parent="MainContent/ContentCanvas/VBoxContainer" index="2" unique_id=887080124 instance=ExtResource("3_ififa")]
+custom_minimum_size = Vector2(0, 11.39)
+layout_mode = 2
+theme_override_constants/paragraph_separation = -1
+theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 4
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ehv2w")
+text = "Nos bancais de aromáticas do parque"
+knowledge_type = 4
+fragment_ids = Array[StringName]([&"locations"])
+fragment_separator = ""
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainContent/ContentCanvas/VBoxContainer/Location" index="2" unique_id=1094113662]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 6.455
+theme_override_font_sizes/bold_font_size = 4
+bbcode_enabled = true
+text = "[b]Onde atopalas?[/b]"
+
+[node name="TestMarginalia" parent="Marginalia" parent_id_path=PackedInt32Array(907118132) index="0" unique_id=787445562 instance=ExtResource("3_ififa")]
+visible = false
+layout_mode = 0
+offset_top = 38.0
+offset_right = 43.0
+offset_bottom = 49.0
+rotation = -1.0471976
+theme_override_constants/paragraph_separation = -1
+theme_override_fonts/normal_font = ExtResource("4_tdrli")
+theme_override_fonts/italics_font = SubResource("FontVariation_m8lg2")
+theme_override_font_sizes/normal_font_size = 3
+theme_override_font_sizes/bold_font_size = 4
+theme_override_font_sizes/bold_italics_font_size = 3
+theme_override_font_sizes/italics_font_size = 4
+theme_override_font_sizes/mono_font_size = 4
+knowledge_type = 9
+fragment_ids = Array[StringName]([&"test_marginalia"])
+presentation = 3

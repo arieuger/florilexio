@@ -9,10 +9,25 @@ script = ExtResource("2")
 id = &"name"
 text = "Romeu"
 
+[sub_resource type="Resource" id="Resource_q7jl2"]
+script = ExtResource("2")
+id = &"base_description"
+knowledge_type = 1
+text = "Herba aromática. Matos leñosos e follas moi ramificadas
+Follas pequenas, lineais, abondosas, de cor verde escura\\nFloriñas violeta pálido"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
+[sub_resource type="Resource" id="Resource_qpgio"]
+script = ExtResource("2")
+id = &"locations"
+knowledge_type = 4
+text = "Nos bancais de aromáticas do parque"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("1")
-knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
-collection_requirements = Array[StringName]([&"name"])
+knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_q7jl2"), SubResource("Resource_qpgio")])
+collection_requirements = Array[StringName]([&"name", &"base_description"])
 is_magic = true
 id = &"romeu"
 display_name = "Romeu"

@@ -1,7 +1,11 @@
 ~ start
-terrace_poster: Aromáticas e medicinais plantadas pola
-comunidade do parque de Duasaugas.
-Cortar con tino. Non asulagar. Deixar para quen vén detrás.
-if not GameState.acknowledged_not_all_aromatics
-	set GameState.acknowledged_not_all_aromatics = true
+terrace_poster: [b]Herbaluísa:[/b] Herba aromática. Cheira a limón
+[b]Romeu\:[/b] Herba aromática. Matos leñosos e follas moi ramificadas
+Follas pequenas, lineais, abondosas, de cor verde escura\nFloriñas violeta pálido
+do FlorilexioManager.unlock_knowledge("herba_luisa", "name")
+do FlorilexioManager.unlock_knowledge("herba_luisa", "base_description")
+do FlorilexioManager.unlock_knowledge("herba_luisa", "locations")
+do FlorilexioManager.unlock_knowledge("romeu", "name")
+do FlorilexioManager.unlock_knowledge("romeu", "base_description")
+do FlorilexioManager.unlock_knowledge("romeu", "locations")
 => END

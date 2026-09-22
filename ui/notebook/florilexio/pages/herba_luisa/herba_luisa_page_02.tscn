@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gixhmq7mud6r"]
+
+[ext_resource type="PackedScene" uid="uid://duw52wxnx1usu" path="res://ui/notebook/florilexio/florilexio_page_base.tscn" id="1_e777v"]
+
+[node name="HerbaLuisaPage02" unique_id=1591951097 instance=ExtResource("1_e777v")]
+plant_id = &"herba_luisa"

@@ -20,8 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://cs512v60lmgn6" path="res://ui/notebook/florilexio/pages/dedaleira/dedaleira_page_02.tscn" id="12_kkav6"]
 [ext_resource type="PackedScene" uid="uid://b8jj4w6st3jk8" path="res://ui/notebook/inventory/inventory_panel.tscn" id="12_skers"]
 [ext_resource type="Texture2D" uid="uid://c5xgkp7mweuwt" path="res://assets/sprites/ui/buttons/quest-marker.png" id="13_dyrrl"]
+[ext_resource type="PackedScene" uid="uid://cn5jkuxpr77sf" path="res://ui/notebook/florilexio/pages/herba_luisa/herba_luisa_page_01.tscn" id="13_lwqge"]
+[ext_resource type="PackedScene" uid="uid://gixhmq7mud6r" path="res://ui/notebook/florilexio/pages/herba_luisa/herba_luisa_page_02.tscn" id="14_ajviy"]
 [ext_resource type="Texture2D" uid="uid://egw08xuci0gs" path="res://assets/sprites/ui/buttons/quest-marker-toggled.png" id="14_dj3m7"]
 [ext_resource type="Texture2D" uid="uid://cr61mil3briff" path="res://assets/sprites/ui/buttons/quest-marker-hovered.png" id="15_3i2l8"]
+[ext_resource type="PackedScene" uid="uid://61o723rh3jh7" path="res://ui/notebook/florilexio/pages/romeu/romeu_page_01.tscn" id="15_f6a31"]
+[ext_resource type="PackedScene" uid="uid://hlreh5fbjjag" path="res://ui/notebook/florilexio/pages/romeu/romeu_page_02.tscn" id="16_ifyuo"]
 [ext_resource type="Texture2D" uid="uid://dycqb2fdsdf0" path="res://assets/sprites/ui/buttons/inventory-marker.png" id="18_ig3l4"]
 [ext_resource type="Texture2D" uid="uid://cp57t0nrrarda" path="res://assets/sprites/ui/buttons/inventory-marker-toggled.png" id="19_skers"]
 [ext_resource type="Texture2D" uid="uid://cegvcccobnw26" path="res://assets/sprites/ui/buttons/inventory-marker-hovered.png" id="20_kkav6"]
@@ -149,7 +153,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_florilexio")
-page_scenes = Array[PackedScene]([ExtResource("5_malva_1"), ExtResource("6_malva_2"), ExtResource("11_k2hle"), ExtResource("12_kkav6")])
+page_scenes = Array[PackedScene]([ExtResource("5_malva_1"), ExtResource("6_malva_2"), ExtResource("11_k2hle"), ExtResource("12_kkav6"), ExtResource("13_lwqge"), ExtResource("14_ajviy"), ExtResource("15_f6a31"), ExtResource("16_ifyuo")])
 
 [node name="LeftPageSlot" type="Control" parent="CenterContainer/Notebook/FlorilexioPanel" unique_id=1180988183]
 unique_name_in_owner = true

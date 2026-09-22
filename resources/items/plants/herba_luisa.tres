@@ -9,11 +9,25 @@ script = ExtResource("2")
 id = &"name"
 text = "Herba luísa"
 
+[sub_resource type="Resource" id="Resource_fj327"]
+script = ExtResource("2")
+id = &"base_description"
+knowledge_type = 1
+text = "Herba aromática. Cheira a limón"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
+[sub_resource type="Resource" id="Resource_tsyb1"]
+script = ExtResource("2")
+id = &"locations"
+knowledge_type = 4
+text = "Nos bancais de aromáticas do parque"
+metadata/_custom_type_script = "uid://doq0kbgt7al22"
+
 [resource]
 script = ExtResource("1")
-knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name")])
-collection_requirements = Array[StringName]([&"name"])
+knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_fj327"), SubResource("Resource_tsyb1")])
+collection_requirements = Array[StringName]([&"name", &"base_description"])
 is_magic = true
 id = &"herba_luisa"
-display_name = "Herba luísa"
+display_name = "Herbaluísa"
 icon = ExtResource("3_icon")
