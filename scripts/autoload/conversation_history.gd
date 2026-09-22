@@ -23,6 +23,15 @@ func has_started(conversation_id: StringName) -> bool:
 func has_finished(conversation_id: StringName) -> bool:
 	return get_finished_count(conversation_id) > 0
 
+
+## Record a conversation whose dialogue was completed inside another conversation.
+func record_completed_conversation(conversation_id: StringName) -> void:
+	if conversation_id.is_empty() or has_finished(conversation_id):
+		return
+
+	_on_conversation_started(conversation_id)
+	_on_conversation_finished(conversation_id)
+
 func has_been_interrupted(conversation_id: StringName) -> bool:
 	var entry := _get_entry(conversation_id)
 	return int(entry.get("interrupted_count", 0)) > 0

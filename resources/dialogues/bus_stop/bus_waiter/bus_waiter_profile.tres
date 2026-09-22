@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://muvq55mq1h8h" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_fallback_before_mission.tres" id="5_54cdn"]
 [ext_resource type="Script" uid="uid://gs4v2yogx6lj" path="res://scripts/dialogue/conditions/quest_status_condition.gd" id="6_7vdgf"]
 [ext_resource type="Resource" uid="uid://bck78gurg68ha" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_intro_explain_herbs.tres" id="7_dsu67"]
+[ext_resource type="Script" uid="uid://d3638l0gkhmh3" path="res://scripts/dialogue/conditions/quest_objective_completed_condition.gd" id="8_a5epu"]
+[ext_resource type="Resource" uid="uid://cr1ii1m8fka3r" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_first_show_hiperico.tres" id="8_dsu67"]
 
 [sub_resource type="Resource" id="Resource_7vdgf"]
 script = ExtResource("3_wstug")
@@ -43,8 +45,31 @@ conversation = ExtResource("7_dsu67")
 priority = 91
 condition_group = SubResource("Resource_qw8yh")
 
+[sub_resource type="Resource" id="Resource_ruclr"]
+script = ExtResource("8_a5epu")
+quest_id = &"03_bus_waiter_hiperico"
+objective_id = &"get_hiperico"
+metadata/_custom_type_script = "uid://d3638l0gkhmh3"
+
+[sub_resource type="Resource" id="Resource_2l5cb"]
+script = ExtResource("6_7vdgf")
+quest_id = &"03_bus_waiter_hiperico"
+metadata/_custom_type_script = "uid://gs4v2yogx6lj"
+
+[sub_resource type="Resource" id="Resource_hprs0"]
+script = ExtResource("3_54cdn")
+conditions = Array[ExtResource("2_sag28")]([SubResource("Resource_ruclr"), SubResource("Resource_2l5cb")])
+metadata/_custom_type_script = "uid://b7quctdo3ui46"
+
+[sub_resource type="Resource" id="Resource_heopp"]
+script = ExtResource("1_obq8h")
+conversation = ExtResource("8_dsu67")
+priority = 90
+condition_group = SubResource("Resource_hprs0")
+metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
+
 [resource]
 script = ExtResource("2_llcej")
 profile_id = &"bus_waiter"
-entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28"), SubResource("Resource_ymums")])
+entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28"), SubResource("Resource_ymums"), SubResource("Resource_heopp")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

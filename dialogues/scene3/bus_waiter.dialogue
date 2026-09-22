@@ -19,3 +19,10 @@ Ben me faría para esta chaga tan fea que me fixo o zapato…
 do FlorilexioManager.unlock_knowledge("hiperico", "name")
 do QuestManager.start_quest("03_bus_waiter_hiperico")
  => END
+
+~ bus_waiter_first_show_hiperico
+do QuestManager.submit_item("03_bus_waiter_hiperico", "show_hiperico_to_bus_waiter", "hiperico", 1)
+bus_waiter: Hipérico! Para o pé? Quen cho ha de pagar…\nCon isto facíase un tinte vermello que todo o curaba.
+Mágoa que non hai xa quen quede que recorde como…
+Só os vellos máis vellos e as vellas máis vellas,\nquen aínda se lembra daqueloutro mundo…
+ => END

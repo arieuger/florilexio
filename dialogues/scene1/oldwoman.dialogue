@@ -76,10 +76,24 @@ do QuestManager.submit_item("02_get_park_fountain_water", "show_water_to_mundo",
 => END
 
 ~ bus_waiter_hiperico_showing_herb
-old_woman: Ah! Herba de San Xoán. A que afasta meigas e os demos.\nGrandes poderes contén! 
+old_woman: Ah! Herba de San Xoán. A que afasta meigas e os demos.\nGrandes poderes contén!
 Mais non é a única. Non, non. Tamén a da Nosa Señora, a\nHerba de Santa María, parecida á margarita  e cheiro de camomila.
-É balsámica e milagreira. Medra nas hortas e os campos e pendura\ndas portas que foron esconxuradas. Búscaa alí onde nunca irías tal día coma hoxe. 
+É balsámica e milagreira. Medra nas hortas e os campos e pendura\ndas portas que foron esconxuradas. Búscaa alí onde nunca irías tal día coma hoxe.
+do FlorilexioManager.unlock_knowledge("santa_maria", "name")
 => END
 
 ~ after_water_fountain_bottle_show
 old_woman: ...sete fontes, sete herbas, sete ondas, sete lendas... => END
+
+~ bus_waiter_hiperico_second_showing_herb
+if not ConversationHistory.has_finished(&"old_woman_bus_waiter_hiperico_showing_herb"):
+	=>< bus_waiter_hiperico_showing_herb
+	do ConversationHistory.record_completed_conversation(&"old_woman_bus_waiter_hiperico_showing_herb")
+	player: ...
+do QuestManager.submit_item("03_bus_waiter_hiperico", "show_hiperico_to_old_woman", "hiperico", 1)
+old_woman: Ungüento? Pomada? Si… Algo facía eu coa herba espantademos…\nPero a untura precisa 40 días para se infusionar e
+tomar a cor que lle corresponde. Non hai tempo!\nMira que pronto é noite e aínda quedan herbas por atopar…
+Dos nervios non son quen de pensar…
+dog: Dos nervios… ou da enchenta
+old_woman: Por hoxe, unhas fregas cos mellores pétalos hanlle apañar.
+=> END

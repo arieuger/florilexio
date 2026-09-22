@@ -30,7 +30,6 @@ metadata/_custom_type_script = "uid://doq0kbgt7al22"
 script = ExtResource("1")
 knowledge_fragments = Array[ExtResource("2")]([SubResource("KnowledgeFragment_name"), SubResource("Resource_iraxq"), SubResource("Resource_aanv1")])
 collection_requirements = Array[StringName]([&"name", &"base_description"])
-florilexio_requirements = null
 is_magic = true
 id = &"dedaleira"
 display_name = "Estalote"

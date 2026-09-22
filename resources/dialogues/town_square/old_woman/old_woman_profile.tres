@@ -14,13 +14,12 @@
 [ext_resource type="Resource" uid="uid://d3oaxwuo1jnce" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_show_full_bottle.tres" id="11_osdha"]
 [ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
 [ext_resource type="Resource" uid="uid://dvib8xuisix0g" path="res://resources/dialogues/town_square/old_woman/quest_hiperico/old_woman_bus_waiter_hiperico_showing_herb.tres" id="13_ufffc"]
+[ext_resource type="Resource" uid="uid://bo50q56yv708k" path="res://resources/dialogues/town_square/old_woman/quest_hiperico/old_woman_bus_waiter_hiperico_second_showing_herb.tres" id="14_aaun5"]
 
 [sub_resource type="Resource" id="Resource_vpk1j"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("3_5m5hu")
 priority = 100
-interaction_mode = null
-selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_0cprk"]
@@ -39,8 +38,6 @@ conversation = ExtResource("4_5m5hu")
 repeatable = true
 is_fallback = true
 condition_group = SubResource("Resource_13p11")
-interaction_mode = null
-selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_a8q4m"]
@@ -67,10 +64,8 @@ metadata/_custom_type_script = "uid://b7quctdo3ui46"
 [sub_resource type="Resource" id="Resource_75ost"]
 script = ExtResource("1_apnri")
 conversation = ExtResource("6_dj41s")
-priority = 90
+priority = 99
 condition_group = SubResource("Resource_bjhks")
-interaction_mode = null
-selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_ufffc"]
@@ -90,8 +85,6 @@ conversation = ExtResource("9_6wpjk")
 priority = 10
 repeatable = true
 condition_group = SubResource("Resource_acxqu")
-interaction_mode = null
-selection_text = null
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_bt6ah"]
@@ -156,8 +149,27 @@ condition_group = SubResource("Resource_2stbe")
 interaction_mode = 1
 selection_text = "[Ensínalle o hipérico]"
 
+[sub_resource type="Resource" id="Resource_b1wxi"]
+script = ExtResource("4_vpk1j")
+quest_id = &"03_bus_waiter_hiperico"
+
+[sub_resource type="Resource" id="Resource_ik5vs"]
+script = ExtResource("6_75ost")
+quest_id = &"03_bus_waiter_hiperico"
+objective_id = &"show_hiperico_to_bus_waiter"
+
+[sub_resource type="Resource" id="Resource_kj348"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_b1wxi"), SubResource("Resource_ik5vs")])
+
+[sub_resource type="Resource" id="Resource_6l7ei"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("14_aaun5")
+priority = 92
+condition_group = SubResource("Resource_kj348")
+
 [resource]
 script = ExtResource("2_jdbio")
 profile_id = &"old_woman"
-entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d"), SubResource("Resource_jko0q")])
+entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d"), SubResource("Resource_jko0q"), SubResource("Resource_6l7ei")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

@@ -22,9 +22,19 @@ target_id = &"hiperico"
 show_in_notebook = false
 item_submission_mode = 1
 
+[sub_resource type="Resource" id="Resource_6g4ee"]
+script = ExtResource("2_nyhvl")
+objective_id = &"show_hiperico_to_old_woman"
+description = "Pídelle o ungüento a Mundo"
+event_type = 5
+target_type = 1
+target_id = &"hiperico"
+item_submission_mode = 1
+metadata/_custom_type_script = "uid://djwof256m8rue"
+
 [resource]
 script = ExtResource("3_tdf0l")
 quest_id = &"03_bus_waiter_hiperico"
-objectives = Array[ExtResource("2_nyhvl")]([SubResource("Resource_3nbkj"), SubResource("Resource_3h7hg")])
+objectives = Array[ExtResource("2_nyhvl")]([SubResource("Resource_3nbkj"), SubResource("Resource_3h7hg"), SubResource("Resource_6g4ee")])
 quest_type = 1
 description = "A quen espera o autobús viríalle ben un hipérico..."
