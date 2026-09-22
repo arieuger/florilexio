@@ -26,3 +26,13 @@ bus_waiter: Hipérico! Para o pé? Quen cho ha de pagar…\nCon isto facíase un
 Mágoa que non hai xa quen quede que recorde como…
 Só os vellos máis vellos e as vellas máis vellas,\nquen aínda se lembra daqueloutro mundo…
  => END
+
+~ bus_waiter_second_show_hiperico
+bus_waiter: Cedo volves… Atopaches quen che dea a receita?
+do QuestManager.submit_item("03_bus_waiter_hiperico", "second_show_hiperico_to_bus_waiter", "hiperico", 1)
+player: ...
+bus_waiter: Fregas? En serio?
+player: ...
+bus_waiter: Que alivio. E non che podo pagar… Pero sei dunha herba que sabe aliviar.
+Calma os nervios, é dixestiva e fai un sorbete parecido ao de limón,\nboísimo para o verán. É moi aromática. Moi aromática.
+do FlorilexioManager.unlock_knowledge("herba_luisa", "name")

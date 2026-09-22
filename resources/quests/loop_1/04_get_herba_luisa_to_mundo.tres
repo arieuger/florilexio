@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://hh5bt6n8mol6"]
+
+[ext_resource type="Script" uid="uid://ba57xkf53n8fl" path="res://scripts/quests/quest_objective_group_definition.gd" id="1_v06ba"]
+[ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="2_jt6eu"]
+[ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_5778a"]
+
+[sub_resource type="Resource" id="Resource_k20ii"]
+script = ExtResource("1_v06ba")
+description = "Hai unha herba que sabe a liviar. Calma os nervios, é dixestiva e fai un sorbete."
+objective_ids = Array[StringName]([&"get_herba_luisa", &"own_water"])
+
+[sub_resource type="Resource" id="Resource_c4fkl"]
+script = ExtResource("1_v06ba")
+description = "Aqui daslle a auga e un cacho de herbaluísa"
+objective_ids = Array[StringName]([&"give_herba_luisa_to_mundo", &"give_water_to_mundo"])
+
+[sub_resource type="Resource" id="Resource_eb688"]
+script = ExtResource("2_jt6eu")
+objective_id = &"get_herba_luisa"
+event_type = 7
+target_type = 1
+target_id = &"herba_luisa"
+show_in_notebook = false
+
+[sub_resource type="Resource" id="Resource_ih2fc"]
+script = ExtResource("2_jt6eu")
+objective_id = &"own_water"
+event_type = 7
+target_type = 6
+target_id = &"full_bottle_park_fountain"
+show_in_notebook = false
+
+[sub_resource type="Resource" id="Resource_ski8h"]
+script = ExtResource("2_jt6eu")
+objective_id = &"give_herba_luisa_to_mundo"
+event_type = 5
+target_type = 1
+target_id = &"herba_luisa"
+show_in_notebook = false
+item_submission_mode = 1
+
+[sub_resource type="Resource" id="Resource_iss3o"]
+script = ExtResource("2_jt6eu")
+objective_id = &"give_water_to_mundo"
+event_type = 5
+target_type = 6
+target_id = &"full_bottle_park_fountain"
+show_in_notebook = false
+
+[resource]
+script = ExtResource("3_5778a")
+quest_id = &"04_get_herba_luisa_to_mundo"
+objectives = Array[ExtResource("2_jt6eu")]([SubResource("Resource_eb688"), SubResource("Resource_ih2fc"), SubResource("Resource_ski8h"), SubResource("Resource_iss3o")])
+objective_groups = Array[ExtResource("1_v06ba")]([SubResource("Resource_k20ii"), SubResource("Resource_c4fkl")])
+quest_type = 1
+description = "Atopa algo para calmar os nervios (ou a enchenta) de Mundo"

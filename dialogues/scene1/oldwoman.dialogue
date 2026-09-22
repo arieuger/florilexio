@@ -95,5 +95,6 @@ old_woman: Ungüento? Pomada? Si… Algo facía eu coa herba espantademos…\nPe
 tomar a cor que lle corresponde. Non hai tempo!\nMira que pronto é noite e aínda quedan herbas por atopar…
 Dos nervios non son quen de pensar…
 dog: Dos nervios… ou da enchenta
+do QuestManager.start_quest("04_get_herba_luisa_to_mundo")
 old_woman: Por hoxe, unhas fregas cos mellores pétalos hanlle apañar.
 => END

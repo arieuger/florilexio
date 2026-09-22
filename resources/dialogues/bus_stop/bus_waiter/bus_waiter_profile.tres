@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bck78gurg68ha" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_intro_explain_herbs.tres" id="7_dsu67"]
 [ext_resource type="Script" uid="uid://d3638l0gkhmh3" path="res://scripts/dialogue/conditions/quest_objective_completed_condition.gd" id="8_a5epu"]
 [ext_resource type="Resource" uid="uid://cr1ii1m8fka3r" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_first_show_hiperico.tres" id="8_dsu67"]
+[ext_resource type="Resource" uid="uid://o118cte5c6lq" path="res://resources/dialogues/bus_stop/bus_waiter/bus_waiter_second_show_hiperico.tres" id="10_qw8yh"]
 
 [sub_resource type="Resource" id="Resource_7vdgf"]
 script = ExtResource("3_wstug")
@@ -68,8 +69,27 @@ priority = 90
 condition_group = SubResource("Resource_hprs0")
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
+[sub_resource type="Resource" id="Resource_8meqs"]
+script = ExtResource("6_7vdgf")
+quest_id = &"03_bus_waiter_hiperico"
+
+[sub_resource type="Resource" id="Resource_3bdt1"]
+script = ExtResource("8_a5epu")
+quest_id = &"03_bus_waiter_hiperico"
+objective_id = &"show_hiperico_to_old_woman"
+
+[sub_resource type="Resource" id="Resource_md8uv"]
+script = ExtResource("3_54cdn")
+conditions = Array[ExtResource("2_sag28")]([SubResource("Resource_8meqs"), SubResource("Resource_3bdt1")])
+
+[sub_resource type="Resource" id="Resource_gvyse"]
+script = ExtResource("1_obq8h")
+conversation = ExtResource("10_qw8yh")
+priority = 90
+condition_group = SubResource("Resource_md8uv")
+
 [resource]
 script = ExtResource("2_llcej")
 profile_id = &"bus_waiter"
-entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28"), SubResource("Resource_ymums"), SubResource("Resource_heopp")])
+entries = Array[ExtResource("1_obq8h")]([SubResource("Resource_sag28"), SubResource("Resource_ymums"), SubResource("Resource_heopp"), SubResource("Resource_gvyse")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"
