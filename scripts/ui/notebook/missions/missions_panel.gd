@@ -23,6 +23,8 @@ func _ready() -> void:
 	QuestManager.quest_completed.connect(_on_quest_changed)
 	QuestManager.quest_failed.connect(_on_quest_changed)
 	QuestManager.state_reloaded.connect(refresh)
+	ConversationHistory.history_changed.connect(_on_conversation_history_changed)
+	ConversationHistory.history_reloaded.connect(refresh)
 	refresh()
 
 
@@ -88,7 +90,7 @@ func _add_quest_entry(container: VBoxContainer, quest_id: StringName) -> void:
 	objectives_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	margin.add_child(objectives_list)
 
-	var notebook_items := _build_notebook_items(definition)
+	var notebook_items := _build_notebook_items(definition, quest_id)
 	var first_pending: Dictionary = {}
 	for item in notebook_items:
 		if not _is_item_completed(quest_id, item):
@@ -121,7 +123,7 @@ func _create_text_label(text: String, completed: bool, is_mission: bool) -> Rich
 	return label
 
 
-func _build_notebook_items(definition: QuestDefinition) -> Array[Dictionary]:
+func _build_notebook_items(definition: QuestDefinition, quest_id: StringName) -> Array[Dictionary]:
 	var items: Array[Dictionary] = []
 	var groups_by_id := {}
 	var emitted_groups := {}
@@ -138,14 +140,18 @@ func _build_notebook_items(definition: QuestDefinition) -> Array[Dictionary]:
 			if emitted_groups.has(group_id):
 				continue
 			emitted_groups[group_id] = true
-			if group.show_in_notebook:
+			if group.show_in_notebook \
+					and (group.notebook_reveal_condition == null \
+					or group.notebook_reveal_condition.is_met(quest_id)):
 				items.append({
 					"description": group.description,
 					"objective_ids": group.objective_ids,
 					"completion_mode": group.completion_mode,
 					"objective": null,
 				})
-		elif objective.show_in_notebook:
+		elif objective.show_in_notebook \
+				and (objective.notebook_reveal_condition == null \
+				or objective.notebook_reveal_condition.is_met(quest_id)):
 			items.append({
 				"description": objective.description,
 				"objective_ids": [objective.objective_id],
@@ -187,4 +193,8 @@ func _add_notebook_item(container: VBoxContainer, quest_id: StringName, item: Di
 
 
 func _on_quest_changed(_quest_id: StringName) -> void:
+	refresh()
+
+
+func _on_conversation_history_changed(_conversation_id: StringName) -> void:
 	refresh()

@@ -2,12 +2,13 @@
 class_name QuestObjectiveGroupDefinition
 extends Resource
 
-enum CompletionMode { ALL, ANY }
+enum CompletionMode {ALL, ANY}
 
 @export_multiline var description: String
 @export var objective_ids: Array[StringName] = []
 @export var completion_mode: CompletionMode = CompletionMode.ALL
 @export var show_in_notebook := true
+@export var notebook_reveal_condition: NotebookRevealCondition = null
 
 func get_validation_errors() -> PackedStringArray:
 	var errors := PackedStringArray()

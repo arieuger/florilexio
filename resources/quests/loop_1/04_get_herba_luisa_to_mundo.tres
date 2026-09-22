@@ -1,18 +1,29 @@
 [gd_resource type="Resource" script_class="QuestDefinition" format=3 uid="uid://hh5bt6n8mol6"]
 
 [ext_resource type="Script" uid="uid://ba57xkf53n8fl" path="res://scripts/quests/quest_objective_group_definition.gd" id="1_v06ba"]
+[ext_resource type="Script" uid="uid://cfuts7r4gfk5e" path="res://scripts/quests/conditions/notebook_conversation_finished_condition.gd" id="2_5778a"]
 [ext_resource type="Script" uid="uid://djwof256m8rue" path="res://scripts/quests/quest_objective_definition.gd" id="2_jt6eu"]
 [ext_resource type="Script" uid="uid://wjfua8olxjb5" path="res://scripts/quests/quest_definition.gd" id="3_5778a"]
 
+[sub_resource type="Resource" id="Resource_315tu"]
+script = ExtResource("2_5778a")
+conversation_id = &"bus_waiter_second_show_hiperico"
+
 [sub_resource type="Resource" id="Resource_k20ii"]
 script = ExtResource("1_v06ba")
-description = "Hai unha herba que sabe a liviar. Calma os nervios, é dixestiva e fai un sorbete."
+description = "Hai unha herba que sabe aliviar. Calma os nervios, é dixestiva e fai un sorbete."
 objective_ids = Array[StringName]([&"get_herba_luisa", &"own_water"])
+notebook_reveal_condition = SubResource("Resource_315tu")
+
+[sub_resource type="Resource" id="Resource_jt6eu"]
+script = ExtResource("2_5778a")
+conversation_id = &"bus_waiter_second_show_hiperico"
 
 [sub_resource type="Resource" id="Resource_c4fkl"]
 script = ExtResource("1_v06ba")
 description = "Aqui daslle a auga e un cacho de herbaluísa"
 objective_ids = Array[StringName]([&"give_herba_luisa_to_mundo", &"give_water_to_mundo"])
+notebook_reveal_condition = SubResource("Resource_jt6eu")
 
 [sub_resource type="Resource" id="Resource_eb688"]
 script = ExtResource("2_jt6eu")
