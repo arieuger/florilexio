@@ -157,13 +157,6 @@ func _resolve_entries() -> Array[ConversationEntry]:
 	return ConversationResolver.resolve_entries(dialogue_profile, context)
 
 
-func _resolve_conversation() -> ConversationDefinition:
-	if dialogue_profile == null:
-		return null
-
-	var context := ConversationContext.create(self, get_tree().current_scene)
-	return ConversationResolver.resolve(dialogue_profile, context)
-
 func _on_conversation_history_changed(
 	conversation_id: StringName
 ) -> void:

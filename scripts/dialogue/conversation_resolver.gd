@@ -1,47 +1,6 @@
 class_name ConversationResolver
 extends RefCounted
 
-static func resolve(profile: DialogueProfile, context: ConversationContext) -> ConversationDefinition:
-	if profile == null:
-		push_warning("ConversationResolver: dialogue profile is null")
-		return null
-
-	var profile_errors := profile.get_validation_errors()
-	if not profile_errors.is_empty():
-		push_warning("ConversationResolver: profile '%s' is invalid:\n- %s" % [profile.profile_id, "\n- ".join(profile_errors)])
-		return null
-	
-	var regular_candidates: Array[ConversationEntry] = []
-	var fallback_candidates: Array[ConversationEntry] = []
-	var rejection_messages: Array[String] = []
-
-	for index in range(profile.entries.size()):
-		var entry := profile.entries[index]
-		var rejection_reason := _get_rejection_reason(entry, context)
-
-		if not rejection_reason.is_empty():
-			rejection_messages.append("entry %d (%s): %s" % [index, _get_entry_label(entry), rejection_reason])
-			continue
-
-		if entry.is_fallback:
-			fallback_candidates.append(entry)
-		else:
-			regular_candidates.append(entry)
-
-	var candidates := regular_candidates
-	if candidates.is_empty():
-		candidates = fallback_candidates
-
-	if candidates.is_empty():
-		var details := "profile has no entries"
-
-		if not rejection_messages.is_empty():
-			details = "\n- " + "\n- ".join(rejection_messages)
-
-		push_warning("ConversationResolver: profile '%s' has no eligible conversation. %s" % [profile.profile_id, details])
-		return null
-
-	return _select_highest_priority(profile, candidates).conversation
 
 static func resolve_entries(profile: DialogueProfile, context: ConversationContext) -> Array[ConversationEntry]:
 	if profile == null:
