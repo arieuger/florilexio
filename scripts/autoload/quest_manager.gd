@@ -656,12 +656,15 @@ func _set_objective_progress(quest_id: StringName, objective_id: StringName, amo
 		return false
 
 	var old_amount := state.get_current_amount(objective_id)
+	var was_completed := old_amount >= objective.required_amount
+	if was_completed and not objective.reevaluate_after_completion:
+		return false
+
 	var new_amount := clampi(amount, 0, objective.required_amount)
 
 	if old_amount == new_amount:
 		return false
 
-	var was_completed := old_amount >= objective.required_amount
 	var is_now_completed := new_amount >= objective.required_amount
 
 	state.objective_progress[objective_id] = new_amount
@@ -679,6 +682,9 @@ func _set_objective_progress(quest_id: StringName, objective_id: StringName, amo
 
 func _reevaluate_inventory_owned_objective(quest_id: StringName, objective: QuestObjectiveDefinition) -> bool:
 	if objective.event_type != QuestObjectiveDefinition.EventType.INVENTORY_OWNED:
+		return false
+
+	if not objective.reevaluate_after_completion and is_objective_completed(quest_id, objective.objective_id):
 		return false
 
 	var current_amount := InventoryManager.get_amount(objective.target_id)

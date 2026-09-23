@@ -36,6 +36,8 @@ enum ItemSubmissionMode {
 @export var show_in_notebook := true
 @export_range(1, 999, 1) var required_amount := 1
 @export var item_submission_mode: ItemSubmissionMode = ItemSubmissionMode.GIVE
+## INVENTORY_OWNED only: keep tracking inventory after completion, allowing progress to decrease.
+@export var reevaluate_after_completion := false
 @export var notebook_reveal_condition: NotebookRevealCondition = null
 
 
