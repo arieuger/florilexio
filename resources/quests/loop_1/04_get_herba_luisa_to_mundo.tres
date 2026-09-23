@@ -12,7 +12,7 @@ conversation_id = &"bus_waiter_second_show_hiperico"
 [sub_resource type="Resource" id="Resource_k20ii"]
 script = ExtResource("1_v06ba")
 description = "Hai unha herba que sabe aliviar. Calma os nervios, é dixestiva e fai un sorbete."
-objective_ids = Array[StringName]([&"get_herba_luisa", &"own_water"])
+objective_ids = Array[StringName]([&"get_herba_luisa", &"own_water", &"already_knows_herba_luisa_health"])
 notebook_reveal_condition = SubResource("Resource_315tu")
 
 [sub_resource type="Resource" id="Resource_jt6eu"]
@@ -22,8 +22,17 @@ conversation_id = &"bus_waiter_second_show_hiperico"
 [sub_resource type="Resource" id="Resource_c4fkl"]
 script = ExtResource("1_v06ba")
 description = "Aqui daslle a auga e un cacho de herbaluísa"
-objective_ids = Array[StringName]([&"give_herba_luisa_to_mundo", &"give_water_to_mundo"])
+objective_ids = Array[StringName]([&"show_herba_luisa_to_mundo", &"give_water_to_mundo"])
 notebook_reveal_condition = SubResource("Resource_jt6eu")
+
+[sub_resource type="Resource" id="Resource_5778a"]
+script = ExtResource("2_jt6eu")
+objective_id = &"already_knows_herba_luisa_health"
+event_type = 2
+target_type = 3
+target_id = &"bus_waiter_second_show_hiperico"
+show_in_notebook = false
+metadata/_custom_type_script = "uid://djwof256m8rue"
 
 [sub_resource type="Resource" id="Resource_eb688"]
 script = ExtResource("2_jt6eu")
@@ -43,7 +52,7 @@ show_in_notebook = false
 
 [sub_resource type="Resource" id="Resource_ski8h"]
 script = ExtResource("2_jt6eu")
-objective_id = &"give_herba_luisa_to_mundo"
+objective_id = &"show_herba_luisa_to_mundo"
 event_type = 5
 target_type = 1
 target_id = &"herba_luisa"
@@ -61,7 +70,7 @@ show_in_notebook = false
 [resource]
 script = ExtResource("3_5778a")
 quest_id = &"04_get_herba_luisa_to_mundo"
-objectives = Array[ExtResource("2_jt6eu")]([SubResource("Resource_eb688"), SubResource("Resource_ih2fc"), SubResource("Resource_ski8h"), SubResource("Resource_iss3o")])
+objectives = Array[ExtResource("2_jt6eu")]([SubResource("Resource_5778a"), SubResource("Resource_eb688"), SubResource("Resource_ih2fc"), SubResource("Resource_ski8h"), SubResource("Resource_iss3o")])
 objective_groups = Array[ExtResource("1_v06ba")]([SubResource("Resource_k20ii"), SubResource("Resource_c4fkl")])
 quest_type = 1
 description = "Atopa algo para calmar os nervios (ou a enchenta) de Mundo"

@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://brw8pb3mu558h" path="res://resources/dialogues/town_square/old_woman/quest_fountain_water/old_woman_water_fountain_after_show.tres" id="12_osdha"]
 [ext_resource type="Resource" uid="uid://dvib8xuisix0g" path="res://resources/dialogues/town_square/old_woman/quest_hiperico/old_woman_bus_waiter_hiperico_showing_herb.tres" id="13_ufffc"]
 [ext_resource type="Resource" uid="uid://bo50q56yv708k" path="res://resources/dialogues/town_square/old_woman/quest_hiperico/old_woman_bus_waiter_hiperico_second_showing_herb.tres" id="14_aaun5"]
+[ext_resource type="Resource" uid="uid://lhft6ihf2pmh" path="res://resources/dialogues/town_square/old_woman/quest_herba_luisa/old_woman_herbaluisa_give_herb_and_water.tres" id="15_bt6ah"]
+[ext_resource type="Script" uid="uid://bmc7bf1pxype4" path="res://scripts/dialogue/conditions/conversation_finished_condition.gd" id="15_qqofs"]
 
 [sub_resource type="Resource" id="Resource_vpk1j"]
 script = ExtResource("1_apnri")
@@ -168,8 +170,37 @@ conversation = ExtResource("14_aaun5")
 priority = 92
 condition_group = SubResource("Resource_kj348")
 
+[sub_resource type="Resource" id="Resource_d5lm6"]
+script = ExtResource("4_vpk1j")
+quest_id = &"04_get_herba_luisa_to_mundo"
+
+[sub_resource type="Resource" id="Resource_oj34v"]
+script = ExtResource("6_75ost")
+quest_id = &"04_get_herba_luisa_to_mundo"
+objective_id = &"get_herba_luisa"
+
+[sub_resource type="Resource" id="Resource_svuu6"]
+script = ExtResource("6_75ost")
+quest_id = &"04_get_herba_luisa_to_mundo"
+objective_id = &"own_water"
+
+[sub_resource type="Resource" id="Resource_6r81v"]
+script = ExtResource("15_qqofs")
+conversation_id = &"bus_waiter_second_show_hiperico"
+metadata/_custom_type_script = "uid://bmc7bf1pxype4"
+
+[sub_resource type="Resource" id="Resource_jtmtx"]
+script = ExtResource("5_osdha")
+conditions = Array[ExtResource("2_y2sws")]([SubResource("Resource_d5lm6"), SubResource("Resource_oj34v"), SubResource("Resource_svuu6"), SubResource("Resource_6r81v")])
+
+[sub_resource type="Resource" id="Resource_tpdc1"]
+script = ExtResource("1_apnri")
+conversation = ExtResource("15_bt6ah")
+priority = 95
+condition_group = SubResource("Resource_jtmtx")
+
 [resource]
 script = ExtResource("2_jdbio")
 profile_id = &"old_woman"
-entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d"), SubResource("Resource_jko0q"), SubResource("Resource_6l7ei")])
+entries = Array[ExtResource("1_apnri")]([SubResource("Resource_vpk1j"), SubResource("Resource_dj41s"), SubResource("Resource_75ost"), SubResource("Resource_aaun5"), SubResource("Resource_3o8yu"), SubResource("Resource_hvw4d"), SubResource("Resource_jko0q"), SubResource("Resource_6l7ei"), SubResource("Resource_tpdc1")])
 metadata/_custom_type_script = "uid://bxwrsx1p4sj8v"

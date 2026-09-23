@@ -98,3 +98,14 @@ dog: Dos nervios… ou da enchenta
 do QuestManager.start_quest("04_get_herba_luisa_to_mundo")
 old_woman: Por hoxe, unhas fregas cos mellores pétalos hanlle apañar.
 => END
+
+~ give_herb_and_water
+old_woman: Como arrecendes, paxarín... Tes auga, paxarín?
+do QuestManager.submit_item("04_get_herba_luisa_to_mundo", "give_water_to_mundo", "full_bottle_park_fountain", 1)
+do QuestManager.submit_item("04_get_herba_luisa_to_mundo", "show_herba_luisa_to_mundo", "herba_luisa", 1)
+player: ...
+old_woman: Segredos como os desta herba gárdanse na casa de VouveñoVou.
+Vai anos que xa non vou.\nE Vou non vén.
+Nin vén\nNin vou.
+Pero se ti vas, lévalle malvas. Son as súas favoritas para quitar os medos
+# TODO: Definir misión secundaria
