@@ -68,6 +68,8 @@ script = ExtResource("1_apnri")
 conversation = ExtResource("6_dj41s")
 priority = 99
 condition_group = SubResource("Resource_bjhks")
+interaction_mode = 1
+selection_text = "[Ensinarlle a malva a Mundo]"
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_ufffc"]
@@ -115,7 +117,7 @@ conversation = ExtResource("11_osdha")
 priority = 90
 condition_group = SubResource("Resource_tjlre")
 interaction_mode = 1
-selection_text = "[Ensínalle a botella chea]"
+selection_text = "[Ensinarlle a botella chea]"
 
 [sub_resource type="Resource" id="Resource_glvj0"]
 script = ExtResource("4_vpk1j")
@@ -149,7 +151,7 @@ conversation = ExtResource("13_ufffc")
 priority = 90
 condition_group = SubResource("Resource_2stbe")
 interaction_mode = 1
-selection_text = "[Ensínalle o hipérico]"
+selection_text = "[Ensinarlle o hipérico]"
 
 [sub_resource type="Resource" id="Resource_b1wxi"]
 script = ExtResource("4_vpk1j")
@@ -169,6 +171,8 @@ script = ExtResource("1_apnri")
 conversation = ExtResource("14_aaun5")
 priority = 92
 condition_group = SubResource("Resource_kj348")
+interaction_mode = 1
+selection_text = "[Preguntarlle por un ungüento para a persoa do autobús]"
 
 [sub_resource type="Resource" id="Resource_d5lm6"]
 script = ExtResource("4_vpk1j")
@@ -198,6 +202,8 @@ script = ExtResource("1_apnri")
 conversation = ExtResource("15_bt6ah")
 priority = 95
 condition_group = SubResource("Resource_jtmtx")
+interaction_mode = 1
+selection_text = "[Darlle unhas follas de herbaluísa e a auga para que faga unha infusión]"
 
 [resource]
 script = ExtResource("2_jdbio")

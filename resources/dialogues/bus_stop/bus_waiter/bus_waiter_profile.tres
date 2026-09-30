@@ -67,6 +67,8 @@ script = ExtResource("1_obq8h")
 conversation = ExtResource("8_dsu67")
 priority = 90
 condition_group = SubResource("Resource_hprs0")
+interaction_mode = 1
+selection_text = "[Ensinarlle o hipérico]"
 metadata/_custom_type_script = "uid://bjgo1b0t5uf5o"
 
 [sub_resource type="Resource" id="Resource_8meqs"]
@@ -87,6 +89,8 @@ script = ExtResource("1_obq8h")
 conversation = ExtResource("10_qw8yh")
 priority = 90
 condition_group = SubResource("Resource_md8uv")
+interaction_mode = 1
+selection_text = "[Explicarlle o das fregas]"
 
 [resource]
 script = ExtResource("2_llcej")

@@ -81,15 +81,27 @@ func _interact() -> void:
 		_finish_interaction()
 		return
 
-	var selected_entry := await _select_entry(entries)
-	if selected_entry == null:
-		_finish_interaction()
-		return
+	var keep_selecting := true
+	for entry in entries:
+		if entry.interaction_mode != ConversationEntry.InteractionMode.SELECTABLE:
+			keep_selecting = false
+			break
 
-	var finished := await DialogueBalloonCoordinator.play(selected_entry.conversation, [self])
+	while not entries.is_empty():
+		var selected_entry := await _select_entry(entries)
+		if selected_entry == null:
+			break
 
-	if finished:
+		var finished := await DialogueBalloonCoordinator.play(selected_entry.conversation, [self])
+		if not finished:
+			break
+
 		_on_conversation_finished(selected_entry.conversation.conversation_id)
+
+		if not keep_selecting:
+			break
+
+		entries.erase(selected_entry)
 
 	_finish_interaction()
 
@@ -172,9 +184,6 @@ func _select_entry(entries: Array[ConversationEntry]) -> ConversationEntry:
 	if entries.is_empty():
 		return null
 
-	if entries.size() == 1:
-		return entries[0]
-
 	var first_mode := entries[0].interaction_mode
 
 	for entry in entries:
@@ -189,6 +198,8 @@ func _select_entry(entries: Array[ConversationEntry]) -> ConversationEntry:
 	var options := PackedStringArray()
 	for entry in entries:
 		options.append(entry.selection_text)
+
+	options.append("[Irse]")
 	
 	var selected_index: int = await DialogueBalloonCoordinator.choose_player_option(options)
 	if selected_index < 0 or selected_index >= entries.size():

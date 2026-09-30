@@ -29,6 +29,8 @@ Só os vellos máis vellos e as vellas máis vellas,\nquen aínda se lembra daqu
 
 ~ bus_waiter_second_show_hiperico
 bus_waiter: Cedo volves… Atopaches quen che dea a receita?
+# TODO: Aquí creo que é mellor que a condición non sexa ensinar o hipérico, senón haber tido a conversa previa con mundo
+# Nese caso, creo que habería que quitar o selectable da conversa
 do QuestManager.submit_item("03_bus_waiter_hiperico", "second_show_hiperico_to_bus_waiter", "hiperico", 1)
 player: ...
 bus_waiter: Fregas? En serio?
