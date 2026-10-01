@@ -23,10 +23,14 @@ var _paginated_sections := [Section.FLORILEXIO]
 
 
 func _ready() -> void:
-	close_button.pressed.connect(func() -> void: close_requested.emit())
+	close_button.pressed.connect(_on_close_button_mouse_pressed)
+	close_button.mouse_entered.connect(_on_button_mouse_entered)
 	missions_tab_button.pressed.connect(func() -> void: _set_section(Section.MISSIONS))
+	missions_tab_button.mouse_entered.connect(_on_button_mouse_entered)
 	florilexio_tab_button.pressed.connect(func() -> void: _set_section(Section.FLORILEXIO))
+	florilexio_tab_button.mouse_entered.connect(_on_button_mouse_entered)
 	inventory_tab_button.pressed.connect(func() -> void: _set_section(Section.INVENTORY))
+	inventory_tab_button.mouse_entered.connect(_on_button_mouse_entered)
 
 	for area in [left_hover_area, right_hover_area]:
 		area.mouse_entered.connect(_update_pagination)
@@ -56,7 +60,7 @@ func prepare_to_open() -> void:
 func _set_section(section: Section) -> void:
 	_active_section = section
 	_apply_section_visibility()
-	
+	SoundManager.play_simple_sound("Notebook/Notebook Section")
 
 func _apply_section_visibility() -> void:
 	if not is_node_ready():
@@ -103,8 +107,8 @@ func _set_pagination_area(area: Control, hover_texture: TextureRect, enabled: bo
 
 	hover_texture.visible = (
 		enabled and area.is_visible_in_tree()
-        and Rect2(Vector2.ZERO, area.size).has_point(area.get_local_mouse_position())
-    )
+		and Rect2(Vector2.ZERO, area.size).has_point(area.get_local_mouse_position())
+	)
 
 
 func _on_pagination_input(event: InputEvent, forward: bool) -> void:
@@ -119,6 +123,7 @@ func _on_pagination_input(event: InputEvent, forward: bool) -> void:
 		return
 
 	accept_event()
+	SoundManager.play_simple_sound("Notebook/Notebook Page")
 	panel.call(&"next_spread" if forward else &"previous_spread")
 
 
@@ -132,3 +137,10 @@ func _get_active_pagination_panel() -> Control:
 			return florilexio_panel
 		_:
 			return null
+			
+func _on_close_button_mouse_pressed() -> void:
+	SoundManager.play_simple_sound("Notebook/Close Notebook")
+	close_requested.emit()
+	
+func _on_button_mouse_entered() -> void:
+	SoundManager.play_simple_sound("Actions/Hover")

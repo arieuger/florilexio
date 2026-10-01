@@ -43,8 +43,6 @@ func _ready() -> void:
 	_update_time_label(GameState.consumed_time)
 	GameState.consumed_time_added.connect(_on_consumed_time_added)
 	# inventory_button.pressed.connect(_toggle_inventory)
-	# inventory_button.pressed.connect(_on_inventory_button_pressed)
-	# inventory_button.mouse_entered.connect(_on_inventory_button_mouse_entered)
 	if inventory_panel.has_signal(&"close_requested"):
 		inventory_panel.connect(&"close_requested", _hide_inventory)
 	if inventory_panel.has_signal(&"compose_bouquet_requested"):
@@ -52,6 +50,7 @@ func _ready() -> void:
 
 	notebook_panel.visible = false
 	notebook_button.pressed.connect(_toggle_notebook)
+	notebook_button.mouse_entered.connect(_on_notebook_button_mouse_entered)
 
 	if notebook_panel.has_signal(&"close_requested"):
 		notebook_panel.connect(&"close_requested", _hide_notebook)
@@ -80,11 +79,7 @@ func _hide_inventory() -> void:
 	_set_inventory_open(false)
 
 
-func _on_inventory_button_pressed() -> void:
-	SoundManager.play_simple_sound("Inventory/Open Inventory")
-
-
-func _on_inventory_button_mouse_entered() -> void:
+func _on_notebook_button_mouse_entered() -> void:
 	SoundManager.play_simple_sound("Actions/Hover")
 
 
@@ -380,6 +375,7 @@ func _show_notebook() -> void:
 
 	notebook_panel.visible = true
 	_update_panel_buttons()
+	SoundManager.play_simple_sound("Notebook/Open Notebook")
 
 
 func _hide_notebook() -> void:

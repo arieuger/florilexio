@@ -65,7 +65,7 @@ func _refresh() -> void:
 
 
 func _on_close_button_pressed() -> void:
-	SoundManager.play_simple_sound("Inventory/Open Inventory")
+	SoundManager.play_simple_sound("Notebook/Close Notebook")
 	close_requested.emit()
 
 
@@ -75,13 +75,13 @@ func _on_close_button_mouse_entered() -> void:
 
 func _on_previous_page_pressed() -> void:
 	_current_page = maxi(_current_page - 1, 0)
-	SoundManager.play_simple_sound("Inventory/Open Inventory")
+	SoundManager.play_simple_sound("Notebook/Notebook Page")
 	_refresh()
 
 
 func _on_next_page_pressed() -> void:
 	_current_page += 1
-	SoundManager.play_simple_sound("Inventory/Open Inventory")
+	SoundManager.play_simple_sound("Notebook/Notebook Page")
 	_refresh()
 
 

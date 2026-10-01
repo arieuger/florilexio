@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{44112e14-4bf2-4fbc-921f-52856d227a85}">
+	<object class="AudioFile" id="{fd98c579-62d3-4b90-a0a9-ab1dd4dae9ee}">
 		<property name="assetPath">
-			<value>Open Inventory-001.wav</value>
+			<value>Notebook page-003.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.0713378684807255</value>
+			<value>1.2632199546485261</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{8127f774-6dec-4d31-9780-1428a7c23505}</destination>
