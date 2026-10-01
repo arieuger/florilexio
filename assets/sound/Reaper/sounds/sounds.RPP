@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1790876012 0
+<REAPER_PROJECT 0.1 "7.73/linux-x86_64" 1790884678 0
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 274.4
-  ZOOM 237.74474086980021 65104 0
-  VZOOMEX 17.55991745 1595
+  CURSOR 257.6
+  ZOOM 237.74474086980061 60730 0
+  VZOOMEX 17.55991745 975
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -68,8 +68,8 @@
   GLOBAL_AUTO -1
   TEMPO 300 4 4 0
   PLAYRATE 1 0 0.25 4
-  SELECTION 274.4 279.2
-  SELECTION2 274.4 279.2
+  SELECTION 257.6 260
+  SELECTION2 257.6 260
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -105,10 +105,10 @@
   MARKER 1 255.4 "" 1
   MARKER 2 256 "Cutting grass 2" 1 0 1 B {87029922-0B1F-0207-5E6C-6B126E0C733A} 0 1
   MARKER 2 257 "" 1
-  MARKER 3 412 Water 1 0 1 B {DB1376BB-D54A-8DAD-23C3-D1FB016AE584} 0 1
-  MARKER 3 412.8 "" 1
-  MARKER 4 419.2 Night 9 0 1 B {6CA15DCE-7D56-611B-1046-4CF5383634FF} 0 1
-  MARKER 4 563.19999999999982 "" 9
+  MARKER 3 414.4 Water 1 0 1 B {DB1376BB-D54A-8DAD-23C3-D1FB016AE584} 0 1
+  MARKER 3 415.2 "" 1
+  MARKER 4 421.6 Night 9 0 1 B {6CA15DCE-7D56-611B-1046-4CF5383634FF} 0 1
+  MARKER 4 565.5999999999998 "" 9
   <PROJBAY
   >
   <TRACK {C1C8AFC2-E2EE-DC03-5229-ACF418D70F40}
@@ -1283,7 +1283,7 @@
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 1 1
-    BUSCOMP 0 0 0 0 0
+    BUSCOMP 2 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
     LANEREC -1 -1 -1 0
@@ -1317,7 +1317,7 @@
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -1382,7 +1382,7 @@
     MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
-    ISBUS 2 -2
+    ISBUS 2 -1
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
@@ -1390,7 +1390,7 @@
     SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
-    TRACKHEIGHT 0 0 0 0 0 0 0
+    TRACKHEIGHT 0 1 0 0 0 0 0
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
@@ -1440,6 +1440,92 @@
       GUID {E16BDB00-3AC3-850C-2186-3FE5FA2274CC}
       <SOURCE MP3
         FILE "/home/edupoch/Documentos/webs/florilexio-prototipo/assets/sound/Reaper/recordings/825424__sinny__dry-bush-03.mp3" 1
+      >
+    >
+  >
+  <TRACK {61BF9820-461E-8654-FEA4-0D85B832E2C1}
+    NAME "Charging to cut Bush"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.09267905907985 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {61BF9820-461E-8654-FEA4-0D85B832E2C1}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1891 300 794 348
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaVerbate (Cockos)" reaverbate.vst.so 0 "" 1920361016<56535472766238726561766572626174> ""
+        OGJ2cu9e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAKAAAAAAAAAAAABAA
+        776t3g3wrd7OOnU+AACAPzRIyT5i+QM/AACAPwAAAAAAAIA/AAAAAA==
+        AFByb2dyYW0gMQAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {55316130-3DCB-504E-DFB3-BA3343839F30}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 257.6
+      SNAPOFFS 0
+      LENGTH 0.50865825844073
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {1DE24EFA-A57D-21A2-6DC6-33BDD9B9B40B}
+      IID 587
+      NAME 719636__zapsplatcom__fast-whoosh-bamboo-swoosh-through-air-version-1.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0.0458313248925
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BEEBA99C-0C5B-4C13-733E-04514C630080}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/juegos/juegos/florilexio/assets/sound/Reaper/recordings/719636__zapsplatcom__fast-whoosh-bamboo-swoosh-through-air-version-1.wav"
+      >
+    >
+    <ITEM
+      POSITION 258.4
+      SNAPOFFS 0
+      LENGTH 0.45904540965643
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {DA8240C7-DE62-E387-EB93-D35B47BBBC5D}
+      IID 588
+      NAME 719637__zapsplatcom__fast-whoosh-bamboo-swoosh-through-air-version-2.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0.03020459034354
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {70D05598-9697-8984-1548-6E8DD60DCA31}
+      <SOURCE WAVE
+        FILE "/home/edupoch/Documentos/juegos/juegos/florilexio/assets/sound/Reaper/recordings/719637__zapsplatcom__fast-whoosh-bamboo-swoosh-through-air-version-2.wav"
       >
     >
   >
@@ -1497,7 +1583,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 258
+      POSITION 260.4
       SNAPOFFS 0
       LENGTH 0.15298292387718
       LOOP 1
@@ -1546,7 +1632,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 261.2
+      POSITION 263.6
       SNAPOFFS 0
       LENGTH 1.23195011337862
       LOOP 1
@@ -1569,7 +1655,7 @@
       >
     >
     <ITEM
-      POSITION 263.2
+      POSITION 265.6
       SNAPOFFS 0
       LENGTH 1.02845804988664
       LOOP 1
@@ -1592,7 +1678,7 @@
       >
     >
     <ITEM
-      POSITION 265.2
+      POSITION 267.6
       SNAPOFFS 0
       LENGTH 1.26321995467185
       LOOP 1
@@ -1615,7 +1701,7 @@
       >
     >
     <ITEM
-      POSITION 267.2
+      POSITION 269.6
       SNAPOFFS 0
       LENGTH 1.41616780045348
       LOOP 1
@@ -1665,7 +1751,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 269.2
+      POSITION 271.6
       SNAPOFFS 0
       LENGTH 1.6
       LOOP 1
@@ -1687,7 +1773,7 @@
       >
     >
     <ITEM
-      POSITION 272.4
+      POSITION 274.8
       SNAPOFFS 0
       LENGTH 1.4
       LOOP 1
@@ -1723,7 +1809,8 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
     FIXEDLANES 9 0 0 0 0
-    SEL 1
+    LANEREC -1 -1 -1 0
+    SEL 0
     REC 0 0 1 0 0 0 0 0
     VU 64
     TRACKHEIGHT 166 0 0 0 0 0 0
@@ -1735,7 +1822,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 274.4
+      POSITION 276.8
       SNAPOFFS 0
       LENGTH 0.6
       LOOP 1
@@ -1743,7 +1830,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {428420E1-6E33-ED40-DDBA-72FD9D45002C}
       IID 568
       NAME 584867__kawgrim__book-pack.wav
@@ -1757,7 +1844,7 @@
       >
     >
     <ITEM
-      POSITION 276
+      POSITION 278.4
       SNAPOFFS 0
       LENGTH 0.8
       LOOP 1
@@ -1765,7 +1852,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 1
+      SEL 0
       IGUID {AF426107-5824-5B95-B048-01F9F2723F85}
       IID 568
       NAME 584867__kawgrim__book-pack.wav
@@ -1833,7 +1920,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 287.2
+      POSITION 289.6
       SNAPOFFS 0
       LENGTH 119.4
       LOOP 1
@@ -1882,7 +1969,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 287.2
+      POSITION 289.6
       SNAPOFFS 0
       LENGTH 56.8
       LOOP 1
@@ -1904,7 +1991,7 @@
       >
     >
     <ITEM
-      POSITION 344
+      POSITION 346.4
       SNAPOFFS 0
       LENGTH 47.2
       LOOP 1
@@ -1966,7 +2053,7 @@
       WAK 0 0
     >
     <ITEM
-      POSITION 287.20000000002318
+      POSITION 289.60000000002316
       SNAPOFFS 0
       LENGTH 109.39999999997673
       LOOP 1
@@ -2028,7 +2115,7 @@
       WAK 0 0
     >
     <ITEM
-      POSITION 287.20000000002318
+      POSITION 289.60000000002316
       SNAPOFFS 0
       LENGTH 49.59999999997672
       LOOP 1
@@ -2119,7 +2206,7 @@
       WAK 0 0
     >
     <ITEM
-      POSITION 411.99999999995333
+      POSITION 414.39999999995331
       SNAPOFFS 0
       LENGTH 0.52498866213153
       LOOP 1
@@ -2183,7 +2270,7 @@
       WAK 0 0
     >
     <ITEM
-      POSITION 411.99999999995333
+      POSITION 414.39999999995331
       SNAPOFFS 0
       LENGTH 0.33040816326531
       LOOP 1
@@ -2259,7 +2346,7 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 419.2
+      POSITION 421.6
       SNAPOFFS 0
       LENGTH 144
       LOOP 1
@@ -2313,7 +2400,7 @@
       DOCKED 0
     >
     <ITEM
-      POSITION 419.2
+      POSITION 421.6
       SNAPOFFS 0
       LENGTH 144
       LOOP 1

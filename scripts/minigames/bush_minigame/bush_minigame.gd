@@ -59,6 +59,7 @@ var _misses := 0
 var _charge := 0.0
 var _charge_grace_remaining := 0.0
 var _is_button_down := false
+var _charge_sound_played := false
 var _feedback_tween: Tween
 var _charge_bar_flash_tween: Tween
 var _charge_bar_loss_tween: Tween
@@ -125,6 +126,7 @@ func _input(event: InputEvent) -> void:
 	if _is_press_event(event):
 		get_viewport().set_input_as_handled()
 		_is_button_down = true
+		_charge_sound_played = false
 		return
 
 	if _is_release_event(event):
@@ -155,6 +157,9 @@ func _update_charge(delta: float) -> void:
 		return
 
 	if zone == ZoneType.CHARGE:
+		if not _charge_sound_played:
+			_charge_sound_played = true
+			SoundManager.play_simple_sound("Minigame/Charging to cut Bush")
 		_charge = minf(required_charge, _charge + charge_rate * delta)
 		_charge_grace_remaining = charge_grace_seconds
 		_update_charge_bar()
