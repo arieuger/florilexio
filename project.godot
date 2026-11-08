@@ -31,6 +31,7 @@ GameplayEvents="*uid://bo5yk8hei7qrl"
 QuestManager="*uid://dljmunuacn1gg"
 FmodManager="*uid://cds10pm7hwn3p"
 SoundManager="*uid://cvtendwncqa75"
+NotificationManager="*uid://dh0cc1yud0ti5"
 FinalBouquetCompositionCalculator="*res://scripts/autoload/final_bouquet_composition_calculator.gd"
 
 [dialogue_manager]

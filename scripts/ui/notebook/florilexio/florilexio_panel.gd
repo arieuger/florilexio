@@ -59,7 +59,6 @@ func _rebuild() -> void:
 		var plant := ItemDatabase.get_plant(page.plant_id)
 		if plant != null and FlorilexioManager.can_show_in_florilexio(plant):
 			_available_pages.append(page_scene)
-		# TODO: Comprobar se é así ou co mínimo coñecemento (un elemento como o nome): Para reunión!
 		page.free()
 	_current_spread = clampi(_current_spread, 0, maxi(_get_spread_count() - 1, 0))
 	_show_current_spread()

@@ -48,3 +48,25 @@ static func hide_tween(control: CanvasItem) -> Tween:
 	)
 	tween.tween_callback(control.hide)
 	return tween
+
+
+static func pulse_tween(node: CanvasItem, min_alpha: float = 0.5, max_alpha: float = 0.8, duration: float = 0.8) -> Tween:
+	var tween := node.create_tween()
+	tween.set_loops()
+	node.modulate.a = max_alpha
+	
+	tween.tween_property(
+	    node,
+	    "modulate:a",
+	    min_alpha,
+	    duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	tween.tween_property(
+	    node,
+	    "modulate:a",
+	    max_alpha,
+	    duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	return tween

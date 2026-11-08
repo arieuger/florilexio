@@ -37,6 +37,11 @@ func unlock_knowledge(plant_id: StringName, fragment_id: StringName) -> void:
 	plant_knowledge[fragment_id] = true
 	_unlocked_fragments[plant_id] = plant_knowledge
 	knowledge_changed.emit(plant_id)
+	var plant := ItemDatabase.get_plant(plant_id)
+	var collection_unlocked := false
+	if plant != null:
+		collection_unlocked = can_be_collected(plant_id, plant.collection_requirements)
+	NotificationManager.notify_knowledge_unlocked(plant_id, collection_unlocked)
 
 
 func lock_knowledge(plant_id: StringName, fragment_id: StringName) -> void:

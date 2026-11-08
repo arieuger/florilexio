@@ -81,6 +81,8 @@ func start_quest(quest_id: StringName) -> bool:
 
 	state.status = QuestState.Status.ACTIVE
 	quest_started.emit(quest_id)
+	# TODO: Excluír misións ocultas
+	NotificationManager.notify_quest_started(quest_id)
 	var progress_changed := _reevaluate_inventory_owned_objectives_for_quest(quest_id)
 
 	if not progress_changed:
@@ -551,6 +553,7 @@ func advance_objective(quest_id: StringName, objective_id: StringName, amount: i
 	if _are_all_objectives_completed(quest_id):
 		state.status = QuestState.Status.COMPLETED
 		quest_completed.emit(quest_id)
+		NotificationManager.notify_quest_completed(quest_id)
 
 	quest_updated.emit(quest_id)
 	return true
@@ -571,6 +574,7 @@ func complete_quest(quest_id: StringName) -> bool:
 
 	state.status = QuestState.Status.COMPLETED
 	quest_completed.emit(quest_id)
+	NotificationManager.notify_quest_completed(quest_id)
 	quest_updated.emit(quest_id)
 	return true
 
@@ -675,6 +679,7 @@ func _set_objective_progress(quest_id: StringName, objective_id: StringName, amo
 	if _are_all_objectives_completed(quest_id):
 		state.status = QuestState.Status.COMPLETED
 		quest_completed.emit(quest_id)
+		NotificationManager.notify_quest_completed(quest_id)
 
 	quest_updated.emit(quest_id)
 	return true

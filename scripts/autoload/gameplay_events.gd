@@ -1,5 +1,9 @@
 extends Node
 
+## Esta clase sirve para comunicar accións de algún sitema (inventario, diálogo, etc.) que poden afectar a outros sistemas (p. exemplo o sistema de misións). 
+## A idea é que os sistemas que producen eventos non teñan que coñecer aos sistemas que se poidan ver afectados. 
+## En vez de iso, os sistemas que producen eventos emiten sinais, e outros sistemas poden conectarse a eses sinais para recibir notificacións cando se producen eventos. Sirve para desacoplar.
+
 signal item_acquired(item_id: StringName, collection_id: StringName, amount: int)
 signal dialogue_completed(conversation_id: StringName, start_title: StringName, result_id: StringName)
 

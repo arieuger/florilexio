@@ -39,6 +39,7 @@ func add_item(
 
 	if mode == AdditionMode.ACQUIRE:
 		GameplayEvents.report_item_acquired(item_id, collection_id, amount)
+		NotificationManager.notify_item_aqcuired(item_id, amount)
 
 	return true
 

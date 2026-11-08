@@ -26,6 +26,7 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 @onready var time_label: Label = $TimeLabel
 @onready var inventory_panel: Control = $InventoryPanel
 @onready var notebook_panel: Control = %NotebookPanel
+@onready var high_notification: TextureRect = $HighNotification
 
 var _time_shake_tween: Tween
 var _time_blink_tween: Tween
@@ -36,6 +37,9 @@ var _final_scene_spotlight: FinalSceneSpotlight
 var _final_mortal_overlay_layer: CanvasLayer
 var _final_mortal_overlay_tween: Tween
 var _movement_enabled_before_notebook := true
+
+var notification_y: float
+var _notification_pulse: Tween
 
 func _ready() -> void:
 	_time_label_base_position = time_label.position
@@ -52,8 +56,13 @@ func _ready() -> void:
 	notebook_button.pressed.connect(_toggle_notebook)
 	notebook_button.mouse_entered.connect(_on_notebook_button_mouse_entered)
 
+	high_notification.visible = false
+
 	if notebook_panel.has_signal(&"close_requested"):
 		notebook_panel.connect(&"close_requested", _hide_notebook)
+
+	notification_y = high_notification.position.y
+	NotificationManager.notification_requested.connect(_on_notification_requested)
 
 	_update_panel_buttons()
 
@@ -404,3 +413,22 @@ func _update_panel_buttons() -> void:
 
 	# inventory_button.visible = should_show_buttons
 	notebook_button.visible = should_show_buttons
+
+
+func _on_notification_requested(level: NotificationManager.Category, _text: String) -> void:
+	var hud_notification: TextureRect
+	match level:
+		NotificationManager.Level.IMPORTANT:
+			hud_notification = high_notification
+		NotificationManager.Level.SECONDARY:
+			hud_notification = high_notification # TODO: Yellow not
+		
+	if _notification_pulse:
+		_notification_pulse.kill()
+
+	var pop_tween: Tween = UITweens.pop_tween(hud_notification, notification_y)
+	pop_tween.tween_callback(_start_notification_pulse.bind(hud_notification))
+
+
+func _start_notification_pulse(hud_notification: TextureRect) -> void:
+	_notification_pulse = UITweens.pulse_tween(hud_notification, 0.7, 0.85, 1.2)

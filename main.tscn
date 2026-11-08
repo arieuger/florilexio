@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ckymghx6lr2yh" path="res://assets/sprites/ui/buttons/notebook-button-hovered.png" id="10_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dosqr80lvhtg1" path="res://ui/debug/debug_panel.tscn" id="11_debug_panel"]
 [ext_resource type="PackedScene" uid="uid://lta5nh4w7xph" path="res://ui/notebook/notebook_panel.tscn" id="11_dg77c"]
+[ext_resource type="Texture2D" uid="uid://1nf2v825b4i7" path="res://assets/sprites/ui/red_exclamation.png" id="14_vivmo"]
 
 [node name="GameRoot" type="Node2D" unique_id=1136013151]
 script = ExtResource("1_root")
@@ -82,6 +83,16 @@ visible = false
 [node name="NotebookPanel" parent="GameHUD" unique_id=1027844528 instance=ExtResource("11_dg77c")]
 unique_name_in_owner = true
 visible = false
+
+[node name="HighNotification" type="TextureRect" parent="GameHUD" unique_id=1338508423]
+unique_name_in_owner = true
+visible = false
+offset_left = 303.0
+offset_top = 7.0
+offset_right = 307.0
+offset_bottom = 19.0
+texture = ExtResource("14_vivmo")
+stretch_mode = 2
 
 [node name="DebugPanel" parent="." unique_id=609689278 instance=ExtResource("11_debug_panel")]
 
