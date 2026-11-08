@@ -17,6 +17,10 @@ enum Section {MISSIONS, FLORILEXIO, INVENTORY}
 @onready var left_hover_area: Control = %NotebookLeftHoverArea
 @onready var right_hover_area: Control = %NotebookRightHoverArea
 
+@onready var florilexio_badge: TextureRect = %FlorilexioBadge
+@onready var missions_badge: TextureRect = %MissionsBadge
+@onready var inventory_badge: TextureRect = %InventoryBadge
+
 var _active_section := Section.MISSIONS
 
 var _paginated_sections := [Section.FLORILEXIO]
@@ -40,8 +44,12 @@ func _ready() -> void:
 
 	left_hover_area.gui_input.connect(_on_pagination_input.bind(false))
 	right_hover_area.gui_input.connect(_on_pagination_input.bind(true))
+	visibility_changed.connect(_on_visibility_changed)
+
+	NotificationManager.pending_updates_changed.connect(_refresh_notification_badges)
 
 	_apply_section_visibility()
+	_refresh_notification_badges()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -82,6 +90,8 @@ func _apply_section_visibility() -> void:
 			inventory_panel.on_selected()
 
 	_update_pagination()
+	if is_visible_in_tree():
+		_mark_current_section_notification_as_read()
 
 
 func _update_pagination() -> void:
@@ -142,5 +152,32 @@ func _on_close_button_mouse_pressed() -> void:
 	SoundManager.play_simple_sound("Notebook/Close Notebook")
 	close_requested.emit()
 	
+
 func _on_button_mouse_entered() -> void:
 	SoundManager.play_simple_sound("Actions/Hover")
+
+
+func _refresh_notification_badges() -> void:
+	florilexio_badge.visible = NotificationManager.has_pending(NotificationManager.Category.FLORILEXIO)
+	inventory_badge.visible = NotificationManager.has_pending(NotificationManager.Category.INVENTORY)
+	missions_badge.visible = NotificationManager.has_pending(NotificationManager.Category.QUEST) or \
+		NotificationManager.has_pending(NotificationManager.Category.OBJECTIVE)
+
+
+func _mark_current_section_notification_as_read() -> void:
+	# TODO: Según cómo funcione a paxinación de todas as seccións, haberá que modificar esto
+	# TODO: Tween de fadeout
+	match _active_section:
+		Section.FLORILEXIO:
+			# TODO: vai ter que depender de que vexas a páxina concreta
+			NotificationManager.mark_category_as_read(NotificationManager.Category.FLORILEXIO)
+		Section.INVENTORY:
+			NotificationManager.mark_category_as_read(NotificationManager.Category.INVENTORY)
+		Section.MISSIONS:
+			NotificationManager.mark_category_as_read(NotificationManager.Category.QUEST)
+			NotificationManager.mark_category_as_read(NotificationManager.Category.OBJECTIVE)
+
+
+func _on_visibility_changed() -> void:
+	if is_visible_in_tree():
+		_mark_current_section_notification_as_read()

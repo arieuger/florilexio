@@ -26,7 +26,7 @@ const TIME_LABEL_WARNING_COLOR := Color(0.85, 0.08, 0.06, 1)
 @onready var time_label: Label = $TimeLabel
 @onready var inventory_panel: Control = $InventoryPanel
 @onready var notebook_panel: Control = %NotebookPanel
-@onready var high_notification: TextureRect = $HighNotification
+@onready var high_notification: TextureRect = %HighNotification
 
 var _time_shake_tween: Tween
 var _time_blink_tween: Tween
@@ -56,15 +56,15 @@ func _ready() -> void:
 	notebook_button.pressed.connect(_toggle_notebook)
 	notebook_button.mouse_entered.connect(_on_notebook_button_mouse_entered)
 
-	high_notification.visible = false
-
 	if notebook_panel.has_signal(&"close_requested"):
 		notebook_panel.connect(&"close_requested", _hide_notebook)
 
 	notification_y = high_notification.position.y
 	NotificationManager.notification_requested.connect(_on_notification_requested)
+	NotificationManager.pending_updates_changed.connect(_refresh_notification_visibility)
 
 	_update_panel_buttons()
+	_refresh_notification_visibility()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -432,3 +432,14 @@ func _on_notification_requested(level: NotificationManager.Category, _text: Stri
 
 func _start_notification_pulse(hud_notification: TextureRect) -> void:
 	_notification_pulse = UITweens.pulse_tween(hud_notification, 0.7, 0.85, 1.2)
+
+
+func _refresh_notification_visibility() -> void:
+	var should_show := NotificationManager.has_any_pending()
+	if not should_show:
+		if _notification_pulse:
+			_notification_pulse.kill()
+		_notification_pulse = null
+	
+	high_notification.visible = should_show
+	# TODO: Yellow not

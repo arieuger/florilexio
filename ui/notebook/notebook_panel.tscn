@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dycqb2fdsdf0" path="res://assets/sprites/ui/buttons/inventory-marker.png" id="18_ig3l4"]
 [ext_resource type="Texture2D" uid="uid://cp57t0nrrarda" path="res://assets/sprites/ui/buttons/inventory-marker-toggled.png" id="19_skers"]
 [ext_resource type="Texture2D" uid="uid://cegvcccobnw26" path="res://assets/sprites/ui/buttons/inventory-marker-hovered.png" id="20_kkav6"]
+[ext_resource type="Texture2D" uid="uid://cl6480ja36k2a" path="res://assets/sprites/ui/red_point.png" id="21_ajviy"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_sections"]
 
@@ -191,14 +192,26 @@ layout_mode = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 203.0
-offset_top = 13.0
+offset_top = 12.0
 offset_right = 215.0
-offset_bottom = 26.0
+offset_bottom = 25.0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_sections")
 texture_normal = ExtResource("10_l56s5")
 texture_pressed = ExtResource("11_irdbb")
 texture_hover = ExtResource("11_qy6fi")
+
+[node name="FlorilexioBadge" type="TextureRect" parent="CenterContainer/Notebook/FlorilexioTabButton" unique_id=695741487]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 12.0
+offset_bottom = 3.0
+mouse_filter = 2
+texture = ExtResource("21_ajviy")
+stretch_mode = 2
 
 [node name="MissionsTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1787302882]
 unique_name_in_owner = true
@@ -214,6 +227,18 @@ texture_normal = ExtResource("13_dyrrl")
 texture_pressed = ExtResource("14_dj3m7")
 texture_hover = ExtResource("15_3i2l8")
 
+[node name="MissionsBadge" type="TextureRect" parent="CenterContainer/Notebook/MissionsTabButton" unique_id=918500829]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 12.0
+offset_bottom = 3.0
+mouse_filter = 2
+texture = ExtResource("21_ajviy")
+stretch_mode = 2
+
 [node name="InventoryTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1915670940]
 unique_name_in_owner = true
 layout_mode = 0
@@ -226,6 +251,18 @@ button_group = SubResource("ButtonGroup_sections")
 texture_normal = ExtResource("18_ig3l4")
 texture_pressed = ExtResource("19_skers")
 texture_hover = ExtResource("20_kkav6")
+
+[node name="InventoryBadge" type="TextureRect" parent="CenterContainer/Notebook/InventoryTabButton" unique_id=527311380]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 12.0
+offset_bottom = 3.0
+mouse_filter = 2
+texture = ExtResource("21_ajviy")
+stretch_mode = 2
 
 [node name="CloseButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1998345699]
 unique_name_in_owner = true
