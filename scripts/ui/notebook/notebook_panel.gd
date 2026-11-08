@@ -49,6 +49,9 @@ func _ready() -> void:
 	NotificationManager.pending_updates_changed.connect(_refresh_notification_badges)
 
 	_apply_section_visibility()
+	_setup_badge_hover(missions_tab_button, missions_badge, missions_badge.get_node("../BadgeHoverMarker") as Marker2D)
+	_setup_badge_hover(inventory_tab_button, inventory_badge, inventory_badge.get_node("../BadgeHoverMarker") as Marker2D)
+	_setup_badge_hover(florilexio_tab_button, florilexio_badge, florilexio_badge.get_node("../BadgeHoverMarker") as Marker2D)
 	_refresh_notification_badges()
 
 
@@ -181,3 +184,14 @@ func _mark_current_section_notification_as_read() -> void:
 func _on_visibility_changed() -> void:
 	if is_visible_in_tree():
 		_mark_current_section_notification_as_read()
+
+
+func _setup_badge_hover(button: TextureButton, badge: TextureRect, hover_marker: Marker2D) -> void:
+	var original_position := badge.position
+	button.mouse_entered.connect(
+		func(): badge.position = hover_marker.position
+	)
+
+	button.mouse_exited.connect(
+		func(): badge.position = original_position
+	)

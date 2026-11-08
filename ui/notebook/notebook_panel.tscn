@@ -213,6 +213,9 @@ mouse_filter = 2
 texture = ExtResource("21_ajviy")
 stretch_mode = 2
 
+[node name="BadgeHoverMarker" type="Marker2D" parent="CenterContainer/Notebook/FlorilexioTabButton" unique_id=490868864]
+position = Vector2(10, 0)
+
 [node name="MissionsTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1787302882]
 unique_name_in_owner = true
 layout_mode = 0
@@ -239,6 +242,9 @@ mouse_filter = 2
 texture = ExtResource("21_ajviy")
 stretch_mode = 2
 
+[node name="BadgeHoverMarker" type="Marker2D" parent="CenterContainer/Notebook/MissionsTabButton" unique_id=11926028]
+position = Vector2(11, -1)
+
 [node name="InventoryTabButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1915670940]
 unique_name_in_owner = true
 layout_mode = 0
@@ -263,6 +269,9 @@ offset_bottom = 3.0
 mouse_filter = 2
 texture = ExtResource("21_ajviy")
 stretch_mode = 2
+
+[node name="BadgeHoverMarker" type="Marker2D" parent="CenterContainer/Notebook/InventoryTabButton" unique_id=1736636068]
+position = Vector2(10, 0)
 
 [node name="CloseButton" type="TextureButton" parent="CenterContainer/Notebook" unique_id=1998345699]
 unique_name_in_owner = true
